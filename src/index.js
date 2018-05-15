@@ -1,6 +1,6 @@
 'use strict';
-import 'babel-polyfill';
 import React from 'react';
+import Root from './modules/App/Root';
 //import storage from './helpers/storage';
 //import { handleErrors } from './helpers/handleErrors';
 
@@ -36,6 +36,8 @@ const client = new ApolloClient({
 });
 
 render(
-  <ApolloProvider client={client} />,
+    <ApolloProvider client={client}>
+      <Root />
+    </ApolloProvider>,
   document.getElementById('app')
 );
