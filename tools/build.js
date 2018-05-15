@@ -1,8 +1,12 @@
-import {chalkProcessing} from './chalkConfig';
-import webpackBuildTrigger from './webpack-build';
-import config from '../webpack.config.dev';
+import { chalkProcessing } from './chalkConfig'
+import webpackBuildTrigger from './webpack-build'
+import config from '../webpack.config.dev'
 
 /*eslint-disable no-console*/
-console.log(chalkProcessing('Generating minified bundle for STAGING. This will take a moment...'));
+console.log(
+  chalkProcessing(
+    'Generating minified bundle for STAGING. This will take a moment...'
+  )
+)
 
-webpackBuildTrigger('production', config);
+webpackBuildTrigger('production', config)

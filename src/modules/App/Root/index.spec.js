@@ -1,11 +1,11 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from 'react'
+import { shallow } from 'enzyme'
 
-import Root from '../Root';
+import Root from '../Root'
 
 describe('<Root/>', () => {
   it('should mount', () => {
-    const wrapper = shallow(<Root/>);
-    expect(wrapper).toBeDefined();
-  });
-});
+    const wrapper = shallow(<Root />)
+    expect(wrapper).toBeDefined()
+  })
+})
