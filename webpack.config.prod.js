@@ -1,20 +1,20 @@
 // For info about this file refer to webpack and webpack-hot-middleware documentation
 // For info on how we're generating bundles with hashed filenames for cache busting: https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import WebpackMd5Hash from 'webpack-md5-hash';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
+import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import WebpackMd5Hash from 'webpack-md5-hash'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import path from 'path'
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
   __DEV__: false,
-  'STATIC_URL': JSON.stringify('https://cdn.astronomer.io/app')
-};
+  STATIC_URL: JSON.stringify('https://cdn.astronomer.io/app'),
+}
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
+    extensions: ['*', '.js', '.jsx', '.json'],
   },
   devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
   entry: path.resolve(__dirname, 'src/index'),
@@ -23,7 +23,7 @@ export default {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js',
   },
   plugins: [
     // Hash the files using MD5 so that their names change when the content changes.
@@ -49,14 +49,14 @@ export default {
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true
+        minifyURLs: true,
       },
       inject: true,
       // Note that you can add custom options here if you need to handle other custom logic in index.html
-      tracking_snippet: "ANALYTICS_TRACKING_SNIPPET",
+      tracking_snippet: 'ANALYTICS_TRACKING_SNIPPET',
       api_http: 'APP_API_LOC_HTTPS',
       api_ws: 'APP_API_LOC_WSS',
-      stripe_pk: 'STRIPE_PUBK'
+      stripe_pk: 'STRIPE_PUBK',
     }),
   ],
   module: {
@@ -64,11 +64,11 @@ export default {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-        use: ['file-loader']
+        use: ['file-loader'],
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -77,10 +77,10 @@ export default {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              mimetype: 'application/font-woff'
-            }
-          }
-        ]
+              mimetype: 'application/font-woff',
+            },
+          },
+        ],
       },
       {
         test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
@@ -89,10 +89,10 @@ export default {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              mimetype: 'application/octet-stream'
-            }
-          }
-        ]
+              mimetype: 'application/octet-stream',
+            },
+          },
+        ],
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
@@ -101,10 +101,10 @@ export default {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              mimetype: 'image/svg+xml'
-            }
-          }
-        ]
+              mimetype: 'image/svg+xml',
+            },
+          },
+        ],
       },
       {
         test: /\.(jpe?g|png|gif|ico)$/i,
@@ -112,10 +112,10 @@ export default {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]'
-            }
-          }
-        ]
+              name: '[name].[ext]',
+            },
+          },
+        ],
       },
       {
         test: /(\.css|\.scss|\.sass|\.less)$/,
@@ -126,28 +126,30 @@ export default {
               loader: 'css-loader',
               options: {
                 sourceMap: true,
-                modules: true
-              }
-            }, {
+                modules: true,
+              },
+            },
+            {
               loader: 'postcss-loader',
               options: {
                 ident: 'postcss',
                 plugins: () => [
                   require('postcss-flexbugs-fixes'),
-                  require('autoprefixer')
+                  require('autoprefixer'),
                 ],
-                sourceMap: true
-              }
-            }, {
+                sourceMap: true,
+              },
+            },
+            {
               loader: 'sass-loader',
               options: {
                 includePaths: [path.resolve(__dirname, 'src', 'scss')],
-                sourceMap: true
-              }
-            }
-          ]
-        })
-      }
-    ]
-  }
-};
+                sourceMap: true,
+              },
+            },
+          ],
+        }),
+      },
+    ],
+  },
+}
