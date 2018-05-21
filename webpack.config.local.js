@@ -35,7 +35,7 @@ export default {
         collapseWhitespace: true,
       },
       inject: true,
-      api_http: 'http://localhost:14000/v1',
+      api_http: 'http://localhost:8870/v1',
       stripe_pk: 'pk_test_9nakxMiaKT3egTTtCmdfLdet',
       tracking_snippet: '',
       hash: true,
