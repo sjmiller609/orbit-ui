@@ -12,6 +12,7 @@ const routes = [
   },
   ...deployments,
 ]
+
 const RouteWithSubRoutes = route => (
   <Route
     path={route.path}

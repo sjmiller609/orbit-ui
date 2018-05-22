@@ -1,8 +1,9 @@
 import React from 'react'
 import s from './styles.scss'
+import List from '../List'
 
 const Main = () => {
-  return <div className={s.start}>deploys</div>
+  return <List />
 }
 
 export default Main

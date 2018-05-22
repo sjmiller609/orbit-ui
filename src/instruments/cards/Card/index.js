@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import { Box } from '../../instruments'
+import { Box } from '../../../instruments'
 
 const Card = ({ children, footer, header, className }) => {
   return (

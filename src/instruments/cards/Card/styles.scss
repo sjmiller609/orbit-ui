@@ -1,4 +1,4 @@
-@import 'styles/mixins.scss';
+@import '../../../styles/mixins.scss';
 
 .card {
   min-height: 7rem;
@@ -9,7 +9,6 @@
   border: 1px solid $shadow;
 
   main {
-    width: 100%;
     padding: 1rem 1.5rem;
   }
 }
