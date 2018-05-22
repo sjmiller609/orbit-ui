@@ -1,6 +1,6 @@
 'use strict'
 import React from 'react'
-import Root from './modules/App/Root'
+import Root from './modules/app/Root'
 //import storage from './helpers/storage';
 //import { handleErrors } from './helpers/handleErrors';
 
