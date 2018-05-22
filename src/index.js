@@ -12,6 +12,7 @@ import { ApolloLink } from 'apollo-link'
 
 import { ApolloProvider } from 'react-apollo'
 import { render } from 'react-dom'
+import './styles/global/index.scss'
 
 const cache = new InMemoryCache()
 

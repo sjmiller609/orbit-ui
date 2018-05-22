@@ -1,0 +1,27 @@
+@mixin filmo {
+  font-family: 'Filmotype Fashion', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: .2em;
+  font-size: .8rem;
+  line-height: 1.45em;
+}
+
+@mixin font($f) {
+  font-family: $f, 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+$f100: 'Sofia UltraLight';
+$f100i: 'Sofia UltraLight Italic';
+$f200: 'Sofia Extra Light';
+$f200i: 'Sofia Extra Light Italic';
+$f300: 'Sofia Light';
+$f300i: 'Sofia Light Italic';
+$f400: 'Sofia Regular';
+$f400i: 'Sofia Regular Italic';
+$f500: 'Sofia Medium';
+$f500i: 'Sofia Medium Italic';
+$f600: 'Sofia Semi Bold';
+$f600i: 'Sofia Semi Bold Italic';
+$f700: 'Sofia Bold';
+$f700i: 'Sofia Bold Italic';

@@ -1,0 +1,126 @@
+@import '../mixins/fonts.scss';
+@import '../mixins/colors.scss';
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent; // for some Androids
+}
+
+html,
+button,
+input,
+textarea,
+select {
+  outline: none;
+  border: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:focus {
+    outline: none;
+    border: none;
+  } //removes FF dotted outline
+}
+
+html {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+html {
+  font-size: 16px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.55em;
+  background-color: $white;
+  color: $purple;
+  @include font($f400);
+  font-size: 1.5rem;
+}
+
+#root {
+  height: 100%;
+}
+
+p,
+a {
+  line-height: 1.55em;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  line-height: 1.55em;
+}
+
+div::-webkit-scrollbar,
+main::-webkit-scrollbar,
+span::-webkit-scrollbar,
+main::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 1200px),
+  (orientation: landscape) and (max-height: 1200px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 991px),
+  (orientation: landscape) and (max-height: 991px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 800px),
+  (orientation: landscape) and (max-height: 800px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 680px),
+  (orientation: landscape) and (max-height: 680px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 465px),
+  (orientation: landscape) and (max-height: 465px) {
+  html {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 340px),
+  (orientation: landscape) and (max-height: 340px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 260px),
+  (orientation: landscape) and (max-height: 260px) {
+  html {
+    font-size: 9px;
+  }
+}
