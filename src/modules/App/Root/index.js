@@ -1,20 +1,15 @@
-import PropTypes from 'prop-types'
 import React from 'react'
-import s from './styles.scss'
+import { BrowserRouter } from 'react-router-dom'
+
 import { hot } from 'react-hot-loader'
+import Routes from '../Routes'
 
-const Root = ({ children }) => {
+const Root = () => {
   return (
-    <div className={s.container}>
-      rootff
-      {children}
-    </div>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
   )
-}
-
-Root.propTypes = {
-  children: PropTypes.element,
-  location: PropTypes.object,
 }
 
 export default hot(module)(Root)
