@@ -1,0 +1,69 @@
+@import 'styles/mixins.scss';
+
+@mixin flex($flow) {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: $flow;
+  flex: auto;
+}
+
+@mixin justify($justify: center) {
+  justify-content: $justify;
+}
+
+@mixin align($align: center) {
+  align-items: $align;
+}
+
+@mixin wrap($wrap: nowrap) {
+  flex-wrap: $wrap;
+}
+
+.row {
+  @include flex(row);
+}
+
+.box {
+  @include flex(column);
+}
+
+// auto
+.auto {
+  flex: none;
+  height: auto;
+  width: auto;
+}
+
+// wrap
+.wrap {
+  @include wrap(wrap);
+}
+
+// justify content
+.space-between {
+  @include justify(space-between);
+}
+.space-around {
+  @include justify(space-around);
+}
+.flex-end {
+  @include justify(flex-end);
+}
+.flex-start {
+  @include justify(flex-start);
+}
+
+// align content
+.align-space-between {
+  @include align(space-between);
+}
+.align-space-around {
+  @include align(space-around);
+}
+.align-flex-end {
+  @include align(flex-end);
+}
+.align-flex-start {
+  @include align(flex-start);
+}
