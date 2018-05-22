@@ -3,14 +3,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
+import { Box } from '../../instruments'
 
 const Card = ({ children, footer, header, className }) => {
   return (
-    <div className={classnames(s.card, className)}>
+    <Box className={classnames(s.card, className)} justify="space-between">
       {header && <header>{header}</header>}
       <main>{children}</main>
       {footer && <footer>{footer}</footer>}
-    </div>
+    </Box>
   )
 }
 

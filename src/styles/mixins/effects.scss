@@ -1,0 +1,5 @@
+$borderRadius: 5px;
+
+@mixin shadow() {
+  box-shadow: 0.4rem 0.9rem 3.3rem 0.1rem $shadow;
+}
