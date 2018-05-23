@@ -14,15 +14,21 @@ const Query = ({ gql, vars, skip, children }) => {
         if (loading) return <Loading />
         if (error) return console.log(`Error! ${error.message}`)
 
-        return () => children(data)
+        // remove property `Symbol(id)` from data, as it breaks react dev tools
+        const newData = {}
+        Object.keys(data).forEach(k => {
+          newData[k] = data[k]
+        })
+
+        return children({ data: newData }) || null
       }}
     </Apollo>
   )
 }
 
 Query.propTypes = {
-  gql: PropTypes.string,
-  children: PropTypes.function.isRequired,
+  gql: PropTypes.object,
+  children: PropTypes.func.isRequired,
   vars: PropTypes.object,
   skip: PropTypes.bool,
 }

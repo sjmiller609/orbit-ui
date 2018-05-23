@@ -1,23 +1,18 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export default {
-  FindUserOrgs: gql`
-    query findUserOrgs($userId: String!) {
-      organizations(userId: $userId) {
-        id
-        name
-        plan
-        memberCount
+  Deployments: gql`
+    query deployments($orgId: ID, $deploymentId: ID) {
+      deployments(orgUuid: $orgId, deploymentUuid: $deploymentId) {
+        title
+        type
+        uuid
+        release_name
+        version
+        creator {
+          id
+        }
       }
     }
   `,
-  CreateOrg: gql`
-    mutation createOrganization($userId: String!, $name: String!) {
-      response: createOrganization(name:$name, userId:$userId) {
-        success
-        message
-        id
-      }
-    }
-  `,
-};
+}

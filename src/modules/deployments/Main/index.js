@@ -1,12 +1,11 @@
 import React from 'react'
-import s from './styles.scss'
 import List from '../List'
 import { Module } from '../../../instruments'
 
 const Main = () => {
   return (
     <Module metaTitle="Deployments">
-      <List />
+      <List vars={{ deploymentId: 'b38f6195-cfaf-4f57-914a-b826e916c51f' }} />
     </Module>
   )
 }

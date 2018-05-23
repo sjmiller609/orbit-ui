@@ -2,12 +2,14 @@ import React from 'react'
 import s from './styles.scss'
 import { Card } from '../../../instruments'
 
-const List = () => {
+import Data from '../Data'
+
+const List = ({ data: { deployments } }) => {
   return (
     <Card className={s.list}>
-      <p>deploys</p>
+      <p>{deployments && deployments[0] ? deployments[0].title : 'none'}</p>
     </Card>
   )
 }
 
-export default List
+export default Data(List)
