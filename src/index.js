@@ -5,7 +5,7 @@ import Root from './modules/app/Root'
 //import { handleErrors } from './helpers/handleErrors';
 
 import { ApolloClient } from 'apollo-client'
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import { InMemoryCache, defaultDataIdFromObject } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
 import { ApolloLink } from 'apollo-link'
@@ -14,7 +14,12 @@ import { ApolloProvider } from 'react-apollo'
 import { render } from 'react-dom'
 import './styles/global/index.scss'
 
-const cache = new InMemoryCache()
+const cache = new InMemoryCache({
+  dataIdFromObject: object => {
+    if (object.uuid) return object.__typename + ':' + object.uuid
+    return defaultDataIdFromObject(object)
+  },
+})
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem('token') || ''
