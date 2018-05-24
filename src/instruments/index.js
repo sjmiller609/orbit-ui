@@ -12,3 +12,7 @@ export { default as LoadingDots } from './animations/LoadingDots'
 export { default as Query } from './api/Query'
 
 export { default as Search } from './forms/Search'
+export { default as Form } from './forms/Form'
+export { default as TextField } from './forms/TextField'
+export { default as Password } from './forms/Password'
+export { default as Checkbox } from './forms/Checkbox'

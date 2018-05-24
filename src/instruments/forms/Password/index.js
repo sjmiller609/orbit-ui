@@ -3,7 +3,7 @@ import React from 'react'
 import s from './styles.scss'
 import TextField from '../TextField'
 
-class PasswordField extends React.Component {
+class Password extends React.Component {
   constructor() {
     super()
     this.toggle = this.toggle.bind(this)
@@ -55,16 +55,16 @@ class PasswordField extends React.Component {
   }
 }
 
-PasswordField.propTypes = {
+Password.propTypes = {
   placeholder: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string,
 }
 
-PasswordField.defaultProps = {
+Password.defaultProps = {
   placeholder: '*******',
   label: 'Password',
   name: 'Password',
 }
 
-export default PasswordField
+export default Password
