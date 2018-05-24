@@ -1,15 +1,21 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import s from './styles.scss'
-import { Card } from '../../../instruments'
+import { Table } from '../../../instruments'
 
 import Data from '../Data'
 
-const List = ({ data: { deployments } }) => {
+const List = ({ deployments }) => {
   return (
-    <Card className={s.list}>
-      <p>{deployments && deployments[0] ? deployments[0].title : 'none'}</p>
-    </Card>
+    <Table className={s.list}>
+      {deployments.map(d => <p key={d.deploymentId}>{d.title}</p>)}
+    </Table>
   )
+}
+
+List.propTypes = {
+  deployments: PropTypes.array,
 }
 
 export default Data(List)

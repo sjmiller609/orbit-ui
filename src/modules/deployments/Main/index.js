@@ -5,7 +5,7 @@ import { Module } from '../../../instruments'
 const Main = () => {
   return (
     <Module metaTitle="Deployments">
-      <List vars={{ deploymentId: 'b38f6195-cfaf-4f57-914a-b826e916c51f' }} />
+      <List vars1={{ deploymentId: 'b38f6195-cfaf-4f57-914a-b826e916c51f' }} />
     </Module>
   )
 }
