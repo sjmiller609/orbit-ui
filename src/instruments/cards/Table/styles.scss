@@ -7,3 +7,13 @@
 .content {
   padding: 2.5rem 6% 15rem;
 }
+
+.search {
+  padding-right: 3rem;
+}
+
+@media screen and (max-width: 680px) {
+  .header {
+    flex-wrap: wrap;
+  }
+}

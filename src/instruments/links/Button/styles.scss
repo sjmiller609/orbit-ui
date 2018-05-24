@@ -7,8 +7,7 @@ a.button {
 button.button,
 a.button {
   @include filmo;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  white-space: nowrap;
   border-radius: 3px;
   padding: 1.4em 1.8em 1.05em;
   font-size: 0.83rem;

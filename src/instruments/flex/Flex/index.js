@@ -18,6 +18,7 @@ const Flex = ({
     <div
       ref={passRef}
       className={classnames(
+        s.flex,
         flow === 'row' ? s.row : s.box,
         s[justify],
         align ? s['align-' + align] : null,

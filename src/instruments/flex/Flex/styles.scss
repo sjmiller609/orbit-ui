@@ -20,6 +20,12 @@
   flex-wrap: $wrap;
 }
 
+.flex {
+  @include wrap;
+  @include justify;
+  @include align;
+}
+
 .row {
   @include flex(row);
 }

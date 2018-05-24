@@ -46,11 +46,17 @@ class Search extends React.Component {
   }
 
   render() {
-    const { placeholder, text, dark } = this.props
+    const { placeholder, text, dark, className } = this.props
     const { search } = this.state
 
     return (
-      <div className={classnames(field.field, s.search, dark ? s.dark : null)}>
+      <div
+        className={classnames(
+          field.field,
+          s.search,
+          className,
+          dark ? s.dark : null
+        )}>
         <input
           type="text"
           placeholder={placeholder}
@@ -78,6 +84,7 @@ Search.propTypes = {
   search: PropTypes.func.isRequired,
   text: PropTypes.string,
   placeholder: PropTypes.string,
+  className: PropTypes.string,
   dark: PropTypes.bool,
   noDelay: PropTypes.bool,
 }

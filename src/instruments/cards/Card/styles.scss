@@ -8,7 +8,10 @@
   @include shadow;
   border: 1px solid $shadow;
 
-  main {
+  header,
+  main,
+  footer {
+    width: 100%;
     padding: 1rem 1.5rem;
   }
 }
