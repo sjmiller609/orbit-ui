@@ -1,13 +1,5 @@
 @import '../../../styles/mixins.scss';
 
-.module {
-  height: auto;
-}
-
-.content {
-  padding: 2.5rem 6% 15rem;
-}
-
 .search {
   padding-right: 3rem;
 }
@@ -16,4 +8,14 @@
   .header {
     flex-wrap: wrap;
   }
+}
+
+.table main {
+  > div:nth-child(even) {
+    background-color: $lightGray;
+  }
+}
+
+.tableRow {
+  padding: 3rem;
 }

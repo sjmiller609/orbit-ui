@@ -5,6 +5,7 @@ import s from './styles.scss'
 import { Table } from '../../../instruments'
 
 import Data from '../Data'
+import Item from './Item'
 
 const List = ({ deployments, search }) => {
   const button = {
@@ -13,7 +14,7 @@ const List = ({ deployments, search }) => {
   }
   return (
     <Table className={s.list} search={search} button={button}>
-      {deployments.map(d => <p key={d.id}>{d.title}</p>)}
+      {deployments.map(d => <Item key={d.id} deployment={d} />)}
     </Table>
   )
 }

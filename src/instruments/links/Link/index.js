@@ -4,13 +4,10 @@ import React from 'react'
 import { Link as A } from 'react-router-dom'
 import s from './styles.scss'
 import classnames from 'classnames'
+import { Icon } from '../../../instruments'
 
 const Link = ({ children, onClick, style, to, className, newTab, arrow }) => {
-  const arr = arrow ? (
-    <span className={s.arrow}>
-      <span>&#8592;</span>
-    </span>
-  ) : null
+  const arr = arrow && <Icon className={s.arrow} icon="arrow" />
   return (
     <A
       to={to}
