@@ -6,13 +6,17 @@ import classnames from 'classnames'
 import { Card, Search } from '../../../instruments'
 import s from './styles.scss'
 
-const Table = ({ children, className }) => {
+const Table = ({ children, search, className }) => {
   return (
     <Card
       className={classnames(s.table, className)}
       header={
         <div className={s.header}>
-          <Search />
+          <Search
+            search={search.call}
+            text={search.text}
+            placeholder={search.placeholder}
+          />
         </div>
       }>
       <React.Fragment>
@@ -25,6 +29,7 @@ const Table = ({ children, className }) => {
 Table.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
   className: PropTypes.string,
+  search: PropTypes.object,
 }
 
 export default Table

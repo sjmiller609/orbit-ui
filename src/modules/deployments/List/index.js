@@ -6,9 +6,9 @@ import { Table } from '../../../instruments'
 
 import Data from '../Data'
 
-const List = ({ deployments }) => {
+const List = ({ deployments, search }) => {
   return (
-    <Table className={s.list}>
+    <Table className={s.list} search={search}>
       {deployments.map(d => <p key={d.id}>{d.title}</p>)}
     </Table>
   )
@@ -16,6 +16,7 @@ const List = ({ deployments }) => {
 
 List.propTypes = {
   deployments: PropTypes.array,
+  search: PropTypes.object,
 }
 
 export default Data(List)
