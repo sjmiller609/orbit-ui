@@ -2,9 +2,9 @@
 
 .search {
   position: relative;
+  width: auto;
   // inherits vertical padding from form
   //max-width: $fieldWidth;
-  width: 100%;
 
   &:after {
     content: '';
@@ -18,17 +18,16 @@
     height: 100%;
   }
 
-  .input {
-    margin: 0;
-    width: 100%;
+  input[type='text'].input {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+    display: inline-block;
   }
 
   .searching {
+    display: inline-block;
     position: absolute;
-    top: 0;
-    right: 0.5rem;
+    margin: 1rem 0 0 -1em;
     z-index: 1;
     font-size: 3rem;
     line-height: 1rem;
@@ -36,8 +35,24 @@
       color: transparent;
       background-clip: text;
       -webkit-background-clip: text;
+      background-size: 100%;
+      background-position: left;
       background-image: linear-gradient(to right, $green, $blue);
     }
+  }
+  .clear {
+    display: inline-block;
+    position: absolute;
+    margin: 1.8rem 0 0 -1.2em;
+    font-size: 1.4rem;
+    line-height: 100%;
+    z-index: 1;
+    text-transform: uppercase;
+    cursor: pointer;
+    //line-height: 1em;
+
+    color: $white;
+    //  padding: 0.3em 0.4em;
   }
 
   &.dark {

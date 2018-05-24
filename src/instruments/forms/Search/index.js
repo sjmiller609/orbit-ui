@@ -2,23 +2,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import s from './styles.scss'
+// NOTE: Importing field styles from TextField
+import field from '../TextField/styles.scss'
 import classnames from 'classnames'
 
 import { LoadingDots } from '../../../instruments'
 
 class Search extends React.Component {
-  constructor(props) {
-    super(props)
-    this.timeout = null
-    this.type = this.type.bind(this)
-    this.state = {
-      typing: null,
-      search: this.props.text,
-    }
+  timeout = null
+  type = this.type.bind(this)
+  clear = this.clear.bind(this)
+  state = {
+    typing: null,
+    search: this.props.text,
   }
+
   componentWillUnmount() {
     clearTimeout(this.timeout)
   }
+
   type(e) {
     e.preventDefault()
     const { noDelay, search } = this.props
@@ -36,12 +38,19 @@ class Search extends React.Component {
     }
   }
 
+  clear(e) {
+    e.preventDefault()
+
+    this.setState({ search: '' })
+    this.props.search('')
+  }
+
   render() {
     const { placeholder, text, dark } = this.props
     const { search } = this.state
 
     return (
-      <div className={classnames(s.search, dark ? s.dark : null)}>
+      <div className={classnames(field.field, s.search, dark ? s.dark : null)}>
         <input
           type="text"
           placeholder={placeholder}
@@ -53,7 +62,13 @@ class Search extends React.Component {
           <div className={s.searching}>
             <LoadingDots />
           </div>
-        ) : null}
+        ) : (
+          text && (
+            <div className={s.clear} onClick={this.clear}>
+              x
+            </div>
+          )
+        )}
       </div>
     )
   }

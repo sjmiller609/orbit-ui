@@ -1,0 +1,78 @@
+@import '../../../styles/mixins.scss';
+
+.checkbox {
+  font-size: 1em;
+  line-height: 1.4em;
+  @include row(flex-start);
+  align-items: flex-start;
+  height: auto;
+  width: auto;
+
+  .box {
+    flex-shrink: 0;
+
+    border-radius: 3px;
+    border: 3px solid $beige;
+    width: 1.4em;
+    height: 1.4em;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba($beige, 0);
+    transition: background-color 140ms ease-in;
+    //	@include hoverScaleSm;
+
+    .check {
+      border-bottom-width: 3px;
+      border-color: $darkWhite;
+      border-left: 0;
+      border-right-width: 3px;
+      border-style: solid;
+      border-top: 0;
+      content: '';
+      height: 1em;
+      position: absolute;
+      top: -0.08em;
+      left: 0.25em;
+      transform: rotate(0) scale(0);
+      transform-origin: center;
+      width: 0.5em;
+      transition: transform 140ms ease-in;
+    }
+
+    &.on {
+      background-color: $beige;
+      &:hover .check {
+        transform: rotate(45deg) scale(1) translate(-10%, -7%);
+      }
+      .check {
+        transform: rotate(45deg) scale(1);
+      }
+    }
+  }
+
+  .input {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+  }
+
+  label {
+    line-height: inherit;
+    vertical-align: middle;
+    margin-left: 0.7em;
+    color: $beige;
+    @include font($f500);
+    a {
+      color: $green;
+      @include font($f700);
+      font-size: 1em;
+
+      //  @include hoverColor($lightGreen);
+    }
+  }
+  .required label {
+    @include font($f700);
+  }
+}

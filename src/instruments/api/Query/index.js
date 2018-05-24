@@ -33,7 +33,6 @@ const Query = ({ gql, vars, skip, children, search }) => {
               searchText(search.text, JSON.stringify(d))
             )
           })
-          console.log(data3)
         }
 
         return children({ data: data3 || data2 }) || null
