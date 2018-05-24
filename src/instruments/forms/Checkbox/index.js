@@ -3,23 +3,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import s from './styles.scss'
 import classNames from 'classnames'
+import { Row } from '../../../instruments'
 
 class Checkbox extends React.Component {
-  constructor(props) {
-    super(props)
-    this.change = this.change.bind(this)
-    this.onChange = this.onChange.bind(this)
-    this.timeout = null
-    this.validate = this.validate.bind(this)
-    this.showError = this.showError.bind(this)
+  change = this.change.bind(this)
+  onChange = this.onChange.bind(this)
+  timeout = null
+  validate = this.validate.bind(this)
+  showError = this.showError.bind(this)
 
-    const { id, name, value } = this.props
-    this.state = {
-      id: id || name,
-      showError: false,
-      touched: null,
-      checked: !!value,
-    }
+  state = {
+    id: this.props.id || this.props.name,
+    showError: false,
+    touched: null,
+    checked: !!this.props.value,
   }
 
   componentDidMount() {
@@ -102,7 +99,10 @@ class Checkbox extends React.Component {
     const { checked } = this.state
 
     return (
-      <div
+      <Row
+        justify="flex-start"
+        align="flex-start"
+        auto
         className={classNames(
           s.checkbox,
           required ? s.required : null,
@@ -125,7 +125,7 @@ class Checkbox extends React.Component {
         </div>
 
         {label && <label>{label}</label>}
-      </div>
+      </Row>
     )
   }
 }

@@ -3,10 +3,6 @@
 .checkbox {
   font-size: 1em;
   line-height: 1.4em;
-  @include row(flex-start);
-  align-items: flex-start;
-  height: auto;
-  width: auto;
 
   .box {
     flex-shrink: 0;
