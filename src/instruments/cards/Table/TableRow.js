@@ -13,10 +13,8 @@ const Column = (el, i) => (
 
 const TableRow = ({ columns, to, className }) => {
   return (
-    <Link to={to}>
-      <Row
-        className={classnames(s.tableRow, className)}
-        justify="space-between">
+    <Link to={to} className={classnames(s.tableRow, className)}>
+      <Row justify="space-between">
         {Array.isArray(columns)
           ? columns.map((el, i) => Column(el, i))
           : columns}

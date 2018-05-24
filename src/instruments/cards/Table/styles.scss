@@ -10,12 +10,9 @@
   }
 }
 
-.table main {
-  > div:nth-child(even) {
+.tableRow {
+  display: block;
+  &:nth-child(even) {
     background-color: $lightGray;
   }
-}
-
-.tableRow {
-  padding: 3rem;
 }
