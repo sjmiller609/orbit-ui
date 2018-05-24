@@ -15,12 +15,12 @@ const Query = ({ gql, vars, skip, children }) => {
         if (error) return console.log(`Error! ${error.message}`)
 
         // remove property `Symbol(id)` from data, as it breaks react dev tools
-        const newData = {}
+        const data2 = {}
         Object.keys(data).forEach(k => {
-          newData[k] = data[k]
+          data2[k] = data[k]
         })
 
-        return children({ data: newData }) || null
+        return children({ data: data2 }) || null
       }}
     </Apollo>
   )
