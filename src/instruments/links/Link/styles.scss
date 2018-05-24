@@ -1,0 +1,42 @@
+@import '../../../styles/mixins.scss';
+
+a {
+  color: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 250ms ease-in;
+  transform: translateZ(0);
+}
+a * {
+  cursor: pointer;
+}
+a:hover,
+a:focus {
+  transform: scale(1.03);
+  border: 0;
+  outline: 0;
+}
+a:active {
+  transform: scale(0.98);
+  border: 0;
+  outline: 0;
+}
+a:visited {
+  color: inherit;
+}
+
+.arrow {
+  display: inline-block;
+  min-width: 1.8rem;
+  position: relative;
+  span {
+    position: absolute;
+    font-size: 2.4rem;
+    top: -1rem;
+    left: 0.5rem;
+    width: 1.6rem;
+    overflow: hidden;
+    transform: rotate(180deg);
+  }
+}

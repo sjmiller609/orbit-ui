@@ -3,10 +3,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Card, Search } from '../../../instruments'
+import { Card, Search, Button } from '../../../instruments'
 import s from './styles.scss'
 
-const Table = ({ children, search, className }) => {
+const Table = ({ children, search, className, button }) => {
   return (
     <Card
       className={classnames(s.table, className)}
@@ -17,6 +17,7 @@ const Table = ({ children, search, className }) => {
             text={search.text}
             placeholder={search.placeholder}
           />
+          {button && <Button text={button.text} to={button.to} />}
         </div>
       }>
       <React.Fragment>
@@ -30,6 +31,7 @@ Table.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
   className: PropTypes.string,
   search: PropTypes.object,
+  button: PropTypes.object,
 }
 
 export default Table

@@ -16,3 +16,6 @@ export { default as Form } from './forms/Form'
 export { default as TextField } from './forms/TextField'
 export { default as Password } from './forms/Password'
 export { default as Checkbox } from './forms/Checkbox'
+
+export { default as Link } from './links/Link'
+export { default as Button } from './links/Button'
