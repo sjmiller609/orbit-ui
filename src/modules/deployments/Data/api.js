@@ -6,7 +6,7 @@ export default {
       deployments(orgUuid: $orgId, deploymentUuid: $deploymentId) {
         title
         type
-        deploymentId: uuid
+        id: uuid
         release_name
         version
         creator {

@@ -6,6 +6,9 @@ export { default as Table } from './cards/Table'
 
 export { default as Module } from './layouts/Module'
 
-export { default as Loading } from './Loading'
+export { default as Loading } from './animations/Loading'
+export { default as LoadingDots } from './animations/LoadingDots'
 
 export { default as Query } from './api/Query'
+
+export { default as Search } from './forms/Search'

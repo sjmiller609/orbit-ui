@@ -9,7 +9,7 @@ import Data from '../Data'
 const List = ({ deployments }) => {
   return (
     <Table className={s.list}>
-      {deployments.map(d => <p key={d.deploymentId}>{d.title}</p>)}
+      {deployments.map(d => <p key={d.id}>{d.title}</p>)}
     </Table>
   )
 }

@@ -6,8 +6,9 @@ import s from './styles.scss'
 import { Box } from '../../../instruments'
 
 const Card = ({ children, footer, header, className }) => {
+  const justify = !footer ? 'flex-start' : 'space-between'
   return (
-    <Box className={classnames(s.card, className)} justify="space-between">
+    <Box className={classnames(s.card, className)} justify={justify}>
       {header && <header>{header}</header>}
       <main>{children}</main>
       {footer && <footer>{footer}</footer>}

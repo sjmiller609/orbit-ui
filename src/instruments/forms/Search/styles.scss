@@ -1,0 +1,53 @@
+@import '../../../styles/mixins.scss';
+
+.search {
+  position: relative;
+  // inherits vertical padding from form
+  //max-width: $fieldWidth;
+  width: 100%;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0.5rem;
+    z-index: 1;
+    background: url('./search.svg') no-repeat center center;
+    background-size: 1.2rem 1.2rem;
+    width: 1.2rem;
+    height: 100%;
+  }
+
+  .input {
+    margin: 0;
+    width: 100%;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .searching {
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    z-index: 1;
+    font-size: 3rem;
+    line-height: 1rem;
+    span {
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      background-image: linear-gradient(to right, $green, $blue);
+    }
+  }
+
+  &.dark {
+    input {
+      color: $darkWhite;
+      background-color: $purple;
+      &:hover,
+      &:focus {
+        background-color: $purple;
+      }
+    }
+  }
+}
