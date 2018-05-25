@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from './Form'
+import Configure from '../Configure'
 import { Module } from '../../../instruments'
 
 class New extends React.Component {
@@ -7,7 +7,7 @@ class New extends React.Component {
     const title = 'New Deployment'
     return (
       <Module metaTitle={title}>
-        <Form title={title} />
+        <Configure title={title} />
       </Module>
     )
   }
