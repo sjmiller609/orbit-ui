@@ -4,20 +4,11 @@ div.cardForm {
   //  @include formStyles;
 }
 
-$footerHeaderHeight: 6.2rem;
-
-div.footer {
-  //  @include row;
-  margin: auto;
-
-  height: $footerHeaderHeight;
-}
-
 .title {
   // @include row;
   margin: auto;
 
-  height: $footerHeaderHeight;
+  //  height: $footerHeaderHeight;
   width: auto;
   @include font($f300);
   font-size: 1.6rem;

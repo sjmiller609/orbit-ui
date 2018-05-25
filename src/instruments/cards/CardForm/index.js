@@ -13,7 +13,6 @@ const CardForm = ({
   children,
   button,
   title,
-  header,
   small,
   className,
   fullWidth,
@@ -22,11 +21,11 @@ const CardForm = ({
   return (
     <Card
       footer={
-        <div className={s.footer}>
+        <Row className={s.footer}>
           <Button disabled={!button.save} submit text={button.text || 'Save'} />
-        </div>
+        </Row>
       }
-      header={header || (title ? <h3 className={s.title}>{title}</h3> : null)}
+      header={title}
       className={classnames(
         className,
         s.cardForm,
@@ -43,7 +42,6 @@ const CardForm = ({
 }
 
 CardForm.propTypes = {
-  header: PropTypes.element,
   title: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
     .isRequired,

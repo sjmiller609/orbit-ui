@@ -1,6 +1,7 @@
 @import '../../../styles/mixins.scss';
 
 .h4 {
-  @include font($f500);
+  @include font($f300);
   font-size: 1.6rem;
+  color: $lightBeige;
 }
