@@ -1,0 +1,46 @@
+@import '../../../styles/mixins.scss';
+
+div.cardForm {
+  //  @include formStyles;
+}
+
+$footerHeaderHeight: 6.2rem;
+
+div.footer {
+  //  @include row;
+  margin: auto;
+
+  height: $footerHeaderHeight;
+}
+
+.title {
+  // @include row;
+  margin: auto;
+
+  height: $footerHeaderHeight;
+  width: auto;
+  @include font($f300);
+  font-size: 1.6rem;
+
+  color: $lightBeige;
+  white-space: nowrap;
+}
+
+.formContent {
+  margin: auto;
+  width: 100%;
+  padding: 1.5rem 0 3rem;
+
+  p:not(:first-of-type) {
+    margin-top: 1.8rem;
+  }
+}
+
+.small {
+  max-width: 48rem;
+  // margin: 1rem auto;
+}
+
+.fullWidth .formContent {
+  max-width: 100%;
+}

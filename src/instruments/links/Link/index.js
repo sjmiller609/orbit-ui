@@ -8,8 +8,10 @@ import { Icon } from '../../../instruments'
 
 const Link = ({ children, onClick, style, to, className, newTab, arrow }) => {
   const arr = arrow && <Icon className={s.arrow} icon="arrow" />
+  const A2 = props => <a {...props} />
+  const Component = to ? A : A2
   return (
-    <A
+    <Component
       to={to}
       className={classnames(s.link, s[style], className)}
       onClick={onClick}
@@ -18,7 +20,7 @@ const Link = ({ children, onClick, style, to, className, newTab, arrow }) => {
         {children}
         {arr}
       </React.Fragment>
-    </A>
+    </Component>
   )
 }
 

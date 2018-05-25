@@ -4,6 +4,7 @@ export { default as Box } from './flex/Box'
 export { default as Card } from './cards/Card'
 export { default as Table } from './cards/Table'
 export { default as TableRow } from './cards/Table/TableRow'
+export { default as CardForm } from './cards/CardForm'
 
 export { default as Module } from './layouts/Module'
 
