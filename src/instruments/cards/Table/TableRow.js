@@ -5,20 +5,18 @@ import classnames from 'classnames'
 import s from './styles.scss'
 import { Row, Box, Link, Icon } from '../../../instruments'
 
-const Column = (el, i) => (
-  <Box key={i} className={s.column}>
-    {el}
-  </Box>
-)
-
 const TableRow = ({ columns, to, className }) => {
   return (
     <Link to={to} className={classnames(s.tableRow, className)}>
       <Row justify="space-between">
-        {Array.isArray(columns)
-          ? columns.map((el, i) => Column(el, i))
-          : columns}
-        {Column(<Icon key="arrow" icon="arrow" className={s.arrow} />)}
+        <Row justify="space-between" className={s.fields} wrap>
+          {Array.isArray(columns) ? columns.map(el => el) : columns}
+        </Row>
+        {to && (
+          <Box auto className={s.arrowCol}>
+            <Icon key="arrow" icon="arrow" className={s.arrow} />
+          </Box>
+        )}
       </Row>
     </Link>
   )

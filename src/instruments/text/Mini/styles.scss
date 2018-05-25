@@ -1,0 +1,7 @@
+@import '../../../styles/mixins.scss';
+
+.mini {
+  @include font($f400);
+  font-size: 1.3rem;
+  color: $lightBeige;
+}

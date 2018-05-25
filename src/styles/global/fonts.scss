@@ -69,6 +69,20 @@
       format('svg');
 }
 @font-face {
+  font-family: 'Sofia Semi Bold';
+  src: url($static_url+'/fonts/sofia-pro/e488d96e-1d10-41aa-a2a0-8cb7cc0a54a8.eot');
+  src: url($static_url+'/fonts/sofia-pro/e488d96e-1d10-41aa-a2a0-8cb7cc0a54a8.eot?#iefix')
+      format('eot'),
+    url($static_url+'/fonts/sofia-pro/20755c49-19b5-4792-aaf3-27f6b048149a.woff2')
+      format('woff2'),
+    url($static_url+'/fonts/sofia-pro/7cdc9309-dc21-43e2-a348-c6e3853fe8a9.woff')
+      format('woff'),
+    url($static_url+'/fonts/sofia-pro/fe0fe0a1-32b6-4795-80da-fb446ac9d5ea.ttf')
+      format('truetype'),
+    url($static_url+'/fonts/sofia-pro/d7a947d1-755b-4774-a917-036acd235435.svg#d7a947d1-755b-4774-a917-036acd235435')
+      format('svg');
+}
+@font-face {
   font-family: 'Sofia Bold';
   src: url($static_url+'/fonts/sofia-pro/c2440dd8-b25c-49ba-bc04-8a638a943324.eot');
   src: url($static_url+'/fonts/sofia-pro/c2440dd8-b25c-49ba-bc04-8a638a943324.eot?#iefix')

@@ -1,5 +1,25 @@
-// @import '../../../styles/mixins.scss';
+@import '../../../styles/mixins.scss';
 
 div.list {
-  height: 100vh;
+  height: auto;
+  min-height: 80vh;
+}
+
+.title {
+  width: 60%;
+  min-width: 18rem;
+}
+
+.log {
+  width: 40%;
+  min-width: 18rem;
+}
+
+.item {
+  h4 {
+    color: $lightPurple;
+  }
+  .subTitle {
+    color: $beige;
+  }
 }

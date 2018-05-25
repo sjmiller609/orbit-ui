@@ -1,8 +1,8 @@
 @import '../../../styles/mixins.scss';
 
 @mixin flex($flow) {
-  width: inherit;
-  height: inherit;
+  // width: inherit;
+  // height: inherit;
   display: flex;
   flex-flow: $flow;
   flex: auto;
@@ -39,6 +39,11 @@
   flex: none;
   height: auto;
   width: auto;
+}
+
+.full {
+  width: 100%;
+  height: 100%;
 }
 
 // wrap

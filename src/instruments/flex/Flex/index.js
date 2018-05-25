@@ -13,6 +13,7 @@ const Flex = ({
   wrap,
   auto,
   flow,
+  full,
 }) => {
   return (
     <div
@@ -24,6 +25,7 @@ const Flex = ({
         align ? s['align-' + align] : null,
         wrap ? s.wrap : null,
         auto ? s.auto : null,
+        full ? s.full : null,
         className
       )}>
       {Array.isArray(children) ? children.map(el => el) : children}
@@ -44,6 +46,7 @@ Flex.propTypes = {
   flow: PropTypes.string,
   wrap: PropTypes.bool,
   auto: PropTypes.bool,
+  full: PropTypes.bool,
 }
 
 export default Flex

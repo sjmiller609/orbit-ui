@@ -1,0 +1,6 @@
+@import '../../../styles/mixins.scss';
+
+.h5 {
+  @include font($f300);
+  font-size: 1.6rem;
+}

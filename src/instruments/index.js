@@ -22,3 +22,10 @@ export { default as Link } from './links/Link'
 export { default as Button } from './links/Button'
 
 export { default as Icon } from './icons/Icon'
+
+export { default as P } from './text/P'
+export { default as Mini } from './text/Mini'
+
+export { default as H3 } from './text/H3'
+export { default as H4 } from './text/H4'
+export { default as H5 } from './text/H5'
