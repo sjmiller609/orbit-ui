@@ -14,7 +14,10 @@ const Query = ({ gql, vars, skip, children, search }) => {
         if (loading) return <Loading />
 
         // TODO: Error handling
-        if (error) return console.log(`Error! ${error.message}`)
+        if (error) {
+          console.log(`Error! ${error.message}`)
+          return null
+        }
 
         // remove property `Symbol(id)` from data, as it breaks react dev tools
         const data2 = {}

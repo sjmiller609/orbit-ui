@@ -12,6 +12,7 @@ export { default as Loading } from './animations/Loading'
 export { default as LoadingDots } from './animations/LoadingDots'
 
 export { default as Query } from './api/Query'
+export { default as Mutation } from './api/Mutation'
 
 export { default as Search } from './forms/Search'
 export { default as Form } from './forms/Form'

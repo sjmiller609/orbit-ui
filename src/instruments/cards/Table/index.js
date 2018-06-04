@@ -17,6 +17,7 @@ const Table = ({ children, search, className, button }) => {
             text={search.text}
             placeholder={search.placeholder}
             className={s.search}
+            noDelay={!search.delay}
           />
           {button && <Button text={button.text} to={button.to} />}
         </Row>

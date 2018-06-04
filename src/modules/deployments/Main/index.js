@@ -7,6 +7,7 @@ class Main extends React.Component {
   state = { search: '' }
   // search obj constants
   search = {
+    delay: false,
     placeholder: 'Search Deployments',
     call: search => this.setState({ search }),
   }

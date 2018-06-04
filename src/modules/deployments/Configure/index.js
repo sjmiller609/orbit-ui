@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import s from './styles.scss'
 import { CardForm, Form, TextField } from '../../../instruments'
 
-import Data from '../Data'
+import Create from '../Data/Create'
 
 const Configure = ({ title, form }) => {
   return (
@@ -33,4 +33,4 @@ Configure.propTypes = {
   form: PropTypes.object,
 }
 
-export default Form(Configure)
+export default Create(Form(Configure))
