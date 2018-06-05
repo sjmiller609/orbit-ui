@@ -1,7 +1,7 @@
 @import '../../../styles/mixins.scss';
 
-.h3 {
+.h2 {
   @include font($f600);
-  //color: $lightBeige;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  line-height: 1.14em;
 }

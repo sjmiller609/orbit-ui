@@ -7,13 +7,14 @@ import classnames from 'classnames'
 
 import s from './styles.scss'
 
-import { Loading } from '../../../instruments'
+import { Loading, Header } from '../../../instruments'
 
 // wrapper for all modules
 const Module = ({ children, loading, metaTitle, className }) => {
   if (loading) return <Loading />
   return (
     <div className={classnames(s.module, className)}>
+      <Header className={s.header} />
       <div className={s.content}>
         {Array.isArray(children) ? children.map(el => el) : children}
       </div>
