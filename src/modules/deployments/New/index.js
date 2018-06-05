@@ -7,7 +7,6 @@ import { Module } from '../../../instruments'
 class New extends React.Component {
   onSuccess = this.onSuccess.bind(this)
   onSuccess() {
-    console.log('success')
     this.props.history.push('/deployments')
   }
   render() {

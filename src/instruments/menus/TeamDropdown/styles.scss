@@ -1,0 +1,13 @@
+@import '../../../styles/mixins.scss';
+
+.menu {
+  margin: 0 1rem;
+  white-space: nowrap;
+}
+
+.arrow {
+  display: inline-block;
+  height: 0.6em;
+  opacity: 0.6;
+  margin-left: 1rem;
+}
