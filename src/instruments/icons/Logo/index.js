@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { Link } from '../../../instruments'
 
 import s from './styles.scss'
 
@@ -12,16 +13,18 @@ const Logo = ({ darkBg, noStars, full, className }) => {
 
   const src = require(`./${path}.svg`)
   return (
-    <img
-      src={src}
-      className={classnames(
-        s.logo,
-        full && s.full,
-        !noStars && s.stars,
-        className
-      )}
-      title="Astronomer"
-    />
+    <Link to="/">
+      <img
+        src={src}
+        className={classnames(
+          s.logo,
+          full && s.full,
+          !noStars && s.stars,
+          className
+        )}
+        title="Astronomer"
+      />
+    </Link>
   )
 }
 
