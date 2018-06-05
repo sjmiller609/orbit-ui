@@ -6,6 +6,7 @@ import classnames from 'classnames'
 import { H2, Icon, Link } from '../../../instruments'
 import s from './styles.scss'
 
+// TODO: add dropdown
 const Level1 = ({ text, to, active, className }) => {
   return (
     <H2 className={classnames(s.menu, active && s.active, className)}>

@@ -12,9 +12,9 @@ const Menu = ({ level1, level2, className }) => {
       <Logo />
       <Level1 {...level1} active={!level2} />
       {level2 && (
-        <Link to={level2.to}>
-          <H2>{level2.text}</H2>
-        </Link>
+        <H2>
+          <Link to={level2.to}>{level2.text}</Link>
+        </H2>
       )}
     </Row>
   )

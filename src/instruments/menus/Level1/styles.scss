@@ -3,13 +3,17 @@
 .menu {
   margin: 0 1rem;
   white-space: nowrap;
-  opacity: 0.6;
+  opacity: 0.5;
   transition: opacity 250ms ease-in;
   &.active {
     opacity: 1;
     .arrow {
       transform: rotate(90deg);
     }
+  }
+  &:hover,
+  &:focus {
+    opacity: 1;
   }
 }
 

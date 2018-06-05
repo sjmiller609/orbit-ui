@@ -1,5 +1,6 @@
 import Main from '../Main'
 import New from '../New'
+import Deployment from '../Deployment'
 
 export default [
   {
@@ -10,6 +11,11 @@ export default [
   {
     path: '/deployments/new',
     component: New,
+    exact: true,
+  },
+  {
+    path: '/deployments/:id',
+    component: Deployment,
     exact: true,
   },
 ]

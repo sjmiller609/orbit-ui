@@ -4,19 +4,23 @@ import PropTypes from 'prop-types'
 import Configure from '../Configure'
 import { Module } from '../../../instruments'
 
-class New extends React.Component {
+class Deployment extends React.Component {
   onSuccess = this.onSuccess.bind(this)
   back = '/deployments'
-  title = 'New Deployment'
+  title = 'Configure'
+  subMenu = []
 
   onSuccess() {
     this.props.history.push(this.back)
   }
   render() {
+    const { match } = this.props
+    const id = match.params.id
+
     const menu = {
       back: this.back,
       level2: {
-        text: '',
+        text: id,
         to: this.props.history.location.pathname,
       },
     }
@@ -28,8 +32,9 @@ class New extends React.Component {
   }
 }
 
-New.propTypes = {
+Deployment.propTypes = {
   history: PropTypes.object,
+  match: PropTypes.object,
 }
 
-export default New
+export default Deployment

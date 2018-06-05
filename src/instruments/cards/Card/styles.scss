@@ -24,8 +24,10 @@ $footerHeaderHeight: 6.2rem;
 
   footer {
     width: 100%;
-    min-height: $footerHeaderHeight;
     background: $lightGray;
+    > * {
+      min-height: $footerHeaderHeight;
+    }
   }
 
   .title {

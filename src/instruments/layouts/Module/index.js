@@ -10,11 +10,19 @@ import s from './styles.scss'
 import { Loading, Header } from '../../../instruments'
 
 // wrapper for all modules
-const Module = ({ children, header, loading, metaTitle, className }) => {
+const Module = ({ children, menu, loading, metaTitle, className }) => {
   if (loading) return <Loading />
   return (
     <div className={classnames(s.module, className)}>
-      <Header className={s.header} {...header} />
+      <Header
+        className={s.header}
+        subMenu={menu.subMenu}
+        level1={{
+          text: 'My Team', // TODO: get current team data
+          to: menu.back || '/deployments',
+        }}
+        level2={menu.level2}
+      />
       <div className={s.content}>
         {Array.isArray(children) ? children.map(el => el) : children}
       </div>
@@ -43,7 +51,7 @@ Module.propTypes = {
   // ]),
   // help: PropTypes.object,
   // breadcrumbs: PropTypes.array,
-  header: PropTypes.object,
+  menu: PropTypes.object,
   loading: PropTypes.bool,
   metaTitle: PropTypes.string,
   className: PropTypes.string,
@@ -52,7 +60,7 @@ Module.propTypes = {
 Module.defaultProps = {
   metaTitle: 'Astronomer',
   // breadcrumbs: [],
-  // menu: [],
+  menu: {},
   // help: {},
 }
 
