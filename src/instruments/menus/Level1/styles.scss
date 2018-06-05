@@ -1,0 +1,21 @@
+@import '../../../styles/mixins.scss';
+
+.menu {
+  margin: 0 1rem;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: opacity 250ms ease-in;
+  &.active {
+    opacity: 1;
+    .arrow {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.arrow {
+  display: inline-block;
+  height: 0.6em;
+  margin-left: 1rem;
+  transition: transform 250ms ease-in;
+}

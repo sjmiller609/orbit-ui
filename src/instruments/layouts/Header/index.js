@@ -6,17 +6,18 @@ import classnames from 'classnames'
 import { Menu } from '../../../instruments'
 import s from './styles.scss'
 
-const Header = ({ children, className }) => {
+const Header = ({ level1, level2, subMenu, className }) => {
   return (
     <div className={classnames(s.header, className)}>
-      <Menu />
-      {children}
+      <Menu level1={level1} level2={level2} />
     </div>
   )
 }
 
 Header.propTypes = {
-  children: PropTypes.element,
+  level1: PropTypes.object,
+  level2: PropTypes.object,
+  subMenu: PropTypes.array,
   className: PropTypes.string,
 }
 

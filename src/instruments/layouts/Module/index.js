@@ -10,11 +10,11 @@ import s from './styles.scss'
 import { Loading, Header } from '../../../instruments'
 
 // wrapper for all modules
-const Module = ({ children, loading, metaTitle, className }) => {
+const Module = ({ children, header, loading, metaTitle, className }) => {
   if (loading) return <Loading />
   return (
     <div className={classnames(s.module, className)}>
-      <Header className={s.header} />
+      <Header className={s.header} {...header} />
       <div className={s.content}>
         {Array.isArray(children) ? children.map(el => el) : children}
       </div>
@@ -43,7 +43,7 @@ Module.propTypes = {
   // ]),
   // help: PropTypes.object,
   // breadcrumbs: PropTypes.array,
-  menu: PropTypes.array,
+  header: PropTypes.object,
   loading: PropTypes.bool,
   metaTitle: PropTypes.string,
   className: PropTypes.string,
