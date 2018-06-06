@@ -42,4 +42,12 @@ export default {
       }
     }
   `,
+  UpdateDeployment: gql`
+    mutation updateDeployment($id: ID!, $title: String) {
+      updateDeployment(deploymentUuid: $id, title: $title) {
+        success
+        message
+      }
+    }
+  `,
 }

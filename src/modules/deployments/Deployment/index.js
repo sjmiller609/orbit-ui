@@ -10,7 +10,7 @@ class Deployment extends React.Component {
   subMenu = []
 
   onSuccess() {
-    this.props.history.push(this.back)
+    //  this.props.history.push(this.back)
   }
   render() {
     const { match } = this.props

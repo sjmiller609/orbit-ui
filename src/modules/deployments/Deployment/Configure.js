@@ -12,7 +12,7 @@ import {
   ShowDate,
 } from '../../../instruments'
 
-import Create from '../Data/Create'
+import Update from '../Data/Update'
 
 const Configure = ({ title, form, deployment }) => {
   return (
@@ -49,4 +49,4 @@ Configure.propTypes = {
   deployment: PropTypes.object,
 }
 
-export default Create(Form(Configure))
+export default Update(Form(Configure))

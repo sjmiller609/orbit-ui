@@ -11,9 +11,11 @@ const Deployment = ({ deployments, menu, title, onSuccess }) => {
     ...menu,
   }
   menu2.level2.text = deployment.title
+  // load form
   const data = {
     ...deployment,
   }
+
   return (
     <Module metaTitle={title + ' | ' + deployment.title} menu={menu}>
       <Configure
