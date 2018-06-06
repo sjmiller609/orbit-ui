@@ -2,4 +2,7 @@
 
 .menu {
   color: $lightPurple;
+  > h2 {
+    max-width: 28rem;
+  }
 }
