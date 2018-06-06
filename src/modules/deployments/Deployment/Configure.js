@@ -2,7 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import s from './styles.scss'
-import { CardForm, Form, TextField, H2 } from '../../../instruments'
+import {
+  CardForm,
+  Form,
+  TextField,
+  H5,
+  P,
+  Mini,
+  ShowDate,
+} from '../../../instruments'
 
 import Create from '../Data/Create'
 
@@ -23,7 +31,13 @@ const Configure = ({ title, form, deployment }) => {
         {...form.field('title')}
         focus
       />
-      <H2>{deployment.release_name}</H2>
+      <H5 className={s.name}>{deployment.release_name}</H5>
+      <div className={s.deployed}>
+        <P>Deployed by [getName]</P>
+        <Mini>
+          <ShowDate date={deployment.createdAt} />
+        </Mini>
+      </div>
     </CardForm>
   )
 }

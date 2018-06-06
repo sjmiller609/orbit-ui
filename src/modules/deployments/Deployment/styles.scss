@@ -1,5 +1,9 @@
-// @import '../../../styles/mixins.scss';
+@import '../../../styles/mixins.scss';
 
-.container {
-  // @include container;
+.name {
+  margin-top: 2rem;
+}
+.deployed {
+  margin: 0.8rem 0;
+  color: $beige;
 }
