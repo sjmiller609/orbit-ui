@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Configure from '../Configure'
-import { Module } from '../../../instruments'
+import Module from './Module'
 
 class Deployment extends React.Component {
   onSuccess = this.onSuccess.bind(this)
@@ -24,11 +23,10 @@ class Deployment extends React.Component {
         to: this.props.history.location.pathname,
       },
     }
-    return (
-      <Module metaTitle={this.title} menu={menu}>
-        <Configure title={this.title} onSuccess={this.onSuccess} />
-      </Module>
-    )
+    const vars = {
+      releaseName: id,
+    }
+    return <Module title={this.title} menu={menu} vars={vars} />
   }
 }
 

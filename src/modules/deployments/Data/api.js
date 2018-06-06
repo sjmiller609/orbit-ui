@@ -15,8 +15,12 @@ const deployment = gql`
 
 export default {
   Deployments: gql`
-    query deployments($orgId: ID, $deploymentId: ID) {
-      deployments(orgUuid: $orgId, deploymentUuid: $deploymentId) {
+    query deployments($orgId: ID, $deploymentId: ID, $releaseName: String) {
+      deployments(
+        orgUuid: $orgId
+        deploymentUuid: $deploymentId
+        releaseName: $releaseName
+      ) {
         ...deployment
       }
     }
