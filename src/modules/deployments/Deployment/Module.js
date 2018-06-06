@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Configure from '../Configure'
+import Configure from './Configure'
 import Data from '../Data'
 import { Module } from '../../../instruments'
 
@@ -11,9 +11,17 @@ const Deployment = ({ deployments, menu, title, onSuccess }) => {
     ...menu,
   }
   menu2.level2.text = deployment.title
+  const data = {
+    ...deployment,
+  }
   return (
-    <Module metaTitle={deployment.title + ' | ' + title} menu={menu}>
-      <Configure title={title} onSuccess={onSuccess} />
+    <Module metaTitle={title + ' | ' + deployment.title} menu={menu}>
+      <Configure
+        title={title}
+        onSuccess={onSuccess}
+        data={data}
+        deployment={deployment}
+      />
     </Module>
   )
 }

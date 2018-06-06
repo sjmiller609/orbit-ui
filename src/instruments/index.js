@@ -29,6 +29,7 @@ export { default as Logo } from './icons/Logo'
 
 export { default as P } from './text/P'
 export { default as Mini } from './text/Mini'
+export { default as ShowDate } from './text/ShowDate'
 
 export { default as H1 } from './text/H1'
 export { default as H2 } from './text/H2'

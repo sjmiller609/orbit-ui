@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Configure from '../Configure'
+import Configure from './Configure'
 import { Module } from '../../../instruments'
 
 class New extends React.Component {

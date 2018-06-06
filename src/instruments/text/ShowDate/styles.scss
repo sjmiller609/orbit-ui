@@ -1,0 +1,6 @@
+@import '../../../styles/mixins.scss';
+
+.p {
+  @include font($f400);
+  font-size: 1.5rem;
+}

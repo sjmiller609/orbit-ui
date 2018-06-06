@@ -1,5 +1,7 @@
 import gql from 'graphql-tag'
 
+// TODO: import creator fragment
+
 const deployment = gql`
   fragment deployment on Deployment {
     title
@@ -7,6 +9,8 @@ const deployment = gql`
     id: uuid
     release_name
     version
+    createdAt
+    updatedAt
     creator {
       id
     }

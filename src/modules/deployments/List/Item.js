@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import { TableRow, Box, P, Mini, H3 } from '../../../instruments'
+import { TableRow, Box, P, Mini, H3, ShowDate } from '../../../instruments'
 
 const Item = ({ deployment, className }) => {
   const columns = [
@@ -13,7 +13,9 @@ const Item = ({ deployment, className }) => {
     </Box>,
     <Box key="2" align="flex-start" className={s.log}>
       <P className={s.subTitle}>Deployed by Peter Maffey</P>
-      <Mini>May 25, 1943</Mini>
+      <Mini>
+        <ShowDate date={deployment.createdAt} />
+      </Mini>
     </Box>,
   ]
 
