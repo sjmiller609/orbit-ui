@@ -1,28 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Context from './Context'
+import { GetContext } from './Context'
 
 const getContext = (Component, options = {}) => {
   class getContext extends React.Component {
     render() {
       return (
-        <Context.Consumer>
+        <GetContext.Consumer>
           {context => {
             console.log(context)
             const c = Object.keys(options).length ? {} : context
 
             if (options.snackbar) c.snackbar = context.snackbar
             if (options.dialog) c.dialog = context.dialog
-            if (options.setSnackbar) c.setSnackbar = context.setSnackbar
-            if (options.setDialog) c.setDialog = context.setDialog
+            // if (options.setSnackbar) c.setSnackbar = context.setSnackbar
+            // if (options.setDialog) c.setDialog = context.setDialog
             const newProps = {
               ...this.props,
-              context: c,
+              getUI: c,
             }
             return <Component {...newProps} />
           }}
-        </Context.Consumer>
+        </GetContext.Consumer>
       )
     }
   }

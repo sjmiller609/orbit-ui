@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Context from './Context'
+import { GetContext, SetContext } from './Context'
 
 class Provider extends React.Component {
   setSnackbar = this.setSnackbar.bind(this)
@@ -10,8 +10,11 @@ class Provider extends React.Component {
   state = {
     snackbar: null, // string
     dialog: null, // object
-    setSnackbar: this.setSnackbar,
-    setDialog: this.setDialog,
+  }
+
+  set = {
+    snackbar: this.setSnackbar,
+    dialog: this.setDialog,
   }
 
   setSnackbar(snackbar) {
@@ -25,9 +28,11 @@ class Provider extends React.Component {
 
   render() {
     return (
-      <Context.Provider value={this.state}>
-        {this.props.children}
-      </Context.Provider>
+      <SetContext.Provider value={this.set}>
+        <GetContext.Provider value={this.state}>
+          {this.props.children}
+        </GetContext.Provider>
+      </SetContext.Provider>
     )
   }
 }

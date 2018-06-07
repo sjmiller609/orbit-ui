@@ -42,7 +42,8 @@ export { default as Level1 } from './menus/Level1'
 
 export { default as Snackbar } from './ui/Snackbar'
 
-export { default as ContextUI } from './context/UI/Get'
+export { default as GetUI } from './context/UI/Get'
+export { default as SetUI } from './context/UI/Set'
 export { default as ProviderUI } from './context/UI'
 
 export { default as Query } from './api/Query'

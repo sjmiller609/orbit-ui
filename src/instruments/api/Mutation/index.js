@@ -3,9 +3,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Mutation as Apollo } from 'react-apollo'
-import { Loading, ContextUI } from '../../../instruments'
+import { Loading, SetUI } from '../../../instruments'
 
-const Mutation = ({ gql, vars, children, onSuccess, context }) => {
+const Mutation = ({ gql, vars, children, onSuccess, setUI }) => {
   console.log('run')
   return (
     <Apollo
@@ -13,7 +13,7 @@ const Mutation = ({ gql, vars, children, onSuccess, context }) => {
       variables={vars}
       onCompleted={() => {
         if (onSuccess) onSuccess()
-        context.setSnackbar('Success!')
+        setUI.snackbar('Success!')
       }}
       // TODO: get document back from mutations and update cache manually
       // update={(cache, data) => {
@@ -48,7 +48,7 @@ Mutation.propTypes = {
   //  query: PropTypes.object,
   onSuccess: PropTypes.func,
   setSnackbar: PropTypes.func,
-  context: PropTypes.object,
+  setUI: PropTypes.object,
 }
 //export default Mutation
-export default ContextUI(Mutation, { setSnackbar: true })
+export default SetUI(Mutation, { snackbar: true })

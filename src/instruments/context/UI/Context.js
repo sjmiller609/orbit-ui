@@ -1,9 +1,12 @@
 import React from 'react'
 
 // Set default values here
-const Context = React.createContext({
+export const GetContext = React.createContext({
   snackbar: null,
   dialog: null,
 })
 
-export default Context
+export const SetContext = React.createContext({
+  snackbar: null,
+  dialog: null,
+})

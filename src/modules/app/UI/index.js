@@ -1,11 +1,11 @@
 import React from 'react'
-import { Snackbar, ContextUI } from '../../../instruments'
+import { Snackbar, GetUI } from '../../../instruments'
 import PropTypes from 'prop-types'
 
-const UI = ({ context: { snackbar } }) => {
+const UI = ({ getUI }) => {
   return (
     <React.Fragment>
-      <Snackbar msg={snackbar} />
+      <Snackbar msg={getUI.snackbar} />
     </React.Fragment>
   )
 }
@@ -13,7 +13,7 @@ const UI = ({ context: { snackbar } }) => {
 UI.propTypes = {
   snackbar: PropTypes.string,
   dialog: PropTypes.object,
-  context: PropTypes.object,
+  getUI: PropTypes.object,
 }
 
-export default ContextUI(UI)
+export default GetUI(UI)
