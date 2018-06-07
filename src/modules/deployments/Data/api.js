@@ -39,6 +39,7 @@ export default {
       createDeployment(type: $type, title: $title, version: $version) {
         success
         message
+        id
       }
     }
   `,
@@ -47,6 +48,7 @@ export default {
       updateDeployment(deploymentUuid: $id, title: $title) {
         success
         message
+        id
       }
     }
   `,

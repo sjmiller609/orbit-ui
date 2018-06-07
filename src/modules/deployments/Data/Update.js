@@ -19,7 +19,7 @@ const Update = Component => {
             onSubmit: vars => {
               mutate({
                 variables: vars,
-                refetchQueries: [{ query: query.gql }],
+                //  refetchQueries: [{ query: query.gql }],
               })
             },
           }
