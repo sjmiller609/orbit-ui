@@ -1,3 +1,5 @@
+// NOTE: Any instruments importing other instruments must come AFTER
+
 export { default as Row } from './flex/Row'
 export { default as Box } from './flex/Box'
 
@@ -11,9 +13,6 @@ export { default as Header } from './layouts/Header'
 
 export { default as Loading } from './animations/Loading'
 export { default as LoadingDots } from './animations/LoadingDots'
-
-export { default as Query } from './api/Query'
-export { default as Mutation } from './api/Mutation'
 
 export { default as Search } from './forms/Search'
 export { default as Form } from './forms/Form'
@@ -40,3 +39,11 @@ export { default as H5 } from './text/H5'
 
 export { default as Menu } from './menus/Menu'
 export { default as Level1 } from './menus/Level1'
+
+export { default as Snackbar } from './ui/Snackbar'
+
+export { default as ContextUI } from './context/UI/Get'
+export { default as ProviderUI } from './context/UI'
+
+export { default as Query } from './api/Query'
+export { default as Mutation } from './api/Mutation'
