@@ -22,7 +22,13 @@ const CardForm = ({
     <Card
       footer={
         <Row className={s.footer}>
-          <Button disabled={!button.save} submit text={button.text || 'Save'} />
+          <Button
+            disabled={!button.save}
+            submit
+            text={button.text || 'Save'}
+            onClick={button.onClick}
+            style={button.style}
+          />
         </Row>
       }
       header={title}

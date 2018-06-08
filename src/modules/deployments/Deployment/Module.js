@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Configure from './Configure'
+import Delete from './Delete'
+
 import Data from '../Data'
 import { Module } from '../../../instruments'
 
@@ -24,6 +26,7 @@ const Deployment = ({ deployments, menu, title, onSuccess }) => {
         data={data}
         deployment={deployment}
       />
+      <Delete deployment={deployment} />
     </Module>
   )
 }
