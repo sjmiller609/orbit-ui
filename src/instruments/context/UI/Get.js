@@ -9,13 +9,11 @@ const getContext = (Component, options = {}) => {
       return (
         <GetContext.Consumer>
           {context => {
-            console.log(context)
             const c = Object.keys(options).length ? {} : context
 
             if (options.snackbar) c.snackbar = context.snackbar
             if (options.dialog) c.dialog = context.dialog
-            // if (options.setSnackbar) c.setSnackbar = context.setSnackbar
-            // if (options.setDialog) c.setDialog = context.setDialog
+
             const newProps = {
               ...this.props,
               getUI: c,

@@ -5,8 +5,7 @@ import PropTypes from 'prop-types'
 import { Mutation as Apollo } from 'react-apollo'
 import { Loading, SetUI } from '../../../instruments'
 
-const Mutation = ({ gql, vars, children, onSuccess, setUI }) => {
-  console.log('run')
+const Mutation = ({ gql, vars, children, onSuccess, setUI, update }) => {
   return (
     <Apollo
       mutation={gql}
@@ -15,18 +14,7 @@ const Mutation = ({ gql, vars, children, onSuccess, setUI }) => {
         if (onSuccess) onSuccess()
         setUI.snackbar('Success!')
       }}
-      // TODO: get document back from mutations and update cache manually
-      // update={(cache, data) => {
-      //   if (!query) return
-      //   // use first key to auto grab Document name
-      //   const result = data.data[Object.keys(data.data)[0]]
-      //   const results = cache.readQuery({ query: query.gql })
-      //   cache.writeQuery({
-      //     query: query.name,
-      //     data: { [query.result]: results[query.result].concat([result]) },
-      //   })
-      // }}
-    >
+      update={update}>
       {(mutate, { loading, error }) => {
         if (loading) return <Loading />
 
@@ -47,6 +35,7 @@ Mutation.propTypes = {
   vars: PropTypes.object,
   //  query: PropTypes.object,
   onSuccess: PropTypes.func,
+  update: PropTypes.func,
   setSnackbar: PropTypes.func,
   setUI: PropTypes.object,
 }

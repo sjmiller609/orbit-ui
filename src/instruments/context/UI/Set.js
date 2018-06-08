@@ -9,7 +9,6 @@ const setContext = (Component, options = {}) => {
       return (
         <SetContext.Consumer>
           {context => {
-            console.log(context)
             const c = Object.keys(options).length ? {} : context
 
             if (options.snackbar) c.snackbar = context.snackbar

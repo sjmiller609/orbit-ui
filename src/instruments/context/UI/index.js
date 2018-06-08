@@ -18,7 +18,6 @@ class Provider extends React.Component {
   }
 
   setSnackbar(snackbar) {
-    console.log(snackbar)
     this.setState({ snackbar })
   }
 

@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import api from './api'
 
-import { Mutation } from '../../../instruments'
+import { Update as Mutate } from '../../../instruments'
 
 const Update = Component => {
   const Update = ({ onSuccess, ...otherProps }) => {
@@ -12,7 +12,7 @@ const Update = Component => {
       result: 'deployments',
     }
     return (
-      <Mutation gql={api.UpdateDeployment} onSuccess={onSuccess} query={query}>
+      <Mutate gql={api.UpdateDeployment} onSuccess={onSuccess} query={query}>
         {({ mutate }) => {
           const newProps = {
             ...otherProps,
@@ -25,7 +25,7 @@ const Update = Component => {
           }
           return <Component {...newProps} />
         }}
-      </Mutation>
+      </Mutate>
     )
   }
 
