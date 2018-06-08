@@ -3,11 +3,6 @@
 export { default as Row } from './flex/Row'
 export { default as Box } from './flex/Box'
 
-export { default as Card } from './cards/Card'
-export { default as Table } from './cards/Table'
-export { default as TableRow } from './cards/Table/TableRow'
-export { default as CardForm } from './cards/CardForm'
-
 export { default as Module } from './layouts/Module'
 export { default as Header } from './layouts/Header'
 
@@ -51,3 +46,9 @@ export { default as Mutation } from './api/Mutation'
 export { default as Update } from './api/Mutation/Update'
 export { default as Create } from './api/Mutation/Create'
 export { default as Delete } from './api/Mutation/Delete'
+
+export { default as Card } from './cards/Card'
+export { default as Table } from './cards/Table'
+export { default as TableRow } from './cards/Table/TableRow'
+export { default as CardForm } from './cards/CardForm'
+export { default as CardDelete } from './cards/CardDelete'
