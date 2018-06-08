@@ -8,14 +8,14 @@ import { ProviderUI } from '../../../instruments'
 
 const Root = () => {
   return (
-    <BrowserRouter>
-      <ProviderUI>
+    <ProviderUI>
+      <BrowserRouter>
         <React.Fragment>
           <Routes />
           <UI />
         </React.Fragment>
-      </ProviderUI>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ProviderUI>
   )
 }
 

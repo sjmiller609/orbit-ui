@@ -1,11 +1,11 @@
 import React from 'react'
-import { Snackbar, GetUI } from '../../../instruments'
+import { Snackbar, SetUI, GetUI } from '../../../instruments'
 import PropTypes from 'prop-types'
 
-const UI = ({ getUI }) => {
+const UI = ({ getUI, setUI }) => {
   return (
     <React.Fragment>
-      <Snackbar msg={getUI.snackbar} />
+      <Snackbar msg={getUI.snackbar} setMsg={setUI.snackbar} />
     </React.Fragment>
   )
 }
@@ -14,6 +14,7 @@ UI.propTypes = {
   snackbar: PropTypes.string,
   dialog: PropTypes.object,
   getUI: PropTypes.object,
+  setUI: PropTypes.object,
 }
 
-export default GetUI(UI)
+export default SetUI(GetUI(UI))

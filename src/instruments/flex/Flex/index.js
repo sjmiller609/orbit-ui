@@ -14,6 +14,7 @@ const Flex = ({
   auto,
   flow,
   full,
+  onClick,
 }) => {
   return (
     <div
@@ -27,7 +28,8 @@ const Flex = ({
         auto ? s.auto : null,
         full ? s.full : null,
         className
-      )}>
+      )}
+      onClick={onClick}>
       {Array.isArray(children) ? children.map(el => el) : children}
     </div>
   )
@@ -47,6 +49,7 @@ Flex.propTypes = {
   wrap: PropTypes.bool,
   auto: PropTypes.bool,
   full: PropTypes.bool,
+  onClick: PropTypes.func,
 }
 
 export default Flex

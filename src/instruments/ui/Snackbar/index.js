@@ -8,31 +8,29 @@ import { Row } from '../../../instruments'
 
 class Snackbar extends React.Component {
   timeout = null
+  clear = this.clear.bind(this)
 
-  componentWillMount() {
-    const { hide, active } = this.props
-    if (active) this.timeout = setTimeout(() => hide(), 4000)
-  }
-
-  componentWillReceiveProps({ msg, hide, active }) {
-    if (!this.props.active && active)
-      this.timeout = setTimeout(() => hide(), 4000)
-    else if (this.props.active && active && msg !== this.props.msg) {
+  componentWillReceiveProps({ msg }) {
+    if (!this.props.msg && msg)
+      this.timeout = setTimeout(() => this.clear(), 4000)
+    else if (this.props.msg && msg !== this.props.msg) {
       // restart timeout
       clearTimeout(this.timeout)
-      this.timeout = setTimeout(() => hide(), 4000)
+      this.timeout = setTimeout(() => this.clear(), 4000)
     }
   }
 
+  clear() {
+    this.props.setMsg(null)
+    clearTimeout(this.timeout)
+  }
+
   render() {
-    const { msg, active, hide } = this.props
+    const { msg } = this.props
     return (
       <Row
-        className={classnames(s.snackbar, active ? s.show : null)}
-        onClick={() => {
-          clearTimeout(this.timeout)
-          hide()
-        }}>
+        className={classnames(s.snackbar, msg ? s.show : null)}
+        onClick={this.clear}>
         <div className={s.message}>{msg}</div>
       </Row>
     )
@@ -41,13 +39,7 @@ class Snackbar extends React.Component {
 
 Snackbar.propTypes = {
   msg: PropTypes.string,
-  active: PropTypes.bool,
-  hide: PropTypes.func,
-}
-
-Snackbar.defaultProps = {
-  msg: null,
-  active: false,
+  setMsg: PropTypes.func,
 }
 
 export default Snackbar
