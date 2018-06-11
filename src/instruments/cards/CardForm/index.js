@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { Card, Button, Row } from '../../../instruments'
-// import UnsavedChangesAlert from '../UnsavedChangesAlert';
 
 import s from './styles.scss'
 
@@ -17,7 +16,6 @@ const CardForm = ({
   small,
   className,
   fullWidth,
-  alert,
 }) => {
   return (
     <Card
@@ -50,8 +48,6 @@ const CardForm = ({
       <div className={s.formContent}>
         {Array.isArray(children) ? children.map(el => el) : children}
       </div>
-      {/* Show when alert === false */}
-      {/* {typeof alert !== 'undefined' ? <UnsavedChangesAlert alert={alert} /> : null} */}
     </Card>
   )
 }
@@ -65,7 +61,6 @@ CardForm.propTypes = {
   className: PropTypes.string,
   small: PropTypes.bool,
   fullWidth: PropTypes.bool,
-  alert: PropTypes.bool,
 }
 
 CardForm.defaultProps = {

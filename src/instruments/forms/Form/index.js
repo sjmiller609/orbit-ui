@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { jsonEqual } from '../../../helpers/compare'
-
+import UnsavedChangesAlert from '../UnsavedChangesAlert'
 import s from './styles.scss'
 
 const errorField = name => 'error_' + name
@@ -117,6 +117,7 @@ const Form = FormComponent => {
       return (
         <form onSubmit={this.onSubmit} className={s.form}>
           <FormComponent {...newProps} />
+          <UnsavedChangesAlert alert={save} />
         </form>
       )
     }

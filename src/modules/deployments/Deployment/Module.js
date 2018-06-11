@@ -7,8 +7,10 @@ import Delete from './Delete'
 import Data from '../Data'
 import { Module } from '../../../instruments'
 
-const Deployment = ({ deployments, menu, title, onSuccess }) => {
+const Deployment = ({ deployments, menu, title }) => {
   const deployment = deployments[0]
+  // TODO: Error handling
+  if (!deployment) console.log('error')
   const menu2 = {
     ...menu,
   }
@@ -20,12 +22,7 @@ const Deployment = ({ deployments, menu, title, onSuccess }) => {
 
   return (
     <Module metaTitle={title + ' | ' + deployment.title} menu={menu}>
-      <Configure
-        title={title}
-        onSuccess={onSuccess}
-        data={data}
-        deployment={deployment}
-      />
+      <Configure title={title} data={data} deployment={deployment} />
       <Delete deployment={deployment} />
     </Module>
   )
