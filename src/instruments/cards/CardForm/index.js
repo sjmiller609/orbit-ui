@@ -12,6 +12,7 @@ import s from './styles.scss'
 const CardForm = ({
   children,
   button,
+  button2,
   title,
   small,
   className,
@@ -22,6 +23,14 @@ const CardForm = ({
     <Card
       footer={
         <Row className={s.footer}>
+          {button2 && (
+            <Button
+              text={button2.text || 'Cancel'}
+              onClick={button2.onClick}
+              style={button2.style}
+              className={s.button2}
+            />
+          )}
           <Button
             disabled={!button.save}
             submit
@@ -52,6 +61,7 @@ CardForm.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
     .isRequired,
   button: PropTypes.object,
+  button2: PropTypes.object,
   className: PropTypes.string,
   small: PropTypes.bool,
   fullWidth: PropTypes.bool,

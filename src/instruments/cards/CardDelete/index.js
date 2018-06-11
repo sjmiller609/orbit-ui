@@ -1,22 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { CardForm, P } from '../../../instruments'
+import { CardForm, P, SetUI } from '../../../instruments'
 
 const CardDelete = ({
   text,
   buttonText,
-  confirmButton,
-  confirmText,
+  confirm,
   children,
   onSubmit,
+  setUI,
   ...otherProps
 }) => {
+  const onClick = () =>
+    setUI.dialog({
+      text: confirm.text,
+      title: confirm.title || 'Confirm Delete',
+      button: {
+        text: confirm.buttonText || 'Delete',
+        onClick: onSubmit,
+        style: 'red',
+      },
+    })
+
   return (
     <CardForm
       {...otherProps}
       button={{
-        onClick: onSubmit,
+        onClick,
         text: buttonText || 'Delete',
         save: true,
         style: 'red',
@@ -29,10 +40,10 @@ const CardDelete = ({
 CardDelete.propTypes = {
   text: PropTypes.string,
   buttonText: PropTypes.string,
-  confirmText: PropTypes.string,
-  confirmButton: PropTypes.string,
+  confirm: PropTypes.object,
   children: PropTypes.element,
   onSubmit: PropTypes.func,
+  setUI: PropTypes.object,
 }
 
-export default CardDelete
+export default SetUI(CardDelete, { dialog: true })

@@ -32,10 +32,11 @@ export { default as H3 } from './text/H3'
 export { default as H4 } from './text/H4'
 export { default as H5 } from './text/H5'
 
+export { default as Snackbar } from './ui/Snackbar'
+export { default as Backdrop } from './ui/Backdrop'
+
 export { default as Menu } from './menus/Menu'
 export { default as Level1 } from './menus/Level1'
-
-export { default as Snackbar } from './ui/Snackbar'
 
 export { default as GetUI } from './context/UI/Get'
 export { default as SetUI } from './context/UI/Set'
@@ -52,3 +53,5 @@ export { default as Table } from './cards/Table'
 export { default as TableRow } from './cards/Table/TableRow'
 export { default as CardForm } from './cards/CardForm'
 export { default as CardDelete } from './cards/CardDelete'
+
+export { default as Dialog } from './ui/Dialog'

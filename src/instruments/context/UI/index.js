@@ -9,7 +9,7 @@ class Provider extends React.Component {
 
   state = {
     snackbar: null, // string
-    dialog: null, // object
+    dialog: null, // object { title, text, button { text, onClick }}
   }
 
   set = {

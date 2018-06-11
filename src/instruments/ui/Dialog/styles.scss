@@ -1,0 +1,31 @@
+@import '../../../styles/mixins.scss';
+
+.dialog {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+div.card {
+  z-index: inherit;
+  max-width: 90%;
+  width: 40rem;
+}
+
+.buttonRow > * {
+  margin: 0 0.8rem;
+}
+
+.content {
+  margin: auto;
+  width: 100%;
+  max-width: 34rem;
+  padding: 1.5rem 0 3rem;
+
+  p {
+    color: $beige;
+  }
+}
