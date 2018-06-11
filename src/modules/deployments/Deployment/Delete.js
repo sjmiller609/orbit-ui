@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 import { CardDelete, B } from '../../../instruments'
 
-import Update from '../Data/Update'
+import { default as Mutate } from '../Data/Delete'
 
-const Delete = ({ deployment }) => {
+const Delete = ({ deployment, onSubmit }) => {
   return (
     <CardDelete
       title="Deprovision Deployment"
@@ -21,13 +21,16 @@ const Delete = ({ deployment }) => {
           </span>
         ),
       }}
-      onSubmit={() => console.log('delete' + deployment.id)}
+      onSubmit={() => {
+        onSubmit({ id: deployment.id })
+      }}
     />
   )
 }
 
 Delete.propTypes = {
+  onSubmit: PropTypes.func,
   deployment: PropTypes.object,
 }
 
-export default Update(Delete)
+export default Mutate(Delete)

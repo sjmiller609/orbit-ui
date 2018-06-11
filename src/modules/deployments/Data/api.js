@@ -52,4 +52,13 @@ export default {
       }
     }
   `,
+  DeleteDeployment: gql`
+    mutation deleteDeployment($id: ID!) {
+      deleteDeployment(deploymentUuid: $id) {
+        success
+        message
+        id
+      }
+    }
+  `,
 }
