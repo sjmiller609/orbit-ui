@@ -15,6 +15,7 @@ const Mutation = ({
   update,
   redirect,
   history,
+  success,
 }) => {
   return (
     <Apollo
@@ -23,7 +24,7 @@ const Mutation = ({
       onCompleted={() => {
         if (onSuccess) onSuccess()
         if (redirect) history.push(redirect)
-        setUI.snackbar('Success!')
+        setUI.snackbar(success || 'Success!')
       }}
       update={update}>
       {(mutate, { loading, error }) => {
@@ -51,6 +52,7 @@ Mutation.propTypes = {
   setUI: PropTypes.object,
   history: PropTypes.object,
   redirect: PropTypes.string,
+  success: PropTypes.string,
 }
 //export default Mutation
 export default SetUI(withRouter(Mutation), { snackbar: true })

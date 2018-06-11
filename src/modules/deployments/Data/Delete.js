@@ -1,12 +1,12 @@
 'use strict'
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import api from './api'
 
 import { Delete as Mutate } from '../../../instruments'
 
 const Delete = Component => {
-  const Delete = ({ onSuccess, ...otherProps }) => {
+  const Delete = props => {
     const query = {
       gql: api.Deployments,
       result: 'deployments',
@@ -15,11 +15,11 @@ const Delete = Component => {
       <Mutate
         gql={api.DeleteDeployment}
         redirect="/deployments"
-        onSuccess={onSuccess}
+        success="Deployment deleted successfully."
         query={query}>
         {({ mutate }) => {
           const newProps = {
-            ...otherProps,
+            ...props,
             onSubmit: vars => {
               mutate({
                 variables: vars,
@@ -31,10 +31,6 @@ const Delete = Component => {
         }}
       </Mutate>
     )
-  }
-
-  Delete.propTypes = {
-    onSuccess: PropTypes.func,
   }
 
   return Delete

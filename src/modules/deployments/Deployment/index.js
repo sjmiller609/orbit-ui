@@ -9,9 +9,6 @@ class Deployment extends React.Component {
   title = 'Configure'
   subMenu = []
 
-  onSuccess() {
-    //  this.props.history.push(this.back)
-  }
   render() {
     const { match } = this.props
     const id = match.params.id

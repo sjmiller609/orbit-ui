@@ -1,21 +1,24 @@
 'use strict'
 import React from 'react'
-import PropTypes from 'prop-types'
 import api from './api'
 
 import { Mutation } from '../../../instruments'
 
 const Create = Component => {
-  const Create = ({ onSuccess, ...otherProps }) => {
+  const Create = props => {
     const query = {
       gql: api.Deployments,
       result: 'deployments',
     }
     return (
-      <Mutation gql={api.CreateDeployment} onSuccess={onSuccess} query={query}>
+      <Mutation
+        gql={api.CreateDeployment}
+        redirect="/deployments"
+        success="New deployment created successfully."
+        query={query}>
         {({ mutate }) => {
           const newProps = {
-            ...otherProps,
+            ...props,
             onSubmit: vars => {
               mutate({
                 variables: {
@@ -31,10 +34,6 @@ const Create = Component => {
         }}
       </Mutation>
     )
-  }
-
-  Create.propTypes = {
-    onSuccess: PropTypes.func,
   }
 
   return Create

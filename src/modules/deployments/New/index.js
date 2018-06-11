@@ -5,13 +5,9 @@ import Configure from './Configure'
 import { Module } from '../../../instruments'
 
 class New extends React.Component {
-  onSuccess = this.onSuccess.bind(this)
   back = '/deployments'
   title = 'New Deployment'
 
-  onSuccess() {
-    this.props.history.push(this.back)
-  }
   render() {
     const menu = {
       back: this.back,
@@ -22,7 +18,7 @@ class New extends React.Component {
     }
     return (
       <Module metaTitle={this.title} menu={menu}>
-        <Configure title={this.title} onSuccess={this.onSuccess} />
+        <Configure title={this.title} />
       </Module>
     )
   }
