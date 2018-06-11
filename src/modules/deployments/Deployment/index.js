@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import Module from './Module'
 
 class Deployment extends React.Component {
-  onSuccess = this.onSuccess.bind(this)
   back = '/deployments'
   title = 'Configure'
   subMenu = []
