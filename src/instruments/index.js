@@ -19,8 +19,10 @@ export { default as UnsavedChangesAlert } from './forms/UnsavedChangesAlert'
 export { default as Link } from './links/Link'
 export { default as Button } from './links/Button'
 
+export { default as Img } from './icons/Img'
 export { default as Icon } from './icons/Icon'
 export { default as Logo } from './icons/Logo'
+export { default as Airflow } from './icons/Airflow'
 
 export { default as P } from './text/P'
 export { default as Mini } from './text/Mini'

@@ -6,12 +6,20 @@ div.list {
 }
 
 .title {
-  width: 60%;
+  width: 55%;
   min-width: 18rem;
 }
 
 .log {
-  width: 40%;
+  width: 35%;
   min-width: 18rem;
   color: $beige;
+}
+
+.item:hover {
+  :global {
+    .ring {
+      transform: rotate(360deg);
+    }
+  }
 }

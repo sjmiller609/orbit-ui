@@ -3,10 +3,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import { TableRow, Box, P, Mini, H3, ShowDate } from '../../../instruments'
+import {
+  TableRow,
+  Box,
+  P,
+  Mini,
+  H3,
+  ShowDate,
+  Airflow,
+} from '../../../instruments'
 
 const Item = ({ deployment, className }) => {
   const columns = [
+    <Box key="0" className={s.icon}>
+      <Airflow className={s.rotate} />
+    </Box>,
     <Box key="1" align="flex-start" className={s.title}>
       <H3>{deployment.title}</H3>
       <P>{deployment.release_name}</P>

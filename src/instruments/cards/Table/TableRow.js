@@ -9,7 +9,7 @@ const TableRow = ({ columns, to, className }) => {
   return (
     <Link to={to} className={classnames(s.tableRow, className)}>
       <Row justify="space-between">
-        <Row justify="space-between" className={s.fields} wrap full>
+        <Row justify="flex-start" className={s.fields} wrap full>
           {Array.isArray(columns) ? columns.map(el => el) : columns}
         </Row>
         {to && (

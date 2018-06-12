@@ -6,26 +6,41 @@ import { Link } from '../../../instruments'
 
 import s from './styles.scss'
 
-const Logo = ({ darkBg, noStars, full, className }) => {
-  let path = full ? 'Astro_' : 'A_'
-  path += noStars ? '' : 'stars_'
-  path += darkBg ? 'darkBg' : 'lightBg'
+class Logo extends React.Component {
+  state = {
+    src: null,
+  }
 
-  const src = require(`./${path}.svg`)
-  return (
-    <Link to="/">
-      <img
-        src={src}
-        className={classnames(
-          s.logo,
-          full && s.full,
-          !noStars && s.stars,
-          className
-        )}
-        title="Astronomer"
-      />
-    </Link>
-  )
+  componentWillMount() {
+    const { darkBg, noStars, full } = this.props
+    let path = full ? 'Astro_' : 'A_'
+    path += noStars ? '' : 'stars_'
+    path += darkBg ? 'darkBg' : 'lightBg'
+
+    import(`./img/${path}.svg`).then(module =>
+      this.setState({ src: module.default })
+    )
+  }
+
+  render() {
+    const { src } = this.state
+    if (!src) return null
+    const { noStars, full, className } = this.props
+    return (
+      <Link to="/">
+        <img
+          src={src}
+          className={classnames(
+            s.logo,
+            full && s.full,
+            !noStars && s.stars,
+            className
+          )}
+          title="Astronomer"
+        />
+      </Link>
+    )
+  }
 }
 
 Logo.propTypes = {
