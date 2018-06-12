@@ -3,6 +3,20 @@ import List from '../List'
 import { Module } from '../../../instruments'
 
 class Main extends React.Component {
+  subMenu = [
+    {
+      to: '/deployments',
+      text: 'Deployments',
+    },
+    {
+      to: '/users',
+      text: 'Users',
+    },
+    {
+      to: '/team/settings',
+      text: 'Team Settings',
+    },
+  ]
   // state for entire module
   state = { search: '' }
   // search obj constants
@@ -14,10 +28,12 @@ class Main extends React.Component {
 
   render() {
     const { search } = this.state
+    const menu = {
+      subMenu: this.subMenu,
+    }
     return (
-      <Module metaTitle="Deployments">
+      <Module metaTitle="Deployments" menu={menu}>
         <List
-          vars1={{ deploymentId: 'b38f6195-cfaf-4f57-914a-b826e916c51f' }}
           search={{
             text: search,
             ...this.search,

@@ -1,0 +1,29 @@
+@import '../../../styles/mixins.scss';
+
+.menu {
+  padding: 0.8rem 0;
+  a {
+    font-size: 1.4rem;
+    color: $darkGray;
+    &:hover {
+      color: $lightPurple;
+    }
+  }
+  a:not(:first-child) {
+    margin-left: 1.8rem;
+  }
+  .active {
+    @include font($f700);
+    color: $lightPurple;
+
+    &::after {
+      background: linear-gradient(to right, $green, $lightGreen);
+      content: '';
+      position: absolute;
+      bottom: -0.6rem;
+      width: 100%;
+      height: 2px;
+      left: 0;
+    }
+  }
+}

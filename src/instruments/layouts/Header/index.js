@@ -3,13 +3,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Menu } from '../../../instruments'
+import { Menu, SubMenu } from '../../../instruments'
 import s from './styles.scss'
 
 const Header = ({ level1, level2, subMenu, className }) => {
   return (
     <div className={classnames(s.header, className)}>
-      <Menu level1={level1} level2={level2} />
+      <Menu level1={level1} level2={level2} className={s.menu} />
+      <div className={s.hr} />
+      <SubMenu menu={subMenu} className={s.subMenu} />
     </div>
   )
 }

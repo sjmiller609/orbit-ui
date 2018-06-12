@@ -1,5 +1,34 @@
 @import '../../../styles/mixins.scss';
 
 .header {
-  padding: 1rem;
+  padding: 0 1%;
+}
+
+.menu {
+  margin: 0 1rem;
+  padding: 0.8rem 0;
+}
+
+.subMenu {
+  margin: 0.4rem 1rem 1.4rem 3rem;
+}
+
+.hr {
+  background: linear-gradient(to right, $gray0, $gray 25%, $gray 75%, $gray0);
+  width: 100%;
+  height: 1px;
+  &:after {
+    margin-top: 1px;
+    position: absolute;
+    content: '';
+    background: linear-gradient(
+      to right,
+      $gray0 3rem,
+      $lightGray 25%,
+      $lightGray 75%,
+      $gray0
+    );
+    width: 100%;
+    height: 1px;
+  }
 }
