@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 
-import { Box, Row, Button, P, CardForm, Backdrop } from '../../../instruments'
+import { Box, P, CardForm, Backdrop } from '../../../instruments'
 
 const Dialog = ({ title, text, button = {}, close }) => {
   if (!title && !text) return null

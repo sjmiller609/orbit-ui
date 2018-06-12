@@ -9,7 +9,9 @@ class Img extends React.Component {
   }
 
   componentWillMount() {
-    import(this.props.src).then(module =>
+    if (!this.props.src) return
+    // in back ticks to get rid of webpack dependency warning
+    import(`${this.props.src}`).then(module =>
       this.setState({ src: module.default })
     )
   }
