@@ -4,13 +4,14 @@
   padding: 0.8rem 0;
   a {
     font-size: 1.4rem;
+    margin-bottom: 1.2rem;
     color: $darkGray;
     &:hover {
       color: $lightPurple;
     }
   }
-  a:not(:first-child) {
-    margin-left: 1.8rem;
+  a:not(:last-child) {
+    margin-right: 2rem;
   }
   .active {
     @include font($f700);
