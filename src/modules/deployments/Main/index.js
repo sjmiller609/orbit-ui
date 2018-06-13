@@ -1,22 +1,11 @@
 import React from 'react'
 import List from '../List'
-import { Module } from '../../../instruments'
+import Module from '../../app/Module'
 
 class Main extends React.Component {
-  subMenu = [
-    {
-      to: '/deployments',
-      text: 'Deployments',
-    },
-    {
-      to: '/users',
-      text: 'Users',
-    },
-    {
-      to: '/team/settings',
-      text: 'Team Settings',
-    },
-  ]
+  menu = {
+    nav: 'team',
+  }
   // state for entire module
   state = { search: '' }
   // search obj constants
@@ -28,11 +17,9 @@ class Main extends React.Component {
 
   render() {
     const { search } = this.state
-    const menu = {
-      subMenu: this.subMenu,
-    }
+
     return (
-      <Module metaTitle="Deployments" menu={menu}>
+      <Module metaTitle="Deployments" menu={this.menu}>
         <List
           search={{
             text: search,

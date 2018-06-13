@@ -28,15 +28,15 @@ a:visited {
 
 .arrow {
   display: inline-block;
-  min-width: 1.8rem;
-  position: relative;
-  span {
-    position: absolute;
-    font-size: 2.4rem;
-    top: -1rem;
-    left: 0.5rem;
-    width: 1.6rem;
-    overflow: hidden;
-    transform: rotate(180deg);
-  }
+  height: 0.6em;
+  margin-left: 1rem;
+  transition: all 250ms ease-in;
+}
+
+.backArrow {
+  display: inline-block;
+  height: 0.6em;
+  margin-right: 1rem;
+  transform: rotate(180deg);
+  transition: all 250ms ease-in;
 }

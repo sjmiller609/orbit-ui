@@ -10,16 +10,16 @@ import s from './styles.scss'
 import { Loading, Header } from '../../../instruments'
 
 // wrapper for all modules
-const Module = ({ children, menu, loading, metaTitle, className }) => {
+const Page = ({ children, menu, subMenu, loading, metaTitle, className }) => {
   if (loading) return <Loading />
   return (
     <div className={classnames(s.module, className)}>
       <Header
         className={s.header}
-        subMenu={menu.subMenu}
+        subMenu={subMenu}
         level1={{
           text: 'My Team', // TODO: get current team data
-          to: menu.back || '/deployments',
+          to: menu.home || '/deployments',
         }}
         level2={menu.level2}
       />
@@ -28,40 +28,27 @@ const Module = ({ children, menu, loading, metaTitle, className }) => {
       </div>
 
       <Helmet>
-        <title>
-          {metaTitle !== 'Astronomer' ? metaTitle + ' | Astronomer' : metaTitle}
-        </title>
+        <title>{metaTitle}</title>
       </Helmet>
     </div>
   )
 }
 
-Module.propTypes = {
+Page.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
     .isRequired,
-  // helper: PropTypes.oneOfType([
-  //   PropTypes.array,
-  //   PropTypes.element,
-  //   PropTypes.string,
-  // ]),
-  // header: PropTypes.oneOfType([
-  //   PropTypes.array,
-  //   PropTypes.element,
-  //   PropTypes.string,
-  // ]),
-  // help: PropTypes.object,
-  // breadcrumbs: PropTypes.array,
   menu: PropTypes.object,
+  subMenu: PropTypes.array,
   loading: PropTypes.bool,
   metaTitle: PropTypes.string,
   className: PropTypes.string,
 }
 
-Module.defaultProps = {
+Page.defaultProps = {
   metaTitle: 'Astronomer',
   // breadcrumbs: [],
   menu: {},
   // help: {},
 }
 
-export default Module
+export default Page

@@ -5,7 +5,7 @@ import Configure from './Configure'
 import Delete from './Delete'
 
 import Data from '../Data'
-import { Module } from '../../../instruments'
+import Module from '../../app/Module'
 
 const Deployment = ({ deployments, menu, title }) => {
   const deployment = deployments[0]

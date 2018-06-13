@@ -2,22 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Configure from './Configure'
-import { Module } from '../../../instruments'
+import Module from '../../app/Module'
 
 class New extends React.Component {
-  back = '/deployments'
   title = 'New Deployment'
+  menu = {
+    home: '/deployments',
+  }
 
   render() {
-    const menu = {
-      back: this.back,
-      level2: {
-        text: '',
-        to: this.props.history.location.pathname,
-      },
+    this.menu.level2 = {
+      text: '',
+      to: this.props.location.pathname,
     }
     return (
-      <Module metaTitle={this.title} menu={menu}>
+      <Module metaTitle={this.title} menu={this.menu}>
         <Configure title={this.title} />
       </Module>
     )
@@ -25,7 +24,7 @@ class New extends React.Component {
 }
 
 New.propTypes = {
-  history: PropTypes.object,
+  location: PropTypes.object,
 }
 
 export default New

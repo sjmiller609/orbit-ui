@@ -9,6 +9,13 @@
     &:hover,
     &:focus {
       color: $lightPurple;
+      img {
+        opacity: 1;
+      }
+    }
+
+    img {
+      opacity: 0.5;
     }
   }
   a:not(:last-child) {

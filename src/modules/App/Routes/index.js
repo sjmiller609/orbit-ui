@@ -13,21 +13,9 @@ const routes = [
   ...deployments,
 ]
 
-const RouteWithSubRoutes = route => (
-  <Route
-    path={route.path}
-    render={props => (
-      // pass the sub-routes down to keep nesting
-      <route.component {...props} routes={route.routes} />
-    )}
-  />
-)
-
 const Routes = () => {
   return (
-    <Switch>
-      {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
-    </Switch>
+    <Switch>{routes.map((route, i) => <Route key={i} {...route} />)}</Switch>
   )
 }
 

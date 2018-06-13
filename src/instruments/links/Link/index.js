@@ -14,9 +14,11 @@ const Link = ({
   className,
   newTab,
   arrow,
+  backArrow,
   ...props
 }) => {
   const arr = arrow && <Icon className={s.arrow} icon="arrow" />
+  const backArr = backArrow && <Icon className={s.backArrow} icon="arrow" />
   const A = props => <a {...props} />
   const Component = to ? NavLink : A
   return (
@@ -27,6 +29,7 @@ const Link = ({
       onClick={onClick}
       target={newTab ? '_blank' : null}>
       <React.Fragment>
+        {backArr}
         {children}
         {arr}
       </React.Fragment>
@@ -42,6 +45,7 @@ Link.propTypes = {
   to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   className: PropTypes.string,
   arrow: PropTypes.bool,
+  backArrow: PropTypes.bool,
 }
 
 export default Link
