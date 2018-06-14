@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Box, Icon, Dropdown } from '../../../instruments'
+import { Box, Icon, H3, Item, Dropdown } from '../../../instruments'
 import s from './styles.scss'
 
 const ProfileMenu = ({ className }) => {
@@ -16,7 +16,15 @@ const ProfileMenu = ({ className }) => {
           <Icon icon="astro_helmet" className={s.profile} />
         </Box>
       }>
-      menu items
+      <ul className={s.content}>
+        <H3>[MyName]</H3>
+        <Item to="/account" vertical>
+          Account Settings
+        </Item>
+        <Item to="/logout" vertical>
+          Logout
+        </Item>
+      </ul>
     </Dropdown>
   )
 }

@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Row, Link } from '../../../instruments'
+import { Row, Item } from '../../../instruments'
 import s from './styles.scss'
 
 const SubMenu = ({ menu, className }) => {
@@ -11,14 +11,13 @@ const SubMenu = ({ menu, className }) => {
   return (
     <Row className={classnames(s.menu, className)} justify="flex-start" wrap>
       {menu.map(m => (
-        <Link
+        <Item
           to={m.to}
           key={m.text}
-          exact={true}
           backArrow={m.back}
           activeClassName={s.active}>
           {m.text}
-        </Link>
+        </Item>
       ))}
     </Row>
   )
