@@ -48,11 +48,13 @@ class Dropdown extends React.Component {
           className
         )}>
         <Backdrop show={menu} close={this.blur} />
-        <Link
-          onClick={!disable && !menu ? this.open : this.blur}
-          className={s.selector}>
-          {selector}
-        </Link>
+        {!disable ? (
+          <Link onClick={!menu ? this.open : this.blur} className={s.selector}>
+            {selector}
+          </Link>
+        ) : (
+          selector
+        )}
         <div className={s.menuWrapper}>
           <Card className={s.menu}>
             {Array.isArray(children) ? children.map(el => el) : children}

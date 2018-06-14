@@ -14,12 +14,16 @@ const Level1 = ({ text, to, active, className }) => {
       selector={
         <H2 className={classnames(s.menu, active && s.active, className)}>
           <React.Fragment>
-            <Link to={to}>{text || 'My Team'}</Link>
+            {active ? (
+              text || 'My Team'
+            ) : (
+              <Link to={to}>{text || 'My Team'}</Link>
+            )}
             <Icon icon="arrow" className={s.arrow} />
           </React.Fragment>
         </H2>
       }>
-      teams menu
+      <b>teams menu</b>
     </Dropdown>
   )
 }
