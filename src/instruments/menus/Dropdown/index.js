@@ -35,7 +35,7 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    const { selector, right, children, className } = this.props
+    const { selector, disable, right, children, className } = this.props
     const { menu, out } = this.state
 
     return (
@@ -48,7 +48,9 @@ class Dropdown extends React.Component {
           className
         )}>
         <Backdrop show={menu} close={this.blur} />
-        <Link onClick={!menu ? this.open : this.blur} className={s.selector}>
+        <Link
+          onClick={!disable && !menu ? this.open : this.blur}
+          className={s.selector}>
           {selector}
         </Link>
         <div className={s.menuWrapper}>
@@ -63,6 +65,7 @@ class Dropdown extends React.Component {
 
 Dropdown.propTypes = {
   right: PropTypes.bool,
+  disable: PropTypes.bool,
   selector: PropTypes.element.isRequired,
   className: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
