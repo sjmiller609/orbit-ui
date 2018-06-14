@@ -1,0 +1,87 @@
+@import '../../../styles/mixins.scss';
+
+$width: 20rem;
+
+.dropdown {
+  position: relative;
+}
+
+.open {
+  z-index: 1000;
+}
+
+.open .menuWrapper {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1000;
+}
+
+.menuWrapper {
+  opacity: 0;
+  position: absolute;
+  width: $width + 2rem; //fix
+  height: auto;
+  margin-top: 0.6rem;
+  transition: opacity 200ms ease-in-out;
+}
+div.menu {
+  position: relative;
+  width: 100%;
+  max-width: 48rem;
+  height: auto;
+  min-height: auto;
+  max-height: 70vh;
+  //  overflow-y: auto;
+  margin: 0;
+  &:before {
+    content: '';
+    display: block;
+    background: $white;
+    height: 1rem;
+    width: 1rem;
+    transform: translateX(-50%) rotate(45deg);
+    position: absolute;
+    border-radius: 2px;
+    border-left: 1px solid $white;
+    border-top: 1px solid $white;
+    top: -0.4rem;
+  }
+}
+.out .menuWrapper {
+  z-index: -1;
+  height: 0;
+}
+
+.selector {
+  z-index: inherit;
+  position: relative;
+}
+
+.right .menuWrapper {
+  right: -0.5rem;
+  .menu:before {
+    right: 1.1rem;
+  }
+}
+.left .menuWrapper {
+  left: -0.5rem;
+  .menu:before {
+    left: 1.1rem;
+  }
+}
+
+@media screen and (max-width: $width + 2rem) {
+  .open {
+    position: inherit;
+  }
+  .menuWrapper {
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+  div.menu:before {
+    display: none;
+  }
+}

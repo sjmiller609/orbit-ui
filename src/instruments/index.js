@@ -38,6 +38,7 @@ export { default as H5 } from './text/H5'
 export { default as Snackbar } from './ui/Snackbar'
 export { default as Backdrop } from './ui/Backdrop'
 
+export { default as Dropdown } from './menus/Dropdown'
 export { default as Menu } from './menus/Menu'
 export { default as Level1 } from './menus/Level1'
 export { default as SubMenu } from './menus/SubMenu'
