@@ -59,4 +59,4 @@ mutation createToken($identity: String!, $password: String!) {
 
 4.  Run the mutation. Copy the `token`.
 
-5.  Open orbit and in your console, paste `localStorage.setItem('token', YOUR_TOKEN_HERE)`. Hit enter. You should be good to go. Though note that the token expires every 24 hrs or so, you may need to redo these steps.
+5.  Go to http://localhost:5000/ and in your console, paste `localStorage.setItem('token', YOUR_TOKEN_HERE)`. Hit enter. You should be good to go. Though note that the token expires every 24 hrs or so, you may need to redo these steps.
