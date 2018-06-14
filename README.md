@@ -38,24 +38,20 @@ Before auth is setup, we still need to generate and use a token for any API call
 
 2.  Enter this mutation:
 
-````
-mutation createToken($identity: String!, $password: String!) {
+````mutation createToken($identity: String!, $password: String!) {
       response: createToken(identity: $identity, password: $password) {
         success
         message
     		token
       }
-    }
-```
+    }```
 
 3. In the query variables section, enter:
 
-```
-{
+```{
 "identity": "admin",
 "password": "admin"
-}
-```
+}```
 
 4. Run the mutation. Copy the `token`.
 
