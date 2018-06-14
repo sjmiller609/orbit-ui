@@ -12,7 +12,7 @@ const SubMenu = ({ menu, className }) => {
     <Row className={classnames(s.menu, className)} justify="flex-start" wrap>
       {menu.map(m => (
         <Link
-          to={m.to || { ...location, pathname: m.getPath(location.pathname) }}
+          to={m.to}
           key={m.text}
           exact={true}
           backArrow={m.back}

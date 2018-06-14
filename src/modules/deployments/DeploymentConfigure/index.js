@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import Module from './Module'
 
 class Deployment extends React.Component {
   menu = {
     home: '/deployments',
-    //  nav: 'deployment',
+    nav: 'deployment',
   }
 
   render() {
@@ -16,16 +17,6 @@ class Deployment extends React.Component {
       text: id,
       to: location.pathname,
     }
-    this.menu.subMenu = [
-      {
-        text: 'Overview',
-        to: match.url,
-      },
-      {
-        text: 'Configure',
-        to: match.url + '/configure',
-      },
-    ]
 
     const vars = {
       releaseName: id,

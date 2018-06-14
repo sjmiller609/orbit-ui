@@ -16,6 +16,5 @@ export default [
   {
     path: '/deployments/:id',
     component: Deployment,
-    exact: true,
   },
 ]

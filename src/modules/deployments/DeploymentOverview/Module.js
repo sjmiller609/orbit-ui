@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Route } from 'react-router-dom'
 
 import Configure from './Configure'
 import Delete from './Delete'
@@ -21,22 +20,10 @@ const Deployment = ({ deployments, menu, title }) => {
     ...deployment,
   }
 
-  const path = '/deployments/' + deployment.release_name
-
   return (
     <Module metaTitle={title + ' | ' + deployment.title} menu={menu}>
-      <Route
-        path={path + '/configure'}
-        exact
-        render={() => (
-          <Configure title={title} data={data} deployment={deployment} />
-        )}
-      />
-      <Route
-        path={path}
-        exact
-        render={() => <Delete deployment={deployment} />}
-      />
+      <Configure title={title} data={data} deployment={deployment} />
+      <Delete deployment={deployment} />
     </Module>
   )
 }

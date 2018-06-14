@@ -12,7 +12,6 @@ const Link = ({
   style,
   to,
   className,
-  activeClassName,
   newTab,
   arrow,
   backArrow,
@@ -22,14 +21,13 @@ const Link = ({
   const backArr = backArrow && <Icon className={s.backArrow} icon="arrow" />
   const A = props => <a {...props} />
   // only use ReactRouter NavLink if activeClassName (for performance)
-  const NavLink = activeClassName ? NavLink1 : NavLink2
+  const NavLink = props.activeClassName ? NavLink1 : NavLink2
   const Component = to ? NavLink : A
   return (
     <Component
       {...props}
       to={to}
       className={classnames(s.link, s[style], className)}
-      activeClassName={activeClassName}
       onClick={onClick}
       target={newTab ? '_blank' : null}>
       <React.Fragment>

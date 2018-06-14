@@ -15,7 +15,6 @@ import {
 import Update from '../Data/Update'
 
 const Configure = ({ title, form, deployment }) => {
-  if (!deployment) return 'error'
   return (
     <CardForm
       title={title}

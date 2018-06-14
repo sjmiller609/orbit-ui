@@ -1,3 +1,8 @@
+const getPath = (base, append) => {
+  if (base.slice(-append.length) === append) return base
+  return base + append
+}
+
 const subMenus = {
   teams: [
     {
@@ -21,16 +26,6 @@ const subMenus = {
     {
       to: '/settings',
       text: 'Team Settings',
-    },
-  ],
-  deployment: [
-    {
-      getPath: base => base,
-      text: 'Overview',
-    },
-    {
-      getPath: base => base + '/configure',
-      text: 'Configure',
     },
   ],
   user: [
