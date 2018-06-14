@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="56.444443mm"
+   height="58.314167mm"
+   viewBox="0 0 199.99999 206.625"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="astro_helmet.svg">
+  <defs
+     id="defs4">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4590"
+       is_visible="true" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="375"
+     inkscape:cy="520"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-2019.5879,-1558.4453)">
+    <ellipse
+       style="fill:#f2f2f2;fill-rule:nonzero"
+       cx="-2503.9924"
+       cy="-992.02496"
+       rx="100.01355"
+       ry="99.845161"
+       id="ellipse59"
+       transform="matrix(-0.95889844,-0.28374949,0.28374949,-0.95889844,0,0)" />
+    <ellipse
+       style="fill:#069dac;fill-rule:nonzero"
+       transform="matrix(0.02099277,0.99977963,-0.99977963,0.02099277,0,0)"
+       cx="1713.5415"
+       cy="-2085.2295"
+       rx="70.390793"
+       ry="86.416595"
+       id="ellipse61" />
+    <ellipse
+       style="fill:#73d5ef;fill-rule:nonzero"
+       transform="matrix(-0.102673,0.99471516,-0.99471516,-0.102673,0,0)"
+       cx="1433.8334"
+       cy="-2337.7454"
+       rx="26.897085"
+       ry="19.299458"
+       id="ellipse63" />
+  </g>
+</svg>

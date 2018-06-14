@@ -3,12 +3,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Row, Logo, H2, Link, Level1 } from '../../../instruments'
+import { Row, Logo, H2, Link, Level1, ProfileMenu } from '../../../instruments'
 import s from './styles.scss'
 
 const Menu = ({ level1, level2, className }) => {
   return (
-    <Row className={classnames(s.menu, className)} justify="flex-start">
+    <Row className={classnames(s.menu, className)} justify="flex-start" wrap>
       <Logo />
       <Level1 {...level1} active={!level2} />
       {level2 && (
@@ -16,6 +16,7 @@ const Menu = ({ level1, level2, className }) => {
           <Link to={level2.to}>{level2.text}</Link>
         </H2>
       )}
+      <ProfileMenu className={s.profile} />
     </Row>
   )
 }

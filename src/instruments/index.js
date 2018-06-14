@@ -41,6 +41,7 @@ export { default as Backdrop } from './ui/Backdrop'
 export { default as Menu } from './menus/Menu'
 export { default as Level1 } from './menus/Level1'
 export { default as SubMenu } from './menus/SubMenu'
+export { default as ProfileMenu } from './menus/ProfileMenu'
 
 export { default as GetUI } from './context/UI/Get'
 export { default as SetUI } from './context/UI/Set'
