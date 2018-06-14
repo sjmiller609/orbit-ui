@@ -38,23 +38,26 @@ Before auth is setup, we still need to generate and use a token for any API call
 
 2.  Enter this mutation:
 
-````mutation createToken($identity: String!, $password: String!) {
+````
+mutation createToken($identity: String!, $password: String!) {
       response: createToken(identity: $identity, password: $password) {
         success
         message
     		token
       }
-    }```
+    }
+```
 
 3. In the query variables section, enter:
 
-```{
+```
+{
 "identity": "admin",
 "password": "admin"
-}```
+}
+```
 
 4. Run the mutation. Copy the `token`.
 
 5. Open orbit and in your console, paste `localStorage.setItem('token', YOUR_TOKEN_HERE)`. Hit enter. You should be good to go. Though note that the token expires every 24 hrs or so, you may need to redo these steps.
-```
-````
+
