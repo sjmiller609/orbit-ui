@@ -5,7 +5,6 @@ import Module from './Module'
 class Deployment extends React.Component {
   menu = {
     home: '/deployments',
-    //  nav: 'deployment',
   }
 
   render() {

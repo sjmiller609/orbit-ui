@@ -1,33 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Module from './Module'
+import Overview from './Overview'
 
-class Deployment extends React.Component {
-  menu = {
-    home: '/deployments',
-    nav: 'deployment',
-  }
-
-  render() {
-    const { match, location } = this.props
-    const id = match.params.id
-
-    this.menu.level2 = {
-      text: id,
-      to: location.pathname,
-    }
-
-    const vars = {
-      releaseName: id,
-    }
-    return <Module title="Configure" menu={this.menu} vars={vars} />
-  }
+const DeploymentOverview = ({ deployment }) => {
+  return (
+    <React.Fragment>
+      <Overview deployment={deployment} />
+    </React.Fragment>
+  )
 }
 
-Deployment.propTypes = {
-  location: PropTypes.object,
-  match: PropTypes.object,
+DeploymentOverview.propTypes = {
+  deployment: PropTypes.object,
 }
 
-export default Deployment
+export default DeploymentOverview

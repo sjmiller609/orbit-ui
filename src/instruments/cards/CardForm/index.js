@@ -30,7 +30,9 @@ const CardForm = ({
             />
           )}
           <Button
-            disabled={!button.save}
+            disabled={
+              (typeof button.save === 'boolean' && !button.save) || false
+            }
             submit
             text={button.text || 'Save'}
             onClick={button.onClick}

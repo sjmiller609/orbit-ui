@@ -14,10 +14,10 @@ import {
 
 import Update from '../Data/Update'
 
-const Configure = ({ title, form, deployment }) => {
+const Configure = ({ form, deployment }) => {
   return (
     <CardForm
-      title={title}
+      title="Configure"
       button={{
         save: form.save,
         text: 'Update',
@@ -43,7 +43,6 @@ const Configure = ({ title, form, deployment }) => {
 }
 
 Configure.propTypes = {
-  title: PropTypes.string,
   save: PropTypes.bool,
   form: PropTypes.object,
   deployment: PropTypes.object,

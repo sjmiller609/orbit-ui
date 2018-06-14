@@ -1,33 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Module from './Module'
+import Configure from './Configure'
+import Delete from './Delete'
 
-class Deployment extends React.Component {
-  menu = {
-    home: '/deployments',
-    nav: 'deployment',
+const DeploymentConfigure = ({ deployment }) => {
+  // load form
+  const data = {
+    ...deployment,
   }
-
-  render() {
-    const { match, location } = this.props
-    const id = match.params.id
-
-    this.menu.level2 = {
-      text: id,
-      to: location.pathname,
-    }
-
-    const vars = {
-      releaseName: id,
-    }
-    return <Module title="Configure" menu={this.menu} vars={vars} />
-  }
+  return (
+    <React.Fragment>
+      <Configure deployment={deployment} data={data} />
+      <Delete deployment={deployment} />
+    </React.Fragment>
+  )
 }
 
-Deployment.propTypes = {
-  location: PropTypes.object,
-  match: PropTypes.object,
+DeploymentConfigure.propTypes = {
+  deployment: PropTypes.object,
 }
 
-export default Deployment
+export default DeploymentConfigure
