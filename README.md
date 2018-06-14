@@ -46,7 +46,6 @@ mutation createToken($identity: String!, $password: String!) {
     		token
       }
     }
-
 ```
 
 3.  In the query variables section, enter:
