@@ -10,10 +10,8 @@ a.button {
   white-space: nowrap;
   border-radius: 3px;
   padding: 1.4em 1.8em 1.05em;
-  font-size: 0.83rem;
   color: $white;
   @include shadow;
-  line-height: 1.6em;
   background-image: linear-gradient(to right, $green, $blue);
 
   &.red-orange {

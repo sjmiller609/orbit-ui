@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { H2, Icon, Link, Dropdown } from '../../../instruments'
+import { H2, Icon, Link, Dropdown, Item, MenuList } from '../../../instruments'
 import s from './styles.scss'
 
 // TODO: add dropdown
@@ -23,7 +23,21 @@ const Level1 = ({ text, to, active, className }) => {
           </React.Fragment>
         </H2>
       }>
-      <b>teams menu</b>
+      <MenuList
+        button={{
+          to: '/teams/new',
+          text: 'New Team',
+        }}>
+        <Item to="/" active>
+          My Team
+        </Item>
+        <Item to="/">Superfriends</Item>
+        <Item to="/">Watchmen</Item>
+        <Item to="/">X-Men</Item>
+        <Item to="/">Secret Avengers</Item>
+        <Item to="/">Powerpuff Girls</Item>
+        <Item to="/">Thundercats</Item>
+      </MenuList>
     </Dropdown>
   )
 }

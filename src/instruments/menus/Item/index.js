@@ -8,7 +8,7 @@ import { Link } from '../../../instruments'
 const Item = ({
   to,
   children,
-  vertical,
+  active,
   className,
   activeClassName,
   ...props
@@ -18,11 +18,7 @@ const Item = ({
       {...props}
       to={to}
       exact={true}
-      className={classnames(
-        s.item,
-        vertical ? s.vertical : s.horizontal,
-        className
-      )}
+      className={classnames(s.item, active && s.active, className)}
       activeClassName={classnames(s.active, activeClassName)}>
       {children}
     </Link>
@@ -34,7 +30,7 @@ Item.propTypes = {
   className: PropTypes.string,
   activeClassName: PropTypes.string,
   to: PropTypes.string,
-  vertical: PropTypes.bool,
+  active: PropTypes.bool,
 }
 
 export default Item
