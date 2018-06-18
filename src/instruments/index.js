@@ -64,3 +64,5 @@ export { default as CardForm } from './cards/CardForm'
 export { default as CardDelete } from './cards/CardDelete'
 
 export { default as Dialog } from './ui/Dialog'
+
+export { default as Pageview } from './analytics/Pageview'

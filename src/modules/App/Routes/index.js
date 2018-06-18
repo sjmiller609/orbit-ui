@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import Start from '../Start'
 import deployments from '../../deployments/Routes'
+import { Pageview } from '../../../instruments'
 
 const routes = [
   {
@@ -15,7 +16,10 @@ const routes = [
 
 const Routes = () => {
   return (
-    <Switch>{routes.map((route, i) => <Route key={i} {...route} />)}</Switch>
+    <React.Fragment>
+      <Route component={Pageview} />
+      <Switch>{routes.map((route, i) => <Route key={i} {...route} />)}</Switch>
+    </React.Fragment>
   )
 }
 
