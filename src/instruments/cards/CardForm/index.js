@@ -23,21 +23,22 @@ const CardForm = ({
         <Row className={s.footer}>
           {button2 && (
             <Button
-              text={button2.text || 'Cancel'}
               onClick={button2.onClick}
               style={button2.style}
-              className={s.button2}
-            />
+              className={s.button2}>
+              {button2.text || 'Cancel'}
+            </Button>
           )}
           <Button
             disabled={
               (typeof button.save === 'boolean' && !button.save) || false
             }
             submit
-            text={button.text || 'Save'}
+            arrow
             onClick={button.onClick}
-            style={button.style}
-          />
+            style={button.style}>
+            {button.text || 'Save'}
+          </Button>
         </Row>
       }
       header={title}

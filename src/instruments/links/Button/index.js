@@ -9,33 +9,31 @@ import classnames from 'classnames'
 const Button = ({
   onClick,
   style,
-  text,
+  children,
   submit,
   disabled,
   to,
   className,
-  newTab,
-  arrow,
+  ...props
 }) => {
   if (to) {
     return (
       <Link
+        {...props}
         to={to}
-        arrow={arrow}
-        newTab={newTab}
         className={classnames(
           s.button,
           disabled ? s.disabled : null,
           s[style],
           className
         )}>
-        {text}
+        {children}
       </Link>
     )
   }
-
+  // NOTE: icons dont get added to buttons
   return (
-    <Link arrow={arrow}>
+    <Link>
       <button
         className={classnames(
           s.button,
@@ -46,7 +44,7 @@ const Button = ({
         type={submit ? 'submit' : 'button'}
         onClick={onClick}
         disabled={disabled}>
-        {text}
+        {children}
       </button>
     </Link>
   )
@@ -55,13 +53,12 @@ const Button = ({
 Button.propTypes = {
   onClick: PropTypes.func,
   style: PropTypes.string,
-  text: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   submit: PropTypes.bool,
   disabled: PropTypes.bool,
-  newTab: PropTypes.bool,
+
   to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   className: PropTypes.string,
-  arrow: PropTypes.bool,
 }
 
 export default Button

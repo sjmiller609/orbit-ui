@@ -19,7 +19,7 @@ const Table = ({ children, search, className, button }) => {
             className={s.search}
             noDelay={!search.delay}
           />
-          {button && <Button text={button.text} to={button.to} />}
+          {button && <Button to={button.to}>{button.text}</Button>}
         </Row>
       }>
       <React.Fragment>
