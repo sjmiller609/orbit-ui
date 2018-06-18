@@ -16,6 +16,7 @@ const Delete = Component => {
         gql={api.DeleteDeployment}
         redirect="/deployments"
         success="Deployment deleted successfully."
+        track="Deployment Deleted"
         query={query}>
         {({ mutate }) => {
           const newProps = {

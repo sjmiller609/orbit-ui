@@ -15,6 +15,7 @@ const Create = Component => {
         gql={api.CreateDeployment}
         redirect="/deployments"
         success="New deployment created successfully."
+        track="New Deployment Created"
         query={query}>
         {({ mutate }) => {
           const newProps = {

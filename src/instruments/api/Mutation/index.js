@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { withRouter } from 'react-router'
 import { Mutation as Apollo } from 'react-apollo'
-import { Loading, SetUI } from '../../../instruments'
+import { Loading, SetUI, Track } from '../../../instruments'
 
 const Mutation = ({
   gql,
@@ -16,6 +16,7 @@ const Mutation = ({
   redirect,
   history,
   success,
+  track,
 }) => {
   return (
     <Apollo
@@ -25,6 +26,7 @@ const Mutation = ({
         if (onSuccess) onSuccess()
         if (redirect) history.push(redirect)
         setUI.snackbar(success || 'Success!')
+        if (track) Track(track)
       }}
       update={update}>
       {(mutate, { loading, error }) => {
@@ -53,6 +55,7 @@ Mutation.propTypes = {
   history: PropTypes.object,
   redirect: PropTypes.string,
   success: PropTypes.string,
+  track: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 }
 //export default Mutation
 export default SetUI(withRouter(Mutation), { snackbar: true })

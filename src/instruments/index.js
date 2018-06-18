@@ -51,6 +51,9 @@ export { default as GetUI } from './context/UI/Get'
 export { default as SetUI } from './context/UI/Set'
 export { default as ProviderUI } from './context/UI'
 
+export { default as Pageview } from './analytics/Pageview'
+export { Track, Group, Identify } from './analytics/track'
+
 export { default as Query } from './api/Query'
 export { default as Mutation } from './api/Mutation'
 export { default as Update } from './api/Mutation/Update'
@@ -64,5 +67,3 @@ export { default as CardForm } from './cards/CardForm'
 export { default as CardDelete } from './cards/CardDelete'
 
 export { default as Dialog } from './ui/Dialog'
-
-export { default as Pageview } from './analytics/Pageview'

@@ -15,6 +15,7 @@ const Update = Component => {
       <Mutate
         gql={api.UpdateDeployment}
         success="Deployment updated successfully."
+        track="Deployment Updated"
         query={query}>
         {({ mutate }) => {
           const newProps = {
