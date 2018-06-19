@@ -23,7 +23,6 @@ const cache = new InMemoryCache({
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem('token') || ''
-  //  const organization = localStorage.getItem('organization') || ''
   operation.setContext({
     headers: {
       authorization: token,

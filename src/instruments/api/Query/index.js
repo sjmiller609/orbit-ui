@@ -3,21 +3,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Query as Apollo } from 'react-apollo'
-import { Loading } from '../../../instruments'
+import { Loading, CardError } from '../../../instruments'
 
 import { searchText } from './helpers'
 
 const Query = ({ gql, vars, skip, children, search }) => {
   return (
-    <Apollo query={gql} variables={vars} skip={skip}>
+    <Apollo query={gql} variables={vars} skip={skip} errorPolicy="all">
       {({ loading, error, data }) => {
         if (loading) return <Loading />
-
-        // TODO: Error handling
-        if (error) {
-          console.log(`Error! ${error.message}`)
-          return null
-        }
+        if (error) return <CardError />
 
         // remove property `Symbol(id)` from data, as it breaks react dev tools
         const data2 = {}

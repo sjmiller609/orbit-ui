@@ -8,15 +8,7 @@ import { Card, Button, Row } from '../../../instruments'
 import s from './styles.scss'
 
 // wrap this component in a form, with children as fields, either title as string, or header element, and save buttons in footer
-const CardForm = ({
-  children,
-  button,
-  button2,
-  title,
-  small,
-  className,
-  fullWidth,
-}) => {
+const CardForm = ({ children, button, button2, title, className }) => {
   return (
     <Card
       footer={
@@ -42,12 +34,7 @@ const CardForm = ({
         </Row>
       }
       header={title}
-      className={classnames(
-        className,
-        s.cardForm,
-        small ? s.small : null,
-        fullWidth ? s.fullWidth : null
-      )}>
+      className={classnames(className)}>
       <div className={s.formContent}>
         {Array.isArray(children) ? children.map(el => el) : children}
       </div>
@@ -62,13 +49,6 @@ CardForm.propTypes = {
   button: PropTypes.object,
   button2: PropTypes.object,
   className: PropTypes.string,
-  small: PropTypes.bool,
-  fullWidth: PropTypes.bool,
-}
-
-CardForm.defaultProps = {
-  small: false,
-  fullWidth: false,
 }
 
 export default CardForm

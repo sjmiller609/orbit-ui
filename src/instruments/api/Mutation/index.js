@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { withRouter } from 'react-router'
 import { Mutation as Apollo } from 'react-apollo'
-import { Loading, SetUI, Track } from '../../../instruments'
+import { Loading, SetUI, Track, CardError } from '../../../instruments'
 
 const Mutation = ({
   gql,
@@ -22,6 +22,8 @@ const Mutation = ({
     <Apollo
       mutation={gql}
       variables={vars}
+      errorPolicy="all"
+      onError={() => null}
       onCompleted={() => {
         if (onSuccess) onSuccess()
         if (redirect) history.push(redirect)
@@ -31,12 +33,8 @@ const Mutation = ({
       update={update}>
       {(mutate, { loading, error }) => {
         if (loading) return <Loading />
+        if (error) return <CardError />
 
-        // TODO: Error handling
-        if (error) {
-          console.log(`Error! ${error.message}`)
-          return null
-        }
         return children({ mutate }) || null
       }}
     </Apollo>
