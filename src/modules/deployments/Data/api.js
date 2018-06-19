@@ -7,19 +7,25 @@ const deployment = gql`
     type
     release_name
     version
-    team
-    createdAt
-    updatedAt
+    team {
+      id: uuid
+    }
+    created_at
+    updated_at
   }
 `
 
 export default {
   Deployments: gql`
-    query deployments($teamId: ID, $deploymentId: ID, $releaseName: String) {
+    query deployments(
+      $teamId: Uuid
+      $deploymentId: Uuid
+      $releaseName: String
+    ) {
       deployments(
         teamUuid: $teamId
         deploymentUuid: $deploymentId
-        release_name: $releaseName
+        releaseName: $releaseName
       ) {
         ...deployment
       }
@@ -29,17 +35,23 @@ export default {
   CreateDeployment: gql`
     mutation createDeployment(
       $type: String!
-      $title: String!
+      $label: String!
+      $teamId: Uuid
       $version: String
     ) {
-      createDeployment(type: $type, title: $title, version: $version) {
+      createDeployment(
+        teamUuid: $teamId
+        type: $type
+        label: $label
+        version: $version
+      ) {
         ...deployment
       }
     }
     ${deployment}
   `,
   UpdateDeployment: gql`
-    mutation updateDeployment($id: ID!, $title: String) {
+    mutation updateDeployment($id: Uuid!, $title: String) {
       updateDeployment(deploymentUuid: $id, title: $title) {
         ...deployment
       }
@@ -47,7 +59,7 @@ export default {
     ${deployment}
   `,
   DeleteDeployment: gql`
-    mutation deleteDeployment($id: ID!) {
+    mutation deleteDeployment($id: Uuid!) {
       deleteDeployment(deploymentUuid: $id) {
         id
       }

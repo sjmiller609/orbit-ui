@@ -20,7 +20,7 @@ const Configure = ({ title, form }) => {
         placeholder="Deployment Name"
         label="Name"
         required
-        {...form.field('title')}
+        {...form.field('label')}
         focus
       />
     </CardForm>
