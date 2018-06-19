@@ -19,13 +19,13 @@ const Item = ({ deployment, className }) => {
       <Airflow className={s.rotate} />
     </Box>,
     <Box key="1" align="flex-start" className={s.title}>
-      <H3>{deployment.title}</H3>
+      <H3>{deployment.label}</H3>
       <P>{deployment.release_name}</P>
     </Box>,
     <Box key="2" align="flex-start" className={s.log}>
       <P className={s.subTitle}>Deployed by [getName]</P>
       <Mini>
-        <ShowDate date={deployment.createdAt} />
+        <ShowDate date={deployment.created_at} />
       </Mini>
     </Box>,
   ]

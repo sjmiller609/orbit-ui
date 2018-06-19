@@ -11,7 +11,7 @@ const Overview = ({ deployment }) => {
         text: 'Open Dashboard',
       }}>
       <P>
-        Your Apache Airflow dashboard for <B>{deployment.title}</B> now lives at{' '}
+        Your Apache Airflow dashboard for <B>{deployment.label}</B> now lives at{' '}
         <Link to={''} newTab>
           ancient-night-24309.astronomer.io
         </Link>. Configure and deploy your tasks with this dashboard. You can

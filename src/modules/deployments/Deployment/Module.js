@@ -20,7 +20,7 @@ const Deployment = ({ deployments, menu, title }) => {
   const path = '/deployments/' + deployment.release_name
 
   return (
-    <Module metaTitle={title + ' | ' + deployment.title} menu={menu}>
+    <Module metaTitle={title + ' | ' + deployment.label} menu={menu}>
       <Route
         path={path + '/configure'}
         exact

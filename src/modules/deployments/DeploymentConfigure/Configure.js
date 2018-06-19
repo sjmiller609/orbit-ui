@@ -28,14 +28,14 @@ const Configure = ({ form, deployment }) => {
         placeholder="Deployment Name"
         label="Name"
         required
-        {...form.field('title')}
+        {...form.field('label')}
         focus
       />
       <H5 className={s.name}>{deployment.release_name}</H5>
       <div className={s.deployed}>
         <P>Deployed by [getName]</P>
         <Mini>
-          <ShowDate date={deployment.createdAt} />
+          <ShowDate date={deployment.created_at} />
         </Mini>
       </div>
     </CardForm>
