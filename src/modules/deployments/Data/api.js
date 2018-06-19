@@ -1,29 +1,25 @@
 import gql from 'graphql-tag'
 
-// TODO: import creator fragment
-
 const deployment = gql`
   fragment deployment on Deployment {
-    title
-    type
     id: uuid
+    label
+    type
     release_name
     version
+    team
     createdAt
     updatedAt
-    creator {
-      id
-    }
   }
 `
 
 export default {
   Deployments: gql`
-    query deployments($orgId: ID, $deploymentId: ID, $releaseName: String) {
+    query deployments($teamId: ID, $deploymentId: ID, $releaseName: String) {
       deployments(
-        orgUuid: $orgId
+        teamUuid: $teamId
         deploymentUuid: $deploymentId
-        releaseName: $releaseName
+        release_name: $releaseName
       ) {
         ...deployment
       }
@@ -37,26 +33,22 @@ export default {
       $version: String
     ) {
       createDeployment(type: $type, title: $title, version: $version) {
-        success
-        message
-        id
+        ...deployment
       }
     }
+    ${deployment}
   `,
   UpdateDeployment: gql`
     mutation updateDeployment($id: ID!, $title: String) {
       updateDeployment(deploymentUuid: $id, title: $title) {
-        success
-        message
-        id
+        ...deployment
       }
     }
+    ${deployment}
   `,
   DeleteDeployment: gql`
     mutation deleteDeployment($id: ID!) {
       deleteDeployment(deploymentUuid: $id) {
-        success
-        message
         id
       }
     }
