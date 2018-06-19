@@ -1,5 +1,5 @@
 import React from 'react'
-import { Snackbar } from '../../../instruments'
+// import { Snackbar } from '../../../instruments'
 import PropTypes from 'prop-types'
 
 class ErrorBoundary extends React.Component {

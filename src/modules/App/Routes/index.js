@@ -2,6 +2,8 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import Start from '../Start'
+import NoMatch from '../NoMatch'
+
 import deployments from '../../deployments/Routes'
 import { Pageview } from '../../../instruments'
 
@@ -12,6 +14,9 @@ const routes = [
     exact: true,
   },
   ...deployments,
+  {
+    component: NoMatch,
+  },
 ]
 
 const Routes = () => {
