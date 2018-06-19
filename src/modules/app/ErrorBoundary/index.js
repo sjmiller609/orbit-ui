@@ -1,6 +1,6 @@
 import React from 'react'
-// import { Snackbar } from '../../../instruments'
 import PropTypes from 'prop-types'
+import { CardError } from '../../../instruments'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -17,10 +17,8 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
-    if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>
-    }
+    if (this.state.hasError) return <CardError />
+
     return this.props.children
   }
 }

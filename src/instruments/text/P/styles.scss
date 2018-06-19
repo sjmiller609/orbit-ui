@@ -7,14 +7,14 @@
   a {
     display: inline;
     @include font($f600);
+    &,
+    &:visited {
+      color: $green;
+    }
     &:hover,
     &:active,
     &:focus {
       color: $lightGreen;
-    }
-    &,
-    &:visited {
-      color: $green;
     }
   }
 }

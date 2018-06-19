@@ -5,6 +5,7 @@ import { NavLink as NavLink1, Link as NavLink2 } from 'react-router-dom'
 import s from './styles.scss'
 import classnames from 'classnames'
 import { Icon } from '../../../instruments'
+import { externalUrl } from './helpers'
 
 const Link = ({
   children,
@@ -17,19 +18,25 @@ const Link = ({
   backArrow,
   ...props
 }) => {
+  const newProps = {
+    ...props,
+    to,
+    className: classnames(s.link, s[style], className),
+    onClick,
+    target: newTab ? '_blank' : null,
+  }
   const arr = arrow && <Icon className={s.arrow} icon="arrow" />
   const backArr = backArrow && <Icon className={s.backArrow} icon="arrow" />
-  const A = props => <a {...props} />
+
   // only use ReactRouter NavLink if activeClassName (for performance)
   const NavLink = props.activeClassName ? NavLink1 : NavLink2
-  const Component = to ? NavLink : A
+  /* eslint-disable react/display-name */
+  const Component =
+    to && !externalUrl(to)
+      ? NavLink
+      : props => <a {...props} href={to} target="_blank" />
   return (
-    <Component
-      {...props}
-      to={to}
-      className={classnames(s.link, s[style], className)}
-      onClick={onClick}
-      target={newTab ? '_blank' : null}>
+    <Component {...newProps}>
       <React.Fragment>
         {backArr}
         {children}

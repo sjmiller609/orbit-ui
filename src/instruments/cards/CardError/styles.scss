@@ -1,12 +1,29 @@
 @import '../../../styles/mixins.scss';
 
-.formContent {
+.card {
+  background: $white;
+  border: 1px solid $orange;
+  padding: 1px;
+  main {
+    background: $darkWhite;
+  }
+}
+
+.content {
   margin: auto;
   width: 100%;
-  max-width: 34rem;
+  max-width: 54rem;
   padding: 1.5rem 0 3rem;
+}
 
-  p {
-    color: $beige;
+.message {
+  width: 60%;
+  flex-grow: 1;
+  h2 {
+    margin-bottom: 2rem;
   }
+}
+
+.img {
+  height: 20rem;
 }
