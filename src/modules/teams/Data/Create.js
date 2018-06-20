@@ -7,15 +7,15 @@ import { Create as Mutation } from '../../../instruments'
 const Create = Component => {
   const Create = props => {
     const query = {
-      name: api.Deployments,
-      type: 'deployments',
+      name: api.Teams,
+      type: 'teams',
     }
     return (
       <Mutation
-        gql={api.CreateDeployment}
+        gql={api.CreateTeam}
         redirect="/deployments"
-        success="New deployment created successfully."
-        track="New Deployment Created"
+        success="New team created successfully."
+        track="New Team Created"
         query={query}>
         {({ mutate }) => {
           const newProps = {
@@ -23,9 +23,6 @@ const Create = Component => {
             onSubmit: vars => {
               mutate({
                 variables: {
-                  type: 'airflow',
-                  teamId: 'ab214ce7-79e2-4873-b491-44120d7bcee4',
-                  version: '0.2.1', //TODO: This will get set by the api
                   ...vars,
                 },
               })

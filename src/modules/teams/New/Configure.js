@@ -12,16 +12,22 @@ const Configure = ({ title, form }) => {
       title={title}
       button={{
         save: form.save,
-        text: 'Deploy',
+        text: 'Create Team',
       }}
       className={s.card}>
       <TextField
         type="text"
-        placeholder="Deployment Name"
-        label="Name"
+        placeholder="Team Name"
+        label="Team Name"
         required
         {...form.field('label')}
         focus
+      />
+      <TextField
+        type="text"
+        placeholder="Description"
+        label="Description"
+        {...form.field('description')}
       />
     </CardForm>
   )
