@@ -12,8 +12,8 @@ const Block1 = ({ left, right, title, text, children, className }) => {
       <Box className={s.right} align="flex-start">
         {right || (
           <React.Fragment>
-            <H1>{title}</H1>
-            <P>{text}</P>
+            {title && <H1>{title}</H1>}
+            {text && <P>{text}</P>}
             {Array.isArray(children) ? children.map(el => el) : children}
           </React.Fragment>
         )}
