@@ -7,17 +7,18 @@ import s from './styles.scss'
 
 import { Box, Icon } from '../../../instruments'
 
-const Airflow = ({ className }) => {
+const Airflow = ({ className, dagSize }) => {
   return (
     <Box className={classnames(s.airflow, className)}>
       <Icon icon="airflow_ring" className={classnames(s.border, 'ring')} />
-      <Icon icon="dag" className={s.dag} />
+      <Icon icon="dag" className={classnames(s.dag, dagSize)} />
     </Box>
   )
 }
 
 Airflow.propTypes = {
   className: PropTypes.string,
+  dagSize: PropTypes.string,
 }
 
 export default Airflow

@@ -28,3 +28,11 @@
 .arrowCol {
   padding: 0.5rem 1rem;
 }
+
+.empty main {
+  background-image: linear-gradient(to right, $lightGreen, $darkBlue);
+  background-size: 100% 2.8rem;
+  background-position: top;
+  background-repeat: no-repeat;
+  padding-top: 4.5rem;
+}

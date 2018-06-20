@@ -6,7 +6,15 @@ import classnames from 'classnames'
 import { Card, Search, Button, Row } from '../../../instruments'
 import s from './styles.scss'
 
-const Table = ({ children, search, className, button }) => {
+const Table = ({ children, search, className, button, Empty }) => {
+  const button2 = button && <Button to={button.to}>{button.text}</Button>
+  // if empty
+  if (!search.text && (!children || !children.length))
+    return (
+      <Card className={classnames(s.table, s.empty, className)}>
+        {Empty({ button: button2 })}
+      </Card>
+    )
   return (
     <Card
       className={classnames(s.table, className)}
@@ -19,11 +27,12 @@ const Table = ({ children, search, className, button }) => {
             className={s.search}
             noDelay={!search.delay}
           />
-          {button && <Button to={button.to}>{button.text}</Button>}
+          {button2}
         </Row>
       }>
       <React.Fragment>
         {Array.isArray(children) ? children.map(el => el) : children}
+        {/* no results */}
       </React.Fragment>
     </Card>
   )
@@ -34,6 +43,7 @@ Table.propTypes = {
   className: PropTypes.string,
   search: PropTypes.object,
   button: PropTypes.object,
+  Empty: PropTypes.func,
 }
 
 export default Table

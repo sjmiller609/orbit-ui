@@ -15,7 +15,7 @@ const Deployment = ({ deployments, menu, title }) => {
   const menu2 = {
     ...menu,
   }
-  menu2.level2.text = deployment.title
+  menu2.level2.text = deployment.label
 
   const path = '/deployments/' + deployment.release_name
 

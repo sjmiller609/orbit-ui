@@ -24,7 +24,7 @@ const Create = Component => {
               mutate({
                 variables: {
                   type: 'airflow',
-                  teamId: '123',
+                  teamId: 'ab214ce7-79e2-4873-b491-44120d7bcee4',
                   version: '0.2.1', //TODO: This will get set by the api
                   ...vars,
                 },

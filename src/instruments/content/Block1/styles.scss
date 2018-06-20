@@ -1,0 +1,33 @@
+@import '../../../styles/mixins.scss';
+
+$width: 54rem;
+
+.content {
+  margin: auto;
+  width: 100%;
+  max-width: $width;
+  padding: 1.5rem 0 3rem;
+
+  h2,
+  h1 {
+    margin-bottom: 1.4rem;
+  }
+  p:not(:last-child) {
+    margin-bottom: 2.2rem;
+  }
+}
+
+.left {
+  width: $width * 0.3;
+  flex-grow: 1;
+}
+
+.right {
+  width: $width * 0.6;
+  flex-grow: 1;
+}
+
+.left,
+.right {
+  margin: 1rem;
+}
