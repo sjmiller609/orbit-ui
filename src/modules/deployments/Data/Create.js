@@ -2,13 +2,13 @@
 import React from 'react'
 import api from './api'
 
-import { Mutation } from '../../../instruments'
+import { Create as Mutation } from '../../../instruments'
 
 const Create = Component => {
   const Create = props => {
     const query = {
-      gql: api.Deployments,
-      result: 'deployments',
+      name: api.Deployments,
+      type: 'deployments',
     }
     return (
       <Mutation
@@ -28,7 +28,6 @@ const Create = Component => {
                   version: '0.2.1', //TODO: This will get set by the api
                   ...vars,
                 },
-                refetchQueries: [{ query: query.gql }],
               })
             },
           }
