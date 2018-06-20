@@ -5,6 +5,7 @@ import classnames from 'classnames'
 
 import { Card, Search, Button, Row } from '../../../instruments'
 import s from './styles.scss'
+import NoResults from './NoResults'
 
 const Table = ({ children, search, className, button, Empty }) => {
   const button2 = button && <Button to={button.to}>{button.text}</Button>
@@ -34,7 +35,7 @@ const Table = ({ children, search, className, button, Empty }) => {
       }>
       <React.Fragment>
         {Array.isArray(children) ? children.map(el => el) : children}
-        {/* no results */}
+        {count === 0 && search.text && <NoResults />}
       </React.Fragment>
     </Card>
   )

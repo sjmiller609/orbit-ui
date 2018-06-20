@@ -43,3 +43,23 @@
   background-repeat: no-repeat;
   padding-top: 4.8rem;
 }
+
+.noResults {
+  height: 15rem;
+  img {
+    height: 40%;
+    margin-bottom: 1.5rem;
+    animation: fade 4s infinite ease-in;
+  }
+  color: $orange;
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
