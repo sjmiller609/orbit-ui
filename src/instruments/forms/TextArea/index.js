@@ -118,9 +118,9 @@ class TextArea extends React.Component {
           onChange={this.onChange}
           title={title}
           onBlur={touched ? () => this.showError(true) : null}
-          ref={ref => (this.field = ref)}>
-          {value}
-        </textarea>
+          ref={ref => (this.field = ref)}
+          value={value}
+        />
         {err && <div className={s.errorMsg}>{error}</div>}
       </div>
     )
