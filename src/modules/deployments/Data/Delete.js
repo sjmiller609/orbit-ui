@@ -8,8 +8,8 @@ import { Delete as Mutate } from '../../../instruments'
 const Delete = Component => {
   const Delete = props => {
     const query = {
-      gql: api.Deployments,
-      result: 'deployments',
+      name: api.Deployments,
+      type: 'deployments',
     }
     return (
       <Mutate
@@ -24,7 +24,7 @@ const Delete = Component => {
             onSubmit: vars => {
               mutate({
                 variables: vars,
-                //  refetchQueries: [{ query: query.gql }],
+                refetchQueries: [{ query: query.name }],
               })
             },
           }

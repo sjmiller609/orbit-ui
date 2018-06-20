@@ -61,7 +61,7 @@ export default {
   DeleteDeployment: gql`
     mutation deleteDeployment($id: Uuid!) {
       deleteDeployment(deploymentUuid: $id) {
-        id
+        id: uuid
       }
     }
   `,
