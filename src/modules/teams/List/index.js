@@ -1,0 +1,33 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+
+import s from './styles.scss'
+import { Table } from '../../../instruments'
+
+import Data from '../Data'
+import Item from './Item'
+import Empty from './Empty'
+
+const List = ({ deployments, search }) => {
+  const button = {
+    text: 'New Deployment',
+    to: '/deployments/new',
+  }
+  // NOTE: Orders by updatedAt, so show most recent first
+  // get a shallow copy before reversing, for speed
+  return (
+    <Table className={s.list} search={search} button={button} Empty={Empty}>
+      {deployments
+        .slice(0)
+        .reverse()
+        .map(d => <Item key={d.id} deployment={d} />)}
+    </Table>
+  )
+}
+
+List.propTypes = {
+  deployments: PropTypes.array,
+  search: PropTypes.object,
+}
+
+export default Data(List)

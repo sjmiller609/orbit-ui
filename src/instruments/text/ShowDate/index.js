@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
 
-//TODO: Will probably want to use Luxon for this...
 //TODO: add formatting options
 const ShowDate = ({ date, className }) => {
+  if (!date) return null
   const d = new Date(date)
   const now = new Date()
   let today

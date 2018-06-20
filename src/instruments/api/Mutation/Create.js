@@ -8,12 +8,10 @@ const Create = ({ query, ...props }) => {
   return (
     <Mutation
       update={(cache, data) => {
-        console.log('create function')
         if (!query) return
         // use first key to auto grab Document name
         const result = data.data[Object.keys(data.data)[0]]
         const results = cache.readQuery({ query: query.name })
-        console.log(results)
         cache.writeQuery({
           query: query.name,
           data: { [query.type]: results[query.type].concat([result]) },
