@@ -8,25 +8,25 @@ import Data from '../Data'
 import Item from './Item'
 import Empty from './Empty'
 
-const List = ({ deployments, search }) => {
+const List = ({ teams, search }) => {
   const button = {
-    text: 'New Deployment',
-    to: '/deployments/new',
+    text: 'New Team',
+    to: '/teams/new',
   }
   // NOTE: Orders by updatedAt, so show most recent first
   // get a shallow copy before reversing, for speed
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
-      {deployments
+      {teams
         .slice(0)
         .reverse()
-        .map(d => <Item key={d.id} deployment={d} />)}
+        .map(t => <Item key={t.id} team={t} />)}
     </Table>
   )
 }
 
 List.propTypes = {
-  deployments: PropTypes.array,
+  teams: PropTypes.array,
   search: PropTypes.object,
 }
 

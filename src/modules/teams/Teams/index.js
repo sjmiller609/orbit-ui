@@ -11,7 +11,7 @@ class Deployments extends React.Component {
   // search obj constants
   search = {
     delay: false,
-    placeholder: 'Search Deployments',
+    placeholder: 'Search Teams',
     call: search => this.setState({ search }),
   }
 
@@ -19,7 +19,7 @@ class Deployments extends React.Component {
     const { search } = this.state
 
     return (
-      <Module metaTitle="Deployments" menu={this.menu}>
+      <Module metaTitle="Teams" menu={this.menu}>
         <List
           search={{
             text: search,

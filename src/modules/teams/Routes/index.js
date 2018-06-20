@@ -1,20 +1,25 @@
-import Deployments from '../Deployments'
+import Teams from '../Teams'
 import New from '../New'
 import Deployment from '../Deployment'
 
 export default [
   {
-    path: '/deployments',
-    component: Deployments,
+    path: '/',
+    component: Teams,
     exact: true,
   },
   {
-    path: '/deployments/new',
+    path: '/teams',
+    component: Teams,
+    exact: true,
+  },
+  {
+    path: '/teams/new',
     component: New,
     exact: true,
   },
   {
-    path: '/deployments/:id',
+    path: '/teams/:id',
     component: Deployment,
   },
 ]

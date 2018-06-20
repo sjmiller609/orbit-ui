@@ -21,14 +21,8 @@ export default {
     ${team}
   `,
   CreateTeam: gql`
-    mutation createTeam(
-      $label: String!
-      description: String
-    ) {
-      createTeam(
-        label: $label
-        description: $description
-      ) {
+    mutation createTeam($label: String!, $description: String) {
+      createTeam(label: $label, description: $description) {
         ...team
       }
     }

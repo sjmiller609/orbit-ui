@@ -23,7 +23,7 @@ const Item = ({ deployment, className }) => {
       <P>{deployment.release_name}</P>
     </Box>,
     <Box key="2" align="flex-start" className={s.log}>
-      <P className={s.subTitle}>Deployed:</P>
+      <P className={s.subTitle}>Deployed</P>
       <Mini>
         <ShowDate date={deployment.created_at} />
       </Mini>

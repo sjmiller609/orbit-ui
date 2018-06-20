@@ -10,27 +10,26 @@ import {
   Mini,
   H3,
   ShowDate,
-  Airflow,
+  Icon,
 } from '../../../instruments'
 
-const Item = ({ deployment, className }) => {
+const Item = ({ team, className }) => {
   const columns = [
     <Box key="0" className={s.icon}>
-      <Airflow className={s.rotate} />
+      T
     </Box>,
     <Box key="1" align="flex-start" className={s.title}>
-      <H3>{deployment.label}</H3>
-      <P>{deployment.release_name}</P>
+      <H3>{team.label}</H3>
     </Box>,
     <Box key="2" align="flex-start" className={s.log}>
-      <P className={s.subTitle}>Deployed:</P>
+      <P className={s.subTitle}>Last updated</P>
       <Mini>
-        <ShowDate date={deployment.created_at} />
+        <ShowDate date={team.updated_at} />
       </Mini>
     </Box>,
   ]
 
-  const to = '/deployments/' + deployment.release_name
+  const to = '/teams/' + team.id
 
   return (
     <TableRow
@@ -42,7 +41,7 @@ const Item = ({ deployment, className }) => {
 }
 
 Item.propTypes = {
-  deployment: PropTypes.object,
+  team: PropTypes.object,
   className: PropTypes.string,
 }
 
