@@ -51,8 +51,8 @@ export default {
     ${deployment}
   `,
   UpdateDeployment: gql`
-    mutation updateDeployment($id: Uuid!, $title: String) {
-      updateDeployment(deploymentUuid: $id, title: $title) {
+    mutation updateDeployment($id: Uuid!, $label: String) {
+      updateDeployment(deploymentUuid: $id, label: $label) {
         ...deployment
       }
     }

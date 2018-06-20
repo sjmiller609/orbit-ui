@@ -33,7 +33,7 @@ const Configure = ({ form, deployment }) => {
       />
       <H5 className={s.name}>{deployment.releaseName}</H5>
       <div className={s.deployed}>
-        <P>Deployed:</P>
+        <P>Deployed</P>
         <Mini>
           <ShowDate date={deployment.createdAt} />
         </Mini>

@@ -1,41 +1,31 @@
 'use strict'
 import React from 'react'
-//import PropTypes from 'prop-types'
 import api from './api'
 
-import { Update as Mutate } from '../../../instruments'
+import { Mutation } from '../../../instruments'
 
 const Update = Component => {
   const Update = props => {
-    const query = {
-      gql: api.Deployments,
-      result: 'deployments',
-    }
     return (
-      <Mutate
+      <Mutation
         gql={api.UpdateDeployment}
         success="Deployment updated successfully."
         track="Deployment Updated"
-        query={query}>
+        back>
         {({ mutate }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
               mutate({
                 variables: vars,
-                //  refetchQueries: [{ query: query.gql }],
               })
             },
           }
           return <Component {...newProps} />
         }}
-      </Mutate>
+      </Mutation>
     )
   }
-
-  // Update.propTypes = {
-  //   onSuccess: PropTypes.func,
-  // }
 
   return Update
 }

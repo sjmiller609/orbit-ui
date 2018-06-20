@@ -66,7 +66,6 @@ export { default as CardError } from './cards/CardError'
 
 export { default as Query } from './api/Query'
 export { default as Mutation } from './api/Mutation'
-export { default as Update } from './api/Mutation/Update'
 export { default as Create } from './api/Mutation/Create'
 export { default as Delete } from './api/Mutation/Delete'
 

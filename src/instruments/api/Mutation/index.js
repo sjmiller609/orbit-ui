@@ -14,6 +14,7 @@ const Mutation = ({
   setUI,
   update,
   redirect,
+  back, // go up one level
   history,
   success,
   track,
@@ -27,6 +28,10 @@ const Mutation = ({
       onCompleted={() => {
         if (onSuccess) onSuccess()
         if (redirect) history.push(redirect)
+        else if (back) {
+          const path = history.location.pathname
+          history.push(path.substring(0, path.lastIndexOf('/')))
+        }
         setUI.snackbar(success || 'Success!')
         if (track) Track(track)
       }}
@@ -52,6 +57,7 @@ Mutation.propTypes = {
   setUI: PropTypes.object,
   history: PropTypes.object,
   redirect: PropTypes.string,
+  back: PropTypes.bool,
   success: PropTypes.string,
   track: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 }
