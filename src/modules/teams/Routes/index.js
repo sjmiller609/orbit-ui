@@ -4,11 +4,6 @@ import Deployment from '../Deployment'
 
 export default [
   {
-    path: '/',
-    component: Teams,
-    exact: true,
-  },
-  {
     path: '/teams',
     component: Teams,
     exact: true,

@@ -4,7 +4,7 @@ import Module from '../../app/Module'
 
 class Deployments extends React.Component {
   menu = {
-    nav: 'team',
+    nav: 'teams',
   }
   // state for entire module
   state = { search: '' }
