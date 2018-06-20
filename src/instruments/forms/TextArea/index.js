@@ -3,24 +3,16 @@ import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
 
-export const isEmail = email => {
-  return new RegExp(
-    '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$'
-  ).test(email)
-}
-
-class TextField extends React.Component {
+class TextArea extends React.Component {
   constructor(props) {
     super(props)
-    //  this.field = React.createRef();
     this.timeout = null
     this.onChange = this.onChange.bind(this)
     this.validate = this.validate.bind(this)
     this.showError = this.showError.bind(this)
 
-    const { type, id, name } = this.props
+    const { id, name } = this.props
     this.state = {
-      type: type === 'email' ? 'text' : type,
       id: id || name,
       showError: false,
       touched: null,
@@ -28,22 +20,19 @@ class TextField extends React.Component {
   }
 
   componentDidMount() {
-    const { focus, value, type } = this.props
+    const { focus, value } = this.props
     if (focus) this.field.focus()
-    this.validate({ value, type }) // adds required fields to form
+    this.validate({ value }) // adds required fields to form
   }
 
-  componentWillReceiveProps({ value, type, error }) {
+  componentWillReceiveProps({ value, error }) {
     const set = {}
-
-    // update type (for show password)
-    if (type !== this.props.type) set.type = type
 
     if (value !== this.props.value) {
       set.showError = false
 
       // run validation
-      this.validate({ value, type, error })
+      this.validate({ value, error })
 
       // show error after 3 seconds of stopped typing
       if (this.timeout) clearTimeout(this.timeout)
@@ -60,10 +49,9 @@ class TextField extends React.Component {
 
   // should probably switch this to pull the props that don't change, and then json.stringify
   // NOTE: if any new props are passed in that are meant to be reactive, won't work.
-  shouldComponentUpdate({ value, error, type }, { showError, touched }) {
+  shouldComponentUpdate({ value, error }, { showError, touched }) {
     if (value !== this.props.value) return true
     if (error !== this.props.error) return true
-    if (type !== this.props.type) return true
     if (showError !== this.state.showError) return true
     if (touched !== this.state.touched) return true
     return false
@@ -74,8 +62,8 @@ class TextField extends React.Component {
   }
 
   onChange(e) {
-    const { name, onChange, type } = this.props
-    const value = type === 'text' ? e.target.value : e.target.value.trim()
+    const { name, onChange } = this.props
+    const value = e.target.value
     onChange(name, value)
   }
 
@@ -84,7 +72,7 @@ class TextField extends React.Component {
     this.setState({ showError })
   }
 
-  validate({ value, type }) {
+  validate({ value }) {
     const { validate, name, updateErrors, required } = this.props
     let e
 
@@ -92,10 +80,7 @@ class TextField extends React.Component {
       e = name.charAt(0).toUpperCase() + name.slice(1) + ' is required'
     }
     if (value) {
-      if (type === 'email' && !isEmail(value)) {
-        e = 'Please enter a valid email.'
-        // run custom validation
-      } else if (validate) {
+      if (validate) {
         e = validate(value)
       }
     }
@@ -114,7 +99,7 @@ class TextField extends React.Component {
       label,
       className,
     } = this.props
-    const { type, id, showError, touched } = this.state
+    const { id, showError, touched } = this.state
     const err = showError && !!error
     return (
       <div
@@ -125,26 +110,24 @@ class TextField extends React.Component {
           className
         )}>
         {label ? <label htmlFor={id}>{label}</label> : null}
-        <input
-          type={type}
+        <textarea
           name={name}
           id={id}
           placeholder={placeholder}
           required={required}
           onChange={this.onChange}
-          value={value}
           title={title}
           onBlur={touched ? () => this.showError(true) : null}
-          ref={ref => (this.field = ref)}
-        />
+          ref={ref => (this.field = ref)}>
+          {value}
+        </textarea>
         {err && <div className={s.errorMsg}>{error}</div>}
       </div>
     )
   }
 }
 
-TextField.propTypes = {
-  type: PropTypes.string,
+TextArea.propTypes = {
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
@@ -160,10 +143,9 @@ TextField.propTypes = {
   updateErrors: PropTypes.func,
 }
 
-TextField.defaultProps = {
-  type: 'text',
+TextArea.defaultProps = {
   value: '',
   label: '',
 }
 
-export default TextField
+export default TextArea

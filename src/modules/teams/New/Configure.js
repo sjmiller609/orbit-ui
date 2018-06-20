@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import s from './styles.scss'
-import { CardForm, Form, TextField } from '../../../instruments'
+import { CardForm, Form, TextField, TextArea } from '../../../instruments'
 
 import Create from '../Data/Create'
 
@@ -23,8 +23,7 @@ const Configure = ({ title, form }) => {
         {...form.field('label')}
         focus
       />
-      <TextField
-        type="text"
+      <TextArea
         placeholder="Description"
         label="Description"
         {...form.field('description')}
