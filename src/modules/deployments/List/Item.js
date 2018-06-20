@@ -20,17 +20,17 @@ const Item = ({ deployment, className }) => {
     </Box>,
     <Box key="1" align="flex-start" className={s.title}>
       <H3>{deployment.label}</H3>
-      <P>{deployment.release_name}</P>
+      <P>{deployment.releaseName}</P>
     </Box>,
     <Box key="2" align="flex-start" className={s.log}>
       <P className={s.subTitle}>Deployed</P>
       <Mini>
-        <ShowDate date={deployment.created_at} />
+        <ShowDate date={deployment.createdAt} />
       </Mini>
     </Box>,
   ]
 
-  const to = '/deployments/' + deployment.release_name
+  const to = '/deployments/' + deployment.releaseName
 
   return (
     <TableRow

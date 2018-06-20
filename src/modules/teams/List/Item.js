@@ -24,7 +24,7 @@ const Item = ({ team, className }) => {
     <Box key="2" align="flex-start" className={s.log}>
       <P className={s.subTitle}>Last updated</P>
       <Mini>
-        <ShowDate date={team.updated_at} />
+        <ShowDate date={team.updatedAt || team.createdAt} />
       </Mini>
     </Box>,
   ]

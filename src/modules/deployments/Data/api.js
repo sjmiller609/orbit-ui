@@ -5,13 +5,13 @@ const deployment = gql`
     id: uuid
     label
     type
-    release_name
+    releaseName
     version
     team {
       id: uuid
     }
-    created_at
-    updated_at
+    createdAt
+    updatedAt
   }
 `
 

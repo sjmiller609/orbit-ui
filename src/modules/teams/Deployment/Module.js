@@ -17,7 +17,7 @@ const Deployment = ({ deployments, menu, title }) => {
   }
   menu2.level2.text = deployment.label
 
-  const path = '/deployments/' + deployment.release_name
+  const path = '/deployments/' + deployment.releaseName
 
   return (
     <Module metaTitle={title + ' | ' + deployment.label} menu={menu}>

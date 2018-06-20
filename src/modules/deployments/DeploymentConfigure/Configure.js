@@ -31,11 +31,11 @@ const Configure = ({ form, deployment }) => {
         {...form.field('label')}
         focus
       />
-      <H5 className={s.name}>{deployment.release_name}</H5>
+      <H5 className={s.name}>{deployment.releaseName}</H5>
       <div className={s.deployed}>
         <P>Deployed:</P>
         <Mini>
-          <ShowDate date={deployment.created_at} />
+          <ShowDate date={deployment.createdAt} />
         </Mini>
       </div>
     </CardForm>
