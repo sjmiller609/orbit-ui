@@ -15,9 +15,11 @@ const Table = ({ children, search, className, button, Empty }) => {
         {Empty({ button: button2 })}
       </Card>
     )
+  let count = Array.isArray(children) ? children.length : 1
+  if (!children) count = 0
   return (
     <Card
-      className={classnames(s.table, className)}
+      className={classnames(s.table, count === 1 && s.one, className)}
       header={
         <Row justify="space-between" className={s.header}>
           <Search

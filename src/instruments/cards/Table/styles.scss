@@ -19,6 +19,13 @@
   }
 }
 
+.one .tableRow {
+  background-image: linear-gradient($lightGray, $lightGray);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 0.4rem 100%;
+}
+
 .arrow {
   height: 1.1rem;
   opacity: 0.4;
@@ -34,5 +41,5 @@
   background-size: 100% 2.8rem;
   background-position: top;
   background-repeat: no-repeat;
-  padding-top: 4.5rem;
+  padding-top: 4.8rem;
 }
