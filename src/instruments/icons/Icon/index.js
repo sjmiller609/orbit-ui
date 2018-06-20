@@ -3,14 +3,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 class Icon extends React.Component {
+  mounted = true
   state = {
     src: null,
   }
 
   componentWillMount() {
-    import(`./img/${this.props.icon}.svg`).then(src =>
-      this.setState({ src: src.default })
-    )
+    import(`./img/${this.props.icon}.svg`).then(src => {
+      if (this.mounted) this.setState({ src: src.default })
+    })
+  }
+  componentWillUnmount() {
+    this.mounted = false
   }
 
   render() {
