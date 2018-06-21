@@ -14,6 +14,7 @@ const Module = ({ menu, metaTitle, nada, ...props }) => {
     metaTitle !== 'Astronomer' ? metaTitle + ' | Astronomer' : metaTitle
 
   const subMenu = menu.subMenu || subMenus[menu.nav]
+
   return <Page {...props} menu={menu} subMenu={subMenu} metaTitle={title} />
 }
 

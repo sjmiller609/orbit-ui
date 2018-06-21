@@ -1,6 +1,5 @@
 'use strict'
 import React from 'react'
-// import PropTypes from 'prop-types'
 import api from './api'
 
 import { Delete as Mutate } from '../../../instruments'
@@ -8,15 +7,15 @@ import { Delete as Mutate } from '../../../instruments'
 const Delete = Component => {
   const Delete = props => {
     const query = {
-      gql: api.Deployments,
-      result: 'deployments',
+      name: api.Teams,
+      type: 'teams',
     }
     return (
       <Mutate
-        gql={api.DeleteDeployment}
-        redirect="/deployments"
-        success="Deployment deleted successfully."
-        track="Deployment Deleted"
+        gql={api.DeleteTeam}
+        redirect="/teams"
+        success="Team deleted successfully."
+        track="Team Deleted"
         query={query}>
         {({ mutate }) => {
           const newProps = {
@@ -24,7 +23,7 @@ const Delete = Component => {
             onSubmit: vars => {
               mutate({
                 variables: vars,
-                //  refetchQueries: [{ query: query.gql }],
+                refetchQueries: [{ query: query.name }],
               })
             },
           }

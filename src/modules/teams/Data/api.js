@@ -39,7 +39,7 @@ export default {
   DeleteTeam: gql`
     mutation deleteTeam($id: Uuid!) {
       deleteTeam(teamUuid: $id) {
-        id
+        id: uuid
       }
     }
   `,

@@ -119,7 +119,7 @@ class TextArea extends React.Component {
           title={title}
           onBlur={touched ? () => this.showError(true) : null}
           ref={ref => (this.field = ref)}
-          value={value}
+          value={value || ''}
         />
         {err && <div className={s.errorMsg}>{error}</div>}
       </div>

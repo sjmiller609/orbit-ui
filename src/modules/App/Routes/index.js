@@ -1,12 +1,17 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import { Switch, Route } from 'react-router-dom'
 
 import NoMatch from '../NoMatch'
 import Start from '../Start'
-import deployments from '../../deployments/Routes'
-import teams from '../../teams/Routes'
+import { Pageview, GetData } from '../../../instruments'
 
-import { Pageview } from '../../../instruments'
+// get module routes
+import deployments from '../../deployments/Routes'
+import { default as teams, team } from '../../teams/Routes'
+
+import TeamRoute from './TeamRoute'
 
 const routes = [
   {
@@ -15,7 +20,6 @@ const routes = [
     exact: true,
   },
   ...teams,
-  ...deployments,
   {
     path: '/404',
     component: NoMatch,
@@ -26,13 +30,26 @@ const routes = [
   },
 ]
 
-const Routes = () => {
+// protected by teamId
+const teamRoutes = [...team, ...deployments]
+
+const Routes = ({ getData }) => {
   return (
     <React.Fragment>
       <Route component={Pageview} />
-      <Switch>{routes.map((route, i) => <Route key={i} {...route} />)}</Switch>
+      <Switch>
+        {teamRoutes.map((route, i) => (
+          <TeamRoute key={i} teamId={getData.teamId} {...route} />
+        ))}
+        {/* Must be last */}
+        {routes.map((route, i) => <Route key={i} {...route} />)}
+      </Switch>
     </React.Fragment>
   )
 }
 
-export default Routes
+Routes.propTypes = {
+  getData: PropTypes.object,
+}
+
+export default GetData(Routes)

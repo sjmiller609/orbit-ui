@@ -2,6 +2,8 @@ import Teams from '../Teams'
 import New from '../New'
 import Team from '../Team'
 
+import Settings from '../Settings'
+
 export default [
   {
     path: '/teams',
@@ -16,5 +18,13 @@ export default [
   {
     path: '/teams/:id',
     component: Team,
+  },
+]
+
+export const team = [
+  {
+    path: '/settings',
+    component: Settings,
+    exact: true,
   },
 ]

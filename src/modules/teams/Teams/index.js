@@ -2,7 +2,7 @@ import React from 'react'
 import List from '../List'
 import Module from '../../app/Module'
 
-class Deployments extends React.Component {
+class Teams extends React.Component {
   menu = {
     nav: 'teams',
   }
@@ -31,4 +31,4 @@ class Deployments extends React.Component {
   }
 }
 
-export default Deployments
+export default Teams
