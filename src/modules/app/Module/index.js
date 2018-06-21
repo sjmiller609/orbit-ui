@@ -5,9 +5,11 @@ import PropTypes from 'prop-types'
 import { Page } from '../../../instruments'
 
 import subMenus from './subMenus'
+import NoMatch from '../NoMatch'
 
 // wrapper for all modules
-const Module = ({ menu, metaTitle, ...props }) => {
+const Module = ({ menu, metaTitle, nada, ...props }) => {
+  if (nada) return <NoMatch />
   const title =
     metaTitle !== 'Astronomer' ? metaTitle + ' | Astronomer' : metaTitle
 
@@ -18,6 +20,7 @@ const Module = ({ menu, metaTitle, ...props }) => {
 Module.propTypes = {
   menu: PropTypes.object,
   metaTitle: PropTypes.string,
+  nada: PropTypes.bool, // 404
 }
 
 Module.defaultProps = {

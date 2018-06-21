@@ -10,8 +10,9 @@ import Module from '../../app/Module'
 
 const Deployment = ({ deployments, menu, title }) => {
   const deployment = deployments[0]
-  // TODO: Error handling
-  if (!deployment) console.log('error')
+  // Error handled
+  if (!deployment) return <Module nada />
+
   const menu2 = {
     ...menu,
   }

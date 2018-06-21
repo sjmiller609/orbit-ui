@@ -17,6 +17,11 @@ const routes = [
   ...teams,
   ...deployments,
   {
+    path: '/404',
+    component: NoMatch,
+    exact: true,
+  },
+  {
     component: NoMatch,
   },
 ]
