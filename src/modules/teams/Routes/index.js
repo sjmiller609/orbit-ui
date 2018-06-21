@@ -1,6 +1,6 @@
 import Teams from '../Teams'
 import New from '../New'
-import Team from '../Team'
+import SetTeam from '../SetTeam'
 
 import Settings from '../Settings'
 
@@ -17,7 +17,7 @@ export default [
   },
   {
     path: '/teams/:id',
-    component: Team,
+    component: SetTeam,
   },
 ]
 

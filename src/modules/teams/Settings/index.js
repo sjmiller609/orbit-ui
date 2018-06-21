@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Module from './Module'
-import { GetData } from '../../../instruments'
+import GetTeam from '../GetTeam'
+import Module from '../../app/Module'
+import Configure from '../Configure'
 
 class Settings extends React.Component {
   menu = {
@@ -9,18 +10,21 @@ class Settings extends React.Component {
   }
 
   render() {
-    const { match, location, getData } = this.props
-    const vars = {
-      teamId: getData.teamId,
-    }
-    return <Module title="Settings" menu={this.menu} vars={vars} />
+    const { team } = this.props
+
+    // Error handled
+    if (!team) return <Module nada />
+
+    return (
+      <Module metaTitle={'Settings | ' + team.label} menu={this.menu}>
+        <Configure team={team} />
+      </Module>
+    )
   }
 }
 
 Settings.propTypes = {
-  location: PropTypes.object,
-  match: PropTypes.object,
-  getData: PropTypes.object,
+  team: PropTypes.object,
 }
 
-export default GetData(Settings, { teamId: true })
+export default GetTeam(Settings)
