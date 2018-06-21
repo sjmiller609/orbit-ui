@@ -1,6 +1,5 @@
 'use strict'
 import React from 'react'
-// import PropTypes from 'prop-types'
 import api from './api'
 
 import { Delete as Mutate } from '../../../instruments'

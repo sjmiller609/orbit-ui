@@ -25,10 +25,19 @@ const Mutation = ({
       variables={vars}
       errorPolicy="all"
       onError={() => null}
-      onCompleted={() => {
+      onCompleted={data => {
         if (onSuccess) onSuccess()
-        if (redirect) history.push(redirect)
-        else if (back) {
+
+        if (redirect) {
+          // redirect can be a function, to go to the newly created object
+          let path
+          if (typeof redirect === 'function') {
+            // get object from data and path from redirect function
+            path = redirect(data[Object.keys(data)[0]])
+          } else path = redirect
+
+          history.push(path)
+        } else if (back) {
           const path = history.location.pathname
           history.push(path.substring(0, path.lastIndexOf('/')))
         }
@@ -56,7 +65,7 @@ Mutation.propTypes = {
   setSnackbar: PropTypes.func,
   setUI: PropTypes.object,
   history: PropTypes.object,
-  redirect: PropTypes.string,
+  redirect: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   back: PropTypes.bool,
   success: PropTypes.string,
   track: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
