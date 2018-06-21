@@ -1,6 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import List from '../List'
 import Module from '../../app/Module'
+import { GetData } from '../../../instruments'
 
 class Deployments extends React.Component {
   menu = {
@@ -17,7 +20,9 @@ class Deployments extends React.Component {
 
   render() {
     const { search } = this.state
-
+    const vars = {
+      teamId: this.props.getData.teamId,
+    }
     return (
       <Module metaTitle="Deployments" menu={this.menu}>
         <List
@@ -25,10 +30,14 @@ class Deployments extends React.Component {
             text: search,
             ...this.search,
           }}
+          vars={vars}
         />
       </Module>
     )
   }
 }
+Deployments.propTypes = {
+  getData: PropTypes.object,
+}
 
-export default Deployments
+export default GetData(Deployments, { teamId: true })

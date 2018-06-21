@@ -1,6 +1,6 @@
 import Teams from '../Teams'
 import New from '../New'
-import Deployment from '../Deployment'
+import Team from '../Team'
 
 export default [
   {
@@ -15,6 +15,6 @@ export default [
   },
   {
     path: '/teams/:id',
-    component: Deployment,
+    component: Team,
   },
 ]
