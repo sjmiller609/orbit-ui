@@ -3,29 +3,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import {
-  TableRow,
-  Box,
-  P,
-  Mini,
-  H3,
-  ShowDate,
-  Icon,
-} from '../../../instruments'
+import { charLimit } from '../../../helpers/format'
+
+import { TableRow, Box, P, H3, Icon } from '../../../instruments'
 
 const Item = ({ team, className }) => {
   const columns = [
     <Box key="0" className={s.icon}>
-      T
+      <Icon icon="stars" />
     </Box>,
     <Box key="1" align="flex-start" className={s.title}>
       <H3>{team.label}</H3>
     </Box>,
     <Box key="2" align="flex-start" className={s.log}>
-      <P className={s.subTitle}>Last updated</P>
-      <Mini>
-        <ShowDate date={team.updatedAt || team.createdAt} />
-      </Mini>
+      <P className={s.subTitle}>{charLimit(team.description, 75)}</P>
     </Box>,
   ]
 

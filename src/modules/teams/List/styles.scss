@@ -24,11 +24,6 @@ div.list {
   }
 }
 
-.airflowImg {
-  $size: 12rem;
-  width: $size;
-  height: $size;
-  .dag {
-    height: $size * 0.4;
-  }
+.icon img {
+  width: 3.2rem;
 }
