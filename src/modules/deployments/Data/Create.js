@@ -1,11 +1,13 @@
 'use strict'
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import api from './api'
 
-import { Create as Mutation } from '../../../instruments'
+import { Create as Mutation, GetData } from '../../../instruments'
 
 const Create = Component => {
-  const Create = props => {
+  const Create = ({ getData, ...props }) => {
     const query = {
       name: api.Deployments,
       type: 'deployments',
@@ -24,8 +26,7 @@ const Create = Component => {
               mutate({
                 variables: {
                   type: 'airflow',
-                  teamId: 'ab214ce7-79e2-4873-b491-44120d7bcee4',
-                  version: '0.2.1', //TODO: This will get set by the api
+                  teamId: getData.teamId,
                   ...vars,
                 },
               })
@@ -36,8 +37,11 @@ const Create = Component => {
       </Mutation>
     )
   }
+  Create.propTypes = {
+    getData: PropTypes.object,
+  }
 
-  return Create
+  return GetData(Create, { teamId: true })
 }
 
 export default Create
