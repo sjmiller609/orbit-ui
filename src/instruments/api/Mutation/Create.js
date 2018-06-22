@@ -11,9 +11,14 @@ const Create = ({ query, ...props }) => {
         if (!query) return
         // use first key to auto grab Document name
         const result = data.data[Object.keys(data.data)[0]]
-        const results = cache.readQuery({ query: query.name })
+        const results = cache.readQuery({
+          query: query.name,
+          variables: query.vars,
+        })
+        if (!results) return
         cache.writeQuery({
           query: query.name,
+          variables: query.vars,
           data: { [query.type]: results[query.type].concat([result]) },
         })
       }}

@@ -22,7 +22,14 @@ const Delete = ({ deployment, onSubmit }) => {
         ),
       }}
       onSubmit={() => {
-        onSubmit({ id: deployment.id })
+        onSubmit({
+          id: deployment.id,
+          queryVars: {
+            teamId:
+              'ab214ce7-79e2-4873-b491-44120d7bcee4' ||
+              (deployment.team && deployment.team.id),
+          },
+        })
       }}
     />
   )

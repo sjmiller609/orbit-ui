@@ -23,7 +23,12 @@ const Delete = Component => {
             onSubmit: vars => {
               mutate({
                 variables: vars,
-                refetchQueries: [{ query: query.name }],
+                refetchQueries: [
+                  {
+                    query: query.name,
+                    variables: vars.queryVars, // need to get teamId for deployments query
+                  },
+                ],
               })
             },
           }

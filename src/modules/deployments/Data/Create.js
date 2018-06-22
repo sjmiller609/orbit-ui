@@ -11,6 +11,9 @@ const Create = Component => {
     const query = {
       name: api.Deployments,
       type: 'deployments',
+      vars: {
+        teamId: getData.teamId,
+      },
     }
     return (
       <Mutation
