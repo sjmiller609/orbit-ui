@@ -2,13 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { GetContext, SetContext } from './Context'
+import storage from '../../../helpers/storage'
 
 class Provider extends React.Component {
   setTeam = this.setTeam.bind(this)
   setUser = this.setUser.bind(this)
 
   state = {
-    teamId: null, // string
+    teamId: storage.getItem('teamId'), // string
     userId: null, // string
   }
 
@@ -23,6 +24,9 @@ class Provider extends React.Component {
 
   setTeam(teamId) {
     this.setState({ teamId })
+    if (teamId !== storage.getItem('teamId')) {
+      storage.setItem('teamId', teamId)
+    }
   }
 
   render() {
