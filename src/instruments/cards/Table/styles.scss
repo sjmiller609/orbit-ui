@@ -51,19 +51,19 @@
 .noResults {
   height: 15rem;
   img {
-    height: 40%;
+    height: 30%;
     margin-bottom: 1.5rem;
-    animation: fade 4s infinite ease-in;
+    animation: bounce 2s infinite ease-in-out;
   }
   color: $orange;
 }
 
-@keyframes fade {
+@keyframes bounce {
   0%,
   100% {
-    opacity: 1;
+    transform: translateY(0);
   }
   50% {
-    opacity: 0;
+    transform: translateY(8%);
   }
 }

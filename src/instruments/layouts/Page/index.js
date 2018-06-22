@@ -7,22 +7,14 @@ import classnames from 'classnames'
 
 import s from './styles.scss'
 
-import { Loading, Header } from '../../../instruments'
+import { Loading } from '../../../instruments'
 
 // wrapper for all modules
-const Page = ({ children, menu, subMenu, loading, metaTitle, className }) => {
+const Page = ({ children, nav, loading, metaTitle, className }) => {
   if (loading) return <Loading />
   return (
     <div className={classnames(s.module, className)}>
-      <Header
-        className={s.header}
-        subMenu={subMenu}
-        level1={{
-          text: 'My Team', // TODO: get current team data
-          to: menu.home || '/deployments',
-        }}
-        level2={menu.level2}
-      />
+      {nav}
       <div className={s.content}>
         {Array.isArray(children) ? children.map(el => el) : children}
       </div>
@@ -37,8 +29,7 @@ const Page = ({ children, menu, subMenu, loading, metaTitle, className }) => {
 Page.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
     .isRequired,
-  menu: PropTypes.object,
-  subMenu: PropTypes.array,
+  nav: PropTypes.element,
   loading: PropTypes.bool,
   metaTitle: PropTypes.string,
   className: PropTypes.string,

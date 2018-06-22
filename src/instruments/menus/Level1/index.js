@@ -6,8 +6,7 @@ import classnames from 'classnames'
 import { H2, Icon, Link, Dropdown, Item, MenuList } from '../../../instruments'
 import s from './styles.scss'
 
-// TODO: add dropdown
-const Level1 = ({ text, to, active, className }) => {
+const Level1 = ({ selected, list, addNew, active, className }) => {
   return (
     <Dropdown
       disable={!active}
@@ -15,36 +14,39 @@ const Level1 = ({ text, to, active, className }) => {
         <H2 className={classnames(s.menu, active && s.active, className)}>
           <React.Fragment>
             {active ? (
-              text || 'My Team'
+              selected.text
             ) : (
-              <Link to={to}>{text || 'My Team'}</Link>
+              <Link to={selected.to}>{selected.text}</Link>
             )}
             <Icon icon="arrow" className={s.arrow} />
           </React.Fragment>
         </H2>
       }>
-      <MenuList
-        button={{
-          to: '/teams/new',
-          text: 'New Team',
-        }}>
-        <Item to="/" active>
-          My Team
+      <MenuList>
+        {list.map(li => (
+          <Item
+            key={li.id}
+            to={{
+              pathname: '/teams/' + li.id,
+              state: { from: location.pathname },
+            }}
+            active={li.id === selected.id}>
+            {li.label}
+          </Item>
+        ))}
+        <hr className={s.addNew} />
+        <Item key="new" to={addNew.to}>
+          {addNew.text}
         </Item>
-        <Item to="/">Superfriends</Item>
-        <Item to="/">Watchmen</Item>
-        <Item to="/">X-Men</Item>
-        <Item to="/">Secret Avengers</Item>
-        <Item to="/">Powerpuff Girls</Item>
-        <Item to="/">Thundercats</Item>
       </MenuList>
     </Dropdown>
   )
 }
 
 Level1.propTypes = {
-  text: PropTypes.string,
-  to: PropTypes.string,
+  selected: PropTypes.object,
+  addNew: PropTypes.object,
+  list: PropTypes.array,
   active: PropTypes.bool,
   className: PropTypes.string,
 }

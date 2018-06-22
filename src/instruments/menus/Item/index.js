@@ -29,7 +29,7 @@ Item.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   className: PropTypes.string,
   activeClassName: PropTypes.string,
-  to: PropTypes.string,
+  to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   active: PropTypes.bool,
 }
 

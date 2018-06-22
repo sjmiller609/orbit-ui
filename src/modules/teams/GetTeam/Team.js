@@ -5,9 +5,6 @@ import Data from '../Data'
 
 const Team = ({ teams, Component, ...props }) => {
   const team = teams[0]
-  // Error handled
-  if (!team) return null
-
   return <Component team={team} {...props} />
 }
 

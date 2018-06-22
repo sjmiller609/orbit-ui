@@ -5,6 +5,7 @@ import { SetData } from '../../../instruments'
 
 const SetTeam = ({ location, match, setData }) => {
   console.log(location.state)
+  // TODO: redirect to prev route base on state
   setData.teamId(match.params.id)
   return <Redirect to="/deployments" replace />
 }

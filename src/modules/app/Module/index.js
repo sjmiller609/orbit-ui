@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 
 import { Page } from '../../../instruments'
 
-import subMenus from './subMenus'
 import NoMatch from '../NoMatch'
+import Nav from '../Nav'
 
 // wrapper for all modules
 const Module = ({ menu, metaTitle, nada, ...props }) => {
@@ -13,9 +13,7 @@ const Module = ({ menu, metaTitle, nada, ...props }) => {
   const title =
     metaTitle !== 'Astronomer' ? metaTitle + ' | Astronomer' : metaTitle
 
-  const subMenu = menu.subMenu || subMenus[menu.nav]
-
-  return <Page {...props} menu={menu} subMenu={subMenu} metaTitle={title} />
+  return <Page {...props} nav={<Nav menu={menu} />} metaTitle={title} />
 }
 
 Module.propTypes = {
@@ -26,7 +24,6 @@ Module.propTypes = {
 
 Module.defaultProps = {
   metaTitle: 'Astronomer',
-  // breadcrumbs: [],
   menu: {},
   // help: {},
 }
