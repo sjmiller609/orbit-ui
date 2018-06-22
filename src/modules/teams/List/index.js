@@ -17,10 +17,7 @@ const List = ({ teams, search }) => {
   // get a shallow copy before reversing, for speed
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
-      {teams
-        .slice(0)
-        .reverse()
-        .map(t => <Item key={t.id} team={t} />)}
+      {teams.map(t => <Item key={t.id} team={t} />)}
     </Table>
   )
 }

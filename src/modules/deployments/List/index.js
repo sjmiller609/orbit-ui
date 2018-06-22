@@ -13,14 +13,9 @@ const List = ({ deployments, search }) => {
     text: 'New Deployment',
     to: '/deployments/new',
   }
-  // NOTE: Orders by updatedAt, so show most recent first
-  // get a shallow copy before reversing, for speed
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
-      {deployments
-        .slice(0)
-        .reverse()
-        .map(d => <Item key={d.id} deployment={d} />)}
+      {deployments.map(d => <Item key={d.id} deployment={d} />)}
     </Table>
   )
 }

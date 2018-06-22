@@ -17,7 +17,15 @@ const Query = ({ gql, vars, skip, children, search }) => {
         // remove property `Symbol(id)` from data, as it breaks react dev tools
         const data2 = {}
         Object.keys(data).forEach(k => {
-          data2[k] = data[k]
+          // then make a shallow copy and order by date if it has that property
+          data2[k] = data[k].slice(0)
+          if (data[k].length > 1 && data[k][0].createdAt) {
+            data2[k].sort((a, b) => {
+              const a1 = new Date(a.updatedAt || a.createdAt).getTime()
+              const b1 = new Date(b.updatedAt || b.createdAt).getTime()
+              return b1 - a1
+            })
+          }
         })
 
         let data3
