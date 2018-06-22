@@ -4,10 +4,9 @@ import { Redirect } from 'react-router-dom'
 import { SetData } from '../../../instruments'
 
 const SetTeam = ({ location, match, setData }) => {
-  console.log(location.state)
-  // TODO: redirect to prev route base on state
+  const from = location.state && location.state.from
   setData.teamId(match.params.id)
-  return <Redirect to="/deployments" replace />
+  return <Redirect to={from || '/deployments'} replace />
 }
 
 SetTeam.propTypes = {
