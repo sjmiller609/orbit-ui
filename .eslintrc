@@ -25,6 +25,11 @@
     "node": true,
     "jest": true
   },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  },
   "rules": {
     "prettier/prettier": "error",
     "no-debugger": 1,

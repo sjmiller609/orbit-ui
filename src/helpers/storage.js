@@ -1,7 +1,8 @@
 // necessary because safari mobile errors on localStorage
 
 // implement memory store spec'd to Storage prototype
-;(function(window) {
+// eslint-disable-next-line
+(function(window) {
   const items = {}
 
   function MemoryStorage() {}
@@ -54,7 +55,7 @@ getStorage.prototype.FALLBACK_STORAGE = window.memoryStorage
 // Check again after removing browser sync
 // Passing in {} is correct behaivor
 const dev = process.env.NODE_ENV !== 'production'
-const foo = dev ? localStorage : {} // force fallback
+const foo = dev ? window.localStorage : {} // force fallback
 
 // const foo = localStorage; // force fallback
 

@@ -23,12 +23,34 @@
       "plugins": [
         "react-hot-loader/babel",
         "transform-react-constant-elements",
-        "transform-react-remove-prop-types"
+        "transform-react-remove-prop-types",
+        [
+          "module-resolver",
+          {
+            "root": ["./src"],
+            "alias": {
+              "instruments": "./src/instruments",
+              "modules": "./src/modules"
+            }
+          }
+        ]
       ]
     },
     "test": {
       "presets": ["env", "es2015", "react", "stage-1"],
-      "plugins": ["babel-plugin-dynamic-import-node"]
+      "plugins": [
+        "babel-plugin-dynamic-import-node",
+        [
+          "module-resolver",
+          {
+            "root": ["./src"],
+            "alias": {
+              "instruments": "./src/instruments",
+              "modules": "./src/modules"
+            }
+          }
+        ]
+      ]
     }
   }
 }
