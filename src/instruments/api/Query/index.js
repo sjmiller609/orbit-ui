@@ -17,6 +17,7 @@ const Query = ({ gql, vars, skip, children, search }) => {
         // remove property `Symbol(id)` from data, as it breaks react dev tools
         const data2 = {}
         Object.keys(data).forEach(k => {
+          if (!data[k]) return null
           // then make a shallow copy and order by date if it has that property
           data2[k] = data[k].slice(0)
           if (data[k].length > 1 && data[k][0].createdAt) {
