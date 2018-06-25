@@ -4,7 +4,7 @@ import React from 'react'
 import { NavLink as NavLink1, Link as NavLink2 } from 'react-router-dom'
 import s from './styles.scss'
 import classnames from 'classnames'
-import { Icon } from '../../../instruments'
+import { Icon } from 'instruments'
 import { externalUrl } from './helpers'
 
 const Link = ({

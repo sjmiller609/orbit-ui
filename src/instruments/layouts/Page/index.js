@@ -7,7 +7,7 @@ import classnames from 'classnames'
 
 import s from './styles.scss'
 
-import { Loading } from '../../../instruments'
+import { Loading } from 'instruments'
 
 // wrapper for all modules
 const Page = ({ children, nav, loading, metaTitle, className }) => {

@@ -2,7 +2,7 @@
 import React from 'react'
 import api from './api'
 
-import { Create as Mutation } from '../../../instruments'
+import { Create as Mutation } from 'instruments'
 
 const Create = Component => {
   const Create = props => {

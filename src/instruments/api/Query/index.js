@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Query as Apollo } from 'react-apollo'
-import { Loading, CardError } from '../../../instruments'
+import { Loading, CardError } from 'instruments'
 
 import { searchText } from './helpers'
 

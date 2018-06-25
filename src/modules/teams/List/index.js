@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import s from './styles.scss'
-import { Table } from '../../../instruments'
+import { Table } from 'instruments'
 
 import Data from '../Data'
 import Item from './Item'

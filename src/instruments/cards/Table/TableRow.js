@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import { Row, Box, Link, Icon } from '../../../instruments'
+import { Row, Box, Link, Icon } from 'instruments'
 
 const TableRow = ({ columns, to, className }) => {
   return (

@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Row, Logo, H2, Link, Level1, ProfileMenu } from '../../../instruments'
+import { Row, Logo, H2, Link, Level1, ProfileMenu } from 'instruments'
 import s from './styles.scss'
 
 const Menu = ({ level1, level2, className }) => {

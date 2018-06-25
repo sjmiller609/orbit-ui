@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Menu, SubMenu } from '../../../instruments'
+import { Menu, SubMenu } from 'instruments'
 import s from './styles.scss'
 
 const Header = ({ level1, level2, subMenu, className }) => {

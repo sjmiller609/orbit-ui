@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { H2, Icon, Link, Dropdown, Item, MenuList } from '../../../instruments'
+import { H2, Icon, Link, Dropdown, Item, MenuList } from 'instruments'
 import s from './styles.scss'
 
 const Level1 = ({ selected, list, addNew, active, className }) => {

@@ -11,7 +11,7 @@ import {
   H3,
   ShowDate,
   Airflow,
-} from '../../../instruments'
+} from 'instruments'
 
 const Item = ({ deployment, className }) => {
   const columns = [

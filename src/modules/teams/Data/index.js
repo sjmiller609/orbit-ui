@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import api from './api'
 
-import { Query } from '../../../instruments'
+import { Query } from 'instruments'
 
 const Data = Component => {
   const Data = ({ vars, skip, search, ...otherProps }) => {

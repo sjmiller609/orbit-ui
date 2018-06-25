@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { CardForm, Form, TextField, TextArea } from '../../../instruments'
+import { CardForm, Form, TextField, TextArea } from 'instruments'
 
 import Update from '../Data/Update'
 

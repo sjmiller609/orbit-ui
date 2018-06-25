@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Page } from '../../../instruments'
+import { Page } from 'instruments'
 
 import NoMatch from '../NoMatch'
 import Nav from '../Nav'

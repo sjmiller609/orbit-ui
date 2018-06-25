@@ -1,5 +1,5 @@
 import React from 'react'
-import { Snackbar, Dialog, SetUI, GetUI } from '../../../instruments'
+import { Snackbar, Dialog, SetUI, GetUI } from 'instruments'
 import PropTypes from 'prop-types'
 
 const UI = ({ getUI, setUI }) => {

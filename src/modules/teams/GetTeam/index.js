@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { GetData } from '../../../instruments'
+import { GetData } from 'instruments'
 
 import Team from './Team'
 

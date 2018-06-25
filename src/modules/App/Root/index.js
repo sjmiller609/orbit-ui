@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { hot } from 'react-hot-loader'
 import Routes from '../Routes'
 import UI from '../UI'
-import { ProviderUI, ProviderData } from '../../../instruments'
+import { ProviderUI, ProviderData } from 'instruments'
 import ErrorBoundary from '../ErrorBoundary'
 
 const Root = () => {

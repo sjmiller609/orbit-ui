@@ -5,7 +5,7 @@ import classnames from 'classnames'
 
 import s from './styles.scss'
 
-import { Box, Icon } from '../../../instruments'
+import { Box, Icon } from 'instruments'
 
 const Airflow = ({ className, dagSize }) => {
   return (

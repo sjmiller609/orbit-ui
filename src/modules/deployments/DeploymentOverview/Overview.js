@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { CardForm, P, B, Link } from '../../../instruments'
+import { CardForm, P, B, Link } from 'instruments'
 
 const Overview = ({ deployment }) => {
   return (

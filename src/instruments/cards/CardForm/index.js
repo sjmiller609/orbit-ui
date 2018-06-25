@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Card, Button, Row } from '../../../instruments'
+import { Card, Button, Row } from 'instruments'
 
 import s from './styles.scss'
 

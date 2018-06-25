@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { CardError } from '../../../instruments'
+import { CardError } from 'instruments'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

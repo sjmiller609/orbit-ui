@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import s from './styles.scss'
 import { charLimit } from '../../../helpers/format'
 
-import { TableRow, Box, P, H3, Icon } from '../../../instruments'
+import { TableRow, Box, P, H3, Icon } from 'instruments'
 
 const Item = ({ team, className }) => {
   const columns = [

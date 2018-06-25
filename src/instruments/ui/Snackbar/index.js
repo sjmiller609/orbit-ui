@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import s from './styles.scss'
-import { Row } from '../../../instruments'
+import { Row } from 'instruments'
 
 class Snackbar extends React.Component {
   timeout = null

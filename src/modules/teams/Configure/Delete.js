@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { CardDelete, B } from '../../../instruments'
+import { CardDelete, B } from 'instruments'
 
 import { default as Mutate } from '../Data/Delete'
 

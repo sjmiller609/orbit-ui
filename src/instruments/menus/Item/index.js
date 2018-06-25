@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import { Link } from '../../../instruments'
+import { Link } from 'instruments'
 
 const Item = ({
   to,

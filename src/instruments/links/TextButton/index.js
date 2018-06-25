@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
-import { Link } from '../../../instruments'
+import { Link } from 'instruments'
 
 const TextButton = ({ children, style, className, ...props }) => {
   return (

@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Box, Icon, H3, MenuList, Item, Dropdown } from '../../../instruments'
+import { Box, Icon, H3, MenuList, Item, Dropdown } from 'instruments'
 import s from './styles.scss'
 
 const ProfileMenu = ({ className }) => {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { withRouter } from 'react-router'
 import { Mutation as Apollo } from 'react-apollo'
-import { Loading, SetUI, Track, CardError } from '../../../instruments'
+import { Loading, SetUI, Track, CardError } from 'instruments'
 
 const Mutation = ({
   gql,

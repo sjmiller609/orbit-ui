@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { GetData, Header } from '../../../instruments'
+import { GetData, Header } from 'instruments'
 import Data from '../../teams/Data'
 import subMenus from './subMenus'
 

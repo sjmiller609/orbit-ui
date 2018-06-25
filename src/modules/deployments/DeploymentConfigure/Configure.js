@@ -10,7 +10,7 @@ import {
   P,
   Mini,
   ShowDate,
-} from '../../../instruments'
+} from 'instruments'
 
 import Update from '../Data/Update'
 

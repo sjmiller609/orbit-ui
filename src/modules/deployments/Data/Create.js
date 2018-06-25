@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import api from './api'
 
-import { Create as Mutation, GetData } from '../../../instruments'
+import { Create as Mutation, GetData } from 'instruments'
 
 const Create = Component => {
   const Create = ({ getData, ...props }) => {

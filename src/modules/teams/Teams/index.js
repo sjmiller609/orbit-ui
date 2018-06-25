@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import List from '../List'
 import Module from '../../app/Module'
-import { SetData } from '../../../instruments'
+import { SetData } from 'instruments'
 
 class Teams extends React.Component {
   menu = {

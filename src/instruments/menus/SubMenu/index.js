@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Row, Item } from '../../../instruments'
+import { Row, Item } from 'instruments'
 import s from './styles.scss'
 
 const SubMenu = ({ menu, className }) => {

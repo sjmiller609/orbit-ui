@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import NoMatch from '../NoMatch'
 import Start from '../Start'
-import { ScrollToTop, Pageview, GetData } from '../../../instruments'
+import { ScrollToTop, Pageview, GetData } from 'instruments'
 
 // get module routes
 import deployments from '../../deployments/Routes'

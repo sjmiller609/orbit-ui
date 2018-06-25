@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import s from './styles.scss'
-import { Block1, Airflow } from '../../../instruments'
+import { Block1, Airflow } from 'instruments'
 
 const Empty = ({ button }) => {
   return (

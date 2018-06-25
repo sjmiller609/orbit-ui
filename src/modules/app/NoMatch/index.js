@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, H1, H4, TextButton } from '../../../instruments'
+import { Box, H1, H4, TextButton } from 'instruments'
 import { Helmet } from 'react-helmet'
 
 import astronaut from './astronaut.svg'

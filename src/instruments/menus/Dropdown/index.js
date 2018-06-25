@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import s from './styles.scss'
-import { Backdrop, Link, Card } from '../../../instruments'
+import { Backdrop, Link, Card } from 'instruments'
 
 import classnames from 'classnames'
 

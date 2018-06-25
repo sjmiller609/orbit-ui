@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { CardForm, P, SetUI } from '../../../instruments'
+import { CardForm, P, SetUI } from 'instruments'
 
 const CardDelete = ({
   text,

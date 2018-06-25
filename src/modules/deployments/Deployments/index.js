@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import List from '../List'
 import Module from '../../app/Module'
-import { GetData } from '../../../instruments'
+import { GetData } from 'instruments'
 
 class Deployments extends React.Component {
   menu = {

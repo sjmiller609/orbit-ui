@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import s from './styles.scss'
 import classNames from 'classnames'
-import { Row } from '../../../instruments'
+import { Row } from 'instruments'
 
 class Checkbox extends React.Component {
   change = this.change.bind(this)

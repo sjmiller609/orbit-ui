@@ -2,7 +2,7 @@
 import React from 'react'
 import api from './api'
 
-import { Delete as Mutate } from '../../../instruments'
+import { Delete as Mutate } from 'instruments'
 
 const Delete = Component => {
   const Delete = props => {

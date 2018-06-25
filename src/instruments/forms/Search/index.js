@@ -6,7 +6,7 @@ import s from './styles.scss'
 import field from '../TextField/styles.scss'
 import classnames from 'classnames'
 
-import { LoadingDots } from '../../../instruments'
+import { LoadingDots } from 'instruments'
 
 class Search extends React.Component {
   timeout = null

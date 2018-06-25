@@ -1,7 +1,7 @@
 'use strict'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Link } from '../../../instruments'
+import { Link } from 'instruments'
 import s from './styles.scss'
 import classnames from 'classnames'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
-import { SetData } from '../../../instruments'
+import { SetData } from 'instruments'
 
 const SetTeam = ({ location, match, setData }) => {
   const from = location.state && location.state.from

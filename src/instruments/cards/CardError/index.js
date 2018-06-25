@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Card, Block1, Link, P } from '../../../instruments'
+import { Card, Block1, Link, P } from 'instruments'
 import astronaut from './astronaut.svg'
 import s from './styles.scss'
 

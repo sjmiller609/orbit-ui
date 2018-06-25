@@ -1,7 +1,7 @@
 'use strict'
 import React from 'react'
 
-import { Box, H5, Icon } from '../../../instruments'
+import { Box, H5, Icon } from 'instruments'
 import s from './styles.scss'
 
 const NoResults = () => {
