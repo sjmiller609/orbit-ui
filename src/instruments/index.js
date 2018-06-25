@@ -6,8 +6,9 @@ export { default as Box } from './flex/Box'
 export { default as Page } from './layouts/Page'
 export { default as Header } from './layouts/Header'
 
-export { default as Loading } from './animations/Loading'
-export { default as LoadingDots } from './animations/LoadingDots'
+export { default as Load } from './loading/Load'
+export { default as Loading } from './loading/Loading'
+export { default as LoadingDots } from './loading/LoadingDots'
 
 export { default as Search } from './forms/Search'
 export { default as Form } from './forms/Form'
