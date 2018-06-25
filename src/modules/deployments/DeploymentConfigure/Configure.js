@@ -2,15 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import s from './styles.scss'
-import {
-  CardForm,
-  Form,
-  TextField,
-  H5,
-  P,
-  Mini,
-  ShowDate,
-} from 'instruments'
+import { CardForm, Form, TextField, H5, P, Mini, ShowDate } from 'instruments'
 
 import Update from '../Data/Update'
 

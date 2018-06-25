@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 
 import { Switch, Route } from 'react-router-dom'
 
-import NoMatch from '../NoMatch'
+// import NoMatch from '../NoMatch'
 import Start from '../Start'
-import { ScrollToTop, Pageview, GetData } from 'instruments'
+import { ScrollToTop, Pageview, GetData, Load } from 'instruments'
 
 // get module routes
-import deployments from '../../deployments/Routes'
-import { default as teams, team } from '../../teams/Routes'
+import deployments from 'modules/deployments/Routes'
+import { default as teams, team } from 'modules/teams/Routes'
 
 import TeamRoute from './TeamRoute'
 
@@ -22,11 +22,11 @@ const routes = [
   ...teams,
   {
     path: '/404',
-    component: NoMatch,
+    component: Load('/app/NoMatch'),
     exact: true,
   },
   {
-    component: NoMatch,
+    component: Load('/app/NoMatch'),
   },
 ]
 
