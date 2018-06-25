@@ -6,9 +6,9 @@
   -->
   <head>
     <script type="text/javascript">
-      window["API_HTTP"] = '<%= htmlWebpackPlugin.options.api_http %>';
-      window["STRIPE_PK"] = '<%= htmlWebpackPlugin.options.stripe_pk %>';
-    </script>
+    window['API_HTTP'] = '<%= htmlWebpackPlugin.options.api_http %>'
+window['STRIPE_PK'] = '<%= htmlWebpackPlugin.options.stripe_pk %>'
+</script>
     <script type="text/javascript">
       <%= htmlWebpackPlugin.options.tracking_snippet %>
     </script>
@@ -19,6 +19,6 @@
     <title>Astronomer</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="root"></div>
   </body>
 </html>

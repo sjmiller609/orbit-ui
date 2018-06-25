@@ -1,16 +1,24 @@
 import React from 'react'
-import { CardError } from '../../../instruments'
+import { Box, H1, H4, TextButton } from '../../../instruments'
 import { Helmet } from 'react-helmet'
 
-//import s from './styles.scss'
+import astronaut from './astronaut.svg'
+
+import s from './styles.scss'
+
 const NoMatch = () => {
   return (
-    <React.Fragment>
-      <CardError full />
+    <Box full className={s.noMatch}>
+      <img src={astronaut} className={s.img} title="Page not found" />
+      <H1>Oh snap!</H1>
+      <H4>There's nothing out here...</H4>
+      <TextButton to="/" backArrow>
+        Return Home
+      </TextButton>
       <Helmet>
         <title>Page not found | Astronomer</title>
       </Helmet>
-    </React.Fragment>
+    </Box>
   )
 }
 

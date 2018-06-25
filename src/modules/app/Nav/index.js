@@ -6,6 +6,7 @@ import subMenus from './subMenus'
 
 const Nav = ({ getData, teams, menu }) => {
   const teamId = getData.teamId
+  if (!teams) return null
   const team = teams.find(team => team.id === teamId)
 
   const level1 = {

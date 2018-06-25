@@ -58,5 +58,5 @@ render(
   <ApolloProvider client={client}>
     <Root />
   </ApolloProvider>,
-  document.getElementById('app')
+  document.getElementById('root')
 )

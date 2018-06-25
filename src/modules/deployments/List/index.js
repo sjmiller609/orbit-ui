@@ -15,7 +15,7 @@ const List = ({ deployments, search }) => {
   }
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
-      {deployments.map(d => <Item key={d.id} deployment={d} />)}
+      {deployments && deployments.map(d => <Item key={d.id} deployment={d} />)}
     </Table>
   )
 }

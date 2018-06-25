@@ -32,7 +32,8 @@ html {
 }
 
 html,
-body {
+body,
+body > div {
   height: 100%;
 }
 
@@ -44,10 +45,6 @@ body {
   color: $purple;
   @include font($f400);
   font-size: 1.5rem;
-}
-
-#root {
-  height: 100%;
 }
 
 p,

@@ -34,7 +34,9 @@ $footerHeaderHeight: 6.2rem;
       min-height: $footerHeaderHeight;
     }
   }
-
+  h4 {
+    color: $lightBeige;
+  }
   .title {
     h4 {
       white-space: nowrap;
