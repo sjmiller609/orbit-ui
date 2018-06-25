@@ -39,6 +39,7 @@ export { default as H5 } from './text/H5'
 
 export { default as Snackbar } from './ui/Snackbar'
 export { default as Backdrop } from './ui/Backdrop'
+export { default as ScrollToTop } from './ui/ScrollToTop'
 
 export { default as Block1 } from './content/Block1'
 

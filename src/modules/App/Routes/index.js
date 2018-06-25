@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import NoMatch from '../NoMatch'
 import Start from '../Start'
-import { Pageview, GetData } from '../../../instruments'
+import { ScrollToTop, Pageview, GetData } from '../../../instruments'
 
 // get module routes
 import deployments from '../../deployments/Routes'
@@ -37,6 +37,7 @@ const Routes = ({ getData }) => {
   return (
     <React.Fragment>
       <Route component={Pageview} />
+      <Route component={ScrollToTop} />
       <Switch>
         {teamRoutes.map((route, i) => (
           <TeamRoute key={i} teamId={getData.teamId} {...route} />
