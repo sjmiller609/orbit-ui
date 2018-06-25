@@ -25,7 +25,8 @@ class Provider extends React.Component {
   setTeam(teamId) {
     this.setState({ teamId })
     if (teamId !== storage.getItem('teamId')) {
-      storage.setItem('teamId', teamId)
+      if (!teamId) storage.removeItem('teamId')
+      else storage.setItem('teamId', teamId)
     }
   }
 
