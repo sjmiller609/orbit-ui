@@ -1,0 +1,17 @@
+@import 'src/styles/mixins.scss';
+
+.header {
+  padding: 0 5%;
+  min-height: 16rem;
+  background: linear-gradient(to right, $darkBlue, $lightBlue);
+  padding-bottom: 6rem;
+  color: $white;
+}
+
+img.logo {
+  width: 6rem;
+}
+
+.title {
+  margin-left: 2rem;
+}

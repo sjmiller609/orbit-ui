@@ -14,7 +14,7 @@ class Logo extends React.Component {
   componentWillMount() {
     const { darkBg, noStars, full } = this.props
     let path = full ? 'Astro_' : 'A_'
-    path += noStars ? '' : 'stars_'
+    path += noStars || full ? '' : 'stars_'
     path += darkBg ? 'darkBg' : 'lightBg'
 
     import(`./img/${path}.svg`).then(module =>

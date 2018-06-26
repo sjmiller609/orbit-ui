@@ -1,0 +1,7 @@
+@import 'src/styles/mixins.scss';
+
+.content {
+  padding: 0 5% 15rem;
+  margin-top: -5.3rem;
+  @include spacing;
+}

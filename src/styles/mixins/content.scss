@@ -1,10 +1,10 @@
 @mixin spacing() {
   h2,
   h1 {
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.1rem;
   }
   p:not(:last-child),
   h4:not(:last-child) {
-    margin-bottom: 2.2rem;
+    margin-bottom: 3.1rem;
   }
 }
