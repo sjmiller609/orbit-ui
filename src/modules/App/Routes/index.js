@@ -8,15 +8,12 @@ import { ScrollToTop, Pageview, GetData, Load } from 'instruments'
 // get module routes
 import deployments from 'modules/deployments/Routes'
 import { default as teams, team } from 'modules/teams/Routes'
+import auth from 'modules/auth/Routes'
 
 import TeamRoute from './TeamRoute'
 
 const routes = [
-  {
-    path: '/',
-    component: Load(() => import('../Start')),
-    exact: true,
-  },
+  ...auth,
   ...teams,
   {
     path: '/404',
