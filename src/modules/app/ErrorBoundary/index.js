@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { CardError } from 'instruments'
+import { ErrorPage } from 'instruments'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
-    if (this.state.hasError) return <CardError />
+    if (this.state.hasError) return <ErrorPage />
 
     return this.props.children
   }

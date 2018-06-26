@@ -1,20 +1,18 @@
-import Deployments from '../Deployments'
-import New from '../New'
-import Deployment from '../Deployment'
+import { Load } from 'instruments'
 
 export default [
   {
     path: '/deployments',
-    component: Deployments,
+    component: Load(() => import('../Deployments')),
     exact: true,
   },
   {
     path: '/deployments/new',
-    component: New,
+    component: Load(() => import('../Deployment')),
     exact: true,
   },
   {
     path: '/deployments/:id',
-    component: Deployment,
+    component: Load(() => import('../New')),
   },
 ]

@@ -1,30 +1,26 @@
-import Teams from '../Teams'
-import New from '../New'
-import SetTeam from '../SetTeam'
-
-import Settings from '../Settings'
+import { Load } from 'instruments'
 
 export default [
   {
     path: '/teams',
-    component: Teams,
+    component: Load(() => import('../Teams')),
     exact: true,
   },
   {
     path: '/teams/new',
-    component: New,
+    component: Load(() => import('../New')),
     exact: true,
   },
   {
     path: '/teams/:id',
-    component: SetTeam,
+    component: Load(() => import('../SetTeam')),
   },
 ]
 
 export const team = [
   {
     path: '/settings',
-    component: Settings,
+    component: Load(() => import('../Settings')),
     exact: true,
   },
 ]

@@ -1,10 +1,10 @@
-// NOTE: Any instruments importing other instruments must come AFTER
-
 export { default as Row } from './flex/Row'
 export { default as Box } from './flex/Box'
 
-export { default as Page } from './layouts/Page'
 export { default as Header } from './layouts/Header'
+export { default as Page } from './layouts/Page'
+export { default as App } from './layouts/App'
+export { default as ErrorPage } from './layouts/ErrorPage'
 
 export { default as Load } from './loading/Load'
 export { default as Loading } from './loading/Loading'

@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Page } from 'instruments'
+import { App } from 'instruments'
 
 import NoMatch from '../NoMatch'
 import Nav from '../Nav'
@@ -13,7 +13,7 @@ const Module = ({ menu, metaTitle, nada, ...props }) => {
   const title =
     metaTitle !== 'Astronomer' ? metaTitle + ' | Astronomer' : metaTitle
 
-  return <Page {...props} nav={<Nav menu={menu} />} metaTitle={title} />
+  return <App {...props} nav={<Nav menu={menu} />} metaTitle={title} />
 }
 
 Module.propTypes = {

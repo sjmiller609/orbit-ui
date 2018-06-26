@@ -1,11 +1,5 @@
 @import 'src/styles/mixins.scss';
 
-.module {
-  height: auto;
-}
-
-.content {
-  position: relative;
-  margin-top: -5.3rem;
-  padding: 0 1% 15rem;
+.page {
+  height: 100%;
 }

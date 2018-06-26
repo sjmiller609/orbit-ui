@@ -11,14 +11,14 @@ const Root = () => {
   return (
     <ProviderData>
       <ProviderUI>
-        <ErrorBoundary>
-          <BrowserRouter>
+        <BrowserRouter>
+          <ErrorBoundary>
             <React.Fragment>
               <Routes />
               <UI />
             </React.Fragment>
-          </BrowserRouter>
-        </ErrorBoundary>
+          </ErrorBoundary>
+        </BrowserRouter>
       </ProviderUI>
     </ProviderData>
   )

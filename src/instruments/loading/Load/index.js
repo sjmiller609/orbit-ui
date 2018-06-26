@@ -1,15 +1,17 @@
 //import React from 'react'
-import { asyncComponent } from 'react-async-component'
-import { Loading, CardError } from 'instruments'
+import Loadable from 'react-loadable'
+import Handler from './Handler'
 
-const Load = path => {
-  if (!path) return
-  return asyncComponent({
-    // resolve: () => import(`${path}`),
-    resolve: () => import('modules/app/NoMatch'),
-    LoadingComponent: Loading,
-    ErrorComponent: CardError,
-  })
+const Load = loader => {
+  if (!loader) return
+  return Loadable(
+    Object.assign({
+      loader,
+      loading: Handler,
+      timeout: 10000,
+      delay: 200,
+    })
+  )
 }
 
 export default Load
