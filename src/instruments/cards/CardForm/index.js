@@ -12,26 +12,28 @@ const CardForm = ({ children, button, button2, title, className }) => {
   return (
     <Card
       footer={
-        <Row className={s.footer}>
-          {button2 && (
+        button && (
+          <Row className={s.footer}>
+            {button2 && (
+              <Button
+                onClick={button2.onClick}
+                style={button2.style}
+                className={s.button2}>
+                {button2.text || 'Cancel'}
+              </Button>
+            )}
             <Button
-              onClick={button2.onClick}
-              style={button2.style}
-              className={s.button2}>
-              {button2.text || 'Cancel'}
+              disabled={
+                (typeof button.save === 'boolean' && !button.save) || false
+              }
+              submit
+              arrow
+              onClick={button.onClick}
+              style={button.style}>
+              {button.text || 'Save'}
             </Button>
-          )}
-          <Button
-            disabled={
-              (typeof button.save === 'boolean' && !button.save) || false
-            }
-            submit
-            arrow
-            onClick={button.onClick}
-            style={button.style}>
-            {button.text || 'Save'}
-          </Button>
-        </Row>
+          </Row>
+        )
       }
       header={title}
       className={classnames(className)}>

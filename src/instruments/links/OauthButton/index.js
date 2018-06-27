@@ -1,54 +1,44 @@
 'use strict'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Link, Row, Load } from 'instruments'
+import { Link, Row, Box, Icon } from 'instruments'
 import s from './styles.scss'
 import classnames from 'classnames'
 
 const services = {
   google: {
-    text: 'Continue with Google',
-    img: Load(() => import('./img/google.svg')),
+    text: ' with Google',
+    img: 'google.svg',
+    to: 'https://www.google.com',
+    className: 'google',
   },
 }
 
-const OauthButton = ({
-  onClick,
-  service,
-  disabled,
-  to,
-  className,
-  ...props
-}) => {
+const OauthButton = ({ service, login, ...props }) => {
   const oauth = services[service]
+  const img = require('./img/' + oauth.img)
   return (
     <Link
       {...props}
-      to={to}
-      onClick={onClick}
+      to={oauth.to}
       title={oauth.text}
-      className={classnames(
-        s.button,
-        disabled ? s.disabled : null,
-        s[oauth.className],
-        className
-      )}>
-      <Row>
-        <div className={s.img}>
-          <img src={oauth.img} />
-        </div>
-        {oauth.text}
+      className={classnames(s.button, s[oauth.className])}>
+      <Row full>
+        <Box className={s.img}>
+          <img src={img} />
+        </Box>
+        <span className={s.text}>
+          {login ? 'Login' : 'Sign up'}
+          {oauth.text} <Icon className={s.arrow} icon="arrow_darkBg" />
+        </span>
       </Row>
     </Link>
   )
 }
 
 OauthButton.propTypes = {
-  onClick: PropTypes.func,
   service: PropTypes.string,
-  disabled: PropTypes.bool,
-  to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  className: PropTypes.string,
+  login: PropTypes.bool,
 }
 
 export default OauthButton

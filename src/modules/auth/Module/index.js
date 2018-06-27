@@ -2,14 +2,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Site, SiteHeader } from 'instruments'
-
+import { Site } from 'instruments'
+import Nav from '../Nav'
 // wrapper for all modules
-const Module = ({ menu, metaTitle, ...props }) => {
+const Module = ({ metaTitle, ...props }) => {
   const title =
     metaTitle !== 'Astronomer' ? metaTitle + ' | Astronomer' : metaTitle
 
-  return <Site {...props} nav={<SiteHeader menu={menu} />} metaTitle={title} />
+  return <Site {...props} nav={<Nav />} metaTitle={title} />
 }
 
 Module.propTypes = {

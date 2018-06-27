@@ -8,11 +8,12 @@ export default [
   },
   {
     path: '/deployments/new',
-    component: Load(() => import('../Deployment')),
+    component: Load(() => import('../New')),
     exact: true,
   },
   {
     path: '/deployments/:id',
-    component: Load(() => import('../New')),
+    component: Load(() => import('../Deployment')),
+    exact: true,
   },
 ]

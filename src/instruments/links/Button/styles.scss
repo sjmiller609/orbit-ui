@@ -1,6 +1,5 @@
 @import 'src/styles/mixins.scss';
 
-// could replace all buttons and mixins with styles here
 a.button {
   display: inline-block;
 }
@@ -10,6 +9,7 @@ a.button {
   white-space: nowrap;
   border-radius: 3px;
   padding: 1.4em 1.8em 1.05em;
+  height: 4em; //specifying for 100% children
   color: $white;
   @include shadow;
   background-image: linear-gradient(to right, $green, $blue);
