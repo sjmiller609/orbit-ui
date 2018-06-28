@@ -16,14 +16,10 @@ div.list {
   color: $beige;
 }
 
-.item:hover {
-  :global {
-    .ring {
-      transform: rotate(360deg);
-    }
-  }
-}
-
 .icon img {
   width: 3.2rem;
+}
+
+.largeStars {
+  width: 11rem;
 }
