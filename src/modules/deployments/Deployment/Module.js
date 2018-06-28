@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom'
 
 import DeploymentConfigure from '../DeploymentConfigure'
 import DeploymentOverview from '../DeploymentOverview'
-
+import { Load } from 'instruments'
 import Data from '../Data'
 import Module from '../../app/Module'
 

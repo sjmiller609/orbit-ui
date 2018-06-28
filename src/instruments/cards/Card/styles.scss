@@ -20,6 +20,8 @@ $footerHeaderHeight: 6.2rem;
   main {
     height: inherit;
     min-height: inherit;
+
+    @include p;
   }
 
   header {

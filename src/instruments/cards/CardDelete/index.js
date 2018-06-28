@@ -10,6 +10,7 @@ const CardDelete = ({
   children,
   onSubmit,
   setUI,
+  disabled,
   ...otherProps
 }) => {
   const onClick = () =>
@@ -29,7 +30,7 @@ const CardDelete = ({
       button={{
         onClick,
         text: buttonText || 'Delete',
-        save: true,
+        save: !disabled,
         style: 'red',
       }}>
       {children || <P>{text}</P>}
@@ -44,6 +45,7 @@ CardDelete.propTypes = {
   children: PropTypes.element,
   onSubmit: PropTypes.func,
   setUI: PropTypes.object,
+  disabled: PropTypes.bool,
 }
 
 export default SetUI(CardDelete, { dialog: true })

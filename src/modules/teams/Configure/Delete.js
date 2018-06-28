@@ -1,15 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { CardDelete, B } from 'instruments'
+import { CardDelete, Link, P, B } from 'instruments'
 
 import { default as Mutate } from '../Data/Delete'
+import Data from 'modules/deployments/Data'
 
-const Delete = ({ team, onSubmit }) => {
+// Get Deployments and disable delete if any exist
+
+const Delete = ({ team, deployments, onSubmit }) => {
+  const nDeployments = deployments.length
   return (
     <CardDelete
       title="Delete Team"
-      text="Warning! This cannot be undone. Your deployments will all be deleted, and you will lose all connections configured in Airflow."
+      text="Warning! This cannot be undone. Your team and all its existing data will be deleted."
       confirm={{
         text: (
           <span>
@@ -19,16 +23,36 @@ const Delete = ({ team, onSubmit }) => {
           </span>
         ),
       }}
+      disabled={!!nDeployments}
       onSubmit={() => {
         onSubmit({ id: team.id })
-      }}
-    />
+      }}>
+      {nDeployments ? (
+        <React.Fragment>
+          <P>
+            Your team has {nDeployments} active deployment
+            {nDeployments > 1 ? 's' : ''}:{' '}
+            {deployments.map((d, i) => (
+              <Link key={d.id} to={`/deployments/${d.releaseName}/configure`}>
+                {d.label}
+                {i + 1 < deployments.length ? ', ' : ''}
+              </Link>
+            ))}
+          </P>
+          <P>
+            You must first deprovision all deployments before you can delete
+            your team.
+          </P>
+        </React.Fragment>
+      ) : null}
+    </CardDelete>
   )
 }
 
 Delete.propTypes = {
   onSubmit: PropTypes.func,
   team: PropTypes.object,
+  deployments: PropTypes.array,
 }
 
-export default Mutate(Delete)
+export default Data(Mutate(Delete))

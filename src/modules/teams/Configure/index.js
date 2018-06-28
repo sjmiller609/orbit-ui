@@ -8,7 +8,7 @@ const Settings = ({ team }) => {
   return (
     <React.Fragment>
       <Configure team={team} data={team} />
-      <Delete team={team} />
+      <Delete team={team} vars={{ teamId: team.id }} />
     </React.Fragment>
   )
 }

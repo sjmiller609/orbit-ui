@@ -13,8 +13,7 @@ const List = ({ teams, search }) => {
     text: 'New Team',
     to: '/teams/new',
   }
-  // NOTE: Orders by updatedAt, so show most recent first
-  // get a shallow copy before reversing, for speed
+
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
       {teams && teams.map(t => <Item key={t.id} team={t} />)}

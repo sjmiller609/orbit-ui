@@ -8,3 +8,9 @@
     margin-bottom: 3.3rem;
   }
 }
+
+@mixin p() {
+  p:not(:first-of-type) {
+    margin-top: 2rem;
+  }
+}
