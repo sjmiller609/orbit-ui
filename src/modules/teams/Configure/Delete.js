@@ -33,10 +33,12 @@ const Delete = ({ team, deployments, onSubmit }) => {
             Your team has {nDeployments} active deployment
             {nDeployments > 1 ? 's' : ''}:{' '}
             {deployments.map((d, i) => (
-              <Link key={d.id} to={`/deployments/${d.releaseName}/configure`}>
-                {d.label}
+              <React.Fragment key={d.id}>
+                <Link to={`/deployments/${d.releaseName}/configure`}>
+                  {d.label}
+                </Link>
                 {i + 1 < deployments.length ? ', ' : ''}
-              </Link>
+              </React.Fragment>
             ))}
           </P>
           <P>
