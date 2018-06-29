@@ -4,17 +4,5 @@
   @include font($f400);
   font-size: 1.5rem;
 
-  a {
-    display: inline;
-    @include font($f600);
-    &,
-    &:visited {
-      color: $green;
-    }
-    &:hover,
-    &:active,
-    &:focus {
-      color: $lightGreen;
-    }
-  }
+  @include textLink();
 }

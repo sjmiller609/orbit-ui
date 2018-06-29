@@ -14,3 +14,19 @@
     margin-top: 2rem;
   }
 }
+
+@mixin textLink() {
+  a {
+    display: inline;
+    @include font($f600);
+    &,
+    &:visited {
+      color: $green;
+    }
+    &:hover,
+    &:active,
+    &:focus {
+      color: $lightGreen;
+    }
+  }
+}
