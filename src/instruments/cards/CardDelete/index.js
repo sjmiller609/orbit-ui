@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import s from './styles.scss'
 
 import { CardForm, P, SetUI } from 'instruments'
 
@@ -27,6 +28,7 @@ const CardDelete = ({
   return (
     <CardForm
       {...otherProps}
+      className={s.delete}
       button={{
         onClick,
         text: buttonText || 'Delete',

@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 
-import DeploymentConfigure from '../DeploymentConfigure'
-import DeploymentOverview from '../DeploymentOverview'
+// import DeploymentConfigure from '../DeploymentConfigure'
+// import DeploymentOverview from '../DeploymentOverview'
 import { Load } from 'instruments'
 import Data from '../Data'
 import Module from '../../app/Module'
@@ -25,12 +25,18 @@ const Deployment = ({ deployments, menu, title }) => {
       <Route
         path={path + '/configure'}
         exact
-        render={() => <DeploymentConfigure deployment={deployment} />}
+        render={() => {
+          const Configure = Load(() => import('../DeploymentConfigure'))
+          return <Configure deployment={deployment} />
+        }}
       />
       <Route
         path={path}
         exact
-        render={() => <DeploymentOverview deployment={deployment} />}
+        render={() => {
+          const Overview = Load(() => import('../DeploymentOverview'))
+          return <Overview deployment={deployment} />
+        }}
       />
     </Module>
   )
