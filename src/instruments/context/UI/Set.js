@@ -13,6 +13,7 @@ const setContext = (Component, options = {}) => {
 
             if (options.snackbar) c.snackbar = context.snackbar
             if (options.dialog) c.dialog = context.dialog
+            if (options.loading) c.loading = context.loading
 
             const newProps = {
               ...this.props,

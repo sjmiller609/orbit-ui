@@ -10,11 +10,13 @@ class Provider extends React.Component {
   state = {
     snackbar: null, // string
     dialog: null, // object { title, text, button { text, onClick }}
+    loading: null,
   }
 
   set = {
     snackbar: this.setSnackbar,
     dialog: this.setDialog,
+    loading: this.setLoading,
   }
 
   setSnackbar(snackbar) {
@@ -23,6 +25,9 @@ class Provider extends React.Component {
 
   setDialog(dialog) {
     this.setState({ dialog })
+  }
+  setLoading(loading) {
+    this.setState({ loading })
   }
 
   render() {

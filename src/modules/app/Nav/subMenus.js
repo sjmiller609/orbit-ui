@@ -4,10 +4,10 @@ const subMenus = {
       to: '/teams',
       text: 'Teams',
     },
-    {
-      to: '/account',
-      text: 'Account Settings',
-    },
+    // {
+    //   to: '/account',
+    //   text: 'Account Settings',
+    // },
   ],
   team: [
     {

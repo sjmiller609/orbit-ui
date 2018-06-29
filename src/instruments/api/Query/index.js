@@ -11,7 +11,7 @@ const Query = ({ gql, vars, skip, children, search }) => {
   return (
     <Apollo query={gql} variables={vars} skip={skip} errorPolicy="all">
       {({ loading, error, data }) => {
-        if (loading) return <Loading />
+        if (loading) return <Loading /> // return this instead of updating contextUI
         if (error) return <CardError />
 
         // remove property `Symbol(id)` from data, as it breaks react dev tools

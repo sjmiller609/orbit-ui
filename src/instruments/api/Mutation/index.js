@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { withRouter } from 'react-router'
 import { Mutation as Apollo } from 'react-apollo'
-import { Loading, SetUI, Track, CardError } from 'instruments'
+import { SetUI, Track, CardError } from 'instruments'
 
 const Mutation = ({
   gql,
@@ -27,7 +27,7 @@ const Mutation = ({
       onError={() => null}
       onCompleted={data => {
         if (onSuccess) onSuccess()
-
+        console.log(data)
         if (redirect) {
           // redirect can be a function, to go to the newly created object
           let path
@@ -46,7 +46,7 @@ const Mutation = ({
       }}
       update={update}>
       {(mutate, { loading, error }) => {
-        if (loading) return <Loading />
+        setUI.loading = loading
         if (error) return <CardError />
 
         return children({ mutate }) || null

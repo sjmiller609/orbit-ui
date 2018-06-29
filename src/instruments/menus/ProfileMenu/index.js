@@ -18,7 +18,7 @@ const ProfileMenu = ({ className }) => {
       }>
       <MenuList>
         <H3>[MyName]</H3>
-        <Item to="/account">Account Settings</Item>
+        {/* <Item to="/account">Account Settings</Item> */}
         <Item to="/logout">Logout</Item>
       </MenuList>
     </Dropdown>
