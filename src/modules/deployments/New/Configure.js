@@ -6,10 +6,9 @@ import { CardForm, Form, TextField } from 'instruments'
 
 import Create from '../Data/Create'
 
-const Configure = ({ title, form, loading }) => {
+const Configure = ({ title, form }) => {
   return (
     <CardForm
-      loading={loading}
       title={title}
       button={{
         save: form.save,
