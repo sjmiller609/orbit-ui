@@ -24,6 +24,7 @@ export { default as Link } from './links/Link'
 export { default as Button } from './links/Button'
 export { default as TextButton } from './links/TextButton'
 export { default as OauthButton } from './links/OauthButton'
+export { default as Redirect } from './links/Redirect'
 
 export { default as Img } from './icons/Img'
 export { default as Icon } from './icons/Icon'
