@@ -24,7 +24,8 @@ class AuthServices extends React.Component {
     if (from) to = from
     else to = location.pathname
 
-    this.onSuccess += encodeURIComponent(to)
+    // gets encoded on server
+    this.onSuccess += to
     console.log(this.onSuccess)
   }
 

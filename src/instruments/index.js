@@ -34,6 +34,7 @@ export { default as P } from './text/P'
 export { default as Mini } from './text/Mini'
 export { default as ShowDate } from './text/ShowDate'
 export { default as B } from './text/B'
+export { default as Code } from './text/Code'
 
 export { default as H1 } from './text/H1'
 export { default as H2 } from './text/H2'
