@@ -1,6 +1,7 @@
 import React from 'react'
-import { H1, H4, OauthButton, Card } from 'instruments'
+import { H1, H4, Card } from 'instruments'
 import Module from '../Module'
+import AuthServices from '../AuthServices'
 import s from './styles.scss'
 
 const Signup = () => {
@@ -10,7 +11,7 @@ const Signup = () => {
         <div className={s.content}>
           <H1>Welcome to Astronomer</H1>
           <H4>Automate data pipelines with Apache Airflow in minutes.</H4>
-          <OauthButton service="google" />
+          <AuthServices />
         </div>
       </Card>
     </Module>

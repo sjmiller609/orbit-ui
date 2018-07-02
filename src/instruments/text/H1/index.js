@@ -5,11 +5,19 @@ import classnames from 'classnames'
 import s from './styles.scss'
 
 const H1 = ({ children, className }) => {
-  return <h1 className={classnames(s.h1, className)}>{children}</h1>
+  return (
+    <h1 className={classnames(s.h1, className)}>
+      {Array.isArray(children) ? children.map(el => el) : children}
+    </h1>
+  )
 }
 
 H1.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.array,
+  ]),
   className: PropTypes.string,
 }
 
