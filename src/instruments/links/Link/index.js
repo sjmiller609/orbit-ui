@@ -34,7 +34,9 @@ const Link = ({
   const Component =
     to && !externalUrl(to)
       ? NavLink
-      : props => <a {...props} href={to} target="_blank" />
+      : props => (
+          <a {...props} href={to} target={newTab === false ? null : '_blank'} />
+        )
   return (
     <Component {...newProps}>
       <React.Fragment>

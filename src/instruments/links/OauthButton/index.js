@@ -21,6 +21,7 @@ const OauthButton = ({ service, login, to, ...props }) => {
       {...props}
       to={to}
       title={oauth.text}
+      newTab={false}
       className={classnames(s.button, s[oauth.className])}>
       <Row full>
         <Box className={s.img}>
