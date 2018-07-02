@@ -18,14 +18,21 @@ const Query = ({ gql, vars, skip, children, search }) => {
         const data2 = {}
         Object.keys(data).forEach(k => {
           if (!data[k]) return null
-          // then make a shallow copy and order by date if it has that property
-          data2[k] = data[k].slice(0)
-          if (data[k].length > 1 && data[k][0].createdAt) {
-            data2[k].sort((a, b) => {
-              const a1 = new Date(a.updatedAt || a.createdAt).getTime()
-              const b1 = new Date(b.updatedAt || b.createdAt).getTime()
-              return b1 - a1
-            })
+
+          if (Array.isArray(data[k])) {
+            // then make a shallow copy and order by date if it has that property
+            data2[k] = data[k].slice(0)
+            if (data[k].length > 1 && data[k][0].createdAt) {
+              data2[k].sort((a, b) => {
+                const a1 = new Date(a.updatedAt || a.createdAt).getTime()
+                const b1 = new Date(b.updatedAt || b.createdAt).getTime()
+                return b1 - a1
+              })
+            }
+          } else {
+            data2[k] = {
+              ...data[k],
+            }
           }
         })
 

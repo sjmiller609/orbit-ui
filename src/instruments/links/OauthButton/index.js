@@ -9,18 +9,17 @@ const services = {
   google: {
     text: ' with Google',
     img: 'google.svg',
-    to: 'https://www.google.com',
     className: 'google',
   },
 }
 
-const OauthButton = ({ service, login, ...props }) => {
+const OauthButton = ({ service, login, to, ...props }) => {
   const oauth = services[service]
   const img = require('./img/' + oauth.img)
   return (
     <Link
       {...props}
-      to={oauth.to}
+      to={to}
       title={oauth.text}
       className={classnames(s.button, s[oauth.className])}>
       <Row full>
@@ -39,6 +38,7 @@ const OauthButton = ({ service, login, ...props }) => {
 OauthButton.propTypes = {
   service: PropTypes.string,
   login: PropTypes.bool,
+  to: PropTypes.string,
 }
 
 export default OauthButton

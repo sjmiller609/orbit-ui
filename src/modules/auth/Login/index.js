@@ -1,6 +1,8 @@
 import React from 'react'
-import { H1, H4, Link, OauthButton, Card } from 'instruments'
+import { H1, H4, Link, Card } from 'instruments'
 import Module from '../Module'
+import AuthServices from '../AuthServices'
+
 import s from './styles.scss'
 
 const Login = () => {
@@ -15,7 +17,7 @@ const Login = () => {
               best practices for using Airflow
             </Link>&nbsp;in Astronomer's Guides.
           </H4>
-          <OauthButton service="google" login />
+          <AuthServices login />
         </div>
       </Card>
     </Module>

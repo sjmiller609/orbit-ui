@@ -9,10 +9,10 @@ const Data = Component => {
   const Data = ({ vars, ...otherProps }) => {
     return (
       <Query gql={api.AuthConfig} vars={vars}>
-        {({ data: { deployments } }) => {
+        {({ data: { authConfig } }) => {
           const newProps = {
             ...otherProps,
-            deployments,
+            authConfig,
           }
           return <Component {...newProps} />
         }}
