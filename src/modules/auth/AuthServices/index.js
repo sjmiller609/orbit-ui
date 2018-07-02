@@ -10,15 +10,21 @@ class AuthServices extends React.Component {
   componentWillMount() {
     let to = '/'
 
-    const ref = document.refferer
-    const host = window.location.host.split('.').splice(1)
-    if (ref && ~ref.indexOf(host)) to = ref
+    const ref = document.referrer
+    const host = window.location.host
+      .split('.')
+      .splice(1)
+      .join('.')
+
+    // if same root domain
+    if (ref && host && ~ref.indexOf(host)) to = ref
 
     const { location } = this.props
     const from = location.state && location.state.from
-    if (from && (from !== '/signup' || from !== '/login')) to = from
+    if (from) to = from
+    else to = location.pathname
 
-    this.onSuccess = encodeURI(this.onSuccess + to)
+    this.onSuccess += encodeURIComponent(to)
     console.log(this.onSuccess)
   }
 

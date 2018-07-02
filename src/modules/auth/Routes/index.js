@@ -11,4 +11,9 @@ export default [
     component: Load(() => import('../Login')),
     exact: true,
   },
+  {
+    path: '/oauth/:service',
+    component: Load(() => import('../Success')),
+    exact: true,
+  },
 ]
