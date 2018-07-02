@@ -10,4 +10,31 @@ export default {
       }
     }
   `,
+  CreateToken: gql`
+    mutation createToken(
+      $authStrategy: AuthStrategy
+      $credentials: String!
+      $identity: String
+      $duration: Int
+    ) {
+      createToken(
+        authStrategy: $authStrategy
+        identity: $identity
+        credentials: $credentials
+        duration: $duration
+      ) {
+        user {
+          id: uuid
+        }
+        token {
+          value
+          payload {
+            uuid
+            iat
+            exp
+          }
+        }
+      }
+    }
+  `,
 }

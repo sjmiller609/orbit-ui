@@ -4,32 +4,27 @@ import PropTypes from 'prop-types'
 
 import api from './api'
 
-import { Create as Mutation, GetData } from 'instruments'
+import { Create as Mutation, SetData } from 'instruments'
 
 const Create = Component => {
-  const Create = ({ getData, ...props }) => {
-    const query = {
-      name: api.Deployments,
-      type: 'deployments',
-      vars: {
-        teamId: getData.teamId,
-      },
-    }
+  const Create = ({ setData, to, track, success, ...props }) => {
     return (
       <Mutation
-        gql={api.CreateDeployment}
-        redirect={data => '/deployments/' + data.releaseName}
-        success="New deployment created successfully."
-        track="New Deployment Created"
-        query={query}>
+        gql={api.CreateToken}
+        redirect={to}
+        success={success}
+        track={track}>
         {({ mutate }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
+              let authStrategy
+              if (vars.service === 'google') authStrategy = 'GOOGLE_OAUTH'
+
               mutate({
                 variables: {
-                  type: 'airflow',
-                  teamId: getData.teamId,
+                  duration: 7, // set to max days
+                  authStrategy,
                   ...vars,
                 },
               })
@@ -41,10 +36,13 @@ const Create = Component => {
     )
   }
   Create.propTypes = {
-    getData: PropTypes.object,
+    setData: PropTypes.object,
+    to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    track: PropTypes.string,
+    success: PropTypes.string,
   }
 
-  return GetData(Create, { teamId: true })
+  return SetData(Create, { userId: true })
 }
 
 export default Create

@@ -36,12 +36,19 @@ const Mutation = ({
             path = redirect(data[Object.keys(data)[0]])
           } else path = redirect
 
-          history.push(path)
+          // check if external url
+          if (typeof path === 'string') {
+            // check if relative URL
+            if (path.charAt(0) !== '/') {
+              if (path.slice(0, 3) !== 'http') path = 'http://' + path
+              window.location = path
+            } else history.push(path)
+          } else history.push(path)
         } else if (back) {
           const path = history.location.pathname
           history.push(path.substring(0, path.lastIndexOf('/')))
         }
-        setUI.snackbar(success || 'Success!')
+        if (success) setUI.snackbar(success)
         if (track) Track(track)
       }}
       update={update}>

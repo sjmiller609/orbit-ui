@@ -13,7 +13,7 @@ export default [
   },
   {
     path: '/oauth/:service',
-    component: Load(() => import('../Success')),
+    component: Load(() => import('../OauthSuccess')),
     exact: true,
   },
 ]

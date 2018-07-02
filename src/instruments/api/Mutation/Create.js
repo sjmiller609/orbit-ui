@@ -8,7 +8,7 @@ const Create = ({ query, ...props }) => {
   return (
     <Mutation
       update={(cache, data) => {
-        if (!query) return
+        if (!query || !query.type) return
         // use first key to auto grab Document name
         const result = data.data[Object.keys(data.data)[0]]
         const results = cache.readQuery({
