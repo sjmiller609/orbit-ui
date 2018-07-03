@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { GetContext, SetContext } from './Context'
 import storage from '../../../helpers/storage'
+import auth from '../../../helpers/token'
 
 class Provider extends React.Component {
   setTeam = this.setTeam.bind(this)
@@ -18,8 +19,21 @@ class Provider extends React.Component {
     userId: this.setUser,
   }
 
-  setUser(userId) {
+  componentWillMount() {
+    this.setUser(auth.get())
+  }
+
+  setUser({ token, exp, userId }) {
+    // check if expired
+    const now = Math.round(new Date().getTime() / 1000)
+    if (!token || !userId || exp <= now) {
+      auth.remove()
+      this.setState({ userId: null })
+      return
+    }
+
     this.setState({ userId })
+    auth.set({ token, exp, userId })
   }
 
   setTeam(teamId) {

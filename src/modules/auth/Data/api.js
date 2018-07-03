@@ -29,7 +29,7 @@ export default {
         token {
           value
           payload {
-            uuid
+            id: uuid
             iat
             exp
           }
