@@ -1,5 +1,6 @@
 import { Load } from 'instruments'
 
+// will redirect if logged in
 export default [
   {
     path: '/(|signup)',
@@ -11,9 +12,17 @@ export default [
     component: Load(() => import('../Login')),
     exact: true,
   },
+]
+
+export const otherAuthRoutes = [
   {
     path: '/oauth/:service',
     component: Load(() => import('../OauthSuccess')),
+    exact: true,
+  },
+  {
+    path: '/logout',
+    component: Load(() => import('../Logout')),
     exact: true,
   },
 ]

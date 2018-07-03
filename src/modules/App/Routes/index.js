@@ -8,13 +8,14 @@ import { ScrollToTop, Pageview, GetData, Load } from 'instruments'
 // get module routes
 import deployments from 'modules/deployments/Routes'
 import { default as teams, team } from 'modules/teams/Routes'
-import auth from 'modules/auth/Routes'
+import { default as auth, otherAuthRoutes } from 'modules/auth/Routes'
 
 import TeamRoute from './TeamRoute'
 import ProtectedRoute from './ProtectedRoute'
 import AuthRoute from './AuthRoute'
 
 const routes = [
+  ...otherAuthRoutes,
   {
     path: '/404',
     component: Load(() => import('../NoMatch')),
