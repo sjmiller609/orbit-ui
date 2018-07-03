@@ -1,21 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Redirect } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 
-import AuthRoute from './AuthRoute'
-
-const TeamRoute = ({ teamId, component: Component, ...props }) => {
+const AuthRoute = ({ userId, component: Component, ...props }) => {
   return (
-    <AuthRoute
+    <Route
       {...props}
       render={props2 =>
-        teamId ? (
+        userId ? (
           <Component {...props2} />
         ) : (
           <Redirect
             to={{
-              pathname: '/teams',
+              pathname: '/login',
               state: {
                 from: props2.location,
               },
@@ -27,9 +25,9 @@ const TeamRoute = ({ teamId, component: Component, ...props }) => {
   )
 }
 
-TeamRoute.propTypes = {
+AuthRoute.propTypes = {
   component: PropTypes.func,
-  teamId: PropTypes.string,
+  userId: PropTypes.string,
 }
 
-export default TeamRoute
+export default AuthRoute

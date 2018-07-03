@@ -11,10 +11,10 @@ import { default as teams, team } from 'modules/teams/Routes'
 import auth from 'modules/auth/Routes'
 
 import TeamRoute from './TeamRoute'
+import AuthRoute from './AuthRoute'
 
 const routes = [
   ...auth,
-  ...teams,
   {
     path: '/404',
     component: Load(() => import('../NoMatch')),
@@ -25,7 +25,10 @@ const routes = [
   },
 ]
 
-// protected by teamId
+// protected by userId
+const authRoutes = [...teams]
+
+// also protected by teamId
 const teamRoutes = [...team, ...deployments]
 
 const Routes = ({ getData }) => {
@@ -35,7 +38,15 @@ const Routes = ({ getData }) => {
       <Route component={ScrollToTop} />
       <Switch>
         {teamRoutes.map((route, i) => (
-          <TeamRoute key={i} teamId={getData.teamId} {...route} />
+          <TeamRoute
+            key={i}
+            userId={getData.userId}
+            teamId={getData.teamId}
+            {...route}
+          />
+        ))}
+        {authRoutes.map((route, i) => (
+          <AuthRoute key={i} userId={getData.userId} {...route} />
         ))}
         {/* Must be last */}
         {routes.map((route, i) => <Route key={i} {...route} />)}
