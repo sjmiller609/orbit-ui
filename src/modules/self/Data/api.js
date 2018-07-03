@@ -18,8 +18,8 @@ const user = gql`
 
 export default {
   Self: gql`
-    query self() {
-      self() {
+    query self {
+      self {
         ...user
       }
     }

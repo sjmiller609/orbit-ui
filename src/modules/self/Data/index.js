@@ -9,10 +9,10 @@ const Data = Component => {
   const Data = ({ skip, ...props }) => {
     return (
       <Query gql={api.Self} skip={skip}>
-        {({ data: { user } }) => {
+        {({ data: { self } }) => {
           const newProps = {
             ...props,
-            user,
+            self,
           }
           return <Component {...newProps} />
         }}

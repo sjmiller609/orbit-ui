@@ -31,6 +31,7 @@ class Provider extends React.Component {
     if (!token || exp <= now) {
       auth.remove()
       this.setState({ auth: false })
+      this.setTeam(null)
       return
     }
 

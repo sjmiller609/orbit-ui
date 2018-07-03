@@ -6,7 +6,7 @@ import classnames from 'classnames'
 import { Row, Logo, H2, Link, Level1, ProfileMenu } from 'instruments'
 import s from './styles.scss'
 
-const Menu = ({ level1, level2, className }) => {
+const Menu = ({ level1, level2, profile = {}, className }) => {
   return (
     <Row className={classnames(s.menu, className)} justify="flex-start" wrap>
       <Logo />
@@ -16,7 +16,7 @@ const Menu = ({ level1, level2, className }) => {
           <Link to={level2.to}>{level2.text}</Link>
         </H2>
       )}
-      <ProfileMenu className={s.profile} />
+      <ProfileMenu className={s.profile} name={profile.name} avatar={null} />
     </Row>
   )
 }
@@ -25,6 +25,7 @@ Menu.propTypes = {
   className: PropTypes.string,
   level2: PropTypes.object,
   level1: PropTypes.object,
+  profile: PropTypes.object,
 }
 
 export default Menu
