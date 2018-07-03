@@ -8,9 +8,28 @@ import { Create as Mutation, SetData } from 'instruments'
 
 const Create = Component => {
   const Create = ({ setData, to, track, success, ...props }) => {
+    // update self query
+    // const query = {
+    //   name: api.Deployments,
+    //   type: 'deployments',
+    //   vars: {
+    //     teamId: getData.teamId,
+    //   },
+    // }
     return (
       <Mutation
         gql={api.CreateToken}
+        onSuccess={data => {
+          console.log(data)
+          if (!data) return
+          const { value, payload } = data.token
+          // pass token to context
+          setData.userId({
+            token: value,
+            exp: payload.exp,
+            userId: payload.id,
+          })
+        }}
         redirect={to}
         success={success}
         track={track}>

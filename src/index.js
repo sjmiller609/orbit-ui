@@ -1,7 +1,7 @@
 'use strict'
 import React from 'react'
 import Root from './modules/app/Root'
-//import storage from './helpers/storage';
+import auth from './helpers/token'
 //import { handleErrors } from './helpers/handleErrors';
 
 import { ApolloClient } from 'apollo-client'
@@ -22,10 +22,10 @@ const cache = new InMemoryCache({
 })
 
 const authMiddleware = new ApolloLink((operation, forward) => {
-  const token = localStorage.getItem('token') || ''
+  const token = auth.get()
   operation.setContext({
     headers: {
-      authorization: token,
+      authorization: token.token || '',
     },
   })
 

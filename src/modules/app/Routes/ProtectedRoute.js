@@ -8,12 +8,12 @@ const AuthRoute = ({ userId, component: Component, ...props }) => {
     <Route
       {...props}
       render={props2 =>
-        !userId ? (
+        userId ? (
           <Component {...props2} />
         ) : (
           <Redirect
             to={{
-              pathname: '/teams',
+              pathname: '/login',
               state: {
                 from: props2.location,
               },

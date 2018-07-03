@@ -11,10 +11,10 @@ import { default as teams, team } from 'modules/teams/Routes'
 import auth from 'modules/auth/Routes'
 
 import TeamRoute from './TeamRoute'
+import ProtectedRoute from './ProtectedRoute'
 import AuthRoute from './AuthRoute'
 
 const routes = [
-  ...auth,
   {
     path: '/404',
     component: Load(() => import('../NoMatch')),
@@ -25,8 +25,11 @@ const routes = [
   },
 ]
 
+// redirect if logged in
+const authRoutes = [...auth]
+
 // protected by userId
-const authRoutes = [...teams]
+const protectedRoutes = [...teams]
 
 // also protected by teamId
 const teamRoutes = [...team, ...deployments]
@@ -37,6 +40,14 @@ const Routes = ({ getData }) => {
       <Route component={Pageview} />
       <Route component={ScrollToTop} />
       <Switch>
+        {authRoutes.map((route, i) => (
+          <AuthRoute
+            key={i}
+            userId={getData.userId}
+            teamId={getData.teamId}
+            {...route}
+          />
+        ))}
         {teamRoutes.map((route, i) => (
           <TeamRoute
             key={i}
@@ -45,8 +56,8 @@ const Routes = ({ getData }) => {
             {...route}
           />
         ))}
-        {authRoutes.map((route, i) => (
-          <AuthRoute key={i} userId={getData.userId} {...route} />
+        {protectedRoutes.map((route, i) => (
+          <ProtectedRoute key={i} userId={getData.userId} {...route} />
         ))}
         {/* Must be last */}
         {routes.map((route, i) => <Route key={i} {...route} />)}

@@ -26,7 +26,7 @@ const Mutation = ({
       errorPolicy="all"
       onError={() => null}
       onCompleted={data => {
-        if (onSuccess) onSuccess()
+        if (onSuccess) onSuccess(data[Object.keys(data)[0]])
         console.log(data)
         if (redirect) {
           // redirect can be a function, to go to the newly created object

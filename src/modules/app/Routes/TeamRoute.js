@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 
 import { Redirect } from 'react-router-dom'
 
-import AuthRoute from './AuthRoute'
+import ProtectedRoute from './ProtectedRoute'
 
 const TeamRoute = ({ teamId, component: Component, ...props }) => {
   return (
-    <AuthRoute
+    <ProtectedRoute
       {...props}
       render={props2 =>
         teamId ? (

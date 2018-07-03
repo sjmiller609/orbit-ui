@@ -23,9 +23,6 @@ export default {
         credentials: $credentials
         duration: $duration
       ) {
-        user {
-          id: uuid
-        }
         token {
           value
           payload {
