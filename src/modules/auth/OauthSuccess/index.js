@@ -28,7 +28,7 @@ class OauthSuccess extends React.Component {
 
     if (this.cli) this.track += 'CLI'
     else if (this.to.charAt(0) !== '/') this.track += 'EE Service - ' + this.to
-    else if (~this.to.indexOf('/signup')) {
+    else if (this.to === '/' || ~this.to.indexOf('/signup')) {
       this.track += 'Signup'
       this.success = 'Success! Welcome to Astronomer'
     } else if (~this.to.indexOf('/login')) this.track += 'Login'
