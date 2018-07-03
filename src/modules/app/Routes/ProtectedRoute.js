@@ -3,31 +3,33 @@ import PropTypes from 'prop-types'
 
 import { Route, Redirect } from 'react-router-dom'
 
-const AuthRoute = ({ userId, component: Component, ...props }) => {
+const ProtectedRoute = ({ userId, component: Component, ...props }) => {
+  console.log(Component)
+  console.log(props)
   return (
     <Route
       {...props}
-      render={props2 =>
-        userId ? (
-          <Component {...props2} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/login',
-              state: {
-                from: props2.location,
-              },
-            }}
-          />
-        )
-      }
+      render={props2 => {
+        if (!userId) {
+          return (
+            <Redirect
+              to={{
+                pathname: '/login',
+                state: { from: props2.location },
+              }}
+            />
+          )
+        }
+
+        return <Component {...props2} />
+      }}
     />
   )
 }
 
-AuthRoute.propTypes = {
+ProtectedRoute.propTypes = {
   component: PropTypes.func,
   userId: PropTypes.string,
 }
 
-export default AuthRoute
+export default ProtectedRoute

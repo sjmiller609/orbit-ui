@@ -1,28 +1,38 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Redirect } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 
-import ProtectedRoute from './ProtectedRoute'
+// check for both teamId and userId
+// NOTE: Tried nesting these routes, but the props overwrite
 
-const TeamRoute = ({ teamId, component: Component, ...props }) => {
+const TeamRoute = ({ userId, teamId, component: Component, ...props }) => {
   return (
-    <ProtectedRoute
+    <Route
       {...props}
-      render={props2 =>
-        teamId ? (
-          <Component {...props2} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/teams',
-              state: {
-                from: props2.location,
-              },
-            }}
-          />
-        )
-      }
+      render={props2 => {
+        if (!userId) {
+          return (
+            <Redirect
+              to={{
+                pathname: '/login',
+                state: { from: props2.location },
+              }}
+            />
+          )
+        }
+        if (!teamId) {
+          return (
+            <Redirect
+              to={{
+                pathname: '/teams',
+                state: { from: props2.location },
+              }}
+            />
+          )
+        }
+        return <Component {...props2} />
+      }}
     />
   )
 }
@@ -30,6 +40,7 @@ const TeamRoute = ({ teamId, component: Component, ...props }) => {
 TeamRoute.propTypes = {
   component: PropTypes.func,
   teamId: PropTypes.string,
+  userId: PropTypes.string,
 }
 
 export default TeamRoute

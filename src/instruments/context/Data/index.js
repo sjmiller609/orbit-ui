@@ -23,7 +23,9 @@ class Provider extends React.Component {
     this.setUser(auth.get())
   }
 
-  setUser({ token, exp, userId } = {}) {
+  setUser(data) {
+    const t = data || {}
+    const { token, exp, userId } = t
     // check if expired
     const now = Math.round(new Date().getTime() / 1000)
     if (!token || !userId || exp <= now) {

@@ -30,6 +30,9 @@
 }
 
 .addNew {
+  &:first-child {
+    display: none;
+  }
   height: 2px;
   width: 100%;
   background: $lightGray;

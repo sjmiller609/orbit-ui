@@ -7,20 +7,19 @@ const AuthRoute = ({ userId, component: Component, ...props }) => {
   return (
     <Route
       {...props}
-      render={props2 =>
-        !userId ? (
-          <Component {...props2} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/teams',
-              state: {
-                from: props2.location,
-              },
-            }}
-          />
-        )
-      }
+      render={props2 => {
+        if (userId) {
+          return (
+            <Redirect
+              to={{
+                pathname: '/teams',
+                state: { from: props2.location },
+              }}
+            />
+          )
+        }
+        return <Component {...props2} />
+      }}
     />
   )
 }

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import { Redirect, SetData, SetUI } from 'instruments'
 
 const Logout = ({ setData, setUI }) => {
-  setData.userId()
-  setData.teamId()
+  setData.userId(null)
+  setData.teamId(null)
   setUI.snackbar("You've successfully logged out.")
   return <Redirect to="/login" />
 }
