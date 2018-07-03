@@ -7,35 +7,35 @@ import auth from '../../../helpers/token'
 
 class Provider extends React.Component {
   setTeam = this.setTeam.bind(this)
-  setUser = this.setUser.bind(this)
+  setAuth = this.setAuth.bind(this)
 
   state = {
     teamId: storage.getItem('teamId'), // string
-    userId: null, // string
+    auth: null, // string
   }
 
   set = {
     teamId: this.setTeam,
-    userId: this.setUser,
+    auth: this.setAuth,
   }
 
   componentWillMount() {
-    this.setUser(auth.get())
+    this.setAuth(auth.get())
   }
 
-  setUser(data) {
+  setAuth(data) {
     const t = data || {}
-    const { token, exp, userId } = t
+    const { token, exp } = t
     // check if expired
     const now = Math.round(new Date().getTime() / 1000)
-    if (!token || !userId || exp <= now) {
+    if (!token || exp <= now) {
       auth.remove()
-      this.setState({ userId: null })
+      this.setState({ auth: false })
       return
     }
 
-    this.setState({ userId })
-    auth.set({ token, exp, userId })
+    this.setState({ auth: true })
+    auth.set({ token, exp })
   }
 
   setTeam(teamId) {

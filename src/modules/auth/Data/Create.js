@@ -20,14 +20,12 @@ const Create = Component => {
       <Mutation
         gql={api.CreateToken}
         onSuccess={data => {
-          console.log(data)
           if (!data) return
           const { value, payload } = data.token
           // pass token to context
-          setData.userId({
+          setData.auth({
             token: value,
             exp: payload.exp,
-            userId: payload.id,
           })
         }}
         redirect={to}
@@ -61,7 +59,7 @@ const Create = Component => {
     success: PropTypes.string,
   }
 
-  return SetData(Create, { userId: true })
+  return SetData(Create, { auth: true })
 }
 
 export default Create

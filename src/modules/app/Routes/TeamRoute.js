@@ -6,12 +6,12 @@ import { Route, Redirect } from 'react-router-dom'
 // check for both teamId and userId
 // NOTE: Tried nesting these routes, but the props overwrite
 
-const TeamRoute = ({ userId, teamId, component: Component, ...props }) => {
+const TeamRoute = ({ auth, teamId, component: Component, ...props }) => {
   return (
     <Route
       {...props}
       render={props2 => {
-        if (!userId) {
+        if (!auth) {
           return (
             <Redirect
               to={{
@@ -40,7 +40,7 @@ const TeamRoute = ({ userId, teamId, component: Component, ...props }) => {
 TeamRoute.propTypes = {
   component: PropTypes.func,
   teamId: PropTypes.string,
-  userId: PropTypes.string,
+  auth: PropTypes.bool,
 }
 
 export default TeamRoute

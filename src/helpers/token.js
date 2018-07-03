@@ -1,15 +1,13 @@
 import storage from './storage'
 
 // A wrapper around storage.getItem('token') to stringify and include expirey date
-// TODO: Remove userId
 const auth = {
-  set: ({ token, exp, userId }) => {
+  set: ({ token, exp }) => {
     storage.setItem(
       'token',
       JSON.stringify({
         token,
         exp,
-        userId,
       })
     )
   },

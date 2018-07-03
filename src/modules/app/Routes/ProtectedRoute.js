@@ -3,14 +3,12 @@ import PropTypes from 'prop-types'
 
 import { Route, Redirect } from 'react-router-dom'
 
-const ProtectedRoute = ({ userId, component: Component, ...props }) => {
-  console.log(Component)
-  console.log(props)
+const ProtectedRoute = ({ auth, component: Component, ...props }) => {
   return (
     <Route
       {...props}
       render={props2 => {
-        if (!userId) {
+        if (!auth) {
           return (
             <Redirect
               to={{
@@ -29,7 +27,7 @@ const ProtectedRoute = ({ userId, component: Component, ...props }) => {
 
 ProtectedRoute.propTypes = {
   component: PropTypes.func,
-  userId: PropTypes.string,
+  auth: PropTypes.bool,
 }
 
 export default ProtectedRoute

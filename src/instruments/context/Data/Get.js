@@ -12,7 +12,7 @@ const getContext = (Component, options = {}) => {
             const c = Object.keys(options).length ? {} : context
 
             if (options.teamId) c.teamId = context.teamId
-            if (options.userId) c.userId = context.userId
+            if (options.auth) c.auth = context.auth
 
             const newProps = {
               ...this.props,

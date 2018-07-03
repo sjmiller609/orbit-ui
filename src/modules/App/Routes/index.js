@@ -44,7 +44,7 @@ const Routes = ({ getData }) => {
         {authRoutes.map((route, i) => (
           <AuthRoute
             key={i}
-            userId={getData.userId}
+            auth={getData.auth}
             teamId={getData.teamId}
             {...route}
           />
@@ -52,13 +52,13 @@ const Routes = ({ getData }) => {
         {teamRoutes.map((route, i) => (
           <TeamRoute
             key={i}
-            userId={getData.userId}
+            auth={getData.auth}
             teamId={getData.teamId}
             {...route}
           />
         ))}
         {protectedRoutes.map((route, i) => (
-          <ProtectedRoute key={i} userId={getData.userId} {...route} />
+          <ProtectedRoute key={i} auth={getData.auth} {...route} />
         ))}
         {/* Must be last */}
         {routes.map((route, i) => <Route key={i} {...route} />)}
