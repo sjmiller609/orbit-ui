@@ -3,26 +3,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import { TableRow, Box, P, Mini, H3, ShowDate, Airflow } from 'instruments'
+import { TableRow, Box, P, Mini, H3, ShowDate } from 'instruments'
 
-const Item = ({ deployment, className }) => {
+const Item = ({ user, className }) => {
   const columns = [
     <Box key="0" className={s.icon}>
-      <Airflow className={s.rotate} />
+      P
     </Box>,
     <Box key="1" align="flex-start" className={s.title}>
-      <H3>{deployment.label}</H3>
-      <P>{deployment.releaseName}</P>
+      <H3>{user.label}</H3>
+      <P>{user.username}</P>
     </Box>,
     <Box key="2" align="flex-start" className={s.log}>
       <P className={s.subTitle}>Deployed</P>
       <Mini>
-        <ShowDate date={deployment.createdAt} />
+        <ShowDate date={user.createdAt} />
       </Mini>
     </Box>,
   ]
 
-  const to = '/deployments/' + deployment.releaseName
+  const to = '/users/' + encodeURIComponent(user.username)
 
   return (
     <TableRow
@@ -34,7 +34,7 @@ const Item = ({ deployment, className }) => {
 }
 
 Item.propTypes = {
-  deployment: PropTypes.object,
+  user: PropTypes.object,
   className: PropTypes.string,
 }
 

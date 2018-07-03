@@ -1,20 +1,5 @@
 import gql from 'graphql-tag'
-
-const user = gql`
-  fragment user on User {
-    id: uuid
-    emails {
-      address
-      verified
-      primary
-    }
-    profile
-    username
-    status
-    createdAt
-    updatedAt
-  }
-`
+import { user } from 'modules/users/Data/api'
 
 export default {
   Self: gql`

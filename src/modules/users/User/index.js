@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Module from './Module'
 
-class Deployment extends React.Component {
+class User extends React.Component {
   menu = {
-    home: '/deployments',
+    home: '/user',
   }
 
   render() {
@@ -27,15 +27,15 @@ class Deployment extends React.Component {
     ]
 
     const vars = {
-      releaseName: id,
+      username: id,
     }
     return <Module title="Configure" menu={this.menu} vars={vars} />
   }
 }
 
-Deployment.propTypes = {
+User.propTypes = {
   location: PropTypes.object,
   match: PropTypes.object,
 }
 
-export default Deployment
+export default User

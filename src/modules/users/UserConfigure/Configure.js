@@ -6,7 +6,7 @@ import { CardForm, Form, TextField, H5, P, Mini, ShowDate } from 'instruments'
 
 import Update from '../Data/Update'
 
-const Configure = ({ form, deployment }) => {
+const Configure = ({ form, user }) => {
   return (
     <CardForm
       title="Configure"
@@ -23,11 +23,11 @@ const Configure = ({ form, deployment }) => {
         {...form.field('label')}
         focus
       />
-      <H5 className={s.name}>{deployment.releaseName}</H5>
+      <H5 className={s.name}>{user.username}</H5>
       <div className={s.deployed}>
         <P>Deployed</P>
         <Mini>
-          <ShowDate date={deployment.createdAt} />
+          <ShowDate date={user.createdAt} />
         </Mini>
       </div>
     </CardForm>
@@ -37,7 +37,7 @@ const Configure = ({ form, deployment }) => {
 Configure.propTypes = {
   save: PropTypes.bool,
   form: PropTypes.object,
-  deployment: PropTypes.object,
+  user: PropTypes.object,
 }
 
 export default Update(Form(Configure))

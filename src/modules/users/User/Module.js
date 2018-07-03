@@ -8,45 +8,45 @@ import { Load } from 'instruments'
 import Data from '../Data'
 import Module from '../../app/Module'
 
-const Deployment = ({ deployments, menu, title }) => {
-  const deployment = deployments[0]
+const User = ({ user, menu, title }) => {
+  //  const user = deployments[0]
   // Error handled
-  if (!deployment) return <Module nada />
+  if (!user) return <Module nada />
 
   const menu2 = {
     ...menu,
   }
-  menu2.level2.text = deployment.label
+  menu2.level2.text = user.username
 
-  const path = '/deployments/' + deployment.releaseName
+  const path = '/users/' + user.username
 
   return (
-    <Module metaTitle={title + ' | ' + deployment.label} menu={menu}>
+    <Module metaTitle={title + ' | ' + user.username} menu={menu}>
       <Route
         path={path + '/configure'}
         exact
         render={() => {
-          const Configure = Load(() => import('../DeploymentConfigure'))
-          return <Configure deployment={deployment} />
+          const Configure = Load(() => import('../UserConfigure'))
+          return <Configure user={user} />
         }}
       />
       <Route
         path={path}
         exact
         render={() => {
-          const Overview = Load(() => import('../DeploymentOverview'))
-          return <Overview deployment={deployment} />
+          const Overview = Load(() => import('../UserOverview'))
+          return <Overview user={user} />
         }}
       />
     </Module>
   )
 }
 
-Deployment.propTypes = {
-  deployments: PropTypes.array,
+User.propTypes = {
+  user: PropTypes.object,
   menu: PropTypes.object,
   title: PropTypes.string,
   onSuccess: PropTypes.func,
 }
 
-export default Data(Deployment)
+export default Data(User)

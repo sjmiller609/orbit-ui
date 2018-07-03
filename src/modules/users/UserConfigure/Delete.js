@@ -5,7 +5,7 @@ import { CardDelete, B } from 'instruments'
 
 import { default as Mutate } from '../Data/Delete'
 
-const Delete = ({ deployment, onSubmit }) => {
+const Delete = ({ user, onSubmit }) => {
   return (
     <CardDelete
       title="Deprovision Deployment"
@@ -16,16 +16,16 @@ const Delete = ({ deployment, onSubmit }) => {
         text: (
           <span>
             Are you sure you want to deprovision deployment&nbsp;
-            <B>{deployment.label}</B>
+            <B>{user.label}</B>
             ?
           </span>
         ),
       }}
       onSubmit={() => {
         onSubmit({
-          id: deployment.id,
+          id: user.id,
           queryVars: {
-            teamId: deployment.team.id,
+            teamId: user.team.id,
           },
         })
       }}
@@ -35,7 +35,7 @@ const Delete = ({ deployment, onSubmit }) => {
 
 Delete.propTypes = {
   onSubmit: PropTypes.func,
-  deployment: PropTypes.object,
+  user: PropTypes.object,
 }
 
 export default Mutate(Delete)

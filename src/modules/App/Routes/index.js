@@ -9,6 +9,7 @@ import { ScrollToTop, Pageview, GetData, Load } from 'instruments'
 import deployments from 'modules/deployments/Routes'
 import { default as teams, team } from 'modules/teams/Routes'
 import { default as auth, otherAuthRoutes } from 'modules/auth/Routes'
+import users from 'modules/users/Routes'
 
 import TeamRoute from './TeamRoute'
 import ProtectedRoute from './ProtectedRoute'
@@ -33,7 +34,7 @@ const authRoutes = [...auth]
 const protectedRoutes = [...teams]
 
 // also protected by teamId
-const teamRoutes = [...team, ...deployments]
+const teamRoutes = [...team, ...deployments, ...users]
 
 const Routes = ({ getData }) => {
   return (

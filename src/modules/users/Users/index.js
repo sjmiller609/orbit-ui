@@ -5,7 +5,7 @@ import List from '../List'
 import Module from '../../app/Module'
 import { GetData } from 'instruments'
 
-class Deployments extends React.Component {
+class Users extends React.Component {
   menu = {
     nav: 'team',
   }
@@ -14,7 +14,7 @@ class Deployments extends React.Component {
   // search obj constants
   search = {
     delay: false,
-    placeholder: 'Search Deployments',
+    placeholder: 'Search Users',
     call: search => this.setState({ search }),
   }
 
@@ -22,9 +22,10 @@ class Deployments extends React.Component {
     const { search } = this.state
     const vars = {
       teamId: this.props.getData.teamId,
+      withUsers: true,
     }
     return (
-      <Module metaTitle="Deployments" menu={this.menu}>
+      <Module metaTitle="Users" menu={this.menu}>
         <List
           search={{
             text: search,
@@ -36,8 +37,8 @@ class Deployments extends React.Component {
     )
   }
 }
-Deployments.propTypes = {
+Users.propTypes = {
   getData: PropTypes.object,
 }
 
-export default GetData(Deployments, { teamId: true })
+export default GetData(Users, { teamId: true })

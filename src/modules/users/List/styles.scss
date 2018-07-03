@@ -16,19 +16,6 @@ div.list {
   color: $beige;
 }
 
-.item:hover {
-  :global {
-    .ring {
-      transform: rotate(360deg);
-    }
-  }
-}
-
-.airflowImg {
-  $size: 12rem;
-  width: $size;
-  height: $size;
-  .dag {
-    height: $size * 0.4;
-  }
+.profileLarge {
+  width: 11rem;
 }

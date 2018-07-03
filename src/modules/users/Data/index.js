@@ -8,7 +8,7 @@ import { Query } from 'instruments'
 const Data = Component => {
   const Data = ({ vars, skip, search, ...otherProps }) => {
     return (
-      <Query gql={api.Deployments} vars={vars} skip={skip} search={search}>
+      <Query gql={api.Users} vars={vars} skip={skip} search={search}>
         {({ data: { deployments } }) => {
           const newProps = {
             ...otherProps,
