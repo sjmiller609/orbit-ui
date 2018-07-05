@@ -15,7 +15,7 @@ const TeamRoute = ({ auth, teamId, component: Component, ...props }) => {
           return (
             <Redirect
               to={{
-                pathname: '/login',
+                pathname: '/logout/silent',
                 state: { from: props2.location },
               }}
             />

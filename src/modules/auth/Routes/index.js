@@ -23,6 +23,5 @@ export const otherAuthRoutes = [
   {
     path: '/logout',
     component: Load(() => import('../Logout')),
-    exact: true,
   },
 ]

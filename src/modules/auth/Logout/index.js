@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import { withApollo } from 'react-apollo'
 import { Redirect, SetData, SetUI } from 'instruments'
 
-const Logout = ({ client, setData, setUI }) => {
+const Logout = ({ client, setData, setUI, location }) => {
   setData.auth(null)
-  setUI.snackbar("You've successfully logged out.")
+  if (!~location.pathname.indexOf('silent'))
+    setUI.snackbar("You've successfully logged out.")
   // remove Apollo store cache
   client.resetStore()
 
@@ -16,6 +17,7 @@ Logout.propTypes = {
   setData: PropTypes.object,
   setUI: PropTypes.object,
   client: PropTypes.object,
+  location: PropTypes.object,
 }
 
 export default withApollo(

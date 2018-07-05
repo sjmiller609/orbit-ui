@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import api from './api'
 
 import { Query } from 'instruments'
+import OnError from '../OnError'
 
 const Data = Component => {
   const Data = ({ vars, skip, search, ...otherProps }) => {
@@ -13,7 +14,12 @@ const Data = Component => {
     }
 
     return (
-      <Query gql={api.Teams} vars={vars2} skip={skip} search={search}>
+      <Query
+        gql={api.Teams}
+        vars={vars2}
+        skip={skip}
+        search={search}
+        onError={<OnError />}>
         {({ data: { teams } }) => {
           const newProps = {
             ...otherProps,

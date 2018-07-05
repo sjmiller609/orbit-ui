@@ -8,7 +8,12 @@ export const user = gql`
       verified
       primary
     }
-    profile
+    fullName
+    profile {
+      key
+      value
+      category
+    }
     username
     status
     createdAt

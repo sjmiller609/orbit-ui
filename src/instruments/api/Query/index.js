@@ -7,12 +7,15 @@ import { Loading, CardError } from 'instruments'
 
 import { searchText } from './helpers'
 
-const Query = ({ gql, vars, skip, children, search }) => {
+const Query = ({ gql, vars, skip, children, search, onError }) => {
   return (
     <Apollo query={gql} variables={vars} skip={skip} errorPolicy="all">
       {({ loading, error, data }) => {
         if (loading) return <Loading /> // return this instead of updating contextUI
-        if (error) return <CardError />
+        if (error) {
+          if (onError) return onError
+          return <CardError />
+        }
 
         // remove property `Symbol(id)` from data, as it breaks react dev tools
         const data2 = {}
@@ -66,6 +69,7 @@ Query.propTypes = {
   vars: PropTypes.object,
   skip: PropTypes.bool,
   search: PropTypes.object,
+  onError: PropTypes.element,
 }
 
 export default Query
