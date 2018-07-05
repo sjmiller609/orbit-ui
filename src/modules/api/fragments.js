@@ -54,6 +54,10 @@ export const deployment = gql`
     team {
       id: uuid
     }
+    urls {
+      type
+      url
+    }
     createdAt
     updatedAt
   }

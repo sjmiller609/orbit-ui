@@ -29,6 +29,7 @@ const CardForm = ({ children, button, button2, title, className }) => {
               submit
               arrow
               onClick={button.onClick}
+              to={button.to}
               style={button.style}>
               {button.text || 'Save'}
             </Button>
