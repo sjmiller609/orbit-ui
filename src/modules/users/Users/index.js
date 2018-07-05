@@ -16,6 +16,7 @@ class Users extends React.Component {
     delay: false,
     placeholder: 'Search Users',
     call: search => this.setState({ search }),
+    fields: ['users'],
   }
 
   render() {

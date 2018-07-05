@@ -11,14 +11,14 @@ const Item = ({ user, className }) => {
       <Avatar className={s.avatar} />
     </Box>,
     <Box key="1" align="flex-start" className={s.title}>
-      <H3>{user.label}</H3>
-      <P>{user.username}</P>
+      <H3>{user.username}</H3>
+      <P />
     </Box>,
     <Box key="2" align="flex-start" className={s.log}>
-      <P className={s.subTitle}>Deployed</P>
-      <Mini>
+      {/* <P className={s.subTitle}>Deployed</P>
+        <Mini>
         <ShowDate date={user.createdAt} />
-      </Mini>
+      </Mini> */}
     </Box>,
   ]
 
