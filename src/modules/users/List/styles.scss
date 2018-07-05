@@ -18,4 +18,11 @@ div.list {
 
 .profileLarge {
   width: 11rem;
+  @include shadow;
+}
+
+.avatar {
+  width: 3rem;
+  height: 3rem;
+  @include shadow;
 }

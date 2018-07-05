@@ -1,0 +1,13 @@
+@import 'src/styles/mixins.scss';
+
+$size: 3.5rem;
+
+.avatar {
+  height: $size;
+  width: $size;
+  border-radius: 100rem;
+}
+
+.astro {
+  height: 100%;
+}

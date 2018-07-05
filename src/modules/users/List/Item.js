@@ -3,12 +3,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import { TableRow, Box, P, Mini, H3, ShowDate } from 'instruments'
+import { TableRow, Box, P, Mini, H3, ShowDate, Avatar } from 'instruments'
 
 const Item = ({ user, className }) => {
   const columns = [
     <Box key="0" className={s.icon}>
-      P
+      <Avatar className={s.avatar} />
     </Box>,
     <Box key="1" align="flex-start" className={s.title}>
       <H3>{user.label}</H3>

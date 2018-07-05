@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Box, Icon, B, MenuList, Item, Dropdown } from 'instruments'
+import { Avatar, B, MenuList, Item, Dropdown } from 'instruments'
 import s from './styles.scss'
 
 const ProfileMenu = ({ name, className }) => {
@@ -11,11 +11,7 @@ const ProfileMenu = ({ name, className }) => {
     <Dropdown
       className={classnames(s.menu, className)}
       right
-      selector={
-        <Box className={s.icon}>
-          <Icon icon="astro_helmet" className={s.profile} />
-        </Box>
-      }>
+      selector={<Avatar className={s.profile} />}>
       <MenuList>
         <B className={s.title}>{name}</B>
         {/* <Item to="/account">Account Settings</Item> */}

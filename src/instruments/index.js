@@ -30,6 +30,7 @@ export { default as Img } from './icons/Img'
 export { default as Icon } from './icons/Icon'
 export { default as Logo } from './icons/Logo'
 export { default as Airflow } from './icons/Airflow'
+export { default as Avatar } from './icons/Avatar'
 
 export { default as P } from './text/P'
 export { default as Mini } from './text/Mini'

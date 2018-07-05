@@ -11,10 +11,14 @@ $size: 3.5rem;
 }
 
 .profile {
-  height: 67%;
-  &:hover {
-    transform: rotate(12deg);
-    transition: 250ms ease-in;
+  box-shadow: 0 0 0 2px $lightGray;
+  background: $gray;
+  img {
+    height: 67%;
+    &:hover {
+      transform: rotate(12deg);
+      transition: 250ms ease-in;
+    }
   }
 }
 
