@@ -1,19 +1,5 @@
 import gql from 'graphql-tag'
-
-const deployment = gql`
-  fragment deployment on Deployment {
-    id: uuid
-    label
-    type
-    releaseName
-    version
-    team {
-      id: uuid
-    }
-    createdAt
-    updatedAt
-  }
-`
+import { deployment } from 'modules/api/fragments'
 
 export default {
   Deployments: gql`

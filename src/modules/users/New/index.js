@@ -5,9 +5,9 @@ import Configure from './Configure'
 import Module from '../../app/Module'
 
 class New extends React.Component {
-  title = 'New Deployment'
+  title = 'Invite to Team'
   menu = {
-    home: '/deployments',
+    home: '/users/new',
   }
 
   render() {

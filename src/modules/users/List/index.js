@@ -11,7 +11,7 @@ import Empty from './Empty'
 const List = ({ teams, search }) => {
   const users = (teams && teams[0] && teams[0].users) || []
   const button = {
-    text: 'New User',
+    text: 'Invite',
     to: '/users/new',
   }
   return (
@@ -22,7 +22,7 @@ const List = ({ teams, search }) => {
 }
 
 List.propTypes = {
-  team: PropTypes.object,
+  teams: PropTypes.array,
   search: PropTypes.object,
 }
 

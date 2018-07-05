@@ -2,25 +2,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import teamsApi from 'modules/teams/Data/api'
 import api from './api'
 
 import { Create as Mutation, GetData } from 'instruments'
 
-const Create = Component => {
-  const Create = ({ getData, ...props }) => {
+const Invite = Component => {
+  const Invite = ({ getData, ...props }) => {
     const query = {
-      name: api.Deployments,
-      type: 'deployments',
+      name: teamsApi.Teams,
+      type: 'teams',
       vars: {
         teamId: getData.teamId,
+        withUsers: true,
       },
     }
     return (
       <Mutation
-        gql={api.CreateDeployment}
-        redirect={data => '/deployments/' + data.releaseName}
-        success="New deployment created successfully."
-        track="New Deployment Created"
+        gql={api.InviteUser}
+        back
+        success="Your invitation has been sent"
+        track="New User Invited to Team"
         query={query}>
         {({ mutate }) => {
           const newProps = {
@@ -28,7 +30,6 @@ const Create = Component => {
             onSubmit: vars => {
               mutate({
                 variables: {
-                  type: 'airflow',
                   teamId: getData.teamId,
                   ...vars,
                 },
@@ -40,11 +41,11 @@ const Create = Component => {
       </Mutation>
     )
   }
-  Create.propTypes = {
+  Invite.propTypes = {
     getData: PropTypes.object,
   }
 
-  return GetData(Create, { teamId: true })
+  return GetData(Invite, { teamId: true })
 }
 
-export default Create
+export default Invite

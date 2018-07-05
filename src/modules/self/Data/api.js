@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { user } from 'modules/users/Data/api'
+import { user } from 'modules/api/fragments'
 
 export default {
   Self: gql`

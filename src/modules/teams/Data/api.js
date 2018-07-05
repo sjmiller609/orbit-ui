@@ -1,17 +1,5 @@
 import gql from 'graphql-tag'
-
-import { user, group } from 'modules/users/Data/api'
-
-export const team = gql`
-  fragment team on Team {
-    id: uuid
-    label
-    description
-    active
-    createdAt
-    updatedAt
-  }
-`
+import { team, user, group } from 'modules/api/fragments'
 
 export default {
   Teams: gql`
