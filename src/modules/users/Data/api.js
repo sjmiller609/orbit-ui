@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import { team } from 'modules/users/Data/api'
 
 export const user = gql`
   fragment user on User {
@@ -37,24 +38,22 @@ export default {
     }
     ${user}
   `,
-  // CreateDeployment: gql`
-  //   mutation createDeployment(
-  //     $type: String!
-  //     $label: String!
-  //     $teamId: Uuid
-  //     $version: String
-  //   ) {
-  //     createDeployment(
-  //       teamUuid: $teamId
-  //       type: $type
-  //       label: $label
-  //       version: $version
-  //     ) {
-  //       ...deployment
-  //     }
-  //   }
-  //   ${deployment}
-  // `,
+  InviteUser: gql`
+    mutation inviteUser($email: String!, $teamId: Uuid!) {
+      teamAddUser(teamUuid: $teamId, email: $email) {
+        ...team
+        users {
+          ...user
+        }
+        groups {
+          ...group
+        }
+      }
+    }
+    ${team}
+    ${user}
+    ${group}
+  `,
   // UpdateDeployment: gql`
   //   mutation updateDeployment($id: Uuid!, $label: String) {
   //     updateDeployment(deploymentUuid: $id, label: $label) {
