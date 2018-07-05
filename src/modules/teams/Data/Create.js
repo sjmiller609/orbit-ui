@@ -9,6 +9,9 @@ const Create = Component => {
     const query = {
       name: api.Teams,
       type: 'teams',
+      vars: {
+        withUsers: false,
+      },
     }
     return (
       <Mutation
