@@ -15,7 +15,7 @@ const Configure = ({ form, user }) => {
         text: 'Update',
       }}
       className={s.card}>
-      <H5 className={s.name}>{user.username}</H5>
+      <H5 className={s.name}>Permissions for {user.username}. Coming soon.</H5>
       {/* <div className={s.deployed}>
         <P>Deployed</P>
         <Mini>
