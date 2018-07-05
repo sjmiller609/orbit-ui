@@ -26,7 +26,7 @@ const Nav = ({ getData, teams, self, menu }) => {
   const subMenu = menu.subMenu || subMenus[menu.nav]
 
   const profile = {
-    name: self.username,
+    name: self.fullName || self.username,
   }
 
   return (
