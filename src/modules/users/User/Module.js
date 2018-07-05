@@ -1,15 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 
-// import DeploymentConfigure from '../DeploymentConfigure'
-// import DeploymentOverview from '../DeploymentOverview'
 import { Load } from 'instruments'
 import Data from '../Data'
 import Module from '../../app/Module'
 
-const User = ({ user, menu, title }) => {
-  //  const user = deployments[0]
+const User = ({ users, menu, title }) => {
+  const user = users[0]
   // Error handled
   if (!user) return <Module nada />
 
@@ -18,7 +16,7 @@ const User = ({ user, menu, title }) => {
   }
   menu2.level2.text = user.username
 
-  const path = '/users/' + user.username
+  const path = '/users/' + encodeURIComponent(user.username)
 
   return (
     <Module metaTitle={title + ' | ' + user.username} menu={menu}>
@@ -34,8 +32,9 @@ const User = ({ user, menu, title }) => {
         path={path}
         exact
         render={() => {
-          const Overview = Load(() => import('../UserOverview'))
-          return <Overview user={user} />
+          return <Redirect to={path + '/configure'} />
+          // const Overview = Load(() => import('../UserOverview'))
+          // return <Overview user={user} />
         }}
       />
     </Module>
@@ -43,7 +42,7 @@ const User = ({ user, menu, title }) => {
 }
 
 User.propTypes = {
-  user: PropTypes.object,
+  users: PropTypes.array,
   menu: PropTypes.object,
   title: PropTypes.string,
   onSuccess: PropTypes.func,

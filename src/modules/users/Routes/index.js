@@ -14,6 +14,6 @@ export default [
   {
     path: '/users/:id',
     component: Load(() => import('../User')),
-    // matches sub routes in Deployment
+    // matches sub routes
   },
 ]

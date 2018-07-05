@@ -15,21 +15,13 @@ const Configure = ({ form, user }) => {
         text: 'Update',
       }}
       className={s.card}>
-      <TextField
-        type="text"
-        placeholder="Deployment Name"
-        label="Name"
-        required
-        {...form.field('label')}
-        focus
-      />
       <H5 className={s.name}>{user.username}</H5>
-      <div className={s.deployed}>
+      {/* <div className={s.deployed}>
         <P>Deployed</P>
         <Mini>
           <ShowDate date={user.createdAt} />
         </Mini>
-      </div>
+      </div> */}
     </CardForm>
   )
 }

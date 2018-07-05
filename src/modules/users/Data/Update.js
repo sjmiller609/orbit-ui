@@ -8,9 +8,9 @@ const Update = Component => {
   const Update = props => {
     return (
       <Mutation
-        gql={api.UpdateDeployment}
-        success="Deployment updated successfully."
-        track="Deployment Updated"
+        gql={api.UpdateUser}
+        success="User access permissions updated."
+        track="User Permissions Updated"
         back>
         {({ mutate }) => {
           const newProps = {

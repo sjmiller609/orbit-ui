@@ -4,22 +4,18 @@ import Module from './Module'
 
 class User extends React.Component {
   menu = {
-    home: '/user',
+    home: '/users',
   }
 
   render() {
     const { match, location } = this.props
-    const id = match.params.id
-
+    const id = decodeURIComponent(match.params.id)
+    console.log(id)
     this.menu.level2 = {
       text: id,
       to: location.pathname,
     }
     this.menu.subMenu = [
-      {
-        text: 'Overview',
-        to: match.url,
-      },
       {
         text: 'Configure',
         to: match.url + '/configure',

@@ -3,30 +3,25 @@ import PropTypes from 'prop-types'
 
 import { CardDelete, B } from 'instruments'
 
-import { default as Mutate } from '../Data/Delete'
+import { default as Mutate } from '../Data/Remove'
 
 const Delete = ({ user, onSubmit }) => {
   return (
     <CardDelete
-      title="Deprovision Deployment"
-      text="Warning! This cannot be undone. Your webserver, scheduler, database, and
-      deploys will all be deleted, and you will lose all connections configured
-      in Airflow."
+      title="Remove from Team"
+      text="Warning! This cannot be undone. The user will be permanently removed from this team and all access revoked."
       confirm={{
         text: (
           <span>
-            Are you sure you want to deprovision deployment&nbsp;
-            <B>{user.label}</B>
-            ?
+            Are you sure you want to remove&nbsp;
+            <B>{user.username}</B>
+            &nbsp;from this team?
           </span>
         ),
       }}
       onSubmit={() => {
         onSubmit({
           id: user.id,
-          queryVars: {
-            teamId: user.team.id,
-          },
         })
       }}
     />

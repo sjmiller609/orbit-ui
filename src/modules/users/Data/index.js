@@ -9,11 +9,11 @@ const Data = Component => {
   const Data = ({ vars, skip, search, ...otherProps }) => {
     return (
       <Query gql={api.Users} vars={vars} skip={skip} search={search}>
-        {({ data: { deployments } }) => {
+        {({ data: { users } }) => {
           const newProps = {
             ...otherProps,
             search,
-            deployments,
+            users,
           }
           return <Component {...newProps} />
         }}
