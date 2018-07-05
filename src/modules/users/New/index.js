@@ -7,7 +7,7 @@ import Module from '../../app/Module'
 class New extends React.Component {
   title = 'Invite to Team'
   menu = {
-    home: '/users/new',
+    home: '/users',
   }
 
   render() {

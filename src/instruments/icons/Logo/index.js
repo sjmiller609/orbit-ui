@@ -25,9 +25,9 @@ class Logo extends React.Component {
   render() {
     const { src } = this.state
     if (!src) return null
-    const { noStars, full, className } = this.props
+    const { to, noStars, full, className } = this.props
     return (
-      <Link to="/">
+      <Link to={to || '/'}>
         <img
           src={src}
           className={classnames(
@@ -44,6 +44,7 @@ class Logo extends React.Component {
 }
 
 Logo.propTypes = {
+  to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   darkBg: PropTypes.bool,
   full: PropTypes.bool,
   noStars: PropTypes.bool,

@@ -9,7 +9,7 @@ import s from './styles.scss'
 const Menu = ({ level1, level2, profile = {}, className }) => {
   return (
     <Row className={classnames(s.menu, className)} justify="flex-start" wrap>
-      <Logo />
+      <Logo to="/teams" />
       <Level1 {...level1} active={!level2} />
       {level2 && (
         <H2>
