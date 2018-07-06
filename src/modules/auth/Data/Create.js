@@ -13,7 +13,7 @@ const Create = Component => {
     //   name: api.Deployments,
     //   type: 'deployments',
     //   vars: {
-    //     teamId: getData.teamId,
+    //     workspaceId: getData.workspaceId,
     //   },
     // }
     return (

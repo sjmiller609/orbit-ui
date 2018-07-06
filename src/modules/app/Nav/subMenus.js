@@ -1,15 +1,15 @@
 const subMenus = {
-  teams: [
+  workspaces: [
     {
-      to: '/teams',
-      text: 'Teams',
+      to: '/workspaces',
+      text: 'Workspaces',
     },
     // {
     //   to: '/account',
     //   text: 'Account Settings',
     // },
   ],
-  team: [
+  workspace: [
     {
       to: '/deployments',
       text: 'Deployments',
@@ -20,7 +20,7 @@ const subMenus = {
     },
     {
       to: '/settings',
-      text: 'Team Settings',
+      text: 'Workspace Settings',
     },
   ],
   user: [

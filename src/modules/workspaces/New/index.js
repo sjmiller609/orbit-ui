@@ -5,9 +5,9 @@ import Configure from './Configure'
 import Module from '../../app/Module'
 
 class New extends React.Component {
-  title = 'Invite to Workspace'
+  title = 'New Workspace'
   menu = {
-    home: '/users',
+    home: '/',
   }
 
   render() {

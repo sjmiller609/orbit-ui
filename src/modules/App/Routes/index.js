@@ -7,11 +7,11 @@ import { ScrollToTop, Pageview, GetData, Load } from 'instruments'
 
 // get module routes
 import deployments from 'modules/deployments/Routes'
-import { default as teams, team } from 'modules/teams/Routes'
+import { default as workspaces, workspace } from 'modules/workspaces/Routes'
 import { default as auth, otherAuthRoutes } from 'modules/auth/Routes'
 import users from 'modules/users/Routes'
 
-import TeamRoute from './TeamRoute'
+import WorkspaceRoute from './WorkspaceRoute'
 import ProtectedRoute from './ProtectedRoute'
 import AuthRoute from './AuthRoute'
 
@@ -31,10 +31,10 @@ const routes = [
 const authRoutes = [...auth]
 
 // protected by userId
-const protectedRoutes = [...teams]
+const protectedRoutes = [...workspaces]
 
-// also protected by teamId
-const teamRoutes = [...team, ...deployments, ...users]
+// also protected by workspaceId
+const workspaceRoutes = [...workspace, ...deployments, ...users]
 
 const Routes = ({ getData }) => {
   return (
@@ -46,15 +46,15 @@ const Routes = ({ getData }) => {
           <AuthRoute
             key={i}
             auth={getData.auth}
-            teamId={getData.teamId}
+            workspaceId={getData.workspaceId}
             {...route}
           />
         ))}
-        {teamRoutes.map((route, i) => (
-          <TeamRoute
+        {workspaceRoutes.map((route, i) => (
+          <WorkspaceRoute
             key={i}
             auth={getData.auth}
-            teamId={getData.teamId}
+            workspaceId={getData.workspaceId}
             {...route}
           />
         ))}

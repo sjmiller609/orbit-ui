@@ -1,26 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { GetData, Header } from 'instruments'
-import Data from '../../teams/Data'
+import Data from '../../workspaces/Data'
 import Self from '../../self/Data'
 import subMenus from './subMenus'
 
-const Nav = ({ getData, teams, self, menu }) => {
+const Nav = ({ getData, workspaces, self, menu }) => {
   console.log(self)
-  const teamId = getData.teamId
-  if (!teams) return null
-  const team = teams.find(team => team.id === teamId)
+  const workspaceId = getData.workspaceId
+  if (!workspaces) return null
+  const workspace = workspaces.find(workspace => workspace.id === workspaceId)
 
   const level1 = {
     selected: {
       to: menu.home, //default?
-      id: teamId,
-      text: team ? team.label : 'All Teams',
+      id: workspaceId,
+      text: workspace ? workspace.label : 'All Workspaces',
     },
-    list: teams,
+    list: workspaces,
     addNew: {
-      to: '/teams/new',
-      text: 'New Team',
+      to: '/workspaces/new',
+      text: 'New Workspace',
     },
   }
   const subMenu = menu.subMenu || subMenus[menu.nav]
@@ -41,9 +41,9 @@ const Nav = ({ getData, teams, self, menu }) => {
 
 Nav.propTypes = {
   getData: PropTypes.object,
-  teams: PropTypes.array,
+  workspaces: PropTypes.array,
   self: PropTypes.object,
   menu: PropTypes.object,
 }
 
-export default GetData(Self(Data(Nav)), { teamId: true })
+export default GetData(Self(Data(Nav)), { workspaceId: true })

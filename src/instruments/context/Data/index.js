@@ -6,16 +6,16 @@ import storage from '../../../helpers/storage'
 import auth from '../../../helpers/token'
 
 class Provider extends React.Component {
-  setTeam = this.setTeam.bind(this)
+  setWorkspace = this.setWorkspace.bind(this)
   setAuth = this.setAuth.bind(this)
 
   state = {
-    teamId: storage.getItem('teamId'), // string
+    workspaceId: storage.getItem('workspaceId'), // string
     auth: null, // string
   }
 
   set = {
-    teamId: this.setTeam,
+    workspaceId: this.setWorkspace,
     auth: this.setAuth,
   }
 
@@ -31,7 +31,7 @@ class Provider extends React.Component {
     if (!token || exp <= now) {
       auth.remove()
       this.setState({ auth: false })
-      this.setTeam(null)
+      this.setWorkspace(null)
       return
     }
 
@@ -39,11 +39,11 @@ class Provider extends React.Component {
     auth.set({ token, exp })
   }
 
-  setTeam(teamId) {
-    this.setState({ teamId })
-    if (teamId !== storage.getItem('teamId')) {
-      if (!teamId) storage.removeItem('teamId')
-      else storage.setItem('teamId', teamId)
+  setWorkspace(workspaceId) {
+    this.setState({ workspaceId })
+    if (workspaceId !== storage.getItem('workspaceId')) {
+      if (!workspaceId) storage.removeItem('workspaceId')
+      else storage.setItem('workspaceId', workspaceId)
     }
   }
 

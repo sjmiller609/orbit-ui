@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import teamsApi from 'modules/teams/Data/api'
+import workspacesApi from 'modules/workspaces/Data/api'
 import api from './api'
 
 import { Create as Mutation, GetData } from 'instruments'
@@ -10,10 +10,10 @@ import { Create as Mutation, GetData } from 'instruments'
 const Invite = Component => {
   const Invite = ({ getData, ...props }) => {
     const query = {
-      name: teamsApi.Teams,
-      type: 'teams',
+      name: workspacesApi.Workspaces,
+      type: 'workspaces',
       vars: {
-        teamId: getData.teamId,
+        workspaceId: getData.workspaceId,
         withUsers: true,
       },
     }
@@ -22,7 +22,7 @@ const Invite = Component => {
         gql={api.InviteUser}
         back
         success="Your invitation has been sent"
-        track="New User Invited to Team"
+        track="New User Invited to Workspace"
         query={query}>
         {({ mutate }) => {
           const newProps = {
@@ -30,7 +30,7 @@ const Invite = Component => {
             onSubmit: vars => {
               mutate({
                 variables: {
-                  teamId: getData.teamId,
+                  workspaceId: getData.workspaceId,
                   ...vars,
                 },
               })
@@ -45,7 +45,7 @@ const Invite = Component => {
     getData: PropTypes.object,
   }
 
-  return GetData(Invite, { teamId: true })
+  return GetData(Invite, { workspaceId: true })
 }
 
 export default Invite

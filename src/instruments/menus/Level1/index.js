@@ -27,7 +27,7 @@ const Level1 = ({ selected, list, addNew, active, className }) => {
           <Item
             key={li.id}
             to={{
-              pathname: '/teams/' + li.id,
+              pathname: '/workspaces/' + li.id,
               state: { from: location.pathname },
             }}
             active={li.id === selected.id}>

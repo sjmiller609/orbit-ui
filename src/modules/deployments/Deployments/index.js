@@ -7,7 +7,7 @@ import { GetData } from 'instruments'
 
 class Deployments extends React.Component {
   menu = {
-    nav: 'team',
+    nav: 'workspace',
   }
   // state for entire module
   state = { search: '' }
@@ -21,7 +21,7 @@ class Deployments extends React.Component {
   render() {
     const { search } = this.state
     const vars = {
-      teamId: this.props.getData.teamId,
+      workspaceId: this.props.getData.workspaceId,
     }
     return (
       <Module metaTitle="Deployments" menu={this.menu}>
@@ -40,4 +40,4 @@ Deployments.propTypes = {
   getData: PropTypes.object,
 }
 
-export default GetData(Deployments, { teamId: true })
+export default GetData(Deployments, { workspaceId: true })

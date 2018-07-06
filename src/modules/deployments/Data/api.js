@@ -4,12 +4,12 @@ import { deployment } from 'modules/api/fragments'
 export default {
   Deployments: gql`
     query deployments(
-      $teamId: Uuid
+      $workspaceId: Uuid
       $deploymentId: Uuid
       $releaseName: String
     ) {
       deployments(
-        teamUuid: $teamId
+        workspaceUuid: $workspaceId
         deploymentUuid: $deploymentId
         releaseName: $releaseName
       ) {
@@ -22,11 +22,11 @@ export default {
     mutation createDeployment(
       $type: String!
       $label: String!
-      $teamId: Uuid
+      $workspaceId: Uuid
       $version: String
     ) {
       createDeployment(
-        teamUuid: $teamId
+        workspaceUuid: $workspaceId
         type: $type
         label: $label
         version: $version

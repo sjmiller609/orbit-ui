@@ -25,7 +25,7 @@ const Delete = ({ deployment, onSubmit }) => {
         onSubmit({
           id: deployment.id,
           queryVars: {
-            teamId: deployment.team.id,
+            workspaceId: deployment.workspace.id,
           },
         })
       }}

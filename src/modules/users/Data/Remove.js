@@ -3,17 +3,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import api from './api'
-import teamsApi from 'modules/teams/Data/api'
+import workspacesApi from 'modules/workspaces/Data/api'
 
 import { Delete as Mutate, GetData } from 'instruments'
 
 const Remove = Component => {
   const Remove = ({ getData, ...props }) => {
     const query = {
-      name: teamsApi.Teams,
-      type: 'teams',
+      name: workspacesApi.Workspaces,
+      type: 'workspaces',
       vars: {
-        teamId: getData.teamId,
+        workspaceId: getData.workspaceId,
         withUsers: true,
       },
     }
@@ -21,8 +21,8 @@ const Remove = Component => {
       <Mutate
         gql={api.RemoveUser}
         redirect="/users"
-        success="User removed from team."
-        track="User Removed From Team"
+        success="User removed from workspace."
+        track="User Removed From Workspace"
         query={query}>
         {({ mutate }) => {
           const newProps = {
@@ -30,7 +30,7 @@ const Remove = Component => {
             onSubmit: vars => {
               mutate({
                 variables: {
-                  teamId: getData.teamId,
+                  workspaceId: getData.workspaceId,
                   ...vars,
                 },
                 refetchQueries: [
@@ -51,7 +51,7 @@ const Remove = Component => {
     getData: PropTypes.object,
   }
 
-  return GetData(Remove, { teamId: true })
+  return GetData(Remove, { workspaceId: true })
 }
 
 export default Remove

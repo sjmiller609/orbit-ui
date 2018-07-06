@@ -12,7 +12,7 @@ const Create = Component => {
       name: api.Deployments,
       type: 'deployments',
       vars: {
-        teamId: getData.teamId,
+        workspaceId: getData.workspaceId,
       },
     }
     return (
@@ -29,7 +29,7 @@ const Create = Component => {
               mutate({
                 variables: {
                   type: 'airflow',
-                  teamId: getData.teamId,
+                  workspaceId: getData.workspaceId,
                   ...vars,
                 },
               })
@@ -44,7 +44,7 @@ const Create = Component => {
     getData: PropTypes.object,
   }
 
-  return GetData(Create, { teamId: true })
+  return GetData(Create, { workspaceId: true })
 }
 
 export default Create

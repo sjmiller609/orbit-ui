@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Route, Redirect } from 'react-router-dom'
 
-const AuthRoute = ({ auth, teamId, component: Component, ...props }) => {
+const AuthRoute = ({ auth, workspaceId, component: Component, ...props }) => {
   return (
     <Route
       {...props}
@@ -12,7 +12,7 @@ const AuthRoute = ({ auth, teamId, component: Component, ...props }) => {
           return (
             <Redirect
               to={{
-                pathname: teamId ? '/deployments' : '/teams',
+                pathname: workspaceId ? '/deployments' : '/workspaces',
                 state: { from: props2.location },
               }}
             />
@@ -27,7 +27,7 @@ const AuthRoute = ({ auth, teamId, component: Component, ...props }) => {
 AuthRoute.propTypes = {
   component: PropTypes.func,
   auth: PropTypes.bool,
-  teamId: PropTypes.string,
+  workspaceId: PropTypes.string,
 }
 
 export default AuthRoute

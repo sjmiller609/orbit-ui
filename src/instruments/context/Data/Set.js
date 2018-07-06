@@ -11,7 +11,7 @@ const setContext = (Component, options = {}) => {
           {context => {
             const c = Object.keys(options).length ? {} : context
 
-            if (options.teamId) c.teamId = context.teamId
+            if (options.workspaceId) c.workspaceId = context.workspaceId
             if (options.auth) c.auth = context.auth
 
             const newProps = {

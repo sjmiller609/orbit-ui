@@ -7,15 +7,15 @@ import { Delete as Mutate } from 'instruments'
 const Delete = Component => {
   const Delete = props => {
     const query = {
-      name: api.Deployments,
-      type: 'deployments',
+      name: api.Workspaces,
+      type: 'workspaces',
     }
     return (
       <Mutate
-        gql={api.DeleteDeployment}
-        redirect="/deployments"
-        success="Deployment deleted successfully."
-        track="Deployment Deleted"
+        gql={api.DeleteWorkspace}
+        redirect="/workspaces"
+        success="Workspace deleted successfully."
+        track="Workspace Deleted"
         query={query}>
         {({ mutate }) => {
           const newProps = {
@@ -23,12 +23,7 @@ const Delete = Component => {
             onSubmit: vars => {
               mutate({
                 variables: vars,
-                refetchQueries: [
-                  {
-                    query: query.name,
-                    variables: vars.queryVars, // need to get workspaceId for deployments query
-                  },
-                ],
+                refetchQueries: [{ query: query.name }],
               })
             },
           }

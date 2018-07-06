@@ -26,7 +26,7 @@ const Delete = Component => {
                 refetchQueries: [
                   {
                     query: query.name,
-                    variables: vars.queryVars, // need to get teamId for deployments query
+                    variables: vars.queryVars, // need to get workspaceId for deployments query
                   },
                 ],
               })

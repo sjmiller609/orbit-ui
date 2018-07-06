@@ -33,8 +33,8 @@ export const group = gql`
   }
 `
 
-export const team = gql`
-  fragment team on Team {
+export const workspace = gql`
+  fragment workspace on Workspace {
     id: uuid
     label
     description
@@ -51,7 +51,7 @@ export const deployment = gql`
     type
     releaseName
     version
-    team {
+    workspace {
       id: uuid
     }
     urls {

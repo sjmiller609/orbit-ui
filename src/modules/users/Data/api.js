@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { user, group, team } from 'modules/api/fragments'
+import { user, group, workspace } from 'modules/api/fragments'
 
 export default {
   Users: gql`
@@ -11,9 +11,9 @@ export default {
     ${user}
   `,
   InviteUser: gql`
-    mutation inviteUser($email: String!, $teamId: Uuid!) {
-      teamAddUser(teamUuid: $teamId, email: $email) {
-        ...team
+    mutation inviteUser($email: String!, $workspaceId: Uuid!) {
+      workspaceAddUser(workspaceUuid: $workspaceId, email: $email) {
+        ...workspace
         users {
           ...user
         }
@@ -22,7 +22,7 @@ export default {
         }
       }
     }
-    ${team}
+    ${workspace}
     ${user}
     ${group}
   `,
@@ -35,8 +35,8 @@ export default {
     ${user}
   `,
   RemoveUser: gql`
-    mutation removeUser($id: Uuid!, $teamId: Uuid!) {
-      deleteDeployment(userUuid: $id, teamUuid: $teamId) {
+    mutation removeUser($id: Uuid!, $workspaceId: Uuid!) {
+      deleteDeployment(userUuid: $id, workspaceUuid: $workspaceId) {
         id: uuid
       }
     }

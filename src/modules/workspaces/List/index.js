@@ -4,19 +4,19 @@ import PropTypes from 'prop-types'
 import s from './styles.scss'
 import { Table } from 'instruments'
 
-import Data from 'modules/workspaces/Data'
+import Data from '../Data'
 import Item from './Item'
 import Empty from './Empty'
 
 const List = ({ workspaces, search }) => {
-  const users = (workspaces && workspaces[0] && workspaces[0].users) || []
   const button = {
-    text: 'Invite',
-    to: '/users/new',
+    text: 'New Workspace',
+    to: '/workspaces/new',
   }
+
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
-      {users.map(t => <Item key={t.id} user={t} />)}
+      {workspaces && workspaces.map(t => <Item key={t.id} workspace={t} />)}
     </Table>
   )
 }
