@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import api from './api'
+// import selfApi from 'modules/self/Data/api'
 
 import { Create as Mutation, SetData } from 'instruments'
 
@@ -10,11 +11,8 @@ const Create = Component => {
   const Create = ({ setData, to, track, success, ...props }) => {
     // update self query
     // const query = {
-    //   name: api.Deployments,
-    //   type: 'deployments',
-    //   vars: {
-    //     workspaceId: getData.workspaceId,
-    //   },
+    //   name: api.Self,
+    //   type: 'self',
     // }
     return (
       <Mutation

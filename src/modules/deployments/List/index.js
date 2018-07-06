@@ -8,16 +8,34 @@ import Data from '../Data'
 import Item from './Item'
 import Empty from './Empty'
 
-const List = ({ deployments, search }) => {
-  const button = {
+class List extends React.Component {
+  state = { search: '' }
+  // search obj constants
+  search = {
+    delay: false,
+    placeholder: 'Search Deployments',
+    call: search => this.setState({ search }),
+  }
+  button = {
     text: 'New Deployment',
     to: '/deployments/new',
   }
-  return (
-    <Table className={s.list} search={search} button={button} Empty={Empty}>
-      {deployments && deployments.map(d => <Item key={d.id} deployment={d} />)}
-    </Table>
-  )
+
+  render() {
+    const { deployments } = this.props
+    const { search } = this.state
+
+    return (
+      <Table
+        className={s.list}
+        search={search}
+        button={this.button}
+        Empty={Empty}>
+        {deployments &&
+          deployments.map(d => <Item key={d.id} deployment={d} />)}
+      </Table>
+    )
+  }
 }
 
 List.propTypes = {

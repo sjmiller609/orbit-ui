@@ -8,17 +8,36 @@ import Data from '../Data'
 import Item from './Item'
 import Empty from './Empty'
 
-const List = ({ workspaces, search }) => {
-  const button = {
+class List extends React.Component {
+  state = { search: '' }
+  // search obj constants
+  search = {
+    delay: false,
+    placeholder: 'Search Workspaces',
+    call: search => this.setState({ search }),
+  }
+  button = {
     text: 'New Workspace',
     to: '/workspaces/new',
   }
 
-  return (
-    <Table className={s.list} search={search} button={button} Empty={Empty}>
-      {workspaces && workspaces.map(t => <Item key={t.id} workspace={t} />)}
-    </Table>
-  )
+  render() {
+    const { workspaces } = this.props
+    const { search } = this.state
+
+    return (
+      <Table
+        className={s.list}
+        search={{
+          text: search,
+          ...this.search,
+        }}
+        button={this.button}
+        Empty={Empty}>
+        {workspaces && workspaces.map(t => <Item key={t.id} workspace={t} />)}
+      </Table>
+    )
+  }
 }
 
 List.propTypes = {
