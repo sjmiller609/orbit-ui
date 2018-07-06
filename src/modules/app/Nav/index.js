@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { GetData, Header } from 'instruments'
+import { GetData, Header, Pure } from 'instruments'
 import Data from '../../workspaces/Data'
 import Self from '../../self/Data'
 import subMenus from './subMenus'
@@ -46,4 +46,4 @@ Nav.propTypes = {
   menu: PropTypes.object,
 }
 
-export default GetData(Self(Data(Nav)), { workspaceId: true })
+export default GetData(Self(Data(Pure(Nav))), { workspaceId: true })
