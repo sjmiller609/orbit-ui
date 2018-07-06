@@ -41,6 +41,9 @@ export const workspace = gql`
     active
     createdAt
     updatedAt
+    invites {
+      email
+    }
   }
 `
 
@@ -61,4 +64,31 @@ export const deployment = gql`
     createdAt
     updatedAt
   }
+`
+export const invite = gql`
+  fragment invite on Invite {
+    id: uuid
+    email
+    assignments
+    createdAt
+    updatedAt
+  }
+`
+
+export const workspaceUsers = gql`
+  fragment workspaceUsers on Workspace {
+    id: uuid
+    users {
+      ...user
+    }
+    groups {
+      ...group
+    }
+    invites {
+      ...invite
+    }
+  }
+  ${invite}
+  ${user}
+  ${group}
 `
