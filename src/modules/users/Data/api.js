@@ -36,7 +36,7 @@ export default {
   `,
   RemoveUser: gql`
     mutation removeUser($id: Uuid!, $workspaceId: Uuid!) {
-      deleteDeployment(userUuid: $id, workspaceUuid: $workspaceId) {
+      workspaceRemoveUser(userUuid: $id, workspaceUuid: $workspaceId) {
         id: uuid
       }
     }
