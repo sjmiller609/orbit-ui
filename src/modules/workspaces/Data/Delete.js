@@ -9,6 +9,9 @@ const Delete = Component => {
     const query = {
       name: api.Workspaces,
       type: 'workspaces',
+      vars: {
+        withUsers: false,
+      },
     }
     return (
       <Mutate
@@ -23,7 +26,7 @@ const Delete = Component => {
             onSubmit: vars => {
               mutate({
                 variables: vars,
-                refetchQueries: [{ query: query.name }],
+                refetchQueries: [{ query: query.name, variables: query.vars }],
               })
             },
           }
