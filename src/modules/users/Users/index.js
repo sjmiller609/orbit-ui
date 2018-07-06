@@ -9,15 +9,31 @@ class Users extends React.Component {
   menu = {
     nav: 'workspace',
   }
+  // state for entire module
+  state = { search: '' }
+  // search obj constants
+  search = {
+    delay: false,
+    placeholder: 'Search Users',
+    call: search => this.setState({ search }),
+    fields: ['users'],
+  }
 
   render() {
+    const { search } = this.state
     const vars = {
       workspaceId: this.props.getData.workspaceId,
       withUsers: true,
     }
     return (
       <Module metaTitle="Users" menu={this.menu}>
-        <List vars={vars} />
+        <List
+          search={{
+            text: search,
+            ...this.search,
+          }}
+          vars={vars}
+        />
       </Module>
     )
   }
