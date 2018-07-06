@@ -17,7 +17,7 @@ class User extends React.Component {
     }
     this.menu.subMenu = [
       {
-        text: 'Configure',
+        text: 'Configure Access',
         to: match.url + '/configure',
       },
     ]
@@ -25,7 +25,7 @@ class User extends React.Component {
     const vars = {
       username: id,
     }
-    return <Module title="Configure" menu={this.menu} vars={vars} />
+    return <Module title="Configure Access" menu={this.menu} vars={vars} />
   }
 }
 
