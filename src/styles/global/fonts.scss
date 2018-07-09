@@ -3,96 +3,50 @@
 // Filmotype Fashion
 @font-face {
   font-family: 'Filmotype Fashion';
-  src: url($static_url+'/fonts/filmotype/filmotype.eot');
-  src: url($static_url+'/fonts/filmotype/filmotype.eot?#iefix')
-      format('embedded-opentype'),
-    url($static_url+'/fonts/filmotype/filmotype.woff2') format('woff2'),
-    url($static_url+'/fonts/filmotype/filmotype.woff') format('woff'),
-    url($static_url+'/fonts/filmotype/filmotype.ttf') format('truetype');
+  src: url($static_url+'/fonts/filmotype/filmotype.woff2') format('woff2'),
+    url($static_url+'/fonts/filmotype/filmotype.woff') format('woff');
 }
 // Sofia Pro
 
 @font-face {
   font-family: 'Sofia Light';
-  src: url($static_url+'/fonts/sofia-pro/0eaf6264-15ee-4251-826e-9c0a59e8395f.eot');
-  src: url($static_url+'/fonts/sofia-pro/0eaf6264-15ee-4251-826e-9c0a59e8395f.eot?#iefix')
-      format('eot'),
-    url($static_url+'/fonts/sofia-pro/8d11b8a0-868c-4a53-8b26-9f0ccbd58247.woff2')
+  src: url($static_url+'/fonts/sofia-pro/8d11b8a0-868c-4a53-8b26-9f0ccbd58247.woff2')
       format('woff2'),
     url($static_url+'/fonts/sofia-pro/9b976f15-23b7-45cd-ad4b-59c95b2889f9.woff')
-      format('woff'),
-    url($static_url+'/fonts/sofia-pro/864da3de-5a97-4ce6-a22b-22932ed4dfe0.ttf')
-      format('truetype'),
-    url($static_url+'/fonts/sofia-pro/d5898683-1b2a-4b1b-8058-0c8db30e40cf.svg#d5898683-1b2a-4b1b-8058-0c8db30e40cf')
-      format('svg');
+      format('woff');
 }
 @font-face {
   font-family: 'Sofia Regular';
-  src: url($static_url+'/fonts/sofia-pro/941243bb-e692-46f8-91b9-6e621e5c1ff8.eot');
-  src: url($static_url+'/fonts/sofia-pro/941243bb-e692-46f8-91b9-6e621e5c1ff8.eot?#iefix')
-      format('eot'),
-    url($static_url+'/fonts/sofia-pro/8b31e0d7-5f53-45c2-b318-064f0b532543.woff2')
+  src: url($static_url+'/fonts/sofia-pro/8b31e0d7-5f53-45c2-b318-064f0b532543.woff2')
       format('woff2'),
     url($static_url+'/fonts/sofia-pro/476fe015-ab32-40a2-8fed-0a5af9a3bba4.woff')
-      format('woff'),
-    url($static_url+'/fonts/sofia-pro/d8bcfa37-4f93-49cf-8dea-c29e894af58e.ttf')
-      format('truetype'),
-    url($static_url+'/fonts/sofia-pro/28fc42bb-8761-4e6a-8c62-65d4a41c9e33.svg#28fc42bb-8761-4e6a-8c62-65d4a41c9e33')
-      format('svg');
+      format('woff');
 }
 @font-face {
   font-family: 'Sofia Regular Italic';
-  src: url($static_url+'/fonts/sofia-pro/addba733-2fd3-4151-adf4-d0b563dc6517.eot');
-  src: url($static_url+'/fonts/sofia-pro/addba733-2fd3-4151-adf4-d0b563dc6517.eot?#iefix')
-      format('eot'),
-    url($static_url+'/fonts/sofia-pro/87cd0dd6-3e8b-46f1-b677-ab7644ea015e.woff2')
+  src: url($static_url+'/fonts/sofia-pro/87cd0dd6-3e8b-46f1-b677-ab7644ea015e.woff2')
       format('woff2'),
     url($static_url+'/fonts/sofia-pro/90682d0e-e5df-4a2e-a2ff-6899b8ae8e4b.woff')
-      format('woff'),
-    url($static_url+'/fonts/sofia-pro/d1a6f359-b96c-43fd-87af-85f9762a4ecf.ttf')
-      format('truetype'),
-    url($static_url+'/fonts/sofia-pro/6cc18d90-baae-43d6-9b7e-e778cb8c630f.svg#6cc18d90-baae-43d6-9b7e-e778cb8c630f')
-      format('svg');
+      format('woff');
 }
 @font-face {
   font-family: 'Sofia Medium';
-  src: url($static_url+'/fonts/sofia-pro/27070da8-f8ed-4002-8324-4f0dd80f8fa4.eot');
-  src: url($static_url+'/fonts/sofia-pro/27070da8-f8ed-4002-8324-4f0dd80f8fa4.eot?#iefix')
-      format('eot'),
-    url($static_url+'/fonts/sofia-pro/fe0b48dd-7bb4-4787-913d-eaf613373f35.woff2')
+  src: url($static_url+'/fonts/sofia-pro/fe0b48dd-7bb4-4787-913d-eaf613373f35.woff2')
       format('woff2'),
     url($static_url+'/fonts/sofia-pro/d493595c-97d2-4edc-bc9a-c09ad13b4913.woff')
-      format('woff'),
-    url($static_url+'/fonts/sofia-pro/449bb77f-1bc7-4956-a8f1-3d4ae9243a59.ttf')
-      format('truetype'),
-    url($static_url+'/fonts/sofia-pro/1332b505-18f0-4aa5-ba55-9be49eba8fb5.svg#1332b505-18f0-4aa5-ba55-9be49eba8fb5')
-      format('svg');
+      format('woff');
 }
 @font-face {
   font-family: 'Sofia Semi Bold';
-  src: url($static_url+'/fonts/sofia-pro/e488d96e-1d10-41aa-a2a0-8cb7cc0a54a8.eot');
-  src: url($static_url+'/fonts/sofia-pro/e488d96e-1d10-41aa-a2a0-8cb7cc0a54a8.eot?#iefix')
-      format('eot'),
-    url($static_url+'/fonts/sofia-pro/20755c49-19b5-4792-aaf3-27f6b048149a.woff2')
+  src: url($static_url+'/fonts/sofia-pro/20755c49-19b5-4792-aaf3-27f6b048149a.woff2')
       format('woff2'),
     url($static_url+'/fonts/sofia-pro/7cdc9309-dc21-43e2-a348-c6e3853fe8a9.woff')
-      format('woff'),
-    url($static_url+'/fonts/sofia-pro/fe0fe0a1-32b6-4795-80da-fb446ac9d5ea.ttf')
-      format('truetype'),
-    url($static_url+'/fonts/sofia-pro/d7a947d1-755b-4774-a917-036acd235435.svg#d7a947d1-755b-4774-a917-036acd235435')
-      format('svg');
+      format('woff');
 }
 @font-face {
   font-family: 'Sofia Bold';
-  src: url($static_url+'/fonts/sofia-pro/c2440dd8-b25c-49ba-bc04-8a638a943324.eot');
-  src: url($static_url+'/fonts/sofia-pro/c2440dd8-b25c-49ba-bc04-8a638a943324.eot?#iefix')
-      format('eot'),
-    url($static_url+'/fonts/sofia-pro/80042803-0630-405f-b2d2-af97b4e50b46.woff2')
+  src: url($static_url+'/fonts/sofia-pro/80042803-0630-405f-b2d2-af97b4e50b46.woff2')
       format('woff2'),
     url($static_url+'/fonts/sofia-pro/ec41d681-0313-4b04-88c0-820aebb51f4e.woff')
-      format('woff'),
-    url($static_url+'/fonts/sofia-pro/81434fc3-e426-4a4c-987d-f25c098198c4.ttf')
-      format('truetype'),
-    url($static_url+'/fonts/sofia-pro/59fd3475-fba9-4c77-94f9-959fd3925e06.svg#59fd3475-fba9-4c77-94f9-959fd3925e06')
-      format('svg');
+      format('woff');
 }
