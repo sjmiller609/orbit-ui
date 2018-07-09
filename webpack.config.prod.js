@@ -119,37 +119,35 @@ export default {
         ],
       },
       {
-        test: /(\.css|\.scss|\.sass|\.less)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: true,
-                modules: true,
-              },
+        test: /(\.css|\.scss|\.sass)$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
             },
-            {
-              loader: 'postcss-loader',
-              options: {
-                ident: 'postcss',
-                plugins: () => [
-                  require('postcss-flexbugs-fixes'),
-                  require('autoprefixer'),
-                ],
-                sourceMap: true,
-              },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                require('autoprefixer'),
+              ],
+              sourceMap: true,
             },
-            {
-              loader: 'sass-loader',
-              options: {
-                includePaths: [path.resolve(__dirname, 'src', 'scss')],
-                sourceMap: true,
-              },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [path.resolve(__dirname, 'src', 'scss')],
+              sourceMap: true,
             },
-          ],
-        }),
+          },
+        ],
       },
     ],
   },
