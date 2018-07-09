@@ -20,10 +20,12 @@ div.list {
   width: 10rem;
   height: 10rem;
   @include shadow;
+  background: $gray;
 }
 
 .avatar {
   width: 3rem;
   height: 3rem;
   @include shadow;
+  background: $gray;
 }
