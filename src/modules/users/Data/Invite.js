@@ -22,7 +22,7 @@ const Invite = Component => {
         gql={api.InviteUser}
         back
         errorMsg="Limited functionality: To add a user to this workspace, that person must first sign up."
-        success="Your invitation has been sent"
+        success="User added to workspace." //TODO: "Your invitation has been sent"
         track="New User Invited to Workspace"
         query={query}>
         {({ mutate }) => {

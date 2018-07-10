@@ -6,10 +6,11 @@ import { CardDelete, B } from 'instruments'
 import { default as Mutate } from '../Data/Remove'
 import GetWorkspace from 'modules/workspaces/GetWorkspace'
 
-const Delete = ({ user, onSubmit, workspace }) => {
+const Delete = ({ user, onSubmit, workspace, isSelf }) => {
   let noDelete
-  let text =
-    'Warning! This cannot be undone. The user will be permanently removed from this workspace and all access revoked.'
+  let who = isSelf ? 'You' : user.fullName
+  let text = `Warning! This cannot be undone. ${who} will be permanently removed from this workspace and all access revoked.`
+
   if (workspace.users.length === 1) {
     noDelete = true
     text =
@@ -42,6 +43,7 @@ Delete.propTypes = {
   onSubmit: PropTypes.func,
   user: PropTypes.object,
   workspace: PropTypes.object,
+  isSelf: PropTypes.bool,
 }
 
 export default GetWorkspace(Mutate(Delete), { withUsers: true })
