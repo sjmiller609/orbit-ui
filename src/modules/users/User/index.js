@@ -10,7 +10,6 @@ class User extends React.Component {
   render() {
     const { match, location } = this.props
     const id = decodeURIComponent(match.params.id)
-    console.log(id)
     this.menu.level2 = {
       text: id,
       to: location.pathname,

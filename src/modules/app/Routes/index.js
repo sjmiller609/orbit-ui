@@ -54,7 +54,7 @@ const Routes = ({ getData }) => {
           <WorkspaceRoute
             key={i}
             auth={getData.auth}
-            workspaceId={getData.workspaceId}
+            vars={{ workspaceId: getData.workspaceId }}
             {...route}
           />
         ))}

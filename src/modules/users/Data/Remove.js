@@ -8,7 +8,7 @@ import workspacesApi from 'modules/workspaces/Data/api'
 import { Delete as Mutate, GetData } from 'instruments'
 
 const Remove = Component => {
-  const Remove = ({ getData, ...props }) => {
+  const Remove = ({ getData, isSelf, ...props }) => {
     const query = {
       name: workspacesApi.Workspaces,
       type: 'workspaces',
@@ -17,16 +17,19 @@ const Remove = Component => {
         withUsers: true,
       },
     }
+    if (isSelf) query.vars = { withUsers: false }
+
     return (
       <Mutate
         gql={api.RemoveUser}
-        redirect="/users"
+        redirect={!isSelf ? '/users' : '/workspaces'}
         success="User removed from workspace."
         track="User Removed From Workspace"
         query={query}>
         {({ mutate }) => {
           const newProps = {
             ...props,
+            isSelf,
             onSubmit: vars => {
               mutate({
                 variables: {
@@ -49,6 +52,7 @@ const Remove = Component => {
   }
   Remove.propTypes = {
     getData: PropTypes.object,
+    isSelf: PropTypes.bool,
   }
 
   return GetData(Remove, { workspaceId: true })

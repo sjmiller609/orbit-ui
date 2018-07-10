@@ -2,21 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Route, Redirect } from 'react-router-dom'
+import SelfData from 'modules/self/Data'
 
-const ProtectedRoute = ({ auth, component: Component, ...props }) => {
+export const ProtectedRedirect = from => (
+  <Redirect
+    to={{
+      pathname: '/logout/silent',
+      state: { from },
+    }}
+  />
+)
+
+const ProtectedRoute = ({ auth, self, component: Component, ...props }) => {
   return (
     <Route
       {...props}
       render={props2 => {
-        if (!auth) {
-          return (
-            <Redirect
-              to={{
-                pathname: '/logout/silent',
-                state: { from: props2.location },
-              }}
-            />
-          )
+        if (!auth || !self) {
+          return <ProtectedRedirect from={props2.location} />
         }
 
         return <Component {...props2} />
@@ -28,6 +31,7 @@ const ProtectedRoute = ({ auth, component: Component, ...props }) => {
 ProtectedRoute.propTypes = {
   component: PropTypes.func,
   auth: PropTypes.bool,
+  self: PropTypes.object,
 }
 
-export default ProtectedRoute
+export default SelfData(ProtectedRoute)
