@@ -14,7 +14,7 @@ const User = ({ users, menu, title }) => {
   const menu2 = {
     ...menu,
   }
-  menu2.level2.text = user.username
+  menu2.level2.text = user.fullName
 
   const path = '/users/' + encodeURIComponent(user.username)
 
