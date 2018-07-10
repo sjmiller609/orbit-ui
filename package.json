@@ -14,6 +14,8 @@
       "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:src\" \"npm run lint:watch\"",
     "local":
       "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:local\" \"npm run lint:watch\"",
+    "local-prod":
+      "npm run clean-dist && npm run build-production && npm run open:dist",
     "open:src": "babel-node tools/srcServer.js",
     "open:local": "babel-node tools/localServer.js",
     "open:dist": "babel-node tools/distServer.js",
