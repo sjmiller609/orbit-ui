@@ -51,9 +51,7 @@ function getStorage(storage) {
 
 getStorage.prototype.FALLBACK_STORAGE = window.memoryStorage
 
-// Browser sync doesn't work correctly without local storage.
 const foo = window.localStorage
-// const foo = localStorage; // force fallback
 
 const storage = getStorage(foo)
 
