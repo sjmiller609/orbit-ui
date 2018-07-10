@@ -21,6 +21,7 @@ const Invite = Component => {
       <Mutation
         gql={api.InviteUser}
         back
+        errorMsg="Limited functionality: To add a user to this workspace, that person must first sign up."
         success="Your invitation has been sent"
         track="New User Invited to Workspace"
         query={query}>

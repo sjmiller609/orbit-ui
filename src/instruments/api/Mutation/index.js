@@ -18,13 +18,18 @@ const Mutation = ({
   history,
   success,
   track,
+  OnError,
+  errorMsg,
 }) => {
   return (
     <Apollo
       mutation={gql}
       variables={vars}
       errorPolicy="all"
-      onError={() => null}
+      onError={() => {
+        if (errorMsg) setUI.snackbar(errorMsg)
+        return null
+      }}
       onCompleted={data => {
         if (onSuccess) onSuccess(data[Object.keys(data)[0]])
         console.log(data)
@@ -54,7 +59,10 @@ const Mutation = ({
       update={update}>
       {(mutate, { loading, error }) => {
         setUI.loading = loading
-        if (error) return <CardError />
+        if (error && !errorMsg) {
+          if (OnError) return OnError
+          return <CardError />
+        }
 
         return children({ mutate }) || null
       }}
@@ -76,6 +84,8 @@ Mutation.propTypes = {
   back: PropTypes.bool,
   success: PropTypes.string,
   track: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  OnError: PropTypes.element,
+  errorMsg: PropTypes.string, // return original component and use snackbar message
 }
 //export default Mutation
 export default SetUI(withRouter(Mutation), { snackbar: true })
