@@ -1,3 +1,5 @@
+export { default as Pure } from './react/Pure'
+
 export { default as Row } from './flex/Row'
 export { default as Box } from './flex/Box'
 
@@ -81,5 +83,3 @@ export { default as Query } from './api/Query'
 export { default as Mutation } from './api/Mutation'
 export { default as Create } from './api/Mutation/Create'
 export { default as Delete } from './api/Mutation/Delete'
-
-export { default as Pure } from './react/Pure'

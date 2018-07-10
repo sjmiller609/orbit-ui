@@ -6,7 +6,6 @@ import Self from '../../self/Data'
 import subMenus from './subMenus'
 
 const Nav = ({ getData, workspaces, self, menu }) => {
-  console.log(self)
   const workspaceId = getData.workspaceId
   if (!workspaces) return null
   const workspace = workspaces.find(workspace => workspace.id === workspaceId)

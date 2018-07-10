@@ -2,7 +2,7 @@
 
 // implement memory store spec'd to Storage prototype
 // eslint-disable-next-line
-(function(window) {
+;(function(window) {
   const items = {}
 
   function MemoryStorage() {}
@@ -52,11 +52,7 @@ function getStorage(storage) {
 getStorage.prototype.FALLBACK_STORAGE = window.memoryStorage
 
 // Browser sync doesn't work correctly without local storage.
-// Check again after removing browser sync
-// Passing in {} is correct behaivor
-const dev = process.env.NODE_ENV !== 'production'
-const foo = dev ? window.localStorage : {} // force fallback
-
+const foo = window.localStorage
 // const foo = localStorage; // force fallback
 
 const storage = getStorage(foo)
