@@ -26,7 +26,6 @@ class AuthServices extends React.Component {
 
     // gets encoded on server
     this.onSuccess += to
-    console.log(this.onSuccess)
   }
 
   render() {

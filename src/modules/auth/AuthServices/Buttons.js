@@ -5,7 +5,6 @@ import { OauthButton } from 'instruments'
 import Data from '../Data'
 
 const Buttons = ({ authConfig, login }) => {
-  console.log(authConfig)
   return (
     <React.Fragment>
       {authConfig.googleEnabled && (
