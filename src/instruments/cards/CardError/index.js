@@ -13,7 +13,7 @@ const CardError = ({ children, retry, className }) => {
     <Card className={classnames(s.card, className)}>
       <Block1
         left={<img src={astronaut} className={s.img} />}
-        title="Dag gone it! Something went wrong">
+        title="DAG gone it! Something went wrong">
         <P>
           <Link onClick={onClick}>Refresh</Link> to try again. Or if the problem
           persists, please&nbsp;
