@@ -27,7 +27,7 @@ const CardForm = ({ children, button, button2, title, className }) => {
                 (typeof button.save === 'boolean' && !button.save) || false
               }
               submit
-              arrow
+              arrow="arrow_darkBg"
               onClick={button.onClick}
               to={button.to}
               style={button.style}>

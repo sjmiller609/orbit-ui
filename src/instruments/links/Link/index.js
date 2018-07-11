@@ -25,8 +25,8 @@ const Link = ({
     onClick,
     target: newTab ? '_blank' : null,
   }
-  const arr = arrow && <Icon className={s.arrow} icon="arrow" />
-  const backArr = backArrow && <Icon className={s.backArrow} icon="arrow" />
+  const arr = arrow && <Icon className={s.arrow} icon={arrow} />
+  const backArr = backArrow && <Icon className={s.backArrow} icon={backArrow} />
 
   // only use ReactRouter NavLink if activeClassName (for performance)
   const NavLink = props.activeClassName ? NavLink1 : NavLink2
@@ -56,8 +56,8 @@ Link.propTypes = {
   to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   className: PropTypes.string,
   activeClassName: PropTypes.string,
-  arrow: PropTypes.bool,
-  backArrow: PropTypes.bool,
+  arrow: PropTypes.string,
+  backArrow: PropTypes.string,
 }
 
 export default Link
