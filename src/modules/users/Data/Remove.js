@@ -17,6 +17,7 @@ const Remove = Component => {
         withUsers: true,
       },
     }
+    // if removing self from workspace, is different redirect and refetch
     if (isSelf) query.vars = { withUsers: false }
 
     return (
