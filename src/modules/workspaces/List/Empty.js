@@ -10,7 +10,7 @@ const Empty = ({ button }) => {
     <Block1
       left={<Icon icon="stars" className={s.largeStars} />}
       title="Create your Workspace"
-      text="Invite your workspace, launch deployments, and manage all your Airflow instances in one place.">
+      text="Invite your team, launch deployments, and manage all your Airflow instances in one place.">
       {button}
     </Block1>
   )
