@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Route, Redirect } from 'react-router-dom'
 
-const AuthRoute = ({ auth, workspaceId, component: Component, ...props }) => {
+const AutoLogin = ({ auth, workspaceId, component: Component, ...props }) => {
   return (
     <Route
       {...props}
@@ -24,10 +24,10 @@ const AuthRoute = ({ auth, workspaceId, component: Component, ...props }) => {
   )
 }
 
-AuthRoute.propTypes = {
+AutoLogin.propTypes = {
   component: PropTypes.func,
   auth: PropTypes.bool,
   workspaceId: PropTypes.string,
 }
 
-export default AuthRoute
+export default AutoLogin

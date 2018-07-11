@@ -6,9 +6,9 @@ import api from './api'
 import { Query } from 'instruments'
 
 const Data = Component => {
-  const Data = ({ skip, ...props }) => {
+  const Data = ({ skip, OnError, ...props }) => {
     return (
-      <Query gql={api.Self} skip={skip}>
+      <Query gql={api.Self} skip={skip} OnError={OnError}>
         {({ data: { self } }) => {
           const newProps = {
             ...props,
@@ -22,6 +22,7 @@ const Data = Component => {
 
   Data.propTypes = {
     skip: PropTypes.bool,
+    OnError: PropTypes.element,
   }
 
   return Data

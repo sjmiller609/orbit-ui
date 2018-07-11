@@ -5,12 +5,12 @@ import api from './api'
 
 import { Query, P } from 'instruments'
 
-const onError = <P>Service not available. Please try again later.</P>
+const OnError = <P>Service not available. Please try again later.</P>
 
 const Data = Component => {
   const Data = ({ vars, ...otherProps }) => {
     return (
-      <Query gql={api.AuthConfig} vars={vars} onError={onError}>
+      <Query gql={api.AuthConfig} vars={vars} OnError={OnError}>
         {({ data: { authConfig } }) => {
           const newProps = {
             ...otherProps,

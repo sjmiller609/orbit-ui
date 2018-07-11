@@ -21,7 +21,7 @@ const Link = ({
   const newProps = {
     ...props,
     to,
-    className: classnames(s.link, s[style], className),
+    className: classnames(s.link, style && s[style], className),
     onClick,
     target: newTab ? '_blank' : null,
   }

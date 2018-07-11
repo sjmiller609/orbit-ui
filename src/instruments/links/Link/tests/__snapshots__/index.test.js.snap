@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link displays arrow icon when \`arrow\` is specified 1`] = `
+<Link
+  arrow="arrow"
+>
+  <Component
+    className="link"
+    target={null}
+  >
+    <a
+      className="link"
+      target="_blank"
+    >
+      text
+      <Icon
+        className="arrow"
+        icon="arrow"
+      />
+    </a>
+  </Component>
+</Link>
+`;
+
+exports[`Link displays back arrow icon when \`backArrow\` is specified 1`] = `
+<Link
+  backArrow="arrow_darkBg"
+>
+  <Component
+    className="link"
+    target={null}
+  >
+    <a
+      className="link"
+      target="_blank"
+    >
+      <Icon
+        className="backArrow"
+        icon="arrow_darkBg"
+      />
+      text
+    </a>
+  </Component>
+</Link>
+`;
+
+exports[`Link is external url - http 1`] = `
+<Link
+  to="https://www.astronomer.io"
+>
+  <Component
+    className="link"
+    target={null}
+    to="https://www.astronomer.io"
+  >
+    <a
+      className="link"
+      href="https://www.astronomer.io"
+      target="_blank"
+      to="https://www.astronomer.io"
+    >
+      text
+    </a>
+  </Component>
+</Link>
+`;
+
+exports[`Link renders correctly 1`] = `
+<Link>
+  <Component
+    className="link"
+    target={null}
+  >
+    <a
+      className="link"
+      target="_blank"
+    >
+      text
+    </a>
+  </Component>
+</Link>
+`;

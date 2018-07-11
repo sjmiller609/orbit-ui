@@ -11,9 +11,8 @@ import { default as workspaces, workspace } from 'modules/workspaces/Routes'
 import { default as auth, otherAuthRoutes } from 'modules/auth/Routes'
 import users from 'modules/users/Routes'
 
-import WorkspaceRoute from './WorkspaceRoute'
-import ProtectedRoute from './ProtectedRoute'
-import AuthRoute from './AuthRoute'
+import Protected from './Protected'
+import AutoLogin from './AutoLogin'
 
 const routes = [
   ...otherAuthRoutes,
@@ -28,10 +27,10 @@ const routes = [
 ]
 
 // redirect if logged in
-const authRoutes = [...auth]
+const autoLoginRoutes = [...auth]
 
 // protected by userId
-const protectedRoutes = [...workspaces]
+const authRoutes = [...workspaces]
 
 // also protected by workspaceId
 const workspaceRoutes = [...workspace, ...deployments, ...users]
@@ -42,8 +41,8 @@ const Routes = ({ getData }) => {
       <Route component={Pageview} />
       <Route component={ScrollToTop} />
       <Switch>
-        {authRoutes.map((route, i) => (
-          <AuthRoute
+        {autoLoginRoutes.map((route, i) => (
+          <AutoLogin
             key={i}
             auth={getData.auth}
             workspaceId={getData.workspaceId}
@@ -51,15 +50,15 @@ const Routes = ({ getData }) => {
           />
         ))}
         {workspaceRoutes.map((route, i) => (
-          <WorkspaceRoute
+          <Protected
             key={i}
             auth={getData.auth}
-            vars={{ workspaceId: getData.workspaceId }}
+            workspaceId={getData.workspaceId}
             {...route}
           />
         ))}
-        {protectedRoutes.map((route, i) => (
-          <ProtectedRoute key={i} auth={getData.auth} {...route} />
+        {authRoutes.map((route, i) => (
+          <Protected key={i} auth={getData.auth} {...route} />
         ))}
         {/* Must be last */}
         {routes.map((route, i) => <Route key={i} {...route} />)}

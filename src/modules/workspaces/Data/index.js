@@ -19,7 +19,7 @@ const Data = Component => {
         vars={vars2}
         skip={skip}
         search={search}
-        onError={<OnError />}>
+        OnError={<OnError />}>
         {({ data: { workspaces } }) => {
           const newProps = {
             ...otherProps,
