@@ -78,6 +78,7 @@ export { default as CardForm } from './cards/CardForm'
 export { default as CardDelete } from './cards/CardDelete'
 export { default as CardError } from './cards/CardError'
 export { default as CardLoading } from './cards/CardLoading'
+export { default as CardRow } from './cards/CardRow'
 
 export { default as Query } from './api/Query'
 export { default as Mutation } from './api/Mutation'

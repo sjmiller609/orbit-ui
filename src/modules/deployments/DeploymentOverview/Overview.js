@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { CardForm, P, B, Link } from 'instruments'
+import { CardRow, B } from 'instruments'
+import ServiceDashboard from './ServiceDashboard'
 
-const Overview = ({ deployment }) => {
+const Overview = ({ deployment, loading }) => {
   let airflow
   let flower
   if (deployment.urls)
@@ -12,42 +13,32 @@ const Overview = ({ deployment }) => {
       if (u.type === 'flower') flower = u.url
     })
   return (
-    <React.Fragment>
-      <CardForm
-        title="Apache Airflow Dashboard"
-        button={{
-          text: 'Open Dashboard',
-          save: !!airflow,
-          to: airflow,
-        }}>
-        <P>
-          Your Apache Airflow dashboard for <B>{deployment.label}</B> now lives
-          at&nbsp;
-          <Link to={airflow} newTab>
-            {airflow || '[Not available on dev]'}
-          </Link>. Configure and deploy your tasks with this dashboard.
-        </P>
-      </CardForm>
-      <CardForm
-        title="Flower - Celery Dashboard"
-        button={{
-          text: 'Open Dashboard',
-          save: !!flower,
-          to: flower,
-        }}>
-        <P>
-          Your Flower dashboard now lives at&nbsp;
-          <Link to={flower} newTab>
-            {flower || '[Not available on dev]'}
-          </Link>. Monitor worker queues on Celery with Flower.
-        </P>
-      </CardForm>
-    </React.Fragment>
+    <CardRow>
+      <ServiceDashboard
+        title="Apache Airflow"
+        text={
+          <React.Fragment>
+            Author, schedule and monitor workflows for <B>{deployment.label}</B>:
+          </React.Fragment>
+        }
+        url={airflow}
+        icon="airflow_astro"
+        loading={loading}
+      />
+      <ServiceDashboard
+        title="Celery Flower"
+        text="Monitor worker queues on Celery with Flower:"
+        url={flower}
+        icon="flower_astro"
+        loading={loading}
+      />
+    </CardRow>
   )
 }
 
 Overview.propTypes = {
   deployment: PropTypes.object,
+  loading: PropTypes.bool,
 }
 
 export default Overview

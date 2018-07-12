@@ -18,7 +18,7 @@ const Create = Component => {
     return (
       <Mutation
         gql={api.CreateDeployment}
-        redirect={data => '/deployments/' + data.releaseName}
+        redirect={data => '/deployments/' + data.releaseName + '?loading'}
         success="New deployment created successfully."
         track="New Deployment Created"
         query={query}>

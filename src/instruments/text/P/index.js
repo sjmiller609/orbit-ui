@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
 
-const P = ({ children, className }) => {
+const P = ({ children, center, className }) => {
   return (
-    <p className={classnames(s.p, className)}>
+    <p className={classnames(s.p, center && s.center, className)}>
       {Array.isArray(children) ? children.map(el => el) : children}
     </p>
   )
@@ -19,6 +19,7 @@ P.propTypes = {
     PropTypes.array,
   ]),
   className: PropTypes.string,
+  center: PropTypes.bool,
 }
 
 export default P

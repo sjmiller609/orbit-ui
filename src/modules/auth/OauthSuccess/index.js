@@ -20,7 +20,7 @@ class OauthSuccess extends React.Component {
     this.vars.service = match.params.service
 
     const params = getParams(location.search)
-    console.log(params)
+
     if (params.state && ~params.state.indexOf('cli')) this.cli = true
     this.vars.credentials = params.code
     if (params.OnSuccess) this.to = params.onSuccess
