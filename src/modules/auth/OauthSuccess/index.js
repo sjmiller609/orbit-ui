@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CliCode from './CliCode'
 import CreateToken from './CreateToken'
+import { getParams } from 'helpers/url'
 
 class OauthSuccess extends React.Component {
   vars = {
@@ -18,13 +19,11 @@ class OauthSuccess extends React.Component {
     const { location, match } = this.props
     this.vars.service = match.params.service
 
-    const params = decodeURIComponent(location.search).split('&')
-    for (let i in params) {
-      const ar = params[i].split('=')
-      if (ar[0] === 'cli') this.cli = ar[1]
-      if (ar[0] === 'code') this.vars.credentials = ar[1]
-      if (ar[0] === 'onSuccess') this.to = ar[1]
-    }
+    const params = getParams(location.search)
+    console.log(params)
+    if (params.state && ~params.state.indexOf('cli')) this.cli = true
+    this.vars.credentials = params.code
+    if (params.OnSuccess) this.to = params.onSuccess
 
     if (this.cli) this.track += 'CLI'
     else if (this.to.charAt(0) !== '/') this.track += 'EE Service - ' + this.to
@@ -39,7 +38,7 @@ class OauthSuccess extends React.Component {
   }
 
   render() {
-    if (this.cli) return <CliCode code={this.credentials} />
+    if (this.cli) return <CliCode code={this.vars.credentials} />
     return (
       <CreateToken
         vars={this.vars}
