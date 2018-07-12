@@ -12,7 +12,7 @@ const NoMatch = () => {
         <img src={astronaut} className={s.img} title="Page not found" />
         <H1>Oh snap!</H1>
         <H4>There's nothing out here...</H4>
-        <TextButton to="/" backArrow>
+        <TextButton to="/" backArrow="arrow">
           Return Home
         </TextButton>
       </Box>
