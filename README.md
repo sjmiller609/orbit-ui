@@ -1,16 +1,16 @@
 # Overview
 
-Open-source UI for Astronomer's managed Apache Airflow platform. For Enterprise Edition - a production-ready Airflow stack deployable to any Kubernetes cluster. For Cloud Edition - a fully managed service hosted on our infrastructure (coming soon).
+Open-source UI for Astronomer's managed Apache Airflow platform. For Enterprise Edition - a production-ready Airflow stack deployable to any Kubernetes cluster. For Cloud Edition (coming soon) - a fully managed service hosted on our infrastructure.
 
 Some notable features:
 
-* Deploy Airflow instances in one-click.
+* Deploy Airflow instances in one click.
 * Monitor deployments easily with server logs, worker queues, and more.
 * Manage user roles and deployment access, with a history of audit logs for all activities (coming soon).
 
 # Run Locally
 
-Orbit connects to Houston API. Here are the steps to setup for local development:
+Orbit connects to Houston API. The steps to setup for local development:
 
 ### Run Houston API
 
@@ -20,9 +20,11 @@ Orbit connects to Houston API. Here are the steps to setup for local development
 
 3.  Update `docker-compose.override.yaml` file to enable Google Oauth:
 
-* `GOOGLE_OAUTH_REDIRECT_URL: "http://localhost:5000/oauth/google"``
-* `GOOGLE_CLIENT_ID: [CLIENT_ID]`
-* `GOOGLE_CLIENT_SECRET: [SECRET]`
+```
+GOOGLE_OAUTH_REDIRECT_URL: "http://localhost:5000/oauth/google"
+GOOGLE_CLIENT_ID: [CLIENT_ID]
+GOOGLE_CLIENT_SECRET: [SECRET]
+```
 
 3.  Run `docker-compose-up` in your houston-api repo.
 
@@ -48,7 +50,7 @@ Orbit is a React app built with Apollo graphql.
 
 Orbit's component library is designed with atomic principles.
 
-Each component is a folder containing all related files:
+Each component is a self-contained folder with related files:
 
 ```
 Link
@@ -60,23 +62,27 @@ Link
       |--index.test.js.snap  
 ```
 
-`src/instruments` contains all the composable 'atoms' of the app, organized by type. These can be imported into any component, eg:
+### Instruments
+
+`src/instruments` are all the composable 'atoms' of the app, organized by type. These can be imported into any component, eg:
 
 ```
 import { TextField, Link, H1 } from 'instruments'
 ```
 
-New instruments must be added to `instruments/index.js`.
+Any new instruments must be added to `src/instruments/index.js`.
+
+### Modules
 
 `src/modules` contains the primary modules within the app. Each module has a single `Data` folder for the api calls (mutations and queries) for that data type. As well as a variety of "molecule" components that make up that module.
 
 ## Stylesheets
 
-Styles are defined as classes (not css-in-js) attached to each component using CSS Modules to avoid name/scope conflicts (each class will be renamed with the component). Though, defining styles at the instrument level often means that when composed at the module level, no additional styles are needed—a component can simply be dropped in.
+Styles are defined as classes (ie not css-in-js) attached to each component using CSS Modules to avoid name/scope conflicts (each class gets renamed on build). Defining styles at the instrument level often means that when composed at the module level, no additional styles are needed—most components can simply be dropped in.
 
 All styles are defined in Sass. Though outside of color variables, few mixins or other more advanced Sass features are necessary.
 
-Each component includes a `className` prop that enables styles applied to any children components.
+Each component includes a `className` prop that enables styles passed down to any children components.
 
 ## Apollo
 
@@ -98,8 +104,8 @@ export default Data(ListDeployments)
 
 A couple things to note:
 
-* Variables can be passed into the Data HOC's from a parent component. Other props are passed through.
-* Atomic `Query` `Create` `Delete` and a baseline `Mutation` components are defined as wrapper `instruments`, with preset and configurable functionality for managing Apollo API calls and responses (error handling, cache updating, snackbar messaging, redirects, analytics tracking, etc.) This makes it super easy to define a new query or mutation without wiring up a bunch of extra stuff.
+* Variables can be passed into the Data HOC's from a parent component( eg. `deploymentId`). Other props are passed through.
+* Atomic `Query` `Create` `Delete` and a baseline `Mutation` components are defined as `instruments`, with preset and configurable functionality for managing Apollo API calls and responses (error handling, cache updating, snackbar messaging, redirects, analytics tracking, etc.) This makes it super easy to define a new query or mutation without wiring up a bunch of stuff everytime.
 * Apollo's query and mutation components use the renderProp pattern (returning a function to render, instead of an element). Wrapping them in Higher Order Components allows for a more consistent component flow throughout the app (Orbit doesn't really use render props elsewhere).
 
 ## State
@@ -108,7 +114,7 @@ Wherever possible, state is maintained locally within self-contained components.
 
 For global state, Apollo handles all API calls and data caching. With the exception of a few UI elements like modals, all view state is mapped to specific routes maintained in the router (React Router 4), enabling full use of browser actions and url mappings.
 
-React's `Context.Provider` && `Context.Consumer` wrapped in HOC's manage session authorization and global UI elements (eg modals, snackbar) cleanly and succintly
+React's `Context.Provider` && `Context.Consumer` wrapped in HOC's manage the remaining session auth and global UI elements (eg modals, snackbar) cleanly and succintly,.
 
 ## Testing
 
