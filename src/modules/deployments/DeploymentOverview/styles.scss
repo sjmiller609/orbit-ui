@@ -1,10 +1,17 @@
 @import 'src/styles/mixins.scss';
 
-.sub {
+.card main > div {
+  text-align: center;
+}
+
+p.sub,
+p.provisioning {
   margin-top: 0.8rem;
+  min-height: 4rem;
 }
 
 p.provisioning {
+  text-align: left;
   color: $darkOrange;
   width: 9rem;
   margin: 0.8rem auto 0;
