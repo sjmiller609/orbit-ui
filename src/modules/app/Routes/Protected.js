@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom'
 import Auth from './Auth'
 import Workspace from './Workspace'
 
-export const OnError = from => (
+const OnError = from => (
   <Redirect
     to={{
       pathname: '/logout/silent',

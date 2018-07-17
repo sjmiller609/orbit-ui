@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import WorkspacesData from 'modules/workspaces/Data'
+import SelfData from 'modules/self/Data'
 
-const Workspace = ({ workspaces, component: Component, OnError, ...props }) => {
-  if (!workspaces || !workspaces[0]) return OnError
+const Workspace = ({ component: Component, ...props }) => {
+  // if (!workspaces || !workspaces[0]) return OnError
   return <Component {...props} />
 }
 
@@ -14,4 +15,4 @@ Workspace.propTypes = {
   OnError: PropTypes.element,
 }
 
-export default WorkspacesData(Workspace)
+export default SelfData(WorkspacesData(Workspace))

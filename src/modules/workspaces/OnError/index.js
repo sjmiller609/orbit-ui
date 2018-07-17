@@ -4,7 +4,7 @@ import { SetData, Redirect } from 'instruments'
 
 const OnError = ({ setData }) => {
   setData.workspaceId(null)
-  return <Redirect to="/404" />
+  return <Redirect to="/" />
 }
 
 OnError.propTypes = {
