@@ -2,12 +2,12 @@
 
 .card main > div {
   text-align: center;
+  min-height: 25rem;
 }
 
 p.sub,
 p.provisioning {
   margin-top: 0.8rem;
-  min-height: 4rem;
 }
 
 p.provisioning {
@@ -20,7 +20,7 @@ p.provisioning {
 .icon {
   width: 65%;
   height: 10rem;
-  background: linear-gradient(30deg, $lightGray, $purple);
+  background: linear-gradient(30deg, $lightGray, $lightPurple);
   background-size: 1000%;
   background-position: 0% 0%;
   margin: 0 auto 3rem;

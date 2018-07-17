@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { CardRow, B } from 'instruments'
+import { CardRow } from 'instruments'
 import ServiceDashboard from './ServiceDashboard'
 
 const Overview = ({ deployment, loading }) => {
@@ -18,7 +18,7 @@ const Overview = ({ deployment, loading }) => {
         title="Apache Airflow"
         text={
           <React.Fragment>
-            Author, schedule and monitor workflows for <B>{deployment.label}</B>:
+            Author, schedule and monitor workflows:
           </React.Fragment>
         }
         url={airflow}
