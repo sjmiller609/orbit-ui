@@ -1,20 +1,15 @@
 @import 'src/styles/mixins.scss';
 
 .module {
-  background: url('./img/dagsBg.svg') 50% 50% no-repeat;
-  background-size: cover;
-  // position: relative;
-  // overflow: hidden;
-  // &:before {
-  //   content: '';
-  //   position: absolute;
-  //   width: 180%;
-  //   height: 180%;
-  //   top: -45%;
-  //   left: -32%;
-  //   z-index: -1;
-  //   background: url('./img/dagsBg.svg') 50% 50% no-repeat;
-  //   background-size: contain;
-  //   transform: rotateX(50deg) rotateZ(-35deg);
-  // }
+  background: linear-gradient(40deg, $white 14%, rgba($white, 0));
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('./img/dagsBg.svg') 50% 50% no-repeat;
+    background-size: cover;
+  }
 }
