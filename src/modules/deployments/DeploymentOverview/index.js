@@ -25,7 +25,6 @@ class DeploymentOverview extends React.Component {
   }
   render() {
     const { deployment } = this.props
-    console.log(this.state.loading)
     return (
       <React.Fragment>
         <Overview deployment={deployment} loading={this.state.loading} />

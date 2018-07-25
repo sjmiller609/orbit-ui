@@ -9,9 +9,11 @@ class Icon extends React.Component {
   }
 
   componentWillMount() {
-    import(`./img/${this.props.icon}.svg`).then(src => {
-      if (this.mounted) this.setState({ src: src.default })
-    })
+    import(/* webpackPrefetch: 0 */ `./img/${this.props.icon}.svg`).then(
+      src => {
+        if (this.mounted) this.setState({ src: src.default })
+      }
+    )
   }
   componentWillUnmount() {
     this.mounted = false
