@@ -8,8 +8,13 @@ div.list {
 .log {
   width: 100%;
   min-width: 18rem;
+  word-break: break-word;
 }
 
 .date {
   color: $lightBlue;
+}
+
+.waiting {
+  color: $darkWhite;
 }
