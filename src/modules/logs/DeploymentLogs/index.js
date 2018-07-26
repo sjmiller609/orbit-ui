@@ -11,6 +11,7 @@ class DeploymentLogs extends React.Component {
   state = {
     logs: [],
     search: '',
+    start: null,
   }
   // search obj constants
   search = {
@@ -19,6 +20,11 @@ class DeploymentLogs extends React.Component {
     call: search => this.setState({ search }),
   }
   componentWillMount() {
+    const date = new Date()
+    date.setMinutes(date.getMinutes() - 10)
+    this.setState({ start: date })
+
+    // mock data
     const timer = () =>
       setTimeout(() => {
         const log = this.genLog()
@@ -28,6 +34,9 @@ class DeploymentLogs extends React.Component {
         this.timeout = timer()
       }, Math.random() * 10000)
     this.timeout = timer()
+  }
+  componentWillUnmount() {
+    clearTimeout(this.timeout)
   }
   genLog() {
     let log = ''
@@ -40,7 +49,7 @@ class DeploymentLogs extends React.Component {
   }
   render() {
     const { deployment } = this.props
-    const { logs, search } = this.state
+    const { logs, search, start } = this.state
     return (
       <List
         deployment={deployment}
@@ -49,6 +58,7 @@ class DeploymentLogs extends React.Component {
           text: search,
           ...this.search,
         }}
+        start={start}
       />
     )
   }

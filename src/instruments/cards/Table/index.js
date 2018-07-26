@@ -7,7 +7,16 @@ import { Card, Search, Button, Row } from 'instruments'
 import s from './styles.scss'
 import NoResults from './NoResults'
 
-const Table = ({ children, search, className, button, Empty, Container }) => {
+const Table = ({
+  children,
+  search,
+  className,
+  button,
+  headerOptions,
+  nav,
+  Empty,
+  Container,
+}) => {
   const button2 = button && <Button to={button.to}>{button.text}</Button>
   const search2 = search && (
     <Search
@@ -17,6 +26,16 @@ const Table = ({ children, search, className, button, Empty, Container }) => {
       className={s.search}
       noDelay={!search.delay}
     />
+  )
+  const header = (
+    <React.Fragment>
+      {nav}
+      <Row justify="space-between" className={s.header}>
+        {search2}
+        {headerOptions}
+        {button2}
+      </Row>
+    </React.Fragment>
   )
   // if empty
   if (Empty && (!search || !search.text) && (!children || !children.length))
@@ -30,12 +49,7 @@ const Table = ({ children, search, className, button, Empty, Container }) => {
   return (
     <Card
       className={classnames(s.table, count === 1 && s.one, className)}
-      header={
-        <Row justify="space-between" className={s.header}>
-          {search2}
-          {button2}
-        </Row>
-      }>
+      header={header}>
       <Container>
         {Array.isArray(children) ? children.map(el => el) : children}
         {count === 0 && search.text && <NoResults />}
@@ -51,6 +65,8 @@ Table.propTypes = {
   button: PropTypes.object,
   Empty: PropTypes.func,
   Container: PropTypes.func,
+  headerOptions: PropTypes.element,
+  nav: PropTypes.element,
 }
 
 Table.defaultProps = {

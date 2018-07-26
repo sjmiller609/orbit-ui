@@ -5,10 +5,17 @@ import s from './styles.scss'
 import { Table, Console, LoadingDots, Mini } from 'instruments'
 
 import Item from './Item'
+import Since from './Since'
+import Nav from './Nav'
 
-const List = ({ deployment, logs, search }) => {
+const List = ({ deployment, logs, search, start }) => {
   return (
-    <Table className={s.list} search={search} Container={Console}>
+    <Table
+      className={s.list}
+      search={search}
+      Container={Console}
+      nav={<Nav />}
+      headerOptions={<Since time={start} />}>
       {logs && logs.map((l, i) => <Item key={l.id || i} log={l} />)}
       {(!logs || !logs.length) && (
         <Mini className={s.waiting}>
@@ -23,6 +30,7 @@ List.propTypes = {
   deployment: PropTypes.object,
   logs: PropTypes.array,
   search: PropTypes.object,
+  start: PropTypes.instanceOf(Date),
 }
 
 export default List
