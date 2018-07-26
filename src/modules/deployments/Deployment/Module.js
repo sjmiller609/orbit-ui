@@ -38,6 +38,14 @@ const Deployment = ({ deployments, menu, title }) => {
           return <Overview deployment={deployment} />
         }}
       />
+      <Route
+        path={path + '/logs'}
+        exact
+        render={() => {
+          const Logs = Load(() => import('modules/logs/DeploymentLogs'))
+          return <Logs deployment={deployment} />
+        }}
+      />
     </Module>
   )
 }

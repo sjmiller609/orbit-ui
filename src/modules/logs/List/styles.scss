@@ -1,0 +1,11 @@
+@import 'src/styles/mixins.scss';
+
+div.list {
+  height: auto;
+  min-height: 50vh;
+}
+
+.log {
+  width: 100%;
+  min-width: 18rem;
+}

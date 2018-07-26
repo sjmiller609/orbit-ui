@@ -52,6 +52,7 @@ export { default as ScrollToTop } from './ui/ScrollToTop'
 export { default as Dialog } from './ui/Dialog'
 
 export { default as Block1 } from './content/Block1'
+export { default as Console } from './content/Console'
 
 export { default as Item } from './menus/Item'
 export { default as MenuList } from './menus/MenuList'
