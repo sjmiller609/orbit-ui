@@ -44,7 +44,7 @@ const ShowDate = ({ date, className }) => {
 }
 
 ShowDate.propTypes = {
-  date: PropTypes.string,
+  date: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
   weekday: PropTypes.bool,
   className: PropTypes.string,
 }
