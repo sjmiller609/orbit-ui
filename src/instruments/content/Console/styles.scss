@@ -3,8 +3,10 @@
 .content {
   margin: auto;
   width: 100%;
+  height: inherit;
+  min-height: inherit;
   padding: 1.5rem 2rem 3rem;
-  background: $purple;
+  background: linear-gradient(45deg, $darkPurple, $lightPurple);
   color: $white;
-  //  @include spacing;
+  border-radius: 3px;
 }

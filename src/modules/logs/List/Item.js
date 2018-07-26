@@ -3,14 +3,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import { TableRow, Box, P, ShowDate } from 'instruments'
+import { TableRow, Box, Mini, ShowDate } from 'instruments'
 
 const Item = ({ log, className }) => {
   const columns = [
     <Box key="0" align="flex-start" className={s.log}>
-      <P>
-        > <ShowDate date={log.date} /> {log.log}
-      </P>
+      <Mini>
+        <ShowDate date={log.date} seconds className={s.date} /> {log.log}
+      </Mini>
     </Box>,
   ]
 

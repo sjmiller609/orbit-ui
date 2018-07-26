@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import List from '../List'
-import { words } from './words'
+import { samples } from './words'
 
 // add search
 
 class DeploymentLogs extends React.Component {
-  getWord = () => words[Math.floor(Math.random() * words.length)]
+  timeout = null
+  getLog = () => samples[Math.floor(Math.random() * samples.length)]
   state = {
     logs: [],
     search: '',
@@ -18,23 +19,20 @@ class DeploymentLogs extends React.Component {
     call: search => this.setState({ search }),
   }
   componentWillMount() {
-    const log = this.genLog()
-    const logs = this.state.logs
-    logs.push(log)
-    this.setState({ logs })
+    const timer = () =>
+      setTimeout(() => {
+        const log = this.genLog()
+        const logs = this.state.logs
+        logs.push(log)
+        this.setState({ logs })
+        this.timeout = timer()
+      }, Math.random() * 10000)
+    this.timeout = timer()
   }
   genLog() {
-    const count = Math.floor(Math.random() * 200)
     let log = ''
-    for (let i = 0; i < count; i++) {
-      if (i > 0) {
-        const r = Math.floor(Math.random() * 100)
-        if (r < 10) log += '. '
-        else log += ' '
-      }
-      log += this.getWord()
-    }
-    log += '.'
+
+    log = this.getLog()
     return {
       date: new Date(),
       log,

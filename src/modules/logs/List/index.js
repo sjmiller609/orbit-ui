@@ -9,7 +9,7 @@ import Empty from './Empty'
 
 const List = ({ deployment, logs, search }) => {
   return (
-    <Table className={s.list} search={search} Empty={Empty} Container={Console}>
+    <Table className={s.list} search={search} Container={Console}>
       {logs && logs.map((l, i) => <Item key={l.id || i} log={l} />)}
     </Table>
   )

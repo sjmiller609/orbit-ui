@@ -19,7 +19,7 @@ const Table = ({ children, search, className, button, Empty, Container }) => {
     />
   )
   // if empty
-  if ((!search || !search.text) && (!children || !children.length))
+  if (Empty && (!search || !search.text) && (!children || !children.length))
     return (
       <Card className={classnames(s.table, s.empty, className)}>
         {Empty({ button: button2 })}
