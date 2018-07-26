@@ -6,18 +6,22 @@ import s from './styles.scss'
 import { Row, Box, Link, Icon } from 'instruments'
 
 const TableRow = ({ columns, to, className }) => {
+  const row = (
+    <Row justify="space-between">
+      <Row justify="flex-start" className={s.fields} wrap full>
+        {Array.isArray(columns) ? columns.map(el => el) : columns}
+      </Row>
+      {to && (
+        <Box auto className={s.arrowCol}>
+          <Icon key="arrow" icon="arrow" className={s.arrow} />
+        </Box>
+      )}
+    </Row>
+  )
+  if (!to) return row
   return (
     <Link to={to} className={classnames(s.tableRow, className)}>
-      <Row justify="space-between">
-        <Row justify="flex-start" className={s.fields} wrap full>
-          {Array.isArray(columns) ? columns.map(el => el) : columns}
-        </Row>
-        {to && (
-          <Box auto className={s.arrowCol}>
-            <Icon key="arrow" icon="arrow" className={s.arrow} />
-          </Box>
-        )}
-      </Row>
+      {row}
     </Link>
   )
 }
