@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import List from '../List'
 import { samples } from './words'
+import { withRouter } from 'react-router-dom'
 // add search
 
 class DeploymentLogs extends React.Component {
@@ -20,6 +21,8 @@ class DeploymentLogs extends React.Component {
     call: search => this.setState({ search }),
   }
   componentWillMount() {
+    this.getType()
+
     const date = new Date()
     date.setMinutes(date.getMinutes() - 10)
     this.setState({ start: date })
@@ -47,6 +50,11 @@ class DeploymentLogs extends React.Component {
       log,
     }
   }
+  getType() {
+    const { location } = this.props
+    const type = location.search ? location.search.slice(1) : 'webserver'
+    this.setState({ type })
+  }
 
   render() {
     const { deployment } = this.props
@@ -61,7 +69,6 @@ class DeploymentLogs extends React.Component {
         }}
         start={start}
         type={type}
-        select={type => this.setState({ type })}
       />
     )
   }
@@ -69,6 +76,7 @@ class DeploymentLogs extends React.Component {
 
 DeploymentLogs.propTypes = {
   deployment: PropTypes.object,
+  location: PropTypes.object,
 }
 
-export default DeploymentLogs
+export default withRouter(DeploymentLogs)

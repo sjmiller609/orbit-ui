@@ -8,13 +8,13 @@ import Item from './Item'
 import Since from './Since'
 import Nav from './Nav'
 
-const List = ({ deployment, logs, search, start, type, select }) => {
+const List = ({ deployment, logs, search, start, type }) => {
   return (
     <Table
       className={s.list}
       search={search}
       Container={Console}
-      nav={<Nav selected={type} select={select} />}
+      nav={<Nav selected={type} />}
       headerOptions={<Since time={start} />}>
       {logs && logs.map((l, i) => <Item key={l.id || i} log={l} />)}
       {(!logs || !logs.length) && (
@@ -32,7 +32,6 @@ List.propTypes = {
   search: PropTypes.object,
   type: PropTypes.string,
   start: PropTypes.instanceOf(Date),
-  select: PropTypes.func,
 }
 
 export default List

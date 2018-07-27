@@ -6,9 +6,10 @@ import s from './styles.scss'
 import { Row, H5, Icon, Link } from 'instruments'
 
 // TODO: this tab title pattern should get extracted into its own instrument
-const Tab = ({ name, selected, select }) => (
+
+const Tab = ({ name, selected }) => (
   <Link
-    onClick={() => select(name)}
+    to={{ ...location, search: '?' + name }}
     title={name.charAt(0).toUpperCase() + name.slice(1)}
     className={classnames(s.button, name === selected && s.active)}>
     <Row>
@@ -24,11 +25,11 @@ Tab.propTypes = {
   select: PropTypes.func,
 }
 
-const Nav = props => {
+const Nav = ({ selected }) => {
   return (
     <Row className={s.tabs} justify="space-around" wrap>
-      <Tab name="webserver" {...props} />
-      <Tab name="scheduler" {...props} />
+      <Tab name="webserver" selected={selected} />
+      <Tab name="scheduler" selected={selected} />
     </Row>
   )
 }
