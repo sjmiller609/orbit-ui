@@ -41,7 +41,7 @@ const Link = ({
     <Component {...newProps}>
       <React.Fragment>
         {backArr}
-        {children}
+        {Array.isArray(children) ? children.map(el => el) : children}
         {arr}
       </React.Fragment>
     </Component>
@@ -51,7 +51,11 @@ const Link = ({
 Link.propTypes = {
   onClick: PropTypes.func,
   style: PropTypes.string,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.array,
+  ]),
   newTab: PropTypes.bool,
   to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   className: PropTypes.string,

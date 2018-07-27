@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import List from '../List'
 import { samples } from './words'
-
 // add search
 
 class DeploymentLogs extends React.Component {
@@ -12,6 +11,7 @@ class DeploymentLogs extends React.Component {
     logs: [],
     search: '',
     start: null,
+    type: 'webserver',
   }
   // search obj constants
   search = {
@@ -47,9 +47,10 @@ class DeploymentLogs extends React.Component {
       log,
     }
   }
+
   render() {
     const { deployment } = this.props
-    const { logs, search, start } = this.state
+    const { logs, search, start, type } = this.state
     return (
       <List
         deployment={deployment}
@@ -59,6 +60,8 @@ class DeploymentLogs extends React.Component {
           ...this.search,
         }}
         start={start}
+        type={type}
+        select={type => this.setState({ type })}
       />
     )
   }

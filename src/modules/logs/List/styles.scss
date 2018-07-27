@@ -23,8 +23,30 @@ div.list {
   width: 25rem;
 }
 
-.nav {
-  img {
-    width: 4rem;
+.button {
+  h5 {
+    text-transform: capitalize;
   }
+  img {
+    filter: grayscale(100%) contrast(0) brightness(1.4);
+    transition: filter 250ms ease-in;
+    width: 2.6rem;
+    margin-right: 1rem;
+  }
+}
+.active {
+  img {
+    filter: none;
+  }
+}
+
+// duplicated from Card instrument
+$footerHeaderHeight: 6.2rem;
+.tabs {
+  h5 {
+    white-space: nowrap;
+  }
+  min-height: $footerHeaderHeight;
+  width: 94%;
+  margin: auto;
 }
