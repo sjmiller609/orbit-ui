@@ -1,0 +1,12 @@
+@import 'src/styles/mixins.scss';
+
+// default to down
+.triangle {
+  display: inline-block;
+  margin: 0 0.5em;
+  width: 0;
+  height: 0;
+  border-left: 0.4em solid transparent;
+  border-right: 0.4em solid transparent;
+  border-top: 0.5em solid;
+}

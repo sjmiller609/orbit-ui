@@ -21,7 +21,7 @@ $width: 19rem;
   position: absolute;
   width: $width + 2rem; //fix
   height: auto;
-  margin-top: 0.6rem;
+  margin-top: 0.7rem;
   transition: opacity 200ms ease-in-out;
   &:before {
     content: '';
@@ -32,9 +32,9 @@ $width: 19rem;
     transform: translateX(-50%) rotate(45deg);
     position: absolute;
     border-radius: 2px;
-    border-left: 1px solid $white;
-    border-top: 1px solid $white;
-    top: -0.4rem;
+    border-left: 1px solid $shadow;
+    border-top: 1px solid $shadow;
+    top: -0.5rem;
     z-index: 2000;
   }
 }

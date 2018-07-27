@@ -19,8 +19,13 @@ div.list {
   color: $darkWhite;
 }
 
-.since {
-  width: 25rem;
+.since .button {
+  @include filmo;
+  white-space: nowrap;
+  box-shadow: inset 0 0 0 2px $lightBlue;
+  color: $lightBlue;
+  border-radius: 3px;
+  padding: 1.4em 1.8em 1.05em;
 }
 
 .button {
