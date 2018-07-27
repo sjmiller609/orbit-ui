@@ -44,6 +44,43 @@ exports[`Link displays back arrow icon when \`backArrow\` is specified 1`] = `
 </Link>
 `;
 
+exports[`Link is active route 1`] = `
+<Link
+  activeClassName="active"
+  to="/deployments"
+>
+  <NavLink
+    activeClassName="active"
+    aria-current="page"
+    className="link"
+    target={null}
+    to="/deployments"
+  >
+    <Route
+      path="\\\\/deployments"
+    >
+      <Link
+        aria-current={null}
+        className="link"
+        replace={false}
+        target={null}
+        to="/deployments"
+      >
+        <a
+          aria-current={null}
+          className="link"
+          href="/deployments"
+          onClick={[Function]}
+          target={null}
+        >
+          text
+        </a>
+      </Link>
+    </Route>
+  </NavLink>
+</Link>
+`;
+
 exports[`Link is external url - http 1`] = `
 <Link
   to="https://www.astronomer.io"
@@ -62,6 +99,92 @@ exports[`Link is external url - http 1`] = `
       text
     </a>
   </Component>
+</Link>
+`;
+
+exports[`Link is external url - naked 1`] = `
+<Link
+  to="astronomer.io"
+>
+  <Component
+    className="link"
+    target={null}
+    to="astronomer.io"
+  >
+    <a
+      className="link"
+      href="astronomer.io"
+      target="_blank"
+      to="astronomer.io"
+    >
+      text
+    </a>
+  </Component>
+</Link>
+`;
+
+exports[`Link is external url - www 1`] = `
+<Link
+  to="www.astronomer.io"
+>
+  <Component
+    className="link"
+    target={null}
+    to="www.astronomer.io"
+  >
+    <a
+      className="link"
+      href="www.astronomer.io"
+      target="_blank"
+      to="www.astronomer.io"
+    >
+      text
+    </a>
+  </Component>
+</Link>
+`;
+
+exports[`Link is internal route - no slash 1`] = `
+<Link
+  to="deployments"
+>
+  <Link
+    className="link"
+    replace={false}
+    target={null}
+    to="deployments"
+  >
+    <a
+      className="link"
+      href="deployments"
+      onClick={[Function]}
+      target={null}
+    >
+      text
+    </a>
+  </Link>
+</Link>
+`;
+
+exports[`Link is internal route - with slash 1`] = `
+<Link
+  to="/deployments"
+>
+  <Link
+    className="link"
+    replace={false}
+    target={null}
+    to="/deployments"
+  >
+    <a
+      className="link"
+      href="/deployments"
+      onClick={[Function]}
+      target={null}
+    >
+      text
+    </a>
+  </Link>
 </Link>
 `;
 

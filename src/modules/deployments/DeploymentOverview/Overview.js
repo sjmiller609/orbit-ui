@@ -29,7 +29,7 @@ const Overview = ({ deployment, loading }) => {
         title="Celery Flower"
         text="Monitor worker queues on Celery with Flower:"
         url={flower}
-        icon="flower_astro"
+        icon="celery"
         loading={loading}
       />
     </CardRow>

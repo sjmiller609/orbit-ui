@@ -14,6 +14,9 @@ div.list {
   width: 35%;
   min-width: 18rem;
   color: $beige;
+  @media screen and (max-width: 55rem) {
+    display: none;
+  }
 }
 
 .icon img {
