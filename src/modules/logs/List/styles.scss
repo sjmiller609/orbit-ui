@@ -24,11 +24,17 @@ div.list {
 }
 
 .button {
+  flex-grow: 1;
+  &:not(:first-child) {
+    border-left: 2px solid $lightGray;
+  }
   h5 {
     text-transform: capitalize;
+    color: $gray;
+    transition: color 250ms ease-in;
   }
   img {
-    filter: grayscale(100%) contrast(0) brightness(1.4);
+    filter: grayscale(100%) contrast(0) brightness(1.6);
     transition: filter 250ms ease-in;
     width: 2.6rem;
     margin-right: 1rem;
@@ -37,6 +43,10 @@ div.list {
 .active {
   img {
     filter: none;
+  }
+  h5 {
+    text-transform: capitalize;
+    color: $lightBeige;
   }
 }
 
@@ -47,6 +57,4 @@ $footerHeaderHeight: 6.2rem;
     white-space: nowrap;
   }
   min-height: $footerHeaderHeight;
-  width: 94%;
-  margin: auto;
 }

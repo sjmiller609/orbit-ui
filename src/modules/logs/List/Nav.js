@@ -12,7 +12,7 @@ const Tab = ({ name, selected }) => (
     to={{ ...location, search: '?' + name }}
     title={name.charAt(0).toUpperCase() + name.slice(1)}
     className={classnames(s.button, name === selected && s.active)}>
-    <Row>
+    <Row full>
       <Icon icon={name} />
       <H5>{name}</H5>
     </Row>
