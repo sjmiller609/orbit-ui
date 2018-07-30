@@ -37,6 +37,7 @@ export default {
       },
       inject: true,
       api_http: 'http://houston.peter-dev.astronomer.io/v1',
+      api_ws: 'http://houston.peter-dev.astronomer.io/w1',
       stripe_pk: 'pk_test_9nakxMiaKT3egTTtCmdfLdet',
       tracking_snippet: '',
     }),

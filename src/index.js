@@ -2,17 +2,20 @@
 import React from 'react'
 import Root from './modules/app/Root'
 import auth from './helpers/token'
-//import { handleErrors } from './helpers/handleErrors';
 
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache, defaultDataIdFromObject } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 import { onError } from 'apollo-link-error'
 import { ApolloLink } from 'apollo-link'
-
+import { WebSocketLink } from 'apollo-link-ws'
 import { ApolloProvider } from 'react-apollo'
+import { getMainDefinition } from 'apollo-utilities'
 import { render } from 'react-dom'
+
 import './styles/global/index.scss'
+
+const token = auth.get()
 
 const cache = new InMemoryCache({
   dataIdFromObject: object => {
@@ -22,7 +25,6 @@ const cache = new InMemoryCache({
 })
 
 const authMiddleware = new ApolloLink((operation, forward) => {
-  const token = auth.get()
   operation.setContext({
     headers: {
       authorization: token.token || '',
@@ -35,6 +37,18 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 const httpLink = new HttpLink({
   uri: window.API_HTTP,
   credentials: 'include',
+})
+
+// Create a WebSocket link:
+const wsLink = new WebSocketLink({
+  uri: window.API_WS,
+  options: {
+    reconnect: true,
+    // May need to check into this for updating auth token on login/logout: https://github.com/apollographql/subscriptions-transport-ws/pull/348
+    connectionParams: {
+      authToken: token.token || '',
+    },
+  },
 })
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -50,8 +64,21 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`)
 })
 
+const link = process.browser
+  ? ApolloLink.split(
+      //only create the split in the browser (for SSR if ever implmented)
+      // split based on operation type
+      ({ query }) => {
+        const { kind, operation } = getMainDefinition(query)
+        return kind === 'OperationDefinition' && operation === 'subscription'
+      },
+      wsLink,
+      httpLink
+    )
+  : httpLink
+
 const client = new ApolloClient({
-  link: ApolloLink.from([errorLink, authMiddleware, httpLink]),
+  link: ApolloLink.from([errorLink, authMiddleware, link]),
   cache,
 })
 
