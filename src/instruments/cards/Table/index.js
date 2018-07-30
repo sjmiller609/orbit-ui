@@ -15,7 +15,7 @@ const Table = ({
   headerOptions,
   nav,
   Empty,
-  Container,
+  Container = React.Fragment,
 }) => {
   const button2 = button && <Button to={button.to}>{button.text}</Button>
   const search2 = search && (
@@ -67,10 +67,6 @@ Table.propTypes = {
   Container: PropTypes.func,
   headerOptions: PropTypes.element,
   nav: PropTypes.element,
-}
-
-Table.defaultProps = {
-  Container: React.Fragment,
 }
 
 export default Table
