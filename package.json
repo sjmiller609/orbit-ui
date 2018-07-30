@@ -43,6 +43,7 @@
     "apollo-link-ws": "1.0.8",
     "apollo-utilities": "1.0.17",
     "classnames": "2.2.6",
+    "eventemitter3": "3.1.0",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "prop-types": "15.6.2",
