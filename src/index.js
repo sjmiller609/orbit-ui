@@ -15,8 +15,6 @@ import { render } from 'react-dom'
 
 import './styles/global/index.scss'
 
-const token = auth.get()
-
 const cache = new InMemoryCache({
   dataIdFromObject: object => {
     if (object.uuid) return object.__typename + ':' + object.uuid
@@ -25,6 +23,7 @@ const cache = new InMemoryCache({
 })
 
 const authMiddleware = new ApolloLink((operation, forward) => {
+  const token = auth.get()
   operation.setContext({
     headers: {
       authorization: token.token || '',
@@ -45,9 +44,21 @@ const wsLink = new WebSocketLink({
   options: {
     reconnect: true,
     // May need to check into this for updating auth token on login/logout: https://github.com/apollographql/subscriptions-transport-ws/pull/348
-    connectionParams: {
-      authToken: token.token || '',
-    },
+    connectionParams: () =>
+      // a promise that resolves to return the loginToken
+      new Promise(resolve => {
+        auth.get().then(token => {
+          if (token) {
+            resolve({
+              authToken: token.token,
+            })
+          } else {
+            resolve({
+              authToken: '',
+            })
+          }
+        })
+      }),
   },
 })
 
