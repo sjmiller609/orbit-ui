@@ -47,6 +47,7 @@ const wsLink = new WebSocketLink({
     connectionParams: () =>
       // a promise that resolves to return the loginToken
       new Promise(resolve => {
+        //NOTE: auth.get() is not async
         auth.get().then(token => {
           if (token) {
             resolve({

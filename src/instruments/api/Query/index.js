@@ -7,10 +7,10 @@ import { Loading, CardError } from 'instruments'
 
 import { searchText } from './helpers'
 
-const Query = ({ gql, vars, skip, children, search, OnError }) => {
+const Query = ({ gql, vars, skip, children, search, OnError, subscribe }) => {
   return (
     <Apollo query={gql} variables={vars} skip={skip} errorPolicy="all">
-      {({ loading, error, data }) => {
+      {({ loading, error, data, subscribeToMore }) => {
         if (loading) return <Loading /> // return this instead of updating contextUI
         if (error) {
           if (OnError) return OnError
@@ -56,8 +56,27 @@ const Query = ({ gql, vars, skip, children, search, OnError }) => {
             })
           })
         }
-
-        return children({ data: data3 || data2 }) || null
+        const newProps = { data: data3 || data2 }
+        if (subscribe) {
+          newProps.subscribeToMore = () => {
+            subscribeToMore({
+              document: subscribe.gql,
+              variables: subscribe.vars,
+              updateQuery: (prev, { subscriptionData }) => {
+                if (!subscriptionData.data) return prev
+                const newItem =
+                  subscriptionData.data[Object.keys(subscriptionData.data)[0]]
+                const next = {
+                  ...prev,
+                }
+                const key = Object.keys(prev)[0]
+                next[key] = [...prev[key], newItem]
+                return next
+              },
+            })
+          }
+        }
+        return children(newProps) || null
       }}
     </Apollo>
   )
@@ -69,6 +88,7 @@ Query.propTypes = {
   vars: PropTypes.object,
   skip: PropTypes.bool,
   search: PropTypes.object,
+  subscribe: PropTypes.object,
   OnError: PropTypes.element,
 }
 
