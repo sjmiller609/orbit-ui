@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import List from '../List'
 import { samples } from './words'
 import { withRouter } from 'react-router-dom'
+import Data from '../Data'
 // add search
 
 class DeploymentLogs extends React.Component {
@@ -36,8 +37,12 @@ class DeploymentLogs extends React.Component {
         this.setState({ logs })
         this.timeout = timer()
       }, Math.random() * 10000)
-    this.timeout = timer()
+    //  this.timeout = timer()
+    if (this.props.subscribeToMore) this.props.subscribeToMore()
   }
+  // componentWillReceiveProps({ subscribeToMore }) {
+  //   if (subscribeToMore) subscribeToMore()
+  // }
   componentWillUnmount() {
     clearTimeout(this.timeout)
   }
@@ -79,4 +84,4 @@ DeploymentLogs.propTypes = {
   location: PropTypes.object,
 }
 
-export default withRouter(DeploymentLogs)
+export default withRouter(Data(DeploymentLogs))
