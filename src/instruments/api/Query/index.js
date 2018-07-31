@@ -7,7 +7,16 @@ import { Loading, CardError } from 'instruments'
 
 import { searchText } from './helpers'
 
-const Query = ({ gql, vars, skip, children, search, OnError, subscribe }) => {
+const Query = ({
+  gql,
+  vars,
+  skip,
+  children,
+  search,
+  OnError,
+  subscribe,
+  sortNewest = true,
+}) => {
   return (
     <Apollo query={gql} variables={vars} skip={skip} errorPolicy="all">
       {({ loading, error, data, subscribeToMore }) => {
@@ -29,7 +38,7 @@ const Query = ({ gql, vars, skip, children, search, OnError, subscribe }) => {
               data2[k].sort((a, b) => {
                 const a1 = new Date(a.updatedAt || a.createdAt).getTime()
                 const b1 = new Date(b.updatedAt || b.createdAt).getTime()
-                return b1 - a1
+                return sortNewest ? b1 - a1 : a1 - b1
               })
             }
           } else {
@@ -66,10 +75,12 @@ const Query = ({ gql, vars, skip, children, search, OnError, subscribe }) => {
                 if (!subscriptionData.data) return prev
                 const newItem =
                   subscriptionData.data[Object.keys(subscriptionData.data)[0]]
+
+                const key = Object.keys(prev)[0]
+
                 const next = {
                   ...prev,
                 }
-                const key = Object.keys(prev)[0]
                 next[key] = [...prev[key], newItem]
                 return next
               },
@@ -90,6 +101,7 @@ Query.propTypes = {
   search: PropTypes.object,
   subscribe: PropTypes.object,
   OnError: PropTypes.element,
+  sortNewest: PropTypes.bool,
 }
 
 export default Query

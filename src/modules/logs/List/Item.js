@@ -9,7 +9,7 @@ const Item = ({ log, className }) => {
   const columns = [
     <Box key="0" align="flex-start" className={s.log}>
       <Mini>
-        <ShowDate date={log.date} seconds className={s.date} /> {log.log}
+        <ShowDate date={log.createdAt} seconds className={s.date} /> {log.log}
       </Mini>
     </Box>,
   ]

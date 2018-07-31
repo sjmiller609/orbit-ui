@@ -11,6 +11,7 @@ const Data = Component => {
       <Query
         gql={api.Logs}
         skip={skip}
+        sortNewest={false}
         subscribe={{
           gql: api.SubscribeLogs,
           vars: null,

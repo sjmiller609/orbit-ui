@@ -28,24 +28,22 @@ class DeploymentLogs extends React.Component {
     date.setMinutes(date.getMinutes() - 10)
     this.setState({ start: date })
 
-    // mock data
-    const timer = () =>
-      setTimeout(() => {
-        const log = this.genLog()
-        const logs = this.state.logs
-        logs.push(log)
-        this.setState({ logs })
-        this.timeout = timer()
-      }, Math.random() * 10000)
-    //  this.timeout = timer()
+    // // mock data
+    // const timer = () =>
+    //   setTimeout(() => {
+    //     const log = this.genLog()
+    //     const logs = this.state.logs
+    //     logs.push(log)
+    //     this.setState({ logs })
+    //     this.timeout = timer()
+    //   }, Math.random() * 10000)
+    //   this.timeout = timer()
     if (this.props.subscribeToMore) this.props.subscribeToMore()
   }
-  // componentWillReceiveProps({ subscribeToMore }) {
-  //   if (subscribeToMore) subscribeToMore()
+
+  // componentWillUnmount() {
+  //   clearTimeout(this.timeout)
   // }
-  componentWillUnmount() {
-    clearTimeout(this.timeout)
-  }
   genLog() {
     let log = ''
 
@@ -62,8 +60,9 @@ class DeploymentLogs extends React.Component {
   }
 
   render() {
-    const { deployment } = this.props
-    const { logs, search, start, type } = this.state
+    const { logs, deployment } = this.props
+    const { search, start, type } = this.state
+    console.log(logs)
     return (
       <List
         deployment={deployment}
@@ -82,6 +81,8 @@ class DeploymentLogs extends React.Component {
 DeploymentLogs.propTypes = {
   deployment: PropTypes.object,
   location: PropTypes.object,
+  logs: PropTypes.array,
+  subscribeToMore: PropTypes.func,
 }
 
 export default withRouter(Data(DeploymentLogs))
