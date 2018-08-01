@@ -2,7 +2,7 @@
 
 const { GraphQLServer, PubSub } = require('graphql-yoga')
 const { makeExecutableSchema } = require('graphql-tools')
-const { subscribeLogs } = require('./mockLogs.js')
+const subscribeLogs = require('./mockLogs.js')
 
 const typeDefs = `
   type Log {
@@ -14,9 +14,16 @@ const typeDefs = `
   type Subscription {
     log: Log!
   }
+
+  type Query {
+    hello: String
+  }
 `
 
 const resolvers = {
+  Query: {
+    hello: () => 'hello',
+  },
   Log: {
     uuid: log => log.uuid,
     createdAt: log => log.createdAt,
