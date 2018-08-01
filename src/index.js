@@ -43,6 +43,9 @@ const wsLink = new WebSocketLink({
   uri: window.API_WS,
   options: {
     reconnect: true,
+    lazy: true, // only connect on subscribe
+    reconnectionAttempts: 30,
+    inactivityTimeout: 100000,
     // May need to check into this for updating auth token on login/logout: https://github.com/apollographql/subscriptions-transport-ws/pull/348
     connectionParams: () =>
       // a promise that resolves to return the loginToken
@@ -76,9 +79,9 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`)
 })
 
+//only create the split in the browser (for SSR if ever implmented)
 const link = process.browser
   ? ApolloLink.split(
-      //only create the split in the browser (for SSR if ever implmented)
       // split based on operation type
       ({ query }) => {
         const { kind, operation } = getMainDefinition(query)
