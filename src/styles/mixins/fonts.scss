@@ -17,3 +17,9 @@ $f400i: 'Sofia Regular Italic';
 $f500: 'Sofia Medium';
 $f600: 'Sofia Semi Bold';
 $f700: 'Sofia Bold';
+
+@mixin mono() {
+  // font-family: 'Menlo', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono',
+  //   'Source Code Pro', monospace;
+  font-family: monospace;
+}
