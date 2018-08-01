@@ -1,16 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import List from '../List'
-import { samples } from './words'
 import { withRouter } from 'react-router-dom'
-import Data from '../Data'
 // add search
 
 class DeploymentLogs extends React.Component {
   timeout = null
-  getLog = () => samples[Math.floor(Math.random() * samples.length)]
+  //  getLog = () => samples[Math.floor(Math.random() * samples.length)]
   state = {
-    logs: [],
     search: '',
     start: null,
     type: 'webserver',
@@ -38,21 +35,20 @@ class DeploymentLogs extends React.Component {
     //     this.timeout = timer()
     //   }, Math.random() * 10000)
     //   this.timeout = timer()
-    if (this.props.subscribeToMore) this.props.subscribeToMore()
   }
 
   // componentWillUnmount() {
   //   clearTimeout(this.timeout)
   // }
-  genLog() {
-    let log = ''
-
-    log = this.getLog()
-    return {
-      date: new Date(),
-      log,
-    }
-  }
+  // genLog() {
+  //   let log = ''
+  //
+  //   log = this.getLog()
+  //   return {
+  //     date: new Date(),
+  //     log,
+  //   }
+  // }
   getType() {
     const { location } = this.props
     const type = location.search ? location.search.slice(1) : 'webserver'
@@ -60,13 +56,9 @@ class DeploymentLogs extends React.Component {
   }
 
   render() {
-    const { logs, deployment } = this.props
     const { search, start, type } = this.state
-    console.log(logs)
     return (
       <List
-        deployment={deployment}
-        logs={logs}
         search={{
           text: search,
           ...this.search,
@@ -79,10 +71,7 @@ class DeploymentLogs extends React.Component {
 }
 
 DeploymentLogs.propTypes = {
-  deployment: PropTypes.object,
   location: PropTypes.object,
-  logs: PropTypes.array,
-  subscribeToMore: PropTypes.func,
 }
 
-export default withRouter(Data(DeploymentLogs))
+export default withRouter(DeploymentLogs)
