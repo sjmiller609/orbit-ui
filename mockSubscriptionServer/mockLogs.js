@@ -1,4 +1,3 @@
-
 const sampleLogs = [
   '[2018-07-26 17:17:09,355] {models.py:4584} INFO - Updating state for <DagRun example_dag @ 2018-01-01 01:00:00: scheduled__2018-01-01T01:00:00, externally triggered: False> considering 12 task(s)',
   '[2018-07-26 17:17:09,355] {jobs.py:895} INFO - Examining DAG run <DagRun example_dag @ 2018-01-01 01:05:00: scheduled__2018-01-01T01:05:00, externally triggered: False>',
@@ -27,37 +26,27 @@ _/_/  |_/_/  /_/    /_/    /_/  \____/____/|__/`,
 let firing
 
 function getRandomLog(date) {
-    return {
-      uuid: Math.random().toString(36).substring(2, 15),
-      log: sampleLogs[Math.floor(Math.random() * sampleLogs.length)],
-      createdAt: date || new Date(),
-    }
+  return {
+    uuid: Math.random()
+      .toString(36)
+      .substring(2, 15),
+    log: sampleLogs[Math.floor(Math.random() * sampleLogs.length)],
+    createdAt: date || new Date(),
   }
+}
 function subscribeLogs(pubsub) {
-    if (firing) return
-    console.log('firing mock logs')
-    firing = true
-    // mock data
-    const timer = () =>
-      setTimeout(() => {
-        const log = getRandomLog()
-        console.log(log.createdAt)
-        pubsub.publish('log', { log })
-        this.timeout = timer()
-      }, Math.random() * 10000)
-    this.timeout = timer()
-  }
-  function getOldLogs(startDate) {
-    const logs = []
-    let next = startDate.getTime() / 1000
-    const pushLog = () => {
-      next += Math.floor(Math.random() * 300)
-      logs.push(getRandomLog(new Date(next * 1000)))
+  if (firing) return
+  console.log('firing mock logs')
+  firing = true
+  // mock data
+  const timer = () =>
+    setTimeout(() => {
+      const log = getRandomLog()
+      console.log(log.createdAt)
+      pubsub.publish('log', { log })
+      this.timeout = timer()
+    }, Math.random() * 10000)
+  this.timeout = timer()
+}
 
-      if (next <= (new Date()).getTime() / 1000) pushLog()
-    }
-    pushLog()
-    return logs
-  }
-
-module.exports = { subscribeLogs, getOldLogs }
+module.exports = subscribeLogs
