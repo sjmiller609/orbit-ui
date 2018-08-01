@@ -9,8 +9,8 @@
   background: linear-gradient(45deg, $darkPurple, $lightPurple);
   color: $white;
   border-radius: 3px;
-  // p {
-  //   @include mono;
-  //   font-size: 0.8em;
-  // }
+  p {
+    @include mono;
+    font-size: 0.8em;
+  }
 }

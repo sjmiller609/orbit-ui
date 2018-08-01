@@ -43,3 +43,6 @@ dist
 
 #postgres DB files
 .local
+
+#Dependency directory for mock Subscription server
+mockSubscriptionServer/node_modules

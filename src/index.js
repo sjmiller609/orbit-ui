@@ -46,23 +46,35 @@ const wsLink = new WebSocketLink({
     lazy: true, // only connect on subscribe
     reconnectionAttempts: 30,
     inactivityTimeout: 100000,
-    // May need to check into this for updating auth token on login/logout: https://github.com/apollographql/subscriptions-transport-ws/pull/348
-    connectionParams: () =>
-      // a promise that resolves to return the loginToken
-      new Promise(resolve => {
-        //NOTE: auth.get() is not async
-        auth.get().then(token => {
-          if (token) {
-            resolve({
-              authToken: token.token,
-            })
-          } else {
-            resolve({
-              authToken: '',
-            })
-          }
-        })
-      }),
+    onError: error => {
+      // error.message has to match what the server returns.
+      if (error.message === 'Invalid authentication') {
+        // Reset the WS connection for it to carry the new JWT.
+        wsLink.subscriptionClient.close(false, false)
+      }
+    },
+    connectionParams: () => {
+      console.log('get token')
+      return {
+        authorization: auth.get().token,
+      }
+    },
+    // () =>
+    //   // a promise that resolves to return the loginToken
+    //   new Promise(resolve => {
+    //     //NOTE: auth.get() is not async
+    //     auth.get().then(token => {
+    //       if (token) {
+    //         resolve({
+    //           authToken: token.token,
+    //         })
+    //       } else {
+    //         resolve({
+    //           authToken: '',
+    //         })
+    //       }
+    //     })
+    //   }),
   },
 })
 
