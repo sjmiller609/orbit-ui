@@ -11,6 +11,8 @@ const sampleLogs = [
   '[2018-07-26 17:17:09,355] {models.py:341} INFO - Finding running jobs without a recent heartbeat',
   '[2018-07-26 17:17:09,355] {models.py:345} INFO - Failing jobs without heartbeat after 2018-07-26 17:19:25.267642',
   '[2018-07-26 17:17:09,355] {jobs.py:375} INFO - Processing /usr/local/airflow/dags/example_bash_operator.py took 0.036 seconds',
+  '172.19.0.1 - - [26/Jul/2018:17:23:05 +0000] "GET / HTTP/1.1" 302 221 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.68 Safari/537.36"',
+  '172.19.0.1 - - [26/Jul/2018:17:23:05 +0000] "GET / HTTP/1.1" 302 221 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.68 Safari/537.36"',
   'Waiting for host: postgres:5432',
   'Initializing airflow database...',
   `____________       _____________
