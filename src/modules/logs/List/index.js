@@ -20,14 +20,14 @@ class List extends React.Component {
     if (this.subscribe) this.subscribe()
   }
   render() {
-    const { logs, search, start, type } = this.props
+    const { logs, search, since, type } = this.props
     return (
       <Table
         className={s.list}
         search={search}
         Container={Console}
         nav={<Nav selected={type} />}
-        headerOptions={<Since time={start} />}>
+        headerOptions={<Since {...since} />}>
         {logs && logs.map((l, i) => <Item key={l.id || i} log={l} />)}
         {(!logs || !logs.length) && (
           <Mini className={s.waiting}>
@@ -43,7 +43,7 @@ List.propTypes = {
   logs: PropTypes.array,
   search: PropTypes.object,
   type: PropTypes.string,
-  start: PropTypes.instanceOf(Date),
+  since: PropTypes.object,
   subscribeToMore: PropTypes.func,
 }
 

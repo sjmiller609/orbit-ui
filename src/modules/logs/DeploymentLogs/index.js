@@ -6,10 +6,11 @@ import { withRouter } from 'react-router-dom'
 
 class DeploymentLogs extends React.Component {
   timeout = null
-  //  getLog = () => samples[Math.floor(Math.random() * samples.length)]
+  setStart = this.setStart.bind(this)
   state = {
     search: '',
     start: null,
+    since: 10,
     type: 'webserver',
   }
   // search obj constants
@@ -30,16 +31,29 @@ class DeploymentLogs extends React.Component {
     const type = location.search ? location.search.slice(1) : 'webserver'
     this.setState({ type })
   }
+  setStart(start) {
+    let date = new Date()
+
+    if (typeof start === 'number') {
+      date.setMinutes(date.getMinutes() - start)
+    } else if (start === 'today') date.setHours(0, 0, 0, 0)
+    else if (!start) date = null
+    this.setState({ start: date, since: start })
+  }
 
   render() {
-    const { search, start, type } = this.state
+    const { search, start, since, type } = this.state
     return (
       <List
         search={{
           text: search,
           ...this.search,
         }}
-        start={start}
+        since={{
+          set: this.setStart,
+          get: start,
+          since,
+        }}
         type={type}
       />
     )
