@@ -47,6 +47,7 @@ const wsLink = new WebSocketLink({
     reconnectionAttempts: 30,
     inactivityTimeout: 100000,
     onError: error => {
+      // TODO make sure is set to match server
       // error.message has to match what the server returns.
       if (error.message === 'Invalid authentication') {
         // Reset the WS connection for it to carry the new JWT.
@@ -54,33 +55,18 @@ const wsLink = new WebSocketLink({
       }
     },
     connectionParams: () => {
-      console.log('get token')
       return {
         authorization: auth.get().token,
       }
     },
-    // () =>
-    //   // a promise that resolves to return the loginToken
-    //   new Promise(resolve => {
-    //     //NOTE: auth.get() is not async
-    //     auth.get().then(token => {
-    //       if (token) {
-    //         resolve({
-    //           authToken: token.token,
-    //         })
-    //       } else {
-    //         resolve({
-    //           authToken: '',
-    //         })
-    //       }
-    //     })
-    //   }),
   },
 })
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
     graphQLErrors.map(({ message, locations, path, name }) => {
+      if (~name.indexOf('AuthError'))
+        window.location.pathname = '/logout/silent'
       console.log(
         `[GraphQL error | ${name}]: Message: ${message}, Location: ${JSON.stringify(
           locations
@@ -88,7 +74,12 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
       )
     })
 
-  if (networkError) console.log(`[Network error]: ${networkError}`)
+  if (networkError) {
+    const path = window.location.pathname
+    if (path !== '/' && !~path.indexOf('login') && !~path.indexOf('signup'))
+      window.location.pathname = '/houston-down'
+    console.log(`[Network error]: ${networkError}`)
+  }
 })
 
 //only create the split in the browser (for SSR if ever implmented)

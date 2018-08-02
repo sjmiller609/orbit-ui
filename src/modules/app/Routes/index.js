@@ -17,7 +17,7 @@ import AutoLogin from './AutoLogin'
 const routes = [
   ...otherAuthRoutes,
   {
-    path: '/404',
+    path: '/(404|500|503|houston-down)',
     component: Load(() => import('../NoMatch')),
     exact: true,
   },

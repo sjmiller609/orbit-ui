@@ -51,7 +51,10 @@ const server = new GraphQLServer({
   context: ({ response, request, connection }) => {
     const authorization = connection.context.authorization
     // validate auth and throw error if invalid
-    if (!authorization) throw new Error('Invalid authentication')
+    if (!authorization)
+      throw new Error(
+        '[Subscription error | AuthError]: Invalid authentication'
+      )
     console.log('token:' + authorization)
     return { pubsub, authorization }
   },
