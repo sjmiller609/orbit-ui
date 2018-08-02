@@ -68,7 +68,7 @@ const Query = ({
         const newProps = { data: data3 || data2 }
         if (subscribe) {
           newProps.subscribeToMore = () => {
-            subscribeToMore({
+            return subscribeToMore({
               document: subscribe.gql,
               variables: subscribe.vars,
               updateQuery: (prev, { subscriptionData }) => {

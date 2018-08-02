@@ -10,8 +10,14 @@ import Nav from './Nav'
 import Data from '../Data'
 
 class List extends React.Component {
+  subscribe = null
+
   componentWillMount() {
-    if (this.props.subscribeToMore) this.props.subscribeToMore()
+    if (this.props.subscribeToMore)
+      this.subscribe = this.props.subscribeToMore()
+  }
+  componentWillUnmount() {
+    if (this.subscribe) this.subscribe()
   }
   render() {
     const { logs, search, start, type } = this.props

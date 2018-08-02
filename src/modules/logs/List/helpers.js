@@ -50,7 +50,7 @@ export const format = (log, s) => {
     if (t.length > 1) {
       if (t[0] === '') t.shift()
       const t1 = t.shift().slice(0, -2)
-      const style = ~t1.indexOf('err') ? 'error' : 'type'
+      const style = ~t1.indexOf('ERR') ? 'error' : 'type'
       log3.splice(type, 1, [
         <span key={`type-${type}`} className={s[style]}>
           {t1}

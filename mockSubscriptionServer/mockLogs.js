@@ -7,6 +7,7 @@ const sampleLogs = [
   '[2018-07-26 17:17:09,355] {jobs.py:368} INFO - Started process (PID=1838) to work on /usr/local/airflow/dags/example_bash_operator.py',
   '[2018-07-26 17:17:09,355] {jobs.py:1742} INFO - Processing file /usr/local/airflow/dags/example_bash_operator.py for tasks to queue',
   '[2018-07-26 17:17:09,355] {models.py:189} INFO - Filling up the DagBag from /usr/local/airflow/dags/example_bash_operator.py',
+  '[2018-07-26 17:17:09,355] {models.py:189} ERROR - Unknown failure',
   '[2018-07-26 17:17:09,355] {jobs.py:1754} INFO - DAG(s) dict_keys([`example_bash_operator]) retrieved from /usr/local/airflow/dags/example_bash_operator.py',
   '[2018-07-26 17:17:09,355] {models.py:341} INFO - Finding running jobs without a recent heartbeat',
   '[2018-07-26 17:17:09,355] {models.py:345} INFO - Failing jobs without heartbeat after 2018-07-26 17:19:25.267642',

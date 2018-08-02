@@ -24,31 +24,7 @@ class DeploymentLogs extends React.Component {
     const date = new Date()
     date.setMinutes(date.getMinutes() - 10)
     this.setState({ start: date })
-
-    // // mock data
-    // const timer = () =>
-    //   setTimeout(() => {
-    //     const log = this.genLog()
-    //     const logs = this.state.logs
-    //     logs.push(log)
-    //     this.setState({ logs })
-    //     this.timeout = timer()
-    //   }, Math.random() * 10000)
-    //   this.timeout = timer()
   }
-
-  // componentWillUnmount() {
-  //   clearTimeout(this.timeout)
-  // }
-  // genLog() {
-  //   let log = ''
-  //
-  //   log = this.getLog()
-  //   return {
-  //     date: new Date(),
-  //     log,
-  //   }
-  // }
   getType() {
     const { location } = this.props
     const type = location.search ? location.search.slice(1) : 'webserver'
