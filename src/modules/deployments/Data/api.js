@@ -24,12 +24,14 @@ export default {
       $label: String!
       $workspaceId: Uuid
       $version: String
+      $description: String
     ) {
       createDeployment(
         workspaceUuid: $workspaceId
         type: $type
         label: $label
         version: $version
+        description: $description
       ) {
         ...deployment
       }

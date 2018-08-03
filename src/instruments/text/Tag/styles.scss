@@ -1,0 +1,9 @@
+@import 'src/styles/mixins.scss';
+
+.tag {
+  display: inline-block;
+  background: $gray;
+  border-radius: 3px;
+  border: 1px solid $shadow;
+  padding: 0.2em 0.55em;
+}

@@ -35,6 +35,12 @@
   opacity: 0.4;
 }
 
+.fields {
+  @media screen and (max-width: 50rem) {
+    flex-wrap: wrap;
+  }
+}
+
 .fields > div,
 .arrowCol {
   padding: 0.5rem 1rem;

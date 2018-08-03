@@ -44,6 +44,7 @@ export const workspace = gql`
     invites {
       email
     }
+    deploymentCount
   }
 `
 

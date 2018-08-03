@@ -5,19 +5,32 @@ import classnames from 'classnames'
 import s from './styles.scss'
 import { charLimit } from '../../../helpers/format'
 
-import { TableRow, Box, P, H3, Icon } from 'instruments'
+import { TableRow, Box, Row, P, H3, B, Tag, Icon } from 'instruments'
 
 const Item = ({ workspace, className }) => {
   const columns = [
     <Box key="0" className={s.icon}>
       <Icon icon="stars" />
     </Box>,
-    <Box key="1" align="flex-start" className={s.title}>
+    <Row key="1" justify="flex-start" className={s.title}>
       <H3>{workspace.label}</H3>
-    </Box>,
-    <Box key="2" align="flex-start" className={s.log}>
+    </Row>,
+    <Box
+      key="2"
+      align="flex-start"
+      className={classnames(s.log, !workspace.description && s.noMin)}>
       <P className={s.subTitle}>{charLimit(workspace.description, 75)}</P>
     </Box>,
+    <React.Fragment key="3">
+      {workspace.deploymentCount > 0 && (
+        <Box align="flex-end" className={s.deploymentCount}>
+          <Tag>
+            <Icon icon="dag" />
+            <B>{workspace.deploymentCount}</B>
+          </Tag>
+        </Box>
+      )}
+    </React.Fragment>,
   ]
 
   const to = '/workspaces/' + workspace.id
