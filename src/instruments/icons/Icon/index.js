@@ -25,13 +25,20 @@ class Icon extends React.Component {
   render() {
     const { src } = this.state
     if (!src) return null
-    return <img src={src} className={this.props.className} />
+    return (
+      <img
+        src={src}
+        className={this.props.className}
+        title={this.props.title}
+      />
+    )
   }
 }
 
 Icon.propTypes = {
   icon: PropTypes.string,
   className: PropTypes.string,
+  title: PropTypes.string,
 }
 
 export default Icon

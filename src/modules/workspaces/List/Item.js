@@ -25,7 +25,7 @@ const Item = ({ workspace, className }) => {
       {workspace.deploymentCount > 0 && (
         <Box align="flex-end" className={s.deploymentCount}>
           <Tag>
-            <Icon icon="dag" />
+            <Icon icon="dag" title="Deployments" />
             <B>{workspace.deploymentCount}</B>
           </Tag>
         </Box>
