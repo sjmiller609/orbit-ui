@@ -51,6 +51,7 @@ export const deployment = gql`
   fragment deployment on Deployment {
     id: uuid
     label
+    description
     type
     releaseName
     version

@@ -2,7 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import s from './styles.scss'
-import { CardForm, Form, TextField, H5, P, Mini, ShowDate } from 'instruments'
+import {
+  CardForm,
+  Form,
+  TextField,
+  TextArea,
+  H5,
+  P,
+  Mini,
+  ShowDate,
+} from 'instruments'
 
 import Update from '../Data/Update'
 
@@ -22,6 +31,11 @@ const Configure = ({ form, deployment }) => {
         required
         {...form.field('label')}
         focus
+      />
+      <TextArea
+        placeholder="Description"
+        label="Description"
+        {...form.field('description')}
       />
       <H5 className={s.name}>{deployment.releaseName}</H5>
       <div className={s.deployed}>
