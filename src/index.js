@@ -65,7 +65,7 @@ const wsLink = new WebSocketLink({
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
     graphQLErrors.map(({ message, locations, path, name }) => {
-      if (~name.indexOf('AuthError'))
+      if (name && ~name.indexOf('AuthError'))
         window.location.pathname = '/logout/silent'
       console.log(
         `[GraphQL error | ${name}]: Message: ${message}, Location: ${JSON.stringify(
@@ -76,7 +76,15 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
   if (networkError) {
     const path = window.location.pathname
-    if (path !== '/' && !~path.indexOf('login') && !~path.indexOf('signup'))
+    if (
+      ~networkError
+        .toString()
+        .toLowerCase()
+        .indexOf('failed to fetch') &&
+      path !== '/' &&
+      !~path.indexOf('login') &&
+      !~path.indexOf('signup')
+    )
       window.location.pathname = '/houston-down'
     console.log(`[Network error]: ${networkError}`)
   }
