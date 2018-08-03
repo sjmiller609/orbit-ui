@@ -28,7 +28,7 @@ class DeploymentLogs extends React.Component {
   }
   getType() {
     const { location } = this.props
-    const type = location.search ? location.search.slice(1) : 'webserver'
+    const type = location.hash ? location.hash.slice(1) : 'webserver'
     this.setState({ type })
   }
   setStart(start) {
@@ -37,7 +37,7 @@ class DeploymentLogs extends React.Component {
     if (typeof start === 'number') {
       date.setMinutes(date.getMinutes() - start)
     } else if (start === 'today') date.setHours(0, 0, 0, 0)
-    else if (!start) date = null
+    else if (start === 'all') date = null
     this.setState({ start: date, since: start })
   }
 

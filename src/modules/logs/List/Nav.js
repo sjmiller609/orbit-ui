@@ -9,7 +9,7 @@ import { Row, H5, Icon, Link } from 'instruments'
 
 const Tab = ({ name, selected }) => (
   <Link
-    to={{ ...location, search: '?' + name }}
+    to={{ ...location, hash: name }}
     title={name.charAt(0).toUpperCase() + name.slice(1)}
     className={classnames(s.button, name === selected && s.active)}>
     <Row full>

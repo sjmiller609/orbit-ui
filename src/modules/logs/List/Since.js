@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import s from './styles.scss'
-import { ShowDate, Dropdown, MenuList, Item } from 'instruments'
+import { Dropdown, MenuList, Item } from 'instruments'
 
 const Since = ({ get, set, since }) => {
   let msg = 'All time'
@@ -22,7 +22,7 @@ const Since = ({ get, set, since }) => {
         <Item onClick={() => set(10)}>Past 10 minutes</Item>
         <Item onClick={() => set(60)}>Past hour</Item>
         <Item onClick={() => set('today')}>Today</Item>
-        <Item onClick={() => set()}>All time</Item>
+        <Item onClick={() => set('all')}>All time</Item>
       </MenuList>
     </Dropdown>
   )
