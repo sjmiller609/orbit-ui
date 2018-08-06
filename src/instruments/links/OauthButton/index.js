@@ -18,7 +18,7 @@ const services = {
   },
 }
 
-const OauthButton = ({ service, login, to, ...props }) => {
+const OauthButton = ({ service, login, to, className, ...props }) => {
   const oauth = services[service]
   const img = require('./img/' + oauth.img)
   return (
@@ -27,7 +27,7 @@ const OauthButton = ({ service, login, to, ...props }) => {
       to={to}
       title={oauth.text}
       newTab={false}
-      className={classnames(s.button, s[oauth.className])}>
+      className={classnames(s.button, s[oauth.className], className)}>
       <Row full justify="flex-start">
         <Box className={s.img}>
           <img src={img} />
@@ -45,6 +45,7 @@ OauthButton.propTypes = {
   service: PropTypes.string,
   login: PropTypes.bool,
   to: PropTypes.string,
+  className: PropTypes.string,
 }
 
 export default OauthButton

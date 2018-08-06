@@ -2,7 +2,7 @@
 
 .mini {
   @include font($f400);
-  font-size: 1.3rem;
+  @include mini;
 
   @include textLink();
 }

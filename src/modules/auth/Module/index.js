@@ -5,7 +5,7 @@ import s from './styles.scss'
 
 import { Site } from 'instruments'
 import Nav from '../Nav'
-// wrapper for all modules
+
 const Module = ({ metaTitle, ...props }) => {
   const title =
     metaTitle !== 'Astronomer' ? metaTitle + ' | Astronomer' : metaTitle

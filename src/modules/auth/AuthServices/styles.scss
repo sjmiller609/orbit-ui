@@ -1,0 +1,41 @@
+@import 'src/styles/mixins.scss';
+
+.extras {
+  margin: 1rem 0 2.5rem;
+  @include mini;
+  p:not(:last-child) {
+    margin: 0;
+  }
+  .forgotPassword {
+    display: inline;
+    @include font($f300);
+  }
+}
+
+.card {
+  width: 100%;
+  max-width: 42rem;
+}
+
+.or {
+  margin: 1.8rem 0;
+  color: $lightBeige;
+  @include mini;
+  hr {
+    width: 100%;
+    height: 1px;
+    background: $lightGray;
+    border: 0;
+    margin: 0 3rem;
+  }
+}
+
+.button {
+  margin: 1rem auto;
+  display: block;
+  width: 91%;
+}
+.emailButton {
+  width: 71%;
+  margin-top: 2rem;
+}

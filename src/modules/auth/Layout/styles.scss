@@ -1,0 +1,13 @@
+@import 'src/styles/mixins.scss';
+
+.content {
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto 4rem;
+}
+
+.wrapper {
+  &:last-child {
+    flex-basis: 1;
+  }
+}

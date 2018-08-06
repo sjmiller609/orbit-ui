@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { getParams } from 'helpers/url'
 
-import Buttons from './Buttons'
+import Auth from './Auth'
 
 class AuthServices extends React.Component {
   onSuccess = '&onSuccess='
@@ -39,7 +39,7 @@ class AuthServices extends React.Component {
       state: this.onSuccess,
     }
 
-    return <Buttons vars={vars} {...props} />
+    return <Auth vars={vars} {...props} />
   }
 }
 

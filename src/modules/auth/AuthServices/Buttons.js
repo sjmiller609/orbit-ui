@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { OauthButton } from 'instruments'
-import Data from '../Data'
+import s from './styles.scss'
 
 const Buttons = ({ authConfig, login }) => {
   return (
@@ -12,12 +12,14 @@ const Buttons = ({ authConfig, login }) => {
           service="google"
           login={login}
           to={authConfig.googleOAuthUrl}
+          className={s.button}
         />
       )}
       <OauthButton
         service="github"
         login={login}
         to={authConfig.googleOAuthUrl}
+        className={s.button}
       />
     </React.Fragment>
   )
@@ -28,4 +30,4 @@ Buttons.propTypes = {
   login: PropTypes.bool,
 }
 
-export default Data(Buttons)
+export default Buttons

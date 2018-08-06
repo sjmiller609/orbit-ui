@@ -8,7 +8,14 @@ import { Card, Button, Row } from 'instruments'
 import s from './styles.scss'
 
 // wrap this component in a form, with children as fields, either title as string, or header element, and save buttons in footer
-const CardForm = ({ children, button, button2, title, className }) => {
+const CardForm = ({
+  children,
+  button,
+  button2,
+  title,
+  className,
+  smallForm,
+}) => {
   return (
     <Card
       footer={
@@ -37,8 +44,8 @@ const CardForm = ({ children, button, button2, title, className }) => {
         )
       }
       header={title}
-      className={classnames(className)}>
-      <div className={s.formContent}>
+      className={className}>
+      <div className={classnames(s.formContent, smallForm && s.small)}>
         {Array.isArray(children) ? children.map(el => el) : children}
       </div>
     </Card>
@@ -52,6 +59,7 @@ CardForm.propTypes = {
   button: PropTypes.object,
   button2: PropTypes.object,
   className: PropTypes.string,
+  smallForm: PropTypes.bool,
 }
 
 export default CardForm

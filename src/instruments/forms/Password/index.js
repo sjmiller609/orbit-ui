@@ -30,7 +30,11 @@ class Password extends React.Component {
         className={s.toggle}
         onClick={this.toggle}
         title={type === 'password' ? 'Show password' : 'Hide password'}>
-        {type === 'password' ? '&#128274;' : '&#128275;'}
+        {type === 'password' ? (
+          <React.Fragment>&#128274;</React.Fragment>
+        ) : (
+          <React.Fragment>&#128275;</React.Fragment>
+        )}
       </a>
     )
 
