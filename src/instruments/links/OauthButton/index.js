@@ -11,6 +11,11 @@ const services = {
     img: 'google.svg',
     className: 'google',
   },
+  github: {
+    text: ' with Github',
+    img: 'github.svg',
+    className: 'github',
+  },
 }
 
 const OauthButton = ({ service, login, to, ...props }) => {
@@ -23,7 +28,7 @@ const OauthButton = ({ service, login, to, ...props }) => {
       title={oauth.text}
       newTab={false}
       className={classnames(s.button, s[oauth.className])}>
-      <Row full>
+      <Row full justify="flex-start">
         <Box className={s.img}>
           <img src={img} />
         </Box>

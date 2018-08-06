@@ -14,6 +14,11 @@ const Buttons = ({ authConfig, login }) => {
           to={authConfig.googleOAuthUrl}
         />
       )}
+      <OauthButton
+        service="github"
+        login={login}
+        to={authConfig.googleOAuthUrl}
+      />
     </React.Fragment>
   )
 }

@@ -5,6 +5,7 @@
   @include filmo;
   white-space: nowrap;
   border-radius: 3px;
+  width: 100%;
   // padding: 1.4em 1.8em 1.05em;
   height: 4em; //specifying for 100% children
 
@@ -22,7 +23,10 @@
   }
 
   &.google {
-    //  background: $white;
+    background-image: linear-gradient(to right, $darkBlue, $lightBlue);
+  }
+  &.github {
+    background-image: linear-gradient(to right, $darkPurple, $lightPurple);
   }
 }
 
