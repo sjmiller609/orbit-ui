@@ -28,6 +28,9 @@
   &.github {
     background-image: linear-gradient(to right, $darkPurple, $lightPurple);
   }
+  &.auth0 {
+    background-image: linear-gradient(to right, $red, $darkOrange);
+  }
 }
 
 .img {

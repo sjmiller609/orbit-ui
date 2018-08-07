@@ -16,6 +16,11 @@ const services = {
     img: 'github.svg',
     className: 'github',
   },
+  auth0: {
+    text: ' with Auth0',
+    img: 'auth0.svg',
+    className: 'auth0',
+  },
 }
 
 const OauthButton = ({ service, login, to, className, ...props }) => {

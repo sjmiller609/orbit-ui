@@ -21,6 +21,12 @@ const Buttons = ({ authConfig, login }) => {
         to={authConfig.googleOAuthUrl}
         className={s.button}
       />
+      <OauthButton
+        service="auth0"
+        login={login}
+        to={authConfig.googleOAuthUrl}
+        className={s.button}
+      />
     </React.Fragment>
   )
 }
