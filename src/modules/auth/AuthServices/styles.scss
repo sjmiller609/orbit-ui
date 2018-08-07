@@ -12,13 +12,8 @@
   }
 }
 
-.card {
-  width: 100%;
-  max-width: 42rem;
-}
-
 .or {
-  margin: 1.8rem 0;
+  margin: 2rem 0;
   color: $lightBeige;
   @include mini;
   hr {

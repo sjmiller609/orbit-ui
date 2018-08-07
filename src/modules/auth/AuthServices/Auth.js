@@ -9,10 +9,7 @@ import s from './styles.scss'
 
 const Auth = props => {
   return (
-    <CardForm
-      className={s.card}
-      title={props.login ? 'Login' : 'Sign Up'}
-      smallForm>
+    <CardForm title={props.login ? 'Login' : 'Sign Up'} smallForm>
       <EmailPw {...props} />
       <Row className={s.or}>
         <hr />
