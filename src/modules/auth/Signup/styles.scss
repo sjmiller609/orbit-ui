@@ -56,7 +56,11 @@
     top: -0.4rem;
     left: -1rem;
     z-index: 1;
-    background: linear-gradient(to left, rgba($orange, 0.5), $orange0);
+    background: linear-gradient(
+      to left,
+      rgba($darkOrange, 0.5),
+      rgba($darkOrange, 0)
+    );
     transform: rotateY(95deg);
     animation: rotate 8s infinite ease-in;
   }

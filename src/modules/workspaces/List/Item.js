@@ -26,7 +26,7 @@ const Item = ({ workspace, className }) => {
         <Box align="flex-end" className={s.deploymentCount}>
           <Tag>
             <Icon icon="dag" title="Deployments" />
-            <B>{workspace.deploymentCount}</B>
+            <B>{workspace.deploymentCount.toString()}</B>
           </Tag>
         </Box>
       )}
