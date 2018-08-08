@@ -1,8 +1,84 @@
 @import 'src/styles/mixins.scss';
 
-.content {
-  padding: 5rem 0 6rem;
-  max-width: 42rem;
-  width: 100%;
-  margin: auto;
+.signup ul {
+  position: relative;
+  margin-left: 0.5rem;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 100%;
+  background-position: left;
+  color: transparent;
+  background-image: linear-gradient(65deg, $lightBlue, $purple 55%);
+  li {
+    margin: 1.6rem 0;
+
+    &:before {
+      content: '';
+      margin-right: 0.9em;
+      display: inline-block;
+      position: relative;
+      border-bottom-width: 3px;
+      border-color: $lightBlue;
+      border-left: 0;
+      border-right-width: 3px;
+      border-style: solid;
+      border-top: 0;
+      height: 0.7em;
+
+      width: 0.3em;
+
+      transform: rotate(45deg);
+    }
+  }
+  @media screen and (max-width: 1212px) {
+    display: none;
+  }
+}
+
+.alien {
+  position: absolute;
+  left: -8rem;
+  top: 4.5rem;
+  height: 2.1rem;
+  img {
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  animation: bounce 2s infinite ease-in-out;
+  perspective: 85px;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 9rem;
+    height: 1.3rem;
+    top: -0.4rem;
+    left: -1rem;
+    z-index: 1;
+    background: linear-gradient(to left, rgba($orange, 0.5), $orange0);
+    transform: rotateY(95deg);
+    animation: rotate 8s infinite ease-in;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8%);
+  }
+}
+
+@keyframes rotate {
+  0%,
+  60%,
+  100% {
+    transform: rotateY(95deg) rotateX(0);
+  }
+  80% {
+    transform: rotateY(95deg) rotateX(90deg);
+  }
 }

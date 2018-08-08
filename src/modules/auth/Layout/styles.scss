@@ -3,6 +3,10 @@
 .content {
   margin: 0 auto;
 }
+// a placeholder div to keep content aligned while card is loading
+.card > div {
+  margin: 0;
+}
 
 .wrapper {
   max-height: 66vh;
@@ -10,11 +14,14 @@
     width: 100%;
     max-width: 42rem;
     &:first-child {
-      @media screen and (max-width: 1350px) and (min-width: 1230px) {
+      @media screen and (max-width: 1350px) and (min-width: 1212px) {
         max-width: 33rem;
       }
-      @media screen and (max-width: 1230px) {
+      @media screen and (max-width: 1212px) {
         margin-bottom: 3rem;
+        h4 {
+          margin-bottom: 0;
+        }
       }
     }
     &:last-child {

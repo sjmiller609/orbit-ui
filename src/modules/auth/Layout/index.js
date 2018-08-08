@@ -17,7 +17,9 @@ const Layout = ({ title, children, className }) => {
         <div className={s.content}>
           {Array.isArray(children) ? children.map(el => el) : children}
         </div>
-        <AuthServices login={title === 'Login'} />
+        <div className={s.card}>
+          <AuthServices login={title === 'Login'} />
+        </div>
       </Row>
     </Module>
   )
