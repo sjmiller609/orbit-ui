@@ -16,7 +16,7 @@ const Menu = ({ level1, level2, profile = {}, className }) => {
           <Link to={level2.to}>{level2.text}</Link>
         </H2>
       )}
-      <ProfileMenu className={s.profile} name={profile.name} avatar={null} />
+      <ProfileMenu className={s.profile} {...profile} />
     </Row>
   )
 }

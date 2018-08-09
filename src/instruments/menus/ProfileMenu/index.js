@@ -6,12 +6,12 @@ import classnames from 'classnames'
 import { Avatar, MenuList, Item, Dropdown } from 'instruments'
 import s from './styles.scss'
 
-const ProfileMenu = ({ name, className }) => {
+const ProfileMenu = ({ name, avatar, className }) => {
   return (
     <Dropdown
       className={classnames(s.menu, className)}
       right
-      selector={<Avatar className={s.profile} />}>
+      selector={<Avatar url={avatar} title={name} className={s.profile} />}>
       <MenuList label={name}>
         {/* <Item to="/account">Account Settings</Item> */}
         <Item to="/logout">Logout</Item>

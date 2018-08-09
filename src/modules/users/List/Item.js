@@ -4,11 +4,14 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
 import { TableRow, Box, P, Mini, H3, ShowDate, Avatar } from 'instruments'
+import { getProfile } from '../Data/helpers'
 
 const Item = ({ user, className }) => {
+  const profile = getProfile(user)
+
   const columns = [
     <Box key="0" className={s.icon}>
-      <Avatar className={s.avatar} />
+      <Avatar className={s.avatar} url={profile.avatar} title={profile.name} />
     </Box>,
     <Box key="1" align="flex-start" className={s.title}>
       <H3>{user.fullName}</H3>

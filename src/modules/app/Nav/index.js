@@ -5,6 +5,8 @@ import Data from '../../workspaces/Data'
 import Self from '../../self/Data'
 import subMenus from './subMenus'
 
+import { getProfile } from 'modules/users/Data/helpers'
+
 const Nav = ({ getData, workspaces, self, menu }) => {
   const workspaceId = getData.workspaceId
   if (!workspaces) return null
@@ -24,9 +26,7 @@ const Nav = ({ getData, workspaces, self, menu }) => {
   }
   const subMenu = menu.subMenu || subMenus[menu.nav]
 
-  const profile = {
-    name: self.fullName || self.username,
-  }
+  const profile = getProfile(self)
 
   return (
     <Header
