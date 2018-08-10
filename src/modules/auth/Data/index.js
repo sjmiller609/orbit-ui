@@ -15,8 +15,13 @@ const OnError = (
 
 const Data = Component => {
   const Data = ({ vars, ...otherProps }) => {
+    const vars2 = {
+      redirect: '/oauth',
+      duration: 7, // set to max days
+      ...vars,
+    }
     return (
-      <Query gql={api.AuthConfig} vars={vars} OnError={OnError}>
+      <Query gql={api.AuthConfig} vars={vars2} OnError={OnError}>
         {({ data: { authConfig } }) => {
           const newProps = {
             ...otherProps,

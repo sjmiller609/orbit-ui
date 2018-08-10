@@ -36,7 +36,7 @@ const Link = ({
   const Component =
     to && !externalUrl(to)
       ? NavLink
-      : ({ to, newTab, className, onClick, children }) => (
+      : ({ to, className, onClick, children }) => (
           <a
             onClick={onClick}
             className={className}

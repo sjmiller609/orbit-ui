@@ -16,7 +16,7 @@ export default [
 
 export const otherAuthRoutes = [
   {
-    path: '/oauth/:service',
+    path: '/oauth',
     component: Load(() => import('../OauthSuccess')),
     exact: true,
   },

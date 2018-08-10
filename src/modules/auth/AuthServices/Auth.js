@@ -7,16 +7,21 @@ import Buttons from './Buttons'
 import { CardForm, Row } from 'instruments'
 import s from './styles.scss'
 
-const Auth = props => {
+const Auth = ({ authConfig = {}, login }) => {
+  console.log(authConfig)
   return (
-    <CardForm title={props.login ? 'Login' : 'Sign Up'} smallForm>
-      <EmailPw {...props} />
-      <Row className={s.or}>
-        <hr />
-        or
-        <hr />
-      </Row>
-      <Buttons {...props} />
+    <CardForm title={login ? 'Login' : 'Sign Up'} smallForm>
+      {authConfig.localEnabled && (
+        <React.Fragment>
+          <EmailPw login={login} />
+          <Row className={s.or}>
+            <hr />
+            or
+            <hr />
+          </Row>
+        </React.Fragment>
+      )}
+      <Buttons authConfig={authConfig} login={login} />
     </CardForm>
   )
 }

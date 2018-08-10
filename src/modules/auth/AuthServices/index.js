@@ -7,7 +7,7 @@ import { getParams } from 'helpers/url'
 import Auth from './Auth'
 
 class AuthServices extends React.Component {
-  onSuccess = '&onSuccess='
+  onSuccess = ''
   componentWillMount() {
     let to = '/'
 
@@ -29,14 +29,16 @@ class AuthServices extends React.Component {
     }
 
     // gets encoded on server
-    this.onSuccess += to
+    this.onSuccess = to
   }
 
   render() {
     /* eslint-disable no-unused-vars */
     const { match, location, history, ...props } = this.props
     const vars = {
-      state: this.onSuccess,
+      extras: {
+        onSuccess: this.onSuccess,
+      },
     }
 
     return <Auth vars={vars} {...props} />

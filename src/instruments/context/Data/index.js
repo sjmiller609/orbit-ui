@@ -11,7 +11,7 @@ class Provider extends React.Component {
 
   state = {
     workspaceId: storage.getItem('workspaceId'), // string
-    auth: null, // string
+    auth: null,
   }
 
   set = {

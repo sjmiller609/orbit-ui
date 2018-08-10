@@ -2,28 +2,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CliCode from './CliCode'
-import CreateToken from './CreateToken'
+import { SetData, SetUI, Track, Redirect } from 'instruments'
 import { getParams } from 'helpers/url'
 
 class OauthSuccess extends React.Component {
-  vars = {
-    service: null,
-    credentials: null,
-  }
   cli = null
   to = '/'
   track = 'New Token Created From '
   success = null
 
   componentWillMount() {
-    const { location, match } = this.props
-    this.vars.service = match.params.service
-
+    const { location, match, setData, setUI } = this.props
     const params = getParams(location.search)
+    console.log(params)
 
-    if (params.state && ~params.state.indexOf('cli')) this.cli = true
-    this.vars.credentials = params.code
-    if (params.OnSuccess) this.to = params.onSuccess
+    if (
+      (params.extras.source && ~params.extras.source.indexOf('cli')) ||
+      (match.params.service && ~match.params.service.indexOf('cli'))
+    )
+      this.cli = params.token
+
+    if (params.extras.onSuccess) this.to = params.extras.onSuccess
 
     if (this.cli) this.track += 'CLI'
     else if (this.to.charAt(0) !== '/') this.track += 'EE Service - ' + this.to
@@ -33,27 +32,30 @@ class OauthSuccess extends React.Component {
     } else if (~this.to.indexOf('/login')) this.track += 'Login'
     else this.track += 'Page - ' + this.to
 
-    if (this.vars.service === 'google')
-      this.track = 'Google Oauth: ' + this.track
+    if (params.strategy)
+      this.track = params.strategy.toUpperCase() + ' OAUTH: ' + this.track
+
+    // set token
+    setData.auth({
+      token: params.token,
+    })
+    // snackbar
+    if (this.success) setUI.snackbar(this.success)
+    // track event
+    if (this.track) Track(this.track)
   }
 
   render() {
-    if (this.cli) return <CliCode code={this.vars.credentials} />
-    return (
-      <CreateToken
-        vars={this.vars}
-        to={this.to}
-        track={this.track}
-        success={this.success}
-      />
-    )
+    if (this.cli) return <CliCode token={this.cli} />
+    return <Redirect to={this.to} />
   }
 }
 
 OauthSuccess.propTypes = {
   match: PropTypes.object,
   location: PropTypes.object,
-  onSubmit: PropTypes.func,
+  setData: PropTypes.object,
+  setUI: PropTypes.object,
 }
 
-export default OauthSuccess
+export default SetData(SetUI(OauthSuccess, { snackbar: true }), { auth: true })
