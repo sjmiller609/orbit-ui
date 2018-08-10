@@ -1,7 +1,7 @@
 'use strict'
 import React from 'react'
 import PropTypes from 'prop-types'
-import CliCode from './CliCode'
+import Token from './Token'
 import { SetData, SetUI, Track, Redirect } from 'instruments'
 import { getParams } from 'helpers/url'
 
@@ -46,7 +46,7 @@ class OauthSuccess extends React.Component {
   }
 
   render() {
-    if (this.cli) return <CliCode token={this.cli} />
+    if (this.cli) return <Token token={this.cli} />
     return <Redirect to={this.to} />
   }
 }

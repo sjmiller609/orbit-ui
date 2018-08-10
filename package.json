@@ -10,9 +10,12 @@
     "preinstall": "node tools/nodeVersionCheck.js",
     "start-message": "babel-node tools/startMessage.js",
     "prestart": "npm run start-message",
-    "start": "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:src\" \"npm run lint:watch\"",
-    "local": "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:local\" \"npm run lint:watch\"",
-    "local-prod": "npm run clean-dist && npm run build-production && npm run open:dist",
+    "start":
+      "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:src\" \"npm run lint:watch\"",
+    "local":
+      "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:local\" \"npm run lint:watch\"",
+    "local-prod":
+      "npm run clean-dist && npm run build-production && npm run open:dist",
     "open:src": "babel-node tools/srcServer.js",
     "open:local": "babel-node tools/localServer.js",
     "open:dist": "babel-node tools/distServer.js",
@@ -27,9 +30,11 @@
     "test": "jest",
     "test:CI": "babel-node tools/testCi.js",
     "test:cover": "npm run test -- --coverage ",
-    "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
+    "test:cover:CI":
+      "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "jest --watch",
-    "open:cover": "npm run test:cover && open ./coverage/lcov-report/index.html",
+    "open:cover":
+      "npm run test:cover && open ./coverage/lcov-report/index.html",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
   },
   "author": "Astronomer",
@@ -43,13 +48,13 @@
     "apollo-link-ws": "1.0.8",
     "apollo-utilities": "1.0.17",
     "classnames": "2.2.6",
+    "copy-to-clipboard": "3.0.8",
     "eventemitter3": "3.1.0",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "prop-types": "15.6.2",
     "react": "16.4.1",
     "react-apollo": "2.1.9",
-    "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "16.4.1",
     "react-helmet": "^5.2.0",
     "react-loadable": "5.4.0",
@@ -123,21 +128,14 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|scss)$": "identity-obj-proxy",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/tools/assetsTransformer.js"
     },
-    "setupFiles": [
-      "raf/polyfill",
-      "./tools/enzymeTestAdapterSetup.js"
-    ],
+    "setupFiles": ["raf/polyfill", "./tools/enzymeTestAdapterSetup.js"],
     "modulePathIgnorePatterns": [
       "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
     ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
-  "browserslist": [
-    "last 2 versions",
-    "> 1%"
-  ]
+  "browserslist": ["last 2 versions", "> 1%"]
 }

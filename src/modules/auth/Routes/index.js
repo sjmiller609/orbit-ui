@@ -21,6 +21,11 @@ export const otherAuthRoutes = [
     exact: true,
   },
   {
+    path: '/token',
+    component: Load(() => import('../OauthSuccess/Token')),
+    exact: true,
+  },
+  {
     path: '/logout',
     component: Load(() => import('../Logout')),
   },
