@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { SetUI, H4, CardForm, Code } from 'instruments'
+import { Redirect, SetUI, H4, CardForm, Code } from 'instruments'
 import Module from '../Module'
 import s from './styles.scss'
 import auth from 'helpers/token'
@@ -10,11 +10,13 @@ import copy from 'copy-to-clipboard'
 class Token extends React.Component {
   copied = this.copied.bind(this)
   token = this.props.token || auth.get().token
+
   copied() {
     copy(this.token)
     this.props.setUI.snackbar('Token copied to clipboard')
   }
   render() {
+    if (!this.token) return <Redirect to="/login" />
     return (
       <Module metaTitle="Login Token">
         <CardForm
