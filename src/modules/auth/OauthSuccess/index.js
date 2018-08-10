@@ -14,7 +14,6 @@ class OauthSuccess extends React.Component {
   componentWillMount() {
     const { location, match, setData, setUI } = this.props
     const params = getParams(location.search)
-    console.log(params)
 
     if (
       (params.extras.source && ~params.extras.source.indexOf('cli')) ||
@@ -35,9 +34,14 @@ class OauthSuccess extends React.Component {
     if (params.strategy)
       this.track = params.strategy.toUpperCase() + ' OAUTH: ' + this.track
 
+    // NOTE: estimate token estimation
+    const date = new Date()
+    date.setDate(date.getDate() + 7)
+    date.setMinutes(date.getMinutes() - 5)
     // set token
     setData.auth({
       token: params.token,
+      exp: date,
     })
     // snackbar
     if (this.success) setUI.snackbar(this.success)
