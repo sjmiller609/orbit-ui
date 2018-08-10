@@ -18,10 +18,9 @@ class AuthServices extends React.Component {
     else if (params.rd) to = params.rd
     else {
       const ref = document.referrer
-      const host = window.location.host
-        .split('.')
-        .splice(1)
-        .join('.')
+      const h = window.location.host.split('.')
+      if (h.length > 1) h.splice(1)
+      const host = h.join('.')
 
       // if same root domain
       if (ref && host && ~ref.indexOf(host)) to = ref
