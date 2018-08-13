@@ -64,14 +64,16 @@ const wsLink = new WebSocketLink({
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
-    graphQLErrors.map(({ message, locations, path, name }) => {
+    graphQLErrors.map(({ message, locations, path, name, data }) => {
+      let msg = '[GraphQL error'
+      if (name) msg += `| ${name}`
+      if (message) msg += ']: Message: ' + message
+      if (data) msg += `Data: ${JSON.stringify(data)}`
+      if (locations) msg += `Location: ${JSON.stringify(locations)},`
+      if (path) msg += `, Path: ${path}`
+      console.log(msg)
       if (name && ~name.indexOf('AuthError'))
         window.location.pathname = '/logout/silent'
-      console.log(
-        `[GraphQL error | ${name}]: Message: ${message}, Location: ${JSON.stringify(
-          locations
-        )}, Path: ${path}`
-      )
     })
 
   if (networkError) {

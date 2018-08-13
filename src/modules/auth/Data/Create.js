@@ -57,12 +57,20 @@ const Create = Component => {
           }
           // handle api errors
           if (error) {
-            const err = error.message.toLowerCase()
+            const err = JSON.stringify(error).toLowerCase()
             // signup error
             if (~err.indexOf('email already in use')) {
               newProps.error = {
                 name: 'email',
                 error: 'That email is already taken.',
+              }
+            } else if (
+              ~err.indexOf('no password credentials found for this user')
+            ) {
+              newProps.error = {
+                name: 'email',
+                error:
+                  'No password found for this user. Did you mean to login with OAuth?',
               }
             }
           }
