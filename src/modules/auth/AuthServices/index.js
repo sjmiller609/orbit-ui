@@ -8,6 +8,7 @@ import Auth from './Auth'
 
 class AuthServices extends React.Component {
   onSuccess = ''
+
   componentWillMount() {
     let to = '/'
 

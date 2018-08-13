@@ -9,7 +9,7 @@
     display: block;
     top: 0;
     left: 0;
-    z-index: 0;
+    z-index: -1;
     transform: translate(-50%, 14.7vh) scaleX(0.5) rotate(45deg);
     background: $lightGray;
     height: 70.7vh;
@@ -27,4 +27,7 @@
 
 .rocket {
   height: 32rem;
+  @media screen and (max-width: 930px) {
+    height: 25rem;
+  }
 }

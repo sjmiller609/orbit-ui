@@ -2,16 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import {
-  Link,
-  TextField,
-  Password,
-  Checkbox,
-  Form,
-  Row,
-  Mini,
-  Button,
-} from 'instruments'
+import { Link, TextField, Password, Form, Row, Mini, Button } from 'instruments'
 
 import Create from '../Data/Create'
 import s from './styles.scss'
@@ -19,7 +10,6 @@ import s from './styles.scss'
 const EmailPw = ({ form, login }) => {
   const email = form.field('email')
   const pw = form.field('password')
-  const rem = form.field('remember')
   return (
     <React.Fragment>
       <TextField
@@ -32,13 +22,12 @@ const EmailPw = ({ form, login }) => {
       />
       <Password {...pw} />
       {login && (
-        <Row justify="space-between" className={s.extras}>
+        <Row justify="flex-end" className={s.extras}>
           <Mini>
             <Link to="/forgot-password" className={s.forgotPassword}>
               Forgot Password?
             </Link>
           </Mini>
-          <Checkbox label="Remember Me" {...rem} />
         </Row>
       )}
       <Button

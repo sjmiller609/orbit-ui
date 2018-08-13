@@ -45,6 +45,7 @@ const Create = Component => {
         {({ mutate, error }) => {
           const newProps = {
             ...props,
+            login,
             onSubmit: vars => {
               mutate({
                 variables: {
@@ -58,7 +59,7 @@ const Create = Component => {
           if (error) {
             const err = error.message.toLowerCase()
             // signup error
-            if (err.indexOf('email already in use')) {
+            if (~err.indexOf('email already in use')) {
               newProps.error = {
                 name: 'email',
                 error: 'That email is already taken.',

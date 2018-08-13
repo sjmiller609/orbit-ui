@@ -8,7 +8,6 @@ import { CardForm, Row } from 'instruments'
 import s from './styles.scss'
 
 const Auth = ({ authConfig = {}, login }) => {
-  console.log(authConfig)
   return (
     <CardForm title={login ? 'Login' : 'Sign Up'} smallForm>
       {authConfig.localEnabled && (
