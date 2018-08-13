@@ -19,6 +19,8 @@ class Password extends React.Component {
   }
   validate(value) {
     if (value.length < 7) return 'Password must be at least 7 characters'
+    const { confirm } = this.props
+    if (confirm && confirm !== value) return 'Password must match'
   }
 
   render() {
@@ -63,6 +65,7 @@ Password.propTypes = {
   placeholder: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string,
+  confirm: PropTypes.string,
 }
 
 Password.defaultProps = {

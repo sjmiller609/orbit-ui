@@ -1,34 +1,23 @@
+'use strict'
 import React from 'react'
 import PropTypes from 'prop-types'
+import Form from './Form'
+import { getParams } from 'helpers/url'
 
-import { TextField, Form, CardForm } from 'instruments'
-import Module from '../Module'
+class ResetPw extends React.Component {
+  componentWillMount() {
+    const { location } = this.props
+    const params = getParams(location.search)
+  }
 
-const ForgotPw = ({ form }) => {
-  const email = form.field('email')
-
-  return (
-    <Module title="Forgot Password">
-      <CardForm
-        title="Forgot your password?"
-        button={{
-          save: form.save,
-          text: 'Reset Password',
-        }}>
-        <TextField
-          type="email"
-          placeholder="you@yourcompany.com"
-          label="Your email"
-          required
-          {...email}
-          focus
-        />
-      </CardForm>
-    </Module>
-  )
+  render() {
+    const props = {}
+    return <Form {...props} />
+  }
 }
 
-ForgotPw.propTypes = {
-  form: PropTypes.object,
+ResetPw.propTypes = {
+  location: PropTypes.object,
 }
-export default Form(ForgotPw)
+
+export default ResetPw
