@@ -2,29 +2,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import s from './styles.scss'
-
+import classnames from 'classnames'
 import { Site } from 'instruments'
 import Nav from '../Nav'
 
-const Module = ({ metaTitle, ...props }) => {
+const Module = ({ metaTitle, className, ...props }) => {
   const title =
     metaTitle !== 'Astronomer' ? metaTitle + ' | Astronomer' : metaTitle
 
   return (
-    <Site {...props} nav={<Nav />} metaTitle={title} className={s.module} />
+    <Site
+      {...props}
+      nav={<Nav />}
+      metaTitle={title}
+      className={classnames(s.module, className)}
+    />
   )
 }
 
 Module.propTypes = {
-  menu: PropTypes.object,
   metaTitle: PropTypes.string,
-  nada: PropTypes.bool, // 404
+  className: PropTypes.string,
 }
 
 Module.defaultProps = {
   metaTitle: 'Astronomer',
-  menu: {},
-  // help: {},
 }
 
 export default Module

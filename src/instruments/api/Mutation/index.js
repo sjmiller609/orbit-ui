@@ -54,7 +54,11 @@ const Mutation = ({
           const path = history.location.pathname
           history.push(path.substring(0, path.lastIndexOf('/')))
         }
-        if (success) setUI.snackbar(success)
+        if (success) {
+          setUI.snackbar(
+            typeof success === 'function' ? success(data) : success
+          )
+        }
         if (track) Track(track)
       }}
       update={update}>
@@ -83,7 +87,7 @@ Mutation.propTypes = {
   history: PropTypes.object,
   redirect: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   back: PropTypes.bool,
-  success: PropTypes.string,
+  success: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   track: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   OnError: PropTypes.element,
   errorMsg: PropTypes.string, // return original component and use snackbar message

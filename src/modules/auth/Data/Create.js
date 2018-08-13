@@ -14,7 +14,11 @@ const Create = Component => {
     if (login) {
       track = 'User Logged In With Email/Password'
     } else {
-      success = 'Success! ...'
+      success = data => {
+        return data.token
+          ? 'Success! Welcome to Astronomer'
+          : "Success! You've created an Astronomer acccount."
+      }
       track = 'User Signed Up With Email/Password'
       redirect = data => {
         if (!data.token) return '/confirm'

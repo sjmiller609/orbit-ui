@@ -8,7 +8,7 @@ import { Row, Box, H1, P } from 'instruments'
 const Block1 = ({ left, right, title, text, children, className }) => {
   return (
     <Row className={classnames(s.content, className)} wrap>
-      <Box className={s.left}>{left}</Box>
+      {left && <Box className={s.left}>{left}</Box>}
       <Box className={s.right} align="flex-start">
         {right || (
           <React.Fragment>

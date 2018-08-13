@@ -8,8 +8,13 @@ export default [
     exact: true,
   },
   {
-    path: '/(login)',
+    path: '/login',
     component: Load(() => import('../Login')),
+    exact: true,
+  },
+  {
+    path: '/confirm',
+    component: Load(() => import('../Confirm')),
     exact: true,
   },
 ]
