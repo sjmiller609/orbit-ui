@@ -9,7 +9,7 @@ class Icon extends React.Component {
   }
 
   componentWillMount() {
-    // TODO: webpack issues have to do this (though it loads the entire directory)
+    // TODO: webpack issues, have to do this (though it loads the entire directory)
     const src = require(`./img/${this.props.icon}.svg`)
     if (this.mounted) this.setState({ src })
     // import(/* webpackPrefetch: 0 */ `./img/${this.props.icon}.svg`).then(

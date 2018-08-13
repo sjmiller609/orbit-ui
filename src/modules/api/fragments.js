@@ -94,3 +94,27 @@ export const workspaceUsers = gql`
   ${user}
   ${group}
 `
+
+export const token = gql`
+  fragment token on Token {
+    value
+    payload {
+      id: uuid
+      iat
+      exp
+    }
+  }
+`
+
+export const authUser = gql`
+  fragment authUser on AuthUser {
+    user {
+      ...user
+    }
+    token {
+      ...token
+    }
+  }
+  ${token}
+  ${user}
+`

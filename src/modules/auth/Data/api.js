@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import { authUser } from 'modules/api/fragments'
 
 export default {
   AuthConfig: gql`
@@ -14,28 +15,47 @@ export default {
       }
     }
   `,
-  CreateToken: gql`
+  Login: gql`
     mutation createToken(
-      $authStrategy: AuthStrategy
-      $credentials: String!
-      $identity: String
+      $password: String!
+      $email: String
       $duration: Int
+      $workspaceId: String
+      $permission: String
     ) {
       createToken(
-        authStrategy: $authStrategy
-        identity: $identity
-        credentials: $credentials
+        password: $password
+        identity: $email
+        workspaceUuid: $workspaceId
+        permission: $permission
         duration: $duration
       ) {
-        token {
-          value
-          payload {
-            id: uuid
-            iat
-            exp
-          }
-        }
+        ...authUser
       }
     }
+    ${authUser}
+  `,
+  Signup: gql`
+    mutation createUser(
+      $email: String!
+      $password: String!
+      $username: String
+      $profile: JSON
+      $inviteToken: String
+      $duration: Int
+    ) {
+      createUser(
+        email: $email
+        password: $password
+        username: $username
+        profile: $profile
+        inviteToken: $inviteToken
+        duration: $duration
+      ) {
+        ...authUser
+      }
+    }
+
+    ${authUser}
   `,
 }

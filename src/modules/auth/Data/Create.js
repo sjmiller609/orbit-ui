@@ -7,45 +7,59 @@ import api from './api'
 import { Create as Mutation, SetData } from 'instruments'
 
 const Create = Component => {
-  const Create = ({ setData, to, track, success, ...props }) => {
-    // update self query
-    // const query = {
-    //   name: api.Deployments,
-    //   type: 'deployments',
-    //   vars: {
-    //     workspaceId: getData.workspaceId,
-    //   },
-    // }
+  const Create = ({ login, setData, ...props }) => {
+    let success
+    let track
+    let redirect
+    if (login) {
+      track = 'User Logged In With Email/Password'
+    } else {
+      success = 'Success! ...'
+      track = 'User Signed Up With Email/Password'
+      redirect = data => {
+        if (!data.token) return '/confirm'
+      }
+    }
     return (
       <Mutation
-        gql={api.CreateToken}
+        gql={login ? api.Login : api.Signup}
         onSuccess={data => {
           if (!data) return
-          const { value, payload } = data.token
-          // pass token to context
-          setData.auth({
-            token: value,
-            exp: payload.exp,
-          })
+          if (data.token) {
+            const { value, payload } = data.token
+            // pass token to context
+            setData.auth({
+              token: value,
+              exp: payload.exp,
+            })
+          }
         }}
-        redirect={to}
+        redirect={redirect}
+        voidError
         success={success}
         track={track}>
-        {({ mutate }) => {
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
-              let authStrategy
-              if (vars.service === 'google') authStrategy = 'GOOGLE_OAUTH'
-
               mutate({
                 variables: {
                   duration: 7, // set to max days
-                  authStrategy,
                   ...vars,
                 },
               })
             },
+          }
+          // handle api errors
+          if (error) {
+            const err = error.message.toLowerCase()
+            // signup error
+            if (err.indexOf('email already in use')) {
+              newProps.error = {
+                name: 'email',
+                error: 'That email is already taken.',
+              }
+            }
           }
           return <Component {...newProps} />
         }}
@@ -53,6 +67,7 @@ const Create = Component => {
     )
   }
   Create.propTypes = {
+    login: PropTypes.bool,
     setData: PropTypes.object,
     to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     track: PropTypes.string,

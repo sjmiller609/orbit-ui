@@ -12,6 +12,8 @@ import {
   Mini,
   Button,
 } from 'instruments'
+
+import Create from '../Data/Create'
 import s from './styles.scss'
 
 const EmailPw = ({ form, login }) => {
@@ -55,4 +57,4 @@ EmailPw.propTypes = {
   remember: PropTypes.bool, // default value
 }
 
-export default Form(EmailPw)
+export default Create(Form(EmailPw))

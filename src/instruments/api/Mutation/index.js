@@ -20,6 +20,7 @@ const Mutation = ({
   track,
   OnError,
   errorMsg,
+  voidError,
 }) => {
   return (
     <Apollo
@@ -32,7 +33,7 @@ const Mutation = ({
       }}
       onCompleted={data => {
         if (onSuccess) onSuccess(data[Object.keys(data)[0]])
-        console.log(data)
+
         if (redirect) {
           // redirect can be a function, to go to the newly created object
           let path
@@ -59,12 +60,12 @@ const Mutation = ({
       update={update}>
       {(mutate, { loading, error }) => {
         setUI.loading = loading
-        if (error && !errorMsg) {
+        if (error && !errorMsg && !voidError) {
           if (OnError) return OnError
           return <CardError />
         }
 
-        return children({ mutate }) || null
+        return children({ mutate, error }) || null
       }}
     </Apollo>
   )
@@ -86,6 +87,7 @@ Mutation.propTypes = {
   track: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   OnError: PropTypes.element,
   errorMsg: PropTypes.string, // return original component and use snackbar message
+  voidError: PropTypes.bool,
 }
 //export default Mutation
 export default SetUI(withRouter(Mutation), { snackbar: true })

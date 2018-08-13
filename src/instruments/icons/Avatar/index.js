@@ -5,6 +5,7 @@ import classnames from 'classnames'
 import { Icon, Box } from 'instruments'
 import s from './styles.scss'
 
+// TODO: Use default image while other is loading... document.getElementById("myImg").complete;
 const Avatar = ({ url, title, className }) => {
   return (
     <Box className={classnames(s.avatar, url && s.pic, className)}>
