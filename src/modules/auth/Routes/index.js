@@ -31,6 +31,10 @@ export const otherAuthRoutes = [
     exact: true,
   },
   {
+    path: '/forgot-password',
+    component: Load(() => import('../ForgotPw')),
+  },
+  {
     path: '/logout',
     component: Load(() => import('../Logout')),
   },

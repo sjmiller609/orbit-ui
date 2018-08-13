@@ -49,7 +49,6 @@ const Configure = ({ form, deployment }) => {
 }
 
 Configure.propTypes = {
-  save: PropTypes.bool,
   form: PropTypes.object,
   deployment: PropTypes.object,
 }

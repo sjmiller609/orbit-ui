@@ -13,6 +13,11 @@ const ToLogin = () => (
     Already have an account? <Link to="/login">Login</Link>
   </P>
 )
+const BackToLogin = () => (
+  <P className={s.switch}>
+    Back to <Link to="/login">Login</Link>
+  </P>
+)
 
 const Nav = () => {
   return (
@@ -20,6 +25,7 @@ const Nav = () => {
       <Switch>
         <Route path="/login" component={ToSignup} exact />
         <Route path="/(|signup)" component={ToLogin} exact />
+        <Route path="/forgot-password" component={BackToLogin} exact />
       </Switch>
     </SiteHeader>
   )
