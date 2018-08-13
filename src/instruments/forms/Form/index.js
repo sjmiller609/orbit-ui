@@ -22,8 +22,10 @@ const Form = FormComponent => {
       save: false,
     }
 
-    componentWillReceiveProps({ data }) {
+    componentWillReceiveProps({ data, error }) {
       if (!jsonEqual(data, this.props.data)) this.setState({ data })
+      if (!jsonEqual(error, this.props.error))
+        this.updateErrors(error.name, error.error)
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -48,11 +50,9 @@ const Form = FormComponent => {
       // NOTE: have to namespace this way because state is updated simulatenously by all fields, so they get overwriten
       const set = {}
       if (error !== this.state[errorField(name)]) set[errorField(name)] = error
-
       // check save after validation check
       const save = this.checkSave({ ...this.state, ...set })
       if (typeof save === 'boolean') set.save = save
-
       this.setState(set)
     }
 
@@ -86,7 +86,7 @@ const Form = FormComponent => {
       const { save, data } = this.state
       if (!save) return
       if (!saveOnLoad) this.setState({ save: false })
-      onSubmit(data)
+      onSubmit(data, this.updateErrors)
     }
 
     field(name) {
@@ -124,6 +124,7 @@ const Form = FormComponent => {
   }
 
   Form.propTypes = {
+    error: PropTypes.object,
     data: PropTypes.object,
     onSubmit: PropTypes.func,
     children: PropTypes.element,
