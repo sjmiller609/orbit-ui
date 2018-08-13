@@ -8,7 +8,7 @@ import { getParams } from 'helpers/url'
 class OauthSuccess extends React.Component {
   cli = null
   to = '/'
-  track = 'New Token Created From '
+  track = 'User OAUTH from '
   success = null
 
   componentWillMount() {
@@ -24,7 +24,7 @@ class OauthSuccess extends React.Component {
     if (params.extras.onSuccess) this.to = params.extras.onSuccess
 
     if (this.cli) this.track += 'CLI'
-    else if (this.to.charAt(0) !== '/') this.track += 'EE Service - ' + this.to
+    else if (this.to.charAt(0) !== '/') this.track += 'Service - ' + this.to
     else if (this.to === '/' || ~this.to.indexOf('/signup')) {
       this.track += 'Signup'
       this.success = 'Success! Welcome to Astronomer'
@@ -32,9 +32,9 @@ class OauthSuccess extends React.Component {
     else this.track += 'Page - ' + this.to
 
     if (params.strategy)
-      this.track = params.strategy.toUpperCase() + ' OAUTH: ' + this.track
+      this.track = params.strategy.toUpperCase() + ': ' + this.track
 
-    // NOTE: estimate token estimation
+    // NOTE: estimate token expiration based on duration set to + 7 days (minus 5 minutes for lolz)
     const date = new Date()
     date.setDate(date.getDate() + 7)
     date.setMinutes(date.getMinutes() - 5)
