@@ -32,14 +32,15 @@ const Mutation = ({
         return null
       }}
       onCompleted={data => {
-        if (onSuccess) onSuccess(data[Object.keys(data)[0]])
+        const data2 = data[Object.keys(data)[0]]
+        if (onSuccess) onSuccess(data2)
 
         if (redirect) {
           // redirect can be a function, to go to the newly created object
           let path
           if (typeof redirect === 'function') {
             // get object from data and path from redirect function
-            path = redirect(data[Object.keys(data)[0]])
+            path = redirect(data2)
           } else path = redirect
 
           // check if external url
@@ -56,7 +57,7 @@ const Mutation = ({
         }
         if (success) {
           setUI.snackbar(
-            typeof success === 'function' ? success(data) : success
+            typeof success === 'function' ? success(data2) : success
           )
         }
         if (track) Track(track)

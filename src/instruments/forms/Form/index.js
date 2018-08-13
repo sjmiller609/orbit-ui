@@ -24,7 +24,7 @@ const Form = FormComponent => {
 
     componentWillReceiveProps({ data, error }) {
       if (!jsonEqual(data, this.props.data)) this.setState({ data })
-      if (!jsonEqual(error, this.props.error))
+      if (!jsonEqual(error, this.props.error) && error)
         this.updateErrors(error.name, error.error)
     }
 
