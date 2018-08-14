@@ -46,4 +46,26 @@ export default {
 
     ${authUser}
   `,
+  ForgotPassword: gql`
+    mutation forgotPassword($email: String!) {
+      forgotPassword(email: $email) {
+        Boolean
+      }
+    }
+  `,
+  ResetPassword: gql`
+    mutation resetPassword($token: String!, $password: String!) {
+      resetPassword(token: $token, password: $password) {
+        ...authUser
+      }
+    }
+    ${authUser}
+  `,
+  ResendConfirmation: gql`
+    mutation resendConfirmation($email: String!) {
+      resendConfirmation(email: $email) {
+        Boolean
+      }
+    }
+  `,
 }
