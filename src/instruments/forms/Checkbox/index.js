@@ -25,8 +25,11 @@ class Checkbox extends React.Component {
     this.validate({ value }) // adds required fields to form
   }
 
-  componentWillReceiveProps({ value, error }) {
+  componentWillReceiveProps({ value, error, submitted }) {
     const set = {}
+
+    // show error on submit
+    if (submitted && !this.props.submitted) set.showError = true
 
     if (value !== this.props.value) {
       set.showError = false
@@ -50,9 +53,10 @@ class Checkbox extends React.Component {
   }
   // should probably switch this to pull the props that don't change, and then json.stringify
   // NOTE: if any new props are passed in that are meant to be reactive, won't work.
-  shouldComponentUpdate({ value, error }, { showError, touched }) {
+  shouldComponentUpdate({ value, error, submitted }, { showError, touched }) {
     if (value !== this.props.value) return true
     if (error !== this.props.error) return true
+    if (submitted !== this.props.submitted) return true
     if (showError !== this.state.showError) return true
     if (touched !== this.state.touched) return true
     return false
@@ -146,6 +150,7 @@ Checkbox.propTypes = {
   focus: PropTypes.bool,
   validate: PropTypes.func, // check if isValid, return error message
   required: PropTypes.bool,
+  submitted: PropTypes.bool,
 }
 
 export default Checkbox

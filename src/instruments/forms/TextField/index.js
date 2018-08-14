@@ -33,11 +33,14 @@ class TextField extends React.Component {
     this.validate({ value, type }) // adds required fields to form
   }
 
-  componentWillReceiveProps({ value, type, error }) {
+  componentWillReceiveProps({ value, type, error, submitted }) {
     const set = {}
 
     // update type (for show password)
     if (type !== this.props.type) set.type = type
+
+    // show error on submit
+    if (submitted && !this.props.submitted) set.showError = true
 
     if (value !== this.props.value) {
       set.showError = false
@@ -60,10 +63,14 @@ class TextField extends React.Component {
 
   // should probably switch this to pull the props that don't change, and then json.stringify
   // NOTE: if any new props are passed in that are meant to be reactive, won't work.
-  shouldComponentUpdate({ value, error, type }, { showError, touched }) {
+  shouldComponentUpdate(
+    { value, error, type, submitted },
+    { showError, touched }
+  ) {
     if (value !== this.props.value) return true
     if (error !== this.props.error) return true
     if (type !== this.props.type) return true
+    if (submitted !== this.props.submitted) return true
     if (showError !== this.state.showError) return true
     if (touched !== this.state.touched) return true
     return false
@@ -158,6 +165,7 @@ TextField.propTypes = {
   error: PropTypes.string,
   className: PropTypes.string,
   updateErrors: PropTypes.func,
+  submitted: PropTypes.bool,
 }
 
 TextField.defaultProps = {

@@ -20,6 +20,7 @@ const Form = FormComponent => {
     state = {
       data: this.props.data,
       save: false,
+      submitted: false,
     }
 
     componentWillReceiveProps({ data, error }) {
@@ -38,6 +39,7 @@ const Form = FormComponent => {
       const set = {
         data: {
           ...this.state.data,
+          submitted: false,
           [key]: value,
         },
       }
@@ -85,7 +87,7 @@ const Form = FormComponent => {
       const { saveOnLoad, onSubmit } = this.props
       const { save, data } = this.state
       if (!save) return
-      if (!saveOnLoad) this.setState({ save: false })
+      if (!saveOnLoad) this.setState({ save: false, submitted: true })
       onSubmit(data, this.updateErrors)
     }
 
@@ -96,6 +98,7 @@ const Form = FormComponent => {
         error: this.state[errorField(name)],
         updateErrors: this.updateErrors,
         onChange: this.update,
+        submitted: this.state.submitted,
       }
     }
 
