@@ -4,10 +4,10 @@ const subMenus = {
       to: '/workspaces',
       text: 'Workspaces',
     },
-    // {
-    //   to: '/account',
-    //   text: 'Account Settings',
-    // },
+    {
+      to: '/profile',
+      text: 'Personal Settings',
+    },
   ],
   workspace: [
     {

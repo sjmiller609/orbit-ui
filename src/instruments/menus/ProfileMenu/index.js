@@ -13,7 +13,7 @@ const ProfileMenu = ({ name, avatar, className }) => {
       right
       selector={<Avatar url={avatar} title={name} className={s.profile} />}>
       <MenuList label={name}>
-        {/* <Item to="/account">Account Settings</Item> */}
+        <Item to="/profile">Personal Settings</Item>
         <Item to="/logout">Logout</Item>
       </MenuList>
     </Dropdown>

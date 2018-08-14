@@ -15,6 +15,7 @@ const MenuList = ({ button, children, label, className }) => {
     <ul className={classnames(s.list, className)}>
       {button && button.start && b}
       {label && <B className={s.label}>{label}</B>}
+      {label && <hr className={s.border} />}
       {Array.isArray(children) ? children.map(el => el) : children}
       {button && !button.start && b}
     </ul>

@@ -10,4 +10,12 @@ export default {
     }
     ${user}
   `,
+  UpdateSelf: gql`
+    mutation updateUser($payload: JSON!) {
+      updateUser(payload: $payload) {
+        ...user
+      }
+    }
+    ${user}
+  `,
 }

@@ -9,6 +9,7 @@ import { ScrollToTop, Pageview, GetData, Load } from 'instruments'
 import deployments from 'modules/deployments/Routes'
 import { default as workspaces, workspace } from 'modules/workspaces/Routes'
 import { default as auth, otherAuthRoutes } from 'modules/auth/Routes'
+import self from 'modules/self/Routes'
 import users from 'modules/users/Routes'
 
 import Protected from './Protected'
@@ -30,7 +31,7 @@ const routes = [
 const autoLoginRoutes = [...auth]
 
 // protected by userId
-const authRoutes = [...workspaces]
+const authRoutes = [...workspaces, ...self]
 
 // also protected by workspaceId
 const workspaceRoutes = [...workspace, ...deployments, ...users]

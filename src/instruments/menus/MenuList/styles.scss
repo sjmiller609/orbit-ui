@@ -35,4 +35,15 @@ a.button {
 .label {
   display: inline-block;
   margin-top: 1.2rem;
+  color: $beige;
+}
+.border {
+  &:first-child {
+    display: none;
+  }
+  margin-top: 1.2rem;
+  height: 2px;
+  width: 100%;
+  background: $lightGray;
+  border: none;
 }

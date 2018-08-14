@@ -10,7 +10,7 @@ const ForgotPw = ({ form }) => {
   return (
     <Module title="Forgot Password">
       <CardForm
-        title="Forgot your password?"
+        title="Forgot Your Password?"
         button={{
           save: form.save,
           text: 'Reset Password',

@@ -22,6 +22,11 @@ export default [
     component: Load(() => import('../ResetPw')),
     exact: true,
   },
+  {
+    path: '/verify',
+    component: Load(() => import('../Verify')),
+    exact: true,
+  },
 ]
 
 export const otherAuthRoutes = [

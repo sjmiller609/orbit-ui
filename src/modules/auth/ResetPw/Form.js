@@ -11,7 +11,7 @@ const ResetPw = ({ form }) => {
   return (
     <Module title="Reset Password">
       <CardForm
-        title="Enter your new password"
+        title="Set Your New Password"
         button={{
           save: form.save,
           text: 'Reset Password',
