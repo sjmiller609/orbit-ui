@@ -6,6 +6,7 @@ import { GetContext, SetContext } from './Context'
 class Provider extends React.Component {
   setSnackbar = this.setSnackbar.bind(this)
   setDialog = this.setDialog.bind(this)
+  setLoading = this.setLoading.bind(this)
 
   state = {
     snackbar: null, // string

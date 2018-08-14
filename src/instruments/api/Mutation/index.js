@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { withRouter } from 'react-router'
 import { Mutation as Apollo } from 'react-apollo'
-import { SetUI, Track, CardError } from 'instruments'
+import { SetUI, Track, Loading, CardError } from 'instruments'
 
 const Mutation = ({
   gql,
@@ -63,7 +63,14 @@ const Mutation = ({
       }}
       update={update}>
       {(mutate, { loading, error }) => {
-        setUI.loading = loading
+        if (loading) {
+          return (
+            <React.Fragment>
+              <Loading />
+              {children({ mutate, error }) || null}
+            </React.Fragment>
+          )
+        }
         if (error && !voidError) {
           if (OnError) return OnError
           return <CardError />
@@ -94,4 +101,4 @@ Mutation.propTypes = {
   voidError: PropTypes.bool,
 }
 //export default Mutation
-export default SetUI(withRouter(Mutation), { snackbar: true })
+export default SetUI(withRouter(Mutation), { snackbar: true, loading: true })
