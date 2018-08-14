@@ -8,7 +8,7 @@ import { errors } from './helpers'
 import { Create as Mutation, SetData } from 'instruments'
 
 const Create = Component => {
-  const Create = ({ login, setData, ...props }) => {
+  const Create = ({ login, setData, to, ...props }) => {
     let success
     let track
     let redirect
@@ -32,6 +32,7 @@ const Create = Component => {
               },
             }
         }
+        if (to) return to
       }
     }
     return (
