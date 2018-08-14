@@ -21,7 +21,16 @@ const Create = Component => {
       }
       track = 'User Signed Up With Email/Password'
       redirect = data => {
-        if (!data.token) return '/confirm'
+        if (!data.token) {
+          const email = data.user.emails[0]
+          if (!email.verified)
+            return {
+              pathname: '/confirm',
+              state: {
+                email: email.address,
+              },
+            }
+        }
       }
     }
     return (
