@@ -9,7 +9,7 @@ const ForgotPw = Component => {
     return (
       <Mutation
         gql={api.ForgotPassword}
-        success="Email sent."
+        success="Email sent"
         voidError
         redirect="/forgot-password/sent"
         track="User Forgot Password">

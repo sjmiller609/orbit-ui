@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Password, Form, CardForm } from 'instruments'
 import Module from '../Module'
+import Submit from '../Data/ResetPw'
 
 const ResetPw = ({ form }) => {
   const pw = form.field('password')
@@ -25,4 +26,4 @@ const ResetPw = ({ form }) => {
 ResetPw.propTypes = {
   form: PropTypes.object,
 }
-export default Form(ResetPw)
+export default Submit(Form(ResetPw))

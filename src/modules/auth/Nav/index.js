@@ -25,7 +25,7 @@ const Nav = () => {
       <Switch>
         <Route path="/login" component={ToSignup} exact />
         <Route path="/(|signup)" component={ToLogin} exact />
-        <Route path="/(forgot|reset)-password" component={BackToLogin} exact />
+        <Route path="/(forgot|reset)-password" component={BackToLogin} />
       </Switch>
     </SiteHeader>
   )

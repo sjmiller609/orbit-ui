@@ -17,7 +17,7 @@ const Create = Component => {
       success = data => {
         return data.token
           ? 'Success! Welcome to Astronomer'
-          : "Success! You've created an Astronomer acccount."
+          : "Success! You've created an Astronomer acccount"
       }
       track = 'User Signed Up With Email/Password'
       redirect = data => {

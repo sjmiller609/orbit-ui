@@ -4,14 +4,13 @@ import api from './api'
 
 import { Mutation } from 'instruments'
 
-const Update = Component => {
-  const Update = props => {
+const Resend = Component => {
+  const Resend = props => {
     return (
       <Mutation
-        gql={api.UpdateUser}
-        success="User access permissions updated."
-        track="User Permissions Updated"
-        back>
+        gql={api.ResendConfirmation}
+        success="Email sent"
+        track="User Resends Confirmation">
         {({ mutate }) => {
           const newProps = {
             ...props,
@@ -27,7 +26,7 @@ const Update = Component => {
     )
   }
 
-  return Update
+  return Resend
 }
 
-export default Update
+export default Resend

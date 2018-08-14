@@ -29,7 +29,6 @@ const Mutation = ({
       errorPolicy="all"
       onError={() => {
         if (errorMsg) setUI.snackbar(errorMsg)
-        return null
       }}
       onCompleted={data => {
         const data2 = data[Object.keys(data)[0]]
@@ -65,7 +64,7 @@ const Mutation = ({
       update={update}>
       {(mutate, { loading, error }) => {
         setUI.loading = loading
-        if (error && !errorMsg && !voidError) {
+        if (error && !voidError) {
           if (OnError) return OnError
           return <CardError />
         }

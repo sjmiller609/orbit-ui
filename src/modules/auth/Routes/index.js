@@ -17,6 +17,11 @@ export default [
     component: Load(() => import('../Confirm')),
     exact: true,
   },
+  {
+    path: '/reset-password',
+    component: Load(() => import('../ResetPw')),
+    exact: true,
+  },
 ]
 
 export const otherAuthRoutes = [
@@ -40,11 +45,7 @@ export const otherAuthRoutes = [
     component: Load(() => import('../ForgotPw/Sent')),
     exact: true,
   },
-  {
-    path: '/reset-password',
-    component: Load(() => import('../ResetPw')),
-    exact: true,
-  },
+
   {
     path: '/logout',
     component: Load(() => import('../Logout')),

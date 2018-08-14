@@ -1,16 +1,31 @@
 'use strict'
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import api from './api'
 
-import { Mutation } from 'instruments'
+import { Mutation, SetData, Redirect } from 'instruments'
 
-const Resend = Component => {
-  const Resend = props => {
+const ResetPw = Component => {
+  const ResetPw = ({ setData, ...props }) => {
     return (
       <Mutation
-        gql={api.ResendConfirmation}
-        success="Email sent."
-        track="User Resends Confirmation">
+        gql={api.ResetPassword}
+        success="Your password is reset"
+        track="User Resets Password"
+        errorMsg="Your reset password token is not valid. Try another"
+        OnError={<Redirect to="/forgot-password" />}
+        onSuccess={data => {
+          if (!data) return
+          if (data.token) {
+            const { value, payload } = data.token
+            // pass token to context
+            setData.auth({
+              token: value,
+              exp: payload.exp,
+            })
+          }
+        }}>
         {({ mutate }) => {
           const newProps = {
             ...props,
@@ -25,8 +40,11 @@ const Resend = Component => {
       </Mutation>
     )
   }
+  ResetPw.propTypes = {
+    setData: PropTypes.object,
+  }
 
-  return Resend
+  return SetData(ResetPw, { auth: true })
 }
 
-export default Resend
+export default ResetPw
