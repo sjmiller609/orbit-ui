@@ -10,8 +10,10 @@ const ForgotPw = Component => {
       <Mutation
         gql={api.ForgotPassword}
         success="Email sent."
+        voidError
+        redirect="/forgot-password/sent"
         track="User Forgot Password">
-        {({ mutate }) => {
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
@@ -19,6 +21,17 @@ const ForgotPw = Component => {
                 variables: vars,
               })
             },
+          }
+          // handle api errors
+          if (error) {
+            const err = JSON.stringify(error).toLowerCase()
+            // Email doesn't exist
+            if (~err.indexOf('not found')) {
+              newProps.error = {
+                name: 'email',
+                error: "Hmm, we can't find that email",
+              }
+            }
           }
           return <Component {...newProps} />
         }}

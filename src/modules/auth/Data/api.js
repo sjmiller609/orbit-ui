@@ -48,9 +48,7 @@ export default {
   `,
   ForgotPassword: gql`
     mutation forgotPassword($email: String!) {
-      forgotPassword(email: $email) {
-        Boolean
-      }
+      forgotPassword(email: $email)
     }
   `,
   ResetPassword: gql`
@@ -63,9 +61,7 @@ export default {
   `,
   ResendConfirmation: gql`
     mutation resendConfirmation($email: String!) {
-      resendConfirmation(email: $email) {
-        Boolean
-      }
+      resendConfirmation(email: $email)
     }
   `,
 }

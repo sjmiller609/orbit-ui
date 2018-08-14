@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 import { TextField, Form, CardForm } from 'instruments'
 import Module from '../Module'
+import Submit from '../Data/ForgotPw'
 
 const ForgotPw = ({ form }) => {
   const email = form.field('email')
-
   return (
     <Module title="Forgot Password">
       <CardForm
@@ -31,4 +31,4 @@ const ForgotPw = ({ form }) => {
 ForgotPw.propTypes = {
   form: PropTypes.object,
 }
-export default Form(ForgotPw)
+export default Submit(Form(ForgotPw))
