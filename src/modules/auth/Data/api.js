@@ -64,4 +64,12 @@ export default {
       resendConfirmation(email: $email)
     }
   `,
+  VerifyEmail: gql`
+    mutation confirmEmail($token: String!, $duration: Int) {
+      confirmEmail(token: $token, duration: $duration) {
+        ...authUser
+      }
+    }
+    ${authUser}
+  `,
 }

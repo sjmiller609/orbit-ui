@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import api from './api'
+import { errors } from './helpers'
 
 import { Create as Mutation, SetData } from 'instruments'
 
@@ -65,30 +66,9 @@ const Create = Component => {
             },
           }
           // handle api errors
-          if (error) {
-            const err = JSON.stringify(error).toLowerCase()
+          const err = errors(error)
+          if (err) newProps.error = err
 
-            // incorrect password
-            if (~err.indexOf('password incorrect')) {
-              newProps.error = {
-                name: 'password',
-                error: 'Incorrect password',
-              }
-
-              // email taken
-            } else if (~err.indexOf('email already in use')) {
-              newProps.error = {
-                name: 'email',
-                error: 'That email is already taken.',
-              }
-              // oauth user tries to login with password
-            } else if (~err.indexOf('no password credentials found')) {
-              newProps.error = {
-                name: 'email',
-                error: 'No password found. Did you mean to login with OAuth?',
-              }
-            }
-          }
           return <Component {...newProps} />
         }}
       </Mutation>

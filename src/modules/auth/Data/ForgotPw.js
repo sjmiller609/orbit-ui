@@ -1,6 +1,7 @@
 'use strict'
 import React from 'react'
 import api from './api'
+import { errors } from './helpers'
 
 import { Mutation } from 'instruments'
 
@@ -23,16 +24,9 @@ const ForgotPw = Component => {
             },
           }
           // handle api errors
-          if (error) {
-            const err = JSON.stringify(error).toLowerCase()
-            // Email doesn't exist
-            if (~err.indexOf('not found')) {
-              newProps.error = {
-                name: 'email',
-                error: "Hmm, we can't find that email",
-              }
-            }
-          }
+          const err = errors(error)
+          if (err) newProps.error = err
+
           return <Component {...newProps} />
         }}
       </Mutation>
