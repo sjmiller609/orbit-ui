@@ -16,20 +16,8 @@ export default {
     }
   `,
   Login: gql`
-    mutation createToken(
-      $password: String!
-      $email: String
-      $duration: Int
-      $workspaceId: String
-      $permission: String
-    ) {
-      createToken(
-        password: $password
-        identity: $email
-        workspaceUuid: $workspaceId
-        permission: $permission
-        duration: $duration
-      ) {
+    mutation createToken($password: String!, $email: String, $duration: Int) {
+      createToken(password: $password, identity: $email, duration: $duration) {
         ...authUser
       }
     }
