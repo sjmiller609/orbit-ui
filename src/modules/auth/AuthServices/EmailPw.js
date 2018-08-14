@@ -10,7 +10,6 @@ import s from './styles.scss'
 const EmailPw = ({ form, login }) => {
   const email = form.field('email')
   const pw = form.field('password')
-  console.log(pw)
   return (
     <React.Fragment>
       <TextField
