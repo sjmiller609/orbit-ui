@@ -12,11 +12,13 @@ const Nav = ({ getData, workspaces, self, menu }) => {
   if (!workspaces) return null
   const workspace = workspaces.find(workspace => workspace.id === workspaceId)
 
+  const profile = getProfile(self)
+
   const level1 = {
     selected: {
       to: menu.home, //default?
       id: workspaceId,
-      text: workspace ? workspace.label : 'All Workspaces',
+      text: workspace ? workspace.label : profile.name,
     },
     list: workspaces,
     addNew: {
@@ -25,8 +27,6 @@ const Nav = ({ getData, workspaces, self, menu }) => {
     },
   }
   const subMenu = menu.subMenu || subMenus[menu.nav]
-
-  const profile = getProfile(self)
 
   return (
     <Header
