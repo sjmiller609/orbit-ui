@@ -26,5 +26,11 @@ export const errors = error => {
       name: 'email',
       error: 'No password found. Did you mean to login with OAuth?',
     }
+  } else if (~err.indexOf('awaiting email confirmation')) {
+    return {
+      name: 'email',
+      error:
+        'Your email is not yet verified. Please check your email for a verification link',
+    }
   }
 }
