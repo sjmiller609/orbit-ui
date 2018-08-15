@@ -12,6 +12,7 @@ const CardForm = ({
   children,
   button,
   button2,
+  footer,
   title,
   className,
   smallForm,
@@ -19,7 +20,8 @@ const CardForm = ({
   return (
     <Card
       footer={
-        button && (
+        footer ||
+        (button && (
           <Row className={s.footer}>
             {button2 && (
               <Button
@@ -41,7 +43,7 @@ const CardForm = ({
               {button.text || 'Save'}
             </Button>
           </Row>
-        )
+        ))
       }
       header={title}
       className={className}>
@@ -56,6 +58,7 @@ CardForm.propTypes = {
   title: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
     .isRequired,
+  footer: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
   button: PropTypes.object,
   button2: PropTypes.object,
   className: PropTypes.string,

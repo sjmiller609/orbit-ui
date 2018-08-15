@@ -28,7 +28,8 @@ const Card = ({ children, footer, header, className }) => {
 
 Card.propTypes = {
   header: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
+    .isRequired,
   footer: PropTypes.element,
   className: PropTypes.string,
 }
