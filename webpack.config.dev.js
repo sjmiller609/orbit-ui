@@ -2,15 +2,12 @@ import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin'
 import path from 'path'
-import module from './webpack.module'
+import options from './webpack'
 
 // NOTE: deprecated - leaving for when/if we get a dev server back up
 
 export default {
-  resolve: {
-    extensions: ['*', '.js', '.jsx', '.json'],
-    modules: [path.resolve('./src'), path.resolve('./node_modules')],
-  },
+  ...options,
   devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
   entry: [
     // must be first entry to properly set public path
@@ -19,7 +16,6 @@ export default {
     'webpack-hot-middleware/client?reload=true',
     path.resolve(__dirname, 'src/index.js'), // Defining path seems necessary for this to work consistently on Windows machines.
   ],
-  target: 'web',
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
@@ -45,5 +41,4 @@ export default {
       tracking_snippet: '',
     }),
   ],
-  module,
 }
