@@ -12,7 +12,7 @@ const Menu = ({ level1, level2, profile = {}, className }) => {
       <Logo to="/workspaces" />
       <Level1 {...level1} active={!level2} />
       {level2 && (
-        <H2>
+        <H2 className={s.level2}>
           <Link to={level2.to}>{level2.text}</Link>
         </H2>
       )}

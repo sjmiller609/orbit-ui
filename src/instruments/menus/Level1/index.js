@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { H2, Icon, Link, Dropdown, Item, MenuList } from 'instruments'
+import { H2, Icon, Link, Dropdown, Item, MenuList, Row } from 'instruments'
 import s from './styles.scss'
 
 const Level1 = ({ selected, list, addNew, active, className }) => {
@@ -12,14 +12,16 @@ const Level1 = ({ selected, list, addNew, active, className }) => {
       disable={!active}
       selector={
         <H2 className={classnames(s.menu, active && s.active, className)}>
-          <React.Fragment>
-            {active ? (
-              selected.text
-            ) : (
-              <Link to={selected.to}>{selected.text}</Link>
-            )}
+          <Row>
+            <span className={s.text}>
+              {active ? (
+                selected.text
+              ) : (
+                <Link to={selected.to}>{selected.text}</Link>
+              )}
+            </span>
             <Icon icon="arrow" className={s.arrow} />
-          </React.Fragment>
+          </Row>
         </H2>
       }>
       <MenuList>

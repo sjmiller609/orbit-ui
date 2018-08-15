@@ -5,6 +5,11 @@
   a:not(:last-child) {
     margin-right: 2rem;
   }
+  a {
+    @media screen and (max-width: 400px) {
+      margin-top: 1rem;
+    }
+  }
 }
 
 .active {
