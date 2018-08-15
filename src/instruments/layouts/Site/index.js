@@ -13,9 +13,7 @@ const Site = ({ children, nav, metaTitle, className }) => {
   return (
     <Page className={classnames(s.module, className)} metaTitle={metaTitle}>
       {nav}
-      <div className={s.content}>
-        {children}
-      </div>
+      <div className={s.content}>{children}</div>
     </Page>
   )
 }

@@ -14,9 +14,7 @@ const Layout = ({ title, children, className }) => {
         justify="space-around"
         className={classnames(s.wrapper, className)}
         wrap>
-        <div className={s.content}>
-          {children}
-        </div>
+        <div className={s.content}>{children}</div>
         <div className={s.card}>
           <AuthServices login={title === 'Login'} />
         </div>

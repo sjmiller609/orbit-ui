@@ -5,11 +5,7 @@ import classnames from 'classnames'
 import s from './styles.scss'
 
 const H2 = ({ children, className }) => {
-  return (
-    <h2 className={classnames(s.h2, className)}>
-      {children}
-    </h2>
-  )
+  return <h2 className={classnames(s.h2, className)}>{children}</h2>
 }
 
 H2.propTypes = {

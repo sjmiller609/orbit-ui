@@ -6,9 +6,7 @@ import s from './styles.scss'
 
 const P = ({ children, center, className }) => {
   return (
-    <p className={classnames(s.p, center && s.center, className)}>
-      {children}
-    </p>
+    <p className={classnames(s.p, center && s.center, className)}>{children}</p>
   )
 }
 

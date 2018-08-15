@@ -5,11 +5,7 @@ import classnames from 'classnames'
 import s from './styles.scss'
 
 const Console = ({ children, className }) => {
-  return (
-    <div className={classnames(s.content, className)}>
-      {children}
-    </div>
-  )
+  return <div className={classnames(s.content, className)}>{children}</div>
 }
 
 Console.propTypes = {
