@@ -19,11 +19,11 @@ const routes = [
   ...otherAuthRoutes,
   {
     path: '/(404|500|503|houston-down)',
-    component: Load(() => import('../NoMatch')),
+    component: Load(() => import('../NoMatch').then(c => c.default)),
     exact: true,
   },
   {
-    component: Load(() => import('../NoMatch')),
+    component: Load(() => import('../NoMatch').then(c => c.default)),
   },
 ]
 
@@ -42,25 +42,31 @@ const Routes = ({ getData }) => {
       <Route component={Pageview} />
       <Route component={ScrollToTop} />
       <Switch>
-        {autoLoginRoutes.map((route, i) => (
-          <AutoLogin
-            key={i}
-            auth={getData.auth}
-            workspaceId={getData.workspaceId}
-            {...route}
-          />
-        ))}
-        {workspaceRoutes.map((route, i) => (
-          <Protected
-            key={i}
-            auth={getData.auth}
-            workspaceId={getData.workspaceId}
-            {...route}
-          />
-        ))}
-        {authRoutes.map((route, i) => (
-          <Protected key={i} auth={getData.auth} {...route} />
-        ))}
+        {autoLoginRoutes.map((route, i) =>
+          (
+            <AutoLogin
+              key={i}
+              auth={getData.auth}
+              workspaceId={getData.workspaceId}
+              {...route}
+            />
+          ).then(c => c.default)
+        )}
+        {workspaceRoutes.map((route, i) =>
+          (
+            <Protected
+              key={i}
+              auth={getData.auth}
+              workspaceId={getData.workspaceId}
+              {...route}
+            />
+          ).then(c => c.default)
+        )}
+        {authRoutes.map((route, i) =>
+          <Protected key={i} auth={getData.auth} {...route} />.then(
+            c => c.default
+          )
+        )}
         {/* Must be last */}
         {routes.map((route, i) => <Route key={i} {...route} />)}
       </Switch>
