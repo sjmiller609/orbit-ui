@@ -1,7 +1,8 @@
 @import 'src/styles/mixins.scss';
 
 .list {
-  width: 15rem;
+  width: 100%;
+  padding: 0 1.8rem;
   margin: auto;
   overflow: hidden;
   text-overflow: ellipsis;
