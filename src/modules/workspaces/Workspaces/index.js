@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import List from '../List'
 import Module from '../../app/Module'
-import { SetData } from 'instruments'
 
 class Workspaces extends React.Component {
   menu = {
@@ -16,10 +15,6 @@ class Workspaces extends React.Component {
     delay: false,
     placeholder: 'Search Workspaces',
     call: search => this.setState({ search }),
-  }
-
-  componentWillMount() {
-    this.props.setData.workspaceId(null)
   }
 
   render() {
@@ -42,4 +37,4 @@ Workspaces.propTypes = {
   setData: PropTypes.object,
 }
 
-export default SetData(Workspaces)
+export default Workspaces
