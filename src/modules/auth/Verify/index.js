@@ -15,7 +15,7 @@ class Container extends React.Component {
   }
 
   render() {
-    if (!this.token) return <Redirect to="/login" />
+    if (!this.token) return <Redirect to="/login" replace />
     return <Verify token={this.token} />
   }
 }

@@ -50,6 +50,11 @@ export const otherAuthRoutes = [
     component: Load(() => import('../ForgotPw/Sent')),
     exact: true,
   },
+  {
+    path: '/resend',
+    component: Load(() => import('../Resend')),
+    exact: true,
+  },
 
   {
     path: '/logout',

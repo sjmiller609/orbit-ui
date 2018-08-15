@@ -13,7 +13,7 @@ const Verify = Component => {
         gql={api.VerifyEmail}
         success="Email successfuly verified"
         errorMsg="Your confirmation token is not valid"
-        OnError={<Redirect to="/" />}
+        OnError={<Redirect to="/" replace />}
         onSuccess={data => {
           console.log(data)
           if (!data) return

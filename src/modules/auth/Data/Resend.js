@@ -3,15 +3,18 @@ import React from 'react'
 import api from './api'
 
 import { Mutation } from 'instruments'
+import { errors } from './helpers'
 
 const Resend = Component => {
   const Resend = props => {
     return (
       <Mutation
         gql={api.ResendConfirmation}
-        success="Email sent"
+        success="Email sent. Check your inbox"
+        voidError
+        redirect="/confirm"
         track="User Resends Confirmation">
-        {({ mutate }) => {
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
@@ -20,6 +23,16 @@ const Resend = Component => {
               })
             },
           }
+          // handle api errors
+          const err = errors(error)
+          if (err) newProps.error = err
+          if (error && !err) {
+            newProps.error = {
+              name: 'email',
+              error: 'That email is already verified.',
+            }
+          }
+
           return <Component {...newProps} />
         }}
       </Mutation>
