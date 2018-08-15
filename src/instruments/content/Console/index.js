@@ -7,7 +7,7 @@ import s from './styles.scss'
 const Console = ({ children, className }) => {
   return (
     <div className={classnames(s.content, className)}>
-      {Array.isArray(children) ? children.map(el => el) : children}
+      {children}
     </div>
   )
 }

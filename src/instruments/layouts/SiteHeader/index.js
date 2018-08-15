@@ -10,7 +10,7 @@ const SiteHeader = ({ className, dark, children }) => {
   return (
     <Row className={classnames(s.header, className)} justify="space-between">
       <Logo darkBg={!!dark} className={s.logo} />
-      <Row> {Array.isArray(children) ? children.map(el => el) : children}</Row>
+      <Row> {children}</Row>
     </Row>
   )
 }

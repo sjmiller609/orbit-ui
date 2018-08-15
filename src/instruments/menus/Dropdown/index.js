@@ -57,7 +57,7 @@ class Dropdown extends React.Component {
         )}
         <div className={s.menuWrapper} onClick={this.blur}>
           <Card className={s.menu}>
-            {Array.isArray(children) ? children.map(el => el) : children}
+            {children}
           </Card>
         </div>
       </div>

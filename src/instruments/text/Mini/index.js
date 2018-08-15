@@ -7,7 +7,7 @@ import s from './styles.scss'
 const Mini = ({ children, className }) => {
   return (
     <p className={classnames(s.mini, className)}>
-      {Array.isArray(children) ? children.map(el => el) : children}
+      {children}
     </p>
   )
 }

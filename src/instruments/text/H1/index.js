@@ -7,7 +7,7 @@ import s from './styles.scss'
 const H1 = ({ children, className }) => {
   return (
     <h1 className={classnames(s.h1, className)}>
-      {Array.isArray(children) ? children.map(el => el) : children}
+      {children}
     </h1>
   )
 }

@@ -30,7 +30,7 @@ const Flex = ({
         className
       )}
       onClick={onClick}>
-      {Array.isArray(children) ? children.map(el => el) : children}
+      {children}
     </div>
   )
 }

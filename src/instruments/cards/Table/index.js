@@ -51,7 +51,7 @@ const Table = ({
       className={classnames(s.table, count === 1 && s.one, className)}
       header={header}>
       <Container>
-        {Array.isArray(children) ? children.map(el => el) : children}
+        {children}
         {count === 0 && search.text && <NoResults />}
       </Container>
     </Card>

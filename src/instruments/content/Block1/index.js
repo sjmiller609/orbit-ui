@@ -14,7 +14,7 @@ const Block1 = ({ left, right, title, text, children, className }) => {
           <React.Fragment>
             {title && <H1>{title}</H1>}
             {text && <P>{text}</P>}
-            {Array.isArray(children) ? children.map(el => el) : children}
+            {children}
           </React.Fragment>
         )}
       </Box>

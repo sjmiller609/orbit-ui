@@ -10,7 +10,7 @@ import s from './styles.scss'
 const Page = ({ children, metaTitle, className }) => {
   return (
     <div className={classnames(s.page, className)}>
-      {Array.isArray(children) ? children.map(el => el) : children}
+      {children}
 
       <Helmet>
         <title>{metaTitle}</title>

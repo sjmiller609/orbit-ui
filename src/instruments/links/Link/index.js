@@ -49,7 +49,7 @@ const Link = ({
     <Component {...newProps}>
       <React.Fragment>
         {backArr}
-        {Array.isArray(children) ? children.map(el => el) : children}
+        {children}
         {arr}
       </React.Fragment>
     </Component>

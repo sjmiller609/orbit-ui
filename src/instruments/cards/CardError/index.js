@@ -19,7 +19,7 @@ const CardError = ({ children, retry, className }) => {
           persists, please&nbsp;
           <Link to="https://www.astronomer.io/contact">contact support</Link>.
         </P>
-        {Array.isArray(children) ? children.map(el => el) : children}
+        {children}
       </Block1>
     </Card>
   )

@@ -14,7 +14,7 @@ const App = ({ children, nav, metaTitle, className }) => {
     <Page className={classnames(s.module, className)} metaTitle={metaTitle}>
       {nav}
       <div className={s.content}>
-        {Array.isArray(children) ? children.map(el => el) : children}
+        {children}
       </div>
     </Page>
   )

@@ -48,7 +48,7 @@ const CardForm = ({
       header={title}
       className={className}>
       <div className={classnames(s.formContent, smallForm && s.small)}>
-        {Array.isArray(children) ? children.map(el => el) : children}
+        {children}
       </div>
     </Card>
   )

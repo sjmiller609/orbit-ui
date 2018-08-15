@@ -15,7 +15,7 @@ const Layout = ({ title, children, className }) => {
         className={classnames(s.wrapper, className)}
         wrap>
         <div className={s.content}>
-          {Array.isArray(children) ? children.map(el => el) : children}
+          {children}
         </div>
         <div className={s.card}>
           <AuthServices login={title === 'Login'} />
