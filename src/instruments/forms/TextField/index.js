@@ -162,7 +162,7 @@ TextField.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   value: PropTypes.string,
   title: PropTypes.string,
-  error: PropTypes.string,
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   className: PropTypes.string,
   updateErrors: PropTypes.func,
   submitted: PropTypes.bool,
