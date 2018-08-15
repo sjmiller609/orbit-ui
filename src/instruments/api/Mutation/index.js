@@ -63,20 +63,17 @@ const Mutation = ({
       }}
       update={update}>
       {(mutate, { loading, error }) => {
-        if (loading) {
-          return (
-            <React.Fragment>
-              <Loading />
-              {children({ mutate, error }) || null}
-            </React.Fragment>
-          )
-        }
         if (error && !voidError) {
           if (OnError) return OnError
           return <CardError />
         }
 
-        return children({ mutate, error }) || null
+        return (
+          <React.Fragment>
+            {loading && <Loading />}
+            {children({ mutate, error }) || null}
+          </React.Fragment>
+        )
       }}
     </Apollo>
   )
