@@ -16,7 +16,16 @@ exports[`Link displays arrow icon when \`arrow\` is specified 1`] = `
       <Icon
         className="arrow"
         icon="arrow"
-      />
+      >
+        <img
+          className="arrow"
+          src={
+            Object {
+              "process": [Function],
+            }
+          }
+        />
+      </Icon>
     </a>
   </Component>
 </Link>
@@ -37,7 +46,16 @@ exports[`Link displays back arrow icon when \`backArrow\` is specified 1`] = `
       <Icon
         className="backArrow"
         icon="arrow_darkBg"
-      />
+      >
+        <img
+          className="backArrow"
+          src={
+            Object {
+              "process": [Function],
+            }
+          }
+        />
+      </Icon>
       text
     </a>
   </Component>
@@ -94,7 +112,6 @@ exports[`Link is external url - http 1`] = `
       className="link"
       href="https://www.astronomer.io"
       target="_blank"
-      to="https://www.astronomer.io"
     >
       text
     </a>
@@ -115,7 +132,6 @@ exports[`Link is external url - naked 1`] = `
       className="link"
       href="astronomer.io"
       target="_blank"
-      to="astronomer.io"
     >
       text
     </a>
@@ -136,7 +152,6 @@ exports[`Link is external url - www 1`] = `
       className="link"
       href="www.astronomer.io"
       target="_blank"
-      to="www.astronomer.io"
     >
       text
     </a>
