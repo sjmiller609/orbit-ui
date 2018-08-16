@@ -7,6 +7,9 @@ const webpack = {
     modules: [path.resolve('./src'), path.resolve('./node_modules')],
   },
   target: 'web',
+  optimization: {
+    runtimeChunk: 'single',
+  },
   module: {
     rules: [
       {
