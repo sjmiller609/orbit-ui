@@ -14,22 +14,23 @@ class AuthServices extends React.Component {
   }
 
   componentWillMount() {
-    let to = '/'
-
     const { location } = this.props
+    let to = location.pathname
+
     const from = location.state && location.state.from
     const params = getParams(location.search)
+    const ref = document.referrer
+
     if (from) to = from
     else if (params.rd) to = params.rd
-    else {
-      const ref = document.referrer
-      const h = window.location.host.split('.')
-      if (h.length > 1) h.splice(1)
-      const host = h.join('.')
+    else if (ref.indexOf(window.location.origin) !== 0) {
+      const host = window.location.host
 
+      const h = host.split('.')
+      if (h.length > 1) h.splice(1)
+      const h2 = h.join('.')
       // if same root domain
-      if (ref && host && ~ref.indexOf(host)) to = ref
-      else to = location.pathname
+      if (ref && h2 && ~ref.indexOf(h2)) to = ref
     }
 
     // gets encoded on server
