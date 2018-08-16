@@ -7,6 +7,11 @@ const webpack = {
     modules: [path.resolve('./src'), path.resolve('./node_modules')],
   },
   entry: path.resolve(__dirname, 'src/index'),
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    filename: '[name].[hash].js',
+  },
   target: 'web',
   optimization: {
     runtimeChunk: 'single',

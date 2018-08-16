@@ -5,33 +5,19 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import WebpackMd5Hash from 'webpack-md5-hash'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CleanWebpackPlugin from 'clean-webpack-plugin'
-import path from 'path'
 import common from './webpack.common'
-
-const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify('production'),
-  __DEV__: false,
-  STATIC_URL: JSON.stringify('https://cdn.astronomer.io/app'),
-}
 
 export default {
   ...common,
-  devtool: 'cheap-module-eval-source-map', // NOTE: This dramatically increases bundle size and is the biggest difference with build-prod. Useful for debugging
-  // devtool: 'eval', // switch to this for accurate bundle sizes
+  // devtool: 'cheap-module-eval-source-map', // NOTE: This dramatically increases bundle size and is the biggest difference with build-prod. Useful for debugging
+  devtool: 'eval', // switch to this for accurate bundle sizes
 
   mode: 'production',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
-    filename: '[name].[chunkhash].js',
-  },
+
   plugins: [
     new CleanWebpackPlugin(['dist']),
     // Hash the files using MD5 so that their names change when the content changes.
     new WebpackMd5Hash(),
-
-    // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
-    new webpack.DefinePlugin(GLOBALS),
 
     // Generate an external css file with a hash in the filename
     new ExtractTextPlugin('[name].[md5:contenthash:hex:20].css'),

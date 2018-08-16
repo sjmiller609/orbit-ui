@@ -1,19 +1,12 @@
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin'
-import path from 'path'
 import common from './webpack.common'
 
 export default {
   ...common,
   devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
-
   mode: 'development',
-  output: {
-    publicPath: '/',
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
   plugins: [
     new HardSourceWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),

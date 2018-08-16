@@ -8,14 +8,11 @@
   },
   "sideEffects": ["*.css"],
   "scripts": {
-    "preinstall": "node tools/nodeVersionCheck.js",
-    "start-message": "babel-node tools/startMessage.js",
-    "prestart": "npm run start-message",
     "local":
       "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:local\" \"npm run lint:watch\"",
     "open:local": "babel-node tools/localServer.js",
     "open:dist": "babel-node tools/distServer.js",
-    "lint": "esw webpack.config.* src tools --color",
+    "lint": "esw webpack.* src tools --color",
     "lint:watch": "npm run lint -- --watch",
     "prebuild": "npm run lint && npm run test",
     "build": "babel-node tools/build.js && npm run open:dist",
