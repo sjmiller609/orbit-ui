@@ -16,9 +16,8 @@ export default {
   ],
   mode: 'development',
   output: {
-    path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
     publicPath: '/',
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
   },
   plugins: [
     new HardSourceWebpackPlugin(),

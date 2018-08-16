@@ -15,7 +15,7 @@ const GLOBALS = {
 
 export default {
   ...common,
-  devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
+  devtool: 'nosources-source-map',
   entry: path.resolve(__dirname, 'src/index'),
   mode: 'production',
   output: {
