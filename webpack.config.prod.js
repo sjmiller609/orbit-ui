@@ -5,7 +5,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import WebpackMd5Hash from 'webpack-md5-hash'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
-import options from './webpack'
+import common from './webpack.common'
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
@@ -14,7 +14,7 @@ const GLOBALS = {
 }
 
 export default {
-  ...options,
+  ...common,
   devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
   entry: path.resolve(__dirname, 'src/index'),
   mode: 'production',
