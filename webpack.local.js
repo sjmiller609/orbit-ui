@@ -1,5 +1,6 @@
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin'
 import { default as common, output } from './webpack.common'
@@ -17,7 +18,10 @@ export default {
     new HardSourceWebpackPlugin(), // cache's modules for faster build times
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[name].css',
+    }),
     new HtmlWebpackPlugin({
       // Create HTML file that includes references to bundled CSS and JS.
       template: 'src/index.ejs',

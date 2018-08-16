@@ -36,12 +36,6 @@ const webpack = {
           name: 'vendors',
           chunks: 'all',
         },
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true,
-        },
       },
     },
     minimizer,
