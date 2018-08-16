@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ErrorPage } from 'instruments'
+//import { ErrorPage } from 'instruments'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class ErrorBoundary extends React.Component {
 
   render() {
     // TODO: disabling this for now because it's erroring with lazy loading components
+    // https://github.com/astronomerio/orbit-ui/issues/44
     //  if (this.state.hasError) return <ErrorPage />
 
     return this.props.children
