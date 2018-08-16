@@ -1,5 +1,24 @@
 import path from 'path'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+const devMode = process.env.NODE_ENV !== 'production'
+
 // common webpack options
+export const output = {
+  path: path.resolve(__dirname, 'dist'),
+  publicPath: '/',
+}
+
+const minimizer = devMode
+  ? []
+  : [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ]
 
 const webpack = {
   resolve: {
@@ -7,11 +26,6 @@ const webpack = {
     modules: [path.resolve('./src'), path.resolve('./node_modules')],
   },
   entry: path.resolve(__dirname, 'src/index'),
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
-    filename: '[name].[hash].js',
-  },
   target: 'web',
   optimization: {
     runtimeChunk: 'single',
@@ -22,8 +36,15 @@ const webpack = {
           name: 'vendors',
           chunks: 'all',
         },
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+        },
       },
     },
+    minimizer,
   },
   module: {
     rules: [
@@ -86,7 +107,7 @@ const webpack = {
       {
         test: /(\.css|\.scss|\.sass)$/,
         use: [
-          'style-loader',
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {

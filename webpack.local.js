@@ -1,16 +1,23 @@
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin'
-import common from './webpack.common'
+import { default as common, output } from './webpack.common'
 
 export default {
   ...common,
   devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
   mode: 'development',
+  output: {
+    ...output,
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
+  },
   plugins: [
-    new HardSourceWebpackPlugin(),
+    new HardSourceWebpackPlugin(), // cache's modules for faster build times
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+
     new HtmlWebpackPlugin({
       // Create HTML file that includes references to bundled CSS and JS.
       template: 'src/index.ejs',

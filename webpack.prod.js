@@ -4,12 +4,17 @@ import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import WebpackMd5Hash from 'webpack-md5-hash'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import common from './webpack.common'
+import { default as common, output } from './webpack.common'
 
 export default {
   ...common,
   devtool: 'eval',
   mode: 'production',
+  output: {
+    ...output,
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
+  },
   plugins: [
     // Hash the files using MD5 so that their names change when the content changes.
     new WebpackMd5Hash(),
