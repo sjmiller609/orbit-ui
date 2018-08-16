@@ -6,6 +6,7 @@ const webpack = {
     extensions: ['*', '.js', '.jsx', '.json'],
     modules: [path.resolve('./src'), path.resolve('./node_modules')],
   },
+  entry: path.resolve(__dirname, 'src/index'),
   target: 'web',
   optimization: {
     runtimeChunk: 'single',

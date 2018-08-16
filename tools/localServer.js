@@ -9,7 +9,7 @@
 import webpack from 'webpack'
 import webpackDevServer from 'webpack-dev-server'
 //import webpackHotMiddleware from 'webpack-hot-middleware'
-import config from '../webpack.config.local'
+import config from '../webpack.local'
 import path from 'path'
 
 const options = {
