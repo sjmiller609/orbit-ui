@@ -19,11 +19,11 @@ const routes = [
   ...otherAuthRoutes,
   {
     path: '/(404|500|503|houston-down)',
-    component: Load(() => import('../NoMatch').then(c => c.default)),
+    component: Load(() => import('../NoMatch')),
     exact: true,
   },
   {
-    component: Load(() => import('../NoMatch').then(c => c.default)),
+    component: Load(() => import('../NoMatch')),
   },
 ]
 
