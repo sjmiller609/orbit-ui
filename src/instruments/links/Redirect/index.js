@@ -4,19 +4,23 @@ import PropTypes from 'prop-types'
 import { Redirect as RouterRedirect } from 'react-router-dom'
 
 class Redirect extends React.Component {
+  to = this.props.to
+
   componentWillMount() {
     const { to } = this.props
     if (typeof to === 'string') {
       // check if relative URL
       if (to.charAt(0) !== '/') {
-        if (to.slice(0, 3) !== 'http') window.location = 'http://' + to
-        else window.location = to
+        if (to.indexOf('http://') !== 0) this.to = 'http://' + to
+        window.location = this.to
+        this.to = null
       }
     }
   }
 
   render() {
-    return <RouterRedirect to={this.props.to} />
+    if (!this.to) return null
+    return <RouterRedirect to={this.to} />
   }
 }
 
