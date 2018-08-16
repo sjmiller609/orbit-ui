@@ -17,7 +17,8 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
-    if (this.state.hasError) return <ErrorPage />
+    // TODO: disabling this for now because it's erroring with lazy loading components
+    //  if (this.state.hasError) return <ErrorPage />
 
     return this.props.children
   }
