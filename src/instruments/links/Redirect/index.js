@@ -11,7 +11,8 @@ class Redirect extends React.Component {
     if (typeof to === 'string') {
       // check if relative URL
       if (to.charAt(0) !== '/') {
-        if (to.indexOf('http://') !== 0) this.to = 'http://' + to
+        // append http if not there
+        if (to.indexOf('http') !== 0) this.to = 'http://' + to
         window.location = this.to
         this.to = null
       }
