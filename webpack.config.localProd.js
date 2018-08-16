@@ -17,7 +17,7 @@ const GLOBALS = {
 export default {
   ...common,
   devtool: 'cheap-module-eval-source-map', // NOTE: This dramatically increases bundle size and is the biggest difference with build-prod. Useful for debugging
-  // devtool: 'nosources-source-map', // switch to this for accurate bundle sizes
+  // devtool: 'eval', // switch to this for accurate bundle sizes
   entry: path.resolve(__dirname, 'src/index'),
   mode: 'production',
   output: {

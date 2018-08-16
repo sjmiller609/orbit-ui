@@ -1,11 +1,13 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
-import { hot } from 'react-hot-loader'
+import { hot, setConfig } from 'react-hot-loader'
 import Routes from '../Routes'
 import UI from '../UI'
 import { ProviderUI, ProviderData } from 'instruments'
 import ErrorBoundary from '../ErrorBoundary'
+
+setConfig({ logLevel: 'debug' })
 // Load into #root
 const Root = () => {
   return (

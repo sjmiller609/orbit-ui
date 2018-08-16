@@ -15,7 +15,7 @@ const GLOBALS = {
 
 export default {
   ...common,
-  devtool: 'nosources-source-map',
+  devtool: 'eval',
   entry: path.resolve(__dirname, 'src/index'),
   mode: 'production',
   output: {
