@@ -1,3 +1,4 @@
+export { default as Load } from './react/Load'
 export { default as Pure } from './react/Pure'
 
 export { default as Row } from './flex/Row'
@@ -10,7 +11,6 @@ export { default as App } from './layouts/App'
 export { default as ErrorPage } from './layouts/ErrorPage'
 export { default as Site } from './layouts/Site'
 
-export { default as Load } from './loading/Load'
 export { default as Loading } from './loading/Loading'
 export { default as LoadingDots } from './loading/LoadingDots'
 
