@@ -9,14 +9,19 @@ const AutoLogin = ({ auth, workspaceId, component: Component, ...props }) => {
       {...props}
       render={props2 => {
         if (auth) {
-          return (
-            <Redirect
-              to={{
+          // if passed `?source=cli` show /token route
+          const cli =
+            props2.location.search &&
+            ~props2.location.search.indexOf('source=cli')
+
+          const to = !cli
+            ? {
                 pathname: workspaceId ? '/deployments' : '/workspaces',
                 state: { from: props2.location },
-              }}
-            />
-          )
+              }
+            : '/token'
+
+          return <Redirect to={to} />
         }
         return <Component {...props2} />
       }}
