@@ -56,5 +56,6 @@ export default {
       api_ws: 'APP_API_LOC_WSS',
       stripe_pk: 'STRIPE_PUBK',
     }),
+    new webpack.HashedModuleIdsPlugin(),
   ],
 }
