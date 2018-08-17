@@ -4,27 +4,27 @@ import { Load } from 'instruments'
 export default [
   {
     path: '/(|signup)',
-    component: Load(() => import('../Signup')),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Signup')),
     exact: true,
   },
   {
     path: '/login',
-    component: Load(() => import('../Login')),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Login')),
     exact: true,
   },
   {
     path: '/confirm',
-    component: Load(() => import('../Confirm')),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Confirm')),
     exact: true,
   },
   {
     path: '/reset-password',
-    component: Load(() => import('../ResetPw')),
+    component: Load(() => import(/* webpackPrefetch: true */ '../ResetPw')),
     exact: true,
   },
   {
     path: '/verify',
-    component: Load(() => import('../Verify')),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Verify')),
     exact: true,
   },
 ]
@@ -32,32 +32,38 @@ export default [
 export const otherAuthRoutes = [
   {
     path: '/oauth',
-    component: Load(() => import('../OauthSuccess')),
+    component: Load(() =>
+      import(/* webpackPrefetch: true */ '../OauthSuccess')
+    ),
     exact: true,
   },
   {
     path: '/token',
-    component: Load(() => import('../OauthSuccess/Token')),
+    component: Load(() =>
+      import(/* webpackPrefetch: true */ '../OauthSuccess/Token')
+    ),
     exact: true,
   },
   {
     path: '/forgot-password',
-    component: Load(() => import('../ForgotPw')),
+    component: Load(() => import(/* webpackPrefetch: true */ '../ForgotPw')),
     exact: true,
   },
   {
     path: '/forgot-password/sent',
-    component: Load(() => import('../ForgotPw/Sent')),
+    component: Load(() =>
+      import(/* webpackPrefetch: true */ '../ForgotPw/Sent')
+    ),
     exact: true,
   },
   {
     path: '/resend',
-    component: Load(() => import('../Resend')),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Resend')),
     exact: true,
   },
 
   {
     path: '/logout',
-    component: Load(() => import('../Logout')),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Logout')),
   },
 ]
