@@ -26,7 +26,9 @@ const Deployment = ({ deployments, menu, title }) => {
         path={path + '/configure'}
         exact
         render={() => {
-          const Configure = Load(() => import('../DeploymentConfigure'))
+          const Configure = Load(() =>
+            import(/* webpackPrefetch: true */ '../DeploymentConfigure')
+          )
           return <Configure deployment={deployment} />
         }}
       />
@@ -34,7 +36,9 @@ const Deployment = ({ deployments, menu, title }) => {
         path={path}
         exact
         render={() => {
-          const Overview = Load(() => import('../DeploymentOverview'))
+          const Overview = Load(() =>
+            import(/* webpackPrefetch: true */ '../DeploymentOverview')
+          )
           return <Overview deployment={deployment} />
         }}
       />
@@ -42,9 +46,10 @@ const Deployment = ({ deployments, menu, title }) => {
         path={path + '/logs'}
         exact
         render={() => {
-          const Logs = Load(() => import('modules/logs/DeploymentLogs'))
-          return <Logs deployment={deployment} />
-        }}
+          const Logs = Load(() => import(/* webpackPrefetch: true */
+      /* 'modules/logs/DeploymentLogs'))
+        return <Logs deployment={deployment} />
+      }}
       /> */}
     </Module>
   )

@@ -3,24 +3,26 @@ import { Load } from 'instruments'
 export default [
   {
     path: '/workspaces',
-    component: Load(() => import('../Workspaces').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Workspaces')),
     exact: true,
   },
   {
     path: '/workspaces/new',
-    component: Load(() => import('../New').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../New')),
     exact: true,
   },
   {
     path: '/workspaces/:id',
-    component: Load(() => import('../SetWorkspace').then(c => c.default)),
+    component: Load(() =>
+      import(/* webpackPrefetch: true */ '../SetWorkspace')
+    ),
   },
 ]
 
 export const workspace = [
   {
     path: '/settings',
-    component: Load(() => import('../Settings').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Settings')),
     exact: true,
   },
 ]

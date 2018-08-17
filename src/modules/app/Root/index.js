@@ -6,6 +6,7 @@ import Routes from '../Routes'
 import UI from '../UI'
 import { ProviderUI, ProviderData } from 'instruments'
 import ErrorBoundary from '../ErrorBoundary'
+
 // Load into #root
 const Root = () => {
   return (

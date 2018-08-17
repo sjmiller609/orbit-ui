@@ -24,7 +24,9 @@ const User = ({ users, menu, title }) => {
         path={path + '/configure'}
         exact
         render={() => {
-          const Configure = Load(() => import('../UserConfigure'))
+          const Configure = Load(() =>
+            import(/* webpackPrefetch: true */ '../UserConfigure')
+          )
           return <Configure user={user} />
         }}
       />
@@ -33,7 +35,7 @@ const User = ({ users, menu, title }) => {
         exact
         render={() => {
           return <Redirect to={path + '/configure'} />
-          // const Overview = Load(() => import('../UserOverview'))
+          // const Overview = Load(() => import(/* webpackPrefetch: true */ '../UserOverview'))
           // return <Overview user={user} />
         }}
       />

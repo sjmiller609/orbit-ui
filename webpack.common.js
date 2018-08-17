@@ -1,10 +1,23 @@
 import path from 'path'
-// common webpack options
+import webpack from 'webpack'
 
-const webpack = {
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+import WebpackMd5Hash from 'webpack-md5-hash'
+import CleanWebpackPlugin from 'clean-webpack-plugin'
+
+// common webpack options
+export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
     modules: [path.resolve('./src'), path.resolve('./node_modules')],
+    symlinks: false,
+  },
+  entry: path.resolve(__dirname, 'src/index'),
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   target: 'web',
   optimization: {
@@ -77,10 +90,43 @@ const webpack = {
           },
         ],
       },
+    ],
+  },
+}
+
+export const prod = {
+  mode: 'production',
+  output: {
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
+  },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
+  },
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+    // Hash the files using MD5 so that their names change when the content changes.
+    new WebpackMd5Hash(),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].[chunkhash].css',
+      chunkFilename: '[id].[chunkhash].css',
+    }),
+    new webpack.HashedModuleIdsPlugin(),
+  ],
+  module: {
+    rules: [
       {
         test: /(\.css|\.scss|\.sass)$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -111,5 +157,3 @@ const webpack = {
     ],
   },
 }
-
-export default webpack

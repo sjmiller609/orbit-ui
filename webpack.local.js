@@ -1,29 +1,28 @@
+import path from 'path'
+
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import HardSourceWebpackPlugin from 'hard-source-webpack-plugin'
-import path from 'path'
-import common from './webpack.common'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
-export default {
-  ...common,
-  devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
-  entry: [
-    // must be first entry to properly set public path
-    './src/webpack-public-path',
-    'react-hot-loader/patch',
-    'webpack-hot-middleware/client?reload=true',
-    path.resolve(__dirname, 'src/index.js'), // Defining path seems necessary for this to work consistently on Windows machines.
-  ],
+import HardSourceWebpackPlugin from 'hard-source-webpack-plugin'
+import common from './webpack.common'
+import merge from 'webpack-merge'
+
+export default merge(common, {
+  devtool: 'cheap-module-eval-source-map',
   mode: 'development',
   output: {
-    path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
-    publicPath: '/',
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
   },
   plugins: [
-    new HardSourceWebpackPlugin(),
+    new HardSourceWebpackPlugin(), // cache's modules for faster build times
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[name].css',
+    }),
     new HtmlWebpackPlugin({
       // Create HTML file that includes references to bundled CSS and JS.
       template: 'src/index.ejs',
@@ -42,4 +41,39 @@ export default {
     }),
     new webpack.NamedModulesPlugin(),
   ],
-}
+  module: {
+    rules: [
+      {
+        test: /(\.css|\.scss|\.sass)$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                require('autoprefixer'),
+              ],
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [path.resolve(__dirname, 'src', 'scss')],
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+    ],
+  },
+})

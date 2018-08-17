@@ -1,15 +1,12 @@
-//import React from 'react'
-import Loadable from '@7rulnik/react-loadable'
-import Handler from './Handler'
+import Async from 'react-imported-component'
+import { Loading, ErrorPage } from 'instruments'
 
-const Load = loader => {
-  if (!loader) return
-  return Loadable(
-    Object.assign({
-      loader,
-      loading: Handler,
-      timeout: 10000,
-      delay: 200,
+const Load = component => {
+  if (!component) return
+  return Async(
+    Object.assign(component, {
+      LoadingComponent: Loading,
+      ErrorComponent: ErrorPage,
     })
   )
 }

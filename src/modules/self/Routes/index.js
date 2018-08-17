@@ -3,7 +3,7 @@ import { Load } from 'instruments'
 export default [
   {
     path: '/profile',
-    component: Load(() => import('../Settings').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Settings')),
     exact: true,
   },
 ]

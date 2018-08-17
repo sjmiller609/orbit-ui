@@ -1,6 +1,6 @@
 import { chalkProcessing } from './chalkConfig'
 import webpackBuildTrigger from './webpack-build'
-import config from '../webpack.config.prod'
+import config from '../webpack.prod'
 
 /*eslint-disable no-console*/
 console.log(

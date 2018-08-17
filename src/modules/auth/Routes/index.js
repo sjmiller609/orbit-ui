@@ -4,27 +4,27 @@ import { Load } from 'instruments'
 export default [
   {
     path: '/(|signup)',
-    component: Load(() => import('../Signup').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Signup')),
     exact: true,
   },
   {
     path: '/login',
-    component: Load(() => import('../Login').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Login')),
     exact: true,
   },
   {
     path: '/confirm',
-    component: Load(() => import('../Confirm').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Confirm')),
     exact: true,
   },
   {
     path: '/reset-password',
-    component: Load(() => import('../ResetPw').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../ResetPw')),
     exact: true,
   },
   {
     path: '/verify',
-    component: Load(() => import('../Verify').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Verify')),
     exact: true,
   },
 ]
@@ -32,32 +32,38 @@ export default [
 export const otherAuthRoutes = [
   {
     path: '/oauth',
-    component: Load(() => import('../OauthSuccess').then(c => c.default)),
+    component: Load(() =>
+      import(/* webpackPrefetch: true */ '../OauthSuccess')
+    ),
     exact: true,
   },
   {
     path: '/token',
-    component: Load(() => import('../OauthSuccess/Token').then(c => c.default)),
+    component: Load(() =>
+      import(/* webpackPrefetch: true */ '../OauthSuccess/Token')
+    ),
     exact: true,
   },
   {
     path: '/forgot-password',
-    component: Load(() => import('../ForgotPw').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../ForgotPw')),
     exact: true,
   },
   {
     path: '/forgot-password/sent',
-    component: Load(() => import('../ForgotPw/Sent').then(c => c.default)),
+    component: Load(() =>
+      import(/* webpackPrefetch: true */ '../ForgotPw/Sent')
+    ),
     exact: true,
   },
   {
     path: '/resend',
-    component: Load(() => import('../Resend').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Resend')),
     exact: true,
   },
 
   {
     path: '/logout',
-    component: Load(() => import('../Logout').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Logout')),
   },
 ]

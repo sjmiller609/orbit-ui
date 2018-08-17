@@ -3,17 +3,17 @@ import { Load } from 'instruments'
 export default [
   {
     path: '/users',
-    component: Load(() => import('../Users').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../Users')),
     exact: true,
   },
   {
     path: '/users/new',
-    component: Load(() => import('../New').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../New')),
     exact: true,
   },
   {
     path: '/users/:id',
-    component: Load(() => import('../User').then(c => c.default)),
+    component: Load(() => import(/* webpackPrefetch: true */ '../User')),
     // matches sub routes
   },
 ]
