@@ -12,6 +12,7 @@ export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
     modules: [path.resolve('./src'), path.resolve('./node_modules')],
+    symlinks: false,
   },
   entry: path.resolve(__dirname, 'src/index'),
   output: {
