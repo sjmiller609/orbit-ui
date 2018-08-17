@@ -1,16 +1,17 @@
+import path from 'path'
+
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin'
-import { default as common, output } from './webpack.common'
+import common from './webpack.common'
+import merge from 'webpack-merge'
 
-export default {
-  ...common,
-  devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
+export default merge(common, {
+  devtool: 'cheap-module-eval-source-map',
   mode: 'development',
   output: {
-    ...output,
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
   },
@@ -40,4 +41,39 @@ export default {
     }),
     new webpack.NamedModulesPlugin(),
   ],
-}
+  module: {
+    rules: [
+      {
+        test: /(\.css|\.scss|\.sass)$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                require('autoprefixer'),
+              ],
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [path.resolve(__dirname, 'src', 'scss')],
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+    ],
+  },
+})
