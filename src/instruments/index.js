@@ -1,27 +1,4 @@
-// import Load from './react/Load'
-// export { Load }
-// export const Row = Load(() => import('./flex/Row'))
-// export const Box = Load(() => import('./flex/Box'))
-
-// export const Header = Load(() => import('./layouts/Header'))
-// export const SiteHeader = Load(() => import('./layouts/SiteHeader'))
-// export const Page = Load(() => import('./layouts/Page'))
-// export const App = Load(() => import('./layouts/App'))
-// export const ErrorPage = Load(() => import('./layouts/ErrorPage'))
-// export const Site = Load(() => import('./layouts/Site'))
-
-// export const Loading = Load(() => import('./loading/Loading'))
-// export const LoadingDots = Load(() => import('./loading/Loading'))
-//
-// //export const Search = Load(() => import('./forms/Search'))
-// export const Form = Load(() => import('./forms/Form'))
-// export const TextField = Load(() => import('./forms/TextField'))
-// export const Password = Load(() => import('./forms/Password'))
-// //export const Checkbox = Load(() => import('./forms/Checkbox'))
-// export const TextArea = Load(() => import('./forms/TextArea'))
-// export const UnsavedChangesAlert = Load(() =>
-//   import('./forms/UnsavedChangesAlert')
-// )
+// index file for instruments - all must go in here
 export { default as Load } from './react/Load'
 export { default as Pure } from './react/Pure'
 
