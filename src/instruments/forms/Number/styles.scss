@@ -1,0 +1,95 @@
+@import 'src/styles/mixins.scss';
+
+.field {
+  font-size: 1.5rem;
+  width: 100%;
+
+  &:not(:first-child) {
+    margin-top: 1.3rem;
+  }
+  // duplicating this here, as this component will replace global style
+  label {
+    display: block;
+    @include font($f500);
+    color: $beige;
+    text-align: left;
+    b {
+      @include font($f700);
+    }
+  }
+  &.required {
+    label {
+      @include font($f700);
+    }
+  }
+  input[type='number'] {
+    border: 2px solid $darkWhite;
+    border-radius: 3px;
+    @include font($f500);
+    font-size: 1.5rem;
+    color: $purple;
+    padding: 0.4em 0.2em 0.5em 0.8em;
+    height: auto;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    width: 6rem;
+    max-width: 34rem;
+    background-color: $darkWhite;
+    box-shadow: none;
+    &:hover {
+      background-color: $darkWhite;
+      border: 2px solid $darkWhite;
+    }
+    &:focus {
+      background-color: lighten($darkWhite, 5%);
+      border: 2px solid $lightBlue;
+      box-shadow: 0 0 0px 1000px rgba($lightBlue, 0.05) inset;
+    }
+    &::placeholder {
+      color: $lightBeige;
+    }
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px $darkWhite inset !important;
+      -webkit-text-fill-color: $purple !important;
+      background-color: $darkWhite !important;
+    }
+  }
+
+  &.error {
+    $errorColor: $orange;
+    $errorBg: $white;
+    input[type='number'] {
+      border: 2px solid $errorColor;
+      background-color: lighten($darkWhite, 5%);
+      box-shadow: 0 0 0px 1000px rgba($errorColor, 0.05) inset;
+    }
+    .errorMsg {
+      @include font($f500);
+      font-size: 0.75em;
+      color: $errorColor;
+      position: absolute;
+      @include shadow;
+      padding: 0.8em 1em;
+      background: $errorBg;
+      border-radius: 4px;
+      transform: translateX(-0.8rem);
+      border: 1px solid;
+      z-index: 999;
+      &:before {
+        content: '';
+        display: block;
+        //  background: linear-gradient(135deg, $errorColor 50%, $errorBg 50.1%);
+        background: $errorBg;
+        height: 1rem;
+        width: 1rem;
+        transform: translateX(-50%) rotate(45deg);
+        position: absolute;
+        border-radius: 2px;
+        border-left: 1px solid $errorColor;
+        border-top: 1px solid $errorColor;
+        top: -0.6rem;
+        left: 3rem;
+      }
+    }
+  }
+}
