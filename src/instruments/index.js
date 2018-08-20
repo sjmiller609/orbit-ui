@@ -29,7 +29,6 @@ export { default as TextButton } from './links/TextButton'
 export { default as OauthButton } from './links/OauthButton'
 export { default as Redirect } from './links/Redirect'
 
-export { default as Img } from './icons/Img'
 export { default as Icon } from './icons/Icon'
 export { default as Logo } from './icons/Logo'
 export { default as Airflow } from './icons/Airflow'
