@@ -2,13 +2,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { Link } from 'instruments'
+import { Link, LoadImg } from 'instruments'
 
 import s from './styles.scss'
 
 class Logo extends React.Component {
   state = {
-    src: null,
+    Img: null,
   }
 
   componentWillMount() {
@@ -17,19 +17,18 @@ class Logo extends React.Component {
     path += noStars || full ? '' : 'stars_'
     path += darkBg ? 'darkBg' : 'lightBg'
 
-    import(`./img/${path}.svg`).then(module =>
-      this.setState({ src: module.default })
-    )
+    this.setState({
+      Img: LoadImg(() => import(`./img/${path}.svg`)),
+    })
   }
 
   render() {
-    const { src } = this.state
-    if (!src) return null
+    const { Img } = this.state
+    if (!Img) return null
     const { to, noStars, full, className } = this.props
     return (
       <Link to={to || '/'}>
-        <img
-          src={src}
+        <Img
           className={classnames(
             s.logo,
             full && s.full,

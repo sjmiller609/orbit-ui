@@ -1,7 +1,7 @@
 'use strict'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Link, Row, Box, Icon } from 'instruments'
+import { Link, Row, Box, Icon, LoadImg } from 'instruments'
 import s from './styles.scss'
 import classnames from 'classnames'
 
@@ -25,7 +25,7 @@ const services = {
 
 const OauthButton = ({ service, login, to, className, ...props }) => {
   const oauth = services[service]
-  const img = require('./img/' + oauth.img)
+  const Img = LoadImg(() => import(`./img/${oauth.img}`))
   return (
     <Link
       {...props}
@@ -35,7 +35,7 @@ const OauthButton = ({ service, login, to, className, ...props }) => {
       className={classnames(s.button, s[oauth.className], className)}>
       <Row full justify="flex-start">
         <Box className={s.img}>
-          <img src={img} />
+          <Img />
         </Box>
         <span className={s.text}>
           {login ? 'Login' : 'Sign up'}

@@ -1,6 +1,6 @@
 // index file for instruments - all must go in here
 export { default as Load } from './react/Load'
-export { default as Pure } from './react/Pure'
+export { default as LoadImg } from './react/LoadImg'
 
 export { default as Row } from './flex/Row'
 export { default as Box } from './flex/Box'
