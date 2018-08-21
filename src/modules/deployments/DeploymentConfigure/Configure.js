@@ -7,6 +7,7 @@ import {
   Form,
   TextField,
   TextArea,
+  NumberField,
   H5,
   P,
   Mini,
@@ -24,6 +25,8 @@ const Configure = ({ form, deployment }) => {
         text: 'Update',
       }}
       className={s.card}>
+      <H5 className={s.name}>{deployment.releaseName}</H5>
+
       <TextField
         type="text"
         placeholder="Deployment Name"
@@ -37,7 +40,15 @@ const Configure = ({ form, deployment }) => {
         label="Description"
         {...form.field('description')}
       />
-      <H5 className={s.name}>{deployment.releaseName}</H5>
+      <NumberField
+        label="Worker Count"
+        required
+        {...form.field('workerCount')}
+        slider
+        defaultValue={1}
+        min={1}
+        max={100}
+      />
       <div className={s.deployed}>
         <P>Deployed</P>
         <Mini>

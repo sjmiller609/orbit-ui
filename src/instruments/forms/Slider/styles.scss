@@ -1,0 +1,43 @@
+@import 'src/styles/mixins.scss';
+
+.slider {
+  position: relative;
+  height: 1.5rem;
+  width: 100%;
+  :global {
+    .rc-slider-rail {
+      position: absolute;
+      width: 100%;
+      background-color: $darkWhite;
+      height: 100%;
+      border-radius: 100px;
+      //  box-shadow: inset 0 1px 3px $shadow;
+    }
+    .rc-slider-track {
+      position: absolute;
+      left: 0;
+      height: 100%;
+      border-radius: 100px;
+      //  box-shadow: inset 0 1px 3px $shadow;
+      background: linear-gradient(to right, $green, $lightGreen);
+    }
+    .rc-slider-handle {
+      position: absolute;
+      margin-left: -1.25rem;
+      margin-top: -0.6rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      cursor: pointer;
+      cursor: -webkit-grab;
+      cursor: grab;
+      background: $white;
+      //border: 3px solid $gray;
+      border-radius: 100rem;
+      cursor: pointer;
+      display: inline-block;
+      box-shadow: 0.1rem 0.3rem 3.3rem 0.1rem $shadow, inset 0 0 0.5px 3px $gray;
+      outline: none;
+      touch-action: pan-x;
+    }
+  }
+}

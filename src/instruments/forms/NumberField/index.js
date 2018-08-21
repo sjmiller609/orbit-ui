@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
+import { Row, Slider } from 'instruments'
 
 class NumberField extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class NumberField extends React.Component {
     this.onChange = this.onChange.bind(this)
     this.validate = this.validate.bind(this)
     this.showError = this.showError.bind(this)
+    this.slider = this.slider.bind(this)
 
     const { id, name } = this.props
     this.state = {
@@ -112,6 +114,11 @@ class NumberField extends React.Component {
     updateErrors(name, e)
   }
 
+  slider(value) {
+    const { name, onChange } = this.props
+    onChange(name, value)
+  }
+
   render() {
     const {
       name,
@@ -126,9 +133,17 @@ class NumberField extends React.Component {
       max,
       defaultValue,
       step,
+      slider,
     } = this.props
     const { id, showError, touched } = this.state
     const err = showError && !!error
+
+    const valueProps = {
+      min,
+      max,
+      value: value || defaultValue,
+      step,
+    }
     return (
       <div
         className={classnames(
@@ -138,21 +153,27 @@ class NumberField extends React.Component {
           className
         )}>
         {label ? <label htmlFor={id}>{label}</label> : null}
-        <input
-          type="number"
-          min={min}
-          max={max}
-          step={step}
-          name={name}
-          id={id}
-          placeholder={placeholder}
-          required={required}
-          onChange={this.onChange}
-          title={title}
-          onBlur={touched ? () => this.showError(true) : null}
-          ref={ref => (this.field = ref)}
-          value={value || defaultValue}
-        />
+        <Row justify="flex-start">
+          <input
+            type="number"
+            name={name}
+            id={id}
+            placeholder={placeholder}
+            required={required}
+            onChange={this.onChange}
+            title={title}
+            onBlur={touched ? () => this.showError(true) : null}
+            ref={ref => (this.field = ref)}
+            {...valueProps}
+          />
+          {slider && (
+            <Slider
+              {...valueProps}
+              className={s.slider}
+              onChange={this.slider}
+            />
+          )}
+        </Row>
         {err && <div className={s.errorMsg}>{error}</div>}
       </div>
     )
@@ -178,6 +199,7 @@ NumberField.propTypes = {
   max: PropTypes.number,
   defaultValue: PropTypes.number,
   step: PropTypes.number,
+  slider: PropTypes.bool,
 }
 
 NumberField.defaultProps = {
