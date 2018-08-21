@@ -49,6 +49,7 @@
     "react-helmet": "^5.2.0",
     "react-imported-component": "4.6.2",
     "react-router-dom": "4.3.1",
+    "react-router-hash-link": "1.2.0",
     "subscriptions-transport-ws": "0.9.14"
   },
   "devDependencies": {
@@ -74,8 +75,8 @@
     "concurrently": "3.6.0",
     "coveralls": "^2.11.14",
     "css-loader": "^0.28.11",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme": "^3.4.0",
+    "enzyme-adapter-react-16": "^1.2.0",
     "enzyme-to-json": "3.3.4",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "2.9.0",

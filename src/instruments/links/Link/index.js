@@ -1,59 +1,82 @@
 'use strict'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { NavLink as NavLink1, Link as NavLink2 } from 'react-router-dom'
+import { NavLink, Link as Link2 } from 'react-router-dom'
+import { NavHashLink, HashLink } from 'react-router-hash-link'
 import s from './styles.scss'
 import classnames from 'classnames'
 import { Icon } from 'instruments'
 import { externalUrl } from './helpers'
 
-const Link = ({
-  children,
-  onClick,
-  style,
-  to,
-  className,
-  newTab,
-  arrow,
-  backArrow,
-  ...props
-}) => {
-  const newProps = {
-    ...props,
-    to,
-    className: classnames(s.link, style && s[style], className),
-    onClick,
-    target: newTab ? '_blank' : null,
-  }
-  const arr = arrow && <Icon className={s.arrow} icon={arrow} />
-  const backArr = backArrow && <Icon className={s.backArrow} icon={backArrow} />
+class Link extends React.Component {
+  component = null
+  backArrow = null
+  arrow = null
+  external = null
+  path = null
 
-  // only use ReactRouter NavLink if activeClassName (for performance)
-  const NavLink = props.activeClassName ? NavLink1 : NavLink2
-  /* eslint-disable react/display-name */
-  /* eslint-disable no-unused-vars */
-  /* eslint-disable react/prop-types */
-  const Component =
-    to && !externalUrl(to)
-      ? NavLink
-      : ({ to, className, onClick, children }) => (
-          <a
-            onClick={onClick}
-            className={className}
-            href={to}
-            target={newTab === false ? null : '_blank'}>
-            {children}
-          </a>
-        )
-  return (
-    <Component {...newProps}>
-      <React.Fragment>
-        {backArr}
-        {children}
-        {arr}
-      </React.Fragment>
-    </Component>
-  )
+  componentWillMount() {
+    const { arrow, backArrow, to, activeClassName } = this.props
+    this.arr = arrow && <Icon className={s.arrow} icon={arrow} />
+    this.backArr = backArrow && (
+      <Icon className={s.backArrow} icon={backArrow} />
+    )
+
+    this.external = externalUrl(to)
+    this.path = typeof to === 'object' ? to.pathname : to || ''
+    if (this.external) return
+    const hash = ~this.path.indexOf('#')
+    if (hash) {
+      this.component = activeClassName ? NavHashLink : HashLink
+    } else {
+      this.component = activeClassName ? NavLink : Link2
+    }
+  }
+  render() {
+    /* eslint-disable react/display-name */
+    /* eslint-disable no-unused-vars */
+    /* eslint-disable react/prop-types */
+    const {
+      children,
+      onClick,
+      style,
+      to,
+      className,
+      newTab,
+      arrow,
+      backArrow,
+      ...props
+    } = this.props
+    const newProps = {
+      ...props,
+      to,
+      className: classnames(s.link, style && s[style], className),
+      onClick,
+      target: newTab ? '_blank' : null,
+    }
+
+    const Component =
+      to && !this.external
+        ? this.component
+        : ({ to, className, onClick, children }) => (
+            <a
+              onClick={onClick}
+              className={className}
+              href={to}
+              target={newTab === false ? null : '_blank'}>
+              {children}
+            </a>
+          )
+    return (
+      <Component {...newProps}>
+        <React.Fragment>
+          {this.backArr}
+          {children}
+          {this.arr}
+        </React.Fragment>
+      </Component>
+    )
+  }
 }
 
 Link.propTypes = {

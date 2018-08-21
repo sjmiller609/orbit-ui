@@ -1,5 +1,6 @@
 // check if url is external
 export const externalUrl = url => {
+  if (!url) return false
   if (typeof url === 'object') return false
   if (url.charAt(0) === '/') return false
   if (~url.indexOf(window.location.origin)) return false

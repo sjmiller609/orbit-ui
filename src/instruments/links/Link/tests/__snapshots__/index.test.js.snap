@@ -17,14 +17,51 @@ exports[`Link displays arrow icon when \`arrow\` is specified 1`] = `
         className="arrow"
         icon="arrow"
       >
-        <img
+        <Imported
           className="arrow"
-          src={
-            Object {
-              "process": [Function],
+        >
+          <ReactImportedComponent
+            className="arrow"
+            loadable={
+              Object {
+                "done": false,
+                "importFunction": [Function],
+                "load": [Function],
+                "mark": Array [],
+                "ok": false,
+                "payload": undefined,
+                "promise": Promise {},
+                "reset": [Function],
+              }
             }
-          }
-        />
+            render={[Function]}
+          >
+            <UnconnectedReactImportedComponent
+              async={false}
+              className="arrow"
+              exportPicker={[Function]}
+              loadable={
+                Object {
+                  "done": false,
+                  "importFunction": [Function],
+                  "load": [Function],
+                  "mark": Array [],
+                  "ok": false,
+                  "payload": undefined,
+                  "promise": Promise {},
+                  "reset": [Function],
+                }
+              }
+              render={[Function]}
+              streamId={0}
+            >
+              <img
+                className="arrow"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              />
+            </UnconnectedReactImportedComponent>
+          </ReactImportedComponent>
+        </Imported>
       </Icon>
     </a>
   </Component>
@@ -47,14 +84,51 @@ exports[`Link displays back arrow icon when \`backArrow\` is specified 1`] = `
         className="backArrow"
         icon="arrow_darkBg"
       >
-        <img
+        <Imported
           className="backArrow"
-          src={
-            Object {
-              "process": [Function],
+        >
+          <ReactImportedComponent
+            className="backArrow"
+            loadable={
+              Object {
+                "done": false,
+                "importFunction": [Function],
+                "load": [Function],
+                "mark": Array [],
+                "ok": false,
+                "payload": undefined,
+                "promise": Promise {},
+                "reset": [Function],
+              }
             }
-          }
-        />
+            render={[Function]}
+          >
+            <UnconnectedReactImportedComponent
+              async={false}
+              className="backArrow"
+              exportPicker={[Function]}
+              loadable={
+                Object {
+                  "done": false,
+                  "importFunction": [Function],
+                  "load": [Function],
+                  "mark": Array [],
+                  "ok": false,
+                  "payload": undefined,
+                  "promise": Promise {},
+                  "reset": [Function],
+                }
+              }
+              render={[Function]}
+              streamId={0}
+            >
+              <img
+                className="backArrow"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              />
+            </UnconnectedReactImportedComponent>
+          </ReactImportedComponent>
+        </Imported>
       </Icon>
       text
     </a>
