@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
+import { Info } from 'instruments'
 
 export const isEmail = email => {
   return new RegExp(
@@ -120,6 +121,7 @@ class TextField extends React.Component {
       title,
       label,
       className,
+      info,
     } = this.props
     const { type, id, showError, touched } = this.state
     const err = showError && !!error
@@ -131,7 +133,12 @@ class TextField extends React.Component {
           required ? s.required : null,
           className
         )}>
-        {label ? <label htmlFor={id}>{label}</label> : null}
+        {label ? (
+          <label htmlFor={id}>
+            {label}
+            <Info>{info}</Info>
+          </label>
+        ) : null}
         <input
           type={type}
           name={name}
@@ -166,6 +173,7 @@ TextField.propTypes = {
   className: PropTypes.string,
   updateErrors: PropTypes.func,
   submitted: PropTypes.bool,
+  info: PropTypes.string,
 }
 
 TextField.defaultProps = {

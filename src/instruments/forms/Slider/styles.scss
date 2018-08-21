@@ -24,14 +24,13 @@
     .rc-slider-handle {
       position: absolute;
       margin-left: -1.25rem;
-      margin-top: -0.6rem;
+      margin-top: -0.5rem;
       width: 2.5rem;
       height: 2.5rem;
       cursor: pointer;
       cursor: -webkit-grab;
       cursor: grab;
       background: $white;
-      //border: 3px solid $gray;
       border-radius: 100rem;
       cursor: pointer;
       display: inline-block;

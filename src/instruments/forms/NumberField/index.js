@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
-import { Row, Slider } from 'instruments'
+import { Row, Slider, Info } from 'instruments'
 
 class NumberField extends React.Component {
   constructor(props) {
@@ -86,7 +86,6 @@ class NumberField extends React.Component {
       min,
       max,
       step,
-      defaultValue,
     } = this.props
     let e
 
@@ -97,14 +96,14 @@ class NumberField extends React.Component {
       else if (value < min) e = 'The minimum possible value is ' + min
       else if (value > max) e = 'The maximum possible value is ' + max
       else if (step) {
-        const v = defaultValue ? value - defaultValue : value
+        const v = min ? value - min : value
         const d = v % step
         if (d !== 0) {
           e =
             'Please enter a valid value. Nearby values are ' +
             (Number(value) - d) +
             ' and ' +
-            (Number(value) + d)
+            (Number(value) + (step - d))
         }
       } else if (validate) {
         e = validate(value)
@@ -134,6 +133,8 @@ class NumberField extends React.Component {
       defaultValue,
       step,
       slider,
+      units,
+      info,
     } = this.props
     const { id, showError, touched } = this.state
     const err = showError && !!error
@@ -141,9 +142,10 @@ class NumberField extends React.Component {
     const valueProps = {
       min,
       max,
-      value: value || defaultValue,
+      value: Number(value || defaultValue),
       step,
     }
+    const width = max.toString().length * 2.2
     return (
       <div
         className={classnames(
@@ -152,7 +154,12 @@ class NumberField extends React.Component {
           required ? s.required : null,
           className
         )}>
-        {label ? <label htmlFor={id}>{label}</label> : null}
+        {label ? (
+          <label htmlFor={id}>
+            {label}
+            <Info>{info}</Info>
+          </label>
+        ) : null}
         <Row justify="flex-start">
           <input
             type="number"
@@ -164,8 +171,10 @@ class NumberField extends React.Component {
             title={title}
             onBlur={touched ? () => this.showError(true) : null}
             ref={ref => (this.field = ref)}
+            style={{ width: `${width}rem` }}
             {...valueProps}
           />
+          {units && <div className={s.units}>{units}</div>}
           {slider && (
             <Slider
               {...valueProps}
@@ -189,7 +198,7 @@ NumberField.propTypes = {
   required: PropTypes.bool,
   focus: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
   error: PropTypes.string,
   className: PropTypes.string,
@@ -200,6 +209,8 @@ NumberField.propTypes = {
   defaultValue: PropTypes.number,
   step: PropTypes.number,
   slider: PropTypes.bool,
+  units: PropTypes.string,
+  info: PropTypes.string,
 }
 
 NumberField.defaultProps = {

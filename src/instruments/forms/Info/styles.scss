@@ -1,0 +1,52 @@
+@import 'src/styles/mixins.scss';
+
+$width: 25rem;
+
+.wrapper {
+  display: inline-block;
+  position: absolute;
+  &.show {
+    width: $width + 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.info {
+  font-size: 0.85em;
+  position: relative;
+  margin-left: 0.9rem;
+  top: 0.25em;
+  color: $blue;
+  box-shadow: 0 0 0 1.5px $blue;
+  border-radius: 100rem;
+  display: block;
+  width: 0.8em;
+  height: 0.8em;
+
+  text-align: center;
+  b {
+    font-style: italic;
+    vertical-align: top;
+    font-size: 0.75em;
+    margin-right: 0.18em;
+  }
+  .msg {
+    text-align: left;
+    @include font($f400);
+    width: $width;
+    background: $white;
+    border: 1px solid;
+    @include shadow;
+    color: $blue;
+    font-size: 0.88em;
+    position: relative;
+    @include shadow;
+    padding: 0.8em 1em;
+    border-radius: 4px;
+    z-index: 1000;
+  }
+}
+.show .info {
+  background: $blue;
+  color: $white;
+}

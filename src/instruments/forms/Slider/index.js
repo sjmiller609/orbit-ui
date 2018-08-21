@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { default as RCSlider } from 'rc-slider'
-import 'rc-slider/assets/index.css'
 
 import s from './styles.scss'
 

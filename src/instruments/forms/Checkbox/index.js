@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import s from './styles.scss'
 import classNames from 'classnames'
-import { Row } from 'instruments'
+import { Row, Info } from 'instruments'
 
 class Checkbox extends React.Component {
   change = this.change.bind(this)
@@ -99,7 +99,7 @@ class Checkbox extends React.Component {
   }
 
   render() {
-    const { className, label, name, value, required } = this.props
+    const { className, label, name, value, required, info } = this.props
     const { checked } = this.state
 
     return (
@@ -128,7 +128,12 @@ class Checkbox extends React.Component {
           <div className={s.check} />
         </div>
 
-        {label && <label>{label}</label>}
+        {label && (
+          <label>
+            {label}
+            <Info>{info}</Info>
+          </label>
+        )}
       </Row>
     )
   }
@@ -151,6 +156,7 @@ Checkbox.propTypes = {
   validate: PropTypes.func, // check if isValid, return error message
   required: PropTypes.bool,
   submitted: PropTypes.bool,
+  info: PropTypes.string,
 }
 
 export default Checkbox

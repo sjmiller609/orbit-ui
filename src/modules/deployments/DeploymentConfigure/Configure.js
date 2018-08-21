@@ -47,7 +47,20 @@ const Configure = ({ form, deployment }) => {
         slider
         defaultValue={1}
         min={1}
-        max={100}
+        max={10}
+        info="Adjusting the worker count will..."
+      />
+      <NumberField
+        label="Worker Termination Grace Period"
+        required
+        {...form.field('workerTermination')}
+        slider
+        units="min"
+        defaultValue={10}
+        min={5}
+        max={60}
+        step={5}
+        info="The worker termination grace period is..."
       />
       <div className={s.deployed}>
         <P>Deployed</P>

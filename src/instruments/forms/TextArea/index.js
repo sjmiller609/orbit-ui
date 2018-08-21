@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
+import { Info } from 'instruments'
 
 class TextArea extends React.Component {
   constructor(props) {
@@ -101,6 +102,7 @@ class TextArea extends React.Component {
       title,
       label,
       className,
+      info,
     } = this.props
     const { id, showError, touched } = this.state
     const err = showError && !!error
@@ -112,7 +114,11 @@ class TextArea extends React.Component {
           required ? s.required : null,
           className
         )}>
-        {label ? <label htmlFor={id}>{label}</label> : null}
+        {label ? (
+          <label htmlFor={id}>
+            {label} <Info>{info}</Info>
+          </label>
+        ) : null}
         <textarea
           name={name}
           id={id}
@@ -145,6 +151,7 @@ TextArea.propTypes = {
   className: PropTypes.string,
   updateErrors: PropTypes.func,
   submitted: PropTypes.bool,
+  info: PropTypes.string,
 }
 
 TextArea.defaultProps = {
