@@ -16,6 +16,25 @@ import {
 
 import Update from '../Data/Update'
 
+const menu = [
+  {
+    text: 'Deployment Info',
+    id: 'info',
+  },
+  {
+    text: 'Workers',
+    id: 'workers',
+  },
+  {
+    text: 'Environemnt Variables',
+    id: 'env',
+  },
+  {
+    text: 'Deprovision',
+    id: 'delete',
+  },
+]
+
 const Configure = ({ form, deployment }) => {
   return (
     <CardForm
@@ -24,7 +43,9 @@ const Configure = ({ form, deployment }) => {
         save: form.save,
         text: 'Update',
       }}
+      menu={menu}
       className={s.card}>
+      <a id="info" />
       <H5 className={s.name}>{deployment.releaseName}</H5>
 
       <TextField
@@ -40,6 +61,7 @@ const Configure = ({ form, deployment }) => {
         label="Description"
         {...form.field('description')}
       />
+      <a id="workers" />
       <NumberField
         label="Worker Count"
         required
@@ -62,6 +84,7 @@ const Configure = ({ form, deployment }) => {
         step={5}
         info="The worker termination grace period is..."
       />
+      <a id="env" />
       <div className={s.deployed}>
         <P>Deployed</P>
         <Mini>

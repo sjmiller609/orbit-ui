@@ -15,9 +15,11 @@ const Flex = ({
   flow,
   full,
   onClick,
+  id,
 }) => {
   return (
     <div
+      id={id}
       ref={passRef}
       className={classnames(
         s.flex,
@@ -36,6 +38,7 @@ const Flex = ({
 }
 
 Flex.propTypes = {
+  id: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,

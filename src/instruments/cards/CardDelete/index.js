@@ -29,6 +29,7 @@ const CardDelete = ({
     <CardForm
       {...otherProps}
       className={s.delete}
+      id="delete"
       button={{
         onClick,
         text: buttonText || 'Delete',

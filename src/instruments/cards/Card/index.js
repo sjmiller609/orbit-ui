@@ -5,10 +5,10 @@ import classnames from 'classnames'
 import s from './styles.scss'
 import { Box, H5 } from 'instruments'
 
-const Card = ({ children, footer, header, className }) => {
+const Card = ({ children, footer, header, className, id }) => {
   const justify = !footer ? 'flex-start' : 'space-between'
   return (
-    <Box className={classnames(s.card, className)} justify={justify}>
+    <Box id={id} className={classnames(s.card, className)} justify={justify}>
       {header && (
         <header>
           {typeof header === 'string' ? (
@@ -32,6 +32,7 @@ Card.propTypes = {
     .isRequired,
   footer: PropTypes.element,
   className: PropTypes.string,
+  id: PropTypes.string,
 }
 
 export default Card
