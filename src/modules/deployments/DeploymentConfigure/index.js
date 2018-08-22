@@ -3,13 +3,33 @@ import PropTypes from 'prop-types'
 
 import Configure from './Configure'
 import Delete from './Delete'
+import { CardMenu } from 'instruments'
+
+const menu = [
+  {
+    text: 'Deployment Info',
+    id: 'info',
+  },
+  {
+    text: 'Workers',
+    id: 'workers',
+  },
+  {
+    text: 'Environemnt Variables',
+    id: 'env',
+  },
+  {
+    text: 'Deprovision',
+    id: 'delete',
+  },
+]
 
 const DeploymentConfigure = ({ deployment }) => {
   return (
-    <React.Fragment>
+    <CardMenu menu={menu}>
       <Configure deployment={deployment} data={deployment} />
       <Delete deployment={deployment} />
-    </React.Fragment>
+    </CardMenu>
   )
 }
 

@@ -1,0 +1,11 @@
+@import 'src/styles/mixins.scss';
+
+.menu {
+  // matches this.disable value set in index.js
+  @media screen and (max-width: 850px) {
+    display: none;
+  }
+}
+.cards {
+  flex-grow: 1;
+}

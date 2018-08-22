@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { Card, Button, Row } from 'instruments'
-import Menu from './Menu'
 import s from './styles.scss'
 
 // wrap this component in a form, with children as fields, either title as string, or header element, and save buttons in footer
@@ -16,14 +15,8 @@ const CardForm = ({
   title,
   className,
   smallForm,
-  menu,
   id,
 }) => {
-  const content = (
-    <div className={classnames(s.formContent, smallForm && s.small)}>
-      {children}
-    </div>
-  )
   return (
     <Card
       id={id}
@@ -55,15 +48,9 @@ const CardForm = ({
       }
       header={title}
       className={className}>
-      {menu ? (
-        <Row className={s.withMenu} justify="space-between" align="flex-start">
-          <Menu menu={menu} />
-          {content}
-          <div className={s.dummy} />
-        </Row>
-      ) : (
-        content
-      )}
+      <div className={classnames(s.formContent, smallForm && s.small)}>
+        {children}
+      </div>
     </Card>
   )
 }
@@ -78,7 +65,6 @@ CardForm.propTypes = {
   button2: PropTypes.object,
   className: PropTypes.string,
   smallForm: PropTypes.bool,
-  menu: PropTypes.array,
 }
 
 export default CardForm

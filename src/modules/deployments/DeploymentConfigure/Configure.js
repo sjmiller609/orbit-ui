@@ -16,25 +16,6 @@ import {
 
 import Update from '../Data/Update'
 
-const menu = [
-  {
-    text: 'Deployment Info',
-    id: 'info',
-  },
-  {
-    text: 'Workers',
-    id: 'workers',
-  },
-  {
-    text: 'Environemnt Variables',
-    id: 'env',
-  },
-  {
-    text: 'Deprovision',
-    id: 'delete',
-  },
-]
-
 const Configure = ({ form, deployment }) => {
   return (
     <CardForm
@@ -43,7 +24,6 @@ const Configure = ({ form, deployment }) => {
         save: form.save,
         text: 'Update',
       }}
-      menu={menu}
       className={s.card}>
       <a id="info" />
       <H5 className={s.name}>{deployment.releaseName}</H5>

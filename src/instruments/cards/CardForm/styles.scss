@@ -18,18 +18,3 @@
 .small {
   max-width: 28rem;
 }
-
-.menu {
-  margin: 0;
-}
-
-.withMenu {
-  & > * {
-    flex-basis: 100%;
-  }
-  .formContent {
-    flex-shrink: 0;
-  }
-  .dummy {
-  }
-}
