@@ -49,7 +49,8 @@ class CardMenu extends React.Component {
     const el = document.getElementById(id)
     if (!el) return
     const rect = el.getBoundingClientRect()
-    if (rect.y > 0 && rect.y < mid) {
+
+    if (rect.y + rect.height / 2 > 0 && rect.y < mid) {
       this.setState({ focus: id })
       return true
     }
@@ -65,7 +66,6 @@ class CardMenu extends React.Component {
   render() {
     const { children, id, title, menu, className } = this.props
     const { focus, sticky } = this.state
-    console.log(sticky)
     return (
       <Row align="flex-start" className={classnames(s.row, className)}>
         <Menu
