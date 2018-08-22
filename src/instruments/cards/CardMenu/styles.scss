@@ -1,6 +1,10 @@
 @import 'src/styles/mixins.scss';
 
 .menu {
+  &.sticky {
+    position: sticky;
+    top: 16px;
+  }
   // matches this.disable value set in index.js
   @media screen and (max-width: 850px) {
     display: none;

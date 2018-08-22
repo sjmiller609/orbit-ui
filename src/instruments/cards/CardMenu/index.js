@@ -14,6 +14,7 @@ class CardMenu extends React.Component {
   menu = []
   state = {
     focus: this.props.menu[0].id,
+    sticky: null,
   }
   componentDidMount() {
     if (window.innerWidth <= 850) this.disable = true
@@ -35,7 +36,13 @@ class CardMenu extends React.Component {
     const menu2 = diff > 0 ? menu.reverse() : menu
     const mid = window.innerHeight * 0.55
     const focus = menu2.some(m => this.getFocus(m.id, mid))
-    if (!focus) this.setState({ focus: null })
+    // test for menu sticky scroll position
+    const sticky = this.sticky()
+
+    const set = {}
+    if (!focus) set.focus = null
+    if (sticky !== this.state.sticky) set.sticky = sticky
+    if (Object.keys(set).length) this.setState(set)
   }
 
   getFocus(id, mid) {
@@ -47,12 +54,27 @@ class CardMenu extends React.Component {
       return true
     }
   }
+  sticky() {
+    const { id } = this.props
+    const el = document.getElementById(id)
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    if (rect.y <= 16) return true
+  }
+
   render() {
-    const { children, id = 'menu', title, menu, className } = this.props
-    const { focus } = this.state
+    const { children, id, title, menu, className } = this.props
+    const { focus, sticky } = this.state
+    console.log(sticky)
     return (
       <Row align="flex-start" className={classnames(s.row, className)}>
-        <Menu id={id} menu={menu} title={title} active={focus} />
+        <Menu
+          id={id}
+          menu={menu}
+          title={title}
+          active={focus}
+          className={classnames(sticky && s.sticky)}
+        />
 
         <div className={s.cards}>{children}</div>
       </Row>
@@ -66,6 +88,10 @@ CardMenu.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
   className: PropTypes.string,
   menu: PropTypes.array,
+}
+
+CardMenu.defaultProps = {
+  id: 'cardMenu',
 }
 
 export default CardMenu

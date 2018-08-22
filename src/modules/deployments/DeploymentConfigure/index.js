@@ -15,7 +15,7 @@ const menu = [
     id: 'workers',
   },
   {
-    text: 'Environemnt Variables',
+    text: 'Environment Vars',
     id: 'env',
   },
   {
