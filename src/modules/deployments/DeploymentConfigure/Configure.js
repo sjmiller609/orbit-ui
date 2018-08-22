@@ -8,7 +8,7 @@ import {
   TextField,
   TextArea,
   NumberField,
-  H5,
+  B,
   P,
   Mini,
   ShowDate,
@@ -26,7 +26,12 @@ const Configure = ({ form, deployment }) => {
         text: 'Update',
       }}
       className={s.card}>
-      <FormSection id="info" title={deployment.releaseName}>
+      <FormSection id="info">
+        <Mini className={s.info}>
+          <span>{deployment.type}</span> deployment{' '}
+          <B>{deployment.releaseName}</B> deployed on{' '}
+          <ShowDate date={deployment.createdAt} />
+        </Mini>
         <TextField
           type="text"
           placeholder="Deployment Name"
@@ -66,12 +71,7 @@ const Configure = ({ form, deployment }) => {
         />
       </FormSection>
       <FormSection id="env" title="Environment Variables">
-        <div className={s.deployed}>
-          <P>Deployed</P>
-          <Mini>
-            <ShowDate date={deployment.createdAt} />
-          </Mini>
-        </div>
+        <P>env variables...</P>
       </FormSection>
     </CardForm>
   )

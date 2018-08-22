@@ -1,6 +1,9 @@
 @import 'src/styles/mixins.scss';
 
-.deployed {
-  margin: 0.8rem 0;
-  color: $beige;
+.info {
+  span {
+    text-transform: capitalize;
+  }
+  margin-bottom: 2rem;
+  font-style: italic;
 }

@@ -4,6 +4,7 @@ a.item {
   display: block;
   font-size: 1.4rem;
   color: $darkGray;
+
   &:hover,
   &:focus {
     color: $lightPurple;
@@ -14,6 +15,15 @@ a.item {
 
   img {
     opacity: 0.5;
+  }
+  // this prevents width from changing on hover
+  &::after {
+    display: block;
+    content: attr(title);
+    @include font($f700);
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
   }
 }
 

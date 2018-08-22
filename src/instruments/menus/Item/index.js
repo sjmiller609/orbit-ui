@@ -18,6 +18,7 @@ const Item = ({
       {...props}
       to={to}
       exact={true}
+      title={typeof children === 'string' && children}
       className={classnames(s.item, active && s.active, className)}
       activeClassName={classnames(s.active, activeClassName)}>
       {children}
