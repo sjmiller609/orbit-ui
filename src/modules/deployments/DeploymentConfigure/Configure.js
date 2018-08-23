@@ -13,6 +13,7 @@ import {
   Mini,
   ShowDate,
   FormSection,
+  Checkbox,
 } from 'instruments'
 
 import Update from '../Data/Update'
@@ -45,6 +46,7 @@ const Configure = ({ form, deployment }) => {
           label="Description"
           {...form.field('description')}
         />
+        <Checkbox label="test" required {...form.field('test')} />
       </FormSection>
       <FormSection id="workers" title="Celery Workers">
         <NumberField

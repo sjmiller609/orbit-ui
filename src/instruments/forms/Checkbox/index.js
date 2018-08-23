@@ -3,103 +3,50 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import s from './styles.scss'
 import classNames from 'classnames'
-import { Row, Info } from 'instruments'
+import { Row, Field } from 'instruments'
 
 class Checkbox extends React.Component {
   change = this.change.bind(this)
-  onChange = this.onChange.bind(this)
-  timeout = null
   validate = this.validate.bind(this)
-  showError = this.showError.bind(this)
 
   state = {
-    id: this.props.id || this.props.name,
-    showError: false,
-    touched: null,
     checked: !!this.props.value,
   }
 
-  componentDidMount() {
-    const { focus, value } = this.props
-    if (focus) this.field.focus()
-    this.validate({ value }) // adds required fields to form
-  }
-
-  componentWillReceiveProps({ value, error, submitted }) {
-    const set = {}
-
-    // show error on submit
-    if (submitted && !this.props.submitted) set.showError = true
-
+  componentWillReceiveProps({ value }) {
     if (value !== this.props.value) {
-      set.showError = false
       // run validation
-      this.validate({ value, error })
-
-      // show error after 3 seconds of stopped typing
-      if (this.timeout) clearTimeout(this.timeout)
-      this.timeout = setTimeout(() => {
-        this.showError()
-        clearTimeout(this.timeout)
-      }, 3000)
-
-      set.touched = true
-
-      if (!!value && !this.state.checked) set.checked = true
-      else if (!value && this.state.checked) set.checked = false
+      this.validate(value)
     }
-
-    this.setState(set)
-  }
-  // should probably switch this to pull the props that don't change, and then json.stringify
-  // NOTE: if any new props are passed in that are meant to be reactive, won't work.
-  shouldComponentUpdate({ value, error, submitted }, { showError, touched }) {
-    if (value !== this.props.value) return true
-    if (error !== this.props.error) return true
-    if (submitted !== this.props.submitted) return true
-    if (showError !== this.state.showError) return true
-    if (touched !== this.state.touched) return true
-    return false
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timeout)
-  }
-
-  onChange(value) {
-    const { name, onChange } = this.props
-    onChange(name, value)
   }
 
   change(e) {
     if (e) e.preventDefault()
     const checked = !this.state.checked
     this.setState({ checked })
-    this.onChange(checked)
-  }
-  showError(showError = true) {
-    if (showError === this.state.showError) return
-    this.setState({ showError })
+    this.props.onChange(null, checked)
   }
 
-  validate({ value }) {
-    const { validate, name, updateErrors, required } = this.props
+  validate(value) {
+    const { name, validate, updateErrors } = this.props
     let e
-
-    if (required && (typeof value !== 'boolean' && !value)) {
-      e = name.charAt(0).toUpperCase() + name.slice(1) + ' is required'
-    }
-    if (value || typeof value === 'boolean') {
-      if (validate) {
-        e = validate(value)
-      }
-    }
+    // must be first
+    if (validate) e = validate(value)
 
     updateErrors(name, e)
   }
 
   render() {
-    const { className, label, name, value, required, info } = this.props
+    const {
+      className,
+      label,
+      name,
+      title,
+      value,
+      required,
+      onBlur,
+      setRef,
+    } = this.props
     const { checked } = this.state
 
     return (
@@ -107,11 +54,7 @@ class Checkbox extends React.Component {
         justify="flex-start"
         align="flex-start"
         auto
-        className={classNames(
-          s.checkbox,
-          required ? s.required : null,
-          className
-        )}>
+        className={classNames(s.checkbox, className)}>
         <input
           type="checkbox"
           name={name}
@@ -119,7 +62,10 @@ class Checkbox extends React.Component {
           value={value || ''}
           className={s.input}
           required={required}
-          onChange={this.onChange}
+          onChange={this.change}
+          onBlur={onBlur}
+          ref={setRef}
+          title={title}
         />
 
         <div
@@ -128,35 +74,31 @@ class Checkbox extends React.Component {
           <div className={s.check} />
         </div>
 
-        {label && (
-          <label>
-            {label}
-            <Info>{info}</Info>
-          </label>
-        )}
+        {label}
       </Row>
     )
   }
 }
 
 Checkbox.propTypes = {
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  type: PropTypes.string,
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
-  onChange: PropTypes.func,
-  error: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
+  validate: PropTypes.func,
+  required: PropTypes.bool,
+  label: PropTypes.element,
+  title: PropTypes.string,
+  error: PropTypes.element,
   className: PropTypes.string,
   updateErrors: PropTypes.func,
+  setRef: PropTypes.func,
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
     PropTypes.bool,
   ]),
-  focus: PropTypes.bool,
-  validate: PropTypes.func, // check if isValid, return error message
-  required: PropTypes.bool,
-  submitted: PropTypes.bool,
-  info: PropTypes.string,
 }
 
-export default Checkbox
+export default Field(Checkbox)

@@ -2,96 +2,26 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
-import { Row, Slider, Info } from 'instruments'
+import { Row, Slider, Field } from 'instruments'
 
 class NumberField extends React.Component {
-  constructor(props) {
-    super(props)
-    this.timeout = null
-    this.onChange = this.onChange.bind(this)
-    this.validate = this.validate.bind(this)
-    this.showError = this.showError.bind(this)
-    this.slider = this.slider.bind(this)
+  validate = this.validate.bind(this)
+  slider = this.slider.bind(this)
 
-    const { id, name } = this.props
-    this.state = {
-      id: id || name,
-      showError: false,
-      touched: null,
-    }
-  }
-
-  componentDidMount() {
-    const { focus, value } = this.props
-    if (focus) this.field.focus()
-    this.validate({ value }) // adds required fields to form
-  }
-
-  componentWillReceiveProps({ value, error, submitted }) {
-    const set = {}
-    // show error on submit
-    if (submitted && !this.props.submitted) set.showError = true
-
+  componentWillReceiveProps({ value }) {
     if (value !== this.props.value) {
-      set.showError = false
-
       // run validation
-      this.validate({ value, error })
-
-      // show error after 3 seconds of stopped typing
-      if (this.timeout) clearTimeout(this.timeout)
-      this.timeout = setTimeout(() => {
-        this.showError()
-        clearTimeout(this.timeout)
-      }, 3000)
-
-      set.touched = true
+      this.validate(value)
     }
-
-    this.setState(set)
   }
 
-  // should probably switch this to pull the props that don't change, and then json.stringify
-  // NOTE: if any new props are passed in that are meant to be reactive, won't work.
-  shouldComponentUpdate({ value, error, submitted }, { showError, touched }) {
-    if (value !== this.props.value) return true
-    if (error !== this.props.error) return true
-    if (submitted !== this.props.submitted) return true
-    if (showError !== this.state.showError) return true
-    if (touched !== this.state.touched) return true
-    return false
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timeout)
-  }
-
-  onChange(e) {
-    const { name, onChange } = this.props
-    const value = e.target.value
-    onChange(name, value)
-  }
-
-  showError(showError = true) {
-    if (showError === this.state.showError) return
-    this.setState({ showError })
-  }
-
-  validate({ value }) {
-    const {
-      validate,
-      name,
-      updateErrors,
-      required,
-      min,
-      max,
-      step,
-    } = this.props
+  validate(value) {
+    const { validate, name, updateErrors, min, max, step } = this.props
     let e
 
-    if (required && (typeof value !== 'boolean' && !value)) {
-      e = name.charAt(0).toUpperCase() + name.slice(1) + ' is required'
-    } else if (value) {
+    // must be first
+    if (validate) e = validate(value)
+    if (value) {
       if (isNaN(value)) e = 'Please enter a number'
       else if (value < min) e = 'The minimum possible value is ' + min
       else if (value > max) e = 'The maximum possible value is ' + max
@@ -105,8 +35,6 @@ class NumberField extends React.Component {
             ' and ' +
             (Number(value) + (step - d))
         }
-      } else if (validate) {
-        e = validate(value)
       }
     }
 
@@ -114,8 +42,8 @@ class NumberField extends React.Component {
   }
 
   slider(value) {
-    const { name, onChange } = this.props
-    onChange(name, value)
+    const { onChange } = this.props
+    onChange(null, value)
   }
 
   render() {
@@ -127,18 +55,18 @@ class NumberField extends React.Component {
       value,
       title,
       label,
+      id,
       className,
+      onBlur,
+      onChange,
+      setRef,
       min,
       max,
       defaultValue,
       step,
       slider,
       units,
-      info,
     } = this.props
-    const { id, showError, touched } = this.state
-    const err = showError && !!error
-
     const valueProps = {
       min,
       max,
@@ -147,19 +75,8 @@ class NumberField extends React.Component {
     }
     const width = max.toString().length * 2.2
     return (
-      <div
-        className={classnames(
-          s.field,
-          err ? s.error : null,
-          required ? s.required : null,
-          className
-        )}>
-        {label ? (
-          <label htmlFor={id}>
-            {label}
-            <Info>{info}</Info>
-          </label>
-        ) : null}
+      <div className={classnames(s.field, className)}>
+        {label}
         <Row justify="flex-start">
           <input
             type="number"
@@ -167,10 +84,10 @@ class NumberField extends React.Component {
             id={id}
             placeholder={placeholder}
             required={required}
-            onChange={this.onChange}
+            onChange={onChange}
             title={title}
-            onBlur={touched ? () => this.showError(true) : null}
-            ref={ref => (this.field = ref)}
+            onBlur={onBlur}
+            ref={setRef}
             style={{ width: `${width}rem` }}
             {...valueProps}
           />
@@ -183,7 +100,7 @@ class NumberField extends React.Component {
             />
           )}
         </Row>
-        {err && <div className={s.errorMsg}>{error}</div>}
+        {error}
       </div>
     )
   }
@@ -193,29 +110,24 @@ NumberField.propTypes = {
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
-  onChange: PropTypes.func.isRequired, // pass in key value update function
-  validate: PropTypes.func, // check if isValid, return error message
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
+  validate: PropTypes.func,
   required: PropTypes.bool,
   focus: PropTypes.bool,
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  label: PropTypes.element,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string,
-  error: PropTypes.string,
+  error: PropTypes.element,
   className: PropTypes.string,
   updateErrors: PropTypes.func,
-  submitted: PropTypes.bool,
+  setRef: PropTypes.func,
   min: PropTypes.number,
   max: PropTypes.number,
   defaultValue: PropTypes.number,
   step: PropTypes.number,
   slider: PropTypes.bool,
   units: PropTypes.string,
-  info: PropTypes.string,
 }
 
-NumberField.defaultProps = {
-  value: '',
-  label: '',
-}
-
-export default NumberField
+export default Field(NumberField)

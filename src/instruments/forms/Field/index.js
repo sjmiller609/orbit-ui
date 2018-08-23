@@ -67,8 +67,12 @@ const Field = Component => {
       clearTimeout(this.timeout)
     }
 
-    onChange(e) {
+    onChange(e, v) {
       const { name, onChange } = this.props
+      if (v || typeof v === 'boolean') {
+        onChange(name, v)
+        return
+      }
       const value =
         typeof e.target.value === 'string'
           ? e.target.value.trim()
@@ -143,7 +147,11 @@ const Field = Component => {
     required: PropTypes.bool,
     focus: PropTypes.bool,
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.bool,
+    ]),
     title: PropTypes.string,
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     className: PropTypes.string,

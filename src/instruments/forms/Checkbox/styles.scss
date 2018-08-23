@@ -38,7 +38,7 @@
     &.on {
       background-color: $beige;
       &:hover .check {
-        transform: rotate(45deg) scale(1) translate(-10%, -7%);
+        transform: rotate(45deg) scale(0.9);
       }
       .check {
         transform: rotate(45deg) scale(1);
@@ -64,11 +64,6 @@
       color: $green;
       @include font($f700);
       font-size: 1em;
-
-      //  @include hoverColor($lightGreen);
     }
-  }
-  .required label {
-    @include font($f700);
   }
 }
