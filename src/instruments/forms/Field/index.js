@@ -69,14 +69,11 @@ const Field = Component => {
 
     onChange(e, v) {
       const { name, onChange } = this.props
-      if (v || typeof v === 'boolean') {
+      if (!e) {
         onChange(name, v)
         return
       }
-      const value =
-        typeof e.target.value === 'string'
-          ? e.target.value.trim()
-          : e.target.value
+      const value = e.target.value
       onChange(name, value)
     }
 

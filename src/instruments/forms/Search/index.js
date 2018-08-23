@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import s from './styles.scss'
 // NOTE: Importing field styles from TextField
-import field from '../TextField/styles.scss'
+import field from '../Field/styles.scss'
 import classnames from 'classnames'
 
 import { LoadingDots } from 'instruments'

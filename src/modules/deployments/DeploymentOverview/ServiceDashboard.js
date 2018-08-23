@@ -7,6 +7,7 @@ import s from './styles.scss'
 
 const ServiceDashboard = ({ url, title, icon, text, loading }) => {
   const to = !loading ? url : null
+
   return (
     <CardForm
       title={title}

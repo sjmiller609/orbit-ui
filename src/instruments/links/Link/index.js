@@ -16,7 +16,7 @@ class Link extends React.Component {
   path = null
 
   componentWillMount() {
-    const { arrow, backArrow, to, activeClassName } = this.props
+    const { arrow, backArrow, to, activeClassName, newTab } = this.props
     this.arr = arrow && <Icon className={s.arrow} icon={arrow} />
     this.backArr = backArrow && (
       <Icon className={s.backArrow} icon={backArrow} />
@@ -24,7 +24,20 @@ class Link extends React.Component {
 
     this.external = externalUrl(to)
     this.path = typeof to === 'object' ? to.pathname : to || ''
-    if (this.external) return
+    if (!to || this.external) {
+      this.component = ({ to, className, onClick, children }) => {
+        const aProps = {
+          onClick,
+          className,
+        }
+        if (to) {
+          aProps.href = to
+          aProps.target = newTab === false ? null : '_blank'
+        }
+        return <a {...aProps}>{children}</a>
+      }
+      return
+    }
     const hash = ~this.path.indexOf('#')
     if (hash) {
       this.component = activeClassName ? NavHashLink : HashLink
@@ -55,18 +68,7 @@ class Link extends React.Component {
       target: newTab ? '_blank' : null,
     }
 
-    const Component =
-      to && !this.external
-        ? this.component
-        : ({ to, className, onClick, children }) => (
-            <a
-              onClick={onClick}
-              className={className}
-              href={to}
-              target={newTab === false ? null : '_blank'}>
-              {children}
-            </a>
-          )
+    const Component = this.component
     return (
       <Component {...newProps}>
         <React.Fragment>

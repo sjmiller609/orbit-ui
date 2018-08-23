@@ -7,13 +7,13 @@ import {
   Form,
   TextField,
   TextArea,
+  TextFieldSelect,
   NumberField,
   B,
   P,
   Mini,
   ShowDate,
   FormSection,
-  Checkbox,
 } from 'instruments'
 
 import Update from '../Data/Update'
@@ -46,7 +46,6 @@ const Configure = ({ form, deployment }) => {
           label="Description"
           {...form.field('description')}
         />
-        <Checkbox label="test" required {...form.field('test')} />
       </FormSection>
       <FormSection id="workers" title="Celery Workers">
         <NumberField
@@ -74,6 +73,12 @@ const Configure = ({ form, deployment }) => {
       </FormSection>
       <FormSection id="env" title="Environment Variables">
         <P>env variables...</P>
+        <TextFieldSelect
+          placeholder="Variable"
+          label="Variable Name"
+          options={['a', 'aa', 'b', 'c']}
+          {...form.field('env')}
+        />
       </FormSection>
     </CardForm>
   )
