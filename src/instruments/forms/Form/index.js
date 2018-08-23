@@ -39,9 +39,9 @@ const Form = FormComponent => {
       const set = {
         data: {
           ...this.state.data,
-          submitted: false,
           [key]: value,
         },
+        submitted: false,
       }
 
       this.setState(set)

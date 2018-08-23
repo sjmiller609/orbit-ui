@@ -15,6 +15,7 @@ export { default as Site } from './layouts/Site'
 export { default as Loading } from './loading/Loading'
 export { default as LoadingDots } from './loading/LoadingDots'
 
+export { default as Field } from './forms/Field'
 export { default as Search } from './forms/Search'
 export { default as Form } from './forms/Form'
 export { default as TextField } from './forms/TextField'
