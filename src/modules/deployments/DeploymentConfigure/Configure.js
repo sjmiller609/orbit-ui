@@ -9,14 +9,17 @@ import {
   TextArea,
   TextFieldSelect,
   NumberField,
+  Select,
   B,
   P,
   Mini,
   ShowDate,
   FormSection,
+  Icon,
 } from 'instruments'
 
 import Update from '../Data/Update'
+import { default as WorkerSize, workerSizes } from './WorkerSize'
 
 const Configure = ({ form, deployment }) => {
   return (
@@ -48,6 +51,16 @@ const Configure = ({ form, deployment }) => {
         />
       </FormSection>
       <FormSection id="workers" title="Celery Workers">
+        <Select
+          {...form.field('workerSize')}
+          label="Worker Size"
+          required
+          className={s.workers}
+          defaultValue="small"
+          Component={WorkerSize}
+          options={workerSizes}
+          info="The worker size will..."
+        />
         <NumberField
           label="Worker Count"
           required
