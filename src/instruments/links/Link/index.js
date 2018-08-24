@@ -2,7 +2,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { NavLink, Link as Link2 } from 'react-router-dom'
-import { NavHashLink, HashLink } from 'react-router-hash-link'
 import s from './styles.scss'
 import classnames from 'classnames'
 import { Icon } from 'instruments'
@@ -38,12 +37,8 @@ class Link extends React.Component {
       }
       return
     }
-    const hash = ~this.path.indexOf('#')
-    if (hash) {
-      this.component = activeClassName ? NavHashLink : HashLink
-    } else {
-      this.component = activeClassName ? NavLink : Link2
-    }
+
+    this.component = activeClassName ? NavLink : Link2
   }
   render() {
     /* eslint-disable react/display-name */

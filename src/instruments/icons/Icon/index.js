@@ -5,7 +5,9 @@ import { LoadImg } from 'instruments'
 
 class Icon extends React.Component {
   state = {
-    Img: LoadImg(() => import(`./img/${this.props.icon}.svg`)),
+    Img: LoadImg(() =>
+      import(/* webpackPrefetch: true */ `./img/${this.props.icon}.svg`)
+    ),
   }
 
   render() {

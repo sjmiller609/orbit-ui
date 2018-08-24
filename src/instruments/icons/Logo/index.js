@@ -18,7 +18,9 @@ class Logo extends React.Component {
     path += darkBg ? 'darkBg' : 'lightBg'
 
     this.setState({
-      Img: LoadImg(() => import(`./img/${path}.svg`)),
+      Img: LoadImg(() =>
+        import(/* webpackPrefetch: true */ `./img/${path}.svg`)
+      ),
     })
   }
 
