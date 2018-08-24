@@ -53,8 +53,6 @@ class TextFieldSelect extends React.Component {
     let e
     // must be first
     if (validate) e = validate(value)
-    // if (value) {
-    // }
 
     updateErrors(name, e)
   }
@@ -76,7 +74,11 @@ class TextFieldSelect extends React.Component {
     if (i < 1) i = l + i
     else if (i > l) i = i - l
     this.setState({ index: i })
-    if (i > 0) this.open()
+    if (i > 0) {
+      this.open()
+      const { value, onChange } = this.props
+      if (value) onChange(null, '') // reset on scroll
+    }
   }
 
   render() {
