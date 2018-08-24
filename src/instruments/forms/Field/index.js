@@ -3,6 +3,7 @@ import React from 'react'
 import classnames from 'classnames'
 import s from './styles.scss'
 import { Info } from 'instruments'
+import { unCamelCase } from 'helpers/format'
 
 const Field = Component => {
   class Field extends React.Component {
@@ -86,7 +87,7 @@ const Field = Component => {
       const { validate, name, required } = this.props
 
       if (required && (typeof value !== 'boolean' && !value)) {
-        return name.charAt(0).toUpperCase() + name.slice(1) + ' is required'
+        return unCamelCase(name) + ' is required'
       }
       if (value && validate) {
         return validate(value)
