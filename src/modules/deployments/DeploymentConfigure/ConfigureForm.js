@@ -86,7 +86,6 @@ const Configure = ({ form, deployment }) => {
         />
       </FormSection>
       <FormSection id="env" title="Environment Variables">
-        <P>env variables...</P>
         <TextFieldSelect
           placeholder="Variable"
           label="Variable Name"

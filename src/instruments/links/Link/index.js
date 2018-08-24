@@ -24,8 +24,9 @@ class Link extends React.Component {
     this.external = externalUrl(to)
     this.path = typeof to === 'object' ? to.pathname : to || ''
     if (!to || this.external) {
-      this.component = ({ to, className, onClick, children }) => {
+      this.component = ({ to, className, title, onClick, children }) => {
         const aProps = {
+          title,
           onClick,
           className,
         }
