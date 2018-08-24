@@ -11,7 +11,6 @@ import {
   NumberField,
   Select,
   B,
-  P,
   Mini,
   ShowDate,
   FormSection,
@@ -33,7 +32,7 @@ const Configure = ({ form, deployment }) => {
         {deployment && (
           <Mini className={s.info}>
             <span>{deployment.type}</span> deployment{' '}
-            <B>{deployment.releaseName}</B> deployed on{' '}
+            <B>{deployment.releaseName}</B> deployed{' '}
             <ShowDate date={deployment.createdAt} />
           </Mini>
         )}

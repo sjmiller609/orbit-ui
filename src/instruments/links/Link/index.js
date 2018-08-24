@@ -6,6 +6,7 @@ import s from './styles.scss'
 import classnames from 'classnames'
 import { Icon } from 'instruments'
 import { externalUrl } from './helpers'
+import A from './A'
 
 class Link extends React.Component {
   component = null
@@ -15,7 +16,7 @@ class Link extends React.Component {
   path = null
 
   componentWillMount() {
-    const { arrow, backArrow, to, activeClassName, newTab } = this.props
+    const { arrow, backArrow, to, activeClassName } = this.props
     this.arr = arrow && <Icon className={s.arrow} icon={arrow} />
     this.backArr = backArrow && (
       <Icon className={s.backArrow} icon={backArrow} />
@@ -23,23 +24,9 @@ class Link extends React.Component {
 
     this.external = externalUrl(to)
     this.path = typeof to === 'object' ? to.pathname : to || ''
-    if (!to || this.external) {
-      this.component = ({ to, className, title, onClick, children }) => {
-        const aProps = {
-          title,
-          onClick,
-          className,
-        }
-        if (to) {
-          aProps.href = to
-          aProps.target = newTab === false ? null : '_blank'
-        }
-        return <a {...aProps}>{children}</a>
-      }
-      return
-    }
 
-    this.component = activeClassName ? NavLink : Link2
+    if (!to || this.external) this.component = A
+    else this.component = activeClassName ? NavLink : Link2
   }
   render() {
     /* eslint-disable react/display-name */
