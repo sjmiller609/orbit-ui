@@ -15,27 +15,28 @@ import {
   Mini,
   ShowDate,
   FormSection,
-  Icon,
 } from 'instruments'
 
-import Update from '../Data/Update'
 import { default as WorkerSize, workerSizes } from './WorkerSize'
 
+// This form is used for both Update and Create mutations
 const Configure = ({ form, deployment }) => {
   return (
     <CardForm
       title="Configure"
       button={{
         save: form.save,
-        text: 'Update',
+        text: deployment ? 'Update' : 'Save',
       }}
       className={s.card}>
       <FormSection id="info">
-        <Mini className={s.info}>
-          <span>{deployment.type}</span> deployment{' '}
-          <B>{deployment.releaseName}</B> deployed on{' '}
-          <ShowDate date={deployment.createdAt} />
-        </Mini>
+        {deployment && (
+          <Mini className={s.info}>
+            <span>{deployment.type}</span> deployment{' '}
+            <B>{deployment.releaseName}</B> deployed on{' '}
+            <ShowDate date={deployment.createdAt} />
+          </Mini>
+        )}
         <TextField
           type="text"
           placeholder="Deployment Name"
@@ -102,4 +103,4 @@ Configure.propTypes = {
   deployment: PropTypes.object,
 }
 
-export default Update(Form(Configure))
+export default Form(Configure)

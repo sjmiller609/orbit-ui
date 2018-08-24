@@ -36,10 +36,8 @@ class Select extends React.Component {
     const {
       name,
       error,
-
       required,
       value,
-      title,
       label,
       id,
       className,
