@@ -8,6 +8,7 @@ import { searchText } from 'helpers/compare'
 
 class TextFieldSelect extends React.Component {
   timeout = null
+  menu = {}
   validate = this.validate.bind(this)
   blur = this.blur.bind(this)
   open = this.open.bind(this)
@@ -36,6 +37,14 @@ class TextFieldSelect extends React.Component {
   }
   componentWillUnmount() {
     clearTimeout(this.timeout)
+  }
+
+  componentDidMount() {
+    const el = document.getElementById(this.props.name + 'Menu')
+    this.menu = {
+      el,
+      height: el.offsetHeight,
+    }
   }
 
   blur() {
@@ -78,6 +87,18 @@ class TextFieldSelect extends React.Component {
       this.open()
       const { value, onChange } = this.props
       if (value) onChange(null, '') // reset on scroll
+    }
+
+    // scroll into view
+    const el = document.getElementById((this.props.name + (i + 1)).toString())
+    if (!el) return
+
+    const top = el.offsetTop
+
+    if (this.menu.height + this.menu.el.scrollTop < top) {
+      this.menu.el.scrollTop = top - this.menu.height
+    } else if (this.menu.el.scrollTop + el.offsetHeight > top) {
+      this.menu.el.scrollTop = top - el.offsetHeight * 2
     }
   }
 
@@ -126,10 +147,11 @@ class TextFieldSelect extends React.Component {
           autoComplete="off"
         />
         <div className={s.menuWrapper}>
-          <Card className={s.menu}>
+          <Card className={s.menu} id={name + 'Menu'}>
             <MenuList>
               {options.map((o, i) => (
                 <Item
+                  id={(name + (i + 1)).toString()}
                   onClick={() => this.select(o)}
                   key={o}
                   active={index === i + 1}>

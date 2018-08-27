@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const A = ({ to, title, className, onClick, children, target }) => {
+const A = ({ to, title, className, onClick, children, target, id }) => {
   const aProps = {
+    id,
     title,
     onClick,
     className,
@@ -25,6 +26,7 @@ A.propTypes = {
   to: PropTypes.string,
   title: PropTypes.string,
   className: PropTypes.string,
+  id: PropTypes.string,
 }
 
 export default A
