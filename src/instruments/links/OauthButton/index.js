@@ -8,24 +8,24 @@ import classnames from 'classnames'
 const services = {
   google: {
     text: ' with Google',
-    img: 'google.svg',
+    img: LoadImg(() => import(`./img/google.svg`)),
     className: 'google',
   },
   github: {
     text: ' with Github',
-    img: 'github.svg',
+    img: LoadImg(() => import(`./img/github.svg`)),
     className: 'github',
   },
   auth0: {
     text: ' with Auth0',
-    img: 'auth0.svg',
+    img: LoadImg(() => import(`./img/auth0.svg`)),
     className: 'auth0',
   },
 }
 
 const OauthButton = ({ service, login, to, className, ...props }) => {
   const oauth = services[service]
-  const Img = LoadImg(() => import(`./img/${oauth.img}`))
+  const Img = oauth.img
   return (
     <Link
       {...props}

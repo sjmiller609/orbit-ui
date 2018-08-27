@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Page, Box, H1, H4, TextButton } from 'instruments'
+import { Page, Box, H1, H4, TextButton, LoadImg } from 'instruments'
 
-import astronaut from './astronaut.svg'
+const astronaut = LoadImg(() => import(`./astronaut.svg`))
 
 import s from './styles.scss'
 

@@ -3,9 +3,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Card, Block1, Link, P } from 'instruments'
-import astronaut from './astronaut.svg'
+import { Card, Block1, Link, P, LoadImg } from 'instruments'
 import s from './styles.scss'
+
+const astronaut = LoadImg(() => import(`./astronaut.svg`))
 
 const CardError = ({ children, retry, className }) => {
   const onClick = retry || (() => window.location.reload())

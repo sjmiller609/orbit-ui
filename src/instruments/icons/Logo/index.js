@@ -6,6 +6,15 @@ import { Link, LoadImg } from 'instruments'
 
 import s from './styles.scss'
 
+const map = {
+  A_darkBg: LoadImg(() => import(`./img/A_darkBg.svg`)),
+  A_lightBg: LoadImg(() => import(`./img/A_lightBg.svg`)),
+  A_stars_darkBg: LoadImg(() => import(`./img/A_stars_darkBg.svg`)),
+  A_stars_lightBg: LoadImg(() => import(`./img/A_stars_lightBg.svg`)),
+  Astro_darkBg: LoadImg(() => import(`./img/Astro_darkBg.svg`)),
+  Astro_lightBg: LoadImg(() => import(`./img/Astro_lightBg.svg`)),
+}
+
 class Logo extends React.Component {
   state = {
     Img: null,
@@ -18,9 +27,7 @@ class Logo extends React.Component {
     path += darkBg ? 'darkBg' : 'lightBg'
 
     this.setState({
-      Img: LoadImg(() =>
-        import(/* webpackPrefetch: true */ `./img/${path}.svg`)
-      ),
+      Img: map[path],
     })
   }
 
