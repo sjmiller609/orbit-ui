@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 import { Load } from 'instruments'
 import Data from '../Data'
@@ -20,25 +20,29 @@ const User = ({ users, menu, title }) => {
 
   return (
     <Module metaTitle={title + ' | ' + user.username} menu={menu}>
-      <Route
-        path={path + '/configure'}
-        exact
-        render={() => {
-          const Configure = Load(() =>
-            import(/* webpackPrefetch: true */ '../UserConfigure')
-          )
-          return <Configure user={user} />
-        }}
-      />
-      <Route
-        path={path}
-        exact
-        render={() => {
-          return <Redirect to={path + '/configure'} />
-          // const Overview = Load(() => import(/* webpackPrefetch: true */ '../UserOverview'))
-          // return <Overview user={user} />
-        }}
-      />
+      <Switch>
+        <Route
+          path={path + '/configure'}
+          exact
+          render={() => {
+            const Configure = Load(() =>
+              import(/* webpackPrefetch: true */ '../UserConfigure')
+            )
+            return <Configure user={user} />
+          }}
+        />
+        <Route
+          path={path}
+          exact
+          render={() => {
+            return <Redirect to={path + '/configure'} />
+            // const Overview = Load(() => import(/* webpackPrefetch: true */ '../UserOverview'))
+            // return <Overview user={user} />
+          }}
+        />
+
+        <Redirect to="/404" />
+      </Switch>
     </Module>
   )
 }

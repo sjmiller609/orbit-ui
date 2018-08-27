@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Route } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 // import DeploymentConfigure from '../DeploymentConfigure'
 // import DeploymentOverview from '../DeploymentOverview'
@@ -22,35 +22,38 @@ const Deployment = ({ deployments, menu, title }) => {
 
   return (
     <Module metaTitle={title + ' | ' + deployment.label} menu={menu}>
-      <Route
-        path={path + '/configure'}
-        exact
-        render={() => {
-          const Configure = Load(() =>
-            import(/* webpackPrefetch: true */ '../DeploymentConfigure')
-          )
-          return <Configure deployment={deployment} />
-        }}
-      />
-      <Route
-        path={path}
-        exact
-        render={() => {
-          const Overview = Load(() =>
-            import(/* webpackPrefetch: true */ '../DeploymentOverview')
-          )
-          return <Overview deployment={deployment} />
-        }}
-      />
-      {/* <Route
-        path={path + '/logs'}
-        exact
-        render={() => {
+      <Switch>
+        <Route
+          path={path + '/configure'}
+          exact
+          render={() => {
+            const Configure = Load(() =>
+              import(/* webpackPrefetch: true */ '../DeploymentConfigure')
+            )
+            return <Configure deployment={deployment} />
+          }}
+        />
+        <Route
+          path={path}
+          exact
+          render={() => {
+            const Overview = Load(() =>
+              import(/* webpackPrefetch: true */ '../DeploymentOverview')
+            )
+            return <Overview deployment={deployment} />
+          }}
+        />
+        {/* <Route
+          path={path + '/logs'}
+          exact
+          render={() => {
           const Logs = Load(() => import(/* webpackPrefetch: true */
-      /* 'modules/logs/DeploymentLogs'))
-        return <Logs deployment={deployment} />
-      }}
-      /> */}
+        /* 'modules/logs/DeploymentLogs'))
+          return <Logs deployment={deployment} />
+          }}
+        /> */}
+        <Redirect to="/404" />
+      </Switch>
     </Module>
   )
 }

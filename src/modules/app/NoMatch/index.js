@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Page, Box, H1, H4, TextButton, LoadImg } from 'instruments'
 
-const astronaut = LoadImg(() => import(`./astronaut.svg`))
+const Astronaut = LoadImg(() => import(`./astronaut.svg`))
 
 import s from './styles.scss'
 
@@ -21,7 +21,7 @@ const NoMatch = ({ location }) => {
   return (
     <Page metaTitle={title + ' | Astronomer'}>
       <Box full className={s.noMatch}>
-        <img src={astronaut} className={s.img} title={title} />
+        <Astronaut className={s.img} title={title} />
         <H1>Oh snap!</H1>
         <H4>{msg}</H4>
         <TextButton to="/" backArrow="arrow">
