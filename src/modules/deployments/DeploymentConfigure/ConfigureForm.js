@@ -18,7 +18,8 @@ import {
 
 import { default as WorkerSize, workerSizes } from './WorkerSize'
 
-import info from '../docs'
+import info from '../_docs'
+const envVars = Object.keys(info.env)
 
 // This form is used for both Update and Create mutations
 const Configure = ({ form, deployment }) => {
@@ -90,7 +91,7 @@ const Configure = ({ form, deployment }) => {
         <TextFieldSelect
           placeholder="Variable"
           label="Variable Name"
-          options={['a', 'aa', 'b', 'c']}
+          options={envVars}
           {...form.field('env')}
         />
       </FormSection>
