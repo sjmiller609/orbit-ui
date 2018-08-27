@@ -2,19 +2,23 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
-import { Field, Backdrop, MenuList, Item, Card, TextButton } from 'instruments'
+import { Field, Backdrop, MenuList, Item, Card } from 'instruments'
 
 import { searchText } from 'helpers/compare'
 
 class TextFieldSelect extends React.Component {
   timeout = null
   menu = {}
+  field = null
   validate = this.validate.bind(this)
   blur = this.blur.bind(this)
   open = this.open.bind(this)
+  clear = this.clear.bind(this)
   select = this.select.bind(this)
+  setRef = this.setRef.bind(this)
   nav = this.nav.bind(this)
   state = {
+    cache: this.props.value,
     menu: false,
     out: true,
     index: 0,
@@ -28,7 +32,11 @@ class TextFieldSelect extends React.Component {
       // filter options
       // have to prefilter to get list length
       const list = options.filter(o => !value || searchText(value, o))
-      this.setState({ options: list })
+      const set = {
+        options: list,
+      }
+      if (list.length === 0 && this.state.menu) set.menu = false
+      this.setState(set)
     }
   }
   componentWillUpdate(nextProps, nextState) {
@@ -46,15 +54,25 @@ class TextFieldSelect extends React.Component {
       height: el.offsetHeight,
     }
   }
+  setRef(ref) {
+    this.field = ref
+    this.props.setRef(ref)
+  }
+
+  clear() {
+    this.props.onChange(null, '')
+    this.open('clear')
+  }
 
   blur() {
     this.setState({ menu: false, index: 0 })
   }
 
-  open() {
-    const { menu } = this.state
-    if (menu) return
+  open(how) {
+    const { menu, options } = this.state
+    if (menu || (how !== 'clear' && options.length === 0)) return
     this.setState({ menu: true, out: false })
+    this.field.focus()
   }
 
   validate(value) {
@@ -71,23 +89,27 @@ class TextFieldSelect extends React.Component {
     this.blur()
   }
   nav(e) {
+    this.open()
+
     let i = this.state.index
     if (e.keyCode === 40) i += 1
     else if (e.keyCode === 38) i += -1
     else if (e.keyCode === 13) {
       this.select(this.state.options[i - 1])
       e.preventDefault()
+      return
     } else return
 
-    const l = this.state.options.length
+    const { options } = this.state
+    const l = options.length
     if (i < 1) i = l + i
     else if (i > l) i = i - l
-    this.setState({ index: i })
+
     if (i > 0) {
-      this.open()
-      const { value, onChange } = this.props
-      if (value) onChange(null, '') // reset on scroll
+      this.clear()
     }
+
+    this.setState({ index: i })
 
     // scroll into view
     const el = document.getElementById((this.props.name + (i + 1)).toString())
@@ -115,7 +137,6 @@ class TextFieldSelect extends React.Component {
       className,
       onBlur,
       onChange,
-      setRef,
     } = this.props
     const { menu, out, index, options } = this.state
     return (
@@ -141,11 +162,16 @@ class TextFieldSelect extends React.Component {
           title={title}
           onBlur={onBlur}
           onFocus={this.open}
-          ref={setRef}
+          ref={this.setRef}
           className={s.selector}
           onKeyDown={this.nav}
           autoComplete="off"
         />
+        {value && (
+          <div className={s.clear} onClick={this.clear}>
+            x
+          </div>
+        )}
         <div className={s.menuWrapper}>
           <Card className={s.menu} id={name + 'Menu'}>
             <MenuList>
@@ -158,11 +184,6 @@ class TextFieldSelect extends React.Component {
                   {o}
                 </Item>
               ))}
-              {options.length === 0 && (
-                <TextButton onClick={() => this.select('')}>
-                  Clear Selection
-                </TextButton>
-              )}
             </MenuList>
           </Card>
         </div>
