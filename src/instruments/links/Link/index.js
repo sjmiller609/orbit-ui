@@ -2,11 +2,11 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { NavLink, Link as Link2 } from 'react-router-dom'
-import { NavHashLink, HashLink } from 'react-router-hash-link'
 import s from './styles.scss'
 import classnames from 'classnames'
 import { Icon } from 'instruments'
 import { externalUrl } from './helpers'
+import A from './A'
 
 class Link extends React.Component {
   component = null
@@ -16,7 +16,7 @@ class Link extends React.Component {
   path = null
 
   componentWillMount() {
-    const { arrow, backArrow, to, activeClassName, newTab } = this.props
+    const { arrow, backArrow, to, activeClassName } = this.props
     this.arr = arrow && <Icon className={s.arrow} icon={arrow} />
     this.backArr = backArrow && (
       <Icon className={s.backArrow} icon={backArrow} />
@@ -24,26 +24,9 @@ class Link extends React.Component {
 
     this.external = externalUrl(to)
     this.path = typeof to === 'object' ? to.pathname : to || ''
-    if (!to || this.external) {
-      this.component = ({ to, className, onClick, children }) => {
-        const aProps = {
-          onClick,
-          className,
-        }
-        if (to) {
-          aProps.href = to
-          aProps.target = newTab === false ? null : '_blank'
-        }
-        return <a {...aProps}>{children}</a>
-      }
-      return
-    }
-    const hash = ~this.path.indexOf('#')
-    if (hash) {
-      this.component = activeClassName ? NavHashLink : HashLink
-    } else {
-      this.component = activeClassName ? NavLink : Link2
-    }
+
+    if (!to || this.external) this.component = A
+    else this.component = activeClassName ? NavLink : Link2
   }
   render() {
     /* eslint-disable react/display-name */
@@ -65,7 +48,7 @@ class Link extends React.Component {
       to,
       className: classnames(s.link, style && s[style], className),
       onClick,
-      target: newTab ? '_blank' : null,
+      target: newTab ? '_blank' : newTab,
     }
 
     const Component = this.component

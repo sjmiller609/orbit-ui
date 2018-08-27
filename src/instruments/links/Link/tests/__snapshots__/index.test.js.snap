@@ -4,13 +4,11 @@ exports[`Link displays arrow icon when \`arrow\` is specified 1`] = `
 <Link
   arrow="arrow"
 >
-  <Component
+  <A
     className="link"
-    target={null}
   >
     <a
       className="link"
-      target="_blank"
     >
       text
       <Icon
@@ -24,12 +22,14 @@ exports[`Link displays arrow icon when \`arrow\` is specified 1`] = `
             className="arrow"
             loadable={
               Object {
-                "done": false,
+                "done": true,
                 "importFunction": [Function],
                 "load": [Function],
                 "mark": Array [],
-                "ok": false,
-                "payload": undefined,
+                "ok": true,
+                "payload": Object {
+                  "process": [Function],
+                },
                 "promise": Promise {},
                 "reset": [Function],
               }
@@ -42,12 +42,14 @@ exports[`Link displays arrow icon when \`arrow\` is specified 1`] = `
               exportPicker={[Function]}
               loadable={
                 Object {
-                  "done": false,
+                  "done": true,
                   "importFunction": [Function],
                   "load": [Function],
                   "mark": Array [],
-                  "ok": false,
-                  "payload": undefined,
+                  "ok": true,
+                  "payload": Object {
+                    "process": [Function],
+                  },
                   "promise": Promise {},
                   "reset": [Function],
                 }
@@ -57,14 +59,18 @@ exports[`Link displays arrow icon when \`arrow\` is specified 1`] = `
             >
               <img
                 className="arrow"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                src={
+                  Object {
+                    "process": [Function],
+                  }
+                }
               />
             </UnconnectedReactImportedComponent>
           </ReactImportedComponent>
         </Imported>
       </Icon>
     </a>
-  </Component>
+  </A>
 </Link>
 `;
 
@@ -72,13 +78,11 @@ exports[`Link displays back arrow icon when \`backArrow\` is specified 1`] = `
 <Link
   backArrow="arrow_darkBg"
 >
-  <Component
+  <A
     className="link"
-    target={null}
   >
     <a
       className="link"
-      target="_blank"
     >
       <Icon
         className="backArrow"
@@ -91,12 +95,14 @@ exports[`Link displays back arrow icon when \`backArrow\` is specified 1`] = `
             className="backArrow"
             loadable={
               Object {
-                "done": false,
+                "done": true,
                 "importFunction": [Function],
                 "load": [Function],
                 "mark": Array [],
-                "ok": false,
-                "payload": undefined,
+                "ok": true,
+                "payload": Object {
+                  "process": [Function],
+                },
                 "promise": Promise {},
                 "reset": [Function],
               }
@@ -109,12 +115,14 @@ exports[`Link displays back arrow icon when \`backArrow\` is specified 1`] = `
               exportPicker={[Function]}
               loadable={
                 Object {
-                  "done": false,
+                  "done": true,
                   "importFunction": [Function],
                   "load": [Function],
                   "mark": Array [],
-                  "ok": false,
-                  "payload": undefined,
+                  "ok": true,
+                  "payload": Object {
+                    "process": [Function],
+                  },
                   "promise": Promise {},
                   "reset": [Function],
                 }
@@ -124,7 +132,11 @@ exports[`Link displays back arrow icon when \`backArrow\` is specified 1`] = `
             >
               <img
                 className="backArrow"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                src={
+                  Object {
+                    "process": [Function],
+                  }
+                }
               />
             </UnconnectedReactImportedComponent>
           </ReactImportedComponent>
@@ -132,7 +144,7 @@ exports[`Link displays back arrow icon when \`backArrow\` is specified 1`] = `
       </Icon>
       text
     </a>
-  </Component>
+  </A>
 </Link>
 `;
 
@@ -145,7 +157,6 @@ exports[`Link is active route 1`] = `
     activeClassName="active"
     aria-current="page"
     className="link"
-    target={null}
     to="/deployments"
   >
     <Route
@@ -155,7 +166,6 @@ exports[`Link is active route 1`] = `
         aria-current={null}
         className="link"
         replace={false}
-        target={null}
         to="/deployments"
       >
         <a
@@ -163,7 +173,6 @@ exports[`Link is active route 1`] = `
           className="link"
           href="/deployments"
           onClick={[Function]}
-          target={null}
         >
           text
         </a>
@@ -177,9 +186,8 @@ exports[`Link is external url - http 1`] = `
 <Link
   to="https://www.astronomer.io"
 >
-  <Component
+  <A
     className="link"
-    target={null}
     to="https://www.astronomer.io"
   >
     <a
@@ -189,7 +197,7 @@ exports[`Link is external url - http 1`] = `
     >
       text
     </a>
-  </Component>
+  </A>
 </Link>
 `;
 
@@ -197,9 +205,8 @@ exports[`Link is external url - naked 1`] = `
 <Link
   to="astronomer.io"
 >
-  <Component
+  <A
     className="link"
-    target={null}
     to="astronomer.io"
   >
     <a
@@ -209,7 +216,7 @@ exports[`Link is external url - naked 1`] = `
     >
       text
     </a>
-  </Component>
+  </A>
 </Link>
 `;
 
@@ -217,9 +224,8 @@ exports[`Link is external url - www 1`] = `
 <Link
   to="www.astronomer.io"
 >
-  <Component
+  <A
     className="link"
-    target={null}
     to="www.astronomer.io"
   >
     <a
@@ -229,7 +235,7 @@ exports[`Link is external url - www 1`] = `
     >
       text
     </a>
-  </Component>
+  </A>
 </Link>
 `;
 
@@ -240,14 +246,12 @@ exports[`Link is internal route - no slash 1`] = `
   <Link
     className="link"
     replace={false}
-    target={null}
     to="deployments"
   >
     <a
       className="link"
       href="deployments"
       onClick={[Function]}
-      target={null}
     >
       text
     </a>
@@ -262,14 +266,12 @@ exports[`Link is internal route - with slash 1`] = `
   <Link
     className="link"
     replace={false}
-    target={null}
     to="/deployments"
   >
     <a
       className="link"
       href="/deployments"
       onClick={[Function]}
-      target={null}
     >
       text
     </a>
@@ -279,16 +281,14 @@ exports[`Link is internal route - with slash 1`] = `
 
 exports[`Link renders correctly 1`] = `
 <Link>
-  <Component
+  <A
     className="link"
-    target={null}
   >
     <a
       className="link"
-      target="_blank"
     >
       text
     </a>
-  </Component>
+  </A>
 </Link>
 `;

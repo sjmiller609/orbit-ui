@@ -3,9 +3,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { LoadImg } from 'instruments'
 
+// need to create a map of icon: LoadImg
+// dynamic path at runtime doesn't work well
+const map = {
+  airflow_astro: LoadImg(() => import(`./img/airflow_astro.svg`)),
+  airflow_ring: LoadImg(() => import(`./img/airflow_ring.svg`)),
+  airflow: LoadImg(() => import(`./img/airflow.svg`)),
+  alien_ship: LoadImg(() => import(`./img/alien_ship.svg`)),
+  arrow_darkBg: LoadImg(() => import(`./img/arrow_darkBg.svg`)),
+  arrow: LoadImg(() => import(`./img/arrow.svg`)),
+  astro_helmet: LoadImg(() => import(`./img/astro_helmet.svg`)),
+  celery: LoadImg(() => import(`./img/celery.svg`)),
+  dag: LoadImg(() => import(`./img/dag.svg`)),
+  flower_astro: LoadImg(() => import(`./img/flower_astro.svg`)),
+  scheduler: LoadImg(() => import(`./img/scheduler.svg`)),
+  stars: LoadImg(() => import(`./img/stars.svg`)),
+  webserver: LoadImg(() => import(`./img/webserver.svg`)),
+}
+
 class Icon extends React.Component {
   state = {
-    Img: LoadImg(() => import(`./img/${this.props.icon}.svg`)),
+    Img: map[this.props.icon],
   }
 
   render() {

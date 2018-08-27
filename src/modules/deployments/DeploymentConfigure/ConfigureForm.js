@@ -9,30 +9,36 @@ import {
   TextArea,
   TextFieldSelect,
   NumberField,
+  Select,
   B,
-  P,
   Mini,
   ShowDate,
   FormSection,
 } from 'instruments'
 
-import Update from '../Data/Update'
+import { default as WorkerSize, workerSizes } from './WorkerSize'
 
+import info from '../_docs'
+const envVars = Object.keys(info.env)
+
+// This form is used for both Update and Create mutations
 const Configure = ({ form, deployment }) => {
   return (
     <CardForm
       title="Configure"
       button={{
         save: form.save,
-        text: 'Update',
+        text: deployment ? 'Update' : 'Save',
       }}
       className={s.card}>
       <FormSection id="info">
-        <Mini className={s.info}>
-          <span>{deployment.type}</span> deployment{' '}
-          <B>{deployment.releaseName}</B> deployed on{' '}
-          <ShowDate date={deployment.createdAt} />
-        </Mini>
+        {deployment && (
+          <Mini className={s.info}>
+            <span>{deployment.type}</span> deployment{' '}
+            <B>{deployment.releaseName}</B> deployed{' '}
+            <ShowDate date={deployment.createdAt} />
+          </Mini>
+        )}
         <TextField
           type="text"
           placeholder="Deployment Name"
@@ -48,6 +54,16 @@ const Configure = ({ form, deployment }) => {
         />
       </FormSection>
       <FormSection id="workers" title="Celery Workers">
+        <Select
+          {...form.field('workerSize')}
+          label="Worker Size"
+          required
+          className={s.workers}
+          defaultValue="small"
+          Component={WorkerSize}
+          options={workerSizes}
+          info={info.workerSize}
+        />
         <NumberField
           label="Worker Count"
           required
@@ -72,11 +88,10 @@ const Configure = ({ form, deployment }) => {
         />
       </FormSection>
       <FormSection id="env" title="Environment Variables">
-        <P>env variables...</P>
         <TextFieldSelect
           placeholder="Variable"
           label="Variable Name"
-          options={['a', 'aa', 'b', 'c']}
+          options={envVars}
           {...form.field('env')}
         />
       </FormSection>
@@ -89,4 +104,4 @@ Configure.propTypes = {
   deployment: PropTypes.object,
 }
 
-export default Update(Form(Configure))
+export default Form(Configure)

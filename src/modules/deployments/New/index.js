@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Configure from './Configure'
+import ConfigureForm from '../DeploymentConfigure/ConfigureForm'
 import Module from '../../app/Module'
+import Create from '../Data/Create'
+
+const Configure = Create(ConfigureForm)
 
 class New extends React.Component {
   title = 'New Deployment'

@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Configure from './Configure'
+import ConfigureForm from './ConfigureForm'
 import Delete from './Delete'
 import { CardMenu } from 'instruments'
+import Update from '../Data/Update'
+
+const Configure = Update(ConfigureForm)
 
 const menu = [
   {

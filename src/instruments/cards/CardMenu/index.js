@@ -10,6 +10,7 @@ import s from './styles.scss'
 class CardMenu extends React.Component {
   pos = 0
   scroll = this.scroll.bind(this)
+  scrollTo = this.scrollTo.bind(this)
   disable = null
   menu = []
   state = {
@@ -62,6 +63,10 @@ class CardMenu extends React.Component {
     const rect = el.getBoundingClientRect()
     if (rect.y <= 16) return true
   }
+  scrollTo(id) {
+    const el = document.getElementById(id)
+    el.scrollIntoView()
+  }
 
   render() {
     const { children, id, title, menu, className } = this.props
@@ -73,6 +78,7 @@ class CardMenu extends React.Component {
           menu={menu}
           title={title}
           active={focus}
+          scrollTo={this.scrollTo}
           className={classnames(sticky && s.sticky)}
         />
 

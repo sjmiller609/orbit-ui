@@ -3,16 +3,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Card, Block1, Link, P } from 'instruments'
-import astronaut from './astronaut.svg'
+import { Card, Block1, Link, P, LoadImg } from 'instruments'
 import s from './styles.scss'
+
+const Astronaut = LoadImg(() => import(`./astronaut.svg`))
 
 const CardError = ({ children, retry, className }) => {
   const onClick = retry || (() => window.location.reload())
   return (
     <Card className={classnames(s.card, className)}>
       <Block1
-        left={<img src={astronaut} className={s.img} />}
+        left={<Astronaut className={s.img} />}
         title="DAG gone it! Something went wrong">
         <P>
           <Link onClick={onClick}>Refresh</Link> to try again. Or if the problem
