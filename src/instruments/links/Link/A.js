@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const A = ({ to, title, className, onClick, children, newTab }) => {
+const A = ({ to, title, className, onClick, children, target }) => {
   const aProps = {
     title,
     onClick,
@@ -9,7 +9,7 @@ const A = ({ to, title, className, onClick, children, newTab }) => {
   }
   if (to) {
     aProps.href = to
-    aProps.target = newTab === false ? null : '_blank'
+    aProps.target = target !== false ? '_blank' : null
   }
   return <a {...aProps}>{children}</a>
 }
@@ -21,7 +21,7 @@ A.propTypes = {
     PropTypes.element,
     PropTypes.array,
   ]),
-  newTab: PropTypes.bool,
+  target: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   to: PropTypes.string,
   title: PropTypes.string,
   className: PropTypes.string,

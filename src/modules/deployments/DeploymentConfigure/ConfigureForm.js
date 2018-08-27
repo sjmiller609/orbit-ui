@@ -18,6 +18,8 @@ import {
 
 import { default as WorkerSize, workerSizes } from './WorkerSize'
 
+import info from '../docs'
+
 // This form is used for both Update and Create mutations
 const Configure = ({ form, deployment }) => {
   return (
@@ -59,7 +61,7 @@ const Configure = ({ form, deployment }) => {
           defaultValue="small"
           Component={WorkerSize}
           options={workerSizes}
-          info="The worker size will..."
+          info={info.workerSize}
         />
         <NumberField
           label="Worker Count"
