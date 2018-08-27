@@ -49,6 +49,7 @@ class Link extends React.Component {
       className: classnames(s.link, style && s[style], className),
       onClick,
       target: newTab ? '_blank' : null,
+      newTab,
     }
 
     const Component = this.component
