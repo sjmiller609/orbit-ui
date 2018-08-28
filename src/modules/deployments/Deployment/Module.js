@@ -7,7 +7,12 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import { Load } from 'instruments'
 import Data from '../Data'
 import Module from '../../app/Module'
-
+const Configure = Load(() =>
+  import(/* webpackPrefetch: true */ '../DeploymentConfigure')
+)
+const Overview = Load(() =>
+  import(/* webpackPrefetch: true */ '../DeploymentOverview')
+)
 const Deployment = ({ deployments, menu, title }) => {
   const deployment = deployments[0]
   // Error handled
@@ -26,22 +31,12 @@ const Deployment = ({ deployments, menu, title }) => {
         <Route
           path={path + '/configure'}
           exact
-          render={() => {
-            const Configure = Load(() =>
-              import(/* webpackPrefetch: true */ '../DeploymentConfigure')
-            )
-            return <Configure deployment={deployment} />
-          }}
+          render={() => <Configure deployment={deployment} />}
         />
         <Route
           path={path}
           exact
-          render={() => {
-            const Overview = Load(() =>
-              import(/* webpackPrefetch: true */ '../DeploymentOverview')
-            )
-            return <Overview deployment={deployment} />
-          }}
+          render={() => <Overview deployment={deployment} />}
         />
         {/* <Route
           path={path + '/logs'}
