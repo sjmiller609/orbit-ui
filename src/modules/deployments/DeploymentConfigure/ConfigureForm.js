@@ -7,19 +7,19 @@ import {
   Form,
   TextField,
   TextArea,
-  TextFieldSelect,
-  NumberField,
-  Select,
+  // TextFieldSelect,
+  // NumberField,
+  // Select,
   B,
   Mini,
   ShowDate,
   FormSection,
 } from 'instruments'
 
-import { default as WorkerSize, workerSizes } from './WorkerSize'
-
-import info from '../info'
-const envVars = Object.keys(info.env)
+// import { default as WorkerSize, workerSizes } from './WorkerSize'
+//
+// import info from '../info'
+//const envVars = Object.keys(info.env)
 
 // This form is used for both Update and Create mutations
 const Configure = ({ form, deployment }) => {
@@ -53,7 +53,7 @@ const Configure = ({ form, deployment }) => {
           {...form.field('description')}
         />
       </FormSection>
-      <FormSection id="workers" title="Celery Workers">
+      {/* <FormSection id="workers" title="Celery Workers">
         <Select
           {...form.field('workerSize')}
           label="Worker Size"
@@ -86,8 +86,8 @@ const Configure = ({ form, deployment }) => {
           step={5}
           info="The worker termination grace period is..."
         />
-      </FormSection>
-      <FormSection id="env" title="Environment Variables">
+        </FormSection>
+        <FormSection id="env" title="Environment Variables">
         <TextFieldSelect
           placeholder="Variable"
           label="Variable Name"
@@ -95,7 +95,7 @@ const Configure = ({ form, deployment }) => {
           className={s.envKey}
           {...form.field('env')}
         />
-      </FormSection>
+      </FormSection> */}
     </CardForm>
   )
 }
