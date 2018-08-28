@@ -92,6 +92,7 @@ const Configure = ({ form, deployment }) => {
           placeholder="Variable"
           label="Variable Name"
           options={envVars}
+          className={s.envKey}
           {...form.field('env')}
         />
       </FormSection>
