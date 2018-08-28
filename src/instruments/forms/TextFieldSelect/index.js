@@ -54,6 +54,21 @@ class TextFieldSelect extends React.Component {
       height: el.offsetHeight,
     }
   }
+  componentDidUpdate() {
+    const i = this.state.index
+    // scroll into view
+    const el = document.getElementById((this.props.name + (i + 1)).toString())
+    if (!el) return
+
+    const top = el.offsetTop
+
+    if (this.menu.height + this.menu.el.scrollTop < top) {
+      this.menu.el.scrollTop = top - this.menu.height
+    } else if (this.menu.el.scrollTop + el.offsetHeight > top) {
+      this.menu.el.scrollTop = top - el.offsetHeight * 2
+    }
+  }
+
   setRef(ref) {
     this.field = ref
     this.props.setRef(ref)
@@ -106,22 +121,16 @@ class TextFieldSelect extends React.Component {
     else if (i > l) i = i - l
 
     if (i > 0) {
+      const { value } = this.props
+      if (value) {
+        // set index to value so that prev value is highlighted in list before clearing it
+        const i2 = this.props.options.indexOf(value)
+        if (~i2) i = i2 + 1
+      }
       this.clear()
     }
 
     this.setState({ index: i })
-
-    // scroll into view
-    const el = document.getElementById((this.props.name + (i + 1)).toString())
-    if (!el) return
-
-    const top = el.offsetTop
-
-    if (this.menu.height + this.menu.el.scrollTop < top) {
-      this.menu.el.scrollTop = top - this.menu.height
-    } else if (this.menu.el.scrollTop + el.offsetHeight > top) {
-      this.menu.el.scrollTop = top - el.offsetHeight * 2
-    }
   }
 
   render() {

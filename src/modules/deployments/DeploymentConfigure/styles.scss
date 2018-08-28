@@ -81,4 +81,8 @@
   input {
     text-transform: uppercase;
   }
+  ul a {
+    @include mini;
+    letter-spacing: -0.7px;
+  }
 }
