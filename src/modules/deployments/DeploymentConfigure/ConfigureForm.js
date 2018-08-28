@@ -18,7 +18,7 @@ import {
 
 import { default as WorkerSize, workerSizes } from './WorkerSize'
 
-import info from '../_docs'
+import info from '../docs'
 const envVars = Object.keys(info.env)
 
 // This form is used for both Update and Create mutations
