@@ -22,7 +22,7 @@ export default {
     mutation createDeployment(
       $type: String!
       $label: String!
-      $workspaceId: Uuid
+      $workspaceId: Uuid!
       $version: String
       $description: String
     ) {
