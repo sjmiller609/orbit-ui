@@ -118,3 +118,11 @@ export const authUser = gql`
   ${token}
   ${user}
 `
+
+export const deploymentConfig = gql`
+  fragment deploymentConfig on DeploymentConfig {
+    defaults
+    limits
+    presets
+  }
+`
