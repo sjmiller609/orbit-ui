@@ -29,6 +29,7 @@ const Create = Component => {
               mutate({
                 variables: {
                   type: 'airflow',
+                  version: '0.0.0', // TODO: hack houston error
                   workspaceId: getData.workspaceId,
                   ...vars,
                 },

@@ -28,9 +28,18 @@ const menu = [
 ]
 
 const DeploymentConfigure = ({ deployment }) => {
+  const configVars = {
+    version: deployment.version,
+    type: deployment.type,
+    deploymentId: deployment.id,
+  }
   return (
     <CardMenu menu={menu}>
-      <Configure deployment={deployment} data={deployment} />
+      <Configure
+        deployment={deployment}
+        data={deployment}
+        configVars={configVars}
+      />
       <Delete deployment={deployment} />
     </CardMenu>
   )

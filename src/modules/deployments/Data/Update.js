@@ -17,6 +17,7 @@ const Update = Component => {
             ...props,
             onSubmit: vars => {
               const { id, ...payload } = vars
+              console.log(payload)
               const variables = {
                 id,
                 payload,

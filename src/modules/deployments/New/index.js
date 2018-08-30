@@ -6,6 +6,22 @@ import Module from '../../app/Module'
 import Create from '../Data/Create'
 
 const Configure = Create(ConfigureForm)
+import { CardMenu } from 'instruments'
+
+const cardMenu = [
+  {
+    text: 'Deployment Info',
+    id: 'info',
+  },
+  {
+    text: 'Workers',
+    id: 'workers',
+  },
+  {
+    text: 'Environment Vars',
+    id: 'env',
+  },
+]
 
 class New extends React.Component {
   title = 'New Deployment'
@@ -20,7 +36,9 @@ class New extends React.Component {
     }
     return (
       <Module metaTitle={this.title} menu={this.menu}>
-        <Configure title={this.title} />
+        <CardMenu menu={cardMenu}>
+          <Configure title={this.title} />
+        </CardMenu>
       </Module>
     )
   }

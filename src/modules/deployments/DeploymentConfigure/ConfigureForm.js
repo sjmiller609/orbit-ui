@@ -17,12 +17,14 @@ import {
 } from 'instruments'
 
 import { default as WorkerSize, workerSizes } from './WorkerSize'
+import DeploymentConfig from '../Data/Config'
 
 import info from '../info'
 const envVars = Object.keys(info.env)
 
 // This form is used for both Update and Create mutations
-const Configure = ({ form, deployment }) => {
+const Configure = ({ form, deployment, deploymentConfig }) => {
+  console.log(deploymentConfig)
   return (
     <CardForm
       title="Configure"
@@ -67,7 +69,7 @@ const Configure = ({ form, deployment }) => {
         <NumberField
           label="Worker Count"
           required
-          {...form.field('workerCount')}
+          {...form.field('config.workerCount')}
           slider
           defaultValue={1}
           min={1}
@@ -77,7 +79,7 @@ const Configure = ({ form, deployment }) => {
         <NumberField
           label="Worker Termination Grace Period"
           required
-          {...form.field('workerTermination')}
+          {...form.field('config.workerTermination')}
           slider
           units="min"
           defaultValue={10}
@@ -103,6 +105,7 @@ const Configure = ({ form, deployment }) => {
 Configure.propTypes = {
   form: PropTypes.object,
   deployment: PropTypes.object,
+  deploymentConfig: PropTypes.object,
 }
 
-export default Form(Configure)
+export default DeploymentConfig(Form(Configure))

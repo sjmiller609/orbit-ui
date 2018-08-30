@@ -65,6 +65,11 @@ export const deployment = gql`
     }
     createdAt
     updatedAt
+    config
+    deployInfo {
+      latest
+      next
+    }
   }
 `
 export const invite = gql`

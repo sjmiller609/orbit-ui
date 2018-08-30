@@ -25,6 +25,7 @@ export default {
       $workspaceId: Uuid!
       $version: String
       $description: String
+      $config: JSON
     ) {
       createDeployment(
         workspaceUuid: $workspaceId
@@ -32,6 +33,7 @@ export default {
         label: $label
         version: $version
         description: $description
+        config: $config
       ) {
         ...deployment
       }
@@ -60,7 +62,7 @@ export default {
       $type: String
       $version: String
     ) {
-      deployments(
+      deploymentConfig(
         workspaceUuid: $workspaceId
         deploymentUuid: $deploymentId
         type: $type
