@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { deployment } from 'modules/api/fragments'
+import { deployment, deploymentConfig } from 'modules/api/fragments'
 
 export default {
   Deployments: gql`
@@ -52,5 +52,23 @@ export default {
         id: uuid
       }
     }
+  `,
+  DeploymentConfig: gql`
+    query deploymentConfig(
+      $workspaceId: Uuid
+      $deploymentId: Uuid
+      $type: String
+      $version: String
+    ) {
+      deployments(
+        workspaceUuid: $workspaceId
+        deploymentUuid: $deploymentId
+        type: $type
+        version: $version
+      ) {
+        ...deploymentConfig
+      }
+    }
+    ${deploymentConfig}
   `,
 }
