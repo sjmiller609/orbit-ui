@@ -24,7 +24,7 @@ const envVars = Object.keys(info.env)
 
 // This form is used for both Update and Create mutations
 const Configure = ({ form, deployment, deploymentConfig }) => {
-  console.log(deploymentConfig)
+  //console.log(deploymentConfig)
   return (
     <CardForm
       title="Configure"
@@ -59,7 +59,6 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
         <Select
           {...form.field('workerSize')}
           label="Worker Size"
-          required
           className={s.workers}
           defaultValue="small"
           Component={WorkerSize}
@@ -68,7 +67,6 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
         />
         <NumberField
           label="Worker Count"
-          required
           {...form.field('config.workerCount')}
           slider
           defaultValue={1}
@@ -78,7 +76,6 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
         />
         <NumberField
           label="Worker Termination Grace Period"
-          required
           {...form.field('config.workerTermination')}
           slider
           units="min"

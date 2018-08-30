@@ -2,7 +2,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { jsonEqual } from '../../../helpers/compare'
+import { jsonEqual } from 'helpers/compare'
+import { unpack, pack } from './helpers'
 import UnsavedChangesAlert from '../UnsavedChangesAlert'
 import s from './styles.scss'
 
@@ -16,15 +17,20 @@ const Form = FormComponent => {
     checkSave = this.checkSave.bind(this)
     checkErrors = this.checkErrors.bind(this)
     field = this.field.bind(this)
+    unpack = this.unpack.bind(this)
+    data = this.unpack(this.props.data)
 
     state = {
-      data: this.props.data,
+      data: this.data,
       save: false,
       submitted: false,
     }
 
     componentWillReceiveProps({ data, error }) {
-      if (!jsonEqual(data, this.props.data)) this.setState({ data })
+      if (!jsonEqual(data, this.props.data)) {
+        this.data = this.unpack(this.props.data)
+        this.setState({ data: this.data })
+      }
       if (!jsonEqual(error, this.props.error) && error)
         this.updateErrors(error.name, error.error)
     }
@@ -35,6 +41,20 @@ const Form = FormComponent => {
       return false
     }
 
+    // turn all objects into keys with string names with dot notation
+    unpack(data) {
+      if (!data || typeof data !== 'object') return data
+      return unpack(data)
+    }
+
+    getValue(name) {
+      const { data } = this.state
+      if (!~name.indexOf('.')) return data[name]
+      const n = name.split('.')
+      if (data[n[0]]) return data[n[0]][n[1]]
+      else return null
+    }
+
     update(key, value) {
       const set = {
         data: {
@@ -43,7 +63,6 @@ const Form = FormComponent => {
         },
         submitted: false,
       }
-
       this.setState(set)
     }
 
@@ -62,7 +81,7 @@ const Form = FormComponent => {
       const { saveOnLoad } = this.props
       const save = state.save
       // changes made
-      const equal = saveOnLoad ? false : jsonEqual(state.data, this.props.data)
+      const equal = saveOnLoad ? false : jsonEqual(state.data, this.data)
 
       // has errors
       if (!this.checkErrors(state)) return false
@@ -88,10 +107,11 @@ const Form = FormComponent => {
       const { save, data } = this.state
       if (!save) return
       if (!saveOnLoad) this.setState({ save: false, submitted: true })
-      onSubmit(data, this.updateErrors)
+      onSubmit(pack(data), this.updateErrors)
     }
 
     field(name) {
+      // If a field is named with dot notation, will convert into object
       return {
         name,
         value: this.state.data[name],
