@@ -69,13 +69,10 @@ const Field = Component => {
     }
 
     onChange(e, v) {
-      const { name, onChange } = this.props
-      if (!e) {
-        onChange(name, v)
-        return
-      }
-      const value = e.target.value
-      onChange(name, value)
+      const { name, onChange, convert } = this.props
+      let value2 = e ? e.target.value : v
+      if (convert) value2 = convert(value2, true)
+      onChange(name, value2)
     }
 
     showError(showError = true) {
@@ -107,12 +104,16 @@ const Field = Component => {
         focus,
         required,
         className,
+        convert,
+        value,
+        defaultValue,
         ...props
       } = this.props
       const { showError, touched } = this.state
       const err = showError && !!error
       const newProps = {
         ...props,
+        value: value || defaultValue,
         className: classnames(
           s.field,
           err ? s.error : null,
@@ -133,6 +134,10 @@ const Field = Component => {
           </label>
         ) : null,
       }
+      if (convert) {
+        newProps.value = convert(newProps.value)
+        newProps.convert = convert
+      }
       return <Component {...newProps} />
     }
   }
@@ -151,6 +156,11 @@ const Field = Component => {
       PropTypes.number,
       PropTypes.bool,
     ]),
+    defaultValue: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.bool,
+    ]),
     title: PropTypes.string,
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     className: PropTypes.string,
@@ -158,6 +168,7 @@ const Field = Component => {
     submitted: PropTypes.bool,
     info: PropTypes.string,
     forwardedRef: PropTypes.object,
+    convert: PropTypes.func,
   }
 
   Field.defaultProps = {
