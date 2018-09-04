@@ -46,6 +46,7 @@ class Checkbox extends React.Component {
       required,
       onBlur,
       setRef,
+      fieldId,
     } = this.props
     const { checked } = this.state
 
@@ -54,6 +55,7 @@ class Checkbox extends React.Component {
         justify="flex-start"
         align="flex-start"
         auto
+        id={fieldId}
         className={classNames(s.checkbox, className)}>
         <input
           type="checkbox"
@@ -99,6 +101,7 @@ Checkbox.propTypes = {
     PropTypes.number,
     PropTypes.bool,
   ]),
+  fieldId: PropTypes.string,
 }
 
 export default Field(Checkbox)

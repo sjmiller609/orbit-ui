@@ -20,6 +20,7 @@ const Form = FormComponent => {
     unpack = this.unpack.bind(this)
     getValue = this.getValue.bind(this)
     data = this.unpack(this.props.data)
+    fieldId = 'field_'
 
     state = {
       data: this.data,
@@ -84,6 +85,11 @@ const Form = FormComponent => {
       // check save after validation check
       const save = this.checkSave({ ...this.state, ...set })
       if (typeof save === 'boolean') set.save = save
+      if (this.state.submitted && !this.state.scolled) {
+        set.scrolled = true
+        const el = document.getElementById(this.fieldId + name)
+        if (el) el.scrollIntoView()
+      }
       this.setState(set)
     }
 
@@ -116,7 +122,8 @@ const Form = FormComponent => {
       const { saveOnLoad, onSubmit } = this.props
       const { save, data } = this.state
       if (!save) return
-      if (!saveOnLoad) this.setState({ save: false, submitted: true })
+      if (!saveOnLoad)
+        this.setState({ save: false, submitted: true, scrolled: false })
       onSubmit(pack(data), this.updateErrors)
     }
 
@@ -129,6 +136,7 @@ const Form = FormComponent => {
         updateErrors: this.updateErrors,
         onChange: this.update,
         submitted: this.state.submitted,
+        fieldId: this.fieldId + name,
       }
     }
 

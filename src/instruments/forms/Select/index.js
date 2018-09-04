@@ -46,9 +46,10 @@ class Select extends React.Component {
       setRef,
       Component,
       options,
+      fieldId,
     } = this.props
     return (
-      <div className={classnames(s.field, className)}>
+      <div id={fieldId} className={classnames(s.field, className)}>
         {label}
         <input
           type="hidden"
@@ -92,6 +93,7 @@ Select.propTypes = {
   options: PropTypes.array,
   Component: PropTypes.func,
   defaultValue: PropTypes.string,
+  fieldId: PropTypes.string,
 }
 
 export default Field(Select)

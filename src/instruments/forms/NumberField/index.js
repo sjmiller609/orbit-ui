@@ -92,13 +92,14 @@ class NumberField extends React.Component {
       setRef,
       slider,
       value,
+      fieldId,
     } = this.props
 
     const { min, max, units, step } = this.state
     const width = max.toString().length * 2.2
 
     return (
-      <div className={classnames(s.field, className)}>
+      <div id={fieldId} className={classnames(s.field, className)}>
         {label}
         <Row justify="flex-start">
           <input
@@ -157,6 +158,7 @@ NumberField.propTypes = {
   slider: PropTypes.bool,
   units: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   convert: PropTypes.func,
+  fieldId: PropTypes.string,
 }
 
 NumberField.defaultProps = {

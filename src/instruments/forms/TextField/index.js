@@ -58,10 +58,11 @@ class TextField extends React.Component {
       onBlur,
       onChange,
       setRef,
+      fieldId,
     } = this.props
     const { type } = this.state
     return (
-      <div className={classnames(s.field, className)}>
+      <div id={fieldId} className={classnames(s.field, className)}>
         {label}
         <input
           type={type}
@@ -95,6 +96,7 @@ TextField.propTypes = {
   title: PropTypes.string,
   error: PropTypes.element,
   className: PropTypes.string,
+  fieldId: PropTypes.string,
   updateErrors: PropTypes.func,
   setRef: PropTypes.func,
 }

@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import api from './api'
-import { errors } from './helpers'
+import { handleError } from './helpers'
 
 import { Create as Mutation, SetData } from 'instruments'
 
@@ -67,7 +67,7 @@ const Create = Component => {
             },
           }
           // handle api errors
-          const err = errors(error)
+          const err = handleError(error)
           if (err) newProps.error = err
 
           return <Component {...newProps} />

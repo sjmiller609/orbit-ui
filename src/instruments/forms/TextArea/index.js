@@ -37,10 +37,12 @@ class TextArea extends React.Component {
       onBlur,
       onChange,
       setRef,
+      fieldId,
     } = this.props
 
     return (
       <div
+        id={fieldId}
         className={classnames(
           s.field,
 
@@ -78,6 +80,7 @@ TextArea.propTypes = {
   title: PropTypes.string,
   error: PropTypes.element,
   className: PropTypes.string,
+  fieldId: PropTypes.string,
   updateErrors: PropTypes.func,
   setRef: PropTypes.func,
 }

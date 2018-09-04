@@ -1,7 +1,7 @@
 'use strict'
 import React from 'react'
 import api from './api'
-import { errors } from './helpers'
+import { handleError } from './helpers'
 
 import { Mutation } from 'instruments'
 
@@ -24,7 +24,7 @@ const ForgotPw = Component => {
             },
           }
           // handle api errors
-          const err = errors(error)
+          const err = handleError(error)
           if (err) newProps.error = err
 
           return <Component {...newProps} />

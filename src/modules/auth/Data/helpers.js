@@ -1,44 +1,38 @@
 import React from 'react'
 
-import { Link } from 'instruments'
+import { formErrors, Link } from 'instruments'
 
-export const errors = error => {
-  if (!error) return
-  const err = JSON.stringify(error).toLowerCase()
+const errors = [
+  {
+    key: 'password incorrect',
+    name: 'password',
+    error: 'Incorrect password',
+  },
+  {
+    key: 'not found',
+    name: 'email',
+    error: "Hmm, we can't find that email",
+  },
+  {
+    key: 'email already in use',
+    name: 'email',
+    error: 'That email is already taken.',
+  },
+  {
+    key: 'no password credentials found',
+    name: 'email',
+    error: 'No password found. Did you mean to login with OAuth?',
+  },
+  {
+    key: 'awaiting email confirmation',
+    name: 'email',
+    error: (
+      <Link to="/resend">
+        Your email is not yet verified. Please check your email for a
+        verification link.<br /> [Click to resend]
+      </Link>
+    ),
+  },
+]
 
-  // incorrect password
-  if (~err.indexOf('password incorrect')) {
-    return {
-      name: 'password',
-      error: 'Incorrect password',
-    }
-    // email doesn't exist
-  } else if (~err.indexOf('not found')) {
-    return {
-      name: 'email',
-      error: "Hmm, we can't find that email",
-    }
-    // email taken
-  } else if (~err.indexOf('email already in use')) {
-    return {
-      name: 'email',
-      error: 'That email is already taken.',
-    }
-    // oauth user tries to login with password
-  } else if (~err.indexOf('no password credentials found')) {
-    return {
-      name: 'email',
-      error: 'No password found. Did you mean to login with OAuth?',
-    }
-  } else if (~err.indexOf('awaiting email confirmation')) {
-    return {
-      name: 'email',
-      error: (
-        <Link to="/resend">
-          Your email is not yet verified. Please check your email for a
-          verification link.<br /> [Click to resend]
-        </Link>
-      ),
-    }
-  }
-}
+export const handleError = error => formErrors({ error, errors })
