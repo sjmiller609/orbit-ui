@@ -64,7 +64,7 @@ const Form = FormComponent => {
         },
         submitted: false,
       }
-      if (typeof value !== 'object') set[key] = value
+      if (typeof value !== 'object') set.data[key] = value
       else {
         // need to unpack and update the children
         const children = this.unpack(value)

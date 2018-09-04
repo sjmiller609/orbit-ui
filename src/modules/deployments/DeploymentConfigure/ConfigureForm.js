@@ -37,6 +37,7 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
   //     memory: '1536Mi',
   //   },
   // }
+  console.log(deployment)
   const { defaults, limits, presets } = deploymentConfig
   return (
     <CardForm
@@ -88,7 +89,7 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
           defaultValue={defaults.workers.replicas}
           min={1}
           max={limits.workers.replicas}
-          info="Adjusting the worker count will..."
+          info={info.workerCount}
         />
         <NumberField
           label="Worker Termination Grace Period"
@@ -100,7 +101,7 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
           max={limits.workers.terminationGracePeriodSeconds}
           step={5 * 60}
           convert={workerTerminationConvert}
-          info="The worker termination grace period is..."
+          info={info.workerTermination}
         />
       </FormSection>
       <FormSection id="env" title="Environment Variables">
