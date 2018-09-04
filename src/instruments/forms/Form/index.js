@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { jsonEqual } from 'helpers/compare'
-import { unpack, pack } from './helpers'
+import { unpack, pack, packChild } from './helpers'
 import UnsavedChangesAlert from '../UnsavedChangesAlert'
 import s from './styles.scss'
 
@@ -18,6 +18,7 @@ const Form = FormComponent => {
     checkErrors = this.checkErrors.bind(this)
     field = this.field.bind(this)
     unpack = this.unpack.bind(this)
+    getValue = this.getValue.bind(this)
     data = this.unpack(this.props.data)
 
     state = {
@@ -49,20 +50,29 @@ const Form = FormComponent => {
 
     getValue(name) {
       const { data } = this.state
-      if (!~name.indexOf('.')) return data[name]
-      const n = name.split('.')
-      if (data[n[0]]) return data[n[0]][n[1]]
-      else return null
+      if (data[name]) return data[name]
+      // otherwise, it's a parent object, need to roll it up
+      if (~name.indexOf('.')) {
+        return packChild({ name, obj: data })
+      }
     }
 
     update(key, value) {
       const set = {
         data: {
           ...this.state.data,
-          [key]: value,
         },
         submitted: false,
       }
+      if (typeof value !== 'object') set[key] = value
+      else {
+        // need to unpack and update the children
+        const children = this.unpack(value)
+        Object.keys(children).forEach(
+          k => (set.data[key + '.' + k] = children[k])
+        )
+      }
+
       this.setState(set)
     }
 
@@ -114,7 +124,7 @@ const Form = FormComponent => {
       // If a field is named with dot notation, will convert into object
       return {
         name,
-        value: this.state.data[name],
+        value: this.getValue(name),
         error: this.state[errorField(name)],
         updateErrors: this.updateErrors,
         onChange: this.update,

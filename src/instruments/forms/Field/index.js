@@ -84,7 +84,7 @@ const Field = Component => {
       const { validate, name, required } = this.props
 
       if (required && (typeof value !== 'boolean' && !value)) {
-        const n = name.split('.').slice(-1)
+        const n = name.split('.').pop()
         return unCamelCase(n) + ' is required'
       }
       if (value && validate) {
@@ -155,11 +155,13 @@ const Field = Component => {
       PropTypes.string,
       PropTypes.number,
       PropTypes.bool,
+      PropTypes.object,
     ]),
     defaultValue: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
       PropTypes.bool,
+      PropTypes.object,
     ]),
     title: PropTypes.string,
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),

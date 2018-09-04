@@ -19,7 +19,6 @@ const roll = (keys, obj, value) => {
   }
   // case 2 - doesn't exist
   if (!obj[key]) {
-    if (key === 'urls') console.log(keys[1])
     obj[key] = isNaN(keys[1]) ? {} : []
   }
   // case 3 - exists
@@ -39,4 +38,15 @@ export const pack = obj => {
 
     return roll(keys, acc, value)
   }, {})
+}
+
+export const packChild = ({ name, obj }) => {
+  const obj2 = {}
+  Object.entries(obj).forEach(k => {
+    if (k[0].indexOf(name) === 0) {
+      const n = k[0].slice(name.length + 1)
+      obj2[n] = k[1]
+    }
+  })
+  return pack(obj2)
 }

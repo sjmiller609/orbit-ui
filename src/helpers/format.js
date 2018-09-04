@@ -4,6 +4,7 @@ export const charLimit = (text, chars) => {
 }
 
 export const unCamelCase = str => {
+  if (!str) return str
   return (
     str
       // insert a space between lower & upper
