@@ -48,5 +48,6 @@ export const packChild = ({ name, obj }) => {
       obj2[n] = k[1]
     }
   })
+  if (!Object.keys(obj2).length) return null
   return pack(obj2)
 }

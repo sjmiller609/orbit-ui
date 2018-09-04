@@ -21,7 +21,6 @@ const Form = FormComponent => {
     getValue = this.getValue.bind(this)
     data = this.unpack(this.props.data)
     fieldId = 'field_'
-
     state = {
       data: this.data,
       save: false,
@@ -88,7 +87,11 @@ const Form = FormComponent => {
       if (this.state.submitted && !this.state.scolled) {
         set.scrolled = true
         const el = document.getElementById(this.fieldId + name)
-        if (el) el.scrollIntoView()
+        if (el) {
+          const rect = el.getBoundingClientRect()
+          if (rect.top < 0 || rect.bottom > window.innerHeight)
+            el.scrollIntoView()
+        }
       }
       this.setState(set)
     }

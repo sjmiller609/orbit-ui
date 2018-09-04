@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import api from './api'
 
 import { Create as Mutation, GetData } from 'instruments'
+import { handleError } from './helpers'
 
 const Create = Component => {
   const Create = ({ getData, ...props }) => {
@@ -21,8 +22,9 @@ const Create = Component => {
         redirect={data => '/deployments/' + data.releaseName + '?loading'}
         success="New deployment created successfully."
         track="New Deployment Created"
+        voidError
         query={query}>
-        {({ mutate }) => {
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
@@ -35,6 +37,9 @@ const Create = Component => {
               })
             },
           }
+          // handle api errors
+          const err = handleError(error)
+          if (err) newProps.error = err
           return <Component {...newProps} />
         }}
       </Mutation>

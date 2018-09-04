@@ -37,7 +37,6 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
   //     memory: '1536Mi',
   //   },
   // }
-  console.log(deployment)
   const { defaults, limits, presets } = deploymentConfig
   return (
     <CardForm

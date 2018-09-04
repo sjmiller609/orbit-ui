@@ -138,6 +138,7 @@ const Field = Component => {
         newProps.value = convert(newProps.value)
         newProps.convert = convert
       }
+
       return <Component {...newProps} />
     }
   }
