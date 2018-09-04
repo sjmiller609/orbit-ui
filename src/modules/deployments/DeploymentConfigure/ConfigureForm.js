@@ -22,9 +22,22 @@ import DeploymentConfig from '../Data/Config'
 import info from '../info'
 const envVars = Object.keys(info.env)
 
+import {
+  workerSizeConvert,
+  workerTerminationUnits,
+  workerTerminationConvert,
+} from './helpers'
+
 // This form is used for both Update and Create mutations
 const Configure = ({ form, deployment, deploymentConfig }) => {
-  //console.log(deploymentConfig)
+  // const d = {
+  //   limits: { cpu: '250m', memory: '1024Mi' },
+  //   requests: {
+  //     cpu: '375m',
+  //     memory: '1536Mi',
+  //   },
+  // }
+  const { defaults, limits, presets } = deploymentConfig
   return (
     <CardForm
       title="Configure"
@@ -57,32 +70,36 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
       </FormSection>
       <FormSection id="workers" title="Celery Workers">
         <Select
-          {...form.field('workerSize')}
+          {...form.field('config.workers.resources')}
           label="Worker Size"
           className={s.workers}
-          defaultValue="small"
+          defaultValue={defaults.workers.resources}
           Component={WorkerSize}
           options={workerSizes}
           info={info.workerSize}
+          convert={(size, out) =>
+            workerSizeConvert(size, out, presets.workerSizes)
+          }
         />
         <NumberField
           label="Worker Count"
-          {...form.field('config.workerCount')}
+          {...form.field('config.workers.replicas')}
           slider
-          defaultValue={1}
+          defaultValue={defaults.workers.replicas}
           min={1}
-          max={10}
+          max={limits.workers.replicas}
           info="Adjusting the worker count will..."
         />
         <NumberField
           label="Worker Termination Grace Period"
-          {...form.field('config.workerTermination')}
+          {...form.field('config.workers.terminationGracePeriodSeconds')}
           slider
-          units="min"
-          defaultValue={10}
-          min={5}
-          max={60}
-          step={5}
+          units={workerTerminationUnits}
+          defaultValue={defaults.workers.terminationGracePeriodSeconds}
+          min={5 * 60}
+          max={limits.workers.terminationGracePeriodSeconds}
+          step={5 * 60}
+          convert={workerTerminationConvert}
           info="The worker termination grace period is..."
         />
       </FormSection>
