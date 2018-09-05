@@ -1,16 +1,17 @@
 @import 'src/styles/mixins.scss';
 
 .field {
+  border-left: 4px solid $darkWhite;
+  padding-left: 1.3rem;
   // for dropdown menu's
   ul {
-    padding: 0;
+    //  padding: 0;
     overflow: visible;
   }
 }
 
 .value:not(:first-child) {
-  margin-top: 0;
-  width: 65%;
+  margin-top: 0.5rem;
 }
 
 .colon {

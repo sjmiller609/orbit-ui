@@ -35,20 +35,13 @@ class KeyValue extends React.Component {
   }
 
   keyProps() {
-    const {
-      label,
-      placeholder,
-      title,
-      className,
-      ...props
-    } = this.props.keyProps
+    const { label, placeholder, className, ...props } = this.props.keyProps
 
     return {
       ...props,
       ...this.props.formField(this.props.name + '.' + this.key),
       label: label || this.key,
       placeholder: placeholder || this.key,
-      title: title || this.key,
       className: classnames(s.key, className),
       required: this.props.required,
       validate: this.validate,
@@ -56,20 +49,13 @@ class KeyValue extends React.Component {
   }
 
   valueProps() {
-    const {
-      label,
-      placeholder,
-      title,
-      className,
-      ...props
-    } = this.props.valueProps
+    const { label, placeholder, className, ...props } = this.props.valueProps
 
     return {
       ...props,
       ...this.props.formField(this.props.name + '.' + this.value),
       label: label || this.value,
       placeholder: placeholder || this.value,
-      title: title || this.value,
       className: classnames(s.value, className),
       required: this.props.required,
       validate: this.validate,
@@ -81,9 +67,12 @@ class KeyValue extends React.Component {
     const keyProps = this.keyProps()
     const valueProps = this.valueProps()
     return (
-      <Row id={id} className={classnames(s.field, className)}>
+      <Row
+        id={id}
+        wrap
+        className={classnames(s.field, className)}
+        justify="flex-start">
         <KeyField {...keyProps} />
-        <H3 className={s.colon}>:</H3>
         <ValueField {...valueProps} />
       </Row>
     )

@@ -22,6 +22,7 @@ import DeploymentConfig from '../Data/Config'
 
 import info from '../info'
 const envVars = Object.keys(info.env)
+import EnvVar from './EnvVar'
 
 import {
   workerSizeConvert,
@@ -110,6 +111,7 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
           formField={form.field}
           KeyField={TextFieldSelect}
           keyProps={{
+            Option: EnvVar,
             options: envVars,
             className: s.envKey,
           }}

@@ -146,9 +146,9 @@ class TextFieldSelect extends React.Component {
       className,
       onBlur,
       onChange,
+      Option,
     } = this.props
     const { menu, out, index, options } = this.state
-    console.log(value)
     return (
       <div
         className={classnames(
@@ -169,7 +169,7 @@ class TextFieldSelect extends React.Component {
           required={required}
           onChange={onChange}
           value={value}
-          title={title}
+          title={title || value || placeholder}
           onBlur={onBlur}
           onFocus={this.open}
           ref={this.setRef}
@@ -190,8 +190,9 @@ class TextFieldSelect extends React.Component {
                   id={(name + (i + 1)).toString()}
                   onClick={() => this.select(o)}
                   key={o}
+                  title={o}
                   active={index === i + 1}>
-                  {o}
+                  {Option ? <Option name={o} /> : o}
                 </Item>
               ))}
             </MenuList>
@@ -220,6 +221,7 @@ TextFieldSelect.propTypes = {
   updateErrors: PropTypes.func,
   setRef: PropTypes.func,
   options: PropTypes.array,
+  Option: PropTypes.func,
 }
 
 TextFieldSelect.defaultProps = {
