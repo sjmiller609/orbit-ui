@@ -43,7 +43,7 @@ export const pack = obj => {
 export const packChild = ({ name, obj }) => {
   const obj2 = {}
   Object.entries(obj).forEach(k => {
-    if (k[0].indexOf(name) === 0) {
+    if (name.length < k[0].length && k[0].indexOf(name) === 0) {
       const n = k[0].slice(name.length + 1)
       obj2[n] = k[1]
     }

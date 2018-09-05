@@ -14,6 +14,7 @@ import {
   Mini,
   ShowDate,
   FormSection,
+  KeyValue,
 } from 'instruments'
 
 import { default as WorkerSize, workerSizes } from './WorkerSize'
@@ -104,6 +105,8 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
         />
       </FormSection>
       <FormSection id="env" title="Environment Variables">
+        <KeyValue name="config.keyValue" formField={form.field} />
+
         <TextFieldSelect
           placeholder="Variable"
           label="Variable Name"

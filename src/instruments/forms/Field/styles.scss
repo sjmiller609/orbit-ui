@@ -13,6 +13,8 @@
     @include font($f500);
     color: $beige;
     text-align: left;
+    text-transform: capitalize;
+
     b {
       @include font($f700);
     }
@@ -50,6 +52,7 @@
     }
     &::placeholder {
       color: $lightBeige;
+      text-transform: capitalize;
     }
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0px 1000px $darkWhite inset !important;

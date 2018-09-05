@@ -28,6 +28,7 @@ export { default as Info } from './forms/Info'
 export { default as FormSection } from './forms/FormSection'
 export { default as TextFieldSelect } from './forms/TextFieldSelect'
 export { default as Select } from './forms/Select'
+export { default as KeyValue } from './forms/KeyValue'
 
 export { default as UnsavedChangesAlert } from './forms/UnsavedChangesAlert'
 

@@ -103,6 +103,7 @@ TextField.propTypes = {
 
 TextField.defaultProps = {
   type: 'text',
+  value: '',
 }
 
 export default Field(TextField)
