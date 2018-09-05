@@ -148,6 +148,7 @@ class TextFieldSelect extends React.Component {
       onChange,
     } = this.props
     const { menu, out, index, options } = this.state
+    console.log(value)
     return (
       <div
         className={classnames(
@@ -219,6 +220,11 @@ TextFieldSelect.propTypes = {
   updateErrors: PropTypes.func,
   setRef: PropTypes.func,
   options: PropTypes.array,
+}
+
+TextFieldSelect.defaultProps = {
+  options: [],
+  value: '',
 }
 
 export default Field(TextFieldSelect)

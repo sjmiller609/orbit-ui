@@ -82,7 +82,9 @@
     text-transform: uppercase;
   }
   ul a {
-    @include mini;
+    //  @include mini;
+    font-size: 0.7em;
     letter-spacing: -0.7px;
+    //  text-transform: lowercase;
   }
 }

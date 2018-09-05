@@ -105,15 +105,15 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
         />
       </FormSection>
       <FormSection id="env" title="Environment Variables">
-        <KeyValue {...form.field('config.keyValue')} formField={form.field} />
-
-        {/* <TextFieldSelect
-          placeholder="Variable"
-          label="Variable Name"
-          options={envVars}
-          className={s.envKey}
-          {...form.field('env')}
-        /> */}
+        <KeyValue
+          {...form.field('config.keyValue')}
+          formField={form.field}
+          KeyField={TextFieldSelect}
+          keyProps={{
+            options: envVars,
+            className: s.envKey,
+          }}
+        />
       </FormSection>
     </CardForm>
   )

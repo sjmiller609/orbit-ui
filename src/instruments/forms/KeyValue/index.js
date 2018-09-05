@@ -35,9 +35,16 @@ class KeyValue extends React.Component {
   }
 
   keyProps() {
-    const { label, placeholder, title, className } = this.props.keyProps
+    const {
+      label,
+      placeholder,
+      title,
+      className,
+      ...props
+    } = this.props.keyProps
 
     return {
+      ...props,
       ...this.props.formField(this.props.name + '.' + this.key),
       label: label || this.key,
       placeholder: placeholder || this.key,
@@ -49,9 +56,16 @@ class KeyValue extends React.Component {
   }
 
   valueProps() {
-    const { label, placeholder, title, className } = this.props.valueProps
+    const {
+      label,
+      placeholder,
+      title,
+      className,
+      ...props
+    } = this.props.valueProps
 
     return {
+      ...props,
       ...this.props.formField(this.props.name + '.' + this.value),
       label: label || this.value,
       placeholder: placeholder || this.value,

@@ -1,6 +1,11 @@
 @import 'src/styles/mixins.scss';
 
 .field {
+  // for dropdown menu's
+  ul {
+    padding: 0;
+    overflow: visible;
+  }
 }
 
 .value:not(:first-child) {

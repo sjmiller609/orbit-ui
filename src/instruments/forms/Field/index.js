@@ -144,7 +144,6 @@ const Field = Component => {
         newProps.value = convert(newProps.value)
         newProps.convert = convert
       }
-      console.log('render', this.props.name)
       return <Component {...newProps} />
     }
   }
