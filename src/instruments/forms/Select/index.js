@@ -48,6 +48,7 @@ class Select extends React.Component {
       options,
       fieldId,
     } = this.props
+    //console.log(value)
     return (
       <div id={fieldId} className={classnames(s.field, className)}>
         {label}

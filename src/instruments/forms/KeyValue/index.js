@@ -52,7 +52,7 @@ class KeyValue extends React.Component {
   render() {
     const { KeyField, ValueField, id, className } = this.props
     const keyProps = this.keyProps()
-    console.log(keyProps)
+    //console.log(keyProps)
     return (
       <Row id={id} className={classnames(s.field, className)}>
         <KeyField {...keyProps} />

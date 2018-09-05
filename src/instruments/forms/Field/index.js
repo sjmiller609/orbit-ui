@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import s from './styles.scss'
 import { Info } from 'instruments'
 import { unCamelCase } from 'helpers/format'
+import { jsonEqual, isEqual } from 'helpers/compare'
 
 const Field = Component => {
   class Field extends React.Component {
@@ -33,7 +34,7 @@ const Field = Component => {
       // show error on submit
       if (submitted && !this.props.submitted) set.showError = true
 
-      if (value !== this.props.value) {
+      if (!jsonEqual(value, this.props.value)) {
         set.showError = false
 
         // show error after 3 seconds of stopped typing
@@ -55,12 +56,17 @@ const Field = Component => {
       { value, error, type, submitted },
       { showError, touched }
     ) {
-      if (value !== this.props.value) return true
-      if (error !== this.props.error) return true
-      if (type !== this.props.type) return true
-      if (submitted !== this.props.submitted) return true
-      if (showError !== this.state.showError) return true
-      if (touched !== this.state.touched) return true
+      if (!jsonEqual(value, this.props.value)) return true
+      if (!isEqual(error, this.props.error)) return true
+      if (!isEqual(type, this.props.type)) return true
+      if (!isEqual(submitted, this.props.submitted)) return true
+      // NOTE: pretty sure this works, but if error display bugs out, remove extra condition
+      if (
+        !isEqual(showError, this.state.showError) &&
+        ((showError && error) || (!showError && !error))
+      )
+        return true
+      if (!isEqual(touched, this.state.touched)) return true
       return false
     }
 
@@ -138,7 +144,7 @@ const Field = Component => {
         newProps.value = convert(newProps.value)
         newProps.convert = convert
       }
-
+      console.log('render', this.props.name)
       return <Component {...newProps} />
     }
   }
@@ -170,7 +176,6 @@ const Field = Component => {
     updateErrors: PropTypes.func,
     submitted: PropTypes.bool,
     info: PropTypes.string,
-    forwardedRef: PropTypes.object,
     convert: PropTypes.func,
   }
 
