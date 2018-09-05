@@ -2,15 +2,18 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
-import { TextField, Row, H5 } from 'instruments'
+import { Field, TextField, Row, H3 } from 'instruments'
+import { jsonEqual } from 'helpers/compare'
 
 class KeyValue extends React.Component {
   validate = this.validate.bind(this)
   valueProps = this.valueProps.bind(this)
   keyProps = this.keyProps.bind(this)
+  key = this.props.keyProps.name || 'key'
+  value = this.props.valueProps.value || 'value'
 
   componentWillReceiveProps({ value }) {
-    if (value !== this.props.value) {
+    if (!jsonEqual(value, this.props.value)) {
       // run validation
       this.validate(value)
     }
@@ -19,45 +22,55 @@ class KeyValue extends React.Component {
   validate(value) {
     const { name, validate, updateErrors } = this.props
     let e
+    let n
     // must be first
     if (validate) e = validate(value)
+    if (value[this.value] && !value[this.key]) {
+      n = this.key
+      e = 'A key is required to set a value.'
+    }
+    // NOTE: not requiring a value when a key is set, to enable setting to empty
 
-    updateErrors(name, e)
+    updateErrors(name + '.' + n, e)
   }
 
   keyProps() {
-    const { name, label, placeholder, title, className } = this.props.keyProps
-    const n = name || 'key'
+    const { label, placeholder, title, className } = this.props.keyProps
+
     return {
-      ...this.props.formField(this.props.name + '.' + n),
-      label: label || n,
-      placeholder: placeholder || n,
-      title: title || n,
+      ...this.props.formField(this.props.name + '.' + this.key),
+      label: label || this.key,
+      placeholder: placeholder || this.key,
+      title: title || this.key,
       className: classnames(s.key, className),
+      required: this.props.required,
+      validate: this.validate,
     }
   }
 
   valueProps() {
-    const { name, label, placeholder, title, className } = this.props.valueProps
-    const n = name || 'value'
+    const { label, placeholder, title, className } = this.props.valueProps
+
     return {
-      ...this.props.formField(this.props.name + '.' + n),
-      label: label || n,
-      placeholder: placeholder || n,
-      title: title || n,
+      ...this.props.formField(this.props.name + '.' + this.value),
+      label: label || this.value,
+      placeholder: placeholder || this.value,
+      title: title || this.value,
       className: classnames(s.value, className),
+      required: this.props.required,
+      validate: this.validate,
     }
   }
 
   render() {
     const { KeyField, ValueField, id, className } = this.props
     const keyProps = this.keyProps()
-    //console.log(keyProps)
+    const valueProps = this.valueProps()
     return (
       <Row id={id} className={classnames(s.field, className)}>
         <KeyField {...keyProps} />
-        <H5 className={s.colon}>:</H5>
-        <ValueField {...this.valueProps()} />
+        <H3 className={s.colon}>:</H3>
+        <ValueField {...valueProps} />
       </Row>
     )
   }
@@ -69,19 +82,13 @@ KeyValue.propTypes = {
   valueProps: PropTypes.object,
   ValueField: PropTypes.func,
   formField: PropTypes.func,
-
+  value: PropTypes.object,
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
   validate: PropTypes.func,
-  required: PropTypes.bool,
-  label: PropTypes.element,
-  value: PropTypes.string,
-  title: PropTypes.string,
-  error: PropTypes.element,
-  className: PropTypes.string,
-  fieldId: PropTypes.string,
   updateErrors: PropTypes.func,
-  setRef: PropTypes.func,
+  required: PropTypes.bool,
+  className: PropTypes.string,
 }
 
 KeyValue.defaultProps = {
@@ -91,4 +98,4 @@ KeyValue.defaultProps = {
   valueProps: {},
 }
 
-export default KeyValue
+export default Field(KeyValue)
