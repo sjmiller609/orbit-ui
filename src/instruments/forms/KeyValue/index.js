@@ -29,10 +29,9 @@ class KeyValue extends React.Component {
     const { name, validate, updateErrors } = this.props
     let e
     let n
-
     // must be first
     if (validate) e = validate(value)
-    if (value[this.value] && !value[this.key]) {
+    if (value && value[this.value] && !value[this.key]) {
       n = this.key
       e = 'A key is required to set a value.'
     }

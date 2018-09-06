@@ -16,6 +16,7 @@ const Button = ({
   className,
   ...props
 }) => {
+  console.log('button', typeof children)
   if (to) {
     return (
       <Link

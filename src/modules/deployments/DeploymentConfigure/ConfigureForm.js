@@ -109,6 +109,7 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
       <FormSection id="env" title="Environment Variables">
         <FieldSet
           {...form.field('config.env')}
+          title="Env Variable"
           formField={form.field}
           FieldType={KeyValue}
           fieldProps={{

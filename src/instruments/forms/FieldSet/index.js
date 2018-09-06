@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
-import { Field, TextField, TextButton } from 'instruments'
+import { Field, TextField, TextButton, Button, Box } from 'instruments'
 import { jsonEqual } from 'helpers/compare'
 
 class FieldSet extends React.Component {
@@ -46,19 +46,30 @@ class FieldSet extends React.Component {
   }
 
   render() {
-    const { FieldType, id, className } = this.props
+    const { FieldType, id, className, title } = this.props
     const { length } = this.state
-
+    const button = 'New' + (title ? ' ' + title : '')
     return (
       <div id={id} className={classnames(s.fields, className)}>
         {Array.from(Array(length)).map((f, i) => (
-          <FieldType key={i} {...this.fieldProps(i)} />
+          <Box align="flex-start" key={i}>
+            <FieldType {...this.fieldProps(i)} />
+            <TextButton
+              className={s.remove}
+              style="red"
+              onClick={() => this.setState({ length: length - 1 })}>
+              Remove
+            </TextButton>
+          </Box>
         ))}
-        <TextButton
-          className={s.button}
-          onClick={() => this.setState({ length: length + 1 })}>
-          Add Another
-        </TextButton>
+        <Box>
+          <Button
+            className={s.add}
+            style="outline"
+            onClick={() => this.setState({ length: length + 1 })}>
+            {button}
+          </Button>
+        </Box>
       </div>
     )
   }
@@ -75,6 +86,7 @@ FieldSet.propTypes = {
   updateErrors: PropTypes.func,
   required: PropTypes.bool,
   className: PropTypes.string,
+  title: PropTypes.string,
 }
 
 FieldSet.defaultProps = {
