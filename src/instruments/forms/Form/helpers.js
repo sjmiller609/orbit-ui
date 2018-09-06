@@ -32,22 +32,25 @@ const roll = (keys, obj, value) => {
 }
 
 // convert back into obj
-export const pack = obj => {
+export const pack = (obj, type = {}) => {
   return Object.entries(obj).reduce((acc, [key, value]) => {
     const keys = key.split('.')
 
     return roll(keys, acc, value)
-  }, {})
+  }, type)
 }
 
 export const packChild = ({ name, obj }) => {
   const obj2 = {}
+  let isArray
   Object.entries(obj).forEach(k => {
     if (name.length < k[0].length && k[0].indexOf(name) === 0) {
       const n = k[0].slice(name.length + 1)
+      // must be true for all matching
+      isArray = !isNaN(n.slice(0, n.indexOf('.')))
       obj2[n] = k[1]
     }
   })
-  if (!Object.keys(obj2).length) return null
-  return pack(obj2)
+  if (Object.keys(obj2).length) return pack(obj2, isArray ? [] : {})
+  return null
 }

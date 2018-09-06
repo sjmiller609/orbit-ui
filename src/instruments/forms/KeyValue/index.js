@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
-import { Field, TextField, Row, H3 } from 'instruments'
+import { Field, TextField, Row } from 'instruments'
 import { jsonEqual } from 'helpers/compare'
 
 class KeyValue extends React.Component {
@@ -19,10 +19,12 @@ class KeyValue extends React.Component {
     }
   }
 
+  // because run by children, need to get object value as secondary param (or directly from props)
   validate(value) {
     const { name, validate, updateErrors } = this.props
     let e
     let n
+
     // must be first
     if (validate) e = validate(value)
     if (value[this.value] && !value[this.key]) {
@@ -44,7 +46,7 @@ class KeyValue extends React.Component {
       placeholder: placeholder || this.key,
       className: classnames(s.key, className),
       required: this.props.required,
-      validate: this.validate,
+      showError: this.props.showError,
     }
   }
 
@@ -58,7 +60,7 @@ class KeyValue extends React.Component {
       placeholder: placeholder || this.value,
       className: classnames(s.value, className),
       required: this.props.required,
-      validate: this.validate,
+      showError: this.props.showError,
     }
   }
 
@@ -92,6 +94,7 @@ KeyValue.propTypes = {
   updateErrors: PropTypes.func,
   required: PropTypes.bool,
   className: PropTypes.string,
+  showError: PropTypes.bool,
 }
 
 KeyValue.defaultProps = {

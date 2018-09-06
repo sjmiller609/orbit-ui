@@ -15,18 +15,22 @@ const Field = Component => {
     showError = this.showError.bind(this)
     id = this.props.id || this.props.name
     state = {
-      showError: false,
-      touched: null,
+      showError: this.props.showError || false,
+      touched: false,
     }
 
     componentDidMount() {
       const { focus, value } = this.props
       if (focus) this.field.focus()
+      // TODO: this does nothing
       this.validate(value) // adds required fields to form
     }
 
-    componentWillReceiveProps({ value, type, submitted }) {
+    componentWillReceiveProps({ value, type, submitted, showError }) {
       const set = {}
+
+      // for keyValue field
+      if (showError !== this.props.showError) set.showError = showError
 
       // update type (for show password)
       if (type !== this.props.type) set.type = type
@@ -53,19 +57,17 @@ const Field = Component => {
     // should probably switch this to pull the props that don't change, and then json.stringify
     // NOTE: if any new props are passed in that are meant to be reactive, won't work.
     shouldComponentUpdate(
-      { value, error, type, submitted },
+      { value, error, type, submitted, showError: showError2 },
       { showError, touched }
     ) {
       if (!jsonEqual(value, this.props.value)) return true
       if (!isEqual(error, this.props.error)) return true
       if (!isEqual(type, this.props.type)) return true
+
       if (!isEqual(submitted, this.props.submitted)) return true
-      // NOTE: pretty sure this works, but if error display bugs out, remove extra condition
-      if (
-        !isEqual(showError, this.state.showError) &&
-        ((showError && error) || (!showError && !error))
-      )
-        return true
+      // read from props also, but may not have error
+      if (!isEqual(showError2, this.props.showError)) return true
+      if (!isEqual(showError, this.state.showError)) return true
       if (!isEqual(touched, this.state.touched)) return true
       return false
     }
@@ -128,10 +130,12 @@ const Field = Component => {
         ),
         id: this.id,
         required,
+        showError,
         setRef: ref => (this.field = ref),
         validate: this.validate,
         onChange: this.onChange,
         onBlur: touched ? () => this.showError(true) : null,
+        setShowError: this.showError,
         error: err ? <div className={s.errorMsg}>{error}</div> : null,
         label: label ? (
           <label htmlFor={this.id}>
@@ -143,6 +147,9 @@ const Field = Component => {
       if (convert) {
         newProps.value = convert(newProps.value)
         newProps.convert = convert
+      }
+      if (~newProps.name.indexOf('config.env')) {
+        console.log(newProps.value)
       }
       return <Component {...newProps} />
     }
@@ -162,18 +169,21 @@ const Field = Component => {
       PropTypes.number,
       PropTypes.bool,
       PropTypes.object,
+      PropTypes.array,
     ]),
     defaultValue: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
       PropTypes.bool,
       PropTypes.object,
+      PropTypes.array,
     ]),
     title: PropTypes.string,
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     className: PropTypes.string,
     updateErrors: PropTypes.func,
     submitted: PropTypes.bool,
+    showError: PropTypes.bool,
     info: PropTypes.string,
     convert: PropTypes.func,
   }

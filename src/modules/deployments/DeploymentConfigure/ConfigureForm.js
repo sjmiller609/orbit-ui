@@ -15,6 +15,7 @@ import {
   ShowDate,
   FormSection,
   KeyValue,
+  FieldSet,
 } from 'instruments'
 
 import { default as WorkerSize, workerSizes } from './WorkerSize'
@@ -106,14 +107,17 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
         />
       </FormSection>
       <FormSection id="env" title="Environment Variables">
-        <KeyValue
-          {...form.field('config.keyValue')}
+        <FieldSet
+          {...form.field('config.env')}
           formField={form.field}
-          KeyField={TextFieldSelect}
-          keyProps={{
-            Option: EnvVar,
-            options: envVars,
-            className: s.envKey,
+          FieldType={KeyValue}
+          fieldProps={{
+            KeyField: TextFieldSelect,
+            keyProps: {
+              Option: EnvVar,
+              options: envVars,
+              className: s.envKey,
+            },
           }}
         />
       </FormSection>
