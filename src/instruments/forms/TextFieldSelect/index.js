@@ -22,7 +22,7 @@ class TextFieldSelect extends React.Component {
     menu: false,
     out: true,
     index: 0,
-    options: this.props.options,
+    options: this.props.options.slice(0, 10), // only load the first 10 to cut down load
   }
   componentWillReceiveProps({ value, options }) {
     if (value !== this.props.value) {
@@ -48,6 +48,9 @@ class TextFieldSelect extends React.Component {
   }
 
   componentDidMount() {
+    /*eslint-disable react/no-did-mount-set-state*/
+    this.setState({ options: this.props.options }) // load the rest
+
     const el = document.getElementById(this.props.name + 'Menu')
     this.menu = {
       el,

@@ -82,6 +82,9 @@
     letter-spacing: -0.7px;
     text-transform: uppercase;
   }
+  ul {
+    padding-left: 0;
+  }
   ul a {
     @include mini;
     //font-size: 0.7em;
