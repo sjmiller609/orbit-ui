@@ -7,6 +7,8 @@ import { jsonEqual } from 'helpers/compare'
 
 class FieldSet extends React.Component {
   validate = this.validate.bind(this)
+  remove = this.remove.bind(this)
+
   fieldProps = this.fieldProps.bind(this)
   state = {
     length: this.props.value.length || 1,
@@ -45,6 +47,16 @@ class FieldSet extends React.Component {
     }
   }
 
+  remove(i) {
+    const { onChange, value } = this.props
+    const { length } = this.state
+    // remove from form data
+    if (i < value.length) {
+      onChange(null, value.splice(i, 1))
+      // TODO: this doesn't work - adding empties, need to add to form data
+    } else this.setState({ length: length - 1 })
+  }
+
   render() {
     const { FieldType, id, className, title } = this.props
     const { length } = this.state
@@ -57,7 +69,7 @@ class FieldSet extends React.Component {
             <TextButton
               className={s.remove}
               style="red"
-              onClick={() => this.setState({ length: length - 1 })}>
+              onClick={() => this.remove(i)}>
               Remove
             </TextButton>
           </Box>
@@ -84,6 +96,7 @@ FieldSet.propTypes = {
   id: PropTypes.string,
   validate: PropTypes.func,
   updateErrors: PropTypes.func,
+  onChange: PropTypes.func,
   required: PropTypes.bool,
   className: PropTypes.string,
   title: PropTypes.string,
