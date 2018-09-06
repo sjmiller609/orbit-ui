@@ -12,6 +12,11 @@ class FieldSet extends React.Component {
     length: this.props.value.length || 1,
   }
 
+  componentDidMount() {
+    const { value } = this.props
+    this.validate(value) // adds required fields to form
+  }
+
   componentWillReceiveProps({ value }) {
     if (!jsonEqual(value, this.props.value)) {
       // run validation

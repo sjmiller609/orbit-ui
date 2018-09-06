@@ -18,6 +18,10 @@ class NumberField extends React.Component {
   componentWillMount() {
     this.convert(this.props)
   }
+  componentDidMount() {
+    const { value } = this.props
+    this.validate(value) // adds required fields to form
+  }
 
   componentWillReceiveProps(props) {
     this.convert(props, true)

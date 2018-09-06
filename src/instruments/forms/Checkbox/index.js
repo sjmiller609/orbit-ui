@@ -13,6 +13,11 @@ class Checkbox extends React.Component {
     checked: !!this.props.value,
   }
 
+  componentDidMount() {
+    const { value } = this.props
+    this.validate(value) // adds required fields to form
+  }
+
   componentWillReceiveProps({ value }) {
     if (value !== this.props.value) {
       // run validation

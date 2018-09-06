@@ -12,6 +12,11 @@ class KeyValue extends React.Component {
   key = this.props.keyProps.name || 'key'
   value = this.props.valueProps.value || 'value'
 
+  componentDidMount() {
+    const { value } = this.props
+    this.validate(value) // adds required fields to form
+  }
+
   componentWillReceiveProps({ value }) {
     if (!jsonEqual(value, this.props.value)) {
       // run validation

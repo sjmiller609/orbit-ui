@@ -16,6 +16,10 @@ class TextField extends React.Component {
   state = {
     type: 'text',
   }
+  componentDidMount() {
+    const { value } = this.props
+    this.validate(value) // adds required fields to form
+  }
   componentWillReceiveProps({ value }) {
     if (value !== this.props.value) {
       // run validation

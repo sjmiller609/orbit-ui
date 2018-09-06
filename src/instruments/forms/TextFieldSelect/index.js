@@ -24,6 +24,7 @@ class TextFieldSelect extends React.Component {
     index: 0,
     options: this.props.options.slice(0, 10), // only load the first 10 to cut down load
   }
+
   componentWillReceiveProps({ value, options }) {
     if (value !== this.props.value) {
       // run validation
@@ -46,8 +47,10 @@ class TextFieldSelect extends React.Component {
   componentWillUnmount() {
     clearTimeout(this.timeout)
   }
-
   componentDidMount() {
+    const { value } = this.props
+    this.validate(value) // adds required fields to form
+
     /*eslint-disable react/no-did-mount-set-state*/
     this.setState({ options: this.props.options }) // load the rest
 

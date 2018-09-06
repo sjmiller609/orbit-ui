@@ -20,10 +20,8 @@ const Field = Component => {
     }
 
     componentDidMount() {
-      const { focus, value } = this.props
+      const { focus } = this.props
       if (focus) this.field.focus()
-      // TODO: this does nothing
-      this.validate(value) // adds required fields to form
     }
 
     componentWillReceiveProps({ value, type, submitted, showError }) {

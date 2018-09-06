@@ -9,6 +9,10 @@ class Select extends React.Component {
   validate = this.validate.bind(this)
   select = this.select.bind(this)
 
+  componentDidMount() {
+    const { value } = this.props
+    this.validate(value) // adds required fields to form
+  }
   componentWillMount() {
     const { defaultValue, value } = this.props
     if (!value && defaultValue) this.select(defaultValue)

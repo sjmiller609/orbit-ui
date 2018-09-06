@@ -7,6 +7,10 @@ import { Field } from 'instruments'
 class TextArea extends React.Component {
   validate = this.validate.bind(this)
 
+  componentDidMount() {
+    const { value } = this.props
+    this.validate(value) // adds required fields to form
+  }
   componentWillReceiveProps({ value }) {
     if (value !== this.props.value) {
       // run validation
