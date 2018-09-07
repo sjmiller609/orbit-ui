@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { jsonEqual } from 'helpers/compare'
-import { unpack, pack, packChild } from './helpers'
+import { unpack, pack, packChild, removeChild } from './helpers'
 import UnsavedChangesAlert from '../UnsavedChangesAlert'
 import s from './styles.scss'
 
@@ -58,21 +58,26 @@ const Form = FormComponent => {
     }
 
     update(key, value) {
+      const { data } = this.state
       const set = {
-        data: {
-          ...this.state.data,
-        },
         submitted: false,
       }
-      if (typeof value !== 'object') set.data[key] = value
-      else {
+      if (typeof value !== 'object') {
+        set.data = {
+          ...data,
+          [key]: value,
+        }
+      } else {
+        // first remove the object
+        set.data = {
+          ...removeChild({ name: key, obj: data }),
+        }
         // need to unpack and update the children
         const children = this.unpack(value)
         Object.keys(children).forEach(
           k => (set.data[key + '.' + k] = children[k])
         )
       }
-
       this.setState(set)
     }
 

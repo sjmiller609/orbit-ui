@@ -54,3 +54,13 @@ export const packChild = ({ name, obj }) => {
   if (Object.keys(obj2).length) return pack(obj2, isArray ? [] : {})
   return null
 }
+
+export const removeChild = ({ name, obj = {} }) => {
+  const obj2 = {}
+  Object.entries(obj).forEach(k => {
+    if (name.length >= k[0].length || k[0].indexOf(name) !== 0) {
+      obj2[k[0]] = k[1]
+    }
+  })
+  return obj2
+}

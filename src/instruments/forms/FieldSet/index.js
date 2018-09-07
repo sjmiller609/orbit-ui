@@ -8,10 +8,13 @@ import { jsonEqual } from 'helpers/compare'
 class FieldSet extends React.Component {
   validate = this.validate.bind(this)
   remove = this.remove.bind(this)
-
+  add = this.add.bind(this)
+  renderField = this.renderField.bind(this)
   fieldProps = this.fieldProps.bind(this)
-  state = {
-    length: this.props.value.length || 1,
+
+  componentWillMount() {
+    const { value } = this.props
+    if (!value.length) this.add()
   }
 
   componentDidMount() {
@@ -49,36 +52,45 @@ class FieldSet extends React.Component {
 
   remove(i) {
     const { onChange, value } = this.props
-    const { length } = this.state
-    // remove from form data
-    if (i < value.length) {
-      onChange(null, value.splice(i, 1))
-      // TODO: this doesn't work - adding empties, need to add to form data
-    } else this.setState({ length: length - 1 })
+    const v2 = Array.from(value)
+    v2.splice(i, 1)
+    console.log(v2)
+    onChange(null, v2)
+  }
+
+  add() {
+    const { onChange, value } = this.props
+    const v2 = Array.from(value)
+    v2.push(null)
+    onChange(null, v2)
+  }
+
+  // any empty fields must have the field name = next array item to prevent empties getting saved
+  renderField(i) {
+    const { FieldType } = this.props
+    return (
+      <Box align="flex-start" key={i}>
+        <FieldType {...this.fieldProps(i)} />
+        <TextButton
+          className={s.remove}
+          style="red"
+          onClick={() => this.remove(i)}>
+          Remove
+        </TextButton>
+      </Box>
+    )
   }
 
   render() {
-    const { FieldType, id, className, title } = this.props
-    const { length } = this.state
+    const { value, id, className, title } = this.props
     const button = 'New' + (title ? ' ' + title : '')
+    // const length = emptyKeys.length + value.length
+    // let key = 0
     return (
       <div id={id} className={classnames(s.fields, className)}>
-        {Array.from(Array(length)).map((f, i) => (
-          <Box align="flex-start" key={i}>
-            <FieldType {...this.fieldProps(i)} />
-            <TextButton
-              className={s.remove}
-              style="red"
-              onClick={() => this.remove(i)}>
-              Remove
-            </TextButton>
-          </Box>
-        ))}
+        {value.map((f, i) => this.renderField(i))}
         <Box>
-          <Button
-            className={s.add}
-            style="outline"
-            onClick={() => this.setState({ length: length + 1 })}>
+          <Button className={s.add} style="outline" onClick={this.add}>
             {button}
           </Button>
         </Box>

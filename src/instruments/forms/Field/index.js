@@ -55,13 +55,13 @@ const Field = Component => {
     // should probably switch this to pull the props that don't change, and then json.stringify
     // NOTE: if any new props are passed in that are meant to be reactive, won't work.
     shouldComponentUpdate(
-      { value, error, type, submitted, showError: showError2 },
+      { value, error, type, submitted, name, showError: showError2 },
       { showError, touched }
     ) {
       if (!jsonEqual(value, this.props.value)) return true
       if (!isEqual(error, this.props.error)) return true
       if (!isEqual(type, this.props.type)) return true
-
+      if (!isEqual(name, this.props.name)) return true
       if (!isEqual(submitted, this.props.submitted)) return true
       // read from props also, but may not have error
       if (!isEqual(showError2, this.props.showError)) return true
