@@ -25,6 +25,7 @@ const Form = FormComponent => {
       data: this.data,
       save: false,
       submitted: false,
+      onSubmitFuncs: [], // array of functions to be called on data before submit
     }
 
     componentWillReceiveProps({ data, error }) {
@@ -128,15 +129,25 @@ const Form = FormComponent => {
     onSubmit(e) {
       e.preventDefault()
       const { saveOnLoad, onSubmit } = this.props
-      const { save, data } = this.state
+      const { save, data, onSubmitFuncs } = this.state
       if (!save) return
       if (!saveOnLoad)
         this.setState({ save: false, submitted: true, scrolled: false })
-      onSubmit(pack(data), this.updateErrors)
+      const d = onSubmitFuncs.length
+        ? onSubmitFuncs.reduce((data2, call) => call(data2), data)
+        : data
+
+      onSubmit(pack(d), this.updateErrors)
     }
 
-    field(name) {
-      // If a field is named with dot notation, will convert into object
+    // If a field is named with dot notation, will convert into object / array
+    // onSubmit function can be passed in that can be used to clean data before submit
+    field(name, onSubmit) {
+      if (onSubmit) {
+        const onSubmitFuncs = Array.from(this.state.onSubmitFuncs)
+        onSubmitFuncs.push(onSubmit)
+        this.setState({ onSubmitFuncs })
+      }
       return {
         name,
         value: this.getValue(name),
