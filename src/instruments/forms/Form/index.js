@@ -7,7 +7,7 @@ import { unpack, pack, packChild, removeChild } from './helpers'
 import UnsavedChangesAlert from '../UnsavedChangesAlert'
 import s from './styles.scss'
 
-const errorField = name => 'error_' + name
+const errorField = name => '__error_' + name
 
 const Form = FormComponent => {
   class Form extends React.Component {
@@ -19,13 +19,17 @@ const Form = FormComponent => {
     field = this.field.bind(this)
     unpack = this.unpack.bind(this)
     getValue = this.getValue.bind(this)
+    registerOnSubmit = this.registerOnSubmit.bind(this)
+    callOnSubmit = this.callOnSubmit.bind(this)
+
     data = this.unpack(this.props.data)
     fieldId = 'field_'
+    // TODO: Namespace params so never any conflict with field names
     state = {
       data: this.data,
       save: false,
       submitted: false,
-      onSubmitFuncs: [], // array of functions to be called on data before submit
+      onSubmitFuncs: {}, // functions to be called on data before submit, registered to field name
     }
 
     componentWillReceiveProps({ data, error }) {
@@ -129,25 +133,43 @@ const Form = FormComponent => {
     onSubmit(e) {
       e.preventDefault()
       const { saveOnLoad, onSubmit } = this.props
-      const { save, data, onSubmitFuncs } = this.state
+      const { save, data } = this.state
       if (!save) return
       if (!saveOnLoad)
         this.setState({ save: false, submitted: true, scrolled: false })
-      const d = onSubmitFuncs.length
-        ? onSubmitFuncs.reduce((data2, call) => call(data2), data)
-        : data
 
-      onSubmit(pack(d), this.updateErrors)
+      onSubmit(pack(this.callOnSubmit(data)), this.updateErrors)
+    }
+
+    registerOnSubmit({ name, onSubmit }) {
+      if (!name || !onSubmit) return
+      const onSubmitFuncs = {
+        ...this.state.onSubmitFuncs,
+        [name]: onSubmit,
+      }
+      this.setState({ onSubmitFuncs })
+    }
+
+    callOnSubmit(data) {
+      const { onSubmitFuncs } = this.state
+      const keys = Object.keys(onSubmitFuncs)
+      if (!keys.length) return data
+
+      const d = keys.reduce((obj, k) => {
+        const clean = onSubmitFuncs[k]
+        if (!clean) return obj
+        const value = packChild({ name: k, obj })
+        const obj2 = {
+          ...removeChild({ name: k, obj }),
+          ...unpack(clean(value), k),
+        }
+        return obj2
+      }, data)
+      return d
     }
 
     // If a field is named with dot notation, will convert into object / array
-    // onSubmit function can be passed in that can be used to clean data before submit
-    field(name, onSubmit) {
-      if (onSubmit) {
-        const onSubmitFuncs = Array.from(this.state.onSubmitFuncs)
-        onSubmitFuncs.push(onSubmit)
-        this.setState({ onSubmitFuncs })
-      }
+    field(name) {
       return {
         name,
         value: this.getValue(name),
@@ -156,6 +178,7 @@ const Form = FormComponent => {
         onChange: this.update,
         submitted: this.state.submitted,
         fieldId: this.fieldId + name,
+        registerOnSubmit: this.registerOnSubmit,
       }
     }
 

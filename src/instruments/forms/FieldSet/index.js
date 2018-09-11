@@ -11,6 +11,7 @@ class FieldSet extends React.Component {
   add = this.add.bind(this)
   renderField = this.renderField.bind(this)
   fieldProps = this.fieldProps.bind(this)
+  removeEmpties = this.removeEmpties.bind(this)
 
   componentWillMount() {
     const { value } = this.props
@@ -18,8 +19,10 @@ class FieldSet extends React.Component {
   }
 
   componentDidMount() {
-    const { value } = this.props
+    const { value, registerOnSubmit, name } = this.props
     this.validate(value) // adds required fields to form
+    if (registerOnSubmit)
+      registerOnSubmit({ name, onSubmit: this.removeEmpties })
   }
 
   componentWillReceiveProps({ value }) {
@@ -27,6 +30,10 @@ class FieldSet extends React.Component {
       // run validation
       this.validate(value)
     }
+  }
+
+  removeEmpties(data) {
+    return data.filter(d => !!d)
   }
 
   validate(value) {
@@ -54,7 +61,6 @@ class FieldSet extends React.Component {
     const { onChange, value } = this.props
     const v2 = Array.from(value)
     v2.splice(i, 1)
-    console.log(v2)
     onChange(null, v2)
   }
 
@@ -112,6 +118,7 @@ FieldSet.propTypes = {
   required: PropTypes.bool,
   className: PropTypes.string,
   title: PropTypes.string,
+  registerOnSubmit: PropTypes.func,
 }
 
 FieldSet.defaultProps = {
