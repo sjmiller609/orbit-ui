@@ -146,9 +146,7 @@ const Field = Component => {
         newProps.value = convert(newProps.value)
         newProps.convert = convert
       }
-      if (newProps.name === 'config.env') {
-        console.log(newProps.value)
-      }
+
       return <Component {...newProps} />
     }
   }
