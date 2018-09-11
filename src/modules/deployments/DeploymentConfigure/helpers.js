@@ -27,7 +27,8 @@ export const workerSizeConvert = (v, out, sizes) => {
 
 export const validateEnvVar = key => {
   // check if is in reserved list
-  if (reserved[key]) return key + ' is a reserved variable name.'
+  if (typeof reserved[key.toUpperCase()] !== 'undefined')
+    return key + ' is a reserved variable name.'
   // check ig matches regex pattern
   const regex = RegExp(/[a-zA-Z_][a-zA-Z0-9_]*/)
   console.log(regex.test(key))
