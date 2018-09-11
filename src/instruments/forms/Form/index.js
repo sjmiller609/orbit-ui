@@ -152,6 +152,7 @@ const Form = FormComponent => {
       this.setState({ onSubmitFuncs })
     }
 
+    // NOTE: this gets called in checkSave, so there should be no side effects. Just transform data
     callOnSubmit(data) {
       const { onSubmitFuncs } = this.state
       const keys = Object.keys(onSubmitFuncs)
