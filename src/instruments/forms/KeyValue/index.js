@@ -28,16 +28,11 @@ class KeyValue extends React.Component {
   validate(value) {
     const { name, validate, updateErrors } = this.props
     let e
-    let n
     // must be first
     if (validate) e = validate(value)
-    if (value && value[this.value] && !value[this.key]) {
-      n = this.key
-      e = 'A key is required to set a value.'
-    }
     // NOTE: not requiring a value when a key is set, to enable setting to empty
 
-    updateErrors(name + '.' + n, e)
+    updateErrors(name + '.' + this.key, e)
   }
 
   keyProps() {
@@ -49,7 +44,7 @@ class KeyValue extends React.Component {
       label: label || this.key,
       placeholder: placeholder || this.key,
       className: classnames(s.key, className),
-      required: this.props.required,
+      required: true,
       showError: this.props.showError,
     }
   }
