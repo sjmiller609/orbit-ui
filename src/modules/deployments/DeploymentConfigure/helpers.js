@@ -30,8 +30,7 @@ export const validateEnvVar = key => {
   if (typeof reserved[key.toUpperCase()] !== 'undefined')
     return key + ' is a reserved variable name.'
   // check ig matches regex pattern
-  const regex = RegExp(/[a-zA-Z_][a-zA-Z0-9_]*/)
-  console.log(regex.test(key))
+  const regex = RegExp(/^[a-zA-Z_][a-zA-Z0-9_]*$/)
   if (!regex.test(key))
     return 'Variable names must only contain alpha-numeric characters aand underscores'
 }
