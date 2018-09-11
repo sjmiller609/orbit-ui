@@ -110,7 +110,9 @@ const Form = FormComponent => {
       const { saveOnLoad } = this.props
       const save = state.save
       // changes made
-      const equal = saveOnLoad ? false : jsonEqual(state.data, this.data)
+      const equal = saveOnLoad
+        ? false
+        : jsonEqual(this.callOnSubmit(state.data), this.data)
 
       // has errors
       if (!this.checkErrors(state)) return false
