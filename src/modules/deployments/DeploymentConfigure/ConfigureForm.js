@@ -29,6 +29,7 @@ import {
   workerSizeConvert,
   workerTerminationUnits,
   workerTerminationConvert,
+  validateEnvVar,
 } from './helpers'
 
 // This form is used for both Update and Create mutations
@@ -118,6 +119,7 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
               Option: EnvVar,
               options: envVars,
               className: s.envKey,
+              validate: validateEnvVar,
             },
           }}
         />

@@ -1,4 +1,5 @@
 import { jsonEqual } from 'helpers/compare'
+import reserved from '../info/envVars/reserved'
 
 // functions that convert the value into a display value
 export const workerTerminationConvert = (v, out) => {
@@ -22,4 +23,14 @@ export const workerSizeConvert = (v, out, sizes) => {
     }
   })
   return size
+}
+
+export const validateEnvVar = key => {
+  // check if is in reserved list
+  if (reserved[key]) return key + ' is a reserved variable name.'
+  // check ig matches regex pattern
+  const regex = RegExp(/[a-zA-Z_][a-zA-Z0-9_]*/)
+  console.log(regex.test(key))
+  if (!regex.test(key))
+    return 'Variable names must only contain alpha-numeric characters aand underscores'
 }

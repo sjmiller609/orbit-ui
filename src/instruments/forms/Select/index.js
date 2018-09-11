@@ -101,4 +101,8 @@ Select.propTypes = {
   fieldId: PropTypes.string,
 }
 
+Select.defaultProps = {
+  value: '',
+}
+
 export default Field(Select)

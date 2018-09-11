@@ -1,8 +1,6 @@
 export default {
-  AIRFLOW_HOME: '',
   C_FORCE_ROOT: '',
   CONTAINER_NAME: '',
-  DAGS_FOLDER: '',
   GCP_PROJECT: '',
   GCS_BUCKET: '',
   GKE_CLUSTER_NAME: '',
