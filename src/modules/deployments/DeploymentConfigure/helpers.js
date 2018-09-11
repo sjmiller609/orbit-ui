@@ -25,7 +25,7 @@ export const workerSizeConvert = (v, out, sizes) => {
   return size
 }
 
-export const validateEnvVar = key => {
+export const validateEnvVar = (key, values) => {
   // check if is in reserved list
   if (typeof reserved[key.toUpperCase()] !== 'undefined')
     return key + ' is a reserved variable name.'
@@ -33,4 +33,7 @@ export const validateEnvVar = key => {
   const regex = RegExp(/^[a-zA-Z_][a-zA-Z0-9_]*$/)
   if (!regex.test(key))
     return 'Variable names must only contain alpha-numeric characters aand underscores'
+
+  if (values.filter(v => v.key === key).length > 1)
+    return 'This variable is already set.'
 }

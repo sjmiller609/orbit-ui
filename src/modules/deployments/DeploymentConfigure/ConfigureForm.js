@@ -42,6 +42,8 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
   //   },
   // }
   const { defaults, limits, presets } = deploymentConfig
+  // defining here so can pass value into validation function
+  const env = form.field('config.env')
   return (
     <CardForm
       title="Configure"
@@ -109,7 +111,7 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
       </FormSection>
       <FormSection id="env" title="Environment Variables">
         <FieldSet
-          {...form.field('config.env')}
+          {...env}
           title="Env Variable"
           formField={form.field}
           FieldType={KeyValue}
@@ -119,7 +121,7 @@ const Configure = ({ form, deployment, deploymentConfig }) => {
               Option: EnvVar,
               options: envVars,
               className: s.envKey,
-              validate: validateEnvVar,
+              validate: value => validateEnvVar(value, env.value),
             },
           }}
         />
