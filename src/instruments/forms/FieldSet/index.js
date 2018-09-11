@@ -33,6 +33,7 @@ class FieldSet extends React.Component {
   }
 
   removeEmpties(data) {
+    if (!data) return
     return data.filter(d => !!d)
   }
 

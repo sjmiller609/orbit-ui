@@ -48,6 +48,7 @@ class Configure extends React.Component {
     } = this.props
     // defining here so can pass value into validation function
     const env = form.field('config.env')
+    console.log(presets.workerSizes.small)
     return (
       <React.Fragment>
         <FormSection id="workers" title="Celery Workers">
@@ -55,7 +56,7 @@ class Configure extends React.Component {
             {...form.field('config.workers.resources')}
             label="Worker Size"
             className={s.workers}
-            defaultValue={defaults.workers.resources}
+            defaultValue={presets.workerSizes.small}
             Component={WorkerSize}
             options={workerSizes}
             info={info.workerSize}

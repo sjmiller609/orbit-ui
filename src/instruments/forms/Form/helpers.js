@@ -1,5 +1,6 @@
 // faltten and stringify nested keys
 export const unpack = (obj, ns, hash) => {
+  if (!obj) return
   return Object.entries(obj).reduce((acc, [key, value]) => {
     const keypath = ns ? `${ns}.${key}` : key
     if (value && typeof value === 'object') {
