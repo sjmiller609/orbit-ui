@@ -1,0 +1,38 @@
+@import 'src/styles/mixins.scss';
+
+div.list {
+  height: auto;
+  min-height: 50vh;
+}
+
+.title {
+  width: 55%;
+  min-width: 18rem;
+  @media screen and (max-width: 50rem) {
+    flex-basis: 1;
+    flex-grow: 1;
+  }
+}
+
+.log {
+  width: 35%;
+  min-width: 18rem;
+  color: $beige;
+  @media screen and (max-width: 55rem) {
+    display: none;
+  }
+}
+
+.profileLarge {
+  width: 10rem;
+  height: 10rem;
+  @include shadow;
+  background: $gray;
+}
+
+.avatar {
+  width: 3rem;
+  height: 3rem;
+  @include shadow;
+  background: $gray;
+}

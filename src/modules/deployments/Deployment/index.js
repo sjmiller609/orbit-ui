@@ -29,6 +29,10 @@ class Deployment extends React.Component {
         text: 'Configure',
         to: match.url + '/configure',
       },
+      {
+        text: 'Service Accounts',
+        to: match.url + '/service-accounts',
+      },
     ]
 
     const vars = {
