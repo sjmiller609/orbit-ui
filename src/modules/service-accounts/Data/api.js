@@ -32,6 +32,7 @@ export default {
         entityUuid: $entityId
       ) {
         ...serviceAccount
+        apiKey
       }
     }
     ${serviceAccount}

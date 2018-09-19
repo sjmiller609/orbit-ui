@@ -135,7 +135,6 @@ export const deploymentConfig = gql`
 export const serviceAccount = gql`
   fragment serviceAccount on ServiceAccount {
     id: uuid
-    apiKey
     label
     entityType
     entityId: entityUuid

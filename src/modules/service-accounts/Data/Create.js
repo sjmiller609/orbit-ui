@@ -2,29 +2,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import workspacesApi from 'modules/workspaces/Data/api'
 import api from './api'
 
 import { Create as Mutation, GetData } from 'instruments'
 
-const Invite = Component => {
-  const Invite = ({ getData, ...props }) => {
+const Create = Component => {
+  const Create = ({ getData, deploymentId, ...props }) => {
+    const variables = deploymentId
+      ? {
+          entityType: 'deployment',
+          entityUuid: deploymentId,
+        }
+      : {
+          entityType: 'workspace',
+          entityUuid: getData.workspaceId,
+        }
     const query = {
-      name: workspacesApi.Workspaces,
-      type: 'workspaces',
-      vars: {
-        workspaceId: getData.workspaceId,
-        withUsers: true,
-      },
+      name: api.ServiceAccounts,
+      type: 'serviceAccounts',
+      vars: variables,
     }
     return (
       <Mutation
-        gql={api.InviteUser}
-        back
-        errorMsg="Limited functionality: To add a user to this workspace, that person must first sign up."
-        voidError
-        success="User added to workspace." //TODO: "Your invitation has been sent"
-        track="New User Invited to Workspace"
+        gql={api.CreateServiceAccount}
+        success="New service account created. The API key will only be visible this session"
+        track={
+          'New Service Account Created For ' + deploymentId
+            ? 'Deployment'
+            : 'Workspace'
+        }
         query={query}>
         {({ mutate }) => {
           const newProps = {
@@ -32,7 +38,7 @@ const Invite = Component => {
             onSubmit: vars => {
               mutate({
                 variables: {
-                  workspaceId: getData.workspaceId,
+                  ...variables,
                   ...vars,
                 },
               })
@@ -43,11 +49,12 @@ const Invite = Component => {
       </Mutation>
     )
   }
-  Invite.propTypes = {
+  Create.propTypes = {
     getData: PropTypes.object,
+    deploymentId: PropTypes.string,
   }
 
-  return GetData(Invite, { workspaceId: true })
+  return GetData(Create, { workspaceId: true })
 }
 
-export default Invite
+export default Create
