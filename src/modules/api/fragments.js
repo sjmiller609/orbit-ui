@@ -131,3 +131,18 @@ export const deploymentConfig = gql`
     presets
   }
 `
+
+export const serviceAccount = gql`
+  fragment serviceAccount on ServiceAccount {
+    id: uuid
+    apiKey
+    label
+    entityType
+    entityId: entityUuid
+    category
+    active
+    lastUsedAt
+    createdAt
+    updatedAt
+  }
+`
