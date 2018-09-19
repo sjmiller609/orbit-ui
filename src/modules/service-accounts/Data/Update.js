@@ -8,16 +8,20 @@ const Update = Component => {
   const Update = props => {
     return (
       <Mutation
-        gql={api.UpdateUser}
-        success="User access permissions updated."
-        track="User Permissions Updated"
-        back>
+        gql={api.UpdateServiceAccount}
+        success="Service account updated."
+        track="Service Account Updated">
         {({ mutate }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
+              const { id, ...payload } = vars
+              const variables = {
+                id,
+                payload,
+              }
               mutate({
-                variables: vars,
+                variables,
               })
             },
           }
