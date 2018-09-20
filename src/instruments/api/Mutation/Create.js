@@ -16,6 +16,7 @@ const Create = ({ query, ...props }) => {
           query: query.name,
           variables: query.vars,
         })
+        console.log(data)
         if (!results) return
         cache.writeQuery({
           query: query.name,

@@ -8,8 +8,8 @@ import { Create as Mutation, GetData } from 'instruments'
 import { getVars } from './helpers'
 
 const Create = Component => {
-  const Create = ({ getData, deploymentId, ...props }) => {
-    const variables = getVars({ deploymentId, getData })
+  const Create = ({ getData, path, ...props }) => {
+    const variables = getVars({ deploymentId: props.deploymentId, getData })
     const query = {
       name: api.ServiceAccounts,
       type: 'serviceAccounts',
@@ -18,10 +18,13 @@ const Create = Component => {
     return (
       <Mutation
         gql={api.CreateServiceAccount}
-        back
+        redirect={data => ({
+          pathname: path + '/service-accounts/' + data.id,
+          state: { apiKey: data.apiKey },
+        })}
         success="New service account created. The API key will only be visible this session"
         track={
-          'New Service Account Created For ' + deploymentId
+          'New Service Account Created For ' + props.deploymentId
             ? 'Deployment'
             : 'Workspace'
         }
@@ -46,6 +49,7 @@ const Create = Component => {
   Create.propTypes = {
     getData: PropTypes.object,
     deploymentId: PropTypes.string,
+    path: PropTypes.string,
   }
 
   return GetData(Create, { workspaceId: true })

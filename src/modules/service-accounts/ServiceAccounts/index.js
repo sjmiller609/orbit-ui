@@ -43,17 +43,17 @@ class ServiceAccounts extends React.Component {
               deploymentId={deploymentId}
               module={{
                 ...module2,
-                metaTitle: `New Service Account | ${deployment &&
-                  deployment.label + ' | '} Astronomer`,
+                metaTitle: 'New Service Account | ' + module2.metaTitle,
               }}
             />
           )}
         />
-        <Module {...module2}>
-          <Route
-            path={path}
-            exact
-            render={() => (
+
+        <Route
+          path={path}
+          exact
+          render={() => (
+            <Module {...module2}>
               <List
                 search={{
                   text: search,
@@ -62,23 +62,29 @@ class ServiceAccounts extends React.Component {
                 deploymentId={deploymentId}
                 path={path}
               />
-            )}
-          />
-          <Route
-            path={path + '/:id'}
-            exact
-            render={({ match }) => {
-              return (
+            </Module>
+          )}
+        />
+        <Route
+          path={path + '/:id'}
+          exact
+          render={({ match, location }) => {
+            return (
+              <Module
+                {...module2}
+                metaTitle={'Service Account | ' + module2.metaTitle}>
                 <Configure
+                  path={path}
                   deploymentId={deploymentId}
+                  apiKey={location.state && location.state.apiKey}
                   vars={{
                     serviceAccountId: match.params.id,
                   }}
                 />
-              )
-            }}
-          />
-        </Module>
+              </Module>
+            )
+          }}
+        />
 
         <Redirect to="/404" />
       </Switch>

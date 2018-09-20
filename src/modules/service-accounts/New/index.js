@@ -17,7 +17,11 @@ class New extends React.Component {
     }
     return (
       <Module metaTitle={metaTitle} menu={menu2}>
-        <Configure title={this.title} deploymentId={deploymentId} />
+        <Configure
+          title={this.title}
+          deploymentId={deploymentId}
+          path={module.path}
+        />
       </Module>
     )
   }

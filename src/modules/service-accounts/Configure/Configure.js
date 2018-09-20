@@ -9,6 +9,7 @@ const Configure = ({ form }) => {
   return (
     <CardForm
       title="Configure"
+      id="configure"
       button={{
         save: form.save,
         text: 'Update',
@@ -19,6 +20,11 @@ const Configure = ({ form }) => {
         required
         focus
         {...form.field('label')}
+      />
+      <TextField
+        placeholder="Category"
+        label="Category"
+        {...form.field('category')}
       />
     </CardForm>
   )

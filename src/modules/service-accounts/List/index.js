@@ -8,7 +8,7 @@ import Data from '../Data'
 import Item from './Item'
 import Empty from './Empty'
 
-const List = ({ serviceAccounts, path, search }) => {
+const List = ({ serviceAccounts = [], path, search }) => {
   const button = {
     text: 'New Service Account',
     to: path + '/new',

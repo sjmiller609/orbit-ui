@@ -15,10 +15,16 @@ const Query = ({
   search,
   OnError,
   subscribe,
+  fetchPolicy,
   sortNewest = true,
 }) => {
   return (
-    <Apollo query={gql} variables={vars} skip={skip} errorPolicy="all">
+    <Apollo
+      query={gql}
+      fetchPolicy={fetchPolicy}
+      variables={vars}
+      skip={skip}
+      errorPolicy="all">
       {({ loading, error, data, subscribeToMore }) => {
         if (loading) return <Loading /> // return this instead of updating contextUI
         if (error) {
@@ -102,6 +108,7 @@ Query.propTypes = {
   subscribe: PropTypes.object,
   OnError: PropTypes.element,
   sortNewest: PropTypes.bool,
+  fetchPolicy: PropTypes.string,
 }
 
 export default Query

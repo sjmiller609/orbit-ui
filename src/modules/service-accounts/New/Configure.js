@@ -21,6 +21,11 @@ const Configure = ({ title, form }) => {
         focus
         {...form.field('label')}
       />
+      <TextField
+        placeholder="Category"
+        label="Category"
+        {...form.field('category')}
+      />
     </CardForm>
   )
 }

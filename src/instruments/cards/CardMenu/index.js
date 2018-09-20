@@ -72,13 +72,14 @@ class CardMenu extends React.Component {
   }
 
   render() {
-    const { children, id, title, menu, className } = this.props
+    const { children, id, title, menu, menuList, className } = this.props
     const { focus, sticky } = this.state
     return (
       <Row align="flex-start" className={classnames(s.row, className)}>
         <Menu
           id={id}
           menu={menu}
+          menuList={menuList}
           title={title}
           active={focus}
           scrollTo={this.scrollTo}
@@ -97,6 +98,7 @@ CardMenu.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
   className: PropTypes.string,
   menu: PropTypes.array,
+  menuList: PropTypes.object,
 }
 
 CardMenu.defaultProps = {

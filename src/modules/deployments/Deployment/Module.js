@@ -26,7 +26,8 @@ const Deployment = ({ deployments, menu, title }) => {
   menu2.level2.text = deployment.label
 
   const path = '/deployments/' + deployment.releaseName
-  const metaTitle = title + ' | ' + deployment.label
+  let metaTitle = deployment.label
+  if (title) metaTitle = title + ' | ' + metaTitle
   return (
     <Switch>
       {/* Service accounts loads module on its own */}

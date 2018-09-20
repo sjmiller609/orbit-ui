@@ -7,7 +7,14 @@ import { Query, GetData } from 'instruments'
 import { getVars } from './helpers'
 
 const Data = Component => {
-  const Data = ({ vars, getData, skip, search, ...otherProps }) => {
+  const Data = ({
+    vars,
+    getData,
+    fetchPolicy,
+    skip,
+    search,
+    ...otherProps
+  }) => {
     const variables = getVars({
       deploymentId: otherProps.deploymentId,
       vars,
@@ -18,6 +25,7 @@ const Data = Component => {
         gql={api.ServiceAccounts}
         vars={variables}
         skip={skip}
+        fetchPolicy={fetchPolicy}
         search={search}>
         {({ data: { serviceAccounts } }) => {
           const newProps = {
@@ -37,6 +45,7 @@ const Data = Component => {
     search: PropTypes.object,
     getData: PropTypes.object,
     deploymentId: PropTypes.string,
+    fetchPolicy: PropTypes.string,
   }
 
   return GetData(Data, { workspaceId: true })
