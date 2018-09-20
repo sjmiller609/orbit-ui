@@ -4,7 +4,7 @@ import { serviceAccount } from 'modules/api/fragments'
 export default {
   ServiceAccounts: gql`
     query serviceAccounts(
-      $serviceAccountId: String
+      $serviceAccountId: Uuid
       $entityType: EntityType!
       $entityId: Uuid
     ) {
@@ -22,7 +22,7 @@ export default {
     mutation createServiceAccount(
       $label: String!
       $category: String
-      $entityType: String!
+      $entityType: EntityType!
       $entityId: Uuid
     ) {
       createServiceAccount(

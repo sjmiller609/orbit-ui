@@ -5,18 +5,11 @@ import PropTypes from 'prop-types'
 import api from './api'
 
 import { Create as Mutation, GetData } from 'instruments'
+import { getVars } from './helpers'
 
 const Create = Component => {
   const Create = ({ getData, deploymentId, ...props }) => {
-    const variables = deploymentId
-      ? {
-          entityType: 'DEPLOYMENT',
-          entityId: deploymentId,
-        }
-      : {
-          entityType: 'WORKSPACE',
-          entityId: getData.workspaceId,
-        }
+    const variables = getVars({ deploymentId, getData })
     const query = {
       name: api.ServiceAccounts,
       type: 'serviceAccounts',
@@ -25,6 +18,7 @@ const Create = Component => {
     return (
       <Mutation
         gql={api.CreateServiceAccount}
+        back
         success="New service account created. The API key will only be visible this session"
         track={
           'New Service Account Created For ' + deploymentId

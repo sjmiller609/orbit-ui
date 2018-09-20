@@ -8,7 +8,8 @@ class New extends React.Component {
   title = 'New Service Account'
 
   render() {
-    const { metaTitle, menu, path } = this.props.module
+    const { module, deploymentId } = this.props
+    const { metaTitle, menu, path } = module
 
     const menu2 = {
       ...menu,
@@ -20,14 +21,14 @@ class New extends React.Component {
     }
     return (
       <Module metaTitle={metaTitle} menu={menu2}>
-        <Configure title={this.title} />
+        <Configure title={this.title} deploymentId={deploymentId} />
       </Module>
     )
   }
 }
 
 New.propTypes = {
-  location: PropTypes.object,
+  deploymentId: PropTypes.string,
   module: PropTypes.object,
 }
 

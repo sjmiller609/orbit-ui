@@ -32,6 +32,7 @@ class Deployment extends React.Component {
       {
         text: 'Service Accounts',
         to: match.url + '/service-accounts',
+        exact: false,
       },
     ]
 

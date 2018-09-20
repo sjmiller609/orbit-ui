@@ -5,6 +5,8 @@ import { Load } from 'instruments'
 
 const List = Load(() => import(/* webpackPrefetch: true */ '../List'))
 const New = Load(() => import(/* webpackPrefetch: true */ '../New'))
+const Configure = Load(() => import(/* webpackPrefetch: true */ '../Configure'))
+
 import Module from 'modules/app/Module'
 
 class ServiceAccounts extends React.Component {
@@ -24,6 +26,7 @@ class ServiceAccounts extends React.Component {
     const { search } = this.state
     const { deployment, module } = this.props
     const path = module.path + '/service-accounts'
+    const deploymentId = deployment && deployment.id
     return (
       <Switch>
         <Route
@@ -31,6 +34,7 @@ class ServiceAccounts extends React.Component {
           exact
           render={() => (
             <New
+              deploymentId={deploymentId}
               module={{
                 ...module,
                 metaTitle: `New Service Account | ${deployment &&
@@ -39,24 +43,36 @@ class ServiceAccounts extends React.Component {
             />
           )}
         />
-        <Route
-          path={path}
-          exact
-          render={() => (
-            <Module {...module}>
+        <Module {...module}>
+          <Route
+            path={path}
+            exact
+            render={() => (
               <List
                 search={{
                   text: search,
                   ...this.search,
                 }}
-                baseUrl={`/deployments/${
-                  deployment.releaseName
-                }/service-accounts`}
-                deploymentId={deployment && deployment.id}
+                deploymentId={deploymentId}
+                path={path}
               />
-            </Module>
-          )}
-        />
+            )}
+          />
+          <Route
+            path={path + '/:id'}
+            exact
+            render={({ match }) => {
+              return (
+                <Configure
+                  deploymentId={deploymentId}
+                  vars={{
+                    serviceAccountId: match.params.id,
+                  }}
+                />
+              )
+            }}
+          />
+        </Module>
 
         <Redirect to="/404" />
       </Switch>

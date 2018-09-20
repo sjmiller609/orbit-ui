@@ -12,6 +12,7 @@ const Item = ({
   className,
   activeClassName,
   title,
+  exact,
   ...props
 }) => {
   const t = title ? title : typeof children === 'string' ? children : ''
@@ -20,7 +21,7 @@ const Item = ({
       {...props}
       to={to}
       title={t}
-      exact={true}
+      exact={exact}
       className={classnames(s.item, active && s.active, className)}
       activeClassName={classnames(s.active, activeClassName)}>
       {children}
@@ -35,6 +36,11 @@ Item.propTypes = {
   to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   active: PropTypes.bool,
   title: PropTypes.string,
+  exact: PropTypes.bool,
+}
+
+Item.defaultProps = {
+  exact: true,
 }
 
 export default Item

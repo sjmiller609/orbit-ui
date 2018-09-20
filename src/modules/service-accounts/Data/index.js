@@ -4,27 +4,15 @@ import PropTypes from 'prop-types'
 import api from './api'
 
 import { Query, GetData } from 'instruments'
+import { getVars } from './helpers'
 
 const Data = Component => {
-  const Data = ({
-    vars,
-    getData,
-    deploymentId,
-    skip,
-    search,
-    ...otherProps
-  }) => {
-    const variables = deploymentId
-      ? {
-          entityType: 'DEPLOYMENT',
-          entityId: deploymentId,
-          ...vars,
-        }
-      : {
-          entityType: 'WORKSPACE',
-          entityId: getData.workspaceId,
-          ...vars,
-        }
+  const Data = ({ vars, getData, skip, search, ...otherProps }) => {
+    const variables = getVars({
+      deploymentId: otherProps.deploymentId,
+      vars,
+      getData,
+    })
     return (
       <Query
         gql={api.ServiceAccounts}

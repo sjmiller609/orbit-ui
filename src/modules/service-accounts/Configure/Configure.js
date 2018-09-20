@@ -1,19 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import s from './styles.scss'
 import { CardForm, Form, TextField } from 'instruments'
 
-import Create from '../Data/Create'
+import Update from '../Data/Update'
 
-const Configure = ({ title, form }) => {
+const Configure = ({ form }) => {
   return (
     <CardForm
-      title={title}
+      title="Configure"
       button={{
         save: form.save,
-      }}
-      className={s.card}>
+        text: 'Update',
+      }}>
       <TextField
         placeholder="Name"
         label="Name"
@@ -26,9 +25,7 @@ const Configure = ({ title, form }) => {
 }
 
 Configure.propTypes = {
-  title: PropTypes.string,
-  save: PropTypes.bool,
   form: PropTypes.object,
 }
 
-export default Create(Form(Configure))
+export default Update(Form(Configure))

@@ -8,14 +8,16 @@ import Data from '../Data'
 import Item from './Item'
 import Empty from './Empty'
 
-const List = ({ serviceAccounts, baseUrl, search }) => {
+const List = ({ serviceAccounts, path, search }) => {
   const button = {
     text: 'New Service Account',
-    to: baseUrl + '/new',
+    to: path + '/new',
   }
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
-      {serviceAccounts.map(t => <Item key={t.id} serviceAccount={t} />)}
+      {serviceAccounts.map(t => (
+        <Item key={t.id} serviceAccount={t} path={path} />
+      ))}
     </Table>
   )
 }
@@ -23,7 +25,7 @@ const List = ({ serviceAccounts, baseUrl, search }) => {
 List.propTypes = {
   serviceAccounts: PropTypes.array,
   search: PropTypes.object,
-  baseUrl: PropTypes.string,
+  path: PropTypes.string,
 }
 
 export default Data(List)

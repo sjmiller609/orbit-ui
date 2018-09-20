@@ -5,18 +5,12 @@ import PropTypes from 'prop-types'
 import api from './api'
 
 import { Delete as Mutate, GetData } from 'instruments'
+import { getVars } from './helpers'
 
 const Delete = Component => {
-  const Delete = ({ getData, deploymentId, ...props }) => {
-    const variables = deploymentId
-      ? {
-          entityType: 'DEPLOYMENT',
-          entityId: deploymentId,
-        }
-      : {
-          entityType: 'WORKSPACE',
-          entityId: getData.workspaceId,
-        }
+  const Delete = ({ getData, ...props }) => {
+    const variables = getVars({ deploymentId: props.deploymentId, getData })
+
     const query = {
       name: api.ServiceAccounts,
       type: 'serviceAccounts',
@@ -27,12 +21,12 @@ const Delete = Component => {
         gql={api.DeleteServiceAccount}
         //  redirect={!isSelf ? '/users' : '/workspaces'}
         success={
-          'Service account deleted from ' + deploymentId
+          'Service account deleted from ' + props.deploymentId
             ? 'deployment'
             : 'workspace'
         }
         track={
-          'Service Account Deleted From ' + deploymentId
+          'Service Account Deleted From ' + props.deploymentId
             ? 'Deployment'
             : 'Workspace'
         }
@@ -61,7 +55,7 @@ const Delete = Component => {
   }
   Delete.propTypes = {
     getData: PropTypes.object,
-    deploymentId: PropTypes.bool,
+    deploymentId: PropTypes.string,
   }
 
   return GetData(Delete, { workspaceId: true })

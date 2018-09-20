@@ -15,6 +15,7 @@ const SubMenu = ({ menu, className }) => {
           to={m.to}
           key={m.text}
           backArrow={m.back}
+          exact={m.exact}
           activeClassName={s.active}>
           {m.text}
         </Item>
