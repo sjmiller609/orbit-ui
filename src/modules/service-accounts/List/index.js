@@ -8,10 +8,10 @@ import Data from '../Data'
 import Item from './Item'
 import Empty from './Empty'
 
-const List = ({ serviceAccounts, search }) => {
+const List = ({ serviceAccounts, baseUrl, search }) => {
   const button = {
-    text: 'New',
-    to: '/service-accounts/new',
+    text: 'New Service Account',
+    to: baseUrl + '/new',
   }
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
@@ -23,6 +23,7 @@ const List = ({ serviceAccounts, search }) => {
 List.propTypes = {
   serviceAccounts: PropTypes.array,
   search: PropTypes.object,
+  baseUrl: PropTypes.string,
 }
 
 export default Data(List)

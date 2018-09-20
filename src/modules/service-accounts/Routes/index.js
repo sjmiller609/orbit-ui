@@ -16,6 +16,5 @@ export default [
   {
     path: '/service-accounts/:id',
     component: Load(() => import(/* webpackPrefetch: true */ '../User')),
-    // matches sub routes
   },
 ]

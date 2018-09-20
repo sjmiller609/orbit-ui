@@ -5,18 +5,21 @@ import Configure from './Configure'
 import Module from '../../app/Module'
 
 class New extends React.Component {
-  title = 'Invite to Workspace'
-  menu = {
-    home: '/users',
-  }
+  title = 'New Service Account'
 
   render() {
-    this.menu.level2 = {
-      text: '',
-      to: this.props.location.pathname,
+    const { metaTitle, menu, path } = this.props.module
+
+    const menu2 = {
+      ...menu,
+      level2: {
+        ...menu.level2,
+        to: path + '/service-accounts',
+      },
+      subMenu: null,
     }
     return (
-      <Module metaTitle={this.title} menu={this.menu}>
+      <Module metaTitle={metaTitle} menu={menu2}>
         <Configure title={this.title} />
       </Module>
     )
@@ -25,6 +28,7 @@ class New extends React.Component {
 
 New.propTypes = {
   location: PropTypes.object,
+  module: PropTypes.object,
 }
 
 export default New

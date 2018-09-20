@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import s from './styles.scss'
 import { CardForm, Form, TextField } from 'instruments'
 
-import Invite from '../Data/Invite'
+import Data from '../Data'
 
 const Configure = ({ title, form }) => {
   return (
@@ -12,16 +12,14 @@ const Configure = ({ title, form }) => {
       title={title}
       button={{
         save: form.save,
-        text: 'Invite',
       }}
       className={s.card}>
       <TextField
-        type="email"
-        placeholder="name@yourcompany.com"
-        label="Email"
+        placeholder="Name"
+        label="Name"
         required
         focus
-        {...form.field('email')}
+        {...form.field('label')}
       />
     </CardForm>
   )
@@ -33,4 +31,4 @@ Configure.propTypes = {
   form: PropTypes.object,
 }
 
-export default Invite(Form(Configure))
+export default Data(Form(Configure))

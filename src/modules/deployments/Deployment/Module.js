@@ -14,6 +14,7 @@ const Overview = Load(() =>
 const ServiceAccounts = Load(() =>
   import(/* webpackPrefetch: true */ 'modules/service-accounts/ServiceAccounts')
 )
+
 const Deployment = ({ deployments, menu, title }) => {
   const deployment = deployments[0]
   // Error handled
@@ -25,10 +26,20 @@ const Deployment = ({ deployments, menu, title }) => {
   menu2.level2.text = deployment.label
 
   const path = '/deployments/' + deployment.releaseName
-
+  const metaTitle = title + ' | ' + deployment.label
   return (
-    <Module metaTitle={title + ' | ' + deployment.label} menu={menu}>
-      <Switch>
+    <Switch>
+      {/* Service accounts loads module on its own */}
+      <Route
+        path={path + '/service-accounts'}
+        render={() => (
+          <ServiceAccounts
+            deployment={deployment}
+            module={{ metaTitle, menu: menu2, path }}
+          />
+        )}
+      />
+      <Module metaTitle={metaTitle} menu={menu2}>
         <Route
           path={path + '/configure'}
           exact
@@ -40,22 +51,18 @@ const Deployment = ({ deployments, menu, title }) => {
           render={() => <Overview deployment={deployment} />}
         />
         {/* <Route
-          path={path + '/logs'}
-          exact
-          render={() => {
-          const Logs = Load(() => import(/* webpackPrefetch: true */
+            path={path + '/logs'}
+            exact
+            render={() => {
+            const Logs = Load(() => import(/* webpackPrefetch: true */
         /* 'modules/logs/DeploymentLogs'))
-          return <Logs deployment={deployment} />
-          }}
+            return <Logs deployment={deployment} />
+            }}
         /> */}
-        <Route
-          path={path + '/service-accounts'}
-          exact
-          render={() => <ServiceAccounts deployment={deployment} />}
-        />
-        <Redirect to="/404" />
-      </Switch>
-    </Module>
+      </Module>
+
+      <Redirect to="/404" />
+    </Switch>
   )
 }
 

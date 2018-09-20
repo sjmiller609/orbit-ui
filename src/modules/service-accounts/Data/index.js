@@ -16,13 +16,13 @@ const Data = Component => {
   }) => {
     const variables = deploymentId
       ? {
-          entityType: 'deployment',
-          entityUuid: deploymentId,
+          entityType: 'DEPLOYMENT',
+          entityId: deploymentId,
           ...vars,
         }
       : {
-          entityType: 'workspace',
-          entityUuid: getData.workspaceId,
+          entityType: 'WORKSPACE',
+          entityId: getData.workspaceId,
           ...vars,
         }
     return (

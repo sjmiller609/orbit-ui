@@ -4,12 +4,12 @@ import { serviceAccount } from 'modules/api/fragments'
 export default {
   ServiceAccounts: gql`
     query serviceAccounts(
-      $serviceAccountId: Uuid
-      $entityType: String
+      $serviceAccountId: String
+      $entityType: EntityType!
       $entityId: Uuid
     ) {
-      ServiceAccount(
-        serviceAccountUuId: $serviceAccountId
+      serviceAccounts(
+        serviceAccountUuid: $serviceAccountId
         entityType: $entityType
         entityUuid: $entityId
       ) {
@@ -40,7 +40,7 @@ export default {
   UpdateServiceAccount: gql`
     mutation updateServiceAccount($serviceAccountId: Uuid!, $payload: JSON!) {
       updateServiceAccount(
-        serviceAccountUuId: $serviceAccountId
+        serviceAccountUuid: $serviceAccountId
         payload: $payload
       ) {
         ...serviceAccount
@@ -50,7 +50,7 @@ export default {
   `,
   DeleteServiceAccount: gql`
     mutation deleteServiceAccount($serviceAccountId: Uuid!) {
-      deleteServiceAccount(serviceAccountUuId: $serviceAccountId) {
+      deleteServiceAccount(serviceAccountUuid: $serviceAccountId) {
         id: uuid
       }
     }

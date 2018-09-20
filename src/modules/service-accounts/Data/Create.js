@@ -10,12 +10,12 @@ const Create = Component => {
   const Create = ({ getData, deploymentId, ...props }) => {
     const variables = deploymentId
       ? {
-          entityType: 'deployment',
-          entityUuid: deploymentId,
+          entityType: 'DEPLOYMENT',
+          entityId: deploymentId,
         }
       : {
-          entityType: 'workspace',
-          entityUuid: getData.workspaceId,
+          entityType: 'WORKSPACE',
+          entityId: getData.workspaceId,
         }
     const query = {
       name: api.ServiceAccounts,

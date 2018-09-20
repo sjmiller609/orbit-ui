@@ -23,11 +23,10 @@ div.list {
   }
 }
 
-.profileLarge {
-  width: 10rem;
-  height: 10rem;
-  @include shadow;
-  background: $gray;
+.large {
+  width: 14rem;
+  //  @include shadow;
+  //  background: $gray;
 }
 
 .avatar {
