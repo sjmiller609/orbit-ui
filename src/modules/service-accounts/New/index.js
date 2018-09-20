@@ -9,14 +9,10 @@ class New extends React.Component {
 
   render() {
     const { module, deploymentId } = this.props
-    const { metaTitle, menu, path } = module
+    const { metaTitle, menu } = module
 
     const menu2 = {
       ...menu,
-      level2: {
-        ...menu.level2,
-        to: path + '/service-accounts',
-      },
       subMenu: null,
     }
     return (

@@ -27,6 +27,12 @@ class ServiceAccounts extends React.Component {
     const { deployment, module } = this.props
     const path = module.path + '/service-accounts'
     const deploymentId = deployment && deployment.id
+
+    const module2 = {
+      ...module,
+    }
+    if (module2.menu.level2) module2.menu.level2.to = path
+
     return (
       <Switch>
         <Route
@@ -36,14 +42,14 @@ class ServiceAccounts extends React.Component {
             <New
               deploymentId={deploymentId}
               module={{
-                ...module,
+                ...module2,
                 metaTitle: `New Service Account | ${deployment &&
                   deployment.label + ' | '} Astronomer`,
               }}
             />
           )}
         />
-        <Module {...module}>
+        <Module {...module2}>
           <Route
             path={path}
             exact
