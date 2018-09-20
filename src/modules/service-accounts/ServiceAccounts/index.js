@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import List from '../List'
-import Module from '../../app/Module'
-import { GetData } from 'instruments'
+import Module from 'modules/app/Module'
 
-class Users extends React.Component {
+class ServiceAccounts extends React.Component {
   menu = {
     nav: 'workspace',
   }
@@ -14,32 +13,27 @@ class Users extends React.Component {
   // search obj constants
   search = {
     delay: false,
-    placeholder: 'Search Users',
+    placeholder: 'Search Service Accounts',
     call: search => this.setState({ search }),
-    fields: ['users'],
   }
 
   render() {
     const { search } = this.state
-    const vars = {
-      workspaceId: this.props.getData.workspaceId,
-      withUsers: true,
-    }
+    const { deployment } = this.props
+
     return (
-      <Module metaTitle="Users" menu={this.menu}>
-        <List
-          search={{
-            text: search,
-            ...this.search,
-          }}
-          vars={vars}
-        />
-      </Module>
+      <List
+        search={{
+          text: search,
+          ...this.search,
+        }}
+        deploymentId={deployment && deployment.id}
+      />
     )
   }
 }
-Users.propTypes = {
-  getData: PropTypes.object,
+ServiceAccounts.propTypes = {
+  deployment: PropTypes.object,
 }
 
-export default GetData(Users, { workspaceId: true })
+export default ServiceAccounts

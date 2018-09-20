@@ -3,12 +3,34 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import api from './api'
 
-import { Query } from 'instruments'
+import { Query, GetData } from 'instruments'
 
 const Data = Component => {
-  const Data = ({ vars, skip, search, ...otherProps }) => {
+  const Data = ({
+    vars,
+    getData,
+    deploymentId,
+    skip,
+    search,
+    ...otherProps
+  }) => {
+    const variables = deploymentId
+      ? {
+          entityType: 'deployment',
+          entityUuid: deploymentId,
+          ...vars,
+        }
+      : {
+          entityType: 'workspace',
+          entityUuid: getData.workspaceId,
+          ...vars,
+        }
     return (
-      <Query gql={api.ServiceAccounts} vars={vars} skip={skip} search={search}>
+      <Query
+        gql={api.ServiceAccounts}
+        vars={variables}
+        skip={skip}
+        search={search}>
         {({ data: { serviceAccounts } }) => {
           const newProps = {
             ...otherProps,
@@ -25,9 +47,11 @@ const Data = Component => {
     vars: PropTypes.object,
     skip: PropTypes.bool,
     search: PropTypes.object,
+    getData: PropTypes.object,
+    deploymentId: PropTypes.string,
   }
 
-  return Data
+  return GetData(Data, { workspaceId: true })
 }
 
 export default Data

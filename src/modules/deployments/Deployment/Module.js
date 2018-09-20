@@ -2,8 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
-// import DeploymentConfigure from '../DeploymentConfigure'
-// import DeploymentOverview from '../DeploymentOverview'
 import { Load } from 'instruments'
 import Data from '../Data'
 import Module from '../../app/Module'
@@ -12,6 +10,9 @@ const Configure = Load(() =>
 )
 const Overview = Load(() =>
   import(/* webpackPrefetch: true */ '../DeploymentOverview')
+)
+const ServiceAccounts = Load(() =>
+  import(/* webpackPrefetch: true */ 'modules/service-accounts/ServiceAccounts')
 )
 const Deployment = ({ deployments, menu, title }) => {
   const deployment = deployments[0]
@@ -47,6 +48,11 @@ const Deployment = ({ deployments, menu, title }) => {
           return <Logs deployment={deployment} />
           }}
         /> */}
+        <Route
+          path={path + '/service-accounts'}
+          exact
+          render={() => <ServiceAccounts deployment={deployment} />}
+        />
         <Redirect to="/404" />
       </Switch>
     </Module>

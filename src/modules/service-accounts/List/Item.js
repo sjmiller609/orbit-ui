@@ -3,29 +3,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import { TableRow, Box, P, Mini, H3, ShowDate, Avatar } from 'instruments'
-import { getProfile } from '../Data/helpers'
+import { TableRow, Box, P, Mini, H3, ShowDate } from 'instruments'
 
-const Item = ({ user, className }) => {
-  const profile = getProfile(user)
-
+const Item = ({ serviceAccount, className }) => {
   const columns = [
     <Box key="0" className={s.icon}>
-      <Avatar className={s.avatar} url={profile.avatar} title={profile.name} />
+      {/* <Avatar className={s.avatar} url={profile.avatar} title={profile.name} /> */}
     </Box>,
     <Box key="1" align="flex-start" className={s.title}>
-      <H3>{user.fullName}</H3>
-      <P>{user.username}</P>
+      <H3>{serviceAccount.label}</H3>
+      <P>{serviceAccount.category}</P>
     </Box>,
     <Box key="2" align="flex-start" className={s.log}>
-      <P className={s.subTitle}>Joined</P>
+      <P className={s.subTitle}>Last Used</P>
       <Mini>
-        <ShowDate date={user.createdAt} />
+        <ShowDate date={serviceAccount.lastUsedAt} />
       </Mini>
     </Box>,
   ]
 
-  const to = '/users/' + encodeURIComponent(user.username)
+  const to = ''
 
   return (
     <TableRow
@@ -37,7 +34,7 @@ const Item = ({ user, className }) => {
 }
 
 Item.propTypes = {
-  user: PropTypes.object,
+  serviceAccount: PropTypes.object,
   className: PropTypes.string,
 }
 

@@ -38,7 +38,11 @@ class Deployment extends React.Component {
     const vars = {
       releaseName: id,
     }
-    return <Module title="Configure" menu={this.menu} vars={vars} />
+    const current = this.menu.subMenu.find(m => m.to === location.pathname)
+
+    return (
+      <Module title={current && current.text} menu={this.menu} vars={vars} />
+    )
   }
 }
 
