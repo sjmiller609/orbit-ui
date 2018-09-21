@@ -39,7 +39,8 @@ class Configure extends React.Component {
   }
   // delay rendering of config for lazy loading (ux performance)
   componentWillMount() {
-    setTimeout(() => this.setState({ renderConfig: true }), 10)
+    // DISABLED
+    //  setTimeout(() => this.setState({ renderConfig: true }), 10)
   }
   renderConfig() {
     const {
@@ -138,7 +139,7 @@ class Configure extends React.Component {
             {...form.field('description')}
           />
         </FormSection>
-        {/* {this.state.renderConfig && this.renderConfig()} */}
+        {this.state.renderConfig && this.renderConfig()}
       </CardForm>
     )
   }
