@@ -25,18 +25,24 @@ class ServiceAccounts extends React.Component {
   render() {
     const { search } = this.state
     const { deployment, module } = this.props
-    const path = module.path + '/service-accounts'
     const deploymentId = deployment && deployment.id
 
     const module2 = {
+      // set defaults
+      menu: {
+        ...this.menu,
+      },
+      metaTitle: 'Astronomer',
+      path: '/service-accounts',
       ...module,
     }
-    if (module2.menu.level2) module2.menu.level2.to = path
+
+    if (module2.menu.level2) module2.menu.level2.to = module2.path
 
     return (
       <Switch>
         <Route
-          path={path + '/new'}
+          path={module2.path + '/new'}
           exact
           render={() => (
             <New
@@ -50,7 +56,7 @@ class ServiceAccounts extends React.Component {
         />
 
         <Route
-          path={path}
+          path={module2.path}
           exact
           render={() => (
             <Module {...module2}>
@@ -60,13 +66,13 @@ class ServiceAccounts extends React.Component {
                   ...this.search,
                 }}
                 deploymentId={deploymentId}
-                path={path}
+                path={module2.path}
               />
             </Module>
           )}
         />
         <Route
-          path={path + '/:id'}
+          path={module2.path + '/:id'}
           exact
           render={({ match, location }) => {
             return (
@@ -74,7 +80,7 @@ class ServiceAccounts extends React.Component {
                 {...module2}
                 metaTitle={'Service Account | ' + module2.metaTitle}>
                 <Configure
-                  path={path}
+                  path={module2.path}
                   deploymentId={deploymentId}
                   apiKey={location.state && location.state.apiKey}
                   vars={{

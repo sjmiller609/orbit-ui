@@ -36,7 +36,11 @@ const Deployment = ({ deployments, menu, title }) => {
         render={() => (
           <ServiceAccounts
             deployment={deployment}
-            module={{ metaTitle, menu: menu2, path }}
+            module={{
+              metaTitle,
+              menu: menu2,
+              path: path + '/service-accounts',
+            }}
           />
         )}
       />

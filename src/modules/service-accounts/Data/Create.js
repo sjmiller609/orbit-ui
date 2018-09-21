@@ -19,10 +19,10 @@ const Create = Component => {
       <Mutation
         gql={api.CreateServiceAccount}
         redirect={data => ({
-          pathname: path + '/service-accounts/' + data.id,
+          pathname: path + '/' + data.id,
           state: { apiKey: data.apiKey },
         })}
-        success="New service account created. The API key will only be visible this session"
+        success="New service account created. IMPORTANT: The API key will only be visible during this session."
         track={
           'New Service Account Created For ' + props.deploymentId
             ? 'Deployment'
