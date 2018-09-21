@@ -5,14 +5,14 @@ import { CardForm, Form, TextField } from 'instruments'
 
 import info from '../info'
 
-const Configure = ({ form, title, deploymentId }) => {
+const Configure = ({ form, title, saveText, deploymentId }) => {
   return (
     <CardForm
       title={title || 'Configure'}
       id="configure"
       button={{
         save: form.save,
-        text: 'Update',
+        text: saveText || 'Save',
       }}>
       <TextField
         placeholder="Name"
@@ -35,6 +35,7 @@ const Configure = ({ form, title, deploymentId }) => {
 Configure.propTypes = {
   form: PropTypes.object,
   title: PropTypes.string,
+  saveText: PropTypes.string,
   deploymentId: PropTypes.string,
 }
 

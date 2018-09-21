@@ -64,6 +64,7 @@ class ConfigureServiceAccount extends React.Component {
           serviceAccount={serviceAccount}
           data={serviceAccount}
           deploymentId={deploymentId}
+          saveText="Update"
         />
         <Delete
           serviceAccount={serviceAccount}

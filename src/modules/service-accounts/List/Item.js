@@ -29,7 +29,7 @@ const Item = ({ serviceAccount, path, className }) => {
     </Box>,
     <Box key="2" align="flex-start" className={s.log}>
       <P className={s.subTitle}>
-        {serviceAccount.lastUsedAt ? 'Last Used' : 'Created At'}
+        {serviceAccount.lastUsedAt ? 'Last Used' : 'Created'}
       </P>
       <Mini>
         <ShowDate
