@@ -28,6 +28,8 @@ export { default as Info } from './forms/Info'
 export { default as FormSection } from './forms/FormSection'
 export { default as TextFieldSelect } from './forms/TextFieldSelect'
 export { default as Select } from './forms/Select'
+export { default as KeyValue } from './forms/KeyValue'
+export { default as FieldSet } from './forms/FieldSet'
 
 export { default as UnsavedChangesAlert } from './forms/UnsavedChangesAlert'
 
@@ -96,3 +98,4 @@ export { default as Query } from './api/Query'
 export { default as Mutation } from './api/Mutation'
 export { default as Create } from './api/Mutation/Create'
 export { default as Delete } from './api/Mutation/Delete'
+export { formErrors } from './api/Mutation/helpers'

@@ -29,12 +29,25 @@ class Deployment extends React.Component {
         text: 'Configure',
         to: match.url + '/configure',
       },
+      {
+        text: 'Service Accounts',
+        to: match.url + '/service-accounts',
+        exact: false,
+      },
     ]
 
     const vars = {
       releaseName: id,
     }
-    return <Module title="Configure" menu={this.menu} vars={vars} />
+    const current = this.menu.subMenu.find(m => m.to === location.pathname)
+
+    return (
+      <Module
+        title={(current && current.text) || null}
+        menu={this.menu}
+        vars={vars}
+      />
+    )
   }
 }
 

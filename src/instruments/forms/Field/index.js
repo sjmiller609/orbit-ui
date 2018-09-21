@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import s from './styles.scss'
 import { Info } from 'instruments'
 import { unCamelCase } from 'helpers/format'
+import { jsonEqual, isEqual } from 'helpers/compare'
 
 const Field = Component => {
   class Field extends React.Component {
@@ -14,18 +15,20 @@ const Field = Component => {
     showError = this.showError.bind(this)
     id = this.props.id || this.props.name
     state = {
-      showError: false,
-      touched: null,
+      showError: this.props.showError || false,
+      touched: false,
     }
 
     componentDidMount() {
-      const { focus, value } = this.props
+      const { focus } = this.props
       if (focus) this.field.focus()
-      this.validate(value) // adds required fields to form
     }
 
-    componentWillReceiveProps({ value, type, submitted }) {
+    componentWillReceiveProps({ value, type, submitted, showError }) {
       const set = {}
+
+      // for keyValue field
+      if (showError !== this.props.showError) set.showError = showError
 
       // update type (for show password)
       if (type !== this.props.type) set.type = type
@@ -33,7 +36,7 @@ const Field = Component => {
       // show error on submit
       if (submitted && !this.props.submitted) set.showError = true
 
-      if (value !== this.props.value) {
+      if (!jsonEqual(value, this.props.value)) {
         set.showError = false
 
         // show error after 3 seconds of stopped typing
@@ -52,15 +55,20 @@ const Field = Component => {
     // should probably switch this to pull the props that don't change, and then json.stringify
     // NOTE: if any new props are passed in that are meant to be reactive, won't work.
     shouldComponentUpdate(
-      { value, error, type, submitted },
+      { value, error, type, submitted, name, showError: showError2, required },
       { showError, touched }
     ) {
-      if (value !== this.props.value) return true
-      if (error !== this.props.error) return true
-      if (type !== this.props.type) return true
-      if (submitted !== this.props.submitted) return true
-      if (showError !== this.state.showError) return true
-      if (touched !== this.state.touched) return true
+      if (!jsonEqual(value, this.props.value)) return true
+      if (!isEqual(error, this.props.error)) return true
+      if (!isEqual(type, this.props.type)) return true
+      if (!isEqual(name, this.props.name)) return true
+      if (!isEqual(submitted, this.props.submitted)) return true
+
+      if (!isEqual(required, this.props.required)) return true
+      // read from props also, but may not have error
+      if (!isEqual(showError2, this.props.showError)) return true
+      if (!isEqual(showError, this.state.showError)) return true
+      if (!isEqual(touched, this.state.touched)) return true
       return false
     }
 
@@ -69,13 +77,10 @@ const Field = Component => {
     }
 
     onChange(e, v) {
-      const { name, onChange } = this.props
-      if (!e) {
-        onChange(name, v)
-        return
-      }
-      const value = e.target.value
-      onChange(name, value)
+      const { name, onChange, convert } = this.props
+      let value2 = e ? e.target.value : v
+      if (convert) value2 = convert(value2, true)
+      onChange(name, value2)
     }
 
     showError(showError = true) {
@@ -87,7 +92,8 @@ const Field = Component => {
       const { validate, name, required } = this.props
 
       if (required && (typeof value !== 'boolean' && !value)) {
-        return unCamelCase(name) + ' is required'
+        const n = name.split('.').pop()
+        return unCamelCase(n) + ' is required'
       }
       if (value && validate) {
         return validate(value)
@@ -106,12 +112,16 @@ const Field = Component => {
         focus,
         required,
         className,
+        convert,
+        value,
+        defaultValue,
         ...props
       } = this.props
       const { showError, touched } = this.state
       const err = showError && !!error
       const newProps = {
         ...props,
+        value: value || defaultValue,
         className: classnames(
           s.field,
           err ? s.error : null,
@@ -120,10 +130,12 @@ const Field = Component => {
         ),
         id: this.id,
         required,
+        showError,
         setRef: ref => (this.field = ref),
         validate: this.validate,
         onChange: this.onChange,
         onBlur: touched ? () => this.showError(true) : null,
+        setShowError: this.showError,
         error: err ? <div className={s.errorMsg}>{error}</div> : null,
         label: label ? (
           <label htmlFor={this.id}>
@@ -132,6 +144,11 @@ const Field = Component => {
           </label>
         ) : null,
       }
+      if (convert) {
+        newProps.value = convert(newProps.value)
+        newProps.convert = convert
+      }
+
       return <Component {...newProps} />
     }
   }
@@ -149,14 +166,24 @@ const Field = Component => {
       PropTypes.string,
       PropTypes.number,
       PropTypes.bool,
+      PropTypes.object,
+      PropTypes.array,
+    ]),
+    defaultValue: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.bool,
+      PropTypes.object,
+      PropTypes.array,
     ]),
     title: PropTypes.string,
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     className: PropTypes.string,
     updateErrors: PropTypes.func,
     submitted: PropTypes.bool,
+    showError: PropTypes.bool,
     info: PropTypes.string,
-    forwardedRef: PropTypes.object,
+    convert: PropTypes.func,
   }
 
   Field.defaultProps = {

@@ -6,14 +6,15 @@ import { Card, MenuList, Item } from 'instruments'
 
 import s from './styles.scss'
 
-const Menu = ({ menu, active, title, id, scrollTo, className }) => {
+const Menu = ({ menu, active, title, id, scrollTo, menuList, className }) => {
   return (
     <Card id={id} title={title} className={classnames(s.menu, className)}>
-      <MenuList>
-        {menu.map(m => (
+      <MenuList {...menuList}>
+        {menu.map((m, i) => (
           <Item
-            key={m.id}
-            onClick={() => scrollTo(m.id)}
+            key={m.id + i.toString()}
+            to={m.to}
+            onClick={m.id ? () => scrollTo(m.id) : null}
             active={active === m.id}>
             {m.text}
           </Item>
@@ -30,6 +31,7 @@ Menu.propTypes = {
   className: PropTypes.string,
   menu: PropTypes.array,
   scrollTo: PropTypes.func,
+  menuList: PropTypes.object,
 }
 
 export default Menu

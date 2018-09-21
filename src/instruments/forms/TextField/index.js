@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import s from './styles.scss'
-import classnames from 'classnames'
 import { Field } from 'instruments'
 
 const isEmail = email => {
@@ -12,9 +10,14 @@ const isEmail = email => {
 
 class TextField extends React.Component {
   validate = this.validate.bind(this)
+  onChange = this.onChange.bind(this)
 
   state = {
     type: 'text',
+  }
+  componentDidMount() {
+    const { value } = this.props
+    this.validate(value) // adds required fields to form
   }
   componentWillReceiveProps({ value }) {
     if (value !== this.props.value) {
@@ -27,6 +30,13 @@ class TextField extends React.Component {
     this.setState({
       type: type === 'email' ? 'text' : type,
     })
+  }
+
+  onChange(e) {
+    const { type, onChange } = this.props
+    let value = e.target.value
+    if (type === 'email') value = value.toLowerCase()
+    onChange(null, value)
   }
 
   validate(value) {
@@ -56,12 +66,12 @@ class TextField extends React.Component {
       id,
       className,
       onBlur,
-      onChange,
       setRef,
+      fieldId,
     } = this.props
     const { type } = this.state
     return (
-      <div className={classnames(s.field, className)}>
+      <div id={fieldId} className={className}>
         {label}
         <input
           type={type}
@@ -69,7 +79,7 @@ class TextField extends React.Component {
           id={id}
           placeholder={placeholder}
           required={required}
-          onChange={onChange}
+          onChange={this.onChange}
           value={value}
           title={title}
           onBlur={onBlur}
@@ -95,12 +105,14 @@ TextField.propTypes = {
   title: PropTypes.string,
   error: PropTypes.element,
   className: PropTypes.string,
+  fieldId: PropTypes.string,
   updateErrors: PropTypes.func,
   setRef: PropTypes.func,
 }
 
 TextField.defaultProps = {
   type: 'text',
+  value: '',
 }
 
 export default Field(TextField)

@@ -22,8 +22,9 @@ class TextFieldSelect extends React.Component {
     menu: false,
     out: true,
     index: 0,
-    options: this.props.options,
+    options: this.props.options.slice(0, 10), // only load the first 10 to cut down load
   }
+
   componentWillReceiveProps({ value, options }) {
     if (value !== this.props.value) {
       // run validation
@@ -46,14 +47,34 @@ class TextFieldSelect extends React.Component {
   componentWillUnmount() {
     clearTimeout(this.timeout)
   }
-
   componentDidMount() {
+    const { value } = this.props
+    this.validate(value) // adds required fields to form
+
+    /*eslint-disable react/no-did-mount-set-state*/
+    this.setState({ options: this.props.options }) // load the rest
+
     const el = document.getElementById(this.props.name + 'Menu')
     this.menu = {
       el,
       height: el.offsetHeight,
     }
   }
+  componentDidUpdate() {
+    const i = this.state.index
+    // scroll into view
+    const el = document.getElementById((this.props.name + (i + 1)).toString())
+    if (!el) return
+
+    const top = el.offsetTop
+
+    if (this.menu.height + this.menu.el.scrollTop < top) {
+      this.menu.el.scrollTop = top - this.menu.height
+    } else if (this.menu.el.scrollTop + el.offsetHeight > top) {
+      this.menu.el.scrollTop = top - el.offsetHeight * 2
+    }
+  }
+
   setRef(ref) {
     this.field = ref
     this.props.setRef(ref)
@@ -106,22 +127,16 @@ class TextFieldSelect extends React.Component {
     else if (i > l) i = i - l
 
     if (i > 0) {
+      const { value } = this.props
+      if (value) {
+        // set index to value so that prev value is highlighted in list before clearing it
+        const i2 = this.props.options.indexOf(value)
+        if (~i2) i = i2 + 1
+      }
       this.clear()
     }
 
     this.setState({ index: i })
-
-    // scroll into view
-    const el = document.getElementById((this.props.name + (i + 1)).toString())
-    if (!el) return
-
-    const top = el.offsetTop
-
-    if (this.menu.height + this.menu.el.scrollTop < top) {
-      this.menu.el.scrollTop = top - this.menu.height
-    } else if (this.menu.el.scrollTop + el.offsetHeight > top) {
-      this.menu.el.scrollTop = top - el.offsetHeight * 2
-    }
   }
 
   render() {
@@ -137,6 +152,7 @@ class TextFieldSelect extends React.Component {
       className,
       onBlur,
       onChange,
+      Option,
     } = this.props
     const { menu, out, index, options } = this.state
     return (
@@ -159,7 +175,7 @@ class TextFieldSelect extends React.Component {
           required={required}
           onChange={onChange}
           value={value}
-          title={title}
+          title={title || value || placeholder}
           onBlur={onBlur}
           onFocus={this.open}
           ref={this.setRef}
@@ -180,8 +196,9 @@ class TextFieldSelect extends React.Component {
                   id={(name + (i + 1)).toString()}
                   onClick={() => this.select(o)}
                   key={o}
+                  title={o}
                   active={index === i + 1}>
-                  {o}
+                  {Option ? <Option name={o} /> : o}
                 </Item>
               ))}
             </MenuList>
@@ -210,6 +227,12 @@ TextFieldSelect.propTypes = {
   updateErrors: PropTypes.func,
   setRef: PropTypes.func,
   options: PropTypes.array,
+  Option: PropTypes.func,
+}
+
+TextFieldSelect.defaultProps = {
+  options: [],
+  value: '',
 }
 
 export default Field(TextFieldSelect)

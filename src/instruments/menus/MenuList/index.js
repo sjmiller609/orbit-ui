@@ -7,7 +7,7 @@ import { TextButton, B } from 'instruments'
 
 const MenuList = ({ button, children, label, className }) => {
   const b = button && (
-    <TextButton to={button.to} style={button.style} className={s.button}>
+    <TextButton {...button} className={s.button}>
       {button.text}
     </TextButton>
   )

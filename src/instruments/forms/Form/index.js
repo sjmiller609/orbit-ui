@@ -2,11 +2,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { jsonEqual } from '../../../helpers/compare'
+import { jsonEqual } from 'helpers/compare'
+import { unpack, pack, packChild, removeChild } from './helpers'
 import UnsavedChangesAlert from '../UnsavedChangesAlert'
 import s from './styles.scss'
 
-const errorField = name => 'error_' + name
+const errorField = name => '__error_' + name
 
 const Form = FormComponent => {
   class Form extends React.Component {
@@ -16,15 +17,26 @@ const Form = FormComponent => {
     checkSave = this.checkSave.bind(this)
     checkErrors = this.checkErrors.bind(this)
     field = this.field.bind(this)
+    unpack = this.unpack.bind(this)
+    getValue = this.getValue.bind(this)
+    registerOnSubmit = this.registerOnSubmit.bind(this)
+    callOnSubmit = this.callOnSubmit.bind(this)
 
+    data = this.unpack(this.props.data)
+    fieldId = 'field_'
+    // TODO: Namespace params so never any conflict with field names
     state = {
-      data: this.props.data,
+      data: this.data,
       save: false,
       submitted: false,
+      onSubmitFuncs: {}, // functions to be called on data before submit, registered to field name
     }
 
     componentWillReceiveProps({ data, error }) {
-      if (!jsonEqual(data, this.props.data)) this.setState({ data })
+      if (!jsonEqual(data, this.props.data)) {
+        this.data = this.unpack(this.props.data)
+        this.setState({ data: this.data })
+      }
       if (!jsonEqual(error, this.props.error) && error)
         this.updateErrors(error.name, error.error)
     }
@@ -35,15 +47,42 @@ const Form = FormComponent => {
       return false
     }
 
+    // turn all objects into keys with string names with dot notation
+    unpack(data) {
+      if (!data || typeof data !== 'object') return data
+      return unpack(data)
+    }
+
+    getValue(name) {
+      const { data } = this.state
+      if (data[name]) return data[name]
+      // otherwise, it's a parent object, need to roll it up
+      if (~name.indexOf('.')) {
+        return packChild({ name, obj: data })
+      }
+    }
+
     update(key, value) {
+      const { data } = this.state
       const set = {
-        data: {
-          ...this.state.data,
-          [key]: value,
-        },
         submitted: false,
       }
-
+      if (typeof value !== 'object') {
+        set.data = {
+          ...data,
+          [key]: value,
+        }
+      } else {
+        // first remove the object
+        set.data = {
+          ...removeChild({ name: key, obj: data }),
+        }
+        // need to unpack and update the children
+        const children = this.unpack(value)
+        Object.keys(children).forEach(
+          k => (set.data[key + '.' + k] = children[k])
+        )
+      }
       this.setState(set)
     }
 
@@ -55,6 +94,15 @@ const Form = FormComponent => {
       // check save after validation check
       const save = this.checkSave({ ...this.state, ...set })
       if (typeof save === 'boolean') set.save = save
+      if (this.state.submitted && !this.state.scolled) {
+        set.scrolled = true
+        const el = document.getElementById(this.fieldId + name)
+        if (el) {
+          const rect = el.getBoundingClientRect()
+          if (rect.top < 0 || rect.bottom > window.innerHeight)
+            el.scrollIntoView()
+        }
+      }
       this.setState(set)
     }
 
@@ -62,7 +110,9 @@ const Form = FormComponent => {
       const { saveOnLoad } = this.props
       const save = state.save
       // changes made
-      const equal = saveOnLoad ? false : jsonEqual(state.data, this.props.data)
+      const equal = saveOnLoad
+        ? false
+        : jsonEqual(this.callOnSubmit(state.data), this.data)
 
       // has errors
       if (!this.checkErrors(state)) return false
@@ -87,18 +137,51 @@ const Form = FormComponent => {
       const { saveOnLoad, onSubmit } = this.props
       const { save, data } = this.state
       if (!save) return
-      if (!saveOnLoad) this.setState({ save: false, submitted: true })
-      onSubmit(data, this.updateErrors)
+      if (!saveOnLoad)
+        this.setState({ save: false, submitted: true, scrolled: false })
+
+      onSubmit(pack(this.callOnSubmit(data)), this.updateErrors)
     }
 
+    registerOnSubmit({ name, onSubmit }) {
+      if (!name || !onSubmit) return
+      const onSubmitFuncs = {
+        ...this.state.onSubmitFuncs,
+        [name]: onSubmit,
+      }
+      this.setState({ onSubmitFuncs })
+    }
+
+    // NOTE: this gets called in checkSave, so there should be no side effects. Just transform data
+    callOnSubmit(data) {
+      const { onSubmitFuncs } = this.state
+      const keys = Object.keys(onSubmitFuncs)
+      if (!keys.length) return data
+
+      const d = keys.reduce((obj, k) => {
+        const clean = onSubmitFuncs[k]
+        if (!clean) return obj
+        const value = packChild({ name: k, obj })
+        const obj2 = {
+          ...removeChild({ name: k, obj }),
+          ...unpack(clean(value), k),
+        }
+        return obj2
+      }, data)
+      return d
+    }
+
+    // If a field is named with dot notation, will convert into object / array
     field(name) {
       return {
         name,
-        value: this.state.data[name],
+        value: this.getValue(name),
         error: this.state[errorField(name)],
         updateErrors: this.updateErrors,
         onChange: this.update,
         submitted: this.state.submitted,
+        fieldId: this.fieldId + name,
+        registerOnSubmit: this.registerOnSubmit,
       }
     }
 

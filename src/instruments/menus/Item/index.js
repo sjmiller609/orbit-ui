@@ -11,14 +11,17 @@ const Item = ({
   active,
   className,
   activeClassName,
+  title,
+  exact,
   ...props
 }) => {
+  const t = title ? title : typeof children === 'string' ? children : ''
   return (
     <Link
       {...props}
       to={to}
-      exact={true}
-      title={typeof children === 'string' && children}
+      title={t}
+      exact={exact}
       className={classnames(s.item, active && s.active, className)}
       activeClassName={classnames(s.active, activeClassName)}>
       {children}
@@ -32,6 +35,12 @@ Item.propTypes = {
   activeClassName: PropTypes.string,
   to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   active: PropTypes.bool,
+  title: PropTypes.string,
+  exact: PropTypes.bool,
+}
+
+Item.defaultProps = {
+  exact: true,
 }
 
 export default Item

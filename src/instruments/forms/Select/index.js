@@ -9,6 +9,10 @@ class Select extends React.Component {
   validate = this.validate.bind(this)
   select = this.select.bind(this)
 
+  componentDidMount() {
+    const { value } = this.props
+    this.validate(value) // adds required fields to form
+  }
   componentWillMount() {
     const { defaultValue, value } = this.props
     if (!value && defaultValue) this.select(defaultValue)
@@ -46,9 +50,11 @@ class Select extends React.Component {
       setRef,
       Component,
       options,
+      fieldId,
     } = this.props
+    //console.log(value)
     return (
-      <div className={classnames(s.field, className)}>
+      <div id={fieldId} className={classnames(s.field, className)}>
         {label}
         <input
           type="hidden"
@@ -92,6 +98,11 @@ Select.propTypes = {
   options: PropTypes.array,
   Component: PropTypes.func,
   defaultValue: PropTypes.string,
+  fieldId: PropTypes.string,
+}
+
+Select.defaultProps = {
+  value: '',
 }
 
 export default Field(Select)

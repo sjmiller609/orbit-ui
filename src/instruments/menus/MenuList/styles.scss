@@ -8,6 +8,7 @@
   text-overflow: ellipsis;
 
   a {
+    display: block;
     margin: 1.2rem 0;
     &::before {
       display: block;

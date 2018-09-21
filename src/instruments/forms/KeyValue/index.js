@@ -2,79 +2,112 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
-import { Field } from 'instruments'
+import { Field, TextField, Row } from 'instruments'
+import { jsonEqual } from 'helpers/compare'
 
 class KeyValue extends React.Component {
   validate = this.validate.bind(this)
+  valueProps = this.valueProps.bind(this)
+  keyProps = this.keyProps.bind(this)
+  key = this.props.keyProps.name || 'key'
+  value = this.props.valueProps.value || 'value'
+
+  componentDidMount() {
+    const { value } = this.props
+    this.validate(value) // adds required fields to form
+  }
 
   componentWillReceiveProps({ value }) {
-    if (value !== this.props.value) {
+    if (!jsonEqual(value, this.props.value)) {
       // run validation
       this.validate(value)
     }
   }
 
+  // because run by children, need to get object value as secondary param (or directly from props)
   validate(value) {
     const { name, validate, updateErrors } = this.props
     let e
+    let n = name
     // must be first
     if (validate) e = validate(value)
+    // NOTE: not requiring a value when a key is set, to enable setting to empty
+    if (value && !value[this.key]) {
+      n += '.' + this.key
+      e =
+        this.key[0].toUpperCase() +
+        this.key.slice(1) +
+        ' is required to set a value.'
+    }
+    updateErrors(n, e)
+  }
 
-    updateErrors(name, e)
+  keyProps() {
+    const { label, placeholder, className, ...props } = this.props.keyProps
+
+    return {
+      ...props,
+      ...this.props.formField(this.props.name + '.' + this.key),
+      label: label || this.key,
+      placeholder: placeholder || this.key,
+      className: classnames(s.key, className),
+      required: this.props.required,
+      showError: this.props.showError,
+    }
+  }
+
+  valueProps() {
+    const { label, placeholder, className, ...props } = this.props.valueProps
+
+    return {
+      ...props,
+      ...this.props.formField(this.props.name + '.' + this.value),
+      label: label || this.value,
+      placeholder: placeholder || this.value,
+      className: classnames(s.value, className),
+      required: this.props.required,
+      showError: this.props.showError,
+    }
   }
 
   render() {
-    const {
-      name,
-      error,
-      placeholder,
-      required,
-      value,
-      title,
-      label,
-      id,
-      className,
-      onBlur,
-      onChange,
-      setRef,
-    } = this.props
-
+    const { KeyField, ValueField, id, className } = this.props
+    const keyProps = this.keyProps()
+    const valueProps = this.valueProps()
     return (
-      <div className={classnames(s.field, className)}>
-        {label}
-
-        <textarea
-          name={name}
-          id={id}
-          placeholder={placeholder}
-          required={required}
-          onChange={onChange}
-          title={title}
-          onBlur={onBlur}
-          ref={setRef}
-          value={value || ''}
-        />
-        {error}
-      </div>
+      <Row
+        id={id}
+        wrap
+        className={classnames(s.field, className)}
+        justify="flex-start">
+        <KeyField {...keyProps} />
+        <ValueField {...valueProps} />
+      </Row>
     )
   }
 }
 
 KeyValue.propTypes = {
-  placeholder: PropTypes.string,
+  keyProps: PropTypes.object,
+  KeyField: PropTypes.func,
+  valueProps: PropTypes.object,
+  ValueField: PropTypes.func,
+  formField: PropTypes.func,
+  value: PropTypes.object,
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
-  onChange: PropTypes.func.isRequired, // pass in key value update function
-  onBlur: PropTypes.func,
   validate: PropTypes.func,
-  required: PropTypes.bool,
-  label: PropTypes.element,
-  value: PropTypes.string,
-  title: PropTypes.string,
-  error: PropTypes.element,
-  className: PropTypes.string,
   updateErrors: PropTypes.func,
-  setRef: PropTypes.func,
+  required: PropTypes.bool,
+  className: PropTypes.string,
+  showError: PropTypes.bool,
+}
+
+KeyValue.defaultProps = {
+  KeyField: TextField,
+  ValueField: TextField,
+  keyProps: {},
+  valueProps: {},
 }
 
 export default Field(KeyValue)

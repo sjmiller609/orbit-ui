@@ -27,13 +27,15 @@ const Mutation = ({
       mutation={gql}
       variables={vars}
       errorPolicy="all"
-      onError={() => {
-        console.log('err')
-        if (errorMsg) setUI.snackbar(errorMsg)
+      onError={err => {
+        if (errorMsg) {
+          console.log(err)
+          setUI.snackbar(
+            typeof errorMsg === 'function' ? errorMsg(err.message) : errorMsg
+          )
+        }
       }}
       onCompleted={data => {
-        console.log(track)
-        console.log(success)
         const data2 = data[Object.keys(data)[0]]
         if (onSuccess) onSuccess(data2)
 
@@ -70,7 +72,7 @@ const Mutation = ({
           if (OnError) return OnError
           return <CardError />
         }
-        console.log('done')
+
         return (
           <React.Fragment>
             {loading && <Loading />}
@@ -97,7 +99,7 @@ Mutation.propTypes = {
   success: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   track: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   OnError: PropTypes.element,
-  errorMsg: PropTypes.string, // return original component and use snackbar message
+  errorMsg: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   voidError: PropTypes.bool,
 }
 //export default Mutation

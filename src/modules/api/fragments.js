@@ -65,6 +65,11 @@ export const deployment = gql`
     }
     createdAt
     updatedAt
+    config
+    deployInfo {
+      latest
+      next
+    }
   }
 `
 export const invite = gql`
@@ -117,4 +122,27 @@ export const authUser = gql`
   }
   ${token}
   ${user}
+`
+
+export const deploymentConfig = gql`
+  fragment deploymentConfig on DeploymentConfig {
+    defaults
+    limits
+    presets
+  }
+`
+
+export const serviceAccount = gql`
+  fragment serviceAccount on ServiceAccount {
+    id: uuid
+    label
+    apiKey
+    entityType
+    entityId: entityUuid
+    category
+    active
+    lastUsedAt
+    createdAt
+    updatedAt
+  }
 `

@@ -78,7 +78,26 @@
 }
 
 .envKey {
-  input {
+  input[type='text'] {
+    letter-spacing: -0.7px;
     text-transform: uppercase;
   }
+  ul {
+    padding-left: 0;
+  }
+  ul a {
+    @include mini;
+    //font-size: 0.7em;
+    letter-spacing: -0.7px;
+    //  text-transform: lowercase;
+  }
+}
+
+.group {
+  text-transform: lowercase;
+  margin-right: 0.2em;
+  color: $lightBlue;
+  border-radius: 2px;
+  border: 1px solid $lightBlue;
+  padding: 0.2em 0.3em;
 }

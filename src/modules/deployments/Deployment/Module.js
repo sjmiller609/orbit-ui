@@ -2,11 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
-// import DeploymentConfigure from '../DeploymentConfigure'
-// import DeploymentOverview from '../DeploymentOverview'
 import { Load } from 'instruments'
 import Data from '../Data'
 import Module from '../../app/Module'
+const Configure = Load(() =>
+  import(/* webpackPrefetch: true */ '../DeploymentConfigure')
+)
+const Overview = Load(() =>
+  import(/* webpackPrefetch: true */ '../DeploymentOverview')
+)
+const ServiceAccounts = Load(() =>
+  import(/* webpackPrefetch: true */ 'modules/service-accounts/ServiceAccounts')
+)
 
 const Deployment = ({ deployments, menu, title }) => {
   const deployment = deployments[0]
@@ -19,42 +26,48 @@ const Deployment = ({ deployments, menu, title }) => {
   menu2.level2.text = deployment.label
 
   const path = '/deployments/' + deployment.releaseName
-
+  let metaTitle = deployment.label
+  if (title) metaTitle = title + ' | ' + metaTitle
   return (
-    <Module metaTitle={title + ' | ' + deployment.label} menu={menu}>
-      <Switch>
+    <Switch>
+      {/* Service accounts loads module on its own */}
+      <Route
+        path={path + '/service-accounts'}
+        render={() => (
+          <ServiceAccounts
+            deployment={deployment}
+            module={{
+              metaTitle,
+              menu: menu2,
+              path: path + '/service-accounts',
+            }}
+          />
+        )}
+      />
+      <Module metaTitle={metaTitle} menu={menu2}>
         <Route
           path={path + '/configure'}
           exact
-          render={() => {
-            const Configure = Load(() =>
-              import(/* webpackPrefetch: true */ '../DeploymentConfigure')
-            )
-            return <Configure deployment={deployment} />
-          }}
+          render={() => <Configure deployment={deployment} />}
         />
         <Route
           path={path}
           exact
-          render={() => {
-            const Overview = Load(() =>
-              import(/* webpackPrefetch: true */ '../DeploymentOverview')
-            )
-            return <Overview deployment={deployment} />
-          }}
+          render={() => <Overview deployment={deployment} />}
         />
         {/* <Route
-          path={path + '/logs'}
-          exact
-          render={() => {
-          const Logs = Load(() => import(/* webpackPrefetch: true */
+            path={path + '/logs'}
+            exact
+            render={() => {
+            const Logs = Load(() => import(/* webpackPrefetch: true */
         /* 'modules/logs/DeploymentLogs'))
-          return <Logs deployment={deployment} />
-          }}
+            return <Logs deployment={deployment} />
+            }}
         /> */}
-        <Redirect to="/404" />
-      </Switch>
-    </Module>
+      </Module>
+
+      <Redirect to="/404" />
+    </Switch>
   )
 }
 

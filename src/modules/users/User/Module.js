@@ -6,6 +6,10 @@ import { Load } from 'instruments'
 import Data from '../Data'
 import Module from '../../app/Module'
 
+// const Overview = Load(() => import(/* webpackPrefetch: true */ '../UserOverview'))
+const Configure = Load(() =>
+  import(/* webpackPrefetch: true */ '../UserConfigure')
+)
 const User = ({ users, menu, title }) => {
   const user = users[0]
   // Error handled
@@ -24,21 +28,15 @@ const User = ({ users, menu, title }) => {
         <Route
           path={path + '/configure'}
           exact
-          render={() => {
-            const Configure = Load(() =>
-              import(/* webpackPrefetch: true */ '../UserConfigure')
-            )
-            return <Configure user={user} />
-          }}
+          render={() => <Configure user={user} />}
         />
         <Route
           path={path}
           exact
-          render={() => {
-            return <Redirect to={path + '/configure'} />
-            // const Overview = Load(() => import(/* webpackPrefetch: true */ '../UserOverview'))
+          render={
+            () => <Redirect to={path + '/configure'} />
             // return <Overview user={user} />
-          }}
+          }
         />
 
         <Redirect to="/404" />

@@ -11,10 +11,12 @@ const Create = ({ query, ...props }) => {
         if (!query || !query.type) return
         // use first key to auto grab Document name
         const result = data.data[Object.keys(data.data)[0]]
+        // NOTE: this will error if not found, but apollo already handles it
         const results = cache.readQuery({
           query: query.name,
           variables: query.vars,
         })
+        console.log(data)
         if (!results) return
         cache.writeQuery({
           query: query.name,

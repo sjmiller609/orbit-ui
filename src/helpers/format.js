@@ -4,6 +4,7 @@ export const charLimit = (text, chars) => {
 }
 
 export const unCamelCase = str => {
+  if (!str) return str
   return (
     str
       // insert a space between lower & upper
@@ -16,3 +17,9 @@ export const unCamelCase = str => {
       })
   )
 }
+
+export const capitalize = str =>
+  str.replace(
+    /\w\S*/g,
+    txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+  )

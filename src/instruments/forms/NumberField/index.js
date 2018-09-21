@@ -7,24 +7,59 @@ import { Row, Slider, Field } from 'instruments'
 class NumberField extends React.Component {
   validate = this.validate.bind(this)
   slider = this.slider.bind(this)
+  convert = this.convert.bind(this)
+  state = {
+    min: 0,
+    max: 1,
+    step: 1,
+    units: null,
+  }
 
-  componentWillReceiveProps({ value }) {
-    if (value !== this.props.value) {
+  componentWillMount() {
+    this.convert(this.props)
+  }
+  componentDidMount() {
+    const { value } = this.props
+    this.validate(value) // adds required fields to form
+  }
+
+  componentWillReceiveProps(props) {
+    this.convert(props, true)
+    if (props.value !== this.props.value) {
       // run validation
-      this.validate(value)
+      this.validate(props.value)
     }
   }
 
+  convert({ value, min, max, step, units, convert }, next) {
+    const set = {}
+
+    if (!next || min !== this.props.min) set.min = convert ? convert(min) : min
+
+    if (!next || max !== this.props.max) set.max = convert ? convert(max) : max
+    if (!next || step !== this.props.step)
+      set.step = convert ? convert(step) : step
+
+    if (typeof units === 'function' && (!next || value !== this.props.value))
+      set.units = units(value)
+
+    if (Object.keys(set).length) this.setState(set)
+  }
+
   validate(value) {
-    const { validate, name, updateErrors, min, max, step } = this.props
+    const { validate, name, updateErrors } = this.props
+
+    const { min, max, step, units } = this.state
     let e
+
+    const units2 = units ? ' (' + units + ')' : ''
 
     // must be first
     if (validate) e = validate(value)
     if (value) {
       if (isNaN(value)) e = 'Please enter a number'
-      else if (value < min) e = 'The minimum possible value is ' + min
-      else if (value > max) e = 'The maximum possible value is ' + max
+      else if (value < min) e = 'The minimum possible value is ' + min + units2
+      else if (value > max) e = 'The maximum possible value is ' + max + units2
       else if (step) {
         const v = min ? value - min : value
         const d = v % step
@@ -41,9 +76,9 @@ class NumberField extends React.Component {
     updateErrors(name, e)
   }
 
-  slider(value) {
-    const { onChange } = this.props
-    onChange(null, value)
+  slider(v) {
+    const { onChange, value } = this.props
+    if (value !== v) onChange(null, v)
   }
 
   render() {
@@ -52,7 +87,6 @@ class NumberField extends React.Component {
       error,
       placeholder,
       required,
-      value,
       title,
       label,
       id,
@@ -60,22 +94,16 @@ class NumberField extends React.Component {
       onBlur,
       onChange,
       setRef,
-      min,
-      max,
-      defaultValue,
-      step,
       slider,
-      units,
+      value,
+      fieldId,
     } = this.props
-    const valueProps = {
-      min,
-      max,
-      value: Number(value || defaultValue),
-      step,
-    }
+
+    const { min, max, units, step } = this.state
     const width = max.toString().length * 2.2
+
     return (
-      <div className={classnames(s.field, className)}>
+      <div id={fieldId} className={classnames(s.field, className)}>
         {label}
         <Row justify="flex-start">
           <input
@@ -89,12 +117,18 @@ class NumberField extends React.Component {
             onBlur={onBlur}
             ref={setRef}
             style={{ width: `${width}rem` }}
-            {...valueProps}
+            min={min}
+            max={max}
+            step={step}
+            value={value}
           />
           {units && <div className={s.units}>{units}</div>}
           {slider && (
             <Slider
-              {...valueProps}
+              min={min}
+              max={max}
+              step={step}
+              value={value}
               className={s.slider}
               onChange={this.slider}
             />
@@ -124,10 +158,15 @@ NumberField.propTypes = {
   setRef: PropTypes.func,
   min: PropTypes.number,
   max: PropTypes.number,
-  defaultValue: PropTypes.number,
   step: PropTypes.number,
   slider: PropTypes.bool,
-  units: PropTypes.string,
+  units: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  convert: PropTypes.func,
+  fieldId: PropTypes.string,
+}
+
+NumberField.defaultProps = {
+  step: 1,
 }
 
 export default Field(NumberField)

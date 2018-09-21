@@ -19,6 +19,11 @@ const subMenus = {
       text: 'Users',
     },
     {
+      to: '/service-accounts',
+      text: 'Service Accounts',
+      exact: false,
+    },
+    {
       to: '/settings',
       text: 'Workspace Settings',
     },
