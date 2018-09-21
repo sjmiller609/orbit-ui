@@ -8,7 +8,7 @@ import { Delete as Mutate, GetData } from 'instruments'
 import { getVars } from './helpers'
 
 const Delete = Component => {
-  const Delete = ({ getData, ...props }) => {
+  const Delete = ({ getData, path, ...props }) => {
     const variables = getVars({ deploymentId: props.deploymentId, getData })
 
     const query = {
@@ -19,16 +19,14 @@ const Delete = Component => {
     return (
       <Mutate
         gql={api.DeleteServiceAccount}
-        //  redirect={!isSelf ? '/users' : '/workspaces'}
+        redirect={path}
         success={
-          'Service account deleted from ' + props.deploymentId
-            ? 'deployment'
-            : 'workspace'
+          'Service account deleted from this ' +
+          (props.deploymentId ? 'deployment' : 'workspace')
         }
         track={
-          'Service Account Deleted From ' + props.deploymentId
-            ? 'Deployment'
-            : 'Workspace'
+          'Service Account Deleted From ' +
+          (props.deploymentId ? 'Deployment' : 'Workspace')
         }
         query={query}>
         {({ mutate }) => {
@@ -56,6 +54,7 @@ const Delete = Component => {
   Delete.propTypes = {
     getData: PropTypes.object,
     deploymentId: PropTypes.string,
+    path: PropTypes.string,
   }
 
   return GetData(Delete, { workspaceId: true })

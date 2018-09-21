@@ -58,7 +58,11 @@ class ConfigureServiceAccount extends React.Component {
       <CardMenu menu={this.menu} menuList={{ button: this.button }}>
         <Key apiKey={apiKey || serviceAccount.apiKey} />
         <Configure serviceAccount={serviceAccount} data={serviceAccount} />
-        <Delete serviceAccount={serviceAccount} deploymentId={deploymentId} />
+        <Delete
+          serviceAccount={serviceAccount}
+          deploymentId={deploymentId}
+          path={path}
+        />
       </CardMenu>
     )
   }

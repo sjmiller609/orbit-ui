@@ -21,7 +21,7 @@ const Delete = ({ serviceAccount, deploymentId, onSubmit }) => {
       }}
       onSubmit={() => {
         onSubmit({
-          id: serviceAccount.id,
+          serviceAccountId: serviceAccount.id,
         })
       }}
     />
