@@ -76,7 +76,6 @@ class CardMenu extends React.Component {
     const { children, id, title, menu, menuList, className } = this.props
     const { focus, sticky } = this.state
     if (this.disable) return children
-    console.log(this.disable)
     return (
       <Row align="flex-start" className={classnames(s.row, className)}>
         <Menu

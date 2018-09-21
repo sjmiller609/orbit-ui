@@ -26,6 +26,7 @@ const Data = Component => {
         vars={variables}
         skip={skip}
         fetchPolicy={fetchPolicy}
+        sortBy="lastUsedAt"
         search={search}>
         {({ data: { serviceAccounts } }) => {
           const newProps = {

@@ -17,6 +17,7 @@ const Query = ({
   subscribe,
   fetchPolicy,
   sortNewest = true,
+  sortBy,
 }) => {
   return (
     <Apollo
@@ -42,8 +43,12 @@ const Query = ({
             data2[k] = data[k].slice(0)
             if (data[k].length > 1 && data[k][0].createdAt) {
               data2[k].sort((a, b) => {
-                const a1 = new Date(a.updatedAt || a.createdAt).getTime()
-                const b1 = new Date(b.updatedAt || b.createdAt).getTime()
+                const a1 = new Date(
+                  a[sortBy] || a.updatedAt || a.createdAt
+                ).getTime()
+                const b1 = new Date(
+                  a[sortBy] || b.updatedAt || b.createdAt
+                ).getTime()
                 return sortNewest ? b1 - a1 : a1 - b1
               })
             }
@@ -109,6 +114,7 @@ Query.propTypes = {
   OnError: PropTypes.element,
   sortNewest: PropTypes.bool,
   fetchPolicy: PropTypes.string,
+  sortBy: PropTypes.string,
 }
 
 export default Query
