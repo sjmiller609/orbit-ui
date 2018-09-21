@@ -3,14 +3,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import { TableRow, Box, P, Mini, H3, ShowDate, Icon, Tag } from 'instruments'
+import { TableRow, Box, P, Mini, H3, ShowDate, Icon } from 'instruments'
 import { entityTypes } from '../Data/helpers'
 
 const Item = ({ serviceAccount, path, className }) => {
   const type = entityTypes({ type: serviceAccount.entityType })
   const columns = [
     <Box key="0">
-      <Icon icon="satellite" className={s.icon} />
+      <Icon
+        icon="satellite"
+        className={s.icon}
+        title={
+          type.label[0].toUpperCase() +
+          type.label.slice(1).toLowerCase() +
+          ' service account'
+        }
+      />
+      <Box className={s.type}>
+        <Icon icon={type.icon} />
+      </Box>
     </Box>,
     <Box key="1" align="flex-start" className={s.title}>
       <H3>{serviceAccount.label}</H3>
@@ -25,19 +36,6 @@ const Item = ({ serviceAccount, path, className }) => {
           date={serviceAccount.lastUsedAt || serviceAccount.createdAt}
         />
       </Mini>
-    </Box>,
-
-    <Box key="3" align="flex-end" className={s.entityType}>
-      <Tag className={s.tag}>
-        <Icon
-          icon={type.icon}
-          title={
-            type.label[0].toUpperCase() +
-            type.label.slice(1).toLowerCase() +
-            ' service account'
-          }
-        />
-      </Tag>
     </Box>,
   ]
 
