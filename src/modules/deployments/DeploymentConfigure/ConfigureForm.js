@@ -138,7 +138,7 @@ class Configure extends React.Component {
             {...form.field('description')}
           />
         </FormSection>
-        {this.state.renderConfig && this.renderConfig()}
+        {/* {this.state.renderConfig && this.renderConfig()} */}
       </CardForm>
     )
   }

@@ -11,12 +11,13 @@ class CardMenu extends React.Component {
   pos = 0
   scroll = this.scroll.bind(this)
   scrollTo = this.scrollTo.bind(this)
-  disable = null
+  disable = !this.props.menu.length
   menu = []
   state = {
-    focus: this.props.menu[0].id,
+    focus: this.props.menu.length && this.props.menu[0].id,
     sticky: null,
   }
+
   componentDidMount() {
     if (window.innerWidth <= 850) this.disable = true
     if (!this.disable) window.addEventListener('scroll', this.scroll)
@@ -74,6 +75,8 @@ class CardMenu extends React.Component {
   render() {
     const { children, id, title, menu, menuList, className } = this.props
     const { focus, sticky } = this.state
+    if (this.disable) return children
+    console.log(this.disable)
     return (
       <Row align="flex-start" className={classnames(s.row, className)}>
         <Menu
@@ -103,6 +106,7 @@ CardMenu.propTypes = {
 
 CardMenu.defaultProps = {
   id: 'cardMenu',
+  menu: [],
 }
 
 export default CardMenu

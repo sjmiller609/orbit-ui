@@ -9,22 +9,22 @@ import Update from '../Data/Update'
 const Configure = Update(ConfigureForm)
 
 const menu = [
-  {
-    text: 'Deployment Info',
-    id: 'info',
-  },
-  {
-    text: 'Workers',
-    id: 'workers',
-  },
-  {
-    text: 'Environment Vars',
-    id: 'env',
-  },
-  {
-    text: 'Deprovision',
-    id: 'delete',
-  },
+  // {
+  //   text: 'Deployment Info',
+  //   id: 'info',
+  // },
+  // {
+  //   text: 'Workers',
+  //   id: 'workers',
+  // },
+  // {
+  //   text: 'Environment Vars',
+  //   id: 'env',
+  // },
+  // {
+  //   text: 'Deprovision',
+  //   id: 'delete',
+  // },
 ]
 
 const DeploymentConfigure = ({ deployment }) => {
