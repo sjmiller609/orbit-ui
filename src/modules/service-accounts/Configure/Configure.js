@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 
 import { CardForm, Form, TextField } from 'instruments'
 
-import Update from '../Data/Update'
+import info from '../info'
 
-const Configure = ({ form }) => {
+const Configure = ({ form, title, deploymentId }) => {
   return (
     <CardForm
-      title="Configure"
+      title={title || 'Configure'}
       id="configure"
       button={{
         save: form.save,
@@ -19,11 +19,13 @@ const Configure = ({ form }) => {
         label="Name"
         required
         focus
+        info={info.name[deploymentId ? 'deployment' : 'workspace']}
         {...form.field('label')}
       />
       <TextField
         placeholder="Category"
         label="Category"
+        info={info.category}
         {...form.field('category')}
       />
     </CardForm>
@@ -32,6 +34,8 @@ const Configure = ({ form }) => {
 
 Configure.propTypes = {
   form: PropTypes.object,
+  title: PropTypes.string,
+  deploymentId: PropTypes.string,
 }
 
-export default Update(Form(Configure))
+export default Form(Configure)

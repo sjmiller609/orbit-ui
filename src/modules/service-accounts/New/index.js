@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Configure from './Configure'
+import Form from '../Configure/Configure'
 import Module from '../../app/Module'
+import Create from '../Data/Create'
+
+const Configure = Create(Form)
 
 class New extends React.Component {
   title = 'New Service Account'

@@ -33,6 +33,7 @@ $width: 25rem;
   .msg {
     text-align: left;
     @include font($f400);
+    line-height: 1.4em;
     width: $width;
     background: $white;
     border: 1px solid;

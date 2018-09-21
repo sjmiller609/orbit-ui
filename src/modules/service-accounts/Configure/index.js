@@ -2,11 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Data from '../Data'
-import Configure from './Configure'
+import Form from './Configure'
 import Delete from './Delete'
 import Key from './Key'
 import { CardMenu } from 'instruments'
 import { jsonEqual } from 'helpers/compare'
+import Update from '../Data/Update'
+
+const Configure = Update(Form)
 
 class ConfigureServiceAccount extends React.Component {
   set = this.set.bind(this)
@@ -57,7 +60,11 @@ class ConfigureServiceAccount extends React.Component {
     return (
       <CardMenu menu={this.menu} menuList={{ button: this.button }}>
         <Key apiKey={apiKey || serviceAccount.apiKey} />
-        <Configure serviceAccount={serviceAccount} data={serviceAccount} />
+        <Configure
+          serviceAccount={serviceAccount}
+          data={serviceAccount}
+          deploymentId={deploymentId}
+        />
         <Delete
           serviceAccount={serviceAccount}
           deploymentId={deploymentId}
