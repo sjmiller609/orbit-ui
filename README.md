@@ -130,7 +130,7 @@ The original scaffolding comes from https://github.com/coryhouse/react-slingshot
 
 # Branch Releases
 
-New releases are tagged and branched `v0.3.0` to maintain a history of branches for each release (as well as an ability to hotfix).
+New releases are tagged `v0.3.0` and created from branches `release-0.3` to maintain a history of branches for each release (as well as an ability to hotfix).
 
 Development should be done via feature branches off master and PRs to merge back.
 
