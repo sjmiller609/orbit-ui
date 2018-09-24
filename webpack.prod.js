@@ -23,7 +23,7 @@ export default merge(common, prod, {
       },
       inject: true,
       // Note that you can add custom options here if you need to handle other custom logic in index.html
-      tracking_snippet: 'ANALYTICS_TRACKING_SNIPPET',
+      tracking_id: 'ANALYTICS_TRACKING_ID',
       api_http: 'APP_API_LOC_HTTPS',
       api_ws: 'APP_API_LOC_WSS',
       stripe_pk: 'STRIPE_PUBK',
