@@ -11,7 +11,7 @@ class CardMenu extends React.Component {
   pos = 0
   scroll = this.scroll.bind(this)
   scrollTo = this.scrollTo.bind(this)
-  disable = !this.props.menu.length
+  disable = this.props.menu.length < 3
   menu = []
   state = {
     focus: this.props.menu.length && this.props.menu[0].id,

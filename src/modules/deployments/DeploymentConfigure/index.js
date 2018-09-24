@@ -9,10 +9,10 @@ import Update from '../Data/Update'
 const Configure = Update(ConfigureForm)
 
 const menu = [
-  // {
-  //   text: 'Deployment Info',
-  //   id: 'info',
-  // },
+  {
+    text: 'Deployment Info',
+    id: 'info',
+  },
   // {
   //   text: 'Workers',
   //   id: 'workers',
@@ -21,10 +21,10 @@ const menu = [
   //   text: 'Environment Vars',
   //   id: 'env',
   // },
-  // {
-  //   text: 'Deprovision',
-  //   id: 'delete',
-  // },
+  {
+    text: 'Deprovision',
+    id: 'delete',
+  },
 ]
 
 const DeploymentConfigure = ({ deployment }) => {
