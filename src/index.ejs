@@ -67,7 +67,7 @@ window['API_WS'] = '<%= htmlWebpackPlugin.options.api_ws %>'
   })()
 }
 var sourceId = '<%= htmlWebpackPlugin.options.tracking_id %>'
-if (sourceId) load(sourceId)
+if (sourceId && sourceId !== 'ANALYTICS_TRACKING_ID') load(sourceId)
 </script>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
