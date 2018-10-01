@@ -34,7 +34,8 @@ const Form = FormComponent => {
 
     componentWillReceiveProps({ data, error }) {
       if (!jsonEqual(data, this.props.data)) {
-        this.data = this.unpack(this.props.data)
+        this.data = this.unpack(data)
+        console.log('props', this.data)
         this.setState({ data: this.data })
       }
       if (!jsonEqual(error, this.props.error) && error)

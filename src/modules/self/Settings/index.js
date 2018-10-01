@@ -11,9 +11,9 @@ class Settings extends React.Component {
   }
 
   render() {
-    const { self } = this.props
+    const { user } = this.props.self
     const data = {
-      fullName: self.fullName || '',
+      fullName: user.fullName || '',
     }
     return (
       <Module metaTitle="Personal Settings" menu={this.menu}>
