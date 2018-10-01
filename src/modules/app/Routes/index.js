@@ -11,6 +11,8 @@ import { default as workspaces, workspace } from 'modules/workspaces/Routes'
 import { default as auth, otherAuthRoutes } from 'modules/auth/Routes'
 import self from 'modules/self/Routes'
 import users from 'modules/users/Routes'
+import platform from 'modules/platform/Routes'
+
 import serviceAccounts from 'modules/service-accounts/Routes'
 
 import Protected from './Protected'
@@ -34,7 +36,7 @@ const routes = [
 const autoLoginRoutes = [...auth]
 
 // protected by userId
-const authRoutes = [...workspaces, ...self]
+const authRoutes = [...workspaces, ...self, ...platform]
 
 // also protected by workspaceId
 const workspaceRoutes = [

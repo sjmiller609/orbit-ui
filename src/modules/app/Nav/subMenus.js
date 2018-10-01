@@ -7,7 +7,9 @@ const subMenus = {
     {
       to: '/platform',
       text: 'Platform Settings',
-      isAdmin: true,
+      permissions: {
+        isAdmin: true,
+      },
     },
     {
       to: '/profile',

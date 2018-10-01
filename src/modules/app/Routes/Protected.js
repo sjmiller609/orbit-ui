@@ -23,6 +23,7 @@ const Protected = ({ auth, workspaceId, component, ...props }) => {
         if (!auth) return Err
         const newProps = {
           ...props2,
+          permissions: props.permissions || {},
           component,
           OnError: Err,
         }
@@ -42,6 +43,7 @@ Protected.propTypes = {
   auth: PropTypes.bool,
   self: PropTypes.object,
   workspaceId: PropTypes.string,
+  permissions: PropTypes.object,
 }
 
 export default Protected

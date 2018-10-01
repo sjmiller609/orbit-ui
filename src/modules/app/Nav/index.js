@@ -30,7 +30,8 @@ const Nav = ({ getData, workspaces, self, menu }) => {
     },
   }
   let subMenu = menu.subMenu || subMenus[menu.nav]
-  if (!self.isAdmin) subMenu = subMenu.filter(m => !m.isAdmin)
+  if (!self.isAdmin)
+    subMenu = subMenu.filter(m => !m.permissions || !m.permissions.isAdmin)
 
   return (
     <Header

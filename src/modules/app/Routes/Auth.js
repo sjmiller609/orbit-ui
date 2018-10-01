@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import SelfData from 'modules/self/Data'
-import { SetData } from 'instruments'
+import { SetData, Redirect } from 'instruments'
 
 class Auth extends React.Component {
   // unset workspaceId on these routes
@@ -11,7 +11,9 @@ class Auth extends React.Component {
   }
   render() {
     /* eslint-disable no-unused-vars */
-    const { component: Component, setData, ...props } = this.props
+    const { component: Component, setData, permissions, ...props } = this.props
+
+    if (permissions.isAdmin && props.self.isAdmin) return <Redirect to="/" />
     return <Component {...props} />
   }
 }
@@ -19,6 +21,7 @@ class Auth extends React.Component {
 Auth.propTypes = {
   component: PropTypes.func,
   setData: PropTypes.object,
+  permissions: PropTypes.object,
 }
 
 export default SelfData(SetData(Auth, { workspaceId: true }))
