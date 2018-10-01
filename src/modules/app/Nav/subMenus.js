@@ -5,6 +5,11 @@ const subMenus = {
       text: 'Workspaces',
     },
     {
+      to: '/platform',
+      text: 'Platform Settings',
+      isAdmin: true,
+    },
+    {
       to: '/profile',
       text: 'Personal Settings',
     },

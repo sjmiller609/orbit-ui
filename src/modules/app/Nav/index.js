@@ -12,7 +12,10 @@ const Nav = ({ getData, workspaces, self, menu }) => {
   if (!workspaces) return null
   const workspace = workspaces.find(workspace => workspace.id === workspaceId)
 
-  const profile = getProfile(self.user)
+  const profile = {
+    ...getProfile(self.user),
+    platform: self.isAdmin,
+  }
 
   const level1 = {
     selected: {
@@ -26,7 +29,8 @@ const Nav = ({ getData, workspaces, self, menu }) => {
       text: 'New Workspace',
     },
   }
-  const subMenu = menu.subMenu || subMenus[menu.nav]
+  let subMenu = menu.subMenu || subMenus[menu.nav]
+  if (!self.isAdmin) subMenu = subMenu.filter(m => !m.isAdmin)
 
   return (
     <Header
