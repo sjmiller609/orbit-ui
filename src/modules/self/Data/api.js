@@ -1,14 +1,14 @@
 import gql from 'graphql-tag'
-import { user } from 'modules/api/fragments'
+import { authUser, user } from 'modules/api/fragments'
 
 export default {
   Self: gql`
     query self {
       self {
-        ...user
+        ...authUser
       }
     }
-    ${user}
+    ${authUser}
   `,
   UpdateSelf: gql`
     mutation updateUser($payload: JSON!) {

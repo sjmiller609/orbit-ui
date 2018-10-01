@@ -12,7 +12,7 @@ const Nav = ({ getData, workspaces, self, menu }) => {
   if (!workspaces) return null
   const workspace = workspaces.find(workspace => workspace.id === workspaceId)
 
-  const profile = getProfile(self)
+  const profile = getProfile(self.user)
 
   const level1 = {
     selected: {

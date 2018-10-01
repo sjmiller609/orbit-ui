@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+// import { permissions } from './permissions'
 
 export const user = gql`
   fragment user on User {
@@ -119,6 +120,7 @@ export const authUser = gql`
     token {
       ...token
     }
+    isAdmin
   }
   ${token}
   ${user}
