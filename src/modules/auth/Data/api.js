@@ -12,6 +12,7 @@ export default {
         githubOAuthUrl
         auth0Enabled
         auth0OAuthUrl
+        publicSignup
       }
     }
   `,

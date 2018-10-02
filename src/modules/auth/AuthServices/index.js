@@ -47,6 +47,7 @@ class AuthServices extends React.Component {
       <Auth
         vars={this.vars}
         cli={this.vars.extras.source === 'cli'}
+        pathname={location.pathname}
         {...props}
       />
     )

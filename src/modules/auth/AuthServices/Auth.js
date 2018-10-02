@@ -4,21 +4,30 @@ import PropTypes from 'prop-types'
 import Data from '../Data'
 import EmailPw from './EmailPw'
 import Buttons from './Buttons'
-import { CardForm, Row, Link, Mini } from 'instruments'
+import { CardForm, Row, Link, Mini, Redirect } from 'instruments'
 import s from './styles.scss'
 
-const Auth = ({ authConfig = {}, login, cli }) => {
+const Auth = ({ authConfig = {}, login: login2, cli, pathname }) => {
+  let login = login2 || !authConfig.publicSignup
   return (
     <CardForm
       title={login ? 'Login to Astronomer' : 'Sign Up'}
       smallForm
       footer={
         <Row className={s.footer}>
-          <Mini>
-            <Link to="https://www.astronomer.io/contact">
-              Contact Astronomer
-            </Link>
-          </Mini>
+          {!authConfig.publicSignup ? (
+            <Mini>
+              New to Astronomer? Please contact your system administrator to
+              request access.
+              {location.pathname !== '/auth' && <Redirect to="/auth" replace />}
+            </Mini>
+          ) : (
+            <Mini>
+              <Link to="https://www.astronomer.io/contact">
+                Contact Astronomer
+              </Link>
+            </Mini>
+          )}
         </Row>
       }
       className={s.card}>
@@ -58,6 +67,7 @@ Auth.propTypes = {
   authConfig: PropTypes.object,
   login: PropTypes.bool,
   cli: PropTypes.bool,
+  pathname: PropTypes.string,
 }
 
 export default Data(Auth)
