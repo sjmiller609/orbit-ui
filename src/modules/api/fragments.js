@@ -120,7 +120,7 @@ export const authUser = gql`
     token {
       ...token
     }
-    isAdmin
+    # isAdmin
   }
   ${token}
   ${user}
