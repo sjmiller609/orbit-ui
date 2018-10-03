@@ -3,17 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import {
-  TableRow,
-  Box,
-  Row,
-  P,
-  Mini,
-  H3,
-  ShowDate,
-  Avatar,
-  Tag,
-} from 'instruments'
+import { TableRow, Box, P, Mini, H3, ShowDate, Avatar, Tag } from 'instruments'
 import { getProfile } from '../Data/helpers'
 
 const Item = ({ user, pending, className }) => {
@@ -38,7 +28,8 @@ const Item = ({ user, pending, className }) => {
     </Box>,
   ]
 
-  const to = '/users/' + encodeURIComponent(profile.username)
+  let to = pending ? '/pending/' : '/users/'
+  to += encodeURIComponent(profile.username)
 
   return (
     <TableRow

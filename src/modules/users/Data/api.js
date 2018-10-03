@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { user, group, workspace } from 'modules/api/fragments'
+import { user, group, invite, workspace } from 'modules/api/fragments'
 
 export default {
   Users: gql`
@@ -20,11 +20,15 @@ export default {
         groups {
           ...group
         }
+        invites {
+          ...invite
+        }
       }
     }
     ${workspace}
     ${user}
     ${group}
+    ${invite}
   `,
   UpdateUser: gql`
     mutation updateUser($id: Uuid!, $payload: JSON) {
@@ -37,6 +41,13 @@ export default {
   RemoveUser: gql`
     mutation removeUser($id: Uuid!, $workspaceId: Uuid!) {
       workspaceRemoveUser(userUuid: $id, workspaceUuid: $workspaceId) {
+        id: uuid
+      }
+    }
+  `,
+  DeleteInvite: gql`
+    mutation deleteInviteToken($id: Uuid) {
+      deleteInviteToken(inviteUuid: $id) {
         id: uuid
       }
     }

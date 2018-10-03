@@ -16,4 +16,9 @@ export default [
     component: Load(() => import(/* webpackPrefetch: true */ '../User')),
     // matches sub routes
   },
+  {
+    path: '/pending/:id',
+    component: Load(() => import(/* webpackPrefetch: true */ '../Pending')),
+    // matches sub routes
+  },
 ]
