@@ -7,13 +7,13 @@ import classnames from 'classnames'
 
 import s from './styles.scss'
 
-const ErrorPage = ({ retry, className }) => {
+const ErrorPage = ({ children, retry, className }) => {
   return (
     <Page
       className={classnames(s.page, className)}
       metaTitle="Error | Astronomer">
       <Box full className={s.noMatch}>
-        <CardError retry={retry} />
+        <CardError retry={retry}>{children}</CardError>
         <Logo className={s.logo} noStars />
       </Box>
     </Page>
@@ -21,6 +21,7 @@ const ErrorPage = ({ retry, className }) => {
 }
 
 ErrorPage.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
   className: PropTypes.string,
   retry: PropTypes.func,
 }

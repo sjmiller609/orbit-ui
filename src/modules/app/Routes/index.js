@@ -19,12 +19,18 @@ import Protected from './Protected'
 import AutoLogin from './AutoLogin'
 
 const NoMatch = Load(() => import('../NoMatch'))
+const ErrorRoute = Load(() => import('../ErrorRoute'))
 
 const routes = [
   ...otherAuthRoutes,
   {
     path: '/(404|500|503|houston-down)',
     component: NoMatch,
+    exact: true,
+  },
+  {
+    path: '/error',
+    component: ErrorRoute,
     exact: true,
   },
   {
