@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { workspace, user, group } from 'modules/api/fragments'
+import { workspace, user, group, invite } from 'modules/api/fragments'
 
 export default {
   Workspaces: gql`
@@ -12,11 +12,15 @@ export default {
         groups @include(if: $withUsers) {
           ...group
         }
+        invites @include(if: $withUsers) {
+          ...invite
+        }
       }
     }
     ${workspace}
     ${user}
     ${group}
+    ${invite}
   `,
   CreateWorkspace: gql`
     mutation createWorkspace($label: String!, $description: String) {

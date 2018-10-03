@@ -36,3 +36,7 @@ div.list {
   @include shadow;
   background: $gray;
 }
+
+.tag {
+  margin-left: 0.4em;
+}

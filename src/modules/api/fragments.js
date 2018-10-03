@@ -42,9 +42,6 @@ export const workspace = gql`
     active
     createdAt
     updatedAt
-    invites {
-      email
-    }
     deploymentCount
   }
 `

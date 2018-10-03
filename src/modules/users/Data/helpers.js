@@ -5,7 +5,7 @@ const getAvatarUrl = profile => {
   return
 }
 
-const getName = user => user.fullName || user.username
+const getName = user => user.fullName || user.username || user.email
 
 export const getProfile = user => {
   const name = getName(user)
@@ -13,5 +13,6 @@ export const getProfile = user => {
   return {
     name,
     avatar,
+    username: user.username || user.email,
   }
 }

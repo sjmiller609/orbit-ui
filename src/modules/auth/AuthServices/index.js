@@ -37,6 +37,7 @@ class AuthServices extends React.Component {
     this.vars.extras.onSuccess = to
 
     if (params.source) this.vars.extras.source = params.source
+    if (params.token) this.vars.inviteToken = params.token
   }
 
   render() {

@@ -8,6 +8,7 @@ import { CardForm, Row, Link, Mini, Redirect } from 'instruments'
 import s from './styles.scss'
 
 const Auth = ({ authConfig = {}, login: login2, cli, pathname }) => {
+  console.log(authConfig)
   let login = login2 || !authConfig.publicSignup
   return (
     <CardForm
@@ -19,7 +20,7 @@ const Auth = ({ authConfig = {}, login: login2, cli, pathname }) => {
             <Mini>
               New to Astronomer? Please contact your system administrator to
               request access.
-              {location.pathname !== '/auth' && <Redirect to="/auth" replace />}
+              {pathname !== '/auth' && <Redirect to="/auth" replace />}
             </Mini>
           ) : (
             <Mini>

@@ -1,8 +1,13 @@
 @import 'src/styles/mixins.scss';
 
 .tag {
+  @include font($f400);
+  @include mini;
+
+  @include textLink();
   display: inline-block;
   background: $lightGray;
+  color: $orange;
   border-radius: 3px;
   border: 1px solid $shadow;
   padding: 0.2em 0.55em;
