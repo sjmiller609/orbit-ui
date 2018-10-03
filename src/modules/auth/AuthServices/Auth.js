@@ -10,7 +10,6 @@ import s from './styles.scss'
 class Auth extends React.Component {
   render() {
     const { authConfig = {}, login: login2, cli, pathname, token } = this.props
-    console.log(authConfig)
     const signupEnabled = authConfig.publicSignup || !!token
     let login = login2 || !signupEnabled
     return (
@@ -23,7 +22,7 @@ class Auth extends React.Component {
               <Mini>
                 New to Astronomer? Please contact your system administrator to
                 request access.
-                {pathname !== '/auth' && (
+                {!~pathname.indexOf('/auth') && (
                   <Redirect
                     to={{
                       ...location,

@@ -35,7 +35,6 @@ class AuthServices extends React.Component {
 
     // gets encoded on server
     this.vars.extras.onSuccess = to
-
     if (params.source) this.vars.extras.source = params.source
     if (params.token) this.vars.inviteToken = params.token
   }
