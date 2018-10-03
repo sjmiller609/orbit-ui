@@ -38,8 +38,9 @@ const Form = FormComponent => {
         console.log('props', this.data)
         this.setState({ data: this.data })
       }
-      if (!jsonEqual(error, this.props.error) && error)
+      if (!jsonEqual(error, this.props.error) && error) {
         this.updateErrors(error.name, error.error)
+      }
     }
 
     shouldComponentUpdate(nextProps, nextState) {

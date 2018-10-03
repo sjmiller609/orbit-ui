@@ -7,8 +7,8 @@ import { Site } from 'instruments'
 import Nav from '../Nav'
 
 const Module = ({ metaTitle, className, ...props }) => {
-  const title =
-    metaTitle !== 'Astronomer' ? metaTitle + ' | Astronomer' : metaTitle
+  let title = 'Astronomer'
+  if (metaTitle && metaTitle !== 'Astornomer') title = metaTitle + ' | ' + title
 
   return (
     <Site
@@ -23,10 +23,6 @@ const Module = ({ metaTitle, className, ...props }) => {
 Module.propTypes = {
   metaTitle: PropTypes.string,
   className: PropTypes.string,
-}
-
-Module.defaultProps = {
-  metaTitle: 'Astronomer',
 }
 
 export default Module

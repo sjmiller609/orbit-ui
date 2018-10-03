@@ -33,6 +33,11 @@ const errors = [
       </Link>
     ),
   },
+  {
+    key: 'not associated with the specified invite',
+    name: 'email',
+    error: 'The email you entered does not match your invitation.',
+  },
 ]
 
 export const handleError = error => formErrors({ error, errors })

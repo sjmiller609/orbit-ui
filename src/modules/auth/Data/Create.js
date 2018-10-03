@@ -8,7 +8,7 @@ import { handleError } from './helpers'
 import { Create as Mutation, SetData } from 'instruments'
 
 const Create = Component => {
-  const Create = ({ login, setData, to, ...props }) => {
+  const Create = ({ login, vars, setData, to, ...props }) => {
     let success
     let track
     let redirect
@@ -57,10 +57,11 @@ const Create = Component => {
           const newProps = {
             ...props,
             login,
-            onSubmit: vars => {
+            onSubmit: variables => {
               mutate({
                 variables: {
                   duration: 7, // set to max days
+                  ...variables,
                   ...vars,
                 },
               })
@@ -77,6 +78,7 @@ const Create = Component => {
   }
   Create.propTypes = {
     login: PropTypes.bool,
+    vars: PropTypes.object,
     setData: PropTypes.object,
     to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     track: PropTypes.string,
