@@ -77,15 +77,11 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     })
 
   if (networkError) {
-    const path = window.location.pathname
     if (
       ~networkError
         .toString()
         .toLowerCase()
-        .indexOf('failed to fetch') &&
-      path !== '/' &&
-      !~path.indexOf('login') &&
-      !~path.indexOf('signup')
+        .indexOf('failed to fetch')
     )
       window.location.pathname = '/houston-down'
     console.log(`[Network error]: ${networkError}`)
