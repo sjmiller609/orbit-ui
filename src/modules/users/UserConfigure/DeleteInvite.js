@@ -16,9 +16,8 @@ const DeleteInvite = ({ user, onSubmit }) => {
       confirm={{
         text: (
           <span>
-            Are you sure you want to remove&nbsp;
-            <B>{name}</B>
-            &nbsp;from this workspace?
+            Are you sure you want to cancel the invite for&nbsp;
+            <B>{name}</B>?
           </span>
         ),
       }}

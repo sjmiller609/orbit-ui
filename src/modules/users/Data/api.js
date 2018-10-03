@@ -10,6 +10,14 @@ export default {
     }
     ${user}
   `,
+  Invites: gql`
+    query invites($workspaceId: Uuid, $email: String) {
+      invites(workspaceUuid: $workspaceId, email: $email) {
+        ...invite
+      }
+    }
+    ${invite}
+  `,
   InviteUser: gql`
     mutation inviteUser($email: String!, $workspaceId: Uuid!) {
       workspaceAddUser(workspaceUuid: $workspaceId, email: $email) {

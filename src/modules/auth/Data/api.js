@@ -3,8 +3,18 @@ import { authUser } from 'modules/api/fragments'
 
 export default {
   AuthConfig: gql`
-    query authConfig($redirect: String!, $duration: Int, $extras: JSON) {
-      authConfig(redirect: $redirect, duration: $duration, extras: $extras) {
+    query authConfig(
+      $redirect: String!
+      $duration: Int
+      $inviteToken: String
+      $extras: JSON
+    ) {
+      authConfig(
+        redirect: $redirect
+        duration: $duration
+        inviteToken: $inviteToken
+        extras: $extras
+      ) {
         localEnabled
         googleEnabled
         googleOAuthUrl

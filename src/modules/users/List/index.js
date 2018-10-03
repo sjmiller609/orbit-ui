@@ -11,7 +11,7 @@ import Empty from './Empty'
 const List = ({ workspaces, search }) => {
   const users = (workspaces && workspaces[0] && workspaces[0].users) || []
   const invites = (workspaces && workspaces[0] && workspaces[0].invites) || []
-  console.log(invites)
+
   const button = {
     text: 'Invite',
     to: '/users/new',

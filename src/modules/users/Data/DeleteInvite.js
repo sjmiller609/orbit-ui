@@ -19,7 +19,7 @@ const DeleteInvite = Component => {
     }
     return (
       <Mutate
-        gql={api.RemoveUser}
+        gql={api.DeleteInvite}
         redirect={'/users'}
         success="Invitation canceled."
         track="Invite Deleted From Workspace"
