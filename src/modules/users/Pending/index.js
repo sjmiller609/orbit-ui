@@ -22,7 +22,7 @@ class Pending extends React.Component {
     ]
 
     const vars = {
-      id,
+      email: id,
     }
     return <Module title="Configure Access" menu={this.menu} vars={vars} />
   }
