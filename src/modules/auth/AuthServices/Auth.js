@@ -10,7 +10,8 @@ import s from './styles.scss'
 class Auth extends React.Component {
   render() {
     const { authConfig = {}, login: login2, cli, pathname, token } = this.props
-    const signupEnabled = authConfig.publicSignup || !!token
+    const signupEnabled =
+      authConfig.initialSignup || authConfig.publicSignup || !!token
     let login = login2 || !signupEnabled
     return (
       <CardForm

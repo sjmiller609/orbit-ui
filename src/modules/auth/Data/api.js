@@ -23,6 +23,7 @@ export default {
         auth0Enabled
         auth0OAuthUrl
         publicSignup
+        initialSignup
       }
     }
   `,
