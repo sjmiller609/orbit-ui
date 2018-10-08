@@ -40,7 +40,7 @@ class Configure extends React.Component {
   // delay rendering of config for lazy loading (ux performance)
   componentWillMount() {
     // DISABLED
-    //  setTimeout(() => this.setState({ renderConfig: true }), 10)
+    setTimeout(() => this.setState({ renderConfig: true }), 10)
   }
   renderConfig() {
     const {

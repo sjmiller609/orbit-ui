@@ -10,7 +10,9 @@ import { getProfile } from 'modules/users/Data/helpers'
 const Nav = ({ getData, workspaces, self, menu }) => {
   const workspaceId = getData.workspaceId
   if (!workspaces) return null
-  const workspace = workspaces.find(workspace => workspace.id === workspaceId)
+  const workspace = workspaces.find(
+    workspace => workspace && workspace.id === workspaceId
+  )
 
   const profile = {
     ...getProfile(self.user),

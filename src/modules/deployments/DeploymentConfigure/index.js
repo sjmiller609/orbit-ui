@@ -13,14 +13,14 @@ const menu = [
     text: 'Deployment Info',
     id: 'info',
   },
-  // {
-  //   text: 'Workers',
-  //   id: 'workers',
-  // },
-  // {
-  //   text: 'Environment Vars',
-  //   id: 'env',
-  // },
+  {
+    text: 'Workers',
+    id: 'workers',
+  },
+  {
+    text: 'Environment Vars',
+    id: 'env',
+  },
   {
     text: 'Deprovision',
     id: 'delete',

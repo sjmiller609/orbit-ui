@@ -37,13 +37,13 @@ const Query = ({
         const data2 = {}
         Object.keys(data).forEach(k => {
           if (!data[k]) return null
-
           if (Array.isArray(data[k])) {
             // then make a shallow copy and order by date if it has that property
             data2[k] = data[k].slice(0)
             if (data[k].length > 1 && data[k][0].createdAt) {
               // TODO: add support for other types of fields to sort by
               data2[k].sort((a, b) => {
+                if (!a || !b) return
                 const a1 = new Date(
                   a[sortBy] || a.updatedAt || a.createdAt
                 ).getTime()
