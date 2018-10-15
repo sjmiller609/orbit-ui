@@ -26,7 +26,9 @@ GOOGLE_CLIENT_ID: [CLIENT_ID]
 GOOGLE_CLIENT_SECRET: [SECRET]
 ```
 
-3.  Run `docker-compose-up` in your houston-api repo.
+Replace CLIENT_ID and SECRET with values you get from creating "OAuth 2.0 client IDs" on GCP
+
+3.  Run `docker-compose up` in your houston-api repo.
 
 4.  Navigate to http://localhost:8870/playground to access the graphql playground (and ensure houston is running.)
 
