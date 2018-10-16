@@ -189,7 +189,7 @@ const Form = FormComponent => {
       const { save } = this.state
       /* eslint-disable no-unused-vars  */
       // don't pass down some props
-      const { data, onSubmit, ...otherProps } = this.props
+      const { data, onSubmit, alert, ...otherProps } = this.props
 
       const newProps = {
         ...otherProps,
@@ -203,7 +203,7 @@ const Form = FormComponent => {
       return (
         <form onSubmit={this.onSubmit} className={s.form}>
           <FormComponent {...newProps} />
-          <UnsavedChangesAlert alert={save} />
+          {alert && <UnsavedChangesAlert alert={save} />}
         </form>
       )
     }
@@ -215,10 +215,12 @@ const Form = FormComponent => {
     onSubmit: PropTypes.func,
     children: PropTypes.element,
     saveOnLoad: PropTypes.bool, // if true, will enable saving preloaded data
+    alert: PropTypes.bool, // if true, will enable saving preloaded data
   }
 
   Form.defaultProps = {
     data: {},
+    alert: true,
   }
 
   return Form

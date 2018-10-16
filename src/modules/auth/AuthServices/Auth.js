@@ -50,6 +50,7 @@ class Auth extends React.Component {
                 login={login}
                 to={cli ? '/token' : null}
                 vars={{ inviteToken: token }}
+                alert={false}
               />
               <Row className={s.or}>
                 <hr />
