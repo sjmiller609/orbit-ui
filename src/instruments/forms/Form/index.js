@@ -57,11 +57,9 @@ const Form = FormComponent => {
 
     getValue(name) {
       const { data } = this.state
-      if (data[name]) return data[name]
       // otherwise, it's a parent object, need to roll it up
-      if (~name.indexOf('.')) {
-        return packChild({ name, obj: data })
-      }
+      if (data[name]) return data[name]
+      return packChild({ name, obj: data })
     }
 
     update(key, value) {
