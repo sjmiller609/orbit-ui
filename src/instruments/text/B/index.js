@@ -9,7 +9,11 @@ const B = ({ children, className }) => {
 }
 
 B.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.number,
+  ]),
   className: PropTypes.string,
 }
 

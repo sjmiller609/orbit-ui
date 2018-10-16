@@ -31,7 +31,6 @@ class Configure extends React.Component {
 
   renderConfig() {
     const { form, deploymentConfig } = this.props
-    console.log(deploymentConfig)
     return (
       <React.Fragment>
         <Resources form={form} astroUnit={deploymentConfig.astroUnit} />

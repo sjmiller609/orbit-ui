@@ -12,7 +12,7 @@ const R = ({ n, l }) => (
 )
 
 R.propTypes = {
-  n: PropTypes.string,
+  n: PropTypes.number,
   l: PropTypes.string,
 }
 

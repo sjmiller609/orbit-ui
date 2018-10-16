@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import s from './styles.scss'
-import { NumberField, Select } from 'instruments'
+import { NumberField, Select, FormSubSection } from 'instruments'
 import info from '../info'
 
 import {
@@ -10,19 +10,41 @@ import {
   workerTerminationConvert,
 } from './helpers'
 
-import { default as WorkerSize, workerSizes } from './WorkerSize'
+import Selector from './Selector'
+
+const workerSizes = [
+  {
+    icon: 'alien_ship',
+    value: 'small',
+    text: 'Small',
+    className: s.sizeS,
+  },
+  {
+    icon: 'alien_ship',
+    value: 'medium',
+    text: 'Medium',
+    className: s.sizeM,
+  },
+  {
+    icon: 'alien_ship',
+    value: 'large',
+    text: 'Large',
+    className: s.sizeL,
+  },
+]
+
 const CeleryConfig = ({
   form,
   deploymentConfig: { defaults, limits, presets },
 }) => {
   return (
-    <React.Fragment>
+    <FormSubSection title="Celery Executor Config">
       <Select
         {...form.field('config.workers.resources')}
         label="Worker Size"
-        className={s.workers}
+        className={s.selectors}
         defaultValue={presets.workerSizes.small}
-        Component={WorkerSize}
+        Component={Selector}
         options={workerSizes}
         info={info.workerSize}
         convert={(size, out) =>
@@ -50,7 +72,7 @@ const CeleryConfig = ({
         convert={workerTerminationConvert}
         info={info.workerTermination}
       />
-    </React.Fragment>
+    </FormSubSection>
   )
 }
 

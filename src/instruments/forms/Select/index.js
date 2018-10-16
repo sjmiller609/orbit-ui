@@ -66,9 +66,13 @@ class Select extends React.Component {
           value={value}
           ref={setRef}
         />
-        <Row justify="space-between" className={s.options}>
+        <Row justify="space-between" align="flex-start" className={s.options}>
           {options.map(o => {
-            return (
+            return o.disabled ? (
+              <span key={o.value}>
+                <Component {...o} selected={value === o.value} />
+              </span>
+            ) : (
               <Link key={o.value} onClick={() => this.select(o.value)}>
                 <Component {...o} selected={value === o.value} />
               </Link>

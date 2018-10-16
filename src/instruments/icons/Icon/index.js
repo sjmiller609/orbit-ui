@@ -14,6 +14,7 @@ const map = {
   arrow: LoadImg(() => import(`./img/arrow.svg`)),
   astro_helmet: LoadImg(() => import(`./img/astro_helmet.svg`)),
   celery: LoadImg(() => import(`./img/celery.svg`)),
+  kubernetes: LoadImg(() => import(`./img/kubernetes.svg`)),
   dag: LoadImg(() => import(`./img/dag.svg`)),
   flower_astro: LoadImg(() => import(`./img/flower_astro.svg`)),
   scheduler: LoadImg(() => import(`./img/scheduler.svg`)),
