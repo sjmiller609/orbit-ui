@@ -18,6 +18,7 @@ const options = {
   compress: true,
   port: 5000,
   host: 'localhost',
+  allowedHosts: ['localhost', 'app.local.astronomer.io'],
   hot: true,
   //https: true,
   open: false,
