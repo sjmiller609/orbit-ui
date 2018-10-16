@@ -101,3 +101,15 @@
   border: 1px solid $lightBlue;
   padding: 0.2em 0.3em;
 }
+
+.resources {
+  b {
+    margin-right: 0.2em;
+  }
+  span {
+    margin: 0.2em;
+  }
+  .price {
+    color: $purple;
+  }
+}
