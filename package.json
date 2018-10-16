@@ -6,11 +6,10 @@
   "engines": {
     "npm": ">=3"
   },
-  "sideEffects": [
-    "*.css"
-  ],
+  "sideEffects": ["*.css"],
   "scripts": {
-    "local": "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:local\" \"npm run lint:watch\"",
+    "local":
+      "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:local\" \"npm run lint:watch\"",
     "open:local": "babel-node tools/localServer.js",
     "open:dist": "babel-node tools/distServer.js",
     "lint": "esw webpack.* src tools --color",
@@ -21,9 +20,11 @@
     "test": "jest",
     "test:CI": "babel-node tools/testCi.js",
     "test:cover": "npm run test -- --coverage ",
-    "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
+    "test:cover:CI":
+      "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "jest --watch",
-    "open:cover": "npm run test:cover && open ./coverage/lcov-report/index.html",
+    "open:cover":
+      "npm run test:cover && open ./coverage/lcov-report/index.html",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
   },
   "author": "Astronomer",
@@ -68,7 +69,6 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
-    "browser-sync": "2.26.3",
     "chalk": "^2.3.0",
     "clean-webpack-plugin": "0.1.19",
     "concurrently": "3.6.0",
@@ -120,21 +120,14 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|scss)$": "identity-obj-proxy",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/tools/assetsTransformer.js"
     },
-    "setupFiles": [
-      "raf/polyfill",
-      "./tools/enzymeTestAdapterSetup.js"
-    ],
+    "setupFiles": ["raf/polyfill", "./tools/enzymeTestAdapterSetup.js"],
     "modulePathIgnorePatterns": [
       "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
     ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
-  "browserslist": [
-    "last 2 versions",
-    "> 1%"
-  ]
+  "browserslist": ["last 2 versions", "> 1%"]
 }
