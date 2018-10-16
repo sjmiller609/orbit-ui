@@ -7,105 +7,40 @@ import {
   Form,
   TextField,
   TextArea,
-  TextFieldSelect,
-  NumberField,
-  Select,
   B,
   Mini,
   ShowDate,
   FormSection,
-  KeyValue,
-  FieldSet,
 } from 'instruments'
 
-import { default as WorkerSize, workerSizes } from './WorkerSize'
 import DeploymentConfig from '../Data/Config'
 
-import info from '../info'
-import EnvVar from './EnvVar'
-
-import {
-  workerSizeConvert,
-  workerTerminationUnits,
-  workerTerminationConvert,
-  validateEnvVar,
-} from './helpers'
+import Resources from './Resources'
+import EnvVars from './EnvVars'
+import Executor from './Executor'
 
 class Configure extends React.Component {
-  envVars = Object.keys(info.env)
   renderConfig = this.renderConfig.bind(this)
   state = {
     renderConfig: false,
   }
   // delay rendering of config for lazy loading (ux performance)
   componentWillMount() {
-    // DISABLED
     setTimeout(() => this.setState({ renderConfig: true }), 10)
   }
+
   renderConfig() {
-    const {
-      form,
-      deploymentConfig: { defaults, limits, presets },
-    } = this.props
-    // defining here so can pass value into validation function
-    const env = form.field('config.env')
+    const { form, deploymentConfig } = this.props
+    console.log(deploymentConfig)
     return (
       <React.Fragment>
-        <FormSection id="workers" title="Celery Workers">
-          <Select
-            {...form.field('config.workers.resources')}
-            label="Worker Size"
-            className={s.workers}
-            defaultValue={presets.workerSizes.small}
-            Component={WorkerSize}
-            options={workerSizes}
-            info={info.workerSize}
-            convert={(size, out) =>
-              workerSizeConvert(size, out, presets.workerSizes)
-            }
-          />
-          <NumberField
-            label="Worker Count"
-            {...form.field('config.workers.replicas')}
-            slider
-            defaultValue={defaults.workers.replicas}
-            min={1}
-            max={limits.workers.replicas}
-            info={info.workerCount}
-          />
-          <NumberField
-            label="Worker Termination Grace Period"
-            {...form.field('config.workers.terminationGracePeriodSeconds')}
-            slider
-            units={workerTerminationUnits}
-            defaultValue={defaults.workers.terminationGracePeriodSeconds}
-            min={5 * 60}
-            max={limits.workers.terminationGracePeriodSeconds}
-            step={5 * 60}
-            convert={workerTerminationConvert}
-            info={info.workerTermination}
-          />
-        </FormSection>
-        <FormSection id="env" title="Environment Variables">
-          <FieldSet
-            {...env}
-            title="Env Variable"
-            formField={form.field}
-            FieldType={KeyValue}
-            fieldProps={{
-              KeyField: TextFieldSelect,
-              keyProps: {
-                Option: EnvVar,
-                options: this.envVars,
-                className: s.envKey,
-                validate: value => validateEnvVar(value, env.value),
-              },
-            }}
-          />
-        </FormSection>
+        <Resources form={form} astroUnit={deploymentConfig.astroUnit} />
+        <Executor form={form} deploymentConfig={deploymentConfig} />
+        <EnvVars form={form} />
       </React.Fragment>
     )
   }
+
   render() {
     const { form, deployment } = this.props
 

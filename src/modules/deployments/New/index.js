@@ -13,14 +13,18 @@ const cardMenu = [
     text: 'Deployment Info',
     id: 'info',
   },
-  // {
-  //   text: 'Workers',
-  //   id: 'workers',
-  // },
-  // {
-  //   text: 'Environment Vars',
-  //   id: 'env',
-  // },
+  {
+    text: 'Resource Quotas',
+    id: 'resources',
+  },
+  {
+    text: 'Executor',
+    id: 'executor',
+  },
+  {
+    text: 'Environment Vars',
+    id: 'env',
+  },
 ]
 
 class New extends React.Component {

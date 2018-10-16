@@ -14,8 +14,12 @@ const menu = [
     id: 'info',
   },
   {
-    text: 'Workers',
-    id: 'workers',
+    text: 'Resource Quotas',
+    id: 'resources',
+  },
+  {
+    text: 'Executor',
+    id: 'executor',
   },
   {
     text: 'Environment Vars',

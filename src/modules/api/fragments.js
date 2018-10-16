@@ -64,6 +64,8 @@ export const deployment = gql`
     createdAt
     updatedAt
     config
+    env
+    properties
     deployInfo {
       latest
       next
@@ -128,6 +130,14 @@ export const deploymentConfig = gql`
     defaults
     limits
     presets
+    astroUnit {
+      cpu
+      memory
+      pods
+      airflowConns
+      actualConns
+      price
+    }
   }
 `
 
