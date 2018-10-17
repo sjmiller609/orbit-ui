@@ -90,7 +90,6 @@ const Field = Component => {
 
     validate(value) {
       const { validate, name, required } = this.props
-
       if (required && (typeof value !== 'boolean' && !value)) {
         const n = name.split('.').pop()
         return unCamelCase(n) + ' is required'

@@ -46,6 +46,7 @@ const Executor = ({ form, deploymentConfig }) => {
         options={options}
         info={info.executor}
         required
+        defaultValue="LocalExecutor"
       />
       {config}
     </FormSection>

@@ -26,6 +26,8 @@ export default {
       $version: String
       $description: String
       $config: JSON
+      $env: JSON
+      $properties: JSON
     ) {
       createDeployment(
         workspaceUuid: $workspaceId
@@ -34,6 +36,8 @@ export default {
         version: $version
         description: $description
         config: $config
+        env: $env
+        properties: $properties
       ) {
         ...deployment
       }
@@ -41,8 +45,20 @@ export default {
     ${deployment}
   `,
   UpdateDeployment: gql`
-    mutation updateDeployment($id: Uuid!, $payload: JSON!) {
-      updateDeployment(deploymentUuid: $id, payload: $payload) {
+    mutation updateDeployment(
+      $id: Uuid!
+      $payload: JSON
+      $config: JSON
+      $env: JSON
+      $properties: JSON
+    ) {
+      updateDeployment(
+        deploymentUuid: $id
+        payload: $payload
+        config: $config
+        env: $env
+        properties: $properties
+      ) {
         ...deployment
       }
     }

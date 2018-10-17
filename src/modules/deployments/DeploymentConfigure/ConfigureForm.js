@@ -42,7 +42,7 @@ class Configure extends React.Component {
 
   render() {
     const { form, deployment } = this.props
-
+    console.log(deployment)
     return (
       <CardForm
         title="Configure"
