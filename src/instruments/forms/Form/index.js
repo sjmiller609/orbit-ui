@@ -35,7 +35,6 @@ const Form = FormComponent => {
     componentWillReceiveProps({ data, error }) {
       if (!jsonEqual(data, this.props.data)) {
         this.data = this.unpack(data)
-        console.log('props', this.data)
         this.setState({ data: this.data })
       }
       if (!jsonEqual(error, this.props.error) && error) {
@@ -57,6 +56,7 @@ const Form = FormComponent => {
 
     getValue(name) {
       const { data } = this.state
+      console.log(name, data[name] || packChild({ name, obj: data }))
       // otherwise, it's a parent object, need to roll it up
       if (data[name]) return data[name]
       return packChild({ name, obj: data })
@@ -83,6 +83,7 @@ const Form = FormComponent => {
           k => (set.data[key + '.' + k] = children[k])
         )
       }
+      console.log(set.data)
       this.setState(set)
     }
 

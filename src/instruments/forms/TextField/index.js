@@ -80,7 +80,7 @@ class TextField extends React.Component {
           placeholder={placeholder}
           required={required}
           onChange={this.onChange}
-          value={value}
+          value={value || ''}
           title={title}
           onBlur={onBlur}
           ref={setRef}

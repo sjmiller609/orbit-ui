@@ -15,7 +15,7 @@ class FieldSet extends React.Component {
 
   componentWillMount() {
     const { value } = this.props
-    if (!value.length) this.add()
+    if (!value || !value.length) this.add()
   }
 
   componentDidMount() {

@@ -18,6 +18,12 @@ const Field = Component => {
       showError: this.props.showError || false,
       touched: false,
     }
+    componentWillMount() {
+      const { defaultValue, value } = this.props
+      // add timeout so that multiple set states don't overwrite each other
+      if (defaultValue && value === null)
+        setTimeout(() => this.onChange(null, defaultValue), 0)
+    }
 
     componentDidMount() {
       const { focus } = this.props
@@ -113,14 +119,12 @@ const Field = Component => {
         className,
         convert,
         value,
-        defaultValue,
         ...props
       } = this.props
       const { showError, touched } = this.state
       const err = showError && !!error
       const newProps = {
         ...props,
-        value: value || defaultValue,
         className: classnames(
           s.field,
           err ? s.error : null,
@@ -143,6 +147,7 @@ const Field = Component => {
           </label>
         ) : null,
       }
+      if (value) newProps.value = value
       if (convert) {
         newProps.value = convert(newProps.value)
         newProps.convert = convert

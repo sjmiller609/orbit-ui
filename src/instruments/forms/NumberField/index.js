@@ -120,7 +120,7 @@ class NumberField extends React.Component {
             min={min}
             max={max}
             step={step}
-            value={value}
+            value={value || ''}
           />
           {units && <div className={s.units}>{units}</div>}
           {slider && (

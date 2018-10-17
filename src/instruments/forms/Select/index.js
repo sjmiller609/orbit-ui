@@ -63,7 +63,7 @@ class Select extends React.Component {
           required={required}
           onChange={onChange}
           onBlur={onBlur}
-          value={value}
+          value={value || ''}
           ref={setRef}
         />
         <Row justify="space-between" align="flex-start" className={s.options}>
