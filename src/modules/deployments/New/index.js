@@ -21,10 +21,10 @@ const cardMenu = [
     text: 'Executor',
     id: 'executor',
   },
-  // {
-  //   text: 'Environment Vars',
-  //   id: 'env',
-  // },
+  {
+    text: 'Environment Vars',
+    id: 'env',
+  },
 ]
 
 class New extends React.Component {

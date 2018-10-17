@@ -21,10 +21,10 @@ const menu = [
     text: 'Executor',
     id: 'executor',
   },
-  // {
-  //   text: 'Environment Vars',
-  //   id: 'env',
-  // },
+  {
+    text: 'Environment Vars',
+    id: 'env',
+  },
   {
     text: 'Deprovision',
     id: 'delete',

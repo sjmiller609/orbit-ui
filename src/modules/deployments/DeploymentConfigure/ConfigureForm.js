@@ -16,7 +16,7 @@ import {
 import DeploymentConfig from '../Data/Config'
 
 import Resources from './Resources'
-//import EnvVars from './EnvVars'
+import EnvVars from './EnvVars'
 import Executor from './Executor'
 
 class Configure extends React.Component {
@@ -35,7 +35,7 @@ class Configure extends React.Component {
       <React.Fragment>
         <Resources form={form} astroUnit={deploymentConfig.astroUnit} />
         <Executor form={form} deploymentConfig={deploymentConfig} />
-        {/* <EnvVars form={form} /> */}
+        <EnvVars form={form} />
       </React.Fragment>
     )
   }
