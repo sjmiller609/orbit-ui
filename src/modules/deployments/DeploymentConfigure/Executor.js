@@ -28,7 +28,7 @@ export const options = [
 const Executor = ({ form, deploymentConfig }) => {
   const executor = form.field('config.executor')
   let config
-  if (executor.value === 'CeleryExecutor')
+  if (executor.value === 'CeleryExecutor') {
     config = (
       <CeleryConfig
         form={form}
@@ -36,6 +36,7 @@ const Executor = ({ form, deploymentConfig }) => {
         className={s.executorConfig}
       />
     )
+  }
   return (
     <FormSection id="executor" title="Executor" sub="test">
       <Select
