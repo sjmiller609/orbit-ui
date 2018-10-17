@@ -47,13 +47,13 @@ const Executor = ({ form, deploymentConfig }) => {
         info={info.executor}
         required
         defaultValue="LocalExecutor"
-        validate={v => {
-          if (
-            v === 'CeleryExecutor' &&
-            form.field('properties.astro_unit').value < 2
-          )
-            return 'The Celery Executor requires at least 2 AU. Please adjust your settings.'
-        }}
+        // validate={v => {
+        //   if (
+        //     v === 'CeleryExecutor' &&
+        //     form.field('properties.astro_unit').value < 2
+        //   )
+        //     return 'The Celery Executor requires at least 2 AU. Please adjust your settings.'
+        // }}
       />
       {config}
     </FormSection>
