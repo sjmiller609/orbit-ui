@@ -50,7 +50,7 @@ const Executor = ({ form, deploymentConfig }) => {
         // validate={v => {
         //   if (
         //     v === 'CeleryExecutor' &&
-        //     form.field('properties.astro_unit').value < 2
+        //     form.field('properties.astro_units').value < 2
         //   )
         //     return 'The Celery Executor requires at least 2 AU. Please adjust your settings.'
         // }}

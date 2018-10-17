@@ -56,6 +56,7 @@ const Form = FormComponent => {
 
     getValue(name) {
       const { data } = this.state
+      //console.log(name, data[name] || packChild({ name, obj: data }))
       // otherwise, it's a parent object, need to roll it up
       if (data[name]) return data[name]
       return packChild({ name, obj: data })

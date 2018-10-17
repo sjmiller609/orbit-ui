@@ -18,7 +18,7 @@ R.propTypes = {
 
 const Resources = ({ form, astroUnit }) => {
   const { cpu, airflowConns, actualConns, memory, pods, price } = astroUnit
-  const field = form.field('properties.astro_unit')
+  const field = form.field('properties.astro_units')
   const au = field.value || 1
   return (
     <FormSection id="resources" title="Resource Quotas">

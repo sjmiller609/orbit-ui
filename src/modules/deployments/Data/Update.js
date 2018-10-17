@@ -17,11 +17,13 @@ const Update = Component => {
           const newProps = {
             ...props,
             onSubmit: vars => {
-              const { id, ...payload } = vars
-              console.log(payload)
+              const { id, config, env, ...payload } = vars
+
               const variables = {
                 id,
                 payload,
+                config,
+                env,
               }
               mutate({
                 variables,

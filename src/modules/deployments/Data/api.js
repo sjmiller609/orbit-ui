@@ -50,14 +50,12 @@ export default {
       $payload: JSON
       $config: JSON
       $env: JSON
-      $properties: JSON
     ) {
       updateDeployment(
         deploymentUuid: $id
         payload: $payload
         config: $config
         env: $env
-        properties: $properties
       ) {
         ...deployment
       }
