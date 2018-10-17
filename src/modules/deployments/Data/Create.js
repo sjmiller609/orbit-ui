@@ -28,7 +28,6 @@ const Create = Component => {
           const newProps = {
             ...props,
             onSubmit: vars => {
-              console.log(vars)
               mutate({
                 variables: {
                   type: 'airflow',
