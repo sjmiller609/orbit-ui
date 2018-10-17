@@ -13,10 +13,7 @@ class Select extends React.Component {
     const { value } = this.props
     this.validate(value) // adds required fields to form
   }
-  componentWillMount() {
-    const { defaultValue, value } = this.props
-    if (!value && defaultValue) this.select(defaultValue)
-  }
+
   componentWillReceiveProps({ value }) {
     if (value !== this.props.value) {
       // run validation
@@ -101,7 +98,6 @@ Select.propTypes = {
   setRef: PropTypes.func,
   options: PropTypes.array,
   Component: PropTypes.func,
-  defaultValue: PropTypes.string,
   fieldId: PropTypes.string,
 }
 

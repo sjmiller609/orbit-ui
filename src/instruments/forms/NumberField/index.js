@@ -128,7 +128,7 @@ class NumberField extends React.Component {
               min={min}
               max={max}
               step={step}
-              value={value}
+              value={value || min}
               className={s.slider}
               onChange={this.slider}
             />

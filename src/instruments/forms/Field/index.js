@@ -19,10 +19,12 @@ const Field = Component => {
       touched: false,
     }
     componentWillMount() {
-      const { defaultValue, value } = this.props
+      const { defaultValue, value, convert } = this.props
       // add timeout so that multiple set states don't overwrite each other
-      if (defaultValue && value === null)
-        setTimeout(() => this.onChange(null, defaultValue), 0)
+      if (defaultValue && value === null) {
+        const v = convert ? convert(defaultValue) : defaultValue
+        setTimeout(() => this.onChange(null, v), 0)
+      }
     }
 
     componentDidMount() {
