@@ -31,6 +31,10 @@ const Resources = ({ form, astroUnit }) => {
         max={10}
         info={info.astroUnit}
         required
+        validate={v => {
+          if (v < 2 && form.field('config.executor').value === 'CeleryExecutor')
+            return 'The Celery Executor requires at least 2 AU. Please adjust your settings.'
+        }}
       />
       <P className={s.resources}>
         {price !== 0 ? (
