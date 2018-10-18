@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import s from './styles.scss'
-import { NumberField, Select, FormSubSection, Mini } from 'instruments'
+import { NumberField, Select, FormSubSection } from 'instruments'
 import info from '../info'
 
 import {
@@ -39,9 +39,6 @@ const CeleryConfig = ({
 }) => {
   return (
     <FormSubSection title="Celery Executor Config">
-      <Mini className={s.info}>
-        Note: The Celery Executor requires at least 2 Astro Units.
-      </Mini>
       <Select
         {...form.field('config.workers.resources')}
         label="Worker Size"

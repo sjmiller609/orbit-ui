@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import ConfigureForm from '../DeploymentConfigure/ConfigureForm'
+import CreateForm from '../DeploymentConfigure/CreateForm'
 import Module from '../../app/Module'
 import Create from '../Data/Create'
 
-const Configure = Create(ConfigureForm)
+const Configure = Create(CreateForm)
 import { CardMenu } from 'instruments'
 
 const cardMenu = [
@@ -20,10 +20,6 @@ const cardMenu = [
   {
     text: 'Executor',
     id: 'executor',
-  },
-  {
-    text: 'Environment Vars',
-    id: 'env',
   },
 ]
 

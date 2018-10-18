@@ -47,17 +47,15 @@ class Configure extends React.Component {
         title="Configure"
         button={{
           save: form.save,
-          text: deployment ? 'Update' : 'Save',
+          text: 'Update',
         }}
         className={s.card}>
         <FormSection id="info">
-          {deployment && (
-            <Mini className={s.info}>
-              <span>{deployment.type}</span> deployment{' '}
-              <B>{deployment.releaseName}</B> deployed{' '}
-              <ShowDate date={deployment.createdAt} />
-            </Mini>
-          )}
+          <Mini className={s.info}>
+            <span>{deployment.type}</span> deployment{' '}
+            <B>{deployment.releaseName}</B> deployed{' '}
+            <ShowDate date={deployment.createdAt} />
+          </Mini>
           <TextField
             type="text"
             placeholder="Deployment Name"

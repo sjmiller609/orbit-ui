@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FormSection, Select } from 'instruments'
+import { FormSection, Select, Mini } from 'instruments'
 import info from '../info'
 import s from './styles.scss'
 import Selector from './Selector'
@@ -25,10 +25,16 @@ export const options = [
   },
 ]
 
-const Executor = ({ form, deploymentConfig }) => {
+const Executor = ({ form, deploymentConfig, create }) => {
   const executor = form.field('config.executor')
   let config
+  let note
   if (executor.value === 'CeleryExecutor') {
+    note = (
+      <Mini className={s.note}>
+        Note: Celery Executor requires at least 2 Astro Units.
+      </Mini>
+    )
     config = (
       <CeleryConfig
         form={form}
@@ -38,7 +44,7 @@ const Executor = ({ form, deploymentConfig }) => {
     )
   }
   return (
-    <FormSection id="executor" title="Executor" sub="test">
+    <FormSection id="executor" title="Executor">
       <Select
         {...executor}
         label="Executor Plugin"
@@ -56,7 +62,8 @@ const Executor = ({ form, deploymentConfig }) => {
         //     return 'The Celery Executor requires at least 2 AU. Please adjust your settings.'
         // }}
       />
-      {config}
+      {note}
+      {!create && config}
     </FormSection>
   )
 }
@@ -64,6 +71,7 @@ const Executor = ({ form, deploymentConfig }) => {
 Executor.propTypes = {
   form: PropTypes.object,
   deploymentConfig: PropTypes.object,
+  create: PropTypes.bool,
 }
 
 export default Executor
