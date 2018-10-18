@@ -21,7 +21,7 @@ const Resources = ({ form, astroUnit }) => {
   const field = form.field('properties.astro_units')
   const au = field.value || 1
   return (
-    <FormSection id="resources" title="Resource Quotas">
+    <FormSection id="resources" title="Resources">
       <NumberField
         label="Astro Units (AU)"
         {...field}

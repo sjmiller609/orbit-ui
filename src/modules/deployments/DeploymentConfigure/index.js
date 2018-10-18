@@ -14,7 +14,7 @@ const menu = [
     id: 'info',
   },
   {
-    text: 'Resource Quotas',
+    text: 'Resources',
     id: 'resources',
   },
   {
