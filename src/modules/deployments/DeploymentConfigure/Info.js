@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 import s from './styles.scss'
-import { Mini, Tag, B, ShowDate } from 'instruments'
+import { Tag, B, ShowDate } from 'instruments'
 
 const Info = ({ type, version, deployment }) => {
   // return (
@@ -11,7 +10,6 @@ const Info = ({ type, version, deployment }) => {
   //     deployed <ShowDate date={deployment.createdAt} />
   //   </Mini>
   // )
-
   return (
     <div className={s.info}>
       {deployment && (

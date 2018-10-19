@@ -24,6 +24,7 @@ const Update = Component => {
                 payload,
                 config,
                 env,
+                sync: true,
               }
               mutate({
                 variables,
