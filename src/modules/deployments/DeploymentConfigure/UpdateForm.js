@@ -2,22 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import s from './styles.scss'
-import {
-  CardForm,
-  Form,
-  TextField,
-  TextArea,
-  B,
-  Mini,
-  ShowDate,
-  FormSection,
-} from 'instruments'
+import { CardForm, Form, TextField, TextArea, FormSection } from 'instruments'
 
 import DeploymentConfig from '../Data/Config'
 
 import Resources from './Resources'
 import EnvVars from './EnvVars'
 import Executor from './Executor'
+import Info from './Info'
 
 class Configure extends React.Component {
   renderConfig = this.renderConfig.bind(this)
@@ -51,11 +43,6 @@ class Configure extends React.Component {
         }}
         className={s.card}>
         <FormSection id="info">
-          <Mini className={s.info}>
-            <span>{deployment.type}</span> deployment{' '}
-            <B>{deployment.releaseName}</B> deployed{' '}
-            <ShowDate date={deployment.createdAt} />
-          </Mini>
           <TextField
             type="text"
             placeholder="Deployment Name"
@@ -69,6 +56,7 @@ class Configure extends React.Component {
             label="Description"
             {...form.field('description')}
           />
+          <Info deployment={deployment} type={deployment.type} version="1.9" />
         </FormSection>
         {this.state.renderConfig && this.renderConfig()}
       </CardForm>
