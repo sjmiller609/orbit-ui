@@ -30,6 +30,10 @@ class Deployment extends React.Component {
         to: match.url + '/configure',
       },
       {
+        text: 'Notifications',
+        to: match.url + '/notifications',
+      },
+      {
         text: 'Service Accounts',
         to: match.url + '/service-accounts',
         exact: false,
