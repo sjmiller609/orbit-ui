@@ -6,67 +6,76 @@ import s from './styles.scss'
 import Selector from './Selector'
 import CeleryConfig from './CeleryConfig'
 
-export const options = [
-  {
-    icon: 'airflow_astro',
-    text: 'Local',
-    value: 'LocalExecutor',
-  },
-  {
-    icon: 'celery',
-    text: 'Celery',
-    value: 'CeleryExecutor',
-  },
-  {
-    icon: 'kubernetes',
-    text: 'Kubernetes (coming soon)',
-    value: 'KubernetesExecutor',
-    disabled: true,
-  },
-]
+class Executor extends React.Component {
+  renderConfig = this.renderConfig.bind(this)
+  options = [
+    {
+      icon: 'airflow_astro',
+      text: 'Local',
+      value: 'LocalExecutor',
+    },
+    {
+      icon: 'celery',
+      text: 'Celery',
+      value: 'CeleryExecutor',
+    },
+    {
+      icon: 'kubernetes',
+      text: 'Kubernetes (coming soon)',
+      value: 'KubernetesExecutor',
+    },
+  ]
+  componentWillMount() {
+    const { deploymentConfig } = this.props
+    Object.keys(deploymentConfig.executors).map(e => {
+      const i = this.options.findIndex(o => o.value === e)
+      this.options[i].disabled = !deploymentConfig.executors[e].enabled
+    })
+  }
 
-const Executor = ({ form, deploymentConfig, create }) => {
-  const executor = form.field('config.executor')
-  let config
-  let note
-  if (executor.value === 'CeleryExecutor') {
-    note = (
-      <Mini className={s.note}>
-        Note: Celery Executor requires at least 2 Astro Units.
-      </Mini>
-    )
-    if (!create)
-      config = (
-        <CeleryConfig
-          form={form}
-          deploymentConfig={deploymentConfig}
-          className={s.executorConfig}
-        />
+  renderConfig(executor) {
+    const { form, deploymentConfig, create } = this.props
+    if (executor === 'CeleryExecutor')
+      return (
+        <React.Fragment>
+          <Mini className={s.note}>
+            Note: Celery Executor requires at least{' '}
+            {deploymentConfig.executors.CeleryExecutor.minAU} Astro Unit{deploymentConfig
+              .executors.CeleryExecutor.minAU > 1
+              ? 's'
+              : ''}.
+          </Mini>
+          {!create && (
+            <CeleryConfig
+              form={form}
+              deploymentConfig={deploymentConfig}
+              className={s.executorConfig}
+            />
+          )}
+        </React.Fragment>
       )
   }
-  return (
-    <FormSection id="executor" title="Executor">
-      <Select
-        {...executor}
-        label="Executor Plugin"
-        className={s.selectors}
-        Component={Selector}
-        options={options}
-        info={info.executor}
-        required
-        defaultValue="LocalExecutor"
-        // validate={v => {
-        //   if (
-        //     v === 'CeleryExecutor' &&
-        //     form.field('properties.astro_units').value < 2
-        //   )
-        //     return 'The Celery Executor requires at least 2 AU. Please adjust your settings.'
-        // }}
-      />
-      {note}
-      {!create && config}
-    </FormSection>
-  )
+
+  render() {
+    const { form } = this.props
+    const executor = form.field('config.executor')
+
+    return (
+      <FormSection id="executor" title="Executor">
+        <Select
+          {...executor}
+          label="Executor Plugin"
+          className={s.selectors}
+          Component={Selector}
+          options={this.options}
+          info={info.executor}
+          required
+          defaultValue="LocalExecutor"
+        />
+        {this.renderConfig(executor.value)}
+      </FormSection>
+    )
+  }
 }
 
 Executor.propTypes = {
