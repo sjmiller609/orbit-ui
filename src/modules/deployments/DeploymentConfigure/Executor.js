@@ -35,13 +35,14 @@ const Executor = ({ form, deploymentConfig, create }) => {
         Note: Celery Executor requires at least 2 Astro Units.
       </Mini>
     )
-    config = (
-      <CeleryConfig
-        form={form}
-        deploymentConfig={deploymentConfig}
-        className={s.executorConfig}
-      />
-    )
+    if (!create)
+      config = (
+        <CeleryConfig
+          form={form}
+          deploymentConfig={deploymentConfig}
+          className={s.executorConfig}
+        />
+      )
   }
   return (
     <FormSection id="executor" title="Executor">
