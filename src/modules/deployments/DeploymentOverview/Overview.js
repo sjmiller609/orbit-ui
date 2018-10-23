@@ -12,7 +12,6 @@ const Overview = ({ deployment, loading }) => {
       if (u.type === 'airflow') airflow = u.url
       if (u.type === 'flower') flower = u.url
     })
-  console.log(deployment)
   return (
     <CardRow>
       <ServiceDashboard
