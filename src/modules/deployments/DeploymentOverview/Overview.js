@@ -12,6 +12,7 @@ const Overview = ({ deployment, loading }) => {
       if (u.type === 'airflow') airflow = u.url
       if (u.type === 'flower') flower = u.url
     })
+  console.log(deployment)
   return (
     <CardRow>
       <ServiceDashboard
@@ -25,13 +26,15 @@ const Overview = ({ deployment, loading }) => {
         icon="airflow_astro"
         loading={loading}
       />
-      <ServiceDashboard
-        title="Celery Flower"
-        text="Monitor worker queues on Celery with Flower:"
-        url={flower}
-        icon="celery"
-        loading={loading}
-      />
+      {flower && (
+        <ServiceDashboard
+          title="Celery Flower"
+          text="Monitor worker queues on Celery with Flower:"
+          url={flower}
+          icon="celery"
+          loading={loading}
+        />
+      )}
     </CardRow>
   )
 }
