@@ -4,7 +4,7 @@ import { formErrors, Link } from 'instruments'
 
 const errors = [
   {
-    key: 'password incorrect',
+    key: 'invalid password',
     name: 'password',
     error: 'Incorrect password',
   },
