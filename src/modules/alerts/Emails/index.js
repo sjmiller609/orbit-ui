@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import s from './styles.scss'
 import { CardForm, Form, TableField, TextField } from 'instruments'
-
+import Update from '../Data/Update'
 import Item from './Item'
 
 const Emails = ({ form }) => {
@@ -38,4 +38,4 @@ Emails.propTypes = {
   form: PropTypes.object,
 }
 
-export default Form(Emails)
+export default Update(Form(Emails))

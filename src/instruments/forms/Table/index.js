@@ -89,7 +89,6 @@ class Table extends React.Component {
     const { value, id, title, className, Empty, FieldType } = this.props
     let count = value ? value.length - 1 : 0
     if (count === 1 && !value[0]) count = 0
-    console.log(value)
     return (
       <div id={id} className={classnames(s.fields, className)}>
         {count > 0 ? (
@@ -101,7 +100,7 @@ class Table extends React.Component {
             </div>
             {title &&
               count > 1 && (
-                <Mini>
+                <Mini className={s.right}>
                   {count} {title.toLowerCase()}
                   {count > 1 ? 's' : ''}
                 </Mini>

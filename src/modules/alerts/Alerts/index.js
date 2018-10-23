@@ -5,15 +5,14 @@ import Emails from '../Emails'
 class Alerts extends React.Component {
   render() {
     const { deployment } = this.props
+    const emails = deployment.properties.alert_emails
+    console.log(emails)
     return (
       <Emails
         data={{
           id: deployment.id,
           properties: {
-            alert_emails: JSON.parse(
-              deployment.properties.alert_emails ||
-                '["peter@astronomer.io", "peter2@astronomer.io"]'
-            ),
+            alert_emails: emails ? JSON.parse(emails) : null,
           },
         }}
       />

@@ -1,39 +1,38 @@
 'use strict'
 import React from 'react'
-import api from './api'
-
+import api from 'modules/deployments/Data/api'
 import { Mutation } from 'instruments'
-import { handleError } from './helpers'
+
 const Update = Component => {
   const Update = props => {
     return (
       <Mutation
         gql={api.UpdateDeployment}
-        success="Deployment updated successfully."
-        track="Deployment Updated"
-        voidError
-        back>
-        {({ mutate, error }) => {
+        success="Deployment alerts updated successfully."
+        track="Deployment Alerts Updated"
+        voidError>
+        {({ mutate }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
-              const { id, config, env, ...payload } = vars
+              const { id, properties } = vars
 
               const variables = {
                 id,
-                payload,
-                config,
-                env,
+                properties: {
+                  alert_emails: JSON.stringify(properties.alert_emails),
+                },
                 sync: true,
               }
+              console.log(variables)
               mutate({
                 variables,
               })
             },
           }
           // handle api errors
-          const err = handleError(error)
-          if (err) newProps.error = err
+          // const err = handleError(error)
+          // if (err) newProps.error = err
           return <Component {...newProps} />
         }}
       </Mutation>
