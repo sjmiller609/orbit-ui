@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
-import { Field, TextField, TableRow, TextButton, Box } from 'instruments'
+import { Field, TextField, Mini } from 'instruments'
 import { jsonEqual } from 'helpers/compare'
 
 class Table extends React.Component {
@@ -81,18 +81,33 @@ class Table extends React.Component {
   }
   renderRow(value, i) {
     const { Row, getRowProps } = this.props
-    return <Row key={i} {...getRowProps(value)} remove={() => null} />
+    return (
+      <Row
+        key={i}
+        {...getRowProps(value)}
+        className={s.tableRow}
+        remove={() => null}
+      />
+    )
   }
 
   render() {
-    const { value, id, className } = this.props
+    const { value, id, title, className } = this.props
     let count = value ? value.length : 0
     return (
       <div id={id} className={classnames(s.fields, className)}>
-        <div className={classnames(s.table, count === 1 && s.one)}>
-          {value.map((v, i) => this.renderRow(v, i))}
+        <div className={classnames(s.tableBorder, count > 1 && s.border)}>
+          <div className={classnames(s.table, count === 1 && s.one)}>
+            {value.map((v, i) => this.renderRow(v, i))}
+          </div>
         </div>
-        {this.renderField()}
+        {title && (
+          <Mini>
+            {count} {title.toLowerCase()}
+            {count > 1 ? 's' : ''}
+          </Mini>
+        )}
+        <div className={s.field}>{this.renderField()}</div>
       </div>
     )
   }

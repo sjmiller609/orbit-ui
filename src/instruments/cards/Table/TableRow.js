@@ -25,7 +25,7 @@ const TableRow = ({ columns, to, remove, className, wrap }) => {
       )}
     </Row>
   )
-  if (!to) return <div className={s.tableRow}>{row}</div>
+  if (!to) return <div className={classnames(s.tableRow, className)}>{row}</div>
   return (
     <Link to={to} className={classnames(s.tableRow, className)}>
       {row}

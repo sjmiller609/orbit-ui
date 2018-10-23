@@ -3,12 +3,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import { TableRow, Box, B } from 'instruments'
+import { TableRow, Box, P } from 'instruments'
 
 const Item = ({ email, className, ...props }) => {
   const columns = [
     <Box key="0" align="flex-start" className={s.title}>
-      <B>{email}</B>
+      <P>{email}</P>
     </Box>,
   ]
 
