@@ -5,16 +5,15 @@ import s from './styles.scss'
 import { CardForm, Form, TableField, TextField } from 'instruments'
 
 import Item from './Item'
-import Empty from './Empty'
 
 const Emails = ({ form }) => {
   const field = form.field('properties.alert_emails')
   return (
     <CardForm
-      title="Emails to Send Alerts"
+      title="Emails to Receive Alerts"
       button={{
         save: form.save,
-        text: 'Add Email',
+        text: 'Save',
       }}
       className={s.alerts}>
       <TableField
@@ -23,9 +22,8 @@ const Emails = ({ form }) => {
         formField={form.field}
         FieldType={TextField}
         Row={Item}
-        Empty={Empty}
         fieldProps={{
-          label: 'Email',
+          label: 'Add Email',
           type: 'email',
           placeholder: 'person@yourcompany.com',
         }}

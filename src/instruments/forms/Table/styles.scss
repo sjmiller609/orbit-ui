@@ -27,6 +27,13 @@
   background-size: 0.4rem 100%;
 }
 
-.field {
+.field:not(:first-child) {
   margin-top: 3rem;
+}
+
+.field {
+  text-align: right;
+  a.add {
+    display: inline-block;
+  }
 }

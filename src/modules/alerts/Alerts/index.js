@@ -12,7 +12,7 @@ class Alerts extends React.Component {
           properties: {
             alert_emails: JSON.parse(
               deployment.properties.alert_emails ||
-                '["peter@astronomer.io", "peter@astronomer.io", "peter@astronomer.io", "peter@astronomer.io", "peter@astronomer.io", "peter@astronomer.io", "peter@astronomer.io", "peter@astronomer.io"]'
+                '["peter@astronomer.io", "peter2@astronomer.io"]'
             ),
           },
         }}

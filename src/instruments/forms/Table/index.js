@@ -2,22 +2,20 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import s from './styles.scss'
 import classnames from 'classnames'
-import { Field, TextField, Mini } from 'instruments'
+import { Field, TextField, Mini, TextButton } from 'instruments'
 import { jsonEqual } from 'helpers/compare'
 
 class Table extends React.Component {
   validate = this.validate.bind(this)
   remove = this.remove.bind(this)
   add = this.add.bind(this)
-  renderField = this.renderField.bind(this)
   renderRow = this.renderRow.bind(this)
-
-  fieldProps = this.fieldProps.bind(this)
   removeEmpties = this.removeEmpties.bind(this)
 
+  fieldProps = this.fieldProps.bind(this)
+
   componentWillMount() {
-    const { value } = this.props
-    if (!value || !value.length) this.add()
+    this.add()
   }
 
   componentDidMount() {
@@ -74,40 +72,51 @@ class Table extends React.Component {
     onChange(null, v2)
   }
 
-  // any empty fields must have the field name = next array item to prevent empties getting saved
-  renderField(i) {
-    const { FieldType } = this.props
-    return <FieldType {...this.fieldProps(i)} />
-  }
-  renderRow(value, i) {
-    const { Row, getRowProps } = this.props
+  renderRow(v, i) {
+    const { Row, getRowProps, value } = this.props
+    if (i === value.length - 1) return null
     return (
       <Row
         key={i}
-        {...getRowProps(value)}
+        {...getRowProps(v)}
         className={s.tableRow}
-        remove={() => null}
+        remove={() => this.remove(i)}
       />
     )
   }
 
   render() {
-    const { value, id, title, className } = this.props
-    let count = value ? value.length : 0
+    const { value, id, title, className, Empty, FieldType } = this.props
+    let count = value ? value.length - 1 : 0
+    if (count === 1 && !value[0]) count = 0
+    console.log(value)
     return (
       <div id={id} className={classnames(s.fields, className)}>
-        <div className={classnames(s.tableBorder, count > 1 && s.border)}>
-          <div className={classnames(s.table, count === 1 && s.one)}>
-            {value.map((v, i) => this.renderRow(v, i))}
-          </div>
-        </div>
-        {title && (
-          <Mini>
-            {count} {title.toLowerCase()}
-            {count > 1 ? 's' : ''}
-          </Mini>
+        {count > 0 ? (
+          <React.Fragment>
+            <div className={classnames(s.tableBorder, count > 1 && s.border)}>
+              <div className={classnames(s.table, count === 1 && s.one)}>
+                {value.map((v, i) => this.renderRow(v, i))}
+              </div>
+            </div>
+            {title &&
+              count > 1 && (
+                <Mini>
+                  {count} {title.toLowerCase()}
+                  {count > 1 ? 's' : ''}
+                </Mini>
+              )}
+          </React.Fragment>
+        ) : (
+          Empty && <Empty />
         )}
-        <div className={s.field}>{this.renderField()}</div>
+
+        <div className={s.field}>
+          <FieldType {...this.fieldProps(value.length - 1)} />
+          <TextButton className={s.add} onClick={this.add}>
+            Add Another
+          </TextButton>
+        </div>
       </div>
     )
   }
