@@ -1,0 +1,14 @@
+@import 'src/styles/mixins.scss';
+
+.table {
+  margin-bottom: 3rem;
+  max-height: 35rem;
+  overflow-y: auto;
+}
+
+.one:first-child {
+  background-image: linear-gradient($lightGray, $lightGray);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 0.4rem 100%;
+}

@@ -14,6 +14,9 @@ const Overview = Load(() =>
 const ServiceAccounts = Load(() =>
   import(/* webpackPrefetch: true */ 'modules/service-accounts/ServiceAccounts')
 )
+const Alerts = Load(() =>
+  import(/* webpackPrefetch: true */ 'modules/alerts/Alerts')
+)
 
 const Deployment = ({ deployments, menu, title }) => {
   const deployment = deployments[0]
@@ -64,6 +67,11 @@ const Deployment = ({ deployments, menu, title }) => {
             return <Logs deployment={deployment} />
             }}
         /> */}
+        <Route
+          path={path + '/alerts'}
+          exact
+          render={() => <Alerts deployment={deployment} />}
+        />
       </Module>
 
       <Redirect to="/404" />

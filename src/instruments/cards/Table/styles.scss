@@ -64,6 +64,15 @@
   color: $orange;
 }
 
+.remove {
+  color: $red;
+  font-size: 2rem;
+  width: 2rem;
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
 @keyframes bounce {
   0%,
   100% {
