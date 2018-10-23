@@ -50,12 +50,14 @@ export default {
       $payload: JSON
       $config: JSON
       $env: JSON
+      $sync: Boolean
     ) {
       updateDeployment(
         deploymentUuid: $id
         payload: $payload
         config: $config
         env: $env
+        sync: $sync
       ) {
         ...deployment
       }

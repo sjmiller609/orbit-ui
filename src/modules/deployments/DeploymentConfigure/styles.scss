@@ -1,11 +1,14 @@
 @import 'src/styles/mixins.scss';
 
 .info {
-  span {
+  & > span {
+    margin: 0.2em;
+    color: $lightBeige;
+  }
+  span > span {
     text-transform: capitalize;
   }
-  margin-bottom: 2rem;
-  font-style: italic;
+  margin: 1.3rem 0;
 }
 
 .selectors > div {
@@ -115,6 +118,7 @@
   }
   span {
     margin: 0.2em;
+    color: $green;
   }
   .price {
     color: $purple;

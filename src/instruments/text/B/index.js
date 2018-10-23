@@ -13,6 +13,7 @@ B.propTypes = {
     PropTypes.string,
     PropTypes.element,
     PropTypes.number,
+    PropTypes.array,
   ]),
   className: PropTypes.string,
 }

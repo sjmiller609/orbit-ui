@@ -140,7 +140,7 @@ const Form = FormComponent => {
       if (!saveOnLoad)
         this.setState({ save: false, submitted: true, scrolled: false })
 
-      onSubmit(pack(this.callOnSubmit(data)), this.updateErrors)
+      onSubmit(pack(this.callOnSubmit(data)))
     }
 
     registerOnSubmit({ name, onSubmit }) {

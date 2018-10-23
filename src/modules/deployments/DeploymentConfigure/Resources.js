@@ -43,10 +43,10 @@ const Resources = ({ form, astroUnit }) => {
           </Tag>
         ) : null}
         <R n={cpu * au} l="CPU" />
-        <R n={memory * au} l="GB memory" />
+        <R n={Math.round(memory * au / 10) / 100} l="GB memory" />
         <R n={pods * au} l="pods" />
-        <R n={airflowConns * au} l="Airflow DB connections" />
-        <R n={actualConns * au} l="real DB connections" />
+        <R n={airflowConns * au} l="Airflow connections" />
+        <R n={actualConns * au} l="connections" />
       </P>
     </FormSection>
   )

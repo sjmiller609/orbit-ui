@@ -8,6 +8,7 @@ import DeploymentConfig from '../Data/Config'
 
 import Resources from './Resources'
 import Executor from './Executor'
+import Info from './Info'
 
 class Configure extends React.Component {
   renderConfig = this.renderConfig.bind(this)
@@ -53,6 +54,7 @@ class Configure extends React.Component {
             label="Description"
             {...form.field('description')}
           />
+          <Info type="airflow" version="1.9" />
         </FormSection>
         {this.state.renderConfig && this.renderConfig()}
       </CardForm>
