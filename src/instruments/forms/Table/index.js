@@ -45,24 +45,31 @@ class Table extends React.Component {
   }
 
   validate(value) {
-    const { name, validate, updateErrors } = this.props
+    const { name, validate, unique, updateErrors } = this.props
     let e
-    if (validate) {
-      // only validation is if passed in as prop
-      e = validate(value)
-      updateErrors(name, e)
-    }
+
+    if (validate) e = validate(value)
+    if (unique && value) if (e) updateErrors(name, e)
   }
 
   fieldProps(i) {
+    const { unique, value, title } = this.props
     const { className, ...props } = this.props.fieldProps
-    return {
+    const newProps = {
       ...props,
       ...this.props.formField(this.props.name + '.' + i),
       className: classnames(s.field, className),
       required: this.props.required,
       formField: this.props.formField,
     }
+    if (unique && value && value.length)
+      newProps.validate = v => {
+        if (value.some((v0, i) => i !== value.length - 1 && v0 === v))
+          return (
+            'That ' + (title.toLowerCase() || 'value') + ' is already added.'
+          )
+      }
+    return newProps
   }
 
   remove(i) {
@@ -148,12 +155,14 @@ Table.propTypes = {
   title: PropTypes.string,
   registerOnSubmit: PropTypes.func,
   data: PropTypes.array,
+  unique: PropTypes.bool,
 }
 
 Table.defaultProps = {
   FieldType: TextField,
   fieldProps: {},
   value: [],
+  unique: true,
 }
 
 export default Field(Table)
