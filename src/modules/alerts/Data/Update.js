@@ -16,11 +16,13 @@ const Update = Component => {
             ...props,
             onSubmit: vars => {
               const { id, properties = {} } = vars
-
+              const emails = properties.alert_emails
               const variables = {
                 id,
-                properties: {
-                  alert_emails: JSON.stringify(properties.alert_emails),
+                payload: {
+                  properties: {
+                    alert_emails: emails ? JSON.stringify(emails) : null,
+                  },
                 },
                 sync: false,
               }
