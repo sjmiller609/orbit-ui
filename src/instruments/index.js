@@ -31,6 +31,7 @@ export { default as TextFieldSelect } from './forms/TextFieldSelect'
 export { default as Select } from './forms/Select'
 export { default as KeyValue } from './forms/KeyValue'
 export { default as FieldSet } from './forms/FieldSet'
+export { default as TableField } from './forms/Table'
 
 export { default as UnsavedChangesAlert } from './forms/UnsavedChangesAlert'
 

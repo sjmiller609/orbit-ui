@@ -41,12 +41,11 @@ class TextField extends React.Component {
 
   validate(value) {
     const { name, validate, updateErrors } = this.props
-    const { type } = this.state
     let e
     // must be first
     if (validate) e = validate(value)
     if (value) {
-      if (type === 'email' && !isEmail(value)) {
+      if (this.props.type === 'email' && !isEmail(value)) {
         e = 'Please enter a valid email.'
       }
     }

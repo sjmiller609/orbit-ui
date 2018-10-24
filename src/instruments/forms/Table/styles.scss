@@ -1,0 +1,43 @@
+@import 'src/styles/mixins.scss';
+
+.tableBorder {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  &.border {
+    border-top: 1px solid $lightGray;
+    border-bottom: 1px solid $lightGray;
+  }
+}
+.table {
+  max-height: 32rem;
+  overflow-y: auto;
+  .tableRow {
+    padding: 1rem 0.5rem 1rem 1rem;
+
+    p {
+      color: $purple;
+    }
+  }
+}
+
+.one:first-child {
+  background-image: linear-gradient($lightGray, $lightGray);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 0.4rem 100%;
+}
+
+.field:not(:first-child) {
+  margin-top: 3rem;
+}
+
+.field {
+  text-align: right;
+  a.add {
+    display: inline-block;
+  }
+}
+
+.right {
+  text-align: right;
+}
