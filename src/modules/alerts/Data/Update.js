@@ -15,14 +15,14 @@ const Update = Component => {
           const newProps = {
             ...props,
             onSubmit: vars => {
-              const { id, properties } = vars
+              const { id, properties = {} } = vars
 
               const variables = {
                 id,
                 properties: {
                   alert_emails: JSON.stringify(properties.alert_emails),
                 },
-                sync: true,
+                sync: false,
               }
               console.log(variables)
               mutate({

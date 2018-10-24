@@ -12,7 +12,7 @@ class Alerts extends React.Component {
         data={{
           id: deployment.id,
           properties: {
-            alert_emails: emails ? emails : null,
+            alert_emails: emails,
           },
         }}
       />
