@@ -7,11 +7,12 @@ import Update from '../Data/Update'
 import Item from './Item'
 import info from '../info'
 
-const Emails = ({ form }) => {
+const Emails = ({ form, emails }) => {
   const field = form.field('properties.alert_emails')
+
   return (
     <CardForm
-      title="Send Deployment Alerts"
+      title="Configure Alerts"
       button={{
         save: form.save,
         text: 'Save',
@@ -23,6 +24,7 @@ const Emails = ({ form }) => {
         formField={form.field}
         FieldType={TextField}
         Row={Item}
+        data={emails}
         fieldProps={{
           label: 'Add Email',
           type: 'email',

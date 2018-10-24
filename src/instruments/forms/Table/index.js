@@ -15,7 +15,8 @@ class Table extends React.Component {
   fieldProps = this.fieldProps.bind(this)
 
   componentWillMount() {
-    this.add()
+    const { value } = this.props
+    if (value[value.length - 1]) this.add()
   }
 
   componentDidMount() {
@@ -25,11 +26,17 @@ class Table extends React.Component {
       registerOnSubmit({ name, onSubmit: this.removeEmpties })
   }
 
-  componentWillReceiveProps({ value }) {
+  componentWillReceiveProps({ value, data }) {
     if (!jsonEqual(value, this.props.value)) {
       // run validation
       this.validate(value)
     }
+    if (
+      data &&
+      data.length !== this.props.data.length &&
+      value[value.length - 1]
+    )
+      this.add(value)
   }
 
   removeEmpties(data) {
@@ -65,9 +72,9 @@ class Table extends React.Component {
     onChange(null, v2)
   }
 
-  add() {
+  add(v) {
     const { onChange, value } = this.props
-    const v2 = Array.from(value)
+    const v2 = Array.from(v || value)
     v2.push(null)
     onChange(null, v2)
   }
@@ -111,7 +118,9 @@ class Table extends React.Component {
         )}
 
         <div className={s.field}>
-          <FieldType {...this.fieldProps(value.length - 1)} />
+          <FieldType
+            {...this.fieldProps(value.length > 0 ? value.length - 1 : 0)}
+          />
           <TextButton className={s.add} onClick={this.add}>
             Add Another
           </TextButton>
@@ -138,6 +147,7 @@ Table.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
   registerOnSubmit: PropTypes.func,
+  data: PropTypes.array,
 }
 
 Table.defaultProps = {

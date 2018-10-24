@@ -63,7 +63,16 @@ const Field = Component => {
     // should probably switch this to pull the props that don't change, and then json.stringify
     // NOTE: if any new props are passed in that are meant to be reactive, won't work.
     shouldComponentUpdate(
-      { value, error, type, submitted, name, showError: showError2, required },
+      {
+        value,
+        error,
+        type,
+        submitted,
+        name,
+        showError: showError2,
+        required,
+        data,
+      },
       { showError, touched }
     ) {
       if (!jsonEqual(value, this.props.value)) return true
@@ -77,6 +86,8 @@ const Field = Component => {
       if (!isEqual(showError2, this.props.showError)) return true
       if (!isEqual(showError, this.state.showError)) return true
       if (!isEqual(touched, this.state.touched)) return true
+      // some fields require original data to be passed through
+      if (!isEqual(data, this.props.data)) return true
       return false
     }
 
@@ -169,6 +180,13 @@ const Field = Component => {
     focus: PropTypes.bool,
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.bool,
+      PropTypes.object,
+      PropTypes.array,
+    ]),
+    data: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
       PropTypes.bool,

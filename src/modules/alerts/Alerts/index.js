@@ -5,8 +5,7 @@ import Emails from '../Emails'
 class Alerts extends React.Component {
   render() {
     const { deployment } = this.props
-    const emails = deployment.properties.alert_emails
-    console.log(emails)
+    const emails = deployment.properties.alert_emails || []
     return (
       <Emails
         data={{
@@ -15,6 +14,7 @@ class Alerts extends React.Component {
             alert_emails: emails,
           },
         }}
+        emails={emails}
       />
     )
   }
