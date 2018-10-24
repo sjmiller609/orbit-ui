@@ -30,6 +30,7 @@ const Emails = ({ form, emails }) => {
           type: 'email',
           placeholder: 'name@yourcompany.com',
           info: info.alert_emails,
+          focus: true,
         }}
         getRowProps={value => ({ email: value })}
       />
