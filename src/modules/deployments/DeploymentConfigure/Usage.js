@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FormSection, Brownie, B } from 'instruments'
+import { FormSection, Brownie, B, FormLabel } from 'instruments'
+import s from './styles.scss'
 
 const convertCpu = v => (Math.round(v / 10) / 100).toString() + ' CPU'
 const convertMem = v =>
@@ -43,30 +44,39 @@ const Usage = ({ deploymentConfig, executor, info }) => {
   const totalCpu = deploymentConfig.astroUnit.cpu * au
   const totalMemory = deploymentConfig.astroUnit.memory * au
 
+  const price = deploymentConfig.astroUnit.price * au
+
   return (
     <FormSection id="usage" title="Resources" text={info}>
       <Brownie
         title={
           <React.Fragment>
-            CPU: <B>{(Math.round(usedCpu / 10) / 100).toString()}</B>
+            CPU: <B>{(Math.round(totalCpu / 10) / 100).toString()}</B>
           </React.Fragment>
         }
         slices={cpu}
         total={totalCpu}
         part={usedCpu}
         convert={convertCpu}
+        className={s.formElement}
       />
       <Brownie
         title={
           <React.Fragment>
-            Memory: <B>{convertMem(usedMemory)}</B>
+            Memory: <B>{convertMem(totalMemory)}</B>
           </React.Fragment>
         }
         slices={memory}
         part={usedMemory}
         total={totalMemory}
         convert={convertMem}
+        className={s.formElement}
       />
+      {price > 0 && (
+        <FormLabel className={s.formElement}>
+          Price: <B>${price} / Month</B>
+        </FormLabel>
+      )}
     </FormSection>
   )
 }

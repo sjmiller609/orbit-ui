@@ -130,3 +130,9 @@ p.note {
   font-style: italic;
   color: $orange;
 }
+
+.formElement {
+  &:not(:first-child) {
+    margin-top: 1.3rem;
+  }
+}
