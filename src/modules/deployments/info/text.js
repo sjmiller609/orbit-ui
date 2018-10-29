@@ -10,5 +10,5 @@ export default {
   executor:
     'Airflow supports multiple executor plugins. These plugins determine how and where tasks are executed. We support the Local Executor for light or test workloads, and the Celery Executor for larger, production workloads. The Celery Executor uses a distributed task queue and a scalable worker pool. Support for the Kubernetes Executor is coming soon.',
   resourcesNew:
-    'Your current configuration requires the following resources. You can manage capacities (eg. to use Pod Operator, increase memory, etc.) after deployment.',
+    'Your current configuration requires the following resources. You can manage capacities after deployment (eg. to use Pod Operator, increase memory, etc.).',
 }

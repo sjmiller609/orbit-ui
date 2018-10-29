@@ -17,6 +17,10 @@ const cardMenu = [
     text: 'Executor',
     id: 'executor',
   },
+  {
+    text: 'Resources',
+    id: 'resources',
+  },
 ]
 
 class New extends React.Component {

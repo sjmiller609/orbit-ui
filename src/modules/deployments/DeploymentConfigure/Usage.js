@@ -47,7 +47,7 @@ const Usage = ({ deploymentConfig, executor, info }) => {
   const price = deploymentConfig.astroUnit.price * au
 
   return (
-    <FormSection id="usage" title="Resources" text={info}>
+    <FormSection id="resources" title="Resources" text={info}>
       <Brownie
         title={
           <React.Fragment>
