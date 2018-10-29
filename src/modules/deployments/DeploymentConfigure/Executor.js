@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FormSection, Select, Mini } from 'instruments'
+import { FormSection, Select } from 'instruments'
 import info from '../info'
 import s from './styles.scss'
 import Selector from './Selector'
@@ -35,24 +35,13 @@ class Executor extends React.Component {
 
   renderConfig(executor) {
     const { form, deploymentConfig, create } = this.props
-    if (executor === 'CeleryExecutor')
+    if (!create && executor === 'CeleryExecutor')
       return (
-        <React.Fragment>
-          <Mini className={s.note}>
-            Note: Celery Executor requires at least{' '}
-            {deploymentConfig.executors.CeleryExecutor.minAU} Astro Unit{deploymentConfig
-              .executors.CeleryExecutor.minAU > 1
-              ? 's'
-              : ''}.
-          </Mini>
-          {!create && (
-            <CeleryConfig
-              form={form}
-              deploymentConfig={deploymentConfig}
-              className={s.executorConfig}
-            />
-          )}
-        </React.Fragment>
+        <CeleryConfig
+          form={form}
+          deploymentConfig={deploymentConfig}
+          className={s.executorConfig}
+        />
       )
   }
 

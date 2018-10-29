@@ -24,7 +24,7 @@ const Brownie = ({ slices, part, total, title, convert, className }) => {
                   color: colors[i].a,
                   background: `linear-gradient(45deg, ${colors[i].a}, ${
                     colors[i].z
-                  } 175%)`,
+                  } 160%)`,
                   width: `${r * 100}%`,
                 }}>
                 <label>

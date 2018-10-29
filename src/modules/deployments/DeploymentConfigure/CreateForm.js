@@ -9,6 +9,7 @@ import DeploymentConfig from '../Data/Config'
 import Executor from './Executor'
 import Info from './Info'
 import Usage from './Usage'
+import info from '../info'
 
 class Configure extends React.Component {
   renderConfig = this.renderConfig.bind(this)
@@ -22,13 +23,13 @@ class Configure extends React.Component {
 
   renderConfig() {
     const { form, deploymentConfig } = this.props
-    console.log(deploymentConfig)
     return (
       <React.Fragment>
         <Executor form={form} deploymentConfig={deploymentConfig} create />
         <Usage
           deploymentConfig={deploymentConfig}
           executor={form.field('config.executor').value}
+          info={info.resourcesNew}
         />
       </React.Fragment>
     )

@@ -8,7 +8,7 @@ const convertMem = v =>
     ? v.toString() + ' MB'
     : (Math.round(v / 10.24) / 100).toString() + ' GB'
 
-const Usage = ({ deploymentConfig, executor }) => {
+const Usage = ({ deploymentConfig, executor, info }) => {
   if (!executor) return null
 
   let cpu = []
@@ -44,7 +44,7 @@ const Usage = ({ deploymentConfig, executor }) => {
   const totalMemory = deploymentConfig.astroUnit.memory * au
 
   return (
-    <FormSection id="usage" title="Resources" text="instructions...">
+    <FormSection id="usage" title="Resources" text={info}>
       <Brownie
         title={
           <React.Fragment>
@@ -74,6 +74,7 @@ const Usage = ({ deploymentConfig, executor }) => {
 Usage.propTypes = {
   deploymentConfig: PropTypes.object,
   executor: PropTypes.string,
+  info: PropTypes.string,
 }
 
 export default Usage
