@@ -27,4 +27,14 @@
       margin-bottom: 4rem;
     }
   }
+  .text {
+    @include font($f400i);
+    margin-bottom: 2.5rem;
+  }
+
+  &.hasText {
+    .title::after {
+      margin-bottom: 3.3rem;
+    }
+  }
 }

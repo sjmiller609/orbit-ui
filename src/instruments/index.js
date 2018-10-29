@@ -101,3 +101,5 @@ export { default as Mutation } from './api/Mutation'
 export { default as Create } from './api/Mutation/Create'
 export { default as Delete } from './api/Mutation/Delete'
 export { formErrors } from './api/Mutation/helpers'
+
+export { default as Brownie } from './graphs/Brownie'
