@@ -6,13 +6,6 @@
   }
 }
 
-.title {
-  display: block;
-  @include font($f500);
-  color: $beige;
-  text-align: left;
-  text-transform: capitalize;
-}
 .bar {
   width: 100%;
   padding: 0.5rem;

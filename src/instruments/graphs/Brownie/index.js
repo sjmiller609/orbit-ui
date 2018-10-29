@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
-import { Row, B } from 'instruments'
+import { Row, B, FormLabel } from 'instruments'
 import { colorScale } from 'helpers/colors'
 
 const Brownie = ({ slices, part, total, title, convert, className }) => {
@@ -11,7 +11,7 @@ const Brownie = ({ slices, part, total, title, convert, className }) => {
 
   return (
     <div className={classnames(s.chart, className)}>
-      {title && <label className={s.title}>{title}</label>}
+      {title && <FormLabel>{title}</FormLabel>}
       <Row justify="flex-start">
         <Row className={s.bar}>
           {slices.map((m, i) => {

@@ -7,18 +7,7 @@
   &:not(:first-child) {
     margin-top: 1.3rem;
   }
-  // duplicating this here, as this component will replace global style
-  label {
-    display: block;
-    @include font($f500);
-    color: $beige;
-    text-align: left;
-    text-transform: capitalize;
 
-    b {
-      @include font($f700);
-    }
-  }
   &.required {
     label {
       @include font($f700);

@@ -1,0 +1,15 @@
+@import 'src/styles/mixins.scss';
+
+.label {
+  font-size: 1.5rem;
+
+  display: block;
+  @include font($f500);
+  color: $beige;
+  text-align: left;
+  text-transform: capitalize;
+
+  b {
+    @include font($f700);
+  }
+}
