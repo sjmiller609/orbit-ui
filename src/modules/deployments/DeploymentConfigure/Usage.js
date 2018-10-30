@@ -17,19 +17,27 @@ const Usage = ({ extra, config, deploymentConfig, executor, info }) => {
 
   // const { cpu, airflowConns, actualConns, memory, pods, price } = deploymentConfig.astroUnit
   deploymentConfig.executors[executor].primaryComponents.forEach(name => {
-    const c = deploymentConfig.defaults[name]
-    if (!c) return
+    let resources = {}
+    if (config && config[name]) {
+      resources.cpu = config[name].resources.limits.cpu
+      resources.memory = config[name].resources.limits.memory
+    } else {
+      // changed to use requests (instead of limits)
+      resources.cpu = deploymentConfig.defaults[name].resources.requests.cpu
+      resources.memory =
+        deploymentConfig.defaults[name].resources.requests.memory
+    }
 
-    usedCpu += c.resources.requests.cpu
-    usedMemory += c.resources.requests.memory
+    usedCpu += resources.cpu
+    usedMemory += resources.memory
 
     cpu.push({
       name,
-      value: c.resources.requests.cpu,
+      value: resources.cpu,
     })
     memory.push({
       name,
-      value: c.resources.requests.memory,
+      value: resources.memory,
     })
   })
 
@@ -84,6 +92,10 @@ Usage.propTypes = {
   extra: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   executor: PropTypes.string,
   info: PropTypes.string,
+}
+
+Usage.defaultProps = {
+  config: {},
 }
 
 export default Usage
