@@ -13,3 +13,9 @@
 .cards {
   flex-grow: 1;
 }
+
+.border {
+  height: 2px;
+  background: $lightGray;
+  width: 100%;
+}

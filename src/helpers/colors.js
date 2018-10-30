@@ -12,8 +12,8 @@ export const colorScale = l => {
   const colors = [
     { a: '#00ac6b', z: '#069dac' },
     { a: '#09acc6', z: '#302c43' },
-    { a: '#f4362c', z: '#ff9a09' },
     { a: '#ff9a09', z: '#f4362c' },
+    { a: '#f4362c', z: '#ff9a09' },
     { a: '#7c766a', z: '#342f54' },
   ]
   if (l <= colors.length) return colors.slice(0, l)
