@@ -31,11 +31,11 @@ const Resource = ({ field, astroUnit, showAllUnits, ...props }) => {
         {...props}
       />
       <P className={s.resources}>
-        {/* {price !== 0 ? (
+        {price !== 0 ? (
           <Tag className={s.price}>
-            <B>${price * au}</B> / mo
+            <B>+ ${price * au}</B> / mo
           </Tag>
-        ) : null} */}
+        ) : null}
         <R n={convertCpu(cpu * au, false)} l="CPU" />
         <R
           n={convertMem(memory * au, false)}

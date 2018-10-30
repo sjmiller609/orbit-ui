@@ -40,15 +40,18 @@ const ResourcesForm = ({ form, deploymentConfig }) => {
           astroUnit={deploymentConfig.astroUnit}
         />
       </FormSection>
-      <Executor form={form} deploymentConfig={deploymentConfig} />
-
-      <Usage
-        extra={form.field('properties.astro_units').value}
-        config={form.field('config').value}
-        deploymentConfig={deploymentConfig}
-        executor={form.field('config.executor').value}
-        info={info.resourcesUpdate}
-      />
+      <FormSection id="exeuctor">
+        <Executor form={form} deploymentConfig={deploymentConfig} />
+      </FormSection>
+      <FormSection id="resources" title="Resources">
+        <Usage
+          extra={form.field('properties.astro_units').value}
+          config={form.field('config').value}
+          deploymentConfig={deploymentConfig}
+          executor={form.field('config.executor').value}
+          info={info.resourcesUpdate}
+        />
+      </FormSection>
     </CardForm>
   )
 }

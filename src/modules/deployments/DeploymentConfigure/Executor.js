@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FormSection, Select } from 'instruments'
+import { Select } from 'instruments'
 import info from '../info'
 import s from './styles.scss'
 import Selector from './Selector'
@@ -50,7 +50,7 @@ class Executor extends React.Component {
     const executor = form.field('config.executor')
 
     return (
-      <FormSection id="executor">
+      <React.Fragment>
         <Select
           {...executor}
           label="Executor"
@@ -62,7 +62,7 @@ class Executor extends React.Component {
           defaultValue="LocalExecutor"
         />
         {this.renderConfig(executor.value)}
-      </FormSection>
+      </React.Fragment>
     )
   }
 }

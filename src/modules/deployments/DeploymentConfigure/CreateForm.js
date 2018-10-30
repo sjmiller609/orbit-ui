@@ -25,12 +25,15 @@ class Configure extends React.Component {
     const { form, deploymentConfig } = this.props
     return (
       <React.Fragment>
-        <Executor form={form} deploymentConfig={deploymentConfig} create />
-        <Usage
-          deploymentConfig={deploymentConfig}
-          executor={form.field('config.executor').value}
-          info={info.resourcesNew}
-        />
+        <FormSection id="executor">
+          <Executor form={form} deploymentConfig={deploymentConfig} create />
+        </FormSection>
+        <FormSection id="resources" title="Resources" text={info.resourcesNew}>
+          <Usage
+            deploymentConfig={deploymentConfig}
+            executor={form.field('config.executor').value}
+          />
+        </FormSection>
       </React.Fragment>
     )
   }

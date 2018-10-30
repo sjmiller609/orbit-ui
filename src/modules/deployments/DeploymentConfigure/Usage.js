@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FormSection, Brownie, B, FormLabel } from 'instruments'
+import { Brownie, B, FormLabel } from 'instruments'
 import s from './styles.scss'
 
 import { convertCpu, convertMem } from './helpers'
 
-const Usage = ({ extra, config, deploymentConfig, executor, info }) => {
+const Usage = ({ extra, config, deploymentConfig, executor }) => {
   console.log(config)
   if (!executor || !deploymentConfig.executors) return null
 
@@ -52,7 +52,7 @@ const Usage = ({ extra, config, deploymentConfig, executor, info }) => {
   const price = deploymentConfig.astroUnit.price * au
 
   return (
-    <FormSection id="resources" title="Resources" text={info}>
+    <React.Fragment>
       <Brownie
         title={
           <React.Fragment>
@@ -82,7 +82,7 @@ const Usage = ({ extra, config, deploymentConfig, executor, info }) => {
           Price: <B>${price} / Month</B>
         </FormLabel>
       )}
-    </FormSection>
+    </React.Fragment>
   )
 }
 
@@ -91,7 +91,6 @@ Usage.propTypes = {
   config: PropTypes.object,
   extra: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   executor: PropTypes.string,
-  info: PropTypes.string,
 }
 
 Usage.defaultProps = {
