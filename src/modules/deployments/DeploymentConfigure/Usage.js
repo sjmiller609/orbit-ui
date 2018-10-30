@@ -77,6 +77,7 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
         convert={convertMem}
         className={s.formElement}
       />
+      <FormLabel className={s.formElement}>Cluster</FormLabel>
       <P className={s.resources}>
         <RTag n={deploymentConfig.astroUnit.pods * au} l="pods" />
         <RTag
