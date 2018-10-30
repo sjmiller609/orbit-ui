@@ -7,7 +7,6 @@ import { convertCpu, convertMem } from './helpers'
 import RTag from './Rtag'
 
 const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
-  console.log(config)
   if (!executor || !deploymentConfig.executors) return null
 
   let cpu = []
