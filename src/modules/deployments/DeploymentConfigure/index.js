@@ -2,11 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import UpdateForm from './UpdateForm'
+import ResourcesForm from './ResourcesForm'
+
 import Delete from './Delete'
 import { CardMenu } from 'instruments'
 import Update from '../Data/Update'
 
 const Configure = Update(UpdateForm)
+const ConfigureResources = Update(ResourcesForm)
 
 const menu = [
   {
@@ -14,20 +17,26 @@ const menu = [
     id: 'info',
   },
   {
-    text: 'Resources',
-    id: 'resources',
+    text: 'Environment Vars',
+    id: 'env',
+  },
+  {
+    text: 'Components',
+    id: 'components',
+    newForm: true,
   },
   {
     text: 'Executor',
     id: 'executor',
   },
   {
-    text: 'Environment Vars',
-    id: 'env',
+    text: 'Resources',
+    id: 'resources',
   },
   {
     text: 'Deprovision',
     id: 'delete',
+    newForm: true,
   },
 ]
 
@@ -40,6 +49,11 @@ const DeploymentConfigure = ({ deployment }) => {
   return (
     <CardMenu menu={menu}>
       <Configure
+        deployment={deployment}
+        data={deployment}
+        configVars={configVars}
+      />
+      <ConfigureResources
         deployment={deployment}
         data={deployment}
         configVars={configVars}

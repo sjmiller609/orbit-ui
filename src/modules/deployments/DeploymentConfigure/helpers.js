@@ -37,3 +37,26 @@ export const validateEnvVar = (key, values) => {
   if (values.filter(v => v.key === key).length > 1)
     return 'This variable is already set.'
 }
+
+export const convertCpu = (v, l = true) =>
+  (Math.round(v / 10) / 100).toString() + (l ? ' CPU' : '')
+
+export const convertMem = (v, l = true) =>
+  v < 1024
+    ? v.toString() + (l ? ' MB' : '')
+    : (Math.round(v / 10.24) / 100).toString() + (l ? ' GB' : '')
+
+export const resourceConvert = (v, out, scale) => {
+  if (!v) return
+  if (out)
+    return {
+      cpu: scale.cpu * v,
+      memory: scale.memory * v,
+    }
+  const { cpu, memory } = v
+  const au = Math.max(
+    Math.ceil(cpu / scale.cpu),
+    Math.ceil(memory / scale.memory)
+  )
+  return au
+}

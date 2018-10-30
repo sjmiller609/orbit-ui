@@ -3,14 +3,11 @@ import PropTypes from 'prop-types'
 import { FormSection, Brownie, B, FormLabel } from 'instruments'
 import s from './styles.scss'
 
-const convertCpu = v => (Math.round(v / 10) / 100).toString() + ' CPU'
-const convertMem = v =>
-  v < 1024
-    ? v.toString() + ' MB'
-    : (Math.round(v / 10.24) / 100).toString() + ' GB'
+import { convertCpu, convertMem } from './helpers'
 
-const Usage = ({ deploymentConfig, executor, info }) => {
-  if (!executor) return null
+const Usage = ({ extra, config, deploymentConfig, executor, info }) => {
+  console.log(config)
+  if (!executor || !deploymentConfig.executors) return null
 
   let cpu = []
   let memory = []
@@ -23,16 +20,16 @@ const Usage = ({ deploymentConfig, executor, info }) => {
     const c = deploymentConfig.defaults[name]
     if (!c) return
 
-    usedCpu += c.resources.limits.cpu
-    usedMemory += c.resources.limits.memory
+    usedCpu += c.resources.requests.cpu
+    usedMemory += c.resources.requests.memory
 
     cpu.push({
       name,
-      value: c.resources.limits.cpu,
+      value: c.resources.requests.cpu,
     })
     memory.push({
       name,
-      value: c.resources.limits.memory,
+      value: c.resources.requests.memory,
     })
   })
 
@@ -83,6 +80,8 @@ const Usage = ({ deploymentConfig, executor, info }) => {
 
 Usage.propTypes = {
   deploymentConfig: PropTypes.object,
+  config: PropTypes.object,
+  extra: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   executor: PropTypes.string,
   info: PropTypes.string,
 }

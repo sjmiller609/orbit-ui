@@ -2,13 +2,12 @@
 
 .section {
   &:not(:first-child) {
-    margin-top: 3rem;
+    margin-top: 5.2rem;
   }
   &:not(:last-child) {
     margin-bottom: 3rem;
   }
   .title {
-    padding-top: 2.2rem;
     &::after {
       display: block;
       background: linear-gradient(

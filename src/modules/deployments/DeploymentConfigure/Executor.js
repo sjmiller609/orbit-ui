@@ -50,10 +50,10 @@ class Executor extends React.Component {
     const executor = form.field('config.executor')
 
     return (
-      <FormSection id="executor" title="Executor">
+      <FormSection id="executor">
         <Select
           {...executor}
-          label="Executor Plugin"
+          label="Executor"
           className={s.selectors}
           Component={Selector}
           options={this.options}
