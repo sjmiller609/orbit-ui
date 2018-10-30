@@ -3,22 +3,20 @@ import PropTypes from 'prop-types'
 import { NumberField, P, B, Tag } from 'instruments'
 import s from './styles.scss'
 import { convertCpu, convertMem, resourceConvert } from './helpers'
+import RTag from './Rtag'
 
-const R = ({ n, l }) => (
-  <Tag>
-    <B>{n}</B>
-    {l}
-  </Tag>
-)
-
-R.propTypes = {
-  n: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  l: PropTypes.string,
-}
-
-const Resource = ({ field, astroUnit, showAllUnits, ...props }) => {
+const Resource = ({
+  field,
+  astroUnit,
+  showAllUnits,
+  convertValue,
+  ...props
+}) => {
   const { cpu, airflowConns, actualConns, memory, pods, price } = astroUnit
-  const au = resourceConvert(field.value || 1, false, { cpu, memory })
+  const au = convertValue
+    ? convertValue(field.value || 0, false, { cpu, memory })
+    : field.value || 0
+
   return (
     <React.Fragment>
       <NumberField
@@ -26,7 +24,11 @@ const Resource = ({ field, astroUnit, showAllUnits, ...props }) => {
         units="AU"
         min={astroUnit}
         step={astroUnit}
-        convert={(v, out) => resourceConvert(v, out, { cpu, memory })}
+        convert={
+          convertValue
+            ? (v, out) => convertValue(v, out, { cpu, memory })
+            : null
+        }
         {...field}
         {...props}
       />
@@ -36,16 +38,16 @@ const Resource = ({ field, astroUnit, showAllUnits, ...props }) => {
             <B>+ ${price * au}</B> / mo
           </Tag>
         ) : null}
-        <R n={convertCpu(cpu * au, false)} l="CPU" />
-        <R
+        <RTag n={convertCpu(cpu * au, false)} l="CPU" />
+        <RTag
           n={convertMem(memory * au, false)}
           l={(memory * au < 1024 ? 'MB' : 'GB') + ' memory'}
         />
         {showAllUnits && (
           <React.Fragment>
-            <R n={pods * au} l="pods" />
-            <R n={airflowConns * au} l="Airflow connections" />
-            <R n={actualConns * au} l="connections" />
+            <RTag n={pods * au} l="pods" />
+            <RTag n={airflowConns * au} l="Airflow connections" />
+            <RTag n={actualConns * au} l="connections" />
           </React.Fragment>
         )}
       </P>
@@ -57,6 +59,11 @@ Resource.propTypes = {
   field: PropTypes.object,
   astroUnit: PropTypes.object,
   showAllUnits: PropTypes.bool,
+  convertValue: PropTypes.func,
+}
+
+Resource.defaultProps = {
+  convertValue: resourceConvert,
 }
 
 export default Resource

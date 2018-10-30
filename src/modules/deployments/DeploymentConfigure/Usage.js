@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Brownie, B, FormLabel } from 'instruments'
+import { Brownie, B, P, FormLabel } from 'instruments'
 import s from './styles.scss'
 
 import { convertCpu, convertMem } from './helpers'
+import RTag from './Rtag'
 
-const Usage = ({ extra, config, deploymentConfig, executor }) => {
+const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
   console.log(config)
   if (!executor || !deploymentConfig.executors) return null
 
@@ -44,7 +45,7 @@ const Usage = ({ extra, config, deploymentConfig, executor }) => {
   // calc total au's required
   const auCpu = Math.ceil(usedCpu / deploymentConfig.astroUnit.cpu)
   const auMem = Math.ceil(usedMemory / deploymentConfig.astroUnit.memory)
-  const au = Math.max(auCpu, auMem)
+  const au = Math.max(auCpu, auMem) + extra
 
   const totalCpu = deploymentConfig.astroUnit.cpu * au
   const totalMemory = deploymentConfig.astroUnit.memory * au
@@ -77,11 +78,19 @@ const Usage = ({ extra, config, deploymentConfig, executor }) => {
         convert={convertMem}
         className={s.formElement}
       />
-      {price > 0 && (
-        <FormLabel className={s.formElement}>
-          Price: <B>${price} / Month</B>
-        </FormLabel>
-      )}
+      <P className={s.resources}>
+        <RTag n={deploymentConfig.astroUnit.pods * au} l="pods" />
+        <RTag
+          n={deploymentConfig.astroUnit.airflowConns * au}
+          l="Airflow connections"
+        />
+        <RTag n={deploymentConfig.astroUnit.actualConns * au} l="connections" />
+        {price > 0 && (
+          <FormLabel className={s.formElement}>
+            Price: <B>${price} / Month</B>
+          </FormLabel>
+        )}
+      </P>
     </React.Fragment>
   )
 }

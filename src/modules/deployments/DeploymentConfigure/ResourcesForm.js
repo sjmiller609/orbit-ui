@@ -44,6 +44,17 @@ const ResourcesForm = ({ form, deploymentConfig }) => {
         <Executor form={form} deploymentConfig={deploymentConfig} />
       </FormSection>
       <FormSection id="resources" title="Resources">
+        <Resource
+          label="Extra Capacity"
+          field={form.field('properties.astro_units')}
+          defaultValue={0}
+          min={0}
+          max={100}
+          step={1}
+          info={info.astroUnit}
+          convertValue={null}
+          astroUnit={deploymentConfig.astroUnit}
+        />
         <Usage
           extra={form.field('properties.astro_units').value}
           config={form.field('config').value}
