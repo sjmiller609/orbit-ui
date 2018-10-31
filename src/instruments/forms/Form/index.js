@@ -63,7 +63,7 @@ const Form = FormComponent => {
       return packChild({ name, obj: data })
     }
 
-    update(key, value) {
+    update(key, value, updateDefaults) {
       const { data } = this.state
       const set = {
         submitted: false,
@@ -84,6 +84,9 @@ const Form = FormComponent => {
           k => (set.data[key + '.' + k] = children[k])
         )
       }
+      // when default values update form data, must also update original
+      if (updateDefaults) this.data = set.data
+
       this.setState(set)
     }
 

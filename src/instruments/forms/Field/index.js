@@ -23,7 +23,7 @@ const Field = Component => {
       // add timeout so that multiple set states don't overwrite each other
       if (defaultValue && value === null) {
         const v = convert ? convert(defaultValue) : defaultValue
-        setTimeout(() => this.onChange(null, v), 0)
+        setTimeout(() => this.onChange(null, v, true), 0)
       }
     }
 
@@ -95,11 +95,11 @@ const Field = Component => {
       clearTimeout(this.timeout)
     }
 
-    onChange(e, v) {
+    onChange(e, v, updateDefaults) {
       const { name, onChange, convert } = this.props
       let value2 = e ? e.target.value : v
       if (convert) value2 = convert(value2, true)
-      onChange(name, value2)
+      onChange(name, value2, updateDefaults)
     }
 
     showError(showError = true) {
