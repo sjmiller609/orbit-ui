@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { NumberField, P, B, Tag } from 'instruments'
 import s from './styles.scss'
 import { convertCpu, convertMem, resourceConvert } from './helpers'
-import RTag from './Rtag'
+import RTag from './RTag'
 
 const Resource = ({
   field,
