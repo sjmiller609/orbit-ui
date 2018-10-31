@@ -21,13 +21,13 @@ const menu = [
     id: 'env',
   },
   {
-    text: 'Components',
-    id: 'components',
+    text: 'Executor',
+    id: 'executor',
     newForm: true,
   },
   {
-    text: 'Executor',
-    id: 'executor',
+    text: 'Components',
+    id: 'components',
   },
   {
     text: 'Resources',

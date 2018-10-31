@@ -20,6 +20,9 @@ const ResourcesForm = ({ form, deploymentConfig }) => {
         text: 'Update',
       }}
       className={s.card}>
+      <FormSection id="exeuctor">
+        <Executor form={form} deploymentConfig={deploymentConfig} />
+      </FormSection>
       <FormSection id="components">
         <Resource
           label="Webserver"
@@ -39,6 +42,9 @@ const ResourcesForm = ({ form, deploymentConfig }) => {
           required
           astroUnit={deploymentConfig.astroUnit}
         />
+      </FormSection>
+
+      <FormSection id="resources" title="Resources">
         <Resource
           label="Extra Capacity"
           field={form.field('properties.astro_units')}
@@ -50,11 +56,6 @@ const ResourcesForm = ({ form, deploymentConfig }) => {
           convertValue={null}
           astroUnit={deploymentConfig.astroUnit}
         />
-      </FormSection>
-      <FormSection id="exeuctor">
-        <Executor form={form} deploymentConfig={deploymentConfig} />
-      </FormSection>
-      <FormSection id="resources" title="Resources">
         <Usage
           extra={form.field('properties.astro_units').value}
           config={form.field('config').value}
