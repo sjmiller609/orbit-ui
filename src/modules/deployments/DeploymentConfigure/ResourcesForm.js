@@ -10,10 +10,10 @@ import Executor from './Executor'
 import Resource from './Resource'
 import Usage from './Usage'
 
-const ResourcesForm = ({ form, deploymentConfig }) => {
-  console.log(deploymentConfig)
+const ResourcesForm = ({ form, deploymentConfig, loaded }) => {
   return (
     <CardForm
+      ref={() => loaded('resources')}
       title="Configure Components"
       button={{
         save: form.save,
@@ -71,6 +71,7 @@ const ResourcesForm = ({ form, deploymentConfig }) => {
 ResourcesForm.propTypes = {
   form: PropTypes.object,
   deploymentConfig: PropTypes.object,
+  loaded: PropTypes.func,
 }
 
 export default DeploymentConfig(Form(ResourcesForm))

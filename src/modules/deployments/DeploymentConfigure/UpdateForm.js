@@ -18,6 +18,9 @@ class Configure extends React.Component {
   componentWillMount() {
     setTimeout(() => this.setState({ renderConfig: true }), 10)
   }
+  componentDidMount() {
+    this.props.loaded('configure')
+  }
 
   renderConfig() {
     const { form } = this.props
@@ -60,6 +63,7 @@ Configure.propTypes = {
   form: PropTypes.object,
   deployment: PropTypes.object,
   deploymentConfig: PropTypes.object,
+  loaded: PropTypes.func,
 }
 
 export default DeploymentConfig(Form(Configure))

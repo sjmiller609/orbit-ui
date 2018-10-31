@@ -40,27 +40,43 @@ const menu = [
   },
 ]
 
-const DeploymentConfigure = ({ deployment }) => {
-  const configVars = {
-    version: deployment.version,
-    type: deployment.type,
-    deploymentId: deployment.id,
+class DeploymentConfigure extends React.Component {
+  loaded = this.loaded.bind(this)
+  state = {
+    configure: false,
+    resources: false,
   }
-  return (
-    <CardMenu menu={menu}>
-      <Configure
-        deployment={deployment}
-        data={deployment}
-        configVars={configVars}
-      />
-      <ConfigureResources
-        deployment={deployment}
-        data={deployment}
-        configVars={configVars}
-      />
-      <Delete deployment={deployment} />
-    </CardMenu>
-  )
+  loaded(c) {
+    if (!this.state[c]) this.setState({ [c]: true })
+  }
+
+  render() {
+    const { deployment } = this.props
+    const configVars = {
+      version: deployment.version,
+      type: deployment.type,
+      deploymentId: deployment.id,
+    }
+    return (
+      <CardMenu menu={menu}>
+        <Configure
+          deployment={deployment}
+          data={deployment}
+          configVars={configVars}
+          loaded={this.loaded}
+        />
+        {this.state.configure && (
+          <ConfigureResources
+            deployment={deployment}
+            data={deployment}
+            configVars={configVars}
+            loaded={this.loaded}
+          />
+        )}
+        {this.state.resources && <Delete deployment={deployment} />}
+      </CardMenu>
+    )
+  }
 }
 
 DeploymentConfigure.propTypes = {
