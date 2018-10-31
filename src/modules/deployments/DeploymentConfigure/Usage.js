@@ -4,7 +4,7 @@ import { Brownie, B, P, FormLabel } from 'instruments'
 import s from './styles.scss'
 
 import { convertCpu, convertMem, calcAU } from './helpers'
-import RTag from './Rtag'
+import RTag from './RTag'
 
 const convertAU = (au, scale) =>
   convertCpu(au * scale.cpu) + ', ' + convertMem(au * scale.memory)
