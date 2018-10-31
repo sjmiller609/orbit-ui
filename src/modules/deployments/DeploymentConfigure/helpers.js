@@ -47,8 +47,8 @@ export const convertMem = (v, l = true) =>
     : (Math.round(v / 10.24) / 100).toString() + (l ? ' GB' : '')
 
 export const calcAU = (r, au) => {
-  const auCpu = Math.ceil(r.cpu / au.cpu)
-  const auMem = Math.ceil(r.memory / au.memory)
+  const auCpu = Math.ceil(parseInt(r.cpu) / au.cpu)
+  const auMem = Math.ceil(parseInt(r.memory) / au.memory)
   return Math.max(auCpu, auMem)
 }
 

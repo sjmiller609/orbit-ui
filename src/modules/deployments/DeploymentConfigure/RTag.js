@@ -4,7 +4,7 @@ import { B, Tag } from 'instruments'
 
 const RTag = ({ n, l }) => (
   <Tag>
-    <B>{n}</B>
+    {n && <B>{n}</B>}
     {l}
   </Tag>
 )

@@ -11,7 +11,6 @@ const convertAU = (au, scale) =>
 
 const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
   if (!executor || !deploymentConfig.executors) return null
-  console.log(config)
   let slices = []
 
   const au = deploymentConfig.executors[executor].primaryComponents.reduce(
@@ -19,8 +18,8 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
       let resources = {}
       const c =
         config && config[name] ? config[name] : deploymentConfig.defaults[name]
-      resources.cpu = c.resources.limits.cpu
-      resources.memory = c.resources.limits.memory
+      resources.cpu = parseInt(c.resources.limits.cpu)
+      resources.memory = parseInt(c.resources.limits.memory)
 
       // mulitply by replicas
       if (c.replicas) {
