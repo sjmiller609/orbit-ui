@@ -11,13 +11,15 @@ const Menu = ({ menu, active, title, id, scrollTo, menuList, className }) => {
     <Card id={id} title={title} className={classnames(s.menu, className)}>
       <MenuList {...menuList}>
         {menu.map((m, i) => (
-          <Item
-            key={m.id + i.toString()}
-            to={m.to}
-            onClick={m.id ? () => scrollTo(m.id) : null}
-            active={active === m.id}>
-            {m.text}
-          </Item>
+          <React.Fragment key={m.id + i.toString()}>
+            {m.newForm && <div className={s.border} />}
+            <Item
+              to={m.to}
+              onClick={m.id ? () => scrollTo(m.id) : null}
+              active={active === m.id}>
+              {m.text}
+            </Item>
+          </React.Fragment>
         ))}
       </MenuList>
     </Card>

@@ -2,13 +2,12 @@
 
 .section {
   &:not(:first-child) {
-    margin-top: 3rem;
+    margin-top: 5.2rem;
   }
   &:not(:last-child) {
     margin-bottom: 3rem;
   }
   .title {
-    padding-top: 2.2rem;
     &::after {
       display: block;
       background: linear-gradient(
@@ -25,6 +24,16 @@
       left: 0;
       transform: scale(1);
       margin-bottom: 4rem;
+    }
+  }
+  .text {
+    @include font($f400i);
+    margin-bottom: 2.5rem;
+  }
+
+  &.hasText {
+    .title::after {
+      margin-bottom: 3.3rem;
     }
   }
 }

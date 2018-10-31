@@ -52,11 +52,15 @@ class Auth extends React.Component {
                 vars={{ inviteToken: token }}
                 alert={false}
               />
-              <Row className={s.or}>
-                <hr />
-                or
-                <hr />
-              </Row>
+              {(authConfig.googleEnabled ||
+                authConfig.githubEnabled ||
+                authConfig.auth0Enabled) && (
+                <Row className={s.or}>
+                  <hr />
+                  or
+                  <hr />
+                </Row>
+              )}
             </React.Fragment>
           )}
         <Buttons authConfig={authConfig} login={login} />

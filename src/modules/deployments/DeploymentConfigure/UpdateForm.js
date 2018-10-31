@@ -6,9 +6,7 @@ import { CardForm, Form, TextField, TextArea, FormSection } from 'instruments'
 
 import DeploymentConfig from '../Data/Config'
 
-import Resources from './Resources'
 import EnvVars from './EnvVars'
-import Executor from './Executor'
 import Info from './Info'
 
 class Configure extends React.Component {
@@ -20,16 +18,13 @@ class Configure extends React.Component {
   componentWillMount() {
     setTimeout(() => this.setState({ renderConfig: true }), 10)
   }
+  componentDidMount() {
+    this.props.loaded('configure')
+  }
 
   renderConfig() {
-    const { form, deploymentConfig } = this.props
-    return (
-      <React.Fragment>
-        <Resources form={form} astroUnit={deploymentConfig.astroUnit} />
-        <Executor form={form} deploymentConfig={deploymentConfig} />
-        <EnvVars form={form} />
-      </React.Fragment>
-    )
+    const { form } = this.props
+    return <EnvVars form={form} />
   }
 
   render() {
@@ -68,6 +63,7 @@ Configure.propTypes = {
   form: PropTypes.object,
   deployment: PropTypes.object,
   deploymentConfig: PropTypes.object,
+  loaded: PropTypes.func,
 }
 
 export default DeploymentConfig(Form(Configure))

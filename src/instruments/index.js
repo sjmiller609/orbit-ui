@@ -32,6 +32,7 @@ export { default as Select } from './forms/Select'
 export { default as KeyValue } from './forms/KeyValue'
 export { default as FieldSet } from './forms/FieldSet'
 export { default as TableField } from './forms/Table'
+export { default as FormLabel } from './forms/FormLabel'
 
 export { default as UnsavedChangesAlert } from './forms/UnsavedChangesAlert'
 
@@ -101,3 +102,5 @@ export { default as Mutation } from './api/Mutation'
 export { default as Create } from './api/Mutation/Create'
 export { default as Delete } from './api/Mutation/Delete'
 export { formErrors } from './api/Mutation/helpers'
+
+export { default as Brownie } from './graphs/Brownie'

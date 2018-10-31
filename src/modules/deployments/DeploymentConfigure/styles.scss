@@ -112,7 +112,8 @@
 }
 
 .resources {
-  margin-top: 1.3rem;
+  margin-top: 1rem;
+  margin-bottom: 2.6rem;
   b {
     margin-right: 0.2em;
   }
@@ -129,4 +130,10 @@ p.note {
   margin-top: 3rem;
   font-style: italic;
   color: $orange;
+}
+
+.formElement {
+  &:not(:first-child) {
+    margin-top: 1.3rem;
+  }
 }

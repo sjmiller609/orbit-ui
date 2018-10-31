@@ -6,9 +6,10 @@ import { CardForm, Form, TextField, TextArea, FormSection } from 'instruments'
 
 import DeploymentConfig from '../Data/Config'
 
-import Resources from './Resources'
 import Executor from './Executor'
 import Info from './Info'
+import Usage from './Usage'
+import info from '../info'
 
 class Configure extends React.Component {
   renderConfig = this.renderConfig.bind(this)
@@ -24,8 +25,15 @@ class Configure extends React.Component {
     const { form, deploymentConfig } = this.props
     return (
       <React.Fragment>
-        <Resources form={form} astroUnit={deploymentConfig.astroUnit} />
-        <Executor form={form} deploymentConfig={deploymentConfig} create />
+        <FormSection id="executor">
+          <Executor form={form} deploymentConfig={deploymentConfig} create />
+        </FormSection>
+        <FormSection id="resources" title="Resources" text={info.resourcesNew}>
+          <Usage
+            deploymentConfig={deploymentConfig}
+            executor={form.field('config.executor').value}
+          />
+        </FormSection>
       </React.Fragment>
     )
   }

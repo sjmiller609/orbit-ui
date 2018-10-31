@@ -14,12 +14,12 @@ const cardMenu = [
     id: 'info',
   },
   {
-    text: 'Resources',
-    id: 'resources',
-  },
-  {
     text: 'Executor',
     id: 'executor',
+  },
+  {
+    text: 'Resources',
+    id: 'resources',
   },
 ]
 

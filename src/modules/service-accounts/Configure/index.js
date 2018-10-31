@@ -31,6 +31,7 @@ class ConfigureServiceAccount extends React.Component {
     {
       text: 'Delete',
       id: 'delete',
+      newForm: true,
     },
   ]
   state = {

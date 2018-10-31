@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FormSection, Select, Mini } from 'instruments'
+import { Select } from 'instruments'
 import info from '../info'
 import s from './styles.scss'
 import Selector from './Selector'
@@ -35,24 +35,13 @@ class Executor extends React.Component {
 
   renderConfig(executor) {
     const { form, deploymentConfig, create } = this.props
-    if (executor === 'CeleryExecutor')
+    if (!create && executor === 'CeleryExecutor')
       return (
-        <React.Fragment>
-          <Mini className={s.note}>
-            Note: Celery Executor requires at least{' '}
-            {deploymentConfig.executors.CeleryExecutor.minAU} Astro Unit{deploymentConfig
-              .executors.CeleryExecutor.minAU > 1
-              ? 's'
-              : ''}.
-          </Mini>
-          {!create && (
-            <CeleryConfig
-              form={form}
-              deploymentConfig={deploymentConfig}
-              className={s.executorConfig}
-            />
-          )}
-        </React.Fragment>
+        <CeleryConfig
+          form={form}
+          deploymentConfig={deploymentConfig}
+          className={s.executorConfig}
+        />
       )
   }
 
@@ -61,10 +50,10 @@ class Executor extends React.Component {
     const executor = form.field('config.executor')
 
     return (
-      <FormSection id="executor" title="Executor">
+      <React.Fragment>
         <Select
           {...executor}
-          label="Executor Plugin"
+          label="Executor"
           className={s.selectors}
           Component={Selector}
           options={this.options}
@@ -73,7 +62,7 @@ class Executor extends React.Component {
           defaultValue="LocalExecutor"
         />
         {this.renderConfig(executor.value)}
-      </FormSection>
+      </React.Fragment>
     )
   }
 }

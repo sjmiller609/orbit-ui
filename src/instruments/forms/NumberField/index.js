@@ -12,7 +12,7 @@ class NumberField extends React.Component {
     min: 0,
     max: 1,
     step: 1,
-    units: null,
+    units: this.props.units,
   }
 
   componentWillMount() {
@@ -35,7 +35,6 @@ class NumberField extends React.Component {
     const set = {}
 
     if (!next || min !== this.props.min) set.min = convert ? convert(min) : min
-
     if (!next || max !== this.props.max) set.max = convert ? convert(max) : max
     if (!next || step !== this.props.step)
       set.step = convert ? convert(step) : step
@@ -120,7 +119,7 @@ class NumberField extends React.Component {
             min={min}
             max={max}
             step={step}
-            value={value || ''}
+            value={value || 0}
           />
           {units && <div className={s.units}>{units}</div>}
           {slider && (
@@ -156,9 +155,24 @@ NumberField.propTypes = {
   className: PropTypes.string,
   updateErrors: PropTypes.func,
   setRef: PropTypes.func,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  step: PropTypes.number,
+  min: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
+  max: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
+  step: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
   slider: PropTypes.bool,
   units: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   convert: PropTypes.func,

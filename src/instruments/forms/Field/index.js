@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import classnames from 'classnames'
 import s from './styles.scss'
-import { Info } from 'instruments'
+import { FormLabel } from 'instruments'
 import { unCamelCase } from 'helpers/format'
 import { jsonEqual, isEqual } from 'helpers/compare'
 
@@ -154,10 +154,9 @@ const Field = Component => {
         setShowError: this.showError,
         error: err ? <div className={s.errorMsg}>{error}</div> : null,
         label: label ? (
-          <label htmlFor={this.id}>
+          <FormLabel id={this.id} info={info}>
             {label}
-            <Info>{info}</Info>
-          </label>
+          </FormLabel>
         ) : null,
       }
       if (value) newProps.value = value
