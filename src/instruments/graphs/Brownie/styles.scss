@@ -13,6 +13,7 @@
   height: $height;
   display: block;
   position: relative;
+  min-width: 6px;
   &:not(:last-child) {
     border-right: 3px solid $white;
   }
