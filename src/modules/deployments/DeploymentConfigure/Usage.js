@@ -8,7 +8,7 @@ import RTag from './Rtag'
 
 const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
   if (!executor || !deploymentConfig.executors) return null
-
+  console.log(config)
   let cpu = []
   let memory = []
 
@@ -18,14 +18,15 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
   // const { cpu, airflowConns, actualConns, memory, pods, price } = deploymentConfig.astroUnit
   deploymentConfig.executors[executor].primaryComponents.forEach(name => {
     let resources = {}
-    if (config && config[name]) {
-      resources.cpu = config[name].resources.limits.cpu
-      resources.memory = config[name].resources.limits.memory
-    } else {
-      // changed to use requests (instead of limits)
-      resources.cpu = deploymentConfig.defaults[name].resources.requests.cpu
-      resources.memory =
-        deploymentConfig.defaults[name].resources.requests.memory
+    const c =
+      config && config[name] ? config[name] : deploymentConfig.defaults[name]
+    resources.cpu = c.resources.limits.cpu
+    resources.memory = c.resources.limits.memory
+
+    // mulitply by replicas
+    if (c.replicas) {
+      resources.cpu = resources.cpu * c.replicas
+      resources.memory = resources.memory * c.replicas
     }
 
     usedCpu += resources.cpu
