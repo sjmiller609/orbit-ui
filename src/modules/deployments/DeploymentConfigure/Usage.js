@@ -79,12 +79,15 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
       />
       <FormLabel className={s.formElement}>Cluster</FormLabel>
       <P className={s.resources}>
-        <RTag n={deploymentConfig.astroUnit.pods * au} l="pods" />
+        <RTag n={Math.floor(deploymentConfig.astroUnit.pods * au)} l="pods" />
         <RTag
-          n={deploymentConfig.astroUnit.airflowConns * au}
+          n={Math.floor(deploymentConfig.astroUnit.airflowConns * au)}
           l="Airflow connections"
         />
-        <RTag n={deploymentConfig.astroUnit.actualConns * au} l="connections" />
+        <RTag
+          n={Math.floor(deploymentConfig.astroUnit.actualConns * au)}
+          l="connections"
+        />
         {price > 0 && (
           <FormLabel className={s.formElement}>
             Price: <B>${price} / Month</B>
