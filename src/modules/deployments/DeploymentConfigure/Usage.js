@@ -3,95 +3,73 @@ import PropTypes from 'prop-types'
 import { Brownie, B, P, FormLabel } from 'instruments'
 import s from './styles.scss'
 
-import { convertCpu, convertMem } from './helpers'
+import { convertCpu, convertMem, calcAU } from './helpers'
 import RTag from './Rtag'
+
+const convertAU = (au, scale) =>
+  convertCpu(au * scale.cpu) + ', ' + convertMem(au * scale.memory)
 
 const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
   if (!executor || !deploymentConfig.executors) return null
   console.log(config)
-  let cpu = []
-  let memory = []
+  let slices = []
 
-  let usedCpu = 0
-  let usedMemory = 0
+  const au = deploymentConfig.executors[executor].primaryComponents.reduce(
+    (au1, name) => {
+      let resources = {}
+      const c =
+        config && config[name] ? config[name] : deploymentConfig.defaults[name]
+      resources.cpu = c.resources.limits.cpu
+      resources.memory = c.resources.limits.memory
 
-  // const { cpu, airflowConns, actualConns, memory, pods, price } = deploymentConfig.astroUnit
-  deploymentConfig.executors[executor].primaryComponents.forEach(name => {
-    let resources = {}
-    const c =
-      config && config[name] ? config[name] : deploymentConfig.defaults[name]
-    resources.cpu = c.resources.limits.cpu
-    resources.memory = c.resources.limits.memory
+      // mulitply by replicas
+      if (c.replicas) {
+        resources.cpu = resources.cpu * c.replicas
+        resources.memory = resources.memory * c.replicas
+      }
 
-    // mulitply by replicas
-    if (c.replicas) {
-      resources.cpu = resources.cpu * c.replicas
-      resources.memory = resources.memory * c.replicas
-    }
+      const au2 = calcAU(resources, deploymentConfig.astroUnit)
+      slices.push({
+        name,
+        value: au2,
+      })
+      return au1 + au2
+    },
+    0
+  )
 
-    usedCpu += resources.cpu
-    usedMemory += resources.memory
-
-    cpu.push({
-      name,
-      value: resources.cpu,
-    })
-    memory.push({
-      name,
-      value: resources.memory,
-    })
-  })
-
-  // calc total au's required
-  const auCpu = Math.ceil(usedCpu / deploymentConfig.astroUnit.cpu)
-  const auMem = Math.ceil(usedMemory / deploymentConfig.astroUnit.memory)
-  const au = Math.max(auCpu, auMem) + extra
-
-  const totalCpu = deploymentConfig.astroUnit.cpu * au
-  const totalMemory = deploymentConfig.astroUnit.memory * au
-
-  const price = deploymentConfig.astroUnit.price * au
+  const {
+    cpu,
+    airflowConns,
+    actualConns,
+    memory,
+    pods,
+    price,
+  } = deploymentConfig.astroUnit
 
   return (
     <React.Fragment>
       <Brownie
-        title={
-          <React.Fragment>
-            CPU: <B>{(Math.round(totalCpu / 10) / 100).toString()}</B>
-          </React.Fragment>
-        }
-        slices={cpu}
-        total={totalCpu}
-        part={usedCpu}
-        convert={convertCpu}
+        title="Cluster"
+        slices={slices}
+        total={au + extra}
+        part={au}
+        convert={v => convertAU(v, deploymentConfig.astroUnit)}
         className={s.formElement}
       />
-      <Brownie
-        title={
-          <React.Fragment>
-            Memory: <B>{convertMem(totalMemory)}</B>
-          </React.Fragment>
-        }
-        slices={memory}
-        part={usedMemory}
-        total={totalMemory}
-        convert={convertMem}
-        className={s.formElement}
-      />
-      <FormLabel className={s.formElement}>Cluster</FormLabel>
+
       <P className={s.resources}>
-        <RTag n={Math.floor(deploymentConfig.astroUnit.pods * au)} l="pods" />
+        <RTag n={convertCpu(cpu * au, false)} l="CPU" />
         <RTag
-          n={Math.floor(deploymentConfig.astroUnit.airflowConns * au)}
-          l="Airflow connections"
+          n={convertMem(memory * au, false)}
+          l={(memory * au < 1024 ? 'MB' : 'GB') + ' memory'}
         />
-        <RTag
-          n={Math.floor(deploymentConfig.astroUnit.actualConns * au)}
-          l="connections"
-        />
+        <RTag n={Math.floor(pods * au)} l="pods" />
+        <RTag n={Math.floor(airflowConns * au)} l="Airflow connections" />
+        <RTag n={Math.floor(actualConns * au)} l="connections" />
         {price > 0 && (
           <FormLabel className={s.formElement}>
-            Price: <B>${price} / Month</B>
+            Price: <B>${price * au} / Month</B>
           </FormLabel>
         )}
       </P>

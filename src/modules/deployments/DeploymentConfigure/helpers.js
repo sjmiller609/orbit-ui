@@ -46,6 +46,12 @@ export const convertMem = (v, l = true) =>
     ? v.toString() + (l ? ' MB' : '')
     : (Math.round(v / 10.24) / 100).toString() + (l ? ' GB' : '')
 
+export const calcAU = (r, au) => {
+  const auCpu = Math.ceil(r.cpu / au.cpu)
+  const auMem = Math.ceil(r.memory / au.memory)
+  return Math.max(auCpu, auMem)
+}
+
 export const resourceConvert = (v, out, scale) => {
   if (!v) return
   if (out)
@@ -53,10 +59,6 @@ export const resourceConvert = (v, out, scale) => {
       cpu: scale.cpu * v,
       memory: scale.memory * v,
     }
-  const { cpu, memory } = v
-  const au = Math.max(
-    Math.ceil(cpu / scale.cpu),
-    Math.ceil(memory / scale.memory)
-  )
-  return au
+
+  return calcAU(v, scale)
 }
