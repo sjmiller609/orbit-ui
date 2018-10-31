@@ -15,7 +15,7 @@ class ResourcesForm extends React.Component {
     this.props.loaded('resources')
   }
   render() {
-    const { form, deploymentConfig, loaded } = this.props
+    const { form, deploymentConfig } = this.props
     return (
       <CardForm
         title="Configure Components"
