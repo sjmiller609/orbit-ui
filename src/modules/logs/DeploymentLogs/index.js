@@ -20,15 +20,17 @@ class DeploymentLogs extends React.Component {
     call: search => this.setState({ search }),
   }
   componentWillMount() {
-    this.getType()
+    this.getType(location.hash)
 
     const date = new Date()
     date.setMinutes(date.getMinutes() - 10)
     this.setState({ start: date })
   }
-  getType() {
-    const { location } = this.props
-    const type = location.hash ? location.hash.slice(1) : 'webserver'
+  componentWillReceiveProps({ location }) {
+    if (location.hash !== this.props.location.hash) this.getType(location.hash)
+  }
+  getType(hash) {
+    const type = hash ? hash.slice(1) : 'webserver'
     this.setState({ type })
   }
   setStart(start) {
