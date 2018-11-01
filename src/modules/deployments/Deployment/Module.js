@@ -18,6 +18,10 @@ const Alerts = Load(() =>
   import(/* webpackPrefetch: true */ 'modules/alerts/Alerts')
 )
 
+const Logs = Load(() =>
+  import(/* webpackPrefetch: true */ 'modules/logs/DeploymentLogs')
+)
+
 const Deployment = ({ deployments, menu, title }) => {
   const deployment = deployments[0]
   // Error handled
@@ -58,15 +62,11 @@ const Deployment = ({ deployments, menu, title }) => {
           exact
           render={() => <Overview deployment={deployment} />}
         />
-        {/* <Route
-            path={path + '/logs'}
-            exact
-            render={() => {
-            const Logs = Load(() => import(/* webpackPrefetch: true */
-        /* 'modules/logs/DeploymentLogs'))
-            return <Logs deployment={deployment} />
-            }}
-        /> */}
+        <Route
+          path={path + '/logs'}
+          exact
+          render={() => <Logs deployment={deployment} />}
+        />
         <Route
           path={path + '/alerts'}
           exact
