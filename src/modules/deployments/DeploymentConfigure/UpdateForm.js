@@ -10,16 +10,23 @@ import EnvVars from './EnvVars'
 import Info from './Info'
 
 class Configure extends React.Component {
+  mounted = true
   renderConfig = this.renderConfig.bind(this)
   state = {
     renderConfig: false,
   }
   // delay rendering of config for lazy loading (ux performance)
   componentWillMount() {
-    setTimeout(() => this.setState({ renderConfig: true }), 10)
+    this.mounted = setTimeout(
+      () => this.mounted && this.setState({ renderConfig: true }),
+      10
+    )
   }
   componentDidMount() {
     this.props.loaded('configure')
+  }
+  componentWillUnmount() {
+    clearTimeout(this.mounted)
   }
 
   renderConfig() {

@@ -41,13 +41,17 @@ const menu = [
 ]
 
 class DeploymentConfigure extends React.Component {
+  mounted = true
   loaded = this.loaded.bind(this)
   state = {
     configure: false,
     resources: false,
   }
+  componentWillUnmount() {
+    this.mounted = false
+  }
   loaded(c) {
-    if (!this.state[c]) this.setState({ [c]: true })
+    if (this.mounted && !this.state[c]) this.setState({ [c]: true })
   }
 
   render() {
