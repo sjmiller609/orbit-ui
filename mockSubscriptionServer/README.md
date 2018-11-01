@@ -1,3 +1,12 @@
+# Run Mock Subscription Server
+
+1. cd orbit/mocksubscriptionserver
+2. `npm run start`
+
+
+
+
+----------------------------------------------
 # subscriptions
 
 This directory contains a simple GraphQL subscriptions example based on `graphql-yoga`.
