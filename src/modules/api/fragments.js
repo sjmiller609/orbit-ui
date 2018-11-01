@@ -66,10 +66,6 @@ export const deployment = gql`
     config
     env
     properties
-    deployInfo {
-      latest
-      next
-    }
   }
 `
 export const invite = gql`
