@@ -36,7 +36,7 @@ const Form = FormComponent => {
       if (!jsonEqual(data, this.props.data)) {
         this.data = this.unpack(data)
         this.setState({ data: this.data })
-        this.checkSave(this.data)
+        this.checkSave({ data: this.data, save: this.state.save })
       }
       if (!jsonEqual(error, this.props.error) && error) {
         this.updateErrors(error.name, error.error)
