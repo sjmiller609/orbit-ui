@@ -81,7 +81,8 @@ class Table extends React.Component {
 
   add(v) {
     const { onChange, value } = this.props
-    const v2 = Array.from(v || value)
+    const v2 = Array.from(v && v.length ? v : value)
+    if (v2[v2.length - 1] === null) return
     v2.push(null)
     onChange(null, v2)
   }

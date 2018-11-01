@@ -9,7 +9,6 @@ import info from '../info'
 
 const Emails = ({ form, emails }) => {
   const field = form.field('properties.alert_emails')
-
   return (
     <CardForm
       title="Configure Alerts"

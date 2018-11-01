@@ -14,7 +14,7 @@ class Alerts extends React.Component {
   render() {
     const { deployment } = this.props
     const emails = convertEmails(deployment.properties.alert_emails)
-    console.log(emails)
+
     return (
       <Emails
         data={{
