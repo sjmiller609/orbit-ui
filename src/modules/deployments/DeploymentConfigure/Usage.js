@@ -46,29 +46,31 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
     price,
   } = deploymentConfig.astroUnit
 
+  const totalAU = au + extra
+
   return (
     <React.Fragment>
       <Brownie
         title="Cluster"
         slices={slices}
-        total={au + extra}
+        total={totalAU}
         part={au}
         convert={v => convertAU(v, deploymentConfig.astroUnit)}
         className={s.formElement}
       />
 
       <P className={s.resources}>
-        <RTag n={convertCpu(cpu * au, false)} l="CPU" />
+        <RTag n={convertCpu(cpu * totalAU, false)} l="CPU" />
         <RTag
-          n={convertMem(memory * au, false)}
-          l={(memory * au < 1024 ? 'MB' : 'GB') + ' memory'}
+          n={convertMem(memory * totalAU, false)}
+          l={(memory * totalAU < 1024 ? 'MB' : 'GB') + ' memory'}
         />
-        <RTag n={Math.floor(pods * au)} l="pods" />
-        <RTag n={Math.floor(airflowConns * au)} l="Airflow connections" />
-        <RTag n={Math.floor(actualConns * au)} l="connections" />
+        <RTag n={Math.floor(pods * totalAU)} l="pods" />
+        <RTag n={Math.floor(airflowConns * totalAU)} l="Airflow connections" />
+        <RTag n={Math.floor(actualConns * totalAU)} l="connections" />
         {price > 0 && (
           <FormLabel className={s.formElement}>
-            Price: <B>${price * au} / Month</B>
+            Price: <B>${price * totalAU} / Month</B>
           </FormLabel>
         )}
       </P>
