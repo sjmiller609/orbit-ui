@@ -1,14 +1,18 @@
 pipeline:
+
+  # Build the project
   build:
     image: node
     commands:
       - npm install
 
+  # Test the project
   test:
     image: node
     commands:
       - npm test
 
+  # Trigger build of production images from master
   trigger:
     image: plugins/downstream
     server: http://drone.astronomer.io
