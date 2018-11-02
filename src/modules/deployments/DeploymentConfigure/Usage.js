@@ -12,20 +12,22 @@ const convertAU = (au, scale) =>
 const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
   if (!executor || !deploymentConfig.executors) return null
   let slices = []
+  let podCount = 0
 
   const au = deploymentConfig.executors[executor].components.reduce(
     (au1, name) => {
       let resources = {}
       const c =
         config && config[name] ? config[name] : deploymentConfig.defaults[name]
-      resources.cpu = parseInt(c.resources.limits.cpu)
-      resources.memory = parseInt(c.resources.limits.memory)
 
-      // mulitply by replicas
-      if (c.replicas) {
-        resources.cpu = resources.cpu * c.replicas
-        resources.memory = resources.memory * c.replicas
-      }
+      // Default to 1 replica
+      const replicas = c.replicas || 1
+
+      resources.cpu = parseInt(c.resources.limits.cpu * replicas)
+      resources.memory = parseInt(c.resources.limits.memory * replicas)
+
+      // 2 per component for a surge
+      podCount += 2 * replicas
 
       const au2 = calcAU(resources, deploymentConfig.astroUnit)
       slices.push({
@@ -48,10 +50,6 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
 
   const totalAU = au + extra
 
-  const podCount = Math.floor(
-    deploymentConfig.executors[executor].components.length * 2 + extra * pods
-  )
-
   return (
     <React.Fragment>
       <Brownie
@@ -69,7 +67,7 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
           n={convertMem(memory * totalAU, false)}
           l={(memory * totalAU < 1024 ? 'MB' : 'GB') + ' memory'}
         />
-        <RTag n={podCount} l="pods" />
+        <RTag n={Math.floor(podCount + extra * pods)} l="pods" />
         <RTag n={Math.floor(airflowConns * totalAU)} l="Airflow connections" />
         <RTag n={Math.floor(actualConns * totalAU)} l="connections" />
         {price > 0 && (
