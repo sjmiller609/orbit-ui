@@ -13,7 +13,7 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
   if (!executor || !deploymentConfig.executors) return null
   let slices = []
 
-  const au = deploymentConfig.executors[executor].primaryComponents.reduce(
+  const au = deploymentConfig.executors[executor].components.reduce(
     (au1, name) => {
       let resources = {}
       const c =
