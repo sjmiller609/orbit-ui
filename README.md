@@ -18,15 +18,27 @@ Orbit connects to Houston API. The steps to setup for local development:
 
 2.  Houston requires Docker to run. Make sure you have Docker installed.
 
-3.  Update `docker-compose.override.yaml` file to enable Google Oauth:
+3.  Create `docker-compose.override.yaml` file to enable Google Oauth:
 
 ```
-GOOGLE_OAUTH_REDIRECT_URL: "http://localhost:5000/oauth/google"
-GOOGLE_CLIENT_ID: [CLIENT_ID]
-GOOGLE_CLIENT_SECRET: [SECRET]
+version: "2.1"
+
+volumes:
+  postgres_data:
+
+services:
+  houston-api:
+    environment:
+      AUTH_STRATEGY: "local,google_oauth,auth0_oauth,github_oauth"
+      AUTH0_CLIENT_ID: [SECRET]
+      AUTH0_BASE_DOMAIN: "astronomerio.auth0.com"
+      AUTH0_EXTERNAL_LOGIN: "false"
+      HELM_GLOBAL_CONFIG: "{\"baseDomain\":\"local.astronomer.io\",\"acme\":false,\"rbacEnabled\":true,\"releaseName\":\"release-name\",\"releaseNamespace\":\"orbit-dev\",\"releaseVersion\":\"0.4.2\",\"registrySecretName\":\"registry\"}"
+      BASE_URL_ORBIT: "http://localhost:5000/"
+      BASE_URL_HOUSTON: "http://houston.local.astronomer.io:8870/"
 ```
 
-Replace CLIENT_ID and SECRET with values you get from creating "OAuth 2.0 client IDs" on GCP
+Replace AUTH0_CLIENT_ID with your clientId.
 
 3.  Run `docker-compose up` in your houston-api repo.
 
