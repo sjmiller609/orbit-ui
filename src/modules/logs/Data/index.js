@@ -6,11 +6,12 @@ import api from './api'
 import { Query } from 'instruments'
 
 const Data = Component => {
-  const Data = ({ skip, search, ...props }) => {
+  const Data = ({ vars, skip, search, ...props }) => {
     return (
       <Query
         gql={api.Logs}
         skip={skip}
+        vars={vars}
         search={search}
         sortNewest={false}
         subscribe={{
@@ -34,6 +35,7 @@ const Data = Component => {
     skip: PropTypes.bool,
     OnError: PropTypes.element,
     search: PropTypes.object,
+    vars: PropTypes.object,
   }
 
   return Data
