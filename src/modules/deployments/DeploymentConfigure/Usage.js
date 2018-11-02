@@ -48,6 +48,10 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
 
   const totalAU = au + extra
 
+  const podCount = Math.floor(
+    deploymentConfig.executors[executor].components.length * 2 + extra * pods
+  )
+
   return (
     <React.Fragment>
       <Brownie
@@ -65,7 +69,7 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
           n={convertMem(memory * totalAU, false)}
           l={(memory * totalAU < 1024 ? 'MB' : 'GB') + ' memory'}
         />
-        <RTag n={Math.floor(pods * totalAU)} l="pods" />
+        <RTag n={podCount} l="pods" />
         <RTag n={Math.floor(airflowConns * totalAU)} l="Airflow connections" />
         <RTag n={Math.floor(actualConns * totalAU)} l="connections" />
         {price > 0 && (
