@@ -59,7 +59,7 @@ class ResourcesForm extends React.Component {
             defaultValue={0}
             min={0}
             max={100}
-            step={1}
+            step={10}
             info={info.astroUnit}
             convertValue={null}
             astroUnit={deploymentConfig.astroUnit}
