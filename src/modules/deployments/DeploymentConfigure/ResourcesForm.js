@@ -58,7 +58,7 @@ class ResourcesForm extends React.Component {
             field={form.field('properties.astro_units')}
             defaultValue={0}
             min={0}
-            max={100}
+            max={deploymentConfig.maxExtraAu}
             step={10}
             info={info.astroUnit}
             convertValue={null}
