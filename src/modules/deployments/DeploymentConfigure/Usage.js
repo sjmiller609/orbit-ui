@@ -12,7 +12,6 @@ const convertAU = (au, scale) =>
 const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
   if (!executor || !deploymentConfig.executors) return null
   let slices = []
-  let podCount = 0
 
   const au = deploymentConfig.executors[executor].components.reduce(
     (au1, name) => {
@@ -25,9 +24,6 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
 
       resources.cpu = parseInt(c.resources.limits.cpu * replicas)
       resources.memory = parseInt(c.resources.limits.memory * replicas)
-
-      // 2 per component for a surge
-      podCount += 2 * replicas
 
       const au2 = calcAU(resources, deploymentConfig.astroUnit)
       slices.push({
@@ -67,7 +63,7 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
           n={convertMem(memory * totalAU, false)}
           l={(memory * totalAU < 1024 ? 'MB' : 'GB') + ' memory'}
         />
-        <RTag n={Math.floor(podCount + extra * pods)} l="pods" />
+        <RTag n={Math.floor(slices.length + pods * extra)} l="pods" />
         <RTag n={Math.floor(airflowConns * totalAU)} l="Airflow connections" />
         <RTag n={Math.floor(actualConns * totalAU)} l="connections" />
         {price > 0 && (
