@@ -15,7 +15,7 @@ const Info = ({ type, version, deployment }) => {
       {deployment && (
         <React.Fragment>
           <Tag>
-            Domain <B>{deployment.releaseName}</B>
+            Release <B>{deployment.releaseName}</B>
           </Tag>
           <Tag>
             Deployed{' '}
