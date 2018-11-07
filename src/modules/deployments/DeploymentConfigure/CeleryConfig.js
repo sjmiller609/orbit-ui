@@ -6,6 +6,7 @@ import info from '../info'
 
 import {
   workerSizeConvert,
+  workerSizeInfo,
   workerTerminationUnits,
   workerTerminationConvert,
 } from './helpers'
@@ -46,7 +47,7 @@ const CeleryConfig = ({
         defaultValue={presets.workerSizes.small}
         Component={Selector}
         options={workerSizes}
-        info={info.workerSize}
+        info={workerSizeInfo(presets.workerSizes)}
         convert={(size, out) =>
           workerSizeConvert(size, out, presets.workerSizes)
         }

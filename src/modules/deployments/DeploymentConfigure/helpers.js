@@ -1,5 +1,7 @@
 import { jsonEqual } from 'helpers/compare'
 import reserved from '../info/envVars/reserved'
+import { capitalize } from 'lodash'
+import info from '../info'
 
 // functions that convert the value into a display value
 export const workerTerminationConvert = (v, out) => {
@@ -61,4 +63,17 @@ export const resourceConvert = (v, out, scale) => {
     }
 
   return calcAU(v, scale)
+}
+
+export const workerSizeInfo = sizes => {
+  // Append preset information to worker size description
+  const sizeDetails = Object.keys(sizes)
+    .map(size => {
+      const cpu = convertCpu(sizes[size].limits.cpu)
+      const mem = convertMem(sizes[size].limits.memory)
+      return `${capitalize(size)}: ${cpu} / ${mem}`
+    })
+    .join(', ')
+
+  return `${info.workerSize} ${sizeDetails}`
 }
