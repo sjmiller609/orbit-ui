@@ -10,9 +10,6 @@ const convertAU = (au, scale) =>
   convertCpu(au * scale.cpu) + ', ' + convertMem(au * scale.memory)
 
 const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
-  console.log('======================')
-  console.log(extra)
-  console.log(typeof extra)
   if (!executor || !deploymentConfig.executors) return null
   let slices = []
 
