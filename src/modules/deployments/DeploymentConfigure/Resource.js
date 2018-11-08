@@ -46,8 +46,8 @@ const Resource = ({
         {showAllUnits && (
           <React.Fragment>
             <RTag n={Math.floor(pods * au)} l="pods" />
-            <RTag n={Math.floor(airflowConns * au)} l="Airflow connections" />
-            <RTag n={Math.floor(actualConns * au)} l="connections" />
+            <RTag n={Math.floor(airflowConns * au)} l="client connections" />
+            <RTag n={Math.floor(actualConns * au)} l="database connections" />
           </React.Fragment>
         )}
       </P>

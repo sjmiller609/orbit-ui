@@ -10,6 +10,9 @@ const convertAU = (au, scale) =>
   convertCpu(au * scale.cpu) + ', ' + convertMem(au * scale.memory)
 
 const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
+  console.log('======================')
+  console.log(extra)
+  console.log(typeof extra)
   if (!executor || !deploymentConfig.executors) return null
   let slices = []
 
@@ -64,8 +67,8 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
           l={(memory * totalAU < 1024 ? 'MB' : 'GB') + ' memory'}
         />
         <RTag n={Math.floor(slices.length + pods * extra)} l="pods" />
-        <RTag n={Math.floor(airflowConns * totalAU)} l="Airflow connections" />
-        <RTag n={Math.floor(actualConns * totalAU)} l="connections" />
+        <RTag n={Math.floor(airflowConns * totalAU)} l="client connections" />
+        <RTag n={Math.floor(actualConns * totalAU)} l="database connections" />
         {price > 0 && (
           <FormLabel className={s.formElement}>
             Price: <B>${price * totalAU} / Month</B>
