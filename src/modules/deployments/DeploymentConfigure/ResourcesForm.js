@@ -55,7 +55,7 @@ class ResourcesForm extends React.Component {
         <FormSection id="resources" title="Resources">
           <Resource
             label="Extra Capacity"
-            field={form.field('properties.astro_units')}
+            field={form.field('properties.extra_au')}
             defaultValue={0}
             min={0}
             max={deploymentConfig.maxExtraAu}
@@ -65,7 +65,7 @@ class ResourcesForm extends React.Component {
             astroUnit={deploymentConfig.astroUnit}
           />
           <Usage
-            extra={form.field('properties.astro_units').value}
+            extra={form.field('properties.extra_au').value}
             config={form.field('config').value}
             deploymentConfig={deploymentConfig}
             executor={form.field('config.executor').value}
