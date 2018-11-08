@@ -119,7 +119,7 @@ class NumberField extends React.Component {
             min={min}
             max={max}
             step={step}
-            value={value || 0}
+            value={parseInt(value || min)}
           />
           {units && <div className={s.units}>{units}</div>}
           {slider && (
@@ -127,7 +127,7 @@ class NumberField extends React.Component {
               min={min}
               max={max}
               step={step}
-              value={value || min}
+              value={parseInt(value || min)}
               className={s.slider}
               onChange={this.slider}
             />

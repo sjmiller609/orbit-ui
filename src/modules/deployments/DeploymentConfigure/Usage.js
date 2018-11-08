@@ -44,7 +44,7 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
     price,
   } = deploymentConfig.astroUnit
 
-  const totalAU = au + extra
+  const totalAU = au + parseInt(extra || 0)
 
   return (
     <React.Fragment>
