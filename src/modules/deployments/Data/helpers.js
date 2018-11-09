@@ -14,3 +14,5 @@ const errors = [
 ]
 
 export const handleError = error => formErrors({ error, errors })
+
+export const trimError = error => error.split(':')[1].trim()

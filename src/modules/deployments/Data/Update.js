@@ -3,7 +3,7 @@ import React from 'react'
 import api from './api'
 
 import { Mutation } from 'instruments'
-import { handleError } from './helpers'
+import { handleError, trimError } from './helpers'
 const Update = Component => {
   const Update = props => {
     return (
@@ -12,6 +12,7 @@ const Update = Component => {
         success="Deployment updated successfully."
         track="Deployment Updated"
         voidError
+        errorMsg={trimError}
         back>
         {({ mutate, error }) => {
           const newProps = {
