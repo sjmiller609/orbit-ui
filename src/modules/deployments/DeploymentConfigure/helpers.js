@@ -1,6 +1,7 @@
 import { jsonEqual } from 'helpers/compare'
 import reserved from '../info/envVars/reserved'
 import { capitalize } from 'lodash'
+import semver from 'semver'
 import info from '../info'
 
 // functions that convert the value into a display value
@@ -76,4 +77,8 @@ export const workerSizeInfo = sizes => {
     .join(', ')
 
   return `${info.workerSize} ${sizeDetails}`
+}
+
+export const upgradeExists = (current, latest) => {
+  return semver.gt(latest, current)
 }

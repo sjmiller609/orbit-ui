@@ -136,6 +136,7 @@ export const deploymentConfig = gql`
     }
     maxExtraAu
     executors
+    latestVersion
   }
 `
 

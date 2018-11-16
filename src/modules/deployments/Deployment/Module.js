@@ -5,6 +5,8 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import { Load } from 'instruments'
 import Data from '../Data'
 import Module from '../../app/Module'
+import DeploymentConfigData from '../Data/Config'
+
 const Configure = Load(() =>
   import(/* webpackPrefetch: true */ '../DeploymentConfigure')
 )
@@ -17,6 +19,8 @@ const ServiceAccounts = Load(() =>
 const Alerts = Load(() =>
   import(/* webpackPrefetch: true */ 'modules/alerts/Alerts')
 )
+
+const DeploymentConfig = DeploymentConfigData(Configure)
 
 const Deployment = ({ deployments, menu, title }) => {
   const deployment = deployments[0]
@@ -51,7 +55,7 @@ const Deployment = ({ deployments, menu, title }) => {
         <Route
           path={path + '/configure'}
           exact
-          render={() => <Configure deployment={deployment} />}
+          render={() => <DeploymentConfig deployment={deployment} />}
         />
         <Route
           path={path}

@@ -5,8 +5,10 @@ import UpdateForm from './UpdateForm'
 import ResourcesForm from './ResourcesForm'
 
 import Delete from './Delete'
+import Upgrade from './Upgrade'
 import { CardMenu } from 'instruments'
 import Update from '../Data/Update'
+import { upgradeExists } from './helpers'
 
 const Configure = Update(UpdateForm)
 const ConfigureResources = Update(ResourcesForm)
@@ -55,14 +57,27 @@ class DeploymentConfigure extends React.Component {
   }
 
   render() {
-    const { deployment } = this.props
+    const { deployment, deploymentConfig } = this.props
     const configVars = {
       version: deployment.version,
       type: deployment.type,
       deploymentId: deployment.id,
     }
+
+    // Determine if this deployment is out of date
+    const upgrade = upgradeExists(
+      deployment.version,
+      deploymentConfig.latestVersion
+    )
+
     return (
       <CardMenu menu={menu}>
+        {upgrade && (
+          <Upgrade
+            deployment={deployment}
+            deploymentConfig={deploymentConfig}
+          />
+        )}
         <Configure
           deployment={deployment}
           data={deployment}
@@ -85,6 +100,7 @@ class DeploymentConfigure extends React.Component {
 
 DeploymentConfigure.propTypes = {
   deployment: PropTypes.object,
+  deploymentConfig: PropTypes.object,
 }
 
 export default DeploymentConfigure

@@ -71,6 +71,13 @@ export default {
       }
     }
   `,
+  UpgradeDeployment: gql`
+    mutation upgradeDeployment($id: Uuid!, $version: String!) {
+      upgradeDeployment(deploymentUuid: $id, version: $version) {
+        id: uuid
+      }
+    }
+  `,
   DeploymentConfig: gql`
     query deploymentConfig(
       $workspaceId: Uuid
