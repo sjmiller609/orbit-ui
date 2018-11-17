@@ -24,13 +24,12 @@ const Info = ({ type, version, deployment }) => {
             </B>
           </Tag>
           <Tag>
-            Helm Chart <B>v{deployment.version}</B>
+            Astronomer <B>v{deployment.version}</B>
           </Tag>
         </React.Fragment>
       )}
       <Tag>
-        <span>{type === 'airflow' ? 'Apache Airflow' : type}</span>{' '}
-        <B>v{version}</B>
+        <span>{type === 'airflow' ? 'Airflow' : type}</span> <B>v{version}</B>
       </Tag>
     </div>
   )
