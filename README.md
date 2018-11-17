@@ -73,7 +73,7 @@ Link
 |--tests
    |--index.test.js
    |--__snapshots__
-      |--index.test.js.snap  
+      |--index.test.js.snap
 ```
 
 ### Instruments
