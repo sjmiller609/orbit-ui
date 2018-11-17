@@ -59,7 +59,7 @@ class Executor extends React.Component {
           options={this.options}
           info={info.executor}
           required
-          defaultValue="LocalExecutor"
+          defaultValue="CeleryExecutor"
         />
         {this.renderConfig(executor.value)}
       </React.Fragment>
