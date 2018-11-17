@@ -8,14 +8,17 @@ import Data from '../Data'
 import Item from './Item'
 import Empty from './Empty'
 
-const List = ({ deployments, search }) => {
+const List = ({ deployments, search, latestVersion }) => {
   const button = {
     text: 'New Deployment',
     to: '/deployments/new',
   }
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
-      {deployments && deployments.map(d => <Item key={d.id} deployment={d} />)}
+      {deployments &&
+        deployments.map(d => (
+          <Item key={d.id} deployment={d} latestVersion={latestVersion} />
+        ))}
     </Table>
   )
 }
@@ -23,6 +26,7 @@ const List = ({ deployments, search }) => {
 List.propTypes = {
   deployments: PropTypes.array,
   search: PropTypes.object,
+  latestVersion: PropTypes.string,
 }
 
 export default Data(List)

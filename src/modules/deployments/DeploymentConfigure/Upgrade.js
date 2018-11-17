@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { CardConfirm, B } from 'instruments'
+import { CardConfirm, Link, B } from 'instruments'
 
 import { default as Mutate } from '../Data/Upgrade'
 
@@ -11,9 +11,12 @@ const Upgrade = ({ deployment, deploymentConfig = {}, onSubmit }) => {
       title="Upgrade Available!"
       text={
         <span>
-          You are currently running <B>v{deployment.version}</B>, and the latest
-          version is <B>v{deploymentConfig.latestVersion}</B>. For more
-          information on this upgrade click here.
+          You are currently running Astronomer <B>v{deployment.version}</B>, and
+          the latest version is <B>v{deploymentConfig.latestVersion}</B>. For
+          more information on this upgrade{' '}
+          <Link to="google.com" newTab>
+            click here
+          </Link>.
         </span>
       }
       buttonText="Upgrade"

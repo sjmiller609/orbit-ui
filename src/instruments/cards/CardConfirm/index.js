@@ -21,7 +21,7 @@ const CardConfirm = ({
       button: {
         text: confirm.buttonText || 'Confirm',
         onClick: onSubmit,
-        style: 'blue',
+        style: 'green',
       },
     })
 
@@ -34,7 +34,7 @@ const CardConfirm = ({
         onClick,
         text: buttonText || 'Confirm',
         save: !disabled,
-        style: 'blue',
+        style: 'green',
       }}>
       {children || <P>{text}</P>}
     </CardForm>

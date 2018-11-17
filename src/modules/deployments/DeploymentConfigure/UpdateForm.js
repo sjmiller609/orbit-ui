@@ -8,6 +8,7 @@ import DeploymentConfig from '../Data/Config'
 
 import EnvVars from './EnvVars'
 import Info from './Info'
+import { gteSeven } from '../helpers'
 
 class Configure extends React.Component {
   mounted = true
@@ -60,7 +61,9 @@ class Configure extends React.Component {
           />
           <Info deployment={deployment} type={deployment.type} version="1.9" />
         </FormSection>
-        {this.state.renderConfig && this.renderConfig()}
+        {this.state.renderConfig &&
+          gteSeven(deployment.version) &&
+          this.renderConfig()}
       </CardForm>
     )
   }

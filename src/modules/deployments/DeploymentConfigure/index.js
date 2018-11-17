@@ -8,39 +8,10 @@ import Delete from './Delete'
 import Upgrade from './Upgrade'
 import { CardMenu } from 'instruments'
 import Update from '../Data/Update'
-import { upgradeExists } from './helpers'
+import { lt, gteSeven } from '../helpers'
 
 const Configure = Update(UpdateForm)
 const ConfigureResources = Update(ResourcesForm)
-
-const menu = [
-  {
-    text: 'Deployment Info',
-    id: 'info',
-  },
-  {
-    text: 'Environment Vars',
-    id: 'env',
-  },
-  {
-    text: 'Executor',
-    id: 'executor',
-    newForm: true,
-  },
-  {
-    text: 'Components',
-    id: 'components',
-  },
-  {
-    text: 'Resources',
-    id: 'resources',
-  },
-  {
-    text: 'Deprovision',
-    id: 'delete',
-    newForm: true,
-  },
-]
 
 class DeploymentConfigure extends React.Component {
   mounted = true
@@ -56,6 +27,63 @@ class DeploymentConfigure extends React.Component {
     if (this.mounted && !this.state[c]) this.setState({ [c]: true })
   }
 
+  // Determine if this deployment is out of date
+  showUpgrade() {
+    const { deployment, deploymentConfig } = this.props
+    return lt(deployment.version, deploymentConfig.latestVersion)
+  }
+
+  // Determine when to show delete (lazy loading)
+  showDelete() {
+    const { deployment } = this.props
+    return gteSeven(deployment.version)
+      ? this.state.resources
+      : this.state.configure
+  }
+
+  // Dynamically create menu list
+  menu() {
+    const { deployment } = this.props
+
+    const menu = [
+      {
+        text: 'Deployment Info',
+        id: 'info',
+      },
+      {
+        text: 'Deprovision',
+        id: 'delete',
+        newForm: true,
+      },
+    ]
+
+    if (gteSeven(deployment.version)) {
+      menu.splice(
+        1,
+        0,
+        {
+          text: 'Environment Vars',
+          id: 'env',
+        },
+        {
+          text: 'Executor',
+          id: 'executor',
+          newForm: true,
+        },
+        {
+          text: 'Components',
+          id: 'components',
+        },
+        {
+          text: 'Resources',
+          id: 'resources',
+        }
+      )
+    }
+
+    return menu
+  }
+
   render() {
     const { deployment, deploymentConfig } = this.props
     const configVars = {
@@ -64,15 +92,9 @@ class DeploymentConfigure extends React.Component {
       deploymentId: deployment.id,
     }
 
-    // Determine if this deployment is out of date
-    const upgrade = upgradeExists(
-      deployment.version,
-      deploymentConfig.latestVersion
-    )
-
     return (
-      <CardMenu menu={menu}>
-        {upgrade && (
+      <CardMenu menu={this.menu()}>
+        {this.showUpgrade() && (
           <Upgrade
             deployment={deployment}
             deploymentConfig={deploymentConfig}
@@ -84,15 +106,16 @@ class DeploymentConfigure extends React.Component {
           configVars={configVars}
           loaded={this.loaded}
         />
-        {this.state.configure && (
-          <ConfigureResources
-            deployment={deployment}
-            data={deployment}
-            configVars={configVars}
-            loaded={this.loaded}
-          />
-        )}
-        {this.state.resources && <Delete deployment={deployment} />}
+        {this.state.configure &&
+          gteSeven(deployment.version) && (
+            <ConfigureResources
+              deployment={deployment}
+              data={deployment}
+              configVars={configVars}
+              loaded={this.loaded}
+            />
+          )}
+        {this.showDelete() && <Delete deployment={deployment} />}
       </CardMenu>
     )
   }

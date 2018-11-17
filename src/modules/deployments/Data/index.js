@@ -8,15 +8,24 @@ import { Query } from 'instruments'
 const Data = Component => {
   const Data = ({ vars, skip, search, ...otherProps }) => {
     return (
-      <Query gql={api.Deployments} vars={vars} skip={skip} search={search}>
-        {({ data: { deployments } }) => {
-          const newProps = {
-            ...otherProps,
-            search,
-            deployments,
-          }
-          return <Component {...newProps} />
-        }}
+      <Query gql={api.DeploymentConfig}>
+        {({
+          data: {
+            deploymentConfig: { latestVersion },
+          },
+        }) => (
+          <Query gql={api.Deployments} vars={vars} skip={skip} search={search}>
+            {({ data: { deployments } }) => {
+              const newProps = {
+                ...otherProps,
+                search,
+                deployments,
+                latestVersion,
+              }
+              return <Component {...newProps} />
+            }}
+          </Query>
+        )}
       </Query>
     )
   }

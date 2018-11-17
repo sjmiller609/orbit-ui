@@ -23,6 +23,15 @@ div.list {
   }
 }
 
+.upgrade {
+  width: 35%;
+  min-width: 18rem;
+  color: $darkGreen;
+  @media screen and (max-width: 55rem) {
+    display: none;
+  }
+}
+
 .item:hover {
   :global {
     .ring {
