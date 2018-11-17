@@ -1,16 +1,33 @@
 pipeline:
-
-  # Build the project
   build:
-    image: node
+    image: astronomerio/ap-build:0.1.1
     commands:
-      - npm install
+      - docker build -t astronomerinc/ap-orbit-ui:dev .
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    when:
+      event: push
+      branch: [ master ]
 
-  # Test the project
   test:
-    image: node
+    image: astronomerinc/ap-orbit-ui:dev
     commands:
       - npm test
+    when:
+      event: push
+      branch: [ master ]
+
+  push:
+    image: astronomerio/ap-build:0.1.1
+    commands:
+      - docker login -u $${DOCKER_USERNAME} -p $${DOCKER_PASSWORD}
+      - docker push astronomerinc/ap-orbit-ui:dev
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    secrets: [ docker_username, docker_password ]
+    when:
+      event: push
+      branch: [ master ]
 
   # Trigger build of production images from master
   trigger:
