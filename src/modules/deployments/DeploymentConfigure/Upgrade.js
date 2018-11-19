@@ -14,7 +14,7 @@ const Upgrade = ({ deployment, deploymentConfig = {}, onSubmit }) => {
           You are currently running Astronomer <B>v{deployment.version}</B>, and
           the latest version is <B>v{deploymentConfig.latestVersion}</B>. For
           more information on this upgrade{' '}
-          <Link to="google.com" newTab>
+          <Link to="https://www.astronomer.io/docs/release-notes" newTab>
             click here
           </Link>.
         </span>
