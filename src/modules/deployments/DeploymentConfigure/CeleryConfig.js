@@ -6,37 +6,11 @@ import info from '../info'
 
 import Resource from './Resource'
 
-import {
-  // workerSizeConvert,
-  // workerSizeInfo,
-  workerTerminationUnits,
-  workerTerminationConvert,
-} from './helpers'
-
-// const workerSizes = [
-//   {
-//     icon: 'alien_ship',
-//     value: 'small',
-//     text: 'Small',
-//     className: s.sizeS,
-//   },
-//   {
-//     icon: 'alien_ship',
-//     value: 'medium',
-//     text: 'Medium',
-//     className: s.sizeM,
-//   },
-//   {
-//     icon: 'alien_ship',
-//     value: 'large',
-//     text: 'Large',
-//     className: s.sizeL,
-//   },
-// ]
+import { workerTerminationUnits, workerTerminationConvert } from './helpers'
 
 const CeleryConfig = ({
   form,
-  deploymentConfig: { defaults, limits, presets, astroUnit },
+  deploymentConfig: { defaults, limits, astroUnit },
 }) => {
   return (
     <FormSubSection title="Celery Executor Config">
@@ -45,7 +19,7 @@ const CeleryConfig = ({
         field={form.field('config.workers.resources.limits')}
         defaultValue={defaults.workers.resources.requests}
         max={limits.workers.resources.limits}
-        info={presets.workerSizes}
+        info={info.workerSize}
         required
         astroUnit={astroUnit}
       />
