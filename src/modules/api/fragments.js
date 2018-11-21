@@ -125,7 +125,6 @@ export const deploymentConfig = gql`
   fragment deploymentConfig on DeploymentConfig {
     defaults
     limits
-    presets
     astroUnit {
       cpu
       memory

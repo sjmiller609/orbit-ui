@@ -1,56 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import s from './styles.scss'
-import { NumberField, Select, FormSubSection } from 'instruments'
+import { NumberField, FormSubSection } from 'instruments'
 import info from '../info'
 
-import {
-  workerSizeConvert,
-  workerSizeInfo,
-  workerTerminationUnits,
-  workerTerminationConvert,
-} from './helpers'
+import Resource from './Resource'
 
-import Selector from './Selector'
-
-const workerSizes = [
-  {
-    icon: 'alien_ship',
-    value: 'small',
-    text: 'Small',
-    className: s.sizeS,
-  },
-  {
-    icon: 'alien_ship',
-    value: 'medium',
-    text: 'Medium',
-    className: s.sizeM,
-  },
-  {
-    icon: 'alien_ship',
-    value: 'large',
-    text: 'Large',
-    className: s.sizeL,
-  },
-]
+import { workerTerminationUnits, workerTerminationConvert } from './helpers'
 
 const CeleryConfig = ({
   form,
-  deploymentConfig: { defaults, limits, presets },
+  deploymentConfig: { defaults, limits, astroUnit },
 }) => {
   return (
     <FormSubSection title="Celery Executor Config">
-      <Select
-        {...form.field('config.workers.resources')}
-        label="Worker Size"
-        className={s.selectors}
-        defaultValue={presets.workerSizes.small}
-        Component={Selector}
-        options={workerSizes}
-        info={workerSizeInfo(presets.workerSizes)}
-        convert={(size, out) =>
-          workerSizeConvert(size, out, presets.workerSizes)
-        }
+      <Resource
+        label="Workers"
+        field={form.field('config.workers.resources.limits')}
+        defaultValue={defaults.workers.resources.requests}
+        max={limits.workers.resources.limits}
+        info={info.workerSize}
+        required
+        astroUnit={astroUnit}
       />
       <NumberField
         label="Worker Count"
