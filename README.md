@@ -1,12 +1,8 @@
-# Overview
+# Orbit-UI for Astronomer
 
-Open-source UI for Astronomer's managed Apache Airflow platform. For Enterprise Edition - a production-ready Airflow stack deployable to any Kubernetes cluster. For Cloud Edition (coming soon) - a fully managed service hosted on our infrastructure.
+## Overview
 
-Some notable features:
-
-* Deploy Airflow instances in one click.
-* Monitor deployments easily with server logs, worker queues, and more.
-* Manage user roles and deployment access, with a history of audit logs for all activities (coming soon).
+React UI for Astronomer, a managed service to run Apache Airflow on Kubernetes.
 
 # Run Locally
 
