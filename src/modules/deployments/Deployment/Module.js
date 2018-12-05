@@ -20,10 +20,7 @@ const Alerts = Load(() =>
   import(/* webpackPrefetch: true */ 'modules/alerts/Alerts')
 )
 
-<<<<<<< HEAD
 const DeploymentConfig = DeploymentConfigData(Configure)
-=======
->>>>>>> 44feb8650ccade1ae24d56778d5f4a70e58e2b86
 const Logs = Load(() =>
   import(/* webpackPrefetch: true */ 'modules/logs/DeploymentLogs')
 )
