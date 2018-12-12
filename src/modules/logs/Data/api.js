@@ -1,12 +1,21 @@
 import gql from 'graphql-tag'
 
 export default {
+  // Logs: gql`
+  //   query logs {
+  //     logs {
+  //       id: uuid
+  //       createdAt
+  //       log
+  //     }
+  //   }
+  // `,
   Logs: gql`
     query logs {
       logs {
-        id: uuid
-        createdAt
-        log
+        id: level
+        timestamp
+        log: message
       }
     }
   `,
