@@ -13,8 +13,8 @@ export default {
   Logs: gql`
     query logs {
       logs {
-        id: level
-        timestamp
+        id: uuid
+        createdAt: timestamp
         log: message
       }
     }
