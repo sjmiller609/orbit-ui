@@ -1,15 +1,6 @@
 import gql from 'graphql-tag'
 
 export default {
-  // Logs: gql`
-  //   query logs {
-  //     logs {
-  //       id: uuid
-  //       createdAt
-  //       log
-  //     }
-  //   }
-  // `,
   Logs: gql`
     query logs {
       logs {
@@ -23,8 +14,8 @@ export default {
     subscription log {
       log {
         id: uuid
-        createdAt
-        log
+        createdAt: timestamp
+        log: message
       }
     }
   `,
