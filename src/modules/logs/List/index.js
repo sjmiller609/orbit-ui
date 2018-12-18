@@ -16,11 +16,15 @@ class List extends React.Component {
     if (this.props.subscribeToMore)
       this.subscribe = this.props.subscribeToMore()
   }
+
   componentWillUnmount() {
     if (this.subscribe) this.subscribe()
   }
   render() {
     const { logs, search, since, type } = this.props
+    const lastRowLen = logs.length
+    const currentLogs = Array.isArray(logs[lastRowLen - 1]) === false ? logs : logs[lastRowLen - 1]
+
     return (
       <Table
         className={s.list}
@@ -28,8 +32,8 @@ class List extends React.Component {
         Container={Console}
         nav={<Nav selected={type} />}
         headerOptions={<Since {...since} />}>
-        {logs && logs.map((l, i) => <Item key={l.id || i} log={l} />)}
-        {(!logs || !logs.length) && (
+        {currentLogs && currentLogs.map((l, i) => <Item key={l.id || i} log={l} />)}
+        {(!currentLogs || !currentLogs.length) && (
           <Mini className={s.waiting}>
             Waiting for logs<LoadingDots />
           </Mini>
