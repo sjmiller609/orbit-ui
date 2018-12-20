@@ -11,12 +11,12 @@ const Data = Component => {
       <Query
         gql={api.Logs}
         skip={skip}
-        vars={vars}
+        vars={props}
         search={search}
         sortNewest={false}
         subscribe={{
           gql: api.SubscribeLogs,
-          vars: null,
+          vars: props,
         }}>
         {({ data: { logs }, subscribeToMore }) => {
           const newProps = {
