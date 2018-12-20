@@ -2,17 +2,18 @@ import gql from 'graphql-tag'
 
 export default {
   Logs: gql`
-    query logs {
-      logs {
+    query logs($component: String!) {
+      logs(component: $component) {
         id: uuid
         createdAt: timestamp
         log: message
       }
     }
   `,
+
   SubscribeLogs: gql`
-    subscription log {
-      log {
+    subscription log($component: String!) {
+      log(component: $component) {
         id: uuid
         createdAt: timestamp
         log: message
