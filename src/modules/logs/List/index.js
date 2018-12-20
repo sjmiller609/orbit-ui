@@ -20,8 +20,9 @@ class List extends React.Component {
   componentWillUnmount() {
     if (this.subscribe) this.subscribe()
   }
+
   render() {
-    const { logs, search, since, type } = this.props
+    const { logs, search, since, component } = this.props
     const lastRowLen = logs.length
     const currentLogs = Array.isArray(logs[lastRowLen - 1]) === false ? logs : logs[lastRowLen - 1]
 
@@ -30,7 +31,7 @@ class List extends React.Component {
         className={s.list}
         search={search}
         Container={Console}
-        nav={<Nav selected={type} />}
+        nav={<Nav selected={component} />}
         headerOptions={<Since {...since} />}>
         {currentLogs && currentLogs.map((l, i) => <Item key={l.id || i} log={l} />)}
         {(!currentLogs || !currentLogs.length) && (
@@ -46,7 +47,7 @@ class List extends React.Component {
 List.propTypes = {
   logs: PropTypes.array,
   search: PropTypes.object,
-  type: PropTypes.string,
+  component: PropTypes.string,
   since: PropTypes.object,
   subscribeToMore: PropTypes.func,
 }
