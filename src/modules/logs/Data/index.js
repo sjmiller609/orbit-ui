@@ -6,7 +6,7 @@ import api from './api'
 import { Query } from 'instruments'
 
 const Data = Component => {
-  const Data = ({ vars, skip, search, ...props }) => {
+  const Data = ({ skip, search, ...props }) => {
     return (
       <Query
         gql={api.Logs}
@@ -14,6 +14,7 @@ const Data = Component => {
         vars={props}
         search={search}
         sortNewest={false}
+        fetchPolicy="network-only"
         subscribe={{
           gql: api.SubscribeLogs,
           vars: props,

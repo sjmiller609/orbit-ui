@@ -24,9 +24,13 @@ class List extends React.Component {
   render() {
     const { logs, search, since, component } = this.props
     const lastRow = logs.length
-    const currentLogs = (Array.isArray(logs[lastRow - 1]) === false ? logs : logs[lastRow - 1]).slice(0).reverse()
+    const currentLogs = (Array.isArray(logs[lastRow - 1]) === false
+      ? logs
+      : logs[lastRow - 1]
+    )
+      .slice(0)
+      .reverse()
 
-    console.log(search)
     return (
       <Table
         className={s.list}
@@ -34,7 +38,8 @@ class List extends React.Component {
         Container={Console}
         nav={<Nav selected={component} />}
         headerOptions={<Since {...since} />}>
-        {currentLogs && currentLogs.map((l, i) => <Item key={l.id || i} log={l} />)}
+        {currentLogs &&
+          currentLogs.map((l, i) => <Item key={l.id || i} log={l} />)}
         {(!currentLogs || !currentLogs.length) && (
           <Mini className={s.waiting}>
             Waiting for logs<LoadingDots />

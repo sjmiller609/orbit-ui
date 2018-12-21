@@ -22,7 +22,7 @@ const Query = ({
   return (
     <Apollo
       query={gql}
-      fetchPolicy={'network-only'}
+      fetchPolicy={fetchPolicy}
       variables={vars}
       skip={skip}
       errorPolicy="all">
