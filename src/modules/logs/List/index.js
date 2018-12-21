@@ -23,9 +23,10 @@ class List extends React.Component {
 
   render() {
     const { logs, search, since, component } = this.props
-    const lastRowLen = logs.length
-    const currentLogs = Array.isArray(logs[lastRowLen - 1]) === false ? logs : logs[lastRowLen - 1]
+    const lastRow = logs.length
+    const currentLogs = (Array.isArray(logs[lastRow - 1]) === false ? logs : logs[lastRow - 1]).slice(0).reverse()
 
+    console.log(search)
     return (
       <Table
         className={s.list}
