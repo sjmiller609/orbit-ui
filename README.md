@@ -52,6 +52,14 @@ Note: Sometimes the docker image doesn't spin down, and thus, doesn't start up a
 
 4.  Go to http://localhost:5000/ to access the app
 
+### Get logs streaming locally
+
+After running `docker-compose up` in the Houston directory and `npm run local` in the Orbit directory, you need to start the mock flow of logs into Elasticsearch. In the `houston` directory, there is a subdirectory `includes`, and the seed script is `es-seed.js`. Start the script by running `node es-seed.js workspace release`. Fake logs will started generating and indexing into the Elasticsearch client.
+
+1. Orbit is using node version 8.0.0 for development. Use `nvm use 8.0.0` to use the specific version of node.
+
+2. Go to http://localhost:5000/ and create a new account if necessary. Create a new deployment, and click through to the `Logs` section. Logs should be flowing into here if the JS Elasticsearch log script is running.
+
 # How it's built
 
 Orbit is a React app built with Apollo graphql.
