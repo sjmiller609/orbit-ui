@@ -7,6 +7,7 @@ import { Query } from 'instruments'
 
 const Data = Component => {
   const Data = ({ skip, search, ...props }) => {
+
     return (
       <Query
         gql={api.Logs}
@@ -14,7 +15,7 @@ const Data = Component => {
         vars={props}
         search={search}
         sortNewest={false}
-        fetchPolicy="network-only"
+        fetchPolicy="cache-and-network"
         subscribe={{
           gql: api.SubscribeLogs,
           vars: props,
