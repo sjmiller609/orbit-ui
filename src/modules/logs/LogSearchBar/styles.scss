@@ -1,0 +1,51 @@
+@import 'src/styles/mixins.scss';
+
+.search {
+  position: relative;
+
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0.5rem;
+    z-index: 1;
+    background: url('./logsearchbar.svg') no-repeat center center;
+    background-size: 1.2rem 1.2rem;
+    width: 1.2rem;
+    height: 100%;
+  }
+
+  input[type='text'].input {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    display: inline-block;
+  }
+
+  .clear {
+    display: inline-block;
+    position: absolute;
+    margin: 2rem 0 0 -1.4em;
+    font-size: 1.2rem;
+    line-height: 100%;
+    z-index: 1;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: $gray;
+  }
+
+  &.dark {
+    input {
+      color: $darkWhite;
+      background-color: $purple;
+      &:hover,
+      &:focus {
+        background-color: $purple
+      }
+    }
+  }
+}
+
+.searchbar-button {
+  margin-left: 10px;
+}
