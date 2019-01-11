@@ -88,7 +88,8 @@ Mutation.propTypes = {
   gql: PropTypes.object,
   children: PropTypes.func.isRequired,
   vars: PropTypes.object,
-  //  query: PropTypes.object,
+  // i uncommented query, if anything breaks try commenting it out
+  query: PropTypes.object,
   onSuccess: PropTypes.func,
   update: PropTypes.func,
   setSnackbar: PropTypes.func,
