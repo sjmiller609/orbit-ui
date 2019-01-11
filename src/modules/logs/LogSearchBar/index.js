@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 // NOTE: Importing field styles from TextField
 import classnames from 'classnames'
 
-import { LoadingDots, Button } from 'instruments'
+import { Button } from 'instruments'
 
 import field from '../../../instruments/forms/Field/styles.scss'
 import s from './styles.scss'
@@ -38,16 +38,16 @@ class LogSearchBar extends React.Component {
   }
 
   render() {
-    const { placeholder, text, dark, className } = this.props
+    const { placeholder, dark, className } = this.props
     const { search } = this.state
 
     return (
       <div
         className={classnames(
-            field.field,
-            s.search,
-            className,
-            dark ? s.dark : null
+          field.field,
+          s.search,
+          className,
+          dark ? s.dark : null
         )}>
         <input
           type="text"

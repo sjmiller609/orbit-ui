@@ -48,29 +48,29 @@ class DeploymentLogs extends React.Component {
   render() {
     const { search, start, since, component } = this.state
     return (
-        <div>
-          <DeploymentLogsSearch
-            search={{
-              text: search,
-              ...this.search,
-            }}
-          />
-          <List
-            // search={{
-            //   text: search,
-            //   ...this.search,
-            // }}
-            vars={{
-              text: search
-            }}
-            since={{
-              set: this.setStart,
-              get: start,
-              since,
-            }}
-            component={component}
-          />
-        </div>
+      <div>
+        <DeploymentLogsSearch
+          search={{
+            text: search,
+            ...this.search,
+          }}
+        />
+        <List
+          // search={{
+          //   text: search,
+          //   ...this.search,
+          // }}
+          vars={{
+            text: search,
+          }}
+          since={{
+            set: this.setStart,
+            get: start,
+            since,
+          }}
+          component={component}
+        />
+      </div>
     )
   }
 }

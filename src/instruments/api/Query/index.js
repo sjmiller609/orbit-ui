@@ -5,8 +5,6 @@ import PropTypes from 'prop-types'
 import { Query as Apollo } from 'react-apollo'
 import { Loading, CardError } from 'instruments'
 
-import { searchText } from 'helpers/compare'
-
 const Query = ({
   gql,
   vars,
@@ -19,7 +17,6 @@ const Query = ({
   sortNewest = true,
   sortBy,
 }) => {
-
   return (
     <Apollo
       query={gql}
@@ -28,7 +25,7 @@ const Query = ({
       skip={skip}
       search={search}
       errorPolicy="all">
-      {({ loading, error, data, subscribeToMore, client }) => {
+      {({ loading, error, data, subscribeToMore }) => {
         if (loading) return <Loading /> // return this instead of updating contextUI
         if (error) {
           if (OnError) return OnError
@@ -67,9 +64,7 @@ const Query = ({
         const newProps = { data: data3 || data2 }
 
         if (subscribe) {
-
           newProps.subscribeToMore = () => {
-
             return subscribeToMore({
               document: subscribe.gql,
               variables: subscribe.vars,

@@ -7,7 +7,6 @@ import { Query } from 'instruments'
 
 const Data = Component => {
   const Data = ({ skip, search, ...props }) => {
-
     return (
       <Query
         gql={api.Logs}

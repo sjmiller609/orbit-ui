@@ -28,7 +28,10 @@ class List extends React.Component {
     const lastRow = logs.length
     const currentLogs = (Array.isArray(logs[lastRow - 1]) === false
       ? logs
-      : logs[lastRow - 1]).slice(0).reverse()
+      : logs[lastRow - 1]
+    )
+      .slice(0)
+      .reverse()
 
     return (
       <Table
