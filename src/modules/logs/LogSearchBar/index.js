@@ -56,8 +56,8 @@ class LogSearchBar extends React.Component {
           onChange={this.type}
           className={s.input}
         />
-        <Button onClick={() => this.search()}>Query Logs</Button>
-        <Button onClick={() => this.clear()}>Clear Search</Button>
+        <Button onClick={() => this.search()}>Search</Button>
+        <Button className="clear" style="beige" onClick={() => this.clear()}>Clear</Button>
       </div>
     )
   }

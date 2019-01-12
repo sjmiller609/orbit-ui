@@ -2,7 +2,7 @@
 
 .search {
   position: relative;
-
+  margin-left: 3rem;
 
   &:after {
     content: '';
@@ -19,19 +19,14 @@
   input[type='text'].input {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+    margin-right: 2rem;
+    margin-top: 0.3rem;
+    max-width: 25rem;
     display: inline-block;
   }
 
-  .clear {
-    display: inline-block;
-    position: absolute;
-    margin: 2rem 0 0 -1.4em;
-    font-size: 1.2rem;
-    line-height: 100%;
-    z-index: 1;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: $gray;
+  button {
+    margin-right: 1rem;
   }
 
   &.dark {
@@ -44,8 +39,4 @@
       }
     }
   }
-}
-
-.searchbar-button {
-  margin-left: 10px;
 }
