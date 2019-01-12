@@ -16,7 +16,6 @@ const Since = ({ get, set, since }) => {
   return (
     <Dropdown
       className={s.since}
-      right
       selector={<div className={s.button}>{msg}</div>}>
       <MenuList label="View logs from:">
         <Item onClick={() => set(10)}>Past 10 minutes</Item>
