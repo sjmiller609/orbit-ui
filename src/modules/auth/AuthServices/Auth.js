@@ -35,9 +35,11 @@ class Auth extends React.Component {
               </Mini>
             ) : (
               <Mini>
-                <Link to="https://www.astronomer.io/contact">
-                  Contact Astronomer
-                </Link>
+                Please review {' '}
+                <Link to="https://www.astronomer.io/terms">terms of service</Link>{' '}
+                and{' '}
+                <Link to="https://www.astronomer.io/privacy">privacy policy</Link>{' '}
+                prior to signing up for Astronomer Cloud.
               </Mini>
             )}
           </Row>
@@ -63,6 +65,7 @@ class Auth extends React.Component {
               )}
             </React.Fragment>
           )}
+
         <Buttons authConfig={authConfig} login={login} />
         {/* <div className={s.terms}>
         {login ? (
