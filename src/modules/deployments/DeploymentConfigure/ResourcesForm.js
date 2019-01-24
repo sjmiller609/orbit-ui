@@ -10,6 +10,30 @@ import Executor from './Executor'
 import Resource from './Resource'
 import Usage from './Usage'
 
+class ExtraResourcesForm extends React.Component {
+  render() {
+    const { form, deploymentConfig } = this.props
+    return (
+        <Resource
+          label="Extra Capacity"
+          field={form.field('properties.extra_au')}
+          defaultValue={0}
+          min={0}
+          max={deploymentConfig.maxExtraAu}
+          step={10}
+          info={info.astroUnit}
+          convertValue={null}
+          astroUnit={deploymentConfig.astroUnit}
+        />
+    )
+  }
+}
+
+ExtraResourcesForm.propTypes = {
+  form: PropTypes.object,
+  deploymentConfig: PropTypes.object,
+}
+
 class ResourcesForm extends React.Component {
   componentDidMount() {
     this.props.loaded('resources')
@@ -51,19 +75,10 @@ class ResourcesForm extends React.Component {
             astroUnit={deploymentConfig.astroUnit}
           />
         </FormSection>
-
         <FormSection id="resources" title="Resources">
-          <Resource
-            label="Extra Capacity"
-            field={form.field('properties.extra_au')}
-            defaultValue={0}
-            min={0}
-            max={deploymentConfig.maxExtraAu}
-            step={10}
-            info={info.astroUnit}
-            convertValue={null}
-            astroUnit={deploymentConfig.astroUnit}
-          />
+          {deploymentConfig.singleNamespace || (
+            <ExtraResourcesForm {...this.props} />
+          )}
           <Usage
             extra={form.field('properties.extra_au').value}
             config={form.field('config').value}
