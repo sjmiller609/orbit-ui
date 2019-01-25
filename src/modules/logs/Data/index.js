@@ -11,11 +11,13 @@ const Data = Component => {
       <Query
         gql={api.Logs}
         skip={skip}
+        vars={props}
         search={search}
         sortNewest={false}
+        fetchPolicy="cache-and-network"
         subscribe={{
           gql: api.SubscribeLogs,
-          vars: null,
+          vars: props,
         }}>
         {({ data: { logs }, subscribeToMore }) => {
           const newProps = {
@@ -34,6 +36,7 @@ const Data = Component => {
     skip: PropTypes.bool,
     OnError: PropTypes.element,
     search: PropTypes.object,
+    vars: PropTypes.object,
   }
 
   return Data
