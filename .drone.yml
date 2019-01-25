@@ -37,11 +37,12 @@ pipeline:
     repositories:
       - astronomer/astronomer
     when:
+      event: push
       branch: master
 
   notify:
     image: plugins/slack
     secrets: [ slack_webhook ]
-    channel: engineering
+    channel: platform
     when:
       status: [ failure ]
