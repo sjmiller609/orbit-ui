@@ -2,7 +2,7 @@
 import React from 'react'
 import api from './api'
 
-import { Mutation } from 'instruments'
+import { Mutation, CardError } from 'instruments'
 import { handleError, trimError } from './helpers'
 const Update = Component => {
   const Update = props => {
@@ -35,6 +35,8 @@ const Update = Component => {
           // handle api errors
           const err = handleError(error)
           if (err) newProps.error = err
+          else if (error) return <CardError />
+
           return <Component {...newProps} />
         }}
       </Mutation>

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import api from './api'
 import { handleError } from './helpers'
 
-import { Create as Mutation, SetData } from 'instruments'
+import { Create as Mutation, SetData, CardError } from 'instruments'
 
 const Create = Component => {
   const Create = ({ login, vars, setData, to, ...props }) => {
@@ -70,6 +70,7 @@ const Create = Component => {
           // handle api errors
           const err = handleError(error)
           if (err) newProps.error = err
+          else if (error) return <CardError />
 
           return <Component {...newProps} />
         }}
