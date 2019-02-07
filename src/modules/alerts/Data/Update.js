@@ -1,7 +1,7 @@
 'use strict'
 import React from 'react'
 import api from 'modules/deployments/Data/api'
-import { Mutation } from 'instruments'
+import { Mutation, CardError } from 'instruments'
 
 const Update = Component => {
   const Update = props => {
@@ -11,7 +11,7 @@ const Update = Component => {
         success="Deployment alerts updated successfully."
         track="Deployment Alerts Updated"
         voidError>
-        {({ mutate }) => {
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
@@ -35,6 +35,8 @@ const Update = Component => {
           // handle api errors
           // const err = handleError(error)
           // if (err) newProps.error = err
+          if (error) return <CardError />
+
           return <Component {...newProps} />
         }}
       </Mutation>

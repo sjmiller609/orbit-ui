@@ -3,7 +3,7 @@ import React from 'react'
 import api from './api'
 import { handleError } from './helpers'
 
-import { Mutation } from 'instruments'
+import { Mutation, CardError } from 'instruments'
 
 const ForgotPw = Component => {
   const ForgotPw = props => {
@@ -26,6 +26,7 @@ const ForgotPw = Component => {
           // handle api errors
           const err = handleError(error)
           if (err) newProps.error = err
+          else if (error) return <CardError />
 
           return <Component {...newProps} />
         }}

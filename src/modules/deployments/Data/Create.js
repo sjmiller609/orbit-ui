@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import api from './api'
 
-import { Create as Mutation, GetData } from 'instruments'
+import { Create as Mutation, GetData, CardError } from 'instruments'
 import { handleError } from './helpers'
 
 const Create = Component => {
@@ -40,6 +40,8 @@ const Create = Component => {
           // handle api errors
           const err = handleError(error)
           if (err) newProps.error = err
+          else if (error) return <CardError />
+
           return <Component {...newProps} />
         }}
       </Mutation>
