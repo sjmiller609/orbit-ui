@@ -32,8 +32,8 @@ export default merge(common, {
         collapseWhitespace: true,
       },
       inject: true,
-      api_http: 'http://localhost:8870/v1',
-      api_ws: 'ws://localhost:8870/ws', //NOTE: temp for mock logs
+      api_http: 'http://localhost:8871/v1',
+      api_ws: 'ws://localhost:8871/ws', //NOTE: temp for mock logs
       stripe_pk: '',
       tracking_id: '',
       hash: true,
