@@ -47,6 +47,7 @@ class DeploymentLogs extends React.Component {
 
   render() {
     const { search, start, since, component } = this.state
+    const { deployment } = this.props
     return (
       <div>
         <DeploymentLogsSearch
@@ -69,6 +70,7 @@ class DeploymentLogs extends React.Component {
             since,
           }}
           component={component}
+          deploymentUuid={deployment.id}
         />
       </div>
     )
@@ -77,6 +79,7 @@ class DeploymentLogs extends React.Component {
 
 DeploymentLogs.propTypes = {
   location: PropTypes.object,
+  deployment: PropTypes.object,
 }
 
 export default withRouter(DeploymentLogs)
