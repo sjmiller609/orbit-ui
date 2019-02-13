@@ -57,10 +57,6 @@ class DeploymentLogs extends React.Component {
           }}
         />
         <List
-          // search={{
-          //   text: search,
-          //   ...this.search,
-          // }}
           vars={{
             text: search,
           }}

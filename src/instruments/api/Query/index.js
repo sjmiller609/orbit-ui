@@ -79,8 +79,7 @@ const Query = ({
                 const next = {
                   ...prev,
                 }
-                // next[key] = [...prev[key], newItem]
-                next[key] = [newItem]
+                next[key] = [...prev[key], newItem]
                 return next
               },
             })
