@@ -17,6 +17,9 @@ import './styles/global/index.scss'
 
 const cache = new InMemoryCache({
   dataIdFromObject: object => {
+    console.log('===object===')
+    console.log(object)
+    console.log('<<<object<<<')
     if (object.uuid) return object.__typename + ':' + object.uuid
     return defaultDataIdFromObject(object)
   },
