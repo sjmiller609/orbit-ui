@@ -29,15 +29,16 @@ class List extends React.Component {
     const currentLogs = (Array.isArray(logs[lastRow - 1]) === false
       ? logs
       : logs[lastRow - 1]
-    ).slice(0)
+    )
+      .slice(0)
+      .reverse()
 
     return (
       <Table
         className={s.list}
         search={search}
         Container={Console}
-        nav={<Nav selected={component} />}
-        headerOptions={<Since {...since} />}>
+        nav={<Nav selected={component} />}>
         {currentLogs &&
           currentLogs.map((l, i) => <Item key={l.id || i} log={l} />)}
         {(!currentLogs || !currentLogs.length) && (

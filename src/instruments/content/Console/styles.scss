@@ -3,15 +3,18 @@
 .content {
   margin: auto;
   width: 100%;
-  height: inherit;
+  height: 50vh;
+  overflow: scroll;
   min-height: inherit;
-  padding: 1.5rem 2rem 3rem;
+  padding: 1rem;
   background: linear-gradient(45deg, $darkPurple, $lightPurple);
   color: $white;
   border-radius: 3px;
+  transform: scale(1,-1);
   p {
     @include mono;
-    font-size: 0.75em;
+    font-size: 0.70em;
     letter-spacing: -0.01px;
+    transform: scale(1,-1);
   }
 }
