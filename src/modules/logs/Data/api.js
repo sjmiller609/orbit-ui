@@ -5,14 +5,14 @@ export default {
     query logs(
       $deploymentUuid: Uuid!
       $component: String!
-      $since: JSON!
-      $vars: JSON
+      $timestamp: DateTime!
+      $search: String
     ) {
       logs(
         deploymentUuid: $deploymentUuid
         component: $component
-        timestamp: $since
-        search: $vars
+        timestamp: $timestamp
+        search: $search
       ) {
         id: uuid
         createdAt: timestamp
@@ -24,14 +24,14 @@ export default {
     subscription log(
       $deploymentUuid: Uuid!
       $component: String!
-      $since: JSON!
-      $vars: JSON
+      $timestamp: DateTime
+      $search: String
     ) {
       log(
         deploymentUuid: $deploymentUuid
         component: $component
-        timestamp: $since
-        search: $vars
+        timestamp: $timestamp
+        search: $search
       ) {
         id: uuid
         createdAt: timestamp

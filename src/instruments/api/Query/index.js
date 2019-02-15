@@ -10,7 +10,6 @@ const Query = ({
   vars,
   skip,
   children,
-  search,
   OnError,
   subscribe,
   fetchPolicy,
@@ -23,7 +22,6 @@ const Query = ({
       fetchPolicy={fetchPolicy}
       variables={vars}
       skip={skip}
-      search={search}
       errorPolicy="all">
       {({ loading, error, data, subscribeToMore }) => {
         if (loading) return <Loading /> // return this instead of updating contextUI
@@ -96,7 +94,6 @@ Query.propTypes = {
   children: PropTypes.func.isRequired,
   vars: PropTypes.object,
   skip: PropTypes.bool,
-  search: PropTypes.object,
   subscribe: PropTypes.object,
   OnError: PropTypes.element,
   sortNewest: PropTypes.bool,

@@ -4,8 +4,6 @@ import List from '../List'
 import { withRouter } from 'react-router-dom'
 // add search
 
-import DeploymentLogsSearch from '../DeploymentLogsSearch'
-
 class DeploymentLogs extends React.Component {
   timeout = null
   setStart = this.setStart.bind(this)
@@ -17,7 +15,7 @@ class DeploymentLogs extends React.Component {
   }
   // search obj constants
   search = {
-    delay: false,
+    delay: true,
     placeholder: 'Search Logs',
     call: search => this.setState({ search }),
   }
@@ -49,26 +47,19 @@ class DeploymentLogs extends React.Component {
     const { search, start, since, component } = this.state
     const { deployment } = this.props
     return (
-      <div>
-        <DeploymentLogsSearch
-          search={{
-            text: search,
-            ...this.search,
-          }}
-        />
-        <List
-          vars={{
-            text: search,
-          }}
-          since={{
-            set: this.setStart,
-            get: start,
-            since,
-          }}
-          component={component}
-          deploymentUuid={deployment.id}
-        />
-      </div>
+      <List
+        search={{
+          text: search,
+          ...this.search,
+        }}
+        since={{
+          set: this.setStart,
+          get: start,
+          since,
+        }}
+        component={component}
+        deploymentUuid={deployment.id}
+      />
     )
   }
 }
