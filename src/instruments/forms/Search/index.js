@@ -27,12 +27,12 @@ class Search extends React.Component {
     const text = e.target.value
     this.setState({ search: text })
 
-    if (noDelay) search(e.target.value)
+    if (noDelay) search(text)
     else {
       // put 1 second delay on actual search from when stop typing
       if (this.timeout) clearTimeout(this.timeout)
       this.timeout = setTimeout(() => {
-        this.props.search(text)
+        search(text)
         clearTimeout(this.timeout)
       }, 1000)
     }

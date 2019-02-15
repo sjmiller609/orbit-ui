@@ -21,6 +21,7 @@ const map = {
   stars: LoadImg(() => import(`./img/stars.svg`)),
   webserver: LoadImg(() => import(`./img/webserver.svg`)),
   satellite: LoadImg(() => import(`./img/satellite.svg`)),
+  worker: LoadImg(() => import(`./img/worker.svg`)),
 }
 
 class Icon extends React.Component {
