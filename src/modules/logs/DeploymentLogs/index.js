@@ -10,7 +10,7 @@ class DeploymentLogs extends React.Component {
   state = {
     search: '',
     start: null,
-    since: 10,
+    since: 5,
     component: 'webserver',
   }
   // search obj constants
@@ -23,7 +23,7 @@ class DeploymentLogs extends React.Component {
     this.getType(location.hash)
 
     const date = new Date()
-    date.setMinutes(date.getMinutes() - 10)
+    date.setMinutes(date.getMinutes() - 5)
     this.setState({ start: date })
   }
   componentWillReceiveProps({ location }) {
