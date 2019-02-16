@@ -28,8 +28,8 @@ Tab.propTypes = {
 const Nav = ({ selected }) => {
   return (
     <Row className={s.tabs} justify="space-around" wrap>
-      <Tab name="webserver" selected={selected} />
       <Tab name="scheduler" selected={selected} />
+      <Tab name="webserver" selected={selected} />
       <Tab name="worker" selected={selected} />
     </Row>
   )
