@@ -5,10 +5,11 @@ import s from './styles.scss'
 import { Dropdown, MenuList, Item } from 'instruments'
 
 const Component = ({ set, text }) => {
+  const msg = text === 'worker' ? 'workers' : text
   return (
     <Dropdown
       className={s.component}
-      selector={<div className={s.button}>{text}</div>}>
+      selector={<div className={s.button}>{msg}</div>}>
       <MenuList label="View logs from:">
         <Item onClick={() => set('scheduler')}>Sheduler</Item>
         <Item onClick={() => set('webserver')}>Webserver</Item>
