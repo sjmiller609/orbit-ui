@@ -8,7 +8,6 @@ const Component = ({ set, text }) => {
   return (
     <Dropdown
       className={s.component}
-      right
       selector={<div className={s.button}>{text}</div>}>
       <MenuList label="View logs from:">
         <Item onClick={() => set('scheduler')}>Sheduler</Item>
