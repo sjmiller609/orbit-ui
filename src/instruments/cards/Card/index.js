@@ -20,7 +20,7 @@ const Card = ({ children, footer, header, className, id }) => {
           )}
         </header>
       )}
-      <main>{children}</main>
+      <main className={classnames(s.full)}>{children}</main>
       {footer && <footer>{footer}</footer>}
     </Box>
   )

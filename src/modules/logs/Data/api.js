@@ -4,8 +4,8 @@ export default {
   Logs: gql`
     query logs(
       $deploymentUuid: Uuid!
-      $component: String!
-      $timestamp: DateTime!
+      $component: String
+      $timestamp: DateTime
       $search: String
     ) {
       logs(
@@ -23,7 +23,7 @@ export default {
   SubscribeLogs: gql`
     subscription log(
       $deploymentUuid: Uuid!
-      $component: String!
+      $component: String
       $timestamp: DateTime
       $search: String
     ) {

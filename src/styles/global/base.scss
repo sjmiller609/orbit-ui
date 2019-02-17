@@ -65,10 +65,9 @@ h6 {
   line-height: 1.55em;
 }
 
-div::-webkit-scrollbar,
-main::-webkit-scrollbar,
-span::-webkit-scrollbar,
-main::-webkit-scrollbar,
+// div::-webkit-scrollbar,
+// span::-webkit-scrollbar,
+// main::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
 }

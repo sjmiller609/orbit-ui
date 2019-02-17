@@ -5,8 +5,7 @@ import s from './styles.scss'
 import { Table, Console, LoadingDots, Mini } from 'instruments'
 
 import Item from './Item'
-import Since from './Since'
-import Nav from './Nav'
+import Filters from './Filters'
 import Data from '../Data'
 
 class List extends React.Component {
@@ -31,8 +30,7 @@ class List extends React.Component {
         className={s.list}
         search={search}
         Container={Console}
-        nav={<Nav selected={component} />}
-        headerOptions={<Since {...since} />}>
+        headerOptions={<Filters component={component} since={since} />}>
         {logs && logs.map((l, i) => <Item key={l.id || i} log={l} />).reverse()}
         {(!logs || !logs.length) && (
           <Mini className={s.waiting}>
@@ -47,7 +45,7 @@ class List extends React.Component {
 List.propTypes = {
   logs: PropTypes.array,
   search: PropTypes.object,
-  component: PropTypes.string,
+  component: PropTypes.object,
   since: PropTypes.object,
   subscribeToMore: PropTypes.func,
 }
