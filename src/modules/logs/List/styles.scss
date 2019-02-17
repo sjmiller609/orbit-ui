@@ -29,7 +29,16 @@ div.list {
   color: $darkWhite;
 }
 
-.since .button {
+.filters {
+  > * {
+    padding-right: 10px;
+  }
+  > :last-child {
+    padding-right: 0px;
+  }
+}
+
+.since .button, .component .button {
   @include filmo;
   white-space: nowrap;
   box-shadow: inset 0 0 0 2px $lightBlue;

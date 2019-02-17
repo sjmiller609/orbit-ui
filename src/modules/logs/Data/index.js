@@ -9,7 +9,7 @@ const Data = Component => {
   const Data = ({ skip, ...props }) => {
     const vars2 = {
       deploymentUuid: props.deploymentUuid,
-      component: props.component,
+      component: props.component.text,
       timestamp: props.since.get,
       search: props.search.text,
     }
@@ -42,7 +42,7 @@ const Data = Component => {
     OnError: PropTypes.element,
     search: PropTypes.object,
     since: PropTypes.object,
-    component: PropTypes.string,
+    component: PropTypes.object,
     deploymentUuid: PropTypes.string,
   }
 

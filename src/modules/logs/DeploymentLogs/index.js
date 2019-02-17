@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import List from '../List'
 import { withRouter } from 'react-router-dom'
-// add search
 
 class DeploymentLogs extends React.Component {
   timeout = null
   setStart = this.setStart.bind(this)
+  setComponent = this.setComponent.bind(this)
   state = {
     search: '',
     start: null,
@@ -20,19 +20,11 @@ class DeploymentLogs extends React.Component {
     call: search => this.setState({ search }),
   }
   componentWillMount() {
-    this.getType(location.hash)
-
     const date = new Date()
     date.setMinutes(date.getMinutes() - 5)
     this.setState({ start: date })
   }
-  componentWillReceiveProps({ location }) {
-    if (location.hash !== this.props.location.hash) this.getType(location.hash)
-  }
-  getType(hash) {
-    const component = hash ? hash.slice(1) : 'scheduler'
-    this.setState({ component })
-  }
+
   setStart(start) {
     let date = new Date()
 
@@ -41,6 +33,10 @@ class DeploymentLogs extends React.Component {
     } else if (start === 'today') date.setHours(0, 0, 0, 0)
     else if (start === 'all') date = null
     this.setState({ start: date, since: start })
+  }
+
+  setComponent(component) {
+    this.setState({ component })
   }
 
   render() {
@@ -52,12 +48,15 @@ class DeploymentLogs extends React.Component {
           text: search,
           ...this.search,
         }}
+        component={{
+          text: component,
+          set: this.setComponent,
+        }}
         since={{
           set: this.setStart,
           get: start,
           since,
         }}
-        component={component}
         deploymentUuid={deployment.id}
       />
     )
