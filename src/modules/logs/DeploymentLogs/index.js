@@ -11,7 +11,7 @@ class DeploymentLogs extends React.Component {
     search: '',
     start: null,
     since: 5,
-    component: 'webserver',
+    component: 'scheduler',
   }
   // search obj constants
   search = {
@@ -30,7 +30,7 @@ class DeploymentLogs extends React.Component {
     if (location.hash !== this.props.location.hash) this.getType(location.hash)
   }
   getType(hash) {
-    const component = hash ? hash.slice(1) : 'webserver'
+    const component = hash ? hash.slice(1) : 'scheduler'
     this.setState({ component })
   }
   setStart(start) {
