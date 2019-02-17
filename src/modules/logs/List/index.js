@@ -6,7 +6,6 @@ import { Table, Console, LoadingDots, Mini } from 'instruments'
 
 import Item from './Item'
 import Filters from './Filters'
-import Nav from './Nav'
 import Data from '../Data'
 
 class List extends React.Component {

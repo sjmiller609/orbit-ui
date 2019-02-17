@@ -13,7 +13,7 @@ const Component = ({ set, text }) => {
       <MenuList label="View logs from:">
         <Item onClick={() => set('scheduler')}>Sheduler</Item>
         <Item onClick={() => set('webserver')}>Webserver</Item>
-        <Item onClick={() => set('workers')}>Workers</Item>
+        <Item onClick={() => set('worker')}>Workers</Item>
       </MenuList>
     </Dropdown>
   )
