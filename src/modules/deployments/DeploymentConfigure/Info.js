@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import s from './styles.scss'
 import { Tag, B, ShowDate } from 'instruments'
 
-const Info = ({ type, version, deployment }) => {
+const Info = ({ deployment }) => {
   // return (
   //   <Mini className={s.info}>
   //     <span>{deployment.type}</span> deployment <B>{deployment.releaseName}</B>{' '}
@@ -24,12 +24,18 @@ const Info = ({ type, version, deployment }) => {
             </B>
           </Tag>
           <Tag>
-            Astronomer <B>v{deployment.version}</B>
+            <span>Astronomer </span>
+            <B>v{deployment.version}</B>
           </Tag>
         </React.Fragment>
       )}
       <Tag>
-        <span>{type === 'airflow' ? 'Airflow' : type}</span> <B>v{version}</B>
+        <span>Airflow </span>
+        <B>
+          v{deployment && deployment.airflowVersion
+            ? deployment.airflowVersion
+            : '1.10.2'}
+        </B>
       </Tag>
     </div>
   )

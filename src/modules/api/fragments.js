@@ -54,6 +54,7 @@ export const deployment = gql`
     type
     releaseName
     version
+    airflowVersion
     workspace {
       id: uuid
     }

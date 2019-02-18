@@ -59,7 +59,7 @@ class Configure extends React.Component {
             label="Description"
             {...form.field('description')}
           />
-          <Info deployment={deployment} type={deployment.type} version="1.9" />
+          <Info deployment={deployment} />
         </FormSection>
         {this.state.renderConfig &&
           gteSeven(deployment.version) &&
