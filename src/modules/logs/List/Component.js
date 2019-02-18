@@ -11,7 +11,7 @@ const Component = ({ set, text }) => {
       className={s.component}
       selector={<div className={s.button}>{msg}</div>}>
       <MenuList label="View logs from:">
-        <Item onClick={() => set('scheduler')}>Sheduler</Item>
+        <Item onClick={() => set('scheduler')}>Scheduler</Item>
         <Item onClick={() => set('webserver')}>Webserver</Item>
         <Item onClick={() => set('worker')}>Workers</Item>
       </MenuList>
