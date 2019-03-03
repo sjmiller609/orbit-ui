@@ -37,13 +37,17 @@ const Table = ({
       </Row>
     </React.Fragment>
   )
-  // if empty
-  if (Empty && (!search || !search.text) && (!children || !children.length))
+
+  // If empty
+  if (Empty && (!search || !search.text) && (!children || !children.length)) {
     return (
       <Card className={classnames(s.table, s.empty, className)}>
         {Empty({ button: button2 })}
       </Card>
     )
+  }
+
+  // If not empty
   let count = Array.isArray(children) ? children.length : 1
   if (!children) count = 0
   return (
