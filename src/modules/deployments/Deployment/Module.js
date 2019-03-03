@@ -6,6 +6,7 @@ import { Load } from 'instruments'
 import Data from '../Data'
 import Module from '../../app/Module'
 import DeploymentConfigData from '../Data/Config'
+import { reject } from 'lodash'
 
 const Configure = Load(() =>
   import(/* webpackPrefetch: true */ '../DeploymentConfigure')
@@ -25,13 +26,17 @@ const Logs = Load(() =>
   import(/* webpackPrefetch: true */ 'modules/logs/DeploymentLogs')
 )
 
-const Deployment = ({ deployments, menu, title }) => {
+const Deployment = ({ deployments, loggingEnabled, menu, title }) => {
   const deployment = deployments[0]
   // Error handled
   if (!deployment) return <Module nada />
 
   const menu2 = {
     ...menu,
+    // Remove logging tab (and route) if logging is disabled.
+    subMenu: loggingEnabled
+      ? menu.subMenu
+      : reject(menu.subMenu, i => i.text.toLowerCase() === 'logs'),
   }
   menu2.level2.text = deployment.label
 
@@ -65,11 +70,13 @@ const Deployment = ({ deployments, menu, title }) => {
           exact
           render={() => <Overview deployment={deployment} />}
         />
-        <Route
-          path={path + '/logs'}
-          exact
-          render={() => <Logs deployment={deployment} />}
-        />
+        {loggingEnabled && (
+          <Route
+            path={path + '/logs'}
+            exact
+            render={() => <Logs deployment={deployment} />}
+          />
+        )}
         <Route
           path={path + '/alerts'}
           exact
@@ -84,6 +91,7 @@ const Deployment = ({ deployments, menu, title }) => {
 
 Deployment.propTypes = {
   deployments: PropTypes.array,
+  loggingEnabled: PropTypes.bool,
   menu: PropTypes.object,
   title: PropTypes.string,
   onSuccess: PropTypes.func,

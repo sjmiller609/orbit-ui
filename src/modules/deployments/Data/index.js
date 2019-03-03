@@ -11,7 +11,7 @@ const Data = Component => {
       <Query gql={api.DeploymentConfig}>
         {({
           data: {
-            deploymentConfig: { latestVersion },
+            deploymentConfig: { latestVersion, loggingEnabled },
           },
         }) => (
           <Query gql={api.Deployments} vars={vars} skip={skip} search={search}>
@@ -21,6 +21,7 @@ const Data = Component => {
                 search,
                 deployments,
                 latestVersion,
+                loggingEnabled,
               }
               return <Component {...newProps} />
             }}

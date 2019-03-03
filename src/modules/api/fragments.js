@@ -138,6 +138,7 @@ export const deploymentConfig = gql`
     executors
     latestVersion
     singleNamespace
+    loggingEnabled
   }
 `
 
