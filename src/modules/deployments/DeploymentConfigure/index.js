@@ -20,9 +20,11 @@ class DeploymentConfigure extends React.Component {
     configure: false,
     resources: false,
   }
+
   componentWillUnmount() {
     this.mounted = false
   }
+
   loaded(c) {
     if (this.mounted && !this.state[c]) this.setState({ [c]: true })
   }
