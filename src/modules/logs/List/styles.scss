@@ -9,7 +9,22 @@ div.list {
   min-width: 18rem;
   word-break: break-word;
   white-space: pre-line;
-  margin: 0.5rem 0;
+  margin: 0.25rem 0.75rem;
+
+  &:first-child {
+    margin-bottom: 0.75rem;
+  }
+}
+
+.paused {
+  background: linear-gradient(45deg, $lightBlue, $darkBlue);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.unpause {
+  color: $white !important;
 }
 
 .date {
@@ -27,6 +42,7 @@ div.list {
 
 .waiting {
   color: $darkWhite;
+  margin: 0.5rem 1rem;
 }
 
 .filters {
