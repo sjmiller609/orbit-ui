@@ -34,14 +34,9 @@ class OauthSuccess extends React.Component {
     if (params.strategy)
       this.track = params.strategy.toUpperCase() + ': ' + this.track
 
-    // NOTE: estimate token expiration based on duration set to + 7 days (minus 5 minutes for lolz)
-    const date = new Date()
-    date.setDate(date.getDate() + 7)
-    date.setMinutes(date.getMinutes() - 5)
     // set token
     setData.auth({
       token: params.token,
-      exp: date,
     })
     // snackbar
     if (this.success) setUI.snackbar(this.success)
