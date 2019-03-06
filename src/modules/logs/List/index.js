@@ -47,24 +47,25 @@ class List extends React.Component {
 
     return (
       <Table
-        onWheel={this.onWheel}
         className={s.list}
         search={search}
-        Container={Console}
         headerOptions={<Filters component={component} since={since} />}>
-        {paused && (
-          <Mini onClick={this.onClick} className={s.paused}>
-            <TextButton className={s.unpause} onClick={this.onClick}>
-              Stream paused, click to resume
-            </TextButton>
-          </Mini>
-        )}
-        {logs && logs.map((l, i) => <Item key={l.id || i} log={l} />).reverse()}
-        {(!logs || !logs.length) && (
-          <Mini className={s.waiting}>
-            Waiting for logs<LoadingDots />
-          </Mini>
-        )}
+        <Console onWheel={this.onWheel}>
+          {paused && (
+            <Mini onClick={this.onClick} className={s.paused}>
+              <TextButton className={s.unpause} onClick={this.onClick}>
+                Stream paused, click to resume
+              </TextButton>
+            </Mini>
+          )}
+          {logs &&
+            logs.map((l, i) => <Item key={l.id || i} log={l} />).reverse()}
+          {(!logs || !logs.length) && (
+            <Mini className={s.waiting}>
+              Waiting for logs<LoadingDots />
+            </Mini>
+          )}
+        </Console>
       </Table>
     )
   }

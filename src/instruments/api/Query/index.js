@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import { Query as Apollo } from 'react-apollo'
 import { Loading, CardError } from 'instruments'
+import { searchText } from 'helpers/compare'
 import { takeRight } from 'lodash'
 
 const Query = ({
@@ -11,6 +12,7 @@ const Query = ({
   vars,
   skip,
   children,
+  search,
   OnError,
   subscribe,
   fetchPolicy,
@@ -59,7 +61,22 @@ const Query = ({
         })
 
         let data3
-
+        if (search && search.text) {
+          data3 = {}
+          // NOTE: Filter search - putting in query so that can be hooked up to pagination or searching API later
+          Object.keys(data2).forEach(k => {
+            // filter out results that don't match - searches entire record
+            data3[k] = data2[k].filter(d => {
+              // use 'fields' property to specifiy which fields to search
+              if (search.fields && search.fields.length) {
+                const d2 = {}
+                search.fields.forEach(field => (d2[field] = d[field]))
+                return searchText(search.text, JSON.stringify(d2))
+              }
+              return searchText(search.text, JSON.stringify(d))
+            })
+          })
+        }
         const newProps = { data: data3 || data2 }
 
         if (subscribe) {
@@ -95,6 +112,7 @@ Query.propTypes = {
   children: PropTypes.func.isRequired,
   vars: PropTypes.object,
   skip: PropTypes.bool,
+  search: PropTypes.object,
   subscribe: PropTypes.object,
   OnError: PropTypes.element,
   sortNewest: PropTypes.bool,
