@@ -32,7 +32,7 @@ class List extends React.Component {
     const scrollTop = e.currentTarget.scrollTop
     if (scrollTop > 0) {
       this.subscribe && this.subscribe()
-      setTimeout(() => this.setState({ paused: true }), 1000)
+      setTimeout(() => this.setState({ paused: true }), 500)
     }
   }
 

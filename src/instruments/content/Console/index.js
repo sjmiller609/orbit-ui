@@ -14,14 +14,6 @@ class Console extends React.Component {
   }
 
   scrollHandler(e) {
-    // if (!e.deltaY) return
-    // e.preventDefault()
-    // e.currentTarget.scrollTop -=
-    //   parseFloat(
-    //     getComputedStyle(e.currentTarget).getPropertyValue('font-size')
-    //   ) *
-    //   (e.deltaY < 0 ? -1 : 1) *
-    //   2
     this.props.onWheel && this.props.onWheel(e)
   }
 
