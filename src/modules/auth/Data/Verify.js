@@ -18,11 +18,10 @@ const Verify = Component => {
           console.log(data)
           if (!data) return
           if (data.token) {
-            const { value, payload } = data.token
+            const { value } = data.token
             // pass token to context
             setData.auth({
               token: value,
-              exp: payload.exp,
             })
           }
         }}

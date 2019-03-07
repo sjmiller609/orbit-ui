@@ -16,7 +16,6 @@ const Table = ({
   nav,
   Empty,
   Container = React.Fragment,
-  onWheel,
 }) => {
   const button2 = button && <Button to={button.to}>{button.text}</Button>
   const search2 = search && (
@@ -55,7 +54,7 @@ const Table = ({
     <Card
       className={classnames(s.table, count === 1 && s.one, className)}
       header={header}>
-      <Container onWheel={onWheel}>
+      <Container>
         {children}
         {count === 0 && search.text && <NoResults />}
       </Container>

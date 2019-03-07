@@ -100,11 +100,6 @@ export const workspaceUsers = gql`
 export const token = gql`
   fragment token on Token {
     value
-    payload {
-      id: uuid
-      iat
-      exp
-    }
   }
 `
 

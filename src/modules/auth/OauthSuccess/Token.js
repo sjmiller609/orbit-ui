@@ -15,8 +15,11 @@ class Token extends React.Component {
     copy(this.token)
     this.props.setUI.snackbar('Token copied to clipboard')
   }
+
   render() {
-    if (!this.token) return <Redirect to="/login" />
+    if (!this.token || auth.isExpired(this.token))
+      return <Redirect to="/login" />
+
     return (
       <Module metaTitle="Login Token">
         <CardForm

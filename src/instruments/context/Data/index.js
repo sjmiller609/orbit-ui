@@ -25,10 +25,9 @@ class Provider extends React.Component {
 
   setAuth(data) {
     const t = data || {}
-    const { token, exp } = t
+    const { token } = t
     // check if expired
-    const now = Math.round(new Date().getTime() / 1000)
-    if (!token || exp <= now) {
+    if (!token || auth.isExpired(token)) {
       auth.remove()
       this.setState({ auth: false })
       this.setWorkspace(null)
@@ -36,7 +35,7 @@ class Provider extends React.Component {
     }
 
     this.setState({ auth: true })
-    auth.set({ token, exp })
+    auth.set({ token })
   }
 
   setWorkspace(workspaceId) {
