@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import s from './styles.scss'
 import { Dropdown, MenuList, Item } from 'instruments'
 
-const Component = ({ set, text }) => {
+const Component = ({ set, text, executor }) => {
   const msg = text === 'worker' ? 'workers' : text
   return (
     <Dropdown
@@ -13,7 +13,9 @@ const Component = ({ set, text }) => {
       <MenuList label="View logs from:">
         <Item onClick={() => set('scheduler')}>Scheduler</Item>
         <Item onClick={() => set('webserver')}>Webserver</Item>
-        <Item onClick={() => set('worker')}>Workers</Item>
+        {executor !== 'LocalExecutor' && (
+          <Item onClick={() => set('worker')}>Workers</Item>
+        )}
       </MenuList>
     </Dropdown>
   )
@@ -22,6 +24,7 @@ const Component = ({ set, text }) => {
 Component.propTypes = {
   set: PropTypes.func,
   text: PropTypes.string,
+  executor: PropTypes.string,
 }
 
 export default Component

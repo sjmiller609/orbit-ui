@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import List from '../List'
 import { withRouter } from 'react-router-dom'
+import { get } from 'lodash'
 
 class DeploymentLogs extends React.Component {
   timeout = null
@@ -51,6 +52,7 @@ class DeploymentLogs extends React.Component {
         component={{
           text: component,
           set: this.setComponent,
+          executor: get(deployment, 'config.executor'),
         }}
         since={{
           set: this.setStart,
