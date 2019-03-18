@@ -21,7 +21,7 @@ class Executor extends React.Component {
     },
     {
       icon: 'kubernetes',
-      text: 'Kubernetes (coming soon)',
+      text: 'Kubernetes',
       value: 'KubernetesExecutor',
     },
   ]
