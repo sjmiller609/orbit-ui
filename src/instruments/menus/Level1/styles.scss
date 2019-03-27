@@ -20,7 +20,8 @@
     overflow: hidden;
     max-width: 22vw;
     text-overflow: ellipsis;
-    padding-bottom: 1px;
+    padding-bottom: 1px; //to prevent the Workspace title from getting cut off int he app.
+  }
   &.active .text {
     max-width: 50vw;
   }
@@ -28,7 +29,7 @@
 
 .arrow {
   display: inline-block;
-  height: 0.7em;
+  height: 0.6em;
   margin-left: 1rem;
   margin-top: 0.6rem;
   transition: transform 250ms ease-in;
@@ -47,5 +48,4 @@
   width: 100%;
   background: $lightGray;
   border: none;
-}
 }
