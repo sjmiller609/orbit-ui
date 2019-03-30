@@ -26,6 +26,8 @@ const Logs = Load(() =>
   import(/* webpackPrefetch: true */ 'modules/logs/DeploymentLogs')
 )
 
+const isLogs = str => str.toLowerCase() === 'logs'
+
 const Deployment = ({ deployments, loggingEnabled, menu, title }) => {
   const deployment = deployments[0]
   // Error handled
@@ -36,9 +38,14 @@ const Deployment = ({ deployments, loggingEnabled, menu, title }) => {
     // Remove logging tab (and route) if logging is disabled.
     subMenu: loggingEnabled
       ? menu.subMenu
-      : reject(menu.subMenu, i => i.text.toLowerCase() === 'logs'),
+      : reject(menu.subMenu, i => isLogs(i.text)),
   }
   menu2.level2.text = deployment.label
+
+  // We want to signal to the our parent wrapper that we want
+  // it to be fullHeight, so the log console expands to fill the screen.
+  // There's probably a cleaner way to do this.
+  const viewingLogs = isLogs(title)
 
   const path = '/deployments/' + deployment.releaseName
   let metaTitle = deployment.label
@@ -59,7 +66,7 @@ const Deployment = ({ deployments, loggingEnabled, menu, title }) => {
           />
         )}
       />
-      <Module metaTitle={metaTitle} menu={menu2}>
+      <Module metaTitle={metaTitle} menu={menu2} fullHeight={viewingLogs}>
         <Route
           path={path + '/configure'}
           exact

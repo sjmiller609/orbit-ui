@@ -8,12 +8,20 @@ import s from './styles.scss'
 
 import { Page } from 'instruments'
 
-// wrapper for all modules
-const App = ({ children, nav, metaTitle, className }) => {
+// Wrapper for all modules
+//
+// FullHeight is a way for child modules to signal that this wrapper should
+// be 100% height. This was added to primarily allow the log view to be "full height",
+// while allowing the other pages to behave normally, while also maintaining the bottom padding
+// we add via the content class. If every module was "full height", the padding does not work.
+// There may be a better way to do this.
+const App = ({ children, nav, metaTitle, className, fullHeight }) => {
   return (
     <Page className={classnames(s.module, className)} metaTitle={metaTitle}>
       {nav}
-      <div className={s.content}>{children}</div>
+      <div className={classnames(s.content, fullHeight ? s.fullHeight : '')}>
+        {children}
+      </div>
     </Page>
   )
 }
@@ -24,6 +32,7 @@ App.propTypes = {
   nav: PropTypes.element,
   metaTitle: PropTypes.string,
   className: PropTypes.string,
+  fullHeight: PropTypes.bool,
 }
 
 export default App
