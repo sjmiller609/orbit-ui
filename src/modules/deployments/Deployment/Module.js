@@ -26,7 +26,7 @@ const Logs = Load(() =>
   import(/* webpackPrefetch: true */ 'modules/logs/DeploymentLogs')
 )
 
-const isLogs = str => str.toLowerCase() === 'logs'
+const isLogs = str => str && str.toLowerCase() === 'logs'
 
 const Deployment = ({ deployments, loggingEnabled, menu, title }) => {
   const deployment = deployments[0]
