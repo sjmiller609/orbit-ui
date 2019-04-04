@@ -9,8 +9,9 @@ const options = {
   historyApiFallback: true,
   contentBase: path.resolve(__dirname, 'dist'),
   compress: true,
-  port: 5000,
+  port: 8080,
   host: 'localhost',
+  allowedHosts: ['localhost', 'app.local.astronomer.io'],
   open: false,
 }
 
@@ -18,6 +19,6 @@ webpackDevServer.addDevServerEntrypoints(config, options)
 const compiler = webpack(config)
 const server = new webpackDevServer(compiler, options)
 
-server.listen(5000, 'localhost', () => {
-  console.log('Distribution server listening on port 5000')
+server.listen(8080, 'localhost', () => {
+  console.log('Distribution server listening on port 8080')
 })
