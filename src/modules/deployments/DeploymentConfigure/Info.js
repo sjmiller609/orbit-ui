@@ -29,14 +29,14 @@ const Info = ({ deployment }) => {
           </Tag>
         </React.Fragment>
       )}
-      <Tag>
+      {/* <Tag>
         <span>Airflow </span>
         <B>
           v{deployment && deployment.airflowVersion
             ? deployment.airflowVersion
             : '1.10.2'}
         </B>
-      </Tag>
+      </Tag> */}
     </div>
   )
 }
