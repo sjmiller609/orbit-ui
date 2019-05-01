@@ -23,3 +23,8 @@ export const capitalize = str =>
     /\w\S*/g,
     txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
   )
+
+export const unConstantize = str => {
+  if (!str) return str
+  return capitalize(str.replace(/_/g, ' '))
+}
