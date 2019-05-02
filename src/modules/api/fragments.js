@@ -73,7 +73,7 @@ export const invite = gql`
   fragment invite on Invite {
     id: uuid
     email
-    assignments
+    role
     createdAt
     updatedAt
   }
@@ -137,6 +137,18 @@ export const deploymentConfig = gql`
   }
 `
 
+export const entityRoleBinding = gql`
+  fragment entityRoleBinding on RoleBinding {
+    role
+    user {
+      id
+    }
+    serviceAccount {
+      id
+    }
+  }
+`
+
 export const serviceAccount = gql`
   fragment serviceAccount on ServiceAccount {
     id: uuid
@@ -149,5 +161,8 @@ export const serviceAccount = gql`
     lastUsedAt
     createdAt
     updatedAt
+    roleBinding {
+      role
+    }
   }
 `

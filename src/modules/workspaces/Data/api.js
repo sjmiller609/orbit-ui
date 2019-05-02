@@ -1,5 +1,11 @@
 import gql from 'graphql-tag'
-import { workspace, user, group, invite } from 'modules/api/fragments'
+import {
+  workspace,
+  user,
+  group,
+  invite,
+  entityRoleBinding,
+} from 'modules/api/fragments'
 
 export default {
   Workspaces: gql`
@@ -15,12 +21,16 @@ export default {
         invites @include(if: $withUsers) {
           ...invite
         }
+        roleBindings @include(if: $withUsers) {
+          ...entityRoleBinding
+        }
       }
     }
     ${workspace}
     ${user}
     ${group}
     ${invite}
+    ${entityRoleBinding}
   `,
   CreateWorkspace: gql`
     mutation createWorkspace($label: String!, $description: String) {

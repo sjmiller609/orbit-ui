@@ -4,9 +4,10 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
 import { TableRow, Box, P, Mini, H3, ShowDate, Avatar, Tag } from 'instruments'
+import { unConstantize } from 'helpers/format'
 import { getProfile } from '../Data/helpers'
 
-const Item = ({ user, pending, className }) => {
+const Item = ({ user, pending, className, role }) => {
   const profile = getProfile(user)
 
   const columns = [
@@ -20,7 +21,10 @@ const Item = ({ user, pending, className }) => {
         {pending && <Tag className={s.tag}>pending</Tag>}
       </P>
     </Box>,
-    <Box key="2" align="flex-start" className={s.log}>
+    <Box key="2" align="flex-start" className={s.role}>
+      {role && <P>{unConstantize(role).replace(/ /g, '\u00A0')}</P>}
+    </Box>,
+    <Box key="3" align="flex-start" className={s.log}>
       <P className={s.subTitle}>{pending ? 'Invited' : 'Joined'}</P>
       <Mini>
         <ShowDate date={user.createdAt} />
@@ -44,6 +48,7 @@ Item.propTypes = {
   user: PropTypes.object,
   pending: PropTypes.bool,
   className: PropTypes.string,
+  role: PropTypes.string,
 }
 
 export default Item

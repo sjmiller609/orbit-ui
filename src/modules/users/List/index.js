@@ -12,14 +12,20 @@ const List = ({ workspaces, search }) => {
   const users = (workspaces && workspaces[0] && workspaces[0].users) || []
   const invites = (workspaces && workspaces[0] && workspaces[0].invites) || []
 
+  const roleForUser = uid => {
+    const rb = workspaces[0].roleBindings.find(
+      rb => rb.user && rb.user.id == uid
+    )
+    return rb ? rb.role : null
+  }
   const button = {
     text: 'Invite',
     to: '/users/new',
   }
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
-      {users.map(t => <Item key={t.id} user={t} />)}
-      {invites.map(t => <Item key={t.id} user={t} pending />)}
+      {users.map(t => <Item key={t.id} user={t} role={roleForUser(t.id)} />)}
+      {invites.map(t => <Item key={t.id} user={t} pending role={t.role} />)}
     </Table>
   )
 }
