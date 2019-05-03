@@ -26,14 +26,7 @@ const UpdateRole = Component => {
         {({ mutate }) => {
           const newProps = {
             ...props,
-            onSubmit: vars => {
-              mutate({
-                variables: {
-                  workspaceId: getData.workspaceId,
-                  ...vars,
-                },
-              })
-            },
+            workspaceId: getData.workspaceId,
           }
           console.log({ ...newProps })
           return <Component {...newProps} />
