@@ -21,6 +21,7 @@ const Update = Component => {
               })
             },
           }
+          // console.log({ ...newProps })
           return <Component {...newProps} />
         }}
       </Mutation>

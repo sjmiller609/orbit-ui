@@ -19,6 +19,12 @@ export const user = gql`
     status
     createdAt
     updatedAt
+    roleBindings {
+      role
+      workspace {
+        id
+      }
+    }
   }
 `
 

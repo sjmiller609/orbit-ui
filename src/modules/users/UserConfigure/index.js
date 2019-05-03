@@ -7,7 +7,6 @@ import DeleteInvite from './DeleteInvite'
 import Self from 'modules/self/Data'
 
 const UserConfigure = ({ self, user, pending }) => {
-  console.log(user)
   const isSelf = self.user.id === user.id
   return (
     <React.Fragment>
