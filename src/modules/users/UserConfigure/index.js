@@ -15,8 +15,10 @@ class UserConfigure extends React.Component {
   }
 
   updateRole(role) {
-    this.setState({ role })
-    this.setState({ button: true })
+    if (role != this.state.role) {
+      this.setState({ role })
+      this.setState({ button: true })
+    }
   }
 
   render() {
