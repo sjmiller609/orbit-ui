@@ -8,6 +8,7 @@ import Self from 'modules/self/Data'
 import UpdateRole from '../Data/UpdateRole'
 
 class UserConfigure extends React.Component {
+  updateRole = this.updateRole.bind(this)
   state = {
     role: this.props.user.roleBindings[0].role,
   }
@@ -20,6 +21,7 @@ class UserConfigure extends React.Component {
     console.log(this.props.user.roleBindings)
     console.log(this.props.workspaceId)
     const { self, user, pending, workspaceId } = this.props
+    const { role } = this.state
     const isSelf = self.user.id === user.id
     return (
       <React.Fragment>
@@ -27,7 +29,7 @@ class UserConfigure extends React.Component {
           user={user}
           data={user}
           role={{
-            text: this.state.role,
+            text: role,
             set: this.updateRole,
           }}
         />
