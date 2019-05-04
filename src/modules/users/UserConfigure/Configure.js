@@ -6,7 +6,8 @@ import { CardForm, Form, H5, Dropdown, MenuList, Item } from 'instruments'
 
 import UpdateRole from '../Data/UpdateRole'
 
-const Configure = ({ form, user }) => {
+const Configure = ({ form, user, role, set }) => {
+  console.log(role)
   return (
     <CardForm
       title="Configure"
@@ -20,11 +21,11 @@ const Configure = ({ form, user }) => {
       </H5> */}
       <Dropdown
         className={s.component}
-        selector={<div className={s.button}>{user.roleBindings[0].role}</div>}>
+        selector={<div className={s.button}>{role.text}</div>}>
         <MenuList label="Workspace Role">
-          <Item>Workspace Admin</Item>
-          <Item>Workspace User</Item>
-          <Item>Workspace Viewer</Item>
+          <Item onClick={() => set('WORKSPACE_ADMIN')}>Workspace Admin</Item>
+          <Item onClick={() => set('WORKSPACE_EDITOR')}>Workspace Editor</Item>
+          <Item onClick={() => set('WORKSPACE_VIEWER')}>Workspace Viewer</Item>
         </MenuList>
       </Dropdown>
       {/* <div className={s.deployed}>
@@ -41,6 +42,9 @@ Configure.propTypes = {
   save: PropTypes.bool,
   form: PropTypes.object,
   user: PropTypes.object,
+  workspaceId: PropTypes.string,
+  set: PropTypes.func,
+  role: PropTypes.object,
 }
 
 export default UpdateRole(Form(Configure))
