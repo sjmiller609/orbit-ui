@@ -7,6 +7,8 @@ import DeleteInvite from './DeleteInvite'
 import Self from 'modules/self/Data'
 import UpdateRole from '../Data/UpdateRole'
 
+const UpdateConfig = UpdateRole(Configure)
+
 class UserConfigure extends React.Component {
   updateRole = this.updateRole.bind(this)
   state = {
@@ -37,6 +39,11 @@ class UserConfigure extends React.Component {
             set: this.updateRole,
           }}
           button={button}
+          vars={{
+            workspaceId: workspaceId,
+            email: user.email,
+            role: role,
+          }}
         />
         {!pending ? (
           <Delete user={user} isSelf={isSelf} />
@@ -55,4 +62,4 @@ UserConfigure.propTypes = {
   workspaceId: PropTypes.string,
 }
 
-export default UpdateRole(Self(UserConfigure))
+export default Self(UserConfigure)

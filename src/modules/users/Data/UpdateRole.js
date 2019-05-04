@@ -6,6 +6,7 @@ import workspacesApi from 'modules/workspaces/Data/api'
 import api from './api'
 
 import { Mutation, GetData } from 'instruments'
+// import { AsyncResource } from 'async_hooks';
 
 const UpdateRole = Component => {
   const UpdateRole = ({ getData, ...props }) => {
@@ -29,11 +30,12 @@ const UpdateRole = Component => {
             workspaceId: getData.workspaceId,
             onSubmit: vars => {
               mutate({
-                variables: vars,
+                workspaceId: vars.workspaceId,
+                email: vars.user.email,
+                role: vars.role,
               })
             },
           }
-        //   console.log({ ...newProps })
           return <Component {...newProps} />
         }}
       </Mutation>
