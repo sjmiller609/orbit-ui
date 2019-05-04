@@ -11,17 +11,19 @@ class UserConfigure extends React.Component {
   updateRole = this.updateRole.bind(this)
   state = {
     role: this.props.user.roleBindings[0].role,
+    button: false,
   }
 
   updateRole(role) {
     this.setState({ role })
+    this.setState({ button: true })
   }
 
   render() {
     console.log(this.props.user.roleBindings)
     console.log(this.props.workspaceId)
     const { self, user, pending, workspaceId } = this.props
-    const { role } = this.state
+    const { role, button } = this.state
     const isSelf = self.user.id === user.id
     return (
       <React.Fragment>
@@ -32,6 +34,7 @@ class UserConfigure extends React.Component {
             text: role,
             set: this.updateRole,
           }}
+          button={button}
         />
         {!pending ? (
           <Delete user={user} isSelf={isSelf} />

@@ -6,13 +6,13 @@ import { CardForm, Form, H5, Dropdown, MenuList, Item } from 'instruments'
 
 import UpdateRole from '../Data/UpdateRole'
 
-const Configure = ({ form, user, role, set }) => {
-  console.log(role)
+const Configure = ({ form, button, user, role, set }) => {
+  console.log({ button })
   return (
     <CardForm
       title="Configure"
       button={{
-        save: form.save,
+        save: button,
         text: 'Update',
       }}
       className={s.card}>
@@ -23,9 +23,15 @@ const Configure = ({ form, user, role, set }) => {
         className={s.component}
         selector={<div className={s.button}>{role.text}</div>}>
         <MenuList label="Workspace Role">
-          <Item onClick={() => role.set('WORKSPACE_ADMIN')}>Workspace Admin</Item>
-          <Item onClick={() => role.set('WORKSPACE_EDITOR')}>Workspace Editor</Item>
-          <Item onClick={() => role.set('WORKSPACE_VIEWER')}>Workspace Viewer</Item>
+          <Item onClick={() => role.set('WORKSPACE_ADMIN')}>
+            Workspace Admin
+          </Item>
+          <Item onClick={() => role.set('WORKSPACE_EDITOR')}>
+            Workspace Editor
+          </Item>
+          <Item onClick={() => role.set('WORKSPACE_VIEWER')}>
+            Workspace Viewer
+          </Item>
         </MenuList>
       </Dropdown>
       {/* <div className={s.deployed}>
@@ -45,6 +51,7 @@ Configure.propTypes = {
   workspaceId: PropTypes.string,
   set: PropTypes.func,
   role: PropTypes.object,
+  button: PropTypes.bool,
 }
 
 export default UpdateRole(Form(Configure))
