@@ -6,52 +6,55 @@ import Delete from './Delete'
 import DeleteInvite from './DeleteInvite'
 import Self from 'modules/self/Data'
 import UpdateRole from '../Data/UpdateRole'
+import PermissionsBlocker from './PermissionsBlocker'
 
 const UpdateConfig = UpdateRole(Configure)
 
 class UserConfigure extends React.Component {
   updateRole = this.updateRole.bind(this)
   state = {
-    role: this.props.user.roleBindings[0].role,
-    button: false,
+    role: this.props.user.role,
   }
 
   updateRole(role) {
     if (role != this.state.role) {
       this.setState({ role })
-      this.setState({ button: true })
     }
   }
 
   render() {
-    console.log(this.props.user.roleBindings)
-    console.log(this.props.workspaceId)
+    // console.log(this.props.user)
+    // console.log(this.props.user.role)
+    // console.log(this.props.workspaceId)
     const { self, user, pending, workspaceId } = this.props
-    const { role, button } = this.state
+    console.log(user)
+    const { role } = this.state
     const isSelf = self.user.id === user.id
-    return (
-      <React.Fragment>
-        <Configure
-          user={user}
-          data={user}
-          role={{
-            text: role,
-            set: this.updateRole,
-          }}
-          button={button}
-          vars={{
-            workspaceId: workspaceId,
-            email: user.email,
-            role: role,
-          }}
-        />
-        {!pending ? (
-          <Delete user={user} isSelf={isSelf} />
-        ) : (
-          <DeleteInvite user={user} />
-        )}
-      </React.Fragment>
-    )
+    if (self.user.roleBindings[0].role == 'WORKSPACE_ADMIN') {
+      return (
+        <React.Fragment>
+          <Configure
+            user={user}
+            data={user}
+            role={{
+              text: role,
+              set: this.updateRole,
+            }}
+          />
+          {!pending ? (
+            <Delete user={user} isSelf={isSelf} />
+          ) : (
+            <DeleteInvite user={user} />
+          )}
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <React.Fragment>
+          <PermissionsBlocker />
+        </React.Fragment>
+      )
+    }
   }
 }
 

@@ -1,11 +1,5 @@
 import gql from 'graphql-tag'
-import {
-  user,
-  group,
-  invite,
-  workspace,
-  entityRoleBinding,
-} from 'modules/api/fragments'
+import { user, group, invite, workspace } from 'modules/api/fragments'
 
 export default {
   Users: gql`
@@ -76,10 +70,7 @@ export default {
         workspaceUuid: $workspaceId
         email: $email
         role: $role
-      ) {
-        ...entityRoleBinding
-      }
+      )
     }
-    ${entityRoleBinding}
   `,
 }

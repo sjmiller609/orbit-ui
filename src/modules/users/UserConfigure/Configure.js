@@ -1,27 +1,69 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Selector from './Selector'
 
 import s from './styles.scss'
-import { CardForm, Form, H5, Dropdown, MenuList, Item } from 'instruments'
+import {
+  CardForm,
+  Form,
+  H5,
+  Dropdown,
+  MenuList,
+  Item,
+  TextFieldSelect,
+  FormSection,
+  FieldSet,
+  TextField,
+  Select,
+} from 'instruments'
 
 import UpdateRole from '../Data/UpdateRole'
 
-const Configure = ({ form, button, user, role, set }) => {
-  console.log({ button })
+const Configure = ({ form, button, user, role}) => {
+  // console.log({ form })
+  const options = [
+    {
+      icon: 'airflow_astro',
+      text: 'Admin',
+      value: 'WORKSPACE_ADMIN',
+    },
+    {
+      icon: 'alien_ship',
+      text: 'Editor',
+      value: 'WORKSPACE_EDITOR',
+    },
+    {
+      icon: 'astro_helmet',
+      text: 'Viewer',
+      value: 'WORKSPACE_VIEWER',
+    },
+  ]
+
   return (
     <CardForm
       title="Configure"
       button={{
-        save: button,
+        save: form.save,
         text: 'Update',
+        onClick: role.set(role.text),
       }}
       className={s.card}>
       {/* <H5 className={s.name}>
         Permissions for {user.username || user.email}. Coming soon.
       </H5> */}
-      <Dropdown
+      <Select
+        {...form.field('role')}
+        label="Role"
+        className={s.selectors}
+        Component={Selector}
+        options={options}
+        required
+        defaultValue="e"
+      />
+      {/* <Dropdown
         className={s.component}
-        selector={<div className={s.button}>{role.text}</div>}>
+        selector={<div className={s.button}>{role.text}</div>}
+        {...form.field(role.text)}>
         <MenuList label="Workspace Role">
           <Item onClick={() => role.set('WORKSPACE_ADMIN')}>
             Workspace Admin
@@ -33,7 +75,7 @@ const Configure = ({ form, button, user, role, set }) => {
             Workspace Viewer
           </Item>
         </MenuList>
-      </Dropdown>
+      </Dropdown> */}
       {/* <div className={s.deployed}>
         <P>Deployed</P>
         <Mini>
