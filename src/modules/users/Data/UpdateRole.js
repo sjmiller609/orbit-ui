@@ -33,13 +33,12 @@ const UpdateRole = Component => {
               mutate({
                 variables: {
                   workspaceId: getData.workspaceId,
-                  email: vars.email,
+                  email: vars.emails[0].address,
                   role: vars.role,
                 },
               })
             },
           }
-          // console.log({ ...newProps })
           return <Component {...newProps} />
         }}
       </Mutation>

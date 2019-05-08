@@ -19,7 +19,7 @@ import {
 
 import UpdateRole from '../Data/UpdateRole'
 
-const Configure = ({ form, button, user, role}) => {
+const Configure = ({ form, user, role}) => {
   // console.log({ form })
   const options = [
     {
@@ -38,14 +38,13 @@ const Configure = ({ form, button, user, role}) => {
       value: 'WORKSPACE_VIEWER',
     },
   ]
-
+  console.log(role)
   return (
     <CardForm
       title="Configure"
       button={{
         save: form.save,
         text: 'Update',
-        onClick: role.set(role.text),
       }}
       className={s.card}>
       {/* <H5 className={s.name}>
@@ -58,7 +57,7 @@ const Configure = ({ form, button, user, role}) => {
         Component={Selector}
         options={options}
         required
-        defaultValue="e"
+        defaultValue={role.text}
       />
       {/* <Dropdown
         className={s.component}
@@ -90,7 +89,6 @@ Configure.propTypes = {
   save: PropTypes.bool,
   form: PropTypes.object,
   user: PropTypes.object,
-  workspaceId: PropTypes.string,
   set: PropTypes.func,
   role: PropTypes.object,
   button: PropTypes.bool,
