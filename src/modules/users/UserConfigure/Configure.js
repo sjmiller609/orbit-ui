@@ -3,24 +3,12 @@ import PropTypes from 'prop-types'
 import Selector from './Selector'
 
 import s from './styles.scss'
-import {
-  CardForm,
-  Form,
-  H5,
-  Dropdown,
-  MenuList,
-  Item,
-  TextFieldSelect,
-  FormSection,
-  FieldSet,
-  TextField,
-  Select,
-} from 'instruments'
+import { CardForm, Form, Select } from 'instruments'
 
 import UpdateRole from '../Data/UpdateRole'
 
-const Configure = ({ form, user, role}) => {
-  // console.log({ form })
+const Configure = ({ form, user, role }) => {
+  console.log(role.text)
   const options = [
     {
       icon: 'airflow_astro',
@@ -28,7 +16,7 @@ const Configure = ({ form, user, role}) => {
       value: 'WORKSPACE_ADMIN',
     },
     {
-      icon: 'alien_ship',
+      icon: 'satellite',
       text: 'Editor',
       value: 'WORKSPACE_EDITOR',
     },
@@ -38,7 +26,6 @@ const Configure = ({ form, user, role}) => {
       value: 'WORKSPACE_VIEWER',
     },
   ]
-  console.log(role)
   return (
     <CardForm
       title="Configure"

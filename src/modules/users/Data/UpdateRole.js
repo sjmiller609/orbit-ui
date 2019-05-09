@@ -37,14 +37,17 @@ const UpdateRole = Component => {
                   role: vars.role,
                 },
               })
+              props.role.set(vars.role)
             },
           }
+          console.log({...props})
           return <Component {...newProps} />
         }}
       </Mutation>
     )
   }
   UpdateRole.propTypes = {
+    role: PropTypes.object,
     getData: PropTypes.object,
   }
 

@@ -5,15 +5,15 @@ import Configure from './Configure'
 import Delete from './Delete'
 import DeleteInvite from './DeleteInvite'
 import Self from 'modules/self/Data'
-import UpdateRole from '../Data/UpdateRole'
 import PermissionsBlocker from './PermissionsBlocker'
 import { GetData } from 'instruments'
-import { findIndex } from 'lodash'
+import { find } from 'lodash'
 
 class UserConfigure extends React.Component {
   updateRole = this.updateRole.bind(this)
+
   state = {
-    role: this.props.user.role,
+    role: this.findRole(),
   }
 
   updateRole(role) {
@@ -22,21 +22,25 @@ class UserConfigure extends React.Component {
     }
   }
 
+  findRole() {
+    if (this.props.user.__typename == 'Invite') {
+      return this.props.user.role
+    } else {
+      return find(this.props.user.roleBindings, {
+        workspace: { id: this.props.getData.workspaceId },
+      }).role
+    }
+  }
+
   render() {
-    // console.log(this.props.user)
-    // console.log(this.props.user.role)
-    // console.log(this.props.workspaceId)
+    console.log(this.state.role)
     const { self, user, pending, getData } = this.props
-    // console.log(self)
     const workspaceId = getData.workspaceId
     const { role } = this.state
     const isSelf = self.user.id === user.id
-    // console.log(isSelf)
-    // console.log(user)
-    // let userObject = (isSelf===true) ? ""
 
     function restructure(user) {
-      if (isSelf == false) {
+      if (user.__typename == 'Invite') {
         const restructuredObject = {
           roleBindings: [
             {
@@ -52,8 +56,8 @@ class UserConfigure extends React.Component {
       }
     }
 
-    let userObject = isSelf === true ? user : restructure(user)
-    console.log(self)
+    let userObject = user.__typename == 'Invite' ? restructure(user) : user
+    // console.log(userObject)
 
     let hasPermissions = false
     const roleBindingsArray = self.user.roleBindings
@@ -69,9 +73,7 @@ class UserConfigure extends React.Component {
       }
     }
 
-    console.log(hasPermissions)
-
-    if (hasPermissions == true) {
+    if (hasPermissions == true && isSelf == false) {
       return (
         <React.Fragment>
           <Configure
