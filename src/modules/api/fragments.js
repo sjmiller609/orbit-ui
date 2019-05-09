@@ -49,6 +49,10 @@ export const workspace = gql`
     createdAt
     updatedAt
     deploymentCount
+    workspaceCapabilities {
+      billing
+      editPermissions
+    }
   }
 `
 
