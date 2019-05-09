@@ -33,11 +33,17 @@ class UserConfigure extends React.Component {
   }
 
   render() {
-    console.log(this.state.role)
     const { self, user, pending, getData } = this.props
     const workspaceId = getData.workspaceId
     const { role } = this.state
     const isSelf = self.user.id === user.id
+
+    const msg1 = 'You cannot edit your own permissions.'
+    const msg2 =
+      'You do not have the appropriate permissions to access this feature.'
+    let msg = isSelf == true ? msg1 : msg2
+
+    console.log(msg)
 
     function restructure(user) {
       if (user.__typename == 'Invite') {
@@ -95,7 +101,7 @@ class UserConfigure extends React.Component {
     } else {
       return (
         <React.Fragment>
-          <PermissionsBlocker />
+          <PermissionsBlocker msg={msg} />
         </React.Fragment>
       )
     }

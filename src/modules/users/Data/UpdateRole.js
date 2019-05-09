@@ -38,9 +38,9 @@ const UpdateRole = Component => {
                 },
               })
               props.role.set(vars.role)
+              location.reload(true) // Current workaround for bug in the Select form
             },
           }
-          console.log({...props})
           return <Component {...newProps} />
         }}
       </Mutation>
