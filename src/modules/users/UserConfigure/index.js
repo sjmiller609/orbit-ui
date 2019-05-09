@@ -8,6 +8,7 @@ import Self from 'modules/self/Data'
 import PermissionsBlocker from './PermissionsBlocker'
 import { GetData } from 'instruments'
 import { find } from 'lodash'
+import Data from '../../workspaces/Data'
 
 class UserConfigure extends React.Component {
   updateRole = this.updateRole.bind(this)
@@ -33,8 +34,13 @@ class UserConfigure extends React.Component {
   }
 
   render() {
-    const { self, user, pending, getData } = this.props
+    const { self, user, pending, getData, workspaces } = this.props
+    console.log(workspaces)
     const workspaceId = getData.workspaceId
+    const workspace = workspaces.find(
+      workspace => workspace && workspace.id === workspaceId
+    )
+    console.log(workspace)
     const { role } = this.state
     const isSelf = self.user.id === user.id
 
@@ -43,7 +49,7 @@ class UserConfigure extends React.Component {
       'You do not have the appropriate permissions to access this feature.'
     let msg = isSelf == true ? msg1 : msg2
 
-    console.log(msg)
+    // console.log(msg)
 
     function restructure(user) {
       if (user.__typename == 'Invite') {
@@ -65,21 +71,24 @@ class UserConfigure extends React.Component {
     let userObject = user.__typename == 'Invite' ? restructure(user) : user
     // console.log(userObject)
 
-    let hasPermissions = false
-    const roleBindingsArray = self.user.roleBindings
-    const roleBindingsArrayLength = roleBindingsArray.length
-    // console.log(user)
-    for (let i = 0; i < roleBindingsArrayLength; i++) {
-      if (
-        roleBindingsArray[i].role == 'SYSTEM_ADMIN' ||
-        (roleBindingsArray[i].workspace.id == workspaceId &&
-          roleBindingsArray[i].role == 'WORKSPACE_ADMIN')
-      ) {
-        hasPermissions = true
-      }
-    }
+    // let hasPermissions = false
+    // const roleBindingsArray = self.user.roleBindings
+    // const roleBindingsArrayLength = roleBindingsArray.length
+    // // console.log(user)
+    // for (let i = 0; i < roleBindingsArrayLength; i++) {
+    //   if (
+    //     roleBindingsArray[i].role == 'SYSTEM_ADMIN' ||
+    //     (roleBindingsArray[i].workspace.id == workspaceId &&
+    //       roleBindingsArray[i].role == 'WORKSPACE_ADMIN')
+    //   ) {
+    //     hasPermissions = true
+    //   }
+    // }
 
-    if (hasPermissions == true && isSelf == false) {
+    if (
+      workspace.workspaceCapabilities.editPermissions == true &&
+      isSelf == false
+    ) {
       return (
         <React.Fragment>
           <Configure
@@ -114,6 +123,7 @@ UserConfigure.propTypes = {
   pending: PropTypes.bool,
   workspaceId: PropTypes.string,
   getData: PropTypes.object,
+  workspaces: PropTypes.object,
 }
 
-export default GetData(Self(UserConfigure, { workspaceId: true }))
+export default Data(GetData(Self(UserConfigure, { workspaceId: true })))

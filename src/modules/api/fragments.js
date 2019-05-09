@@ -50,7 +50,6 @@ export const workspace = gql`
     updatedAt
     deploymentCount
     workspaceCapabilities {
-      billing
       editPermissions
     }
   }
