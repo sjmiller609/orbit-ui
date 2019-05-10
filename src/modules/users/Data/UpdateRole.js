@@ -5,35 +5,25 @@ import PropTypes from 'prop-types'
 import workspacesApi from 'modules/workspaces/Data/api'
 import api from './api'
 
-import { Mutation, GetData } from 'instruments'
-import { get } from 'http'
+import { Mutation } from 'instruments'
+// import { get } from 'http'
 // import { AsyncResource } from 'async_hooks';
 
 const UpdateRole = Component => {
-  const UpdateRole = ({ getData, ...props }) => {
-    const query = {
-      name: workspacesApi.Workspaces,
-      type: 'workspaces',
-      vars: {
-        workspaceId: getData.workspaceId,
-        withUsers: true,
-      },
-    }
+  const UpdateRole = ({ ...props }) => {
     return (
       <Mutation
         gql={api.UpdateRole}
         success="User Role Updated"
-        track="User Role Updated"
-        query={query}>
+        track="User Role Updated">
         {({ mutate }) => {
           const newProps = {
             ...props,
-            workspaceId: getData.workspaceId,
             onSubmit: vars => {
               mutate({
                 variables: {
-                  workspaceId: getData.workspaceId,
-                  email: vars.emails[0].address,
+                  workspaceId: vars.workspaceId,
+                  email: vars.email,
                   role: vars.role,
                 },
               })
@@ -48,10 +38,9 @@ const UpdateRole = Component => {
   }
   UpdateRole.propTypes = {
     role: PropTypes.object,
-    getData: PropTypes.object,
   }
 
-  return GetData(UpdateRole, { workspaceId: true })
+  return UpdateRole
 }
 
 export default UpdateRole

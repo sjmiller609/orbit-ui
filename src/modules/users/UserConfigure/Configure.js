@@ -7,23 +7,25 @@ import { CardForm, Form, Select } from 'instruments'
 
 import UpdateRole from '../Data/UpdateRole'
 
-const Configure = ({ form, user, role }) => {
-  console.log(role.text)
+const Configure = ({ form, user, role, disabled }) => {
   const options = [
     {
       icon: 'airflow_astro',
       text: 'Admin',
       value: 'WORKSPACE_ADMIN',
+      disabled: disabled,
     },
     {
       icon: 'satellite',
       text: 'Editor',
       value: 'WORKSPACE_EDITOR',
+      disabled: disabled,
     },
     {
       icon: 'astro_helmet',
       text: 'Viewer',
       value: 'WORKSPACE_VIEWER',
+      disabled: disabled,
     },
   ]
   return (
@@ -45,29 +47,10 @@ const Configure = ({ form, user, role }) => {
         options={options}
         required
         defaultValue={role.text}
+        info={
+          'You must be an Admin to edit these setitngs. You also cannot change your own permissions.'
+        }
       />
-      {/* <Dropdown
-        className={s.component}
-        selector={<div className={s.button}>{role.text}</div>}
-        {...form.field(role.text)}>
-        <MenuList label="Workspace Role">
-          <Item onClick={() => role.set('WORKSPACE_ADMIN')}>
-            Workspace Admin
-          </Item>
-          <Item onClick={() => role.set('WORKSPACE_EDITOR')}>
-            Workspace Editor
-          </Item>
-          <Item onClick={() => role.set('WORKSPACE_VIEWER')}>
-            Workspace Viewer
-          </Item>
-        </MenuList>
-      </Dropdown> */}
-      {/* <div className={s.deployed}>
-        <P>Deployed</P>
-        <Mini>
-          <ShowDate date={user.createdAt} />
-        </Mini>
-      </div> */}
     </CardForm>
   )
 }
@@ -79,6 +62,7 @@ Configure.propTypes = {
   set: PropTypes.func,
   role: PropTypes.object,
   button: PropTypes.bool,
+  disabled: PropTypes.bool,
 }
 
 export default UpdateRole(Form(Configure))

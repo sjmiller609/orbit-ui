@@ -10,7 +10,7 @@ const Empty = ({ button }) => {
     <Block1
       left={<Airflow className={s.airflowImg} dagSize={s.dag} />}
       title="Ready for takeoff?"
-      text="Deploy a private instance of Apache Airflow in minutes, and get straight to writing custom workflows.">
+      text="Deploy your DAGs to a private instance of Apache Airflow in minutes.">
       {button}
     </Block1>
   )

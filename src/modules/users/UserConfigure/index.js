@@ -35,12 +35,11 @@ class UserConfigure extends React.Component {
 
   render() {
     const { self, user, pending, getData, workspaces } = this.props
-    console.log(workspaces)
+
     const workspaceId = getData.workspaceId
     const workspace = workspaces.find(
       workspace => workspace && workspace.id === workspaceId
     )
-    console.log(workspace)
     const { role } = this.state
     const isSelf = self.user.id === user.id
 
@@ -48,8 +47,6 @@ class UserConfigure extends React.Component {
     const msg2 =
       'You do not have the appropriate permissions to access this feature.'
     let msg = isSelf == true ? msg1 : msg2
-
-    // console.log(msg)
 
     function restructure(user) {
       if (user.__typename == 'Invite') {
@@ -69,48 +66,54 @@ class UserConfigure extends React.Component {
     }
 
     let userObject = user.__typename == 'Invite' ? restructure(user) : user
-    // console.log(userObject)
 
-    // let hasPermissions = false
-    // const roleBindingsArray = self.user.roleBindings
-    // const roleBindingsArrayLength = roleBindingsArray.length
-    // // console.log(user)
-    // for (let i = 0; i < roleBindingsArrayLength; i++) {
-    //   if (
-    //     roleBindingsArray[i].role == 'SYSTEM_ADMIN' ||
-    //     (roleBindingsArray[i].workspace.id == workspaceId &&
-    //       roleBindingsArray[i].role == 'WORKSPACE_ADMIN')
-    //   ) {
-    //     hasPermissions = true
-    //   }
-    // }
+    const editPermissions = workspace.workspaceCapabilities.editPermissions
 
-    if (
-      workspace.workspaceCapabilities.editPermissions == true &&
-      isSelf == false
-    ) {
+    const disabled = !editPermissions || isSelf
+    console.log(userObject)
+    if (editPermissions == true && isSelf == false) { // MVP - this will change once I have tim eto rework the component to disable the delete function based on the editPermissions stuff 
       return (
         <React.Fragment>
           <Configure
             user={user}
-            data={userObject}
+            data={{
+              workspaceId: workspaceId,
+              email: userObject.emails[0].address,
+              role: role,
+            }}
             role={{
               text: role,
               set: this.updateRole,
             }}
-            workspaceId={workspaceId}
+            disabled={disabled}
           />
           {!pending ? (
             <Delete user={user} isSelf={isSelf} />
           ) : (
-            <DeleteInvite user={user} />
+            <DeleteInvite
+              user={user}
+              isSelf={workspace.workspaceCapabilities.editPermissions}
+            />
           )}
         </React.Fragment>
       )
     } else {
       return (
         <React.Fragment>
-          <PermissionsBlocker msg={msg} />
+          {/* <PermissionsBlocker msg={msg} /> */}
+          <Configure
+            user={user}
+            data={{
+              workspaceId: workspaceId,
+              email: userObject.emails[0].address,
+              role: role,
+            }}
+            role={{
+              text: role,
+              set: this.updateRole,
+            }}
+            disabled={disabled}
+          />
         </React.Fragment>
       )
     }
@@ -123,7 +126,7 @@ UserConfigure.propTypes = {
   pending: PropTypes.bool,
   workspaceId: PropTypes.string,
   getData: PropTypes.object,
-  workspaces: PropTypes.object,
+  workspaces: PropTypes.array,
 }
 
 export default Data(GetData(Self(UserConfigure, { workspaceId: true })))
