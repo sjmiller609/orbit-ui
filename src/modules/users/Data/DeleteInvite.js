@@ -5,7 +5,8 @@ import PropTypes from 'prop-types'
 import api from './api'
 import workspacesApi from 'modules/workspaces/Data/api'
 
-import { Delete as Mutate, GetData } from 'instruments'
+import { Delete as Mutate, GetData, CardError } from 'instruments'
+import { handleError, trimError } from './helpers'
 
 const DeleteInvite = Component => {
   const DeleteInvite = ({ getData, ...props }) => {
@@ -23,8 +24,10 @@ const DeleteInvite = Component => {
         redirect={'/users'}
         success="Invitation canceled."
         track="Invite Deleted From Workspace"
-        query={query}>
-        {({ mutate }) => {
+        query={query}
+        errorMsg={trimError}
+        voidError>
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
@@ -39,6 +42,10 @@ const DeleteInvite = Component => {
               })
             },
           }
+          // handle api errors
+          const err = handleError(error)
+          if (err) newProps.error = err
+          else if (error) return <CardError />
           return <Component {...newProps} />
         }}
       </Mutate>

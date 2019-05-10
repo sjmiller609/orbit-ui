@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import api from './api'
 
 import { Mutation, CardError } from 'instruments'
-import { handleError } from './helpers'
+import { handleError, trimError } from './helpers'
 
 const UpdateRole = Component => {
   const UpdateRole = ({ ...props }) => {
@@ -13,7 +13,9 @@ const UpdateRole = Component => {
       <Mutation
         gql={api.UpdateRole}
         success="User Role Updated"
-        track="User Role Updated">
+        track="User Role Updated"
+        errorMsg={trimError}
+        voidError>
         {({ mutate, error }) => {
           const newProps = {
             ...props,

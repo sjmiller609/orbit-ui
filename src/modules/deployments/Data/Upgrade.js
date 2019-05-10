@@ -4,7 +4,7 @@ import api from './api'
 
 import { Upgrade as Mutate, CardError } from 'instruments'
 
-import { handleError } from './helpers'
+import { handleError, trimError } from './helpers'
 
 const Upgrade = Component => {
   const Upgrade = props => {
@@ -18,7 +18,8 @@ const Upgrade = Component => {
         redirect="/deployments"
         success="Deployment upgraded successfully."
         track="Deployment Upgraded"
-        query={query}>
+        query={query}
+        errorMsg={trimError}>
         {({ mutate, error }) => {
           const newProps = {
             ...props,

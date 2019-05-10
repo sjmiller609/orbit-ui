@@ -4,7 +4,7 @@ import api from './api'
 
 import { Delete as Mutate, CardError } from 'instruments'
 
-import { handleError } from './helpers'
+import { handleError, trimError } from './helpers'
 
 const Delete = Component => {
   const Delete = props => {
@@ -21,7 +21,9 @@ const Delete = Component => {
         redirect="/workspaces"
         success="Workspace deleted successfully."
         track="Workspace Deleted"
-        query={query}>
+        query={query}
+        voidError
+        errorMsg={trimError}>
         {({ mutate, error }) => {
           const newProps = {
             ...props,

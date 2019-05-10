@@ -4,7 +4,7 @@ import api from './api'
 
 import { Delete as Mutate, CardError } from 'instruments'
 
-import { handleError } from './helpers'
+import { handleError, trimError } from './helpers'
 
 const Delete = Component => {
   const Delete = props => {
@@ -18,7 +18,8 @@ const Delete = Component => {
         redirect="/deployments"
         success="Deployment deleted successfully."
         track="Deployment Deleted"
-        query={query}>
+        query={query}
+        errorMsg={trimError}>
         {({ mutate, error }) => {
           const newProps = {
             ...props,

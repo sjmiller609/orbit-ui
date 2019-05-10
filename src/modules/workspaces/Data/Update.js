@@ -4,7 +4,7 @@ import api from './api'
 
 import { Mutation, CardError } from 'instruments'
 
-import { handleError } from './helpers'
+import { handleError, trimError } from './helpers'
 
 const Update = Component => {
   const Update = props => {
@@ -12,8 +12,10 @@ const Update = Component => {
       <Mutation
         gql={api.UpdateWorkspace}
         success="Workspace updated successfully."
-        track="Workspace Updated">
-        {({ mutate, errors }) => {
+        track="Workspace Updated"
+        errorMsg={trimError}
+        voidError>
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
@@ -26,10 +28,8 @@ const Update = Component => {
               })
             },
           }
-          // handle api errors
-          console.log(error)
+          // handle api error
           const err = handleError(error)
-          console.log(err)
           if (err) newProps.error = err
           else if (error) return <CardError />
           return <Component {...newProps} />

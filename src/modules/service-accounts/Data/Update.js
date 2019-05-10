@@ -4,7 +4,7 @@ import api from './api'
 
 import { Mutation, CardError } from 'instruments'
 
-import { handleError } from './helpers'
+import { handleError, trimError } from './helpers'
 
 const Update = Component => {
   const Update = props => {
@@ -12,7 +12,9 @@ const Update = Component => {
       <Mutation
         gql={api.UpdateServiceAccount}
         success="Service account updated."
-        track="Service Account Updated">
+        track="Service Account Updated"
+        errorMsg={trimError}
+        voidError>
         {({ mutate, error }) => {
           const newProps = {
             ...props,

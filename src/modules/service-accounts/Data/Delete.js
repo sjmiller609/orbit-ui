@@ -28,7 +28,9 @@ const Delete = Component => {
           'Service Account Deleted From ' +
           (props.deploymentId ? 'Deployment' : 'Workspace')
         }
-        query={query}>
+        query={query}
+        errorMsg={trimError}
+        voidError>
         {({ mutate, error }) => {
           const newProps = {
             ...props,
