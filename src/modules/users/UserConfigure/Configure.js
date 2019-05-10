@@ -36,9 +36,6 @@ const Configure = ({ form, user, role, disabled }) => {
         text: 'Update',
       }}
       className={s.card}>
-      {/* <H5 className={s.name}>
-        Permissions for {user.username || user.email}. Coming soon.
-      </H5> */}
       <Select
         {...form.field('role')}
         label="Role"

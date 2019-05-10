@@ -5,7 +5,9 @@ import PropTypes from 'prop-types'
 import api from './api'
 import workspacesApi from 'modules/workspaces/Data/api'
 
-import { Delete as Mutate, GetData } from 'instruments'
+import { Delete as Mutate, GetData, CardError } from 'instruments'
+
+import { handleError } from './helpers'
 
 const Remove = Component => {
   const Remove = ({ getData, isSelf, ...props }) => {
@@ -27,7 +29,7 @@ const Remove = Component => {
         success="User removed from workspace."
         track="User Removed From Workspace"
         query={query}>
-        {({ mutate }) => {
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             isSelf,
@@ -46,6 +48,10 @@ const Remove = Component => {
               })
             },
           }
+          // handle api errors
+          const err = handleError(error)
+          if (err) newProps.error = err
+          else if (error) return <CardError />
           return <Component {...newProps} />
         }}
       </Mutate>

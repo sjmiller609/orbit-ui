@@ -2,12 +2,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import workspacesApi from 'modules/workspaces/Data/api'
 import api from './api'
 
-import { Mutation } from 'instruments'
-// import { get } from 'http'
-// import { AsyncResource } from 'async_hooks';
+import { Mutation, CardError } from 'instruments'
+import { handleError } from './helpers'
 
 const UpdateRole = Component => {
   const UpdateRole = ({ ...props }) => {
@@ -16,7 +14,7 @@ const UpdateRole = Component => {
         gql={api.UpdateRole}
         success="User Role Updated"
         track="User Role Updated">
-        {({ mutate }) => {
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
@@ -31,6 +29,10 @@ const UpdateRole = Component => {
               location.reload(true) // Current workaround for bug in the Select form
             },
           }
+          // handle permissions errors
+          const err = handleError(error)
+          if (err) newProps.error = err
+          else if (error) return <CardError />
           return <Component {...newProps} />
         }}
       </Mutation>

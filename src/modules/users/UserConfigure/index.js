@@ -71,14 +71,15 @@ class UserConfigure extends React.Component {
 
     const disabled = !editPermissions || isSelf
     console.log(userObject)
-    if (editPermissions == true && isSelf == false) { // MVP - this will change once I have tim eto rework the component to disable the delete function based on the editPermissions stuff 
+    if (editPermissions == true && isSelf == false) {
+      // MVP - this will change once I have tim eto rework the component to disable the delete function based on the editPermissions stuff
       return (
         <React.Fragment>
           <Configure
             user={user}
             data={{
               workspaceId: workspaceId,
-              email: userObject.emails[0].address,
+              email: userObject.emails[0].address, //I think this is ok, but are there situations where users have multiple email addresses associated with their userId?
               role: role,
             }}
             role={{

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 
 import api from './api'
 
-import { Delete as Mutate, GetData } from 'instruments'
-import { getVars } from './helpers'
+import { Delete as Mutate, GetData, CardError } from 'instruments'
+import { getVars, handleError } from './helpers'
 
 const Delete = Component => {
   const Delete = ({ getData, path, ...props }) => {
@@ -29,7 +29,7 @@ const Delete = Component => {
           (props.deploymentId ? 'Deployment' : 'Workspace')
         }
         query={query}>
-        {({ mutate }) => {
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
@@ -46,6 +46,10 @@ const Delete = Component => {
               })
             },
           }
+          // handle api errors
+          const err = handleError(error)
+          if (err) newProps.error = err
+          else if (error) return <CardError />
           return <Component {...newProps} />
         }}
       </Mutate>
