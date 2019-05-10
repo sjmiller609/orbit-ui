@@ -39,10 +39,9 @@ const errors = [
     error: 'The email you entered does not match your invitation.',
   },
   {
-    key: 'You do not have the appropriate permissions for that',
-    name: 'label',
-    error:
-      'You do not have the appropriate permissions for that. Contact your Workspace Admin to change your role.',
+    key: 'permissions',
+    name: 'permissions',
+    error: 'Contact your Workspace Admin to upgrade your permissions.',
   },
 ]
 

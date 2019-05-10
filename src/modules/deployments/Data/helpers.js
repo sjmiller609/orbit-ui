@@ -12,10 +12,9 @@ const errors = [
     error: 'Workspace already has a deployment with that name.',
   },
   {
-    key: 'You do not have the appropriate permissions for that',
-    name: 'label',
-    error:
-      'You do not have the appropriate permissions for that. Contact your Workspace Admin to change your role.',
+    key: 'permissions',
+    name: 'permissions',
+    error: 'Contact your Workspace Admin to upgrade your permissions.',
   },
 ]
 

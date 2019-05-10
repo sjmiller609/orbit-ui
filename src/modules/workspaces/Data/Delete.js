@@ -22,8 +22,8 @@ const Delete = Component => {
         success="Workspace deleted successfully."
         track="Workspace Deleted"
         query={query}
-        voidError
-        errorMsg={trimError}>
+        errorMsg={trimError}
+        voidError>
         {({ mutate, error }) => {
           const newProps = {
             ...props,

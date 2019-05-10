@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import api from './api'
 
 import { Delete as Mutate, GetData, CardError } from 'instruments'
-import { getVars, handleError } from './helpers'
+import { getVars, handleError, trimError } from './helpers'
 
 const Delete = Component => {
   const Delete = ({ getData, path, ...props }) => {

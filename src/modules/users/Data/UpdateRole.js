@@ -31,7 +31,8 @@ const UpdateRole = Component => {
               location.reload(true) // Current workaround for bug in the Select form
             },
           }
-          // handle permissions errors
+          // handle api errors
+          console.log(error)
           const err = handleError(error)
           if (err) newProps.error = err
           else if (error) return <CardError />
