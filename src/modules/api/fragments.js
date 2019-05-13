@@ -50,7 +50,7 @@ export const workspace = gql`
     updatedAt
     deploymentCount
     workspaceCapabilities {
-      editPermissions
+      updateIAM
     }
   }
 `

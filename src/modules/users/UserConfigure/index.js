@@ -67,12 +67,12 @@ class UserConfigure extends React.Component {
 
     let userObject = user.__typename == 'Invite' ? restructure(user) : user
 
-    const editPermissions = workspace.workspaceCapabilities.editPermissions
+    const updateIAM = workspace.workspaceCapabilities.updateIAM
 
-    const disabled = !editPermissions || isSelf
+    const disabled = !updateIAM || isSelf
     console.log(userObject)
-    if (editPermissions == true && isSelf == false) {
-      // MVP - this will change once I have tim eto rework the component to disable the delete function based on the editPermissions stuff
+    if (updateIAM == true && isSelf == false) {
+      // MVP - this will change once I have time to rework the component to disable the delete function based on the updateIAM stuff
       return (
         <React.Fragment>
           <Configure
@@ -93,7 +93,7 @@ class UserConfigure extends React.Component {
           ) : (
             <DeleteInvite
               user={user}
-              isSelf={workspace.workspaceCapabilities.editPermissions}
+              isSelf={workspace.workspaceCapabilities.updateIAM}
             />
           )}
         </React.Fragment>
