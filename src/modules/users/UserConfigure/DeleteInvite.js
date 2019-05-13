@@ -5,14 +5,16 @@ import { CardDelete, B } from 'instruments'
 
 import { default as Mutate } from '../Data/DeleteInvite'
 
-const DeleteInvite = ({ user, onSubmit }) => {
+const DeleteInvite = ({ user, onSubmit, updateIAM }) => {
   const name = user.fullName || user.email
   let text = `Warning! This cannot be undone. ${name} will be permanently removed from this workspace and all access revoked.`
+  let noDelete = !updateIAM
 
   return (
     <CardDelete
       title="Cancel Invitation"
       text={text}
+      disabled={noDelete}
       confirm={{
         text: (
           <span>
@@ -33,6 +35,7 @@ const DeleteInvite = ({ user, onSubmit }) => {
 DeleteInvite.propTypes = {
   onSubmit: PropTypes.func,
   user: PropTypes.object,
+  updateIAM: PropTypes.bool,
 }
 
 export default Mutate(DeleteInvite)

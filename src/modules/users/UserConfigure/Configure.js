@@ -7,7 +7,7 @@ import { CardForm, Form, Select } from 'instruments'
 
 import UpdateRole from '../Data/UpdateRole'
 
-const Configure = ({ form, user, role, disabled }) => {
+const Configure = ({ form, role, disabled }) => {
   const options = [
     {
       icon: 'airflow_astro',
@@ -37,7 +37,7 @@ const Configure = ({ form, user, role, disabled }) => {
       }}
       className={s.card}>
       <Select
-        {...form.field('role')}
+        {...form.field('permissions')}
         label="Role"
         className={s.selectors}
         Component={Selector}

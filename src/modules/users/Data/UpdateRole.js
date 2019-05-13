@@ -28,7 +28,7 @@ const UpdateRole = Component => {
                 },
               })
               props.role.set(vars.role)
-              location.reload(true) // Current workaround for bug in the Select form
+              // location.reload(true) // Current workaround for bug in the Select form
             },
           }
           // handle api errors

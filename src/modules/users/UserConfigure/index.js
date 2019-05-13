@@ -5,7 +5,6 @@ import Configure from './Configure'
 import Delete from './Delete'
 import DeleteInvite from './DeleteInvite'
 import Self from 'modules/self/Data'
-import PermissionsBlocker from './PermissionsBlocker'
 import { GetData } from 'instruments'
 import { find } from 'lodash'
 import Data from '../../workspaces/Data'
@@ -43,11 +42,6 @@ class UserConfigure extends React.Component {
     const { role } = this.state
     const isSelf = self.user.id === user.id
 
-    const msg1 = 'You cannot edit your own permissions.'
-    const msg2 =
-      'You do not have the appropriate permissions to access this feature.'
-    let msg = isSelf == true ? msg1 : msg2
-
     function restructure(user) {
       if (user.__typename == 'Invite') {
         const restructuredObject = {
@@ -65,59 +59,35 @@ class UserConfigure extends React.Component {
       }
     }
 
-    let userObject = user.__typename == 'Invite' ? restructure(user) : user
+    const userObject = user.__typename == 'Invite' ? restructure(user) : user
 
     const updateIAM = workspace.workspaceCapabilities.updateIAM
 
-    const disabled = !updateIAM || isSelf
-    console.log(userObject)
-    if (updateIAM == true && isSelf == false) {
-      // MVP - this will change once I have time to rework the component to disable the delete function based on the updateIAM stuff
-      return (
-        <React.Fragment>
-          <Configure
-            user={user}
-            data={{
-              workspaceId: workspaceId,
-              email: userObject.emails[0].address, //I think this is ok, but are there situations where users have multiple email addresses associated with their userId?
-              role: role,
-            }}
-            role={{
-              text: role,
-              set: this.updateRole,
-            }}
-            disabled={disabled}
-          />
-          {!pending ? (
-            <Delete user={user} isSelf={isSelf} />
-          ) : (
-            <DeleteInvite
-              user={user}
-              isSelf={workspace.workspaceCapabilities.updateIAM}
-            />
-          )}
-        </React.Fragment>
-      )
-    } else {
-      return (
-        <React.Fragment>
-          {/* <PermissionsBlocker msg={msg} /> */}
-          <Configure
-            user={user}
-            data={{
-              workspaceId: workspaceId,
-              email: userObject.emails[0].address,
-              role: role,
-            }}
-            role={{
-              text: role,
-              set: this.updateRole,
-            }}
-            disabled={disabled}
-          />
-        </React.Fragment>
-      )
-    }
+    // Disable the selector if the user is viewing their own permissions
+    const disabled = isSelf
+
+    return (
+      <React.Fragment>
+        <Configure
+          user={user}
+          data={{
+            workspaceId: workspaceId,
+            email: userObject.emails[0].address,
+            role: role,
+          }}
+          role={{
+            text: role,
+            set: this.updateRole,
+          }}
+          disabled={disabled}
+        />
+        {!pending ? (
+          <Delete user={user} isSelf={isSelf} updateIAM={updateIAM} />
+        ) : (
+          <DeleteInvite user={user} isSelf={isSelf} updateIAM={updateIAM} />
+        )}
+      </React.Fragment>
+    )
   }
 }
 

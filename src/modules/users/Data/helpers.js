@@ -4,7 +4,7 @@ const errors = [
   {
     key: 'permissions',
     name: 'permissions',
-    error: 'Contact your Workspace Admin to upgrade your permissions.',
+    error: 'You must be an admin to change these settings.',
   },
 ]
 

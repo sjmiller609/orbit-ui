@@ -8,12 +8,6 @@ const PermissionsBlocker = props => {
   return (
     <CardForm title="Permissions" className={s.card}>
       <H5 className={s.name}>{props.msg}</H5>
-      {/* <div className={s.deployed}>
-        <P>Deployed</P>
-        <Mini>
-          <ShowDate date={user.createdAt} />
-        </Mini>
-      </div> */}
     </CardForm>
   )
 }
