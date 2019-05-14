@@ -28,6 +28,8 @@ const Configure = ({ form, role, disabled }) => {
       disabled: disabled,
     },
   ]
+  const permissions = form.field('permissions')
+  console.log(permissions.value)
   return (
     <CardForm
       title="Configure"
@@ -36,7 +38,7 @@ const Configure = ({ form, role, disabled }) => {
         text: 'Update',
       }}>
       <Select
-        {...form.field('permissions')}
+        {...permissions}
         label="Role"
         className={s.selectors}
         Component={Selector}
