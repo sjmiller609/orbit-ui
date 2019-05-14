@@ -25,11 +25,10 @@ class UserConfigure extends React.Component {
   findRole() {
     if (this.props.user.__typename == 'Invite') {
       return this.props.user.role
-    } else {
-      return find(this.props.user.roleBindings, {
-        workspace: { id: this.props.getData.workspaceId },
-      }).role
     }
+    return find(this.props.user.roleBindings, {
+      workspace: { id: this.props.getData.workspaceId },
+    }).role
   }
 
   render() {

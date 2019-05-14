@@ -1,12 +1,5 @@
 @import 'src/styles/mixins.scss';
 
-.name {
-  margin-top: 2rem;
-}
-.deployed {
-  margin: 0.8rem 0;
-  color: $beige;
-}
 
 .since .button, .component .button {
   @include filmo;

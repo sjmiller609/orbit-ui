@@ -34,8 +34,7 @@ const Configure = ({ form, role, disabled }) => {
       button={{
         save: form.save,
         text: 'Update',
-      }}
-      className={s.card}>
+      }}>
       <Select
         {...form.field('permissions')}
         label="Role"
@@ -45,7 +44,7 @@ const Configure = ({ form, role, disabled }) => {
         required
         defaultValue={role.text}
         info={
-          'You must be an Admin to edit these setitngs. You also cannot change your own permissions.'
+          'You must be an Admin to edit these settings. You also cannot change your own permissions.'
         }
       />
     </CardForm>
