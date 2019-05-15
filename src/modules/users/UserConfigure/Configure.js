@@ -7,50 +7,58 @@ import { CardForm, Form, Select } from 'instruments'
 
 import UpdateRole from '../Data/UpdateRole'
 
-const Configure = ({ form, role, disabled }) => {
-  const options = [
-    {
-      icon: 'airflow_astro',
-      text: 'Admin',
-      value: 'WORKSPACE_ADMIN',
-      disabled: disabled,
-    },
-    {
-      icon: 'satellite',
-      text: 'Editor',
-      value: 'WORKSPACE_EDITOR',
-      disabled: disabled,
-    },
-    {
-      icon: 'astro_helmet',
-      text: 'Viewer',
-      value: 'WORKSPACE_VIEWER',
-      disabled: disabled,
-    },
-  ]
-  const permissions = form.field('permissions')
-  console.log(permissions.value)
-  return (
-    <CardForm
-      title="Configure"
-      button={{
-        save: form.save,
-        text: 'Update',
-      }}>
-      <Select
-        {...permissions}
-        label="Role"
-        className={s.selectors}
-        Component={Selector}
-        options={options}
-        required
-        defaultValue={role.text}
-        info={
-          'You must be an Admin to edit these settings. You also cannot change your own permissions.'
-        }
-      />
-    </CardForm>
-  )
+class Configure extends React.Component {
+  // change = this.change.bind(this)
+  // componentDidMount() {
+  //   const { role, form } = this.props
+  //   console.log(role)
+  //   console.log(form.field('permissions'))
+  //   role.set(role.text)
+  // }
+  render() {
+    const { form, role, disabled } = this.props
+    const options = [
+      {
+        icon: 'airflow_astro',
+        text: 'Admin',
+        value: 'WORKSPACE_ADMIN',
+        disabled: disabled,
+      },
+      {
+        icon: 'satellite',
+        text: 'Editor',
+        value: 'WORKSPACE_EDITOR',
+        disabled: disabled,
+      },
+      {
+        icon: 'astro_helmet',
+        text: 'Viewer',
+        value: 'WORKSPACE_VIEWER',
+        disabled: disabled,
+      },
+    ]
+    const permissions = form.field('role')
+    return (
+      <CardForm
+        title="Configure"
+        button={{
+          save: form.save,
+          text: 'Update',
+        }}>
+        <Select
+          {...permissions}
+          className={s.selectors}
+          Component={Selector}
+          options={options}
+          required
+          defaultValue={role.text}
+          info={
+            'You must be an Admin to edit these settings. You also cannot change your own permissions.'
+          }
+        />
+      </CardForm>
+    )
+  }
 }
 
 Configure.propTypes = {
