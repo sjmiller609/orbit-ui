@@ -34,9 +34,7 @@ const Update = Component => {
             },
           }
           // handle api errors
-          console.log(error)
           const err = handleError(error)
-          console.log(err)
           if (err) newProps.error = err
           else if (error) return <CardError />
 
