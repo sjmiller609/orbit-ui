@@ -15,9 +15,9 @@ const Update = Component => {
           const newProps = {
             ...props,
             onSubmit: vars => {
-              const { id, ...payload } = vars
+              const { id: serviceAccountId, ...payload } = vars
               const variables = {
-                id,
+                serviceAccountId,
                 payload,
               }
               mutate({
