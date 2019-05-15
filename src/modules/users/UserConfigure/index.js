@@ -11,16 +11,37 @@ import Data from '../../workspaces/Data'
 
 class UserConfigure extends React.Component {
   state = {
-    role: this.findRole(),
+    role: this.getRole(),
   }
 
-  findRole() {
-    if (this.props.user.__typename == 'Invite') {
+  getRole() {
+    if (this.isInvite(this.props.user)) {
       return this.props.user.role
     }
+
     return find(this.props.user.roleBindings, {
       workspace: { id: this.props.getData.workspaceId },
     }).role
+  }
+
+  isInvite(user) {
+    return user.__typename === 'Invite'
+  }
+
+  // XXX: We'll probably want to return actual roleBindings
+  // from our invites/workspaces queries, so we can drop this.
+  mapInviteToUser(user, workspaceId) {
+    return {
+      roleBindings: [
+        {
+          role: user.role,
+          workspace: {
+            id: workspaceId,
+          },
+        },
+      ],
+      emails: [{ address: user.email }],
+    }
   }
 
   render() {
@@ -33,24 +54,9 @@ class UserConfigure extends React.Component {
     const { role } = this.state
     const isSelf = self.user.id === user.id
 
-    function restructure(user) {
-      if (user.__typename == 'Invite') {
-        const restructuredObject = {
-          roleBindings: [
-            {
-              role: user.role,
-              workspace: {
-                id: workspaceId,
-              },
-            },
-          ],
-          emails: [{ address: user.email }],
-        }
-        return restructuredObject
-      }
-    }
-
-    const userObject = user.__typename == 'Invite' ? restructure(user) : user
+    const userObject = this.isInvite(user)
+      ? this.mapInviteToUser(user, workspaceId)
+      : user
 
     const updateIAM = workspace.workspaceCapabilities.updateIAM
 
