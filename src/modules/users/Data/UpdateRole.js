@@ -29,7 +29,6 @@ const UpdateRole = Component => {
                   withUsers: true,
                 },
               }
-
               mutate({
                 variables: {
                   workspaceId: vars.workspaceId,
@@ -45,6 +44,7 @@ const UpdateRole = Component => {
               })
             },
           }
+
           // handle api errors
           const err = handleError(error)
           if (err) newProps.error = err
@@ -54,10 +54,6 @@ const UpdateRole = Component => {
       </Mutation>
     )
   }
-  UpdateRole.propTypes = {
-    role: PropTypes.object,
-  }
-
   return UpdateRole
 }
 

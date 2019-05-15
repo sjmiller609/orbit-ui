@@ -10,16 +10,8 @@ import { find } from 'lodash'
 import Data from '../../workspaces/Data'
 
 class UserConfigure extends React.Component {
-  updateRole = this.updateRole.bind(this)
-
   state = {
     role: this.findRole(),
-  }
-
-  updateRole(role) {
-    if (role != this.state.role) {
-      this.setState({ role })
-    }
   }
 
   findRole() {
@@ -32,6 +24,7 @@ class UserConfigure extends React.Component {
   }
 
   render() {
+    console.log(this.props.user)
     const { self, user, pending, getData, workspaces } = this.props
 
     const workspaceId = getData.workspaceId
@@ -74,10 +67,7 @@ class UserConfigure extends React.Component {
             email: userObject.emails[0].address,
             role: role,
           }}
-          role={{
-            text: role,
-            set: this.updateRole,
-          }}
+          role={role}
           disabled={disabled}
         />
         {!pending ? (

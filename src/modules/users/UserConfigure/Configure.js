@@ -8,13 +8,6 @@ import { CardForm, Form, Select } from 'instruments'
 import UpdateRole from '../Data/UpdateRole'
 
 class Configure extends React.Component {
-  // change = this.change.bind(this)
-  // componentDidMount() {
-  //   const { role, form } = this.props
-  //   console.log(role)
-  //   console.log(form.field('permissions'))
-  //   role.set(role.text)
-  // }
   render() {
     const { form, role, disabled } = this.props
     const options = [
@@ -51,7 +44,7 @@ class Configure extends React.Component {
           Component={Selector}
           options={options}
           required
-          defaultValue={role.text}
+          defaultValue={role}
           info={
             'You must be an Admin to edit these settings. You also cannot change your own permissions.'
           }
@@ -66,7 +59,7 @@ Configure.propTypes = {
   form: PropTypes.object,
   user: PropTypes.object,
   set: PropTypes.func,
-  role: PropTypes.object,
+  role: PropTypes.string,
   button: PropTypes.bool,
   disabled: PropTypes.bool,
 }
