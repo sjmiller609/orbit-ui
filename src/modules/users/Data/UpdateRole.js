@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import api from './api'
+import workspacesApi from 'modules/workspaces/Data/api'
 
 import { Mutation, CardError } from 'instruments'
 import { handleError, trimError } from './helpers'
@@ -20,15 +21,28 @@ const UpdateRole = Component => {
           const newProps = {
             ...props,
             onSubmit: vars => {
+              const query = {
+                name: workspacesApi.Workspaces,
+                type: 'workspaces',
+                vars: {
+                  workspaceId: vars.workspaceId,
+                  withUsers: true,
+                },
+              }
+
               mutate({
                 variables: {
                   workspaceId: vars.workspaceId,
                   email: vars.email,
                   role: vars.role,
                 },
+                refetchQueries: [
+                  {
+                    query: query.name,
+                    variables: query.vars,
+                  },
+                ],
               })
-              props.role.set(vars.role)
-              // location.reload(true) // Current workaround for bug in the Select form
             },
           }
           // handle api errors
