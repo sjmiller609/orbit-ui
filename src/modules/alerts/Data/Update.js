@@ -2,6 +2,7 @@
 import React from 'react'
 import api from 'modules/deployments/Data/api'
 import { Mutation, CardError } from 'instruments'
+import { handleError, trimError } from './helpers'
 
 const Update = Component => {
   const Update = props => {
@@ -10,6 +11,7 @@ const Update = Component => {
         gql={api.UpdateDeployment}
         success="Deployment alerts updated successfully."
         track="Deployment Alerts Updated"
+        errorMsg={trimError}
         voidError>
         {({ mutate, error }) => {
           const newProps = {
@@ -26,16 +28,17 @@ const Update = Component => {
                 },
                 sync: false,
               }
-              console.log(variables)
               mutate({
                 variables,
               })
             },
           }
           // handle api errors
-          // const err = handleError(error)
-          // if (err) newProps.error = err
-          if (error) return <CardError />
+          console.log(error)
+          const err = handleError(error)
+          console.log(err)
+          if (err) newProps.error = err
+          else if (error) return <CardError />
 
           return <Component {...newProps} />
         }}
