@@ -4,7 +4,7 @@ const errors = [
   {
     key: 'permissions',
     name: 'properties.alert_emails',
-    error: 'You must be an admin to change these settings.',
+    error: 'Contact your workspace admin to upgrade your permissions.',
   },
 ]
 
