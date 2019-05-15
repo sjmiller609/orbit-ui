@@ -24,7 +24,6 @@ class UserConfigure extends React.Component {
   }
 
   render() {
-    console.log(this.props.user)
     const { self, user, pending, getData, workspaces } = this.props
 
     const workspaceId = getData.workspaceId
