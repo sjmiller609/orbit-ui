@@ -38,6 +38,11 @@ const errors = [
     name: 'email',
     error: 'The email you entered does not match your invitation.',
   },
+  {
+    key: 'permissions',
+    name: 'permissions',
+    error: 'Contact your Workspace Admin to upgrade your permissions.',
+  },
 ]
 
 export const handleError = error => formErrors({ error, errors })

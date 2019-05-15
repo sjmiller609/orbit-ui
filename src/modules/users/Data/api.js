@@ -60,4 +60,17 @@ export default {
       }
     }
   `,
+  UpdateRole: gql`
+    mutation workspaceUpdateUserRole(
+      $workspaceId: Uuid!
+      $email: String!
+      $role: Role!
+    ) {
+      workspaceUpdateUserRole(
+        workspaceUuid: $workspaceId
+        email: $email
+        role: $role
+      )
+    }
+  `,
 }

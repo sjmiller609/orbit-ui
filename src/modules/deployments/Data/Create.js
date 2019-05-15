@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import api from './api'
 
 import { Create as Mutation, GetData, CardError } from 'instruments'
-import { handleError } from './helpers'
+import { handleError, trimError } from './helpers'
 
 const Create = Component => {
   const Create = ({ getData, ...props }) => {
@@ -23,6 +23,7 @@ const Create = Component => {
         success="New deployment created successfully."
         track="New Deployment Created"
         voidError
+        errorMsg={trimError}
         query={query}>
         {({ mutate, error }) => {
           const newProps = {

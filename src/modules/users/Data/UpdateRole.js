@@ -1,38 +1,39 @@
 'use strict'
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import api from './api'
 import workspacesApi from 'modules/workspaces/Data/api'
 
-import { Delete as Mutate, GetData, CardError } from 'instruments'
+import { Mutation, CardError } from 'instruments'
 import { handleError, trimError } from './helpers'
 
-const DeleteInvite = Component => {
-  const DeleteInvite = ({ getData, ...props }) => {
-    const query = {
-      name: workspacesApi.Workspaces,
-      type: 'workspaces',
-      vars: {
-        workspaceId: getData.workspaceId,
-        withUsers: true,
-      },
-    }
+const UpdateRole = Component => {
+  const UpdateRole = ({ ...props }) => {
     return (
-      <Mutate
-        gql={api.DeleteInvite}
-        redirect={'/users'}
-        success="Invitation canceled."
-        track="Invite Deleted From Workspace"
-        query={query}
+      <Mutation
+        gql={api.UpdateRole}
+        success="User Role Updated"
+        track="User Role Updated"
         errorMsg={trimError}
         voidError>
         {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
+              const query = {
+                name: workspacesApi.Workspaces,
+                type: 'workspaces',
+                vars: {
+                  workspaceId: vars.workspaceId,
+                  withUsers: true,
+                },
+              }
               mutate({
-                variables: vars,
+                variables: {
+                  workspaceId: vars.workspaceId,
+                  email: vars.email,
+                  role: vars.role,
+                },
                 refetchQueries: [
                   {
                     query: query.name,
@@ -42,20 +43,17 @@ const DeleteInvite = Component => {
               })
             },
           }
+
           // handle api errors
           const err = handleError(error)
           if (err) newProps.error = err
           else if (error) return <CardError />
           return <Component {...newProps} />
         }}
-      </Mutate>
+      </Mutation>
     )
   }
-  DeleteInvite.propTypes = {
-    getData: PropTypes.object,
-  }
-
-  return GetData(DeleteInvite, { workspaceId: true })
+  return UpdateRole
 }
 
-export default DeleteInvite
+export default UpdateRole

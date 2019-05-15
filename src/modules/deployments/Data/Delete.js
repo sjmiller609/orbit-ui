@@ -2,7 +2,9 @@
 import React from 'react'
 import api from './api'
 
-import { Delete as Mutate } from 'instruments'
+import { Delete as Mutate, CardError } from 'instruments'
+
+import { handleError, trimError } from './helpers'
 
 const Delete = Component => {
   const Delete = props => {
@@ -16,8 +18,9 @@ const Delete = Component => {
         redirect="/deployments"
         success="Deployment deleted successfully."
         track="Deployment Deleted"
-        query={query}>
-        {({ mutate }) => {
+        query={query}
+        errorMsg={trimError}>
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
@@ -32,6 +35,10 @@ const Delete = Component => {
               })
             },
           }
+          // handle api errors
+          const err = handleError(error)
+          if (err) newProps.error = err
+          else if (error) return <CardError />
           return <Component {...newProps} />
         }}
       </Mutate>

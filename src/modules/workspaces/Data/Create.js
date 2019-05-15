@@ -2,7 +2,9 @@
 import React from 'react'
 import api from './api'
 
-import { Create as Mutation } from 'instruments'
+import { Create as Mutation, CardError } from 'instruments'
+
+import { handleError } from './helpers'
 
 const Create = Component => {
   const Create = props => {
@@ -20,7 +22,7 @@ const Create = Component => {
         success="New workspace created successfully."
         track="New Workspace Created"
         query={query}>
-        {({ mutate }) => {
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
@@ -31,6 +33,10 @@ const Create = Component => {
               })
             },
           }
+          // handle api errors
+          const err = handleError(error)
+          if (err) newProps.error = err
+          else if (error) return <CardError />
           return <Component {...newProps} />
         }}
       </Mutation>

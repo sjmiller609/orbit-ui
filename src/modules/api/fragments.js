@@ -19,6 +19,12 @@ export const user = gql`
     status
     createdAt
     updatedAt
+    roleBindings {
+      role
+      workspace {
+        id
+      }
+    }
   }
 `
 
@@ -43,6 +49,9 @@ export const workspace = gql`
     createdAt
     updatedAt
     deploymentCount
+    workspaceCapabilities {
+      updateIAM
+    }
   }
 `
 

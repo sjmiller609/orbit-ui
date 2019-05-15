@@ -5,7 +5,9 @@ import PropTypes from 'prop-types'
 import workspacesApi from 'modules/workspaces/Data/api'
 import api from './api'
 
-import { Create as Mutation, GetData } from 'instruments'
+import { Create as Mutation, GetData, CardError } from 'instruments'
+
+import { handleError, trimError } from './helpers'
 
 const Invite = Component => {
   const Invite = ({ getData, ...props }) => {
@@ -23,8 +25,10 @@ const Invite = Component => {
         back
         success="Your invitation has been sent."
         track="New User Invited to Workspace"
-        query={query}>
-        {({ mutate }) => {
+        query={query}
+        errorMsg={trimError}
+        voidError>
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
@@ -36,6 +40,10 @@ const Invite = Component => {
               })
             },
           }
+          // handle api errors
+          const err = handleError(error)
+          if (err) newProps.error = err
+          else if (error) return <CardError />
           return <Component {...newProps} />
         }}
       </Mutation>

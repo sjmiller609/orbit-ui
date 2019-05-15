@@ -2,7 +2,9 @@
 import React from 'react'
 import api from './api'
 
-import { Upgrade as Mutate } from 'instruments'
+import { Upgrade as Mutate, CardError } from 'instruments'
+
+import { handleError, trimError } from './helpers'
 
 const Upgrade = Component => {
   const Upgrade = props => {
@@ -16,8 +18,9 @@ const Upgrade = Component => {
         redirect="/deployments"
         success="Deployment upgraded successfully."
         track="Deployment Upgraded"
-        query={query}>
-        {({ mutate }) => {
+        query={query}
+        errorMsg={trimError}>
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
@@ -32,6 +35,10 @@ const Upgrade = Component => {
               })
             },
           }
+          // handle api errors
+          const err = handleError(error)
+          if (err) newProps.error = err
+          else if (error) return <CardError />
           return <Component {...newProps} />
         }}
       </Mutate>

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 
 import api from './api'
 
-import { Create as Mutation, GetData } from 'instruments'
-import { getVars } from './helpers'
+import { Create as Mutation, GetData, CardError } from 'instruments'
+import { getVars, handleError, trimError } from './helpers'
 
 const Create = Component => {
   const Create = ({ getData, path, ...props }) => {
@@ -28,8 +28,10 @@ const Create = Component => {
             ? 'Deployment'
             : 'Workspace'
         }
-        query={query}>
-        {({ mutate }) => {
+        query={query}
+        errorMsg={trimError}
+        voidError>
+        {({ mutate, error }) => {
           const newProps = {
             ...props,
             onSubmit: vars => {
@@ -41,6 +43,10 @@ const Create = Component => {
               })
             },
           }
+          // handle api errors
+          const err = handleError(error)
+          if (err) newProps.error = err
+          else if (error) return <CardError />
           return <Component {...newProps} />
         }}
       </Mutation>
