@@ -14,7 +14,7 @@ const Delete = ({ user, onSubmit, workspace, isSelf, updateIAM }) => {
   if (workspace.users.length === 1 || updateIAM == false) {
     noDelete = true
     text =
-      'To remove yourself from this workspace, you must first add another owner to the workspace.'
+      'To remove yourself from this workspace, you must first add another admin to the workspace.'
   }
 
   if (updateIAM == false) {
