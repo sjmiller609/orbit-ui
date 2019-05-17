@@ -52,6 +52,10 @@ Note: Sometimes the docker image doesn't spin down, and thus, doesn't start up a
 
 4.  Go to http://localhost:5000/ to access the app
 
+### Run Storybook in Dev Mode
+
+1.  Run `npm run storybook` 
+
 # How it's built
 
 Orbit is a React app built with Apollo graphql.
