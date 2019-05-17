@@ -8,7 +8,11 @@ import GetWorkspace from 'modules/workspaces/GetWorkspace'
 
 const Delete = ({ user, onSubmit, workspace, isSelf, updateIAM }) => {
   let noDelete
-  let who = isSelf ? 'You' : user.fullName
+  let who = isSelf
+    ? 'You'
+    : user.fullName
+      ? user.fullName
+      : user.emails[0].address
   let text = `Warning! This cannot be undone. ${who} will be permanently removed from this workspace and all access revoked.`
 
   if (workspace.users.length === 1 || updateIAM == false) {
