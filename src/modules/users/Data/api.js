@@ -38,14 +38,6 @@ export default {
     ${group}
     ${invite}
   `,
-  UpdateUser: gql`
-    mutation updateUser($id: Uuid!, $payload: JSON) {
-      updateUser(userId: $id, payload: $payload) {
-        ...user
-      }
-    }
-    ${user}
-  `,
   RemoveUser: gql`
     mutation removeUser($id: Uuid!, $workspaceId: Uuid!) {
       workspaceRemoveUser(userUuid: $id, workspaceUuid: $workspaceId) {

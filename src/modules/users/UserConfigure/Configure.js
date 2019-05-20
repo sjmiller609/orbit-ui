@@ -5,7 +5,7 @@ import Selector from './Selector'
 import s from './styles.scss'
 import { CardForm, Form, Select } from 'instruments'
 
-import UpdateRole from '../Data/UpdateRole'
+import Update from '../Data/Update'
 
 class Configure extends React.Component {
   render() {
@@ -64,4 +64,4 @@ Configure.propTypes = {
   disabled: PropTypes.bool,
 }
 
-export default UpdateRole(Form(Configure))
+export default Update(Form(Configure))
