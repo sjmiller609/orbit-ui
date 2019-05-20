@@ -1,8 +1,11 @@
-import { configure } from '@storybook/react';
+import { configure, addDecorator } from '@storybook/react';
+import StoryRouter from 'storybook-react-router';
+
+addDecorator(StoryRouter());
 
 function loadStories() {
-  const req = require.context('../src', true, /\_story\.js$/);
-  req.keys().forEach(filename => req(filename));
+  const spread = require.context('../src', true, /\_story\.js$/);
+  spread.keys().forEach(filename => spread(filename));
 }
 
 configure(loadStories, module);
