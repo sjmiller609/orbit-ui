@@ -56,7 +56,6 @@ Button.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   submit: PropTypes.bool,
   disabled: PropTypes.bool,
-
   to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   className: PropTypes.string,
 }
