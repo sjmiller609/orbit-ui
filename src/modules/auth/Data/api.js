@@ -22,6 +22,8 @@ export default {
         githubOAuthUrl
         auth0Enabled
         auth0OAuthUrl
+        oktaEnabled
+        oktaOAuthUrl
         publicSignup
         initialSignup
       }

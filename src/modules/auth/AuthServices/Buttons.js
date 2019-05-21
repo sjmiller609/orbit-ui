@@ -5,6 +5,7 @@ import { OauthButton } from 'instruments'
 import s from './styles.scss'
 
 const Buttons = ({ authConfig, login }) => {
+  console.log(authConfig)
   return (
     <React.Fragment>
       {authConfig.googleEnabled && (
@@ -28,6 +29,14 @@ const Buttons = ({ authConfig, login }) => {
           service="auth0"
           login={login}
           to={authConfig.auth0OAuthUrl}
+          className={s.button}
+        />
+      )}
+      {authConfig.oktaEnabled && (
+        <OauthButton
+          service="okta"
+          login={login}
+          to={authConfig.oktaOAuthUrl}
           className={s.button}
         />
       )}
