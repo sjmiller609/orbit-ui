@@ -52,9 +52,17 @@ Note: Sometimes the docker image doesn't spin down, and thus, doesn't start up a
 
 4.  Go to http://localhost:5000/ to access the app
 
-### Run Storybook in Dev Mode
+### Run Storybook
 
-1.  Run `npm run storybook`
+Follow the following steps to launch a hot-reloading instance of Storybook:
+
+1.  Download orbit https://github.com/astronomerio/orbit-ui
+
+2.  Run `npm install` in orbit repo
+
+3.  Run `npm run storybook` to launch storybook.
+
+4.  Go to the generated url to access storybook.
 
 # How it's built
 
@@ -100,7 +108,7 @@ Each component includes a `className` prop that enables styles passed down to an
 
 ## Storybook
 
-[https://storybook.js.org/](Storybook) is a library that supports building an component library for UI elements. This is useful for developing individual UI elements and containers as well as providing a ready-made document per component. 
+[https://storybook.js.org/](Storybook) is a library that supports building an component library for UI elements. This is useful for developing individual UI elements and containers as well as providing a ready-made documentation per component.
 
 Included in Storybook are the following add-ons:
 - Viewport - for testing components at various viewport sizes
@@ -110,7 +118,7 @@ Included in Storybook are the following add-ons:
 - Actions - provides mock functions for button clicks and form submissions
 - Router - includes Redux for each component
 
-While building a new component or updating an existing component, it is important to also create or update the `_story.js` file associated with it. Storybook is only useful when its provided with the most update to date and accurate information.
+While building a new component or updating an existing component, it is important to also create or update the `_story.js` file associated with it. Storybook is only useful when its provided with the most up-to-date and accurate information.
 
 ## Apollo
 
