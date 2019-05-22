@@ -52,6 +52,18 @@ Note: Sometimes the docker image doesn't spin down, and thus, doesn't start up a
 
 4.  Go to http://localhost:5000/ to access the app
 
+### Run Storybook
+
+Follow the following steps to launch a hot-reloading instance of Storybook:
+
+1.  Download orbit https://github.com/astronomerio/orbit-ui
+
+2.  Run `npm install` in orbit repo
+
+3.  Run `npm run storybook` to launch storybook.
+
+4.  Go to the generated url to access storybook.
+
 # How it's built
 
 Orbit is a React app built with Apollo graphql.
@@ -93,6 +105,20 @@ Styles are defined as classes (ie not css-in-js) attached to each component usin
 All styles are defined in Sass. Though outside of color variables, few mixins or other more advanced Sass features are necessary.
 
 Each component includes a `className` prop that enables styles passed down to any children components.
+
+## Storybook
+
+[https://storybook.js.org/](Storybook) is a library that supports building an component library for UI elements. This is useful for developing individual UI elements and containers as well as providing a ready-made documentation per component.
+
+Included in Storybook are the following add-ons:
+- Viewport - for testing components at various viewport sizes
+- Info - displays available component props and other details
+- A11y - tests and provides accessibility information
+- Knobs - for testing various information (text, objects, etc.) on different props
+- Actions - provides mock functions for button clicks and form submissions
+- Router - includes Redux for each component
+
+While building a new component or updating an existing component, it is important to also create or update the `_story.js` file associated with it. Storybook is only useful when its provided with the most up-to-date and accurate information.
 
 ## Apollo
 
