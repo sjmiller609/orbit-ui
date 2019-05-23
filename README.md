@@ -108,9 +108,10 @@ Each component includes a `className` prop that enables styles passed down to an
 
 ## Storybook
 
-[https://storybook.js.org/](Storybook) is a library that supports building an component library for UI elements. This is useful for developing individual UI elements and containers as well as providing a ready-made documentation per component.
+[Storybook](https://storybook.js.org/) is a library that supports building an component library for UI elements. This is useful for developing individual UI elements and containers as well as providing a ready-made documentation per component.
 
 Included in Storybook are the following add-ons:
+
 - Viewport - for testing components at various viewport sizes
 - Info - displays available component props and other details
 - A11y - tests and provides accessibility information
@@ -119,6 +120,15 @@ Included in Storybook are the following add-ons:
 - Router - includes Redux for each component
 
 While building a new component or updating an existing component, it is important to also create or update the `_story.js` file associated with it. Storybook is only useful when its provided with the most up-to-date and accurate information.
+
+To run Storybook locally:
+
+```
+npm install
+npm run storybook
+```
+
+> Note: Astronomer fonts aren't showing since they are applied at a global level and not tied directly into the component(s). Can be fixed.
 
 ## Apollo
 
