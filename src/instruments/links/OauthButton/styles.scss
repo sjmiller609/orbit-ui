@@ -31,6 +31,9 @@
   &.auth0 {
     background-image: linear-gradient(to right, $red, $darkOrange);
   }
+  &.okta {
+    background-image: linear-gradient(to right, rgb(0, 125, 193))
+  }
 }
 
 .img {

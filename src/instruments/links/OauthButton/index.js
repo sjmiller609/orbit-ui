@@ -21,6 +21,11 @@ const services = {
     img: LoadImg(() => import(`./img/auth0.svg`)),
     className: 'auth0',
   },
+  okta: {
+    text: ' with Okta',
+    img: LoadImg(() => import('./img/okta.png')),
+    className: 'okta',
+  },
 }
 
 const OauthButton = ({ service, login, to, className, ...props }) => {

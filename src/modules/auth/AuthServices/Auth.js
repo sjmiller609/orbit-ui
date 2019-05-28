@@ -35,10 +35,14 @@ class Auth extends React.Component {
               </Mini>
             ) : (
               <Mini>
-                Please review {' '}
-                <Link to="https://www.astronomer.io/terms">terms of service</Link>{' '}
+                Please review{' '}
+                <Link to="https://www.astronomer.io/terms">
+                  terms of service
+                </Link>{' '}
                 and{' '}
-                <Link to="https://www.astronomer.io/privacy">privacy policy</Link>{' '}
+                <Link to="https://www.astronomer.io/privacy">
+                  privacy policy
+                </Link>{' '}
                 prior to signing up for Astronomer Cloud.
               </Mini>
             )}
@@ -56,7 +60,8 @@ class Auth extends React.Component {
               />
               {(authConfig.googleEnabled ||
                 authConfig.githubEnabled ||
-                authConfig.auth0Enabled) && (
+                authConfig.auth0Enabled ||
+                authConfig.oktaEnabled) && (
                 <Row className={s.or}>
                   <hr />
                   or

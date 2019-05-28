@@ -31,6 +31,14 @@ const Buttons = ({ authConfig, login }) => {
           className={s.button}
         />
       )}
+      {authConfig.oktaEnabled && (
+        <OauthButton
+          service="okta"
+          login={login}
+          to={authConfig.oktaOAuthUrl}
+          className={s.button}
+        />
+      )}
     </React.Fragment>
   )
 }
