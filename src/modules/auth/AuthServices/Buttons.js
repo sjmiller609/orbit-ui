@@ -5,7 +5,6 @@ import { OauthButton } from 'instruments'
 import s from './styles.scss'
 
 const Buttons = ({ authConfig, login }) => {
-  console.log(authConfig)
   return (
     <React.Fragment>
       {authConfig.googleEnabled && (
