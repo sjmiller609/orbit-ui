@@ -36,7 +36,7 @@
     "no-debugger": 1,
     "no-var": 1,
     "no-alert": 0,
-    "no-console": 0,
+    "no-console": 1,
     "import/extensions": 1,
     "import/no-unresolved": [2, { caseSensitive: false }],
     "react/display-name": [ 1, {"ignoreTranspilerName": false }],
