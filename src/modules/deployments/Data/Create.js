@@ -16,13 +16,21 @@ const Create = Component => {
         workspaceId: getData.workspaceId,
       },
     }
+    console.log(props)
+    const email = props.self.user.emails[0].address
+    const workspace = props.workspaces[0]
     return (
       <Mutation
         gql={api.CreateDeployment}
         redirect={data => '/deployments/' + data.releaseName + '?loading'}
         success="New deployment created successfully."
-        track="New Deployment Created"
-        voidError
+        track={{
+          name: 'New Deployment Created',
+          props: {
+            email: email,
+            workspace: workspace,
+          },
+        }}
         errorMsg={trimError}
         query={query}>
         {({ mutate, error }) => {
@@ -42,7 +50,6 @@ const Create = Component => {
           const err = handleError(error)
           if (err) newProps.error = err
           else if (error) return <CardError />
-
           return <Component {...newProps} />
         }}
       </Mutation>

@@ -30,6 +30,7 @@ class New extends React.Component {
   }
 
   render() {
+    console.log(this)
     this.menu.level2 = {
       text: '',
       to: this.props.location.pathname,
@@ -37,7 +38,11 @@ class New extends React.Component {
     return (
       <Module metaTitle={this.title} menu={this.menu}>
         <CardMenu menu={cardMenu}>
-          <Configure title={this.title} />
+          <Configure
+            title={this.title}
+            self={this.props.self}
+            workspaces={this.props.workspaces}
+          />
         </CardMenu>
       </Module>
     )

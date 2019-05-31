@@ -68,7 +68,8 @@
               analytics.SNIPPET_VERSION = '3.1.0'
               analytics.load(id)
             }
-        })()
+        }
+      )()
       }
       var sourceId = '<%= htmlWebpackPlugin.options.tracking_id %>'
       if (sourceId && sourceId !== 'ANALYTICS_TRACKING_ID') load(sourceId)
