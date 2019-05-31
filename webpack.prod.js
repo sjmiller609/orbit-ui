@@ -26,7 +26,7 @@ export default merge(common, prod, {
       tracking_id: 'ANALYTICS_TRACKING_ID',
       api_http: 'APP_API_LOC_HTTPS',
       api_ws: 'APP_API_LOC_WSS',
-      stripe_pk: 'STRIPE_PUBK',
+      stripe_pk: 'STRIPE_PK',
     }),
   ],
 })

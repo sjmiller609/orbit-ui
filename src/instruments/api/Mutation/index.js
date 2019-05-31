@@ -67,7 +67,7 @@ const Mutation = ({
         if (track) Track(track)
       }}
       update={update}>
-      {(mutate, { loading, error }) => {
+      {(mutate, { loading, error, data }) => {
         if (error && !voidError) {
           if (OnError) return OnError
           return <CardError />
@@ -76,7 +76,7 @@ const Mutation = ({
         return (
           <React.Fragment>
             {loading && <Loading />}
-            {children({ mutate, error }) || null}
+            {children({ mutate, error, data }) || null}
           </React.Fragment>
         )
       }}

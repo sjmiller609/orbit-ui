@@ -25,4 +25,9 @@ export const workspace = [
     component: Load(() => import(/* webpackPrefetch: true */ '../Settings')),
     exact: true,
   },
+  {
+    path: '/billing',
+    component: Load(() => import(/* webpackPrefetch: true */ '../Billing')),
+    exact: true,
+  },
 ]

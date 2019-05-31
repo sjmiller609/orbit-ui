@@ -58,7 +58,7 @@ class UserConfigure extends React.Component {
       ? this.mapInviteToUser(user, workspaceId)
       : user
 
-    const updateIAM = workspace.workspaceCapabilities.updateIAM
+    const canUpdateIam = workspace.workspaceCapabilities.canUpdateIam
 
     // Disable the selector if the user is viewing their own permissions
     const disabled = isSelf
@@ -76,9 +76,13 @@ class UserConfigure extends React.Component {
           disabled={disabled}
         />
         {!pending ? (
-          <Delete user={user} isSelf={isSelf} updateIAM={updateIAM} />
+          <Delete user={user} isSelf={isSelf} canUpdateIam={canUpdateIam} />
         ) : (
-          <DeleteInvite user={user} isSelf={isSelf} updateIAM={updateIAM} />
+          <DeleteInvite
+            user={user}
+            isSelf={isSelf}
+            canUpdateIam={canUpdateIam}
+          />
         )}
       </React.Fragment>
     )

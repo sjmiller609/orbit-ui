@@ -34,8 +34,8 @@ export default merge(common, {
       inject: true,
       api_http: 'http://localhost:8871/v1',
       api_ws: 'ws://localhost:8871/ws', //NOTE: temp for mock logs
-      stripe_pk: '',
-      tracking_id: '',
+      stripe_pk: 'pk_test_QypYouqR3seLGJzwz0qmdoUe',
+      tracking_id: 'Bn2txcmq5EaXFFCoNETPR',
       hash: true,
     }),
     new webpack.NamedModulesPlugin(),

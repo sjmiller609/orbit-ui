@@ -5,17 +5,19 @@ import PropTypes from 'prop-types'
 import api from './api'
 import { handleError } from './helpers'
 
-import { Create as Mutation, SetData, CardError } from 'instruments'
+import { Create as Mutation, SetData, CardError, Identify } from 'instruments'
 
 const Create = Component => {
   const Create = ({ login, vars, setData, to, ...props }) => {
     let success
     let track
+    let identify
     let redirect
     if (login) {
       track = 'User Logged In With Email/Password'
     } else {
       success = data => {
+        identify = data.user.emails[0]
         return data.token
           ? 'Success! Welcome to Astronomer'
           : "Success! You've created an Astronomer acccount"
@@ -47,11 +49,13 @@ const Create = Component => {
               token: value,
             })
           }
+          Identify(data.user.id, { email: data.user.username })
         }}
         redirect={redirect}
         voidError
         success={success}
-        track={track}>
+        track={track}
+        identify={identify}>
         {({ mutate, error }) => {
           const newProps = {
             ...props,

@@ -5,6 +5,7 @@ import {
   group,
   invite,
   entityRoleBinding,
+  card,
 } from 'modules/api/fragments'
 
 export default {
@@ -20,7 +21,7 @@ export default {
         }
         invites @include(if: $withUsers) {
           ...invite
-        }
+        },
         roleBindings @include(if: $withUsers) {
           ...entityRoleBinding
         }
@@ -54,5 +55,49 @@ export default {
         id: uuid
       }
     }
+  `,
+  AddCard: gql`
+    mutation addCard(
+      $id: Uuid!
+      $billingEmail: String!
+      $company: String
+      $token: String!
+    ) {
+      addCard(
+        workspaceUuid: $id
+        billingEmail: $billingEmail
+        company: $company
+        token: $token
+      ) {
+        ...card
+      }
+    }
+    ${card}
+  `,
+  UpdateCard: gql`
+    mutation updateCard(
+      $id: Uuid!
+      $billingEmail: String!
+      $company: String
+      $token: String!
+    ) {
+      updateCard(
+        workspaceUuid: $id
+        billingEmail: $billingEmail
+        company: $company
+        token: $token
+      ) {
+        ...card
+      }
+    }
+    ${card}
+  `,
+  Card: gql`
+    query card($id: Uuid!, $stripeCustomerId: String!) {
+      card(workspaceUuid: $id, stripeCustomerId: $stripeCustomerId) {
+        ...card
+      }
+    }
+    ${card}
   `,
 }

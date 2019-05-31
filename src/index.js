@@ -12,6 +12,8 @@ import { WebSocketLink } from 'apollo-link-ws'
 import { ApolloProvider } from 'react-apollo'
 import { getMainDefinition } from 'apollo-utilities'
 import { render } from 'react-dom'
+import { StripeProvider, Elements } from 'react-stripe-elements'
+import BillingForm from './modules/workspaces/ConfigureBilling/BillingForm'
 
 import './styles/global/index.scss'
 

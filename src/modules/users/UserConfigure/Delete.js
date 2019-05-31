@@ -6,7 +6,7 @@ import { CardDelete, B } from 'instruments'
 import { default as Mutate } from '../Data/Remove'
 import GetWorkspace from 'modules/workspaces/GetWorkspace'
 
-const Delete = ({ user, onSubmit, workspace, isSelf, updateIAM }) => {
+const Delete = ({ user, onSubmit, workspace, isSelf, canUpdateIam }) => {
   let noDelete
   let who = isSelf
     ? 'You'
@@ -15,13 +15,13 @@ const Delete = ({ user, onSubmit, workspace, isSelf, updateIAM }) => {
       : user.emails[0].address
   let text = `Warning! This cannot be undone. ${who} will be permanently removed from this workspace and all access revoked.`
 
-  if (workspace.users.length === 1 || updateIAM == false) {
+  if (workspace.users.length === 1 || canUpdateIam == false) {
     noDelete = true
     text =
       'To remove yourself from this workspace, you must first add another admin to the workspace.'
   }
 
-  if (updateIAM == false) {
+  if (canUpdateIam == false) {
     noDelete = true
     text =
       'You do not have the appropriate permissions to delete users from this workspace.'
@@ -55,7 +55,7 @@ Delete.propTypes = {
   user: PropTypes.object,
   workspace: PropTypes.object,
   isSelf: PropTypes.bool,
-  updateIAM: PropTypes.bool,
+  canUpdateIam: PropTypes.bool,
 }
 
 export default GetWorkspace(Mutate(Delete), { withUsers: true })

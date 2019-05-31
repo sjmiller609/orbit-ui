@@ -34,6 +34,10 @@ const subMenus = {
       to: '/settings',
       text: 'Workspace Settings',
     },
+    {
+      to: '/billing',
+      text: 'Billing',
+    },
   ],
   user: [
     {

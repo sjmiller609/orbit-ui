@@ -98,7 +98,7 @@ const Form = FormComponent => {
       // check save after validation check
       const save = this.checkSave({ ...this.state, ...set })
       if (typeof save === 'boolean') set.save = save
-      if (this.state.submitted && !this.state.scolled) {
+      if (this.state.submitted && !this.state.scrolled) {
         set.scrolled = true
         const el = document.getElementById(this.fieldId + name)
         if (el) {
@@ -107,6 +107,7 @@ const Form = FormComponent => {
             el.scrollIntoView()
         }
       }
+
       this.setState(set)
     }
 
@@ -117,7 +118,6 @@ const Form = FormComponent => {
       const equal = saveOnLoad
         ? false
         : jsonEqual(this.callOnSubmit(state.data), this.data)
-
       // has errors
       if (!this.checkErrors(state)) return false
 

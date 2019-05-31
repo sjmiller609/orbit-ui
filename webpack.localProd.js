@@ -26,7 +26,7 @@ const configs = merge(common, prod, {
       api_http: 'http://localhost:8871/v1',
       api_ws: 'ws://localhost:8871/ws', //NOTE: temp for mock logs
       stripe_pk: 'pk_test_9nakxMiaKT3egTTtCmdfLdet',
-      tracking_id: 'pFWwGe5wXTK5e26mWAarQ',
+      tracking_id: 'Bn2txcmq5EaXFFCoNETPR',
     }),
   ],
 })

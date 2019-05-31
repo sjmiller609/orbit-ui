@@ -1,0 +1,22 @@
+@import 'src/styles/mixins.scss';
+
+.card {
+  width: 350px;
+  height: 222px;
+  min-width: 350px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+  transform-style: preserve-3d;
+  transition: all 0.25s ease-out;
+  background: linear-gradient(45deg, $lightPurple, $lightBlue);
+  justify-content: center;
+}
+
+.cardSection {
+  padding-top: 2rem;
+}
+
+.cardPadding {
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+}

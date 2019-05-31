@@ -1,78 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--
+  <!--
   **NOTE:** This is a template for index.html. It uses ejs and htmlWebpackPlugin to generate a different index.html for each environment. htmlWebpackPlugin will dynamically add references to the scripts and styles that it bundles to this file. The generated bundles have hash-based filenames, so it's necessary to add the references dynamically.
   For more info on ejs, see http://www.embeddedjs.com/. For examples of using it with htmlWebpackPlugin, see https://github.com/jaketrent/html-webpack-template/blob/master/index.ejs
   -->
   <head>
     <script type="text/javascript">
-    window['API_HTTP'] = '<%= htmlWebpackPlugin.options.api_http %>'
-window['API_WS'] = '<%= htmlWebpackPlugin.options.api_ws %>'
-</script>
+      window['API_HTTP'] = '<%= htmlWebpackPlugin.options.api_http %>'
+      window['API_WS'] = '<%= htmlWebpackPlugin.options.api_ws %>'
+      window['STRIPE_PK'] = '<%= htmlWebpackPlugin.options.stripe_pk %>'
+    </script>
+    <script src="https://js.stripe.com/v3/"></script>
     <script type="text/javascript">
-    function load(id) {
-  !(function() {
-    var analytics = (window.analytics = window.analytics || [])
-    if (!analytics.initialize)
-      if (analytics.invoked)
-        window.console &&
-          console.error &&
-          console.error('Astronomer snippet included twice.')
-      else {
-        analytics.invoked = !0
-        analytics.methods = [
-          'trackSubmit',
-          'trackClick',
-          'trackLink',
-          'trackForm',
-          'pageview',
-          'identify',
-          'reset',
-          'group',
-          'track',
-          'ready',
-          'alias',
-          'page',
-          'once',
-          'off',
-          'on',
-        ]
-        analytics.factory = function(t) {
-          return function() {
-            var e = Array.prototype.slice.call(arguments)
-            e.unshift(t)
-            analytics.push(e)
-            return analytics
-          }
-        }
-        for (var t = 0; t < analytics.methods.length; t++) {
-          var e = analytics.methods[t]
-          analytics[e] = analytics.factory(e)
-        }
-        analytics.load = function(t) {
-          var e = document.createElement('script')
-          e.type = 'text/javascript'
-          e.async = !0
-          e.src =
-            ('https:' === document.location.protocol ? 'https://' : 'http://') +
-            'cdn.astronomer.io/analytics.js/v1/' +
-            t +
-            '/analytics.min.js'
-          var n = document.getElementsByTagName('script')[0]
-          n.parentNode.insertBefore(e, n)
-        }
-        analytics.SNIPPET_VERSION = '3.1.0'
-        analytics.load(id)
+      function load(id) {
+        !(function() {
+          var analytics = (window.analytics = window.analytics || [])
+          if (!analytics.initialize)
+            if (analytics.invoked)
+              window.console &&
+                console.error &&
+                console.error('Astronomer snippet included twice.')
+            else {
+              analytics.invoked = !0
+              analytics.methods = [
+                'trackSubmit',
+                'trackClick',
+                'trackLink',
+                'trackForm',
+                'pageview',
+                'identify',
+                'reset',
+                'group',
+                'track',
+                'ready',
+                'alias',
+                'page',
+                'once',
+                'off',
+                'on',
+              ]
+              analytics.factory = function(t) {
+                return function() {
+                  var e = Array.prototype.slice.call(arguments)
+                  e.unshift(t)
+                  analytics.push(e)
+                  return analytics
+                }
+              }
+              for (var t = 0; t < analytics.methods.length; t++) {
+                var e = analytics.methods[t]
+                analytics[e] = analytics.factory(e)
+              }
+              analytics.load = function(t) {
+                var e = document.createElement('script')
+                e.type = 'text/javascript'
+                e.async = !0
+                e.src =
+                  ('https:' === document.location.protocol
+                    ? 'https://'
+                    : 'http://') +
+                  'cdn.astronomer.io/analytics.js/v1/' +
+                  t +
+                  '/analytics.min.js'
+                var n = document.getElementsByTagName('script')[0]
+                n.parentNode.insertBefore(e, n)
+              }
+              analytics.SNIPPET_VERSION = '3.1.0'
+              analytics.load(id)
+            }
+        })()
       }
-  })()
-}
-var sourceId = '<%= htmlWebpackPlugin.options.tracking_id %>'
-if (sourceId && sourceId !== 'ANALYTICS_TRACKING_ID') load(sourceId)
-</script>
+      var sourceId = '<%= htmlWebpackPlugin.options.tracking_id %>'
+      if (sourceId && sourceId !== 'ANALYTICS_TRACKING_ID') load(sourceId)
+    </script>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, minimal-ui, maximum-scale=1, minimum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, minimal-ui, maximum-scale=1, minimum-scale=1"
+    />
     <title>Astronomer</title>
   </head>
   <body>

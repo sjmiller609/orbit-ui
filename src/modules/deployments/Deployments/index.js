@@ -3,14 +3,15 @@ import PropTypes from 'prop-types'
 
 import List from '../List'
 import Module from '../../app/Module'
-import { GetData } from 'instruments'
+import Activation from './Active'
+import GetWorkspace from '../../workspaces/GetWorkspace'
 
 class Deployments extends React.Component {
   menu = {
     nav: 'workspace',
   }
   // state for entire module
-  state = { search: '' }
+  state = { search: '', isActive: true }
   // search obj constants
   search = {
     delay: false,
@@ -20,24 +21,43 @@ class Deployments extends React.Component {
 
   render() {
     const { search } = this.state
+    const { workspace } = this.props
+    if (!workspace) return <Module nada />
+
     const vars = {
-      workspaceId: this.props.getData.workspaceId,
+      workspaceId: workspace.workspaceId,
     }
-    return (
-      <Module metaTitle="Deployments" menu={this.menu}>
-        <List
-          search={{
-            text: search,
-            ...this.search,
-          }}
-          vars={vars}
-        />
-      </Module>
+    //Check to see if billing is enabled and the current user has permissions to add payment information
+    if (
+      workspace.workspaceCapabilities.canUpdateBilling == true &&
+      workspace.stripeCustomerId == null
     )
+      return (
+        <Module metaTitle="Deployments" menu={this.menu}>
+          <Activation
+            title="Welcome to Astronomer!"
+            text="Please add a payment method to your workspace to start your 14 day free trial."
+          />
+        </Module>
+      )
+    else
+      return (
+        <Module metaTitle="Deployments" menu={this.menu}>
+          <List
+            search={{
+              text: search,
+              ...this.search,
+            }}
+            vars={vars}
+          />
+        </Module>
+      )
   }
 }
+
 Deployments.propTypes = {
   getData: PropTypes.object,
+  workspace: PropTypes.object,
 }
 
-export default GetData(Deployments, { workspaceId: true })
+export default GetWorkspace(Deployments)

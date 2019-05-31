@@ -33,21 +33,7 @@ const Nav = ({ getData, workspaces, self, menu }) => {
     },
   }
 
-  // Add fallback to prevent error on general Workspaces dashboard
-  let billing
-  if (workspace === undefined) {
-    billing = workspaces[0].workspaceCapabilities.canUpdateBilling
-  } else {
-    billing = workspace.workspaceCapabilities.canUpdateBilling
-  }
-
   let subMenu = menu.subMenu || subMenus[menu.nav]
-  const billingCheck = {
-    //Remove billing tab and route if billing is disabled.
-    subMenu: billing
-      ? subMenu
-      : reject(subMenu, i => i.text.toLowerCase() === 'billing'),
-  }
 
   if (!self.isAdmin && subMenu)
     subMenu = subMenu.filter(m => !m.permissions || !m.permissions.isAdmin)
@@ -56,7 +42,7 @@ const Nav = ({ getData, workspaces, self, menu }) => {
     <Header
       level1={level1}
       level2={menu.level2}
-      subMenu={billingCheck.subMenu}
+      subMenu={subMenu}
       profile={profile}
     />
   )

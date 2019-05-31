@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Token from './Token'
-import { SetData, SetUI, Track, Redirect } from 'instruments'
+import { SetData, SetUI, Track, Redirect, Identify } from 'instruments'
 import { getParams } from 'helpers/url'
 
 class OauthSuccess extends React.Component {
@@ -40,6 +40,10 @@ class OauthSuccess extends React.Component {
     })
     // snackbar
     if (this.success) setUI.snackbar(this.success)
+    
+    // identify event
+    Identify(params.extras.userId, { email: params.extras.email })
+    
     // track event
     if (this.track) Track(this.track)
   }

@@ -17,6 +17,7 @@ const CardForm = ({
   smallForm,
   id,
 }) => {
+  // console.log(typeof button.save === 'boolean' && !button.save)
   return (
     <Card
       id={id}

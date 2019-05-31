@@ -49,9 +49,23 @@ export const workspace = gql`
     createdAt
     updatedAt
     deploymentCount
+    stripeCustomerId
     workspaceCapabilities {
-      updateIAM
+      canUpdateBilling
+      canUpdateIAM
     }
+  }
+`
+
+export const card = gql`
+  fragment card on Card {
+    name
+    expMonth
+    expYear
+    last4
+    brand
+    billingEmail
+    company
   }
 `
 

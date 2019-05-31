@@ -13,6 +13,7 @@ const Level1 = ({ selected, list, addNew, active, className }) => {
       selector={
         <H2 className={classnames(s.menu, active && s.active, className)}>
           <Row>
+            {/* The height property below is to ensure that larger letters don't get cut off in workspace titles */}
             <span className={s.text}>
               {active ? (
                 selected.text

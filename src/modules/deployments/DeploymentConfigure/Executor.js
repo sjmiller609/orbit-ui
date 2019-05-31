@@ -48,7 +48,6 @@ class Executor extends React.Component {
   render() {
     const { form } = this.props
     const executor = form.field('config.executor')
-
     return (
       <React.Fragment>
         <Select
