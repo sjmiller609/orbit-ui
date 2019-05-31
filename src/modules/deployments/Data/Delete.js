@@ -5,6 +5,7 @@ import api from './api'
 import { Delete as Mutate, CardError } from 'instruments'
 
 import { handleError, trimError } from './helpers'
+import Self from '../../self/Data'
 
 const Delete = Component => {
   const Delete = props => {
@@ -12,12 +13,21 @@ const Delete = Component => {
       name: api.Deployments,
       type: 'deployments',
     }
+    console.log(props)
+    const email = props.self.user.emails[0].address
+    const deployment = props.deployment.label
     return (
       <Mutate
         gql={api.DeleteDeployment}
         redirect="/deployments"
         success="Deployment deleted successfully."
-        track="Deployment Deleted"
+        track={{
+          name: 'Deployment Deleted',
+          props: {
+            email: email,
+            deployment: deployment,
+          },
+        }}
         query={query}
         errorMsg={trimError}>
         {({ mutate, error }) => {
@@ -45,7 +55,7 @@ const Delete = Component => {
     )
   }
 
-  return Delete
+  return Self(Delete)
 }
 
 export default Delete

@@ -38,11 +38,7 @@ class New extends React.Component {
     return (
       <Module metaTitle={this.title} menu={this.menu}>
         <CardMenu menu={cardMenu}>
-          <Configure
-            title={this.title}
-            self={this.props.self}
-            workspaces={this.props.workspaces}
-          />
+          <Configure title={this.title} workspaces={this.props.workspaces} />
         </CardMenu>
       </Module>
     )

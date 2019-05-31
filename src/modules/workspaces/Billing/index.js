@@ -12,14 +12,14 @@ class Billing extends React.Component {
   }
 
   render() {
-    const { workspace } = this.props
+    const { workspace, self } = this.props
     // Error handled
     if (!workspace) return <Module nada />
     return (
       <Module metaTitle={'Billing | ' + workspace.label} menu={this.menu}>
         <StripeProvider apiKey={window.STRIPE_PK}>
           <Elements>
-            <ConfigureBilling workspace={workspace} />
+            <ConfigureBilling workspace={workspace} self={self} />
           </Elements>
         </StripeProvider>
       </Module>
@@ -29,6 +29,7 @@ class Billing extends React.Component {
 
 Billing.propTypes = {
   workspace: PropTypes.object,
+  self: PropTypes.object,
 }
 
 export default GetWorkspace(Billing)

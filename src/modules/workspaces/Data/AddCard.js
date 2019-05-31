@@ -8,11 +8,21 @@ import { Mutation } from 'instruments'
 const AddCard = Component => {
   class AddCard extends React.Component {
     render() {
+      const data = this.props
+      console.log(data)
+      const email = data.self.user.emails[0].address
+      const workspace = data.workspace.label
       return (
         <Mutation
           gql={api.AddCard}
           success="Payment Method Added Successfully!"
-          track="Payment Method Added">
+          track={{
+            name: 'Payment Method Added',
+            props: {
+              email: email,
+              workspace: workspace,
+            },
+          }}>
           {({ mutate }) => {
             const newProps = {
               ...this.props,

@@ -6,6 +6,7 @@ import api from './api'
 
 import { Create as Mutation, GetData, CardError } from 'instruments'
 import { handleError, trimError } from './helpers'
+import Self from '../../self/Data'
 
 const Create = Component => {
   const Create = ({ getData, ...props }) => {
@@ -59,7 +60,7 @@ const Create = Component => {
     getData: PropTypes.object,
   }
 
-  return GetData(Create, { workspaceId: true })
+  return Self(GetData(Create, { workspaceId: true }))
 }
 
 export default Create
