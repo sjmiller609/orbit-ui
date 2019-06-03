@@ -9,7 +9,6 @@ const AddCard = Component => {
   class AddCard extends React.Component {
     render() {
       const data = this.props
-      console.log(data)
       const email = data.self.user.emails[0].address
       const workspace = data.workspace.label
       return (
