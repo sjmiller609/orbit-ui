@@ -13,7 +13,6 @@ const Delete = Component => {
       name: api.Deployments,
       type: 'deployments',
     }
-    console.log(props)
     const email = props.self.user.emails[0].address
     const deployment = props.deployment.label
     return (

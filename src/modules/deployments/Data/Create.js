@@ -17,7 +17,6 @@ const Create = Component => {
         workspaceId: getData.workspaceId,
       },
     }
-    console.log(props)
     const email = props.self.user.emails[0].address
     const workspace = props.workspaces[0]
     return (
