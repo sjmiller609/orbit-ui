@@ -30,7 +30,6 @@ class New extends React.Component {
   }
 
   render() {
-    console.log(this)
     this.menu.level2 = {
       text: '',
       to: this.props.location.pathname,
