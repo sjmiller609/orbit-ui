@@ -23,8 +23,8 @@ const Delete = Component => {
         track={{
           name: 'Deployment Deleted',
           props: {
-            email: email,
-            deployment: deployment,
+            email,
+            deployment,
           },
         }}
         query={query}

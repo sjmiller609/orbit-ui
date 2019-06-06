@@ -27,8 +27,8 @@ const Create = Component => {
         track={{
           name: 'New Deployment Created',
           props: {
-            email: email,
-            workspace: workspace,
+            email,
+            workspace,
           },
         }}
         errorMsg={trimError}

@@ -18,8 +18,8 @@ const AddCard = Component => {
           track={{
             name: 'Payment Method Added',
             props: {
-              email: email,
-              workspace: workspace,
+              email,
+              workspace,
             },
           }}>
           {({ mutate }) => {
