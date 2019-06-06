@@ -17,7 +17,7 @@ class Billing extends React.Component {
     if (!workspace) return <Module nada />
     return (
       <Module metaTitle={'Billing | ' + workspace.label} menu={this.menu}>
-        <StripeProvider apiKey={window.STRIPE_PK}>
+        <StripeProvider apiKey={window.STRIPE_PUBLISHABLE_KEY}>
           <Elements>
             <ConfigureBilling workspace={workspace} />
           </Elements>
