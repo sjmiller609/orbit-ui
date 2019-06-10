@@ -2,7 +2,8 @@
 import React from 'react'
 import api from './api'
 
-import { Mutation } from 'instruments'
+import { Mutation, CardError } from 'instruments'
+import { handleError, trimError } from './helpers'
 
 // Mutation to update customer info with associated stripeCustomerId in Stripe
 const UpdateCard = Component => {
@@ -12,8 +13,9 @@ const UpdateCard = Component => {
         <Mutation
           gql={api.UpdateCard}
           success="Payment Method Updated Successfully!"
-          track="Payment Method Updated">
-          {({ mutate }) => {
+          track="Payment Method Updated"
+          errorMsg={trimError}>
+          {({ mutate, error }) => {
             const newProps = {
               ...this.props,
               onSubmit: async vars => {
@@ -44,6 +46,9 @@ const UpdateCard = Component => {
                 })
               },
             }
+            const err = handleError(error)
+            if (err) newProps.error = err
+            else if (error) return <CardError />
             return <Component {...newProps} />
           }}
         </Mutation>

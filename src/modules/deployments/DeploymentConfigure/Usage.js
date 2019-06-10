@@ -22,8 +22,13 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
       // Default to 1 replica
       const replicas = c.replicas || 1
 
-      resources.cpu = parseInt(c.resources.limits.cpu * replicas)
-      resources.memory = parseInt(c.resources.limits.memory * replicas)
+      resources.cpu = c.resources.limits
+        ? parseInt(c.resources.limits.cpu * replicas)
+        : null
+
+      resources.memory = c.resources.limits
+        ? parseInt(c.resources.limits.memory * replicas)
+        : null
 
       const au2 = calcAU(resources, deploymentConfig.astroUnit)
       slices.push({
