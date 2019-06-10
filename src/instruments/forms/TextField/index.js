@@ -33,9 +33,8 @@ class TextField extends React.Component {
   }
 
   onChange(e) {
-    const { type, onChange } = this.props
+    const { onChange } = this.props
     let value = e.target.value
-    if (type === 'email') value = value.toLowerCase()
     onChange(null, value)
   }
 
