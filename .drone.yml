@@ -38,7 +38,7 @@ pipeline:
       - astronomer/astronomer
     when:
       event: push
-      branch: master
+      branch: [ master ]
 
   notify:
     image: plugins/slack
