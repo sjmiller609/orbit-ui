@@ -15,15 +15,37 @@ import { Page } from 'instruments'
 // while allowing the other pages to behave normally, while also maintaining the bottom padding
 // we add via the content class. If every module was "full height", the padding does not work.
 // There may be a better way to do this.
-const App = ({ children, nav, metaTitle, className, fullHeight }) => {
-  return (
-    <Page className={classnames(s.module, className)} metaTitle={metaTitle}>
-      {nav}
-      <div className={classnames(s.content, fullHeight ? s.fullHeight : '')}>
-        {children}
-      </div>
-    </Page>
-  )
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: true,
+    }
+  }
+
+  componentWillMount() {
+    setTimeout(this.handleLoading, 100)
+  }
+
+  handleLoading = () => {
+    this.setState({ loading: false })
+  }
+
+  render() {
+    const { children, nav, metaTitle, className, fullHeight } = this.props
+    const { loading } = this.state
+    return (
+      <Page className={classnames(s.module, className)} metaTitle={metaTitle}>
+        {nav}
+        {!loading && (
+          <div
+            className={classnames(s.content, fullHeight ? s.fullHeight : '')}>
+            {children}
+          </div>
+        )}
+      </Page>
+    )
+  }
 }
 
 App.propTypes = {
