@@ -22,6 +22,7 @@ class Deployments extends React.Component {
   render() {
     const { search } = this.state
     const { workspace } = this.props
+    const capabilities = workspace.workspaceCapabilities
     if (!workspace) return <Module nada />
 
     const vars = {
@@ -31,16 +32,15 @@ class Deployments extends React.Component {
       'Please add a payment method to your workspace to continue using Astronomer.'
     const msg2 =
       'Please ask your Workspace Admin to add a payment method to this workspace in order to continue using Astronomer.'
-    const text = workspace.workspaceCapabilities.canUpdateBilling ? msg1 : msg2
-    //Check to see if billing is enabled and the current user has permissions to add payment information
-    console.log(workspace)
-    if (workspace.isSuspended == true)
+    const text = capabilities.canUpdateBilling ? msg1 : msg2
+    //Check to see if billing is enabled and the current user has permissions to add payment informatione)
+    if (workspace.isSuspended && capabilities.billingEnabled)
       return (
         <Module metaTitle="Deployments" menu={this.menu}>
           <Activation
             title="Thanks for giving us a test drive!"
             text={text}
-            canUpdateIAM={workspace.workspaceCapabilities.canUpdateBilling}
+            canUpdateBilling={capabilities.canUpdateBilling}
           />
         </Module>
       )
