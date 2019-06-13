@@ -54,6 +54,7 @@ export const workspace = gql`
       canUpdateBilling
       canUpdateIAM
     }
+    isSuspended
   }
 `
 

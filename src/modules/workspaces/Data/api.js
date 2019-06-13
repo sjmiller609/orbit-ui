@@ -21,7 +21,7 @@ export default {
         }
         invites @include(if: $withUsers) {
           ...invite
-        },
+        }
         roleBindings @include(if: $withUsers) {
           ...entityRoleBinding
         }
