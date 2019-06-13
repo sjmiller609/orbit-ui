@@ -40,18 +40,12 @@ const Nav = ({ getData, workspaces, self, menu }) => {
 
   // TODO: This logic is too specific for the generic nature
   // of this component. We should fix this.
-<<<<<<< HEAD
-  const capabilities = workspace.workspaceCapabilities
-  const billingEnabled = workspace
-    ? capabilities.billingEnabled && capabilities.canUpdateBilling
-=======
-  const billingEnabled = workspace
-    ? workspace.workspaceCapabilities.billingEnabled
->>>>>>> Add billingEnabled config and set activity to read off of the correct configs
+  const canUpdateBilling = workspace
+    ? workspace.workspaceCapabilities.canUpdateBilling
     : false
   subMenu = reject(
     subMenu,
-    i => !billingEnabled && i.text.toLowerCase() === 'billing'
+    i => !canUpdateBilling && i.text.toLowerCase() === 'billing'
   )
 
   return (
