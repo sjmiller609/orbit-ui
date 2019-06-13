@@ -6,6 +6,7 @@ import api from './api'
 
 import { Create as Mutation, GetData, CardError } from 'instruments'
 import { handleError, trimError } from './helpers'
+import Self from '../../self/Data'
 
 const Create = Component => {
   const Create = ({ getData, ...props }) => {
@@ -16,15 +17,23 @@ const Create = Component => {
         workspaceId: getData.workspaceId,
       },
     }
+    const email = props.self.user.emails[0].address
+    const workspace = props.workspaces[0]
     return (
       <Mutation
         gql={api.CreateDeployment}
         redirect={data => '/deployments/' + data.releaseName + '?loading'}
         success="New deployment created successfully."
-        track="New Deployment Created"
-        voidError
+        track={{
+          name: 'New Deployment Created',
+          props: {
+            email,
+            workspace,
+          },
+        }}
         errorMsg={trimError}
-        query={query}>
+        query={query}
+        voidError>
         {({ mutate, error }) => {
           const newProps = {
             ...props,
@@ -42,7 +51,6 @@ const Create = Component => {
           const err = handleError(error)
           if (err) newProps.error = err
           else if (error) return <CardError />
-
           return <Component {...newProps} />
         }}
       </Mutation>
@@ -52,7 +60,7 @@ const Create = Component => {
     getData: PropTypes.object,
   }
 
-  return GetData(Create, { workspaceId: true })
+  return Self(GetData(Create, { workspaceId: true }))
 }
 
 export default Create
