@@ -6,10 +6,14 @@ import s from './styles.scss'
 import { Card, Block1, Airflow, Button } from 'instruments'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const Activation = ({ title, text, canUpdateBilling }) => {
 =======
 const Activation = ({ title, text, canUpdateIAM }) => {
 >>>>>>> Beghin to rework paywall to read off of isSuspended rather than stripeCustomerId
+=======
+const Activation = ({ title, text, canUpdateBilling }) => {
+>>>>>>> Add billingEnabled config and set activity to read off of the correct configs
   const button = {
     text: 'Add a Payment Method',
     to: '/billing',
@@ -22,10 +26,14 @@ const Activation = ({ title, text, canUpdateIAM }) => {
         text={text}
         className={s.list}>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Button disabled={!canUpdateBilling} to={button.to}>
 =======
         <Button to={button.to} disabled={!canUpdateIAM}>
 >>>>>>> Beghin to rework paywall to read off of isSuspended rather than stripeCustomerId
+=======
+        <Button disabled={!canUpdateBilling} to={button.to}>
+>>>>>>> Add billingEnabled config and set activity to read off of the correct configs
           {button.text}
         </Button>
       </Block1>
@@ -37,10 +45,14 @@ Activation.propTypes = {
   title: PropTypes.string,
   text: PropTypes.string,
 <<<<<<< HEAD
+<<<<<<< HEAD
   canUpdateBilling: PropTypes.bool,
 =======
   canUpdateIAM: PropTypes.bool,
 >>>>>>> Beghin to rework paywall to read off of isSuspended rather than stripeCustomerId
+=======
+  canUpdateBilling: PropTypes.bool,
+>>>>>>> Add billingEnabled config and set activity to read off of the correct configs
 }
 
 export default Activation
