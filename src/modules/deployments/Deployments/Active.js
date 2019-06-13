@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import s from './styles.scss'
 import { Card, Block1, Airflow, Button } from 'instruments'
 
-const Activation = ({ title, text, canUpdateIAM }) => {
+const Activation = ({ title, text, canUpdateBilling }) => {
   const button = {
     text: 'Add a Payment Method',
     to: '/billing',
@@ -17,7 +17,7 @@ const Activation = ({ title, text, canUpdateIAM }) => {
         title={title}
         text={text}
         className={s.list}>
-        <Button to={button.to} disabled={!canUpdateIAM}>
+        <Button disabled={!canUpdateBilling} to={button.to}>
           {button.text}
         </Button>
       </Block1>
@@ -28,7 +28,7 @@ const Activation = ({ title, text, canUpdateIAM }) => {
 Activation.propTypes = {
   title: PropTypes.string,
   text: PropTypes.string,
-  canUpdateIAM: PropTypes.bool,
+  canUpdateBilling: PropTypes.bool,
 }
 
 export default Activation
