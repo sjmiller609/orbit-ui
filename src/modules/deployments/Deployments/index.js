@@ -27,16 +27,20 @@ class Deployments extends React.Component {
     const vars = {
       workspaceId: workspace.id,
     }
+    const msg1 =
+      'Please add a payment method to your workspace to continue using Astronomer.'
+    const msg2 =
+      'Please ask your Workspace Admin to add a payment method to this workspace in order to continue using Astronomer.'
+    const text = workspace.workspaceCapabilities.canUpdateBilling ? msg1 : msg2
     //Check to see if billing is enabled and the current user has permissions to add payment information
-    if (
-      workspace.workspaceCapabilities.canUpdateBilling == true &&
-      workspace.stripeCustomerId == null
-    )
+    console.log(workspace)
+    if (workspace.isSuspended == true)
       return (
         <Module metaTitle="Deployments" menu={this.menu}>
           <Activation
-            title="Welcome to Astronomer!"
-            text="Please add a payment method to your workspace to start your 14 day free trial."
+            title="Thanks for giving us a test drive!"
+            text={text}
+            canUpdateIAM={workspace.workspaceCapabilities.canUpdateBilling}
           />
         </Module>
       )
