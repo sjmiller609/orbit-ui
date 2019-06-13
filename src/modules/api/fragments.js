@@ -53,6 +53,7 @@ export const workspace = gql`
     workspaceCapabilities {
       canUpdateBilling
       canUpdateIAM
+      billingEnabled
     }
     isSuspended
   }

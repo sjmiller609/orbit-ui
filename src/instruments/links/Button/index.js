@@ -26,7 +26,8 @@ const Button = ({
           disabled ? s.disabled : null,
           s[style],
           className
-        )}>
+        )}
+        onClick={e => (disabled ? e.preventDefault() : e)}>
         {children}
       </Link>
     )
