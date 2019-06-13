@@ -7,6 +7,7 @@ import { Card, Block1, Airflow, Button } from 'instruments'
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 const Activation = ({ title, text, canUpdateBilling }) => {
 =======
 const Activation = ({ title, text, canUpdateIAM }) => {
@@ -14,6 +15,9 @@ const Activation = ({ title, text, canUpdateIAM }) => {
 =======
 const Activation = ({ title, text, canUpdateBilling }) => {
 >>>>>>> Add billingEnabled config and set activity to read off of the correct configs
+=======
+const Activation = ({ title, text, canUpdateIAM }) => {
+>>>>>>> Beghin to rework paywall to read off of isSuspended rather than stripeCustomerId
   const button = {
     text: 'Add a Payment Method',
     to: '/billing',
@@ -27,6 +31,7 @@ const Activation = ({ title, text, canUpdateBilling }) => {
         className={s.list}>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Button disabled={!canUpdateBilling} to={button.to}>
 =======
         <Button to={button.to} disabled={!canUpdateIAM}>
@@ -34,6 +39,9 @@ const Activation = ({ title, text, canUpdateBilling }) => {
 =======
         <Button disabled={!canUpdateBilling} to={button.to}>
 >>>>>>> Add billingEnabled config and set activity to read off of the correct configs
+=======
+        <Button to={button.to} disabled={!canUpdateIAM}>
+>>>>>>> Beghin to rework paywall to read off of isSuspended rather than stripeCustomerId
           {button.text}
         </Button>
       </Block1>
@@ -46,6 +54,7 @@ Activation.propTypes = {
   text: PropTypes.string,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   canUpdateBilling: PropTypes.bool,
 =======
   canUpdateIAM: PropTypes.bool,
@@ -53,6 +62,9 @@ Activation.propTypes = {
 =======
   canUpdateBilling: PropTypes.bool,
 >>>>>>> Add billingEnabled config and set activity to read off of the correct configs
+=======
+  canUpdateIAM: PropTypes.bool,
+>>>>>>> Beghin to rework paywall to read off of isSuspended rather than stripeCustomerId
 }
 
 export default Activation

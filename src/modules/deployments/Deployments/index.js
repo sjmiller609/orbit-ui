@@ -41,6 +41,7 @@ class Deployments extends React.Component {
             title="Thanks for giving us a test drive!"
             text={text}
             canUpdateBilling={capabilities.canUpdateBilling}
+            canUpdateIAM={workspace.workspaceCapabilities.canUpdateBilling}
           />
         </Module>
       )
