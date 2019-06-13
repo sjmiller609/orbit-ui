@@ -40,12 +40,12 @@ const Nav = ({ getData, workspaces, self, menu }) => {
 
   // TODO: This logic is too specific for the generic nature
   // of this component. We should fix this.
-  const canUpdateBilling = workspace
-    ? workspace.workspaceCapabilities.canUpdateBilling
+  const billingEnabled = workspace
+    ? workspace.workspaceCapabilities.billingEnabled
     : false
   subMenu = reject(
     subMenu,
-    i => !canUpdateBilling && i.text.toLowerCase() === 'billing'
+    i => !billingEnabled && i.text.toLowerCase() === 'billing'
   )
 
   return (
