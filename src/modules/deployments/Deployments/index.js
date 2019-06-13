@@ -32,6 +32,7 @@ class Deployments extends React.Component {
     const msg2 =
       'Please ask your Workspace Admin to add a payment method to this workspace in order to continue using Astronomer.'
     const text = capabilities.canUpdateBilling ? msg1 : msg2
+
     //Check to see if billing is enabled and the current user has permissions to add payment informatione)
     if (workspace.isSuspended && capabilities.billingEnabled)
       return (
