@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { CardForm, P, Mini, Link, Icon, Box, LoadingDots } from 'instruments'
+import { CardForm, P, Icon, Box } from 'instruments'
 import s from './styles.scss'
 
 const ServiceDashboard = ({ url, title, icon, text, loading }) => {
@@ -13,27 +13,14 @@ const ServiceDashboard = ({ url, title, icon, text, loading }) => {
       title={title}
       className={s.card}
       button={{
-        text: 'Open Dashboard',
+        text: `Open ${title}`,
         save: !!to,
         to,
       }}>
       <Box className={classnames(s.icon, loading && s.loading)}>
         <Icon icon={icon} />
       </Box>
-
       <P>{text}</P>
-
-      {to ? (
-        <Mini className={s.sub}>
-          <Link to={to} newTab>
-            {to}
-          </Link>
-        </Mini>
-      ) : (
-        <Mini className={s.provisioning}>
-          Provisioning <LoadingDots />
-        </Mini>
-      )}
     </CardForm>
   )
 }

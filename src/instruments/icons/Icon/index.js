@@ -7,6 +7,9 @@ import { LoadImg } from 'instruments'
 // dynamic path at runtime doesn't work well
 const map = {
   airflow_astro: LoadImg(() => import(`./img/airflow_astro.svg`)),
+  airflow_astro_noStars: LoadImg(() =>
+    import(`./img/airflow_astro_noStars.svg`)
+  ),
   airflow_ring: LoadImg(() => import(`./img/airflow_ring.svg`)),
   airflow: LoadImg(() => import(`./img/airflow.svg`)),
   alien_ship: LoadImg(() => import(`./img/alien_ship.svg`)),

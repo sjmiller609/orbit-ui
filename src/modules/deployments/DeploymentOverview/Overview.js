@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 
 import { CardRow } from 'instruments'
 import ServiceDashboard from './ServiceDashboard'
+import Metrics from '../../metrics/DeploymentMetrics'
+
+import s from './styles.scss'
 
 const Overview = ({ deployment, loading }) => {
   let airflow
@@ -13,28 +16,28 @@ const Overview = ({ deployment, loading }) => {
       if (u.type === 'flower') flower = u.url
     })
   return (
-    <CardRow>
-      <ServiceDashboard
-        title="Apache Airflow"
-        text={
-          <React.Fragment>
-            Author, schedule and monitor workflows:
-          </React.Fragment>
-        }
-        url={airflow}
-        icon="airflow_astro"
-        loading={loading}
-      />
-      {flower && (
+    <div>
+      <CardRow>
         <ServiceDashboard
-          title="Celery Flower"
-          text="Monitor worker queues on Celery with Flower:"
-          url={flower}
-          icon="celery"
+          title="Apache Airflow"
+          text="Author, schedule and monitor workflows."
+          url={airflow}
+          icon="airflow_astro"
           loading={loading}
+          deployment={deployment}
         />
-      )}
-    </CardRow>
+        {flower && (
+          <ServiceDashboard
+            title="Celery Flower"
+            text="Monitor worker queues on Celery with Flower."
+            url={flower}
+            icon="celery"
+            loading={loading}
+            deployment={deployment}
+          />
+        )}
+      </CardRow>
+    </div>
   )
 }
 

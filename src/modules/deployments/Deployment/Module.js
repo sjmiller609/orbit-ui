@@ -26,7 +26,13 @@ const Logs = Load(() =>
   import(/* webpackPrefetch: true */ 'modules/logs/DeploymentLogs')
 )
 
+const Metrics = Load(() =>
+  import(/* webpackPrefetch: true */ 'modules/metrics/DeploymentMetrics')
+)
+
 const isLogs = str => str && str.toLowerCase() === 'logs'
+
+
 
 const Deployment = ({ deployments, loggingEnabled, menu, title }) => {
   const deployment = deployments[0]
@@ -76,6 +82,11 @@ const Deployment = ({ deployments, loggingEnabled, menu, title }) => {
           path={path}
           exact
           render={() => <Overview deployment={deployment} />}
+        />
+        <Route
+          path={path + '/metrics'}
+          exact
+          render={() => <Metrics deployment={deployment} />}
         />
         {loggingEnabled && (
           <Route

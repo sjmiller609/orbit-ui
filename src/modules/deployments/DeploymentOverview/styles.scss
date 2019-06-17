@@ -2,7 +2,7 @@
 
 .card main > div {
   text-align: center;
-  min-height: 25rem;
+  min-height: 15rem;
 }
 
 p.sub,
@@ -35,6 +35,14 @@ p.provisioning {
   // img {
   //   animation: pulse 7s infinite ease-in;
   // }
+}
+
+.metricRow {
+  width: 100%;
+
+  span {
+    width: 100%;
+  }
 }
 
 @keyframes bg {

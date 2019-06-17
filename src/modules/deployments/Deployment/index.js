@@ -25,6 +25,10 @@ class Deployment extends React.Component {
         to: match.url + '/configure',
       },
       {
+        text: 'Metrics',
+        to: match.url + '/metrics',
+      },
+      {
         text: 'Logs',
         to: match.url + '/logs',
       },
