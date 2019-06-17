@@ -45,7 +45,6 @@ export const workspace = gql`
     id: uuid
     label
     description
-    active
     createdAt
     updatedAt
     deploymentCount
