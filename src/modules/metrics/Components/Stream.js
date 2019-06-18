@@ -25,20 +25,12 @@ class Stream extends React.Component {
     const { metric } = props
     const data = []
 
-    let length = 0
-    if (
-      metric[0] != undefined &&
-      metric[1] != undefined &&
-      metric[2] != undefined &&
-      metric[3] != undefined
-    ) {
-      length = [].concat.apply(
-        [],
-        [metric[0].result, metric[1].result, metric[2].result, metric[3].result]
-      ).length
-    }
+    const length =
+      metric[0].result.length != 0 && metric[0].result[0].values != undefined
+        ? metric[0].result[0].values.length
+        : 30
 
-    Array.apply(null, Array(length > 0 ? length : 30)).map((v, i) => {
+    Array.apply(null, Array(length)).map((v, i) => {
       data.push({
         'Queued Tasks':
           metric[0].result.length != 0 &&
@@ -76,7 +68,7 @@ class Stream extends React.Component {
             <P>No task data</P>
           </div>
         )}
-        <div className={s.streamElement} style={{ height: 150 }}>
+        <div className={s.streamElement} style={{ height: 200 }}>
           <ResponsiveStream
             data={data}
             keys={[
@@ -85,6 +77,9 @@ class Stream extends React.Component {
               'Successful Tasks',
               'Failed Tasks',
             ]}
+            axisBottom={null}
+            offsetType="silhouette"
+            enableGridX={data.length < 200}
             margin={{ top: 0, right: 150, bottom: 30, left: 40 }}
             fillOpacity={0.85}
             legends={[

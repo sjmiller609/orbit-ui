@@ -9,6 +9,7 @@ import Gauge from './Gauge'
 import Sparkline from './Sparkline'
 import Complexline from './Complexline'
 import ContainerList from './ContainerList'
+import TaskStatus from './TaskStatus'
 import Stream from './Stream'
 
 class MetricContainer extends React.Component {
@@ -39,6 +40,7 @@ class MetricContainer extends React.Component {
       } else if (
         type != 'complexline' &&
         type != 'list' &&
+        type != 'taskList' &&
         metric.result[0] != undefined
       ) {
         return this.setState({
@@ -82,7 +84,7 @@ class MetricContainer extends React.Component {
   }
 
   renderMetric = type => {
-    const { metric, label } = this.props
+    const { metric, label, step } = this.props
     const { data } = this.state
 
     let component
@@ -100,10 +102,13 @@ class MetricContainer extends React.Component {
         component = <Sparkline metric={data} label={metric.label} />
         break
       case 'complexline':
-        component = <Complexline metric={data} label={label} />
+        component = <Complexline metric={data} label={label} step={step} />
         break
       case 'list':
         component = <ContainerList metric={data} />
+        break
+      case 'taskList':
+        component = <TaskStatus metric={data} />
         break
       case 'stream':
         component = <Stream metric={data} />
@@ -141,6 +146,7 @@ MetricContainer.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,
   range: PropTypes.bool,
+  step: PropTypes.number,
 }
 
 export default MetricContainer

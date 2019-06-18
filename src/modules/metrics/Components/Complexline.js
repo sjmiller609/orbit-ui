@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import { ResponsiveLine } from '@nivo/line'
-import { findIndex } from 'lodash'
 
 import s from './styles.scss'
 
@@ -53,24 +52,21 @@ class Complexline extends React.Component {
     // Format the data OR generate placeholder for
     // data returned as 0 (so a graph will show)
     if (metric.length > 0) {
-      metric.map(m => {
+      metric.map((m, i) => {
         const id = m.metric.operator
           ? m.metric.operator
-          : m.metric.component_name.split(/\s(.+)/)[1]
-
-        // Avoid duplicates
-        const index = findIndex(data, { id })
-        if (index === -1) {
-          return data.push({
-            id,
-            data: m.values.map(v => {
-              return {
-                x: moment.unix(v[0]).toDate(),
-                y: Number(v[1]),
-              }
-            }),
-          })
-        }
+          : m.metric.pod_name.split(/-/g)[3] +
+            '-' +
+            m.metric.pod_name.split(/-/g)[4]
+        return data.push({
+          id: `${id}-${i}`,
+          data: m.values.map(v => {
+            return {
+              x: moment.unix(v[0]).format('YYYY-MM-DD HH:mm:ss'),
+              y: Number(v[1]),
+            }
+          }),
+        })
       })
     } else {
       emptyData.push({
@@ -79,7 +75,7 @@ class Complexline extends React.Component {
           return {
             x: moment()
               .subtract(i, 'minutes')
-              .toDate(),
+              .format('YYYY-MM-DD HH:mm:ss'),
             y: Number(`0.000${i}`),
           }
         }),
@@ -91,7 +87,7 @@ class Complexline extends React.Component {
 
   render() {
     const { data, emptyData } = this.state
-    const { label } = this.props
+    const { label, step } = this.props
 
     return (
       <div className={s.complexlineContainer}>
@@ -100,21 +96,25 @@ class Complexline extends React.Component {
             data={data.length != 0 ? data : emptyData}
             margin={{ top: 20, right: 120, bottom: 80, left: 60 }}
             pixelRatio={2}
-            colors={{ scheme: 'paired' }}
             curve="monotoneX"
             lineWidth={1}
             enableArea={true}
             isInteractive={data.length != 0}
             enablePoints={false}
             enableGridX={false}
-            axisBottom={null}
             xScale={{
               type: 'time',
-              format: 'native',
+              format: '%Y-%m-%d %H:%M:%S',
+            }}
+            xFormat="time:%Hh %Mm $Ss"
+            axisBottom={{
+              format: () => null,
+              tickSize: 0,
+              tickValues: `every ${step} seconds`,
             }}
             yScale={{
               type: 'linear',
-              stacked: true,
+              stacked: false,
               min: 0,
               max: data.length != 0 ? 'auto' : 1,
             }}
@@ -174,6 +174,7 @@ class Complexline extends React.Component {
 Complexline.propTypes = {
   metric: PropTypes.array,
   label: PropTypes.string,
+  step: PropTypes.number,
 }
 
 export default Complexline

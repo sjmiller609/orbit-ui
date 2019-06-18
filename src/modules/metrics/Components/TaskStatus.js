@@ -4,7 +4,7 @@ import classnames from 'classnames'
 
 import s from './styles.scss'
 
-class ContainerList extends React.Component {
+class TaskStatus extends React.Component {
   state = {
     data: [],
   }
@@ -50,15 +50,8 @@ class ContainerList extends React.Component {
             <div
               key={`${d.metric.container}${i}`}
               className={s.containerListItem}>
-              <div style={{ flex: '0 0 20%' }}>
-                {d.metric.container.split(/-/g)[3]}
-              </div>
-              <div>
-                {d.metric.pod != undefined &&
-                  `${d.metric.pod.split(/-/g)[3]}-${
-                    d.metric.pod.split(/-/g)[4]
-                  }-${d.metric.pod.split(/-/g)[5]}`}{' '}
-              </div>
+              <div style={{ flex: '0 0 20%' }}>{d.metric.container}</div>
+              <div>{d.metric.pod.split(/-/g)[0]}</div>
               <div>{this.formatBool(d.value[1])}</div>
             </div>
           ))}
@@ -68,9 +61,9 @@ class ContainerList extends React.Component {
   }
 }
 
-ContainerList.propTypes = {
+TaskStatus.propTypes = {
   metric: PropTypes.array,
   label: PropTypes.string,
 }
 
-export default ContainerList
+export default TaskStatus

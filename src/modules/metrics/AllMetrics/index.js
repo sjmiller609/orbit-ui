@@ -45,6 +45,8 @@ class AllMetrics extends React.Component {
   }
 
   renderGraphs = (loading, metrics, since) => {
+    const step = since.getStep() * since.get()
+
     return (
       <div>
         <Row className={s.row}>
@@ -203,6 +205,7 @@ class AllMetrics extends React.Component {
                 }
                 label="ops"
                 type="complexline"
+                step={step}
                 range
               />
             </Box>
@@ -213,6 +216,7 @@ class AllMetrics extends React.Component {
                 metric={metrics[findIndex(metrics, ['label', 'taskFailRate'])]}
                 type="complexline"
                 label="ops"
+                step={step}
                 range
               />
             </Box>
@@ -255,6 +259,7 @@ class AllMetrics extends React.Component {
                 metric={metrics[findIndex(metrics, ['label', 'cpuUsage'])]}
                 type="complexline"
                 label="%"
+                step={step}
                 range
               />
             </Box>
@@ -265,6 +270,7 @@ class AllMetrics extends React.Component {
                 metric={metrics[findIndex(metrics, ['label', 'memoryUsage'])]}
                 type="complexline"
                 label="GB"
+                step={step}
                 range
               />
             </Box>
@@ -277,6 +283,7 @@ class AllMetrics extends React.Component {
                 metric={metrics[findIndex(metrics, ['label', 'networkRx'])]}
                 type="complexline"
                 label="kB/s"
+                step={step}
                 range
               />
             </Box>
@@ -287,6 +294,7 @@ class AllMetrics extends React.Component {
                 metric={metrics[findIndex(metrics, ['label', 'networkTx'])]}
                 type="complexline"
                 label="kB/s"
+                step={step}
                 range
               />
             </Box>
@@ -297,11 +305,21 @@ class AllMetrics extends React.Component {
             <Box className={s.col}>
               <MetricContainer
                 loading={loading}
-                title="Core Container Status"
                 metric={
                   metrics[findIndex(metrics, ['label', 'coreContainerStatus'])]
                 }
                 type="list"
+              />
+            </Box>
+          </Row>
+        </Card>
+        <Card header="Task Status">
+          <Row>
+            <Box className={s.col}>
+              <MetricContainer
+                loading={loading}
+                metric={metrics[findIndex(metrics, ['label', 'taskStatus'])]}
+                type="taskList"
               />
             </Box>
           </Row>

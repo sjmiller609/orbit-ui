@@ -3,9 +3,6 @@ import PropTypes from 'prop-types'
 
 import { CardRow } from 'instruments'
 import ServiceDashboard from './ServiceDashboard'
-import Metrics from '../../metrics/DeploymentMetrics'
-
-import s from './styles.scss'
 
 const Overview = ({ deployment, loading }) => {
   let airflow

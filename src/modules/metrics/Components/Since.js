@@ -12,6 +12,7 @@ const Since = ({ set, get }) => {
 
   let msg = `Last ${lastTime}`
   if (lastTime === 'a day') msg = `Last 24 hours`
+  if (lastTime === 'an hour') msg = `Last 1 hour`
 
   return (
     <Dropdown
