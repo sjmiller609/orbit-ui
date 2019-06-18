@@ -51,7 +51,9 @@ class TaskStatus extends React.Component {
               key={`${d.metric.container}${i}`}
               className={s.containerListItem}>
               <div style={{ flex: '0 0 20%' }}>{d.metric.container}</div>
-              <div>{d.metric.pod.split(/-/g)[0]}</div>
+              <div>
+                {d.metric.pod != undefined && d.metric.pod.split(/-/g)[0]}
+              </div>
               <div>{this.formatBool(d.value[1])}</div>
             </div>
           ))}
