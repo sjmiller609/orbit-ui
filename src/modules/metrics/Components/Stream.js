@@ -60,7 +60,7 @@ class Stream extends React.Component {
 
   render() {
     const { length, data } = this.state
-    const colors = ['#f48e07', '#069dac', '#00ac6b', '#f4362c'].reverse()
+    const colors = ['#bcb3a7', '#07d65b', '#02a562', '#fb5b3c'].reverse()
 
     return (
       <div className={s.streamContainer}>
