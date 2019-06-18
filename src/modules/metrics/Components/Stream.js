@@ -79,7 +79,7 @@ class Stream extends React.Component {
             ]}
             axisBottom={null}
             offsetType="silhouette"
-            enableGridX={data.length < 200}
+            enableGridX={false}
             margin={{ top: 0, right: 150, bottom: 30, left: 40 }}
             fillOpacity={0.85}
             legends={[
