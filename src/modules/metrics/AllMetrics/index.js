@@ -57,7 +57,7 @@ class AllMetrics extends React.Component {
             <Box className={s.col}>
               <MetricContainer
                 loading={loading}
-                title="Deployment Status"
+                title="Deployment"
                 metric={
                   metrics[findIndex(metrics, ['label', 'deploymentStatus'])]
                 }
@@ -67,7 +67,7 @@ class AllMetrics extends React.Component {
             <Box className={s.col}>
               <MetricContainer
                 loading={loading}
-                title="Scheduler Heartbeat"
+                title="Scheduler"
                 metric={
                   metrics[findIndex(metrics, ['label', 'schedulerHeartbeat'])]
                 }
