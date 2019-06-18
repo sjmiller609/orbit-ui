@@ -60,6 +60,7 @@ class Stream extends React.Component {
 
   render() {
     const { length, data } = this.state
+    const colors = ['#f48e07', '#069dac', '#00ac6b', '#f4362c'].reverse()
 
     return (
       <div className={s.streamContainer}>
@@ -70,15 +71,16 @@ class Stream extends React.Component {
         )}
         <div className={s.streamElement} style={{ height: 200 }}>
           <ResponsiveStream
-            data={data}
+            data={data.reverse()}
             keys={[
               'Queued Tasks',
               'Running Tasks',
               'Successful Tasks',
               'Failed Tasks',
-            ]}
+            ].reverse()}
             axisBottom={null}
             offsetType="silhouette"
+            colors={c => colors[c.index]}
             enableGridX={false}
             margin={{ top: 0, right: 150, bottom: 30, left: 40 }}
             fillOpacity={0.85}
