@@ -12,43 +12,34 @@ Orbit connects to Houston API. The steps to setup for local development:
 
 Houston requires Docker to run. Make sure you have Docker installed.
 
-1.  Download Houston from https://github.com/astronomerio/houston-api.
-
-2.  Create a `.env` file and add appropriate variables.
-
-4.  Run `npm i` to install the necessary packages.
-
-5.  Run `docker-compose up` in your houston-api repo.
-
-6.  Navigate to http://localhost:8870/playground to access the graphql playground (and ensure houston is running.)
+* Download Houston from https://github.com/astronomerio/houston-api.
+* Create a `.env` file and add appropriate variables.
+* Run `npm i` to install the necessary packages.
+* Run `docker-compose up` in your houston-api repo.
+* Run `npm start` in your houston-api repo.
+* Navigate to http://localhost:8871/v1/ to access the GraphQL playground (and ensure houston is running.)
 
 Note: Sometimes the docker image doesn't spin down, and thus, doesn't start up again correctly. Run `docker-compose down && docker-compose up` to try again.
 
 ### Run Orbit
 
-1.  Download orbit https://github.com/astronomerio/orbit-ui
-
-2.  Run `npm install` in orbit repo
-
-3.  Run `npm run local` to start the app.
-
-4.  Go to http://localhost:5000/ to access the app
+* Download orbit https://github.com/astronomerio/orbit-ui
+* Run `npm install` in orbit repo
+* Run `npm run local` to start the app.
+* Go to http://localhost:5000/ to access the app
 
 ### Run Storybook
 
 Follow the following steps to launch a hot-reloading instance of Storybook:
 
-1.  Download orbit https://github.com/astronomerio/orbit-ui
-
-2.  Run `npm install` in orbit repo
-
-3.  Run `npm run storybook` to launch storybook.
-
-4.  Go to the generated url to access storybook.
+* Download orbit https://github.com/astronomerio/orbit-ui
+* Run `npm install` in orbit repo
+* Run `npm run storybook` to launch storybook.
+* Go to the generated url to access storybook.
 
 # How it's built
 
-Orbit is a React app built with Apollo graphql.
+Orbit is a React app built with Apollo GraphQL.
 
 ## Component Library
 
