@@ -71,7 +71,7 @@ class Stream extends React.Component {
         )}
         <div className={s.streamElement} style={{ height: 200 }}>
           <ResponsiveStream
-            data={data.reverse()}
+            data={data}
             keys={[
               'Queued Tasks',
               'Running Tasks',
