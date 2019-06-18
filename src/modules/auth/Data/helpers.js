@@ -43,6 +43,15 @@ const errors = [
     name: 'permissions',
     error: 'Contact your Workspace Admin to upgrade your permissions.',
   },
+  {
+    key: 'Email address in use',
+    name: 'email',
+    error: (
+      <Link to="/login">
+        A user with that email address already exists. Click here to login.
+      </Link>
+    ),
+  },
 ]
 
 export const handleError = error => formErrors({ error, errors })
