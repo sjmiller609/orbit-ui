@@ -51,7 +51,10 @@ class ContainerList extends React.Component {
               key={`${d.metric.container}${i}`}
               className={s.containerListItem}>
               <div style={{ flex: '0 0 20%' }}>
-                {d.metric.container.split(/-/g)[3]}
+                {d.metric.container
+                  .split(/-/g)
+                  .slice(3)
+                  .join('-')}
               </div>
               <div>
                 {d.metric.pod != undefined &&
