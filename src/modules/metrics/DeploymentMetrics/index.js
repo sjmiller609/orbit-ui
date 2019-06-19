@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom'
 class DeploymentMetrics extends React.Component {
   state = {
     since: 30,
-    step: 10,
+    step: 5,
   }
 
   setSince = since => {
@@ -16,13 +16,13 @@ class DeploymentMetrics extends React.Component {
     // switch by minutes
     switch (since) {
       case 15:
-        step = 10
+        step = 5
         break
       case 30:
-        step = 10
+        step = 5
         break
       case 60:
-        step = 20
+        step = 10
         break
       case 180:
         step = 60
