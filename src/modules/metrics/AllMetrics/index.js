@@ -78,7 +78,7 @@ class AllMetrics extends React.Component {
             </Box>
           </Row>
         </Card>
-        <Card header="Task Overview">
+        <Card header="Task Stream">
           <Row>
             <Box className={s.col}>
               <MetricContainer
