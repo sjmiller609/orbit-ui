@@ -102,6 +102,7 @@ class Complexline extends React.Component {
             isInteractive={data.length != 0}
             enablePoints={false}
             enableGridX={false}
+            animate={false}
             xScale={{
               type: 'time',
               format: '%Y-%m-%d %H:%M:%S',

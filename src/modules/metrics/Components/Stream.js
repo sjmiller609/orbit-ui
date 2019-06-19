@@ -84,6 +84,7 @@ class Stream extends React.Component {
             enableGridX={false}
             margin={{ top: 0, right: 150, bottom: 30, left: 40 }}
             fillOpacity={0.85}
+            animate={false}
             legends={[
               {
                 anchor: 'top-right',
