@@ -45,13 +45,17 @@ class Stream extends React.Component {
             : 0,
         'Successful Tasks':
           metric[2].result.length != 0 &&
-          metric[2].result[0].values.reverse()[length-i] != undefined
-            ? Math.round(Number(metric[2].result[0].values.reverse()[length-i][1]))
+          metric[2].result[0].values.reverse()[length + 1 - i] != undefined
+            ? Math.round(
+                Number(metric[2].result[0].values.reverse()[length - i][1])
+              )
             : 0,
         'Failed Tasks':
           metric[3].result.length != 0 &&
-          metric[3].result[0].values.reverse()[length-i] != undefined
-            ? Math.round(Number(metric[3].result[0].values.reverse()[length-i][1]))
+          metric[3].result[0].values.reverse()[length + 1 - i] != undefined
+            ? Math.round(
+                Number(metric[3].result[0].values.reverse()[length - i][1])
+              )
             : 0,
       }
       data.push(slice)
