@@ -24,6 +24,7 @@ class Stream extends React.Component {
   formatData = props => {
     const { metric } = props
     const data = []
+    let sum = 0
 
     const length =
       metric[0].result.length != 0 && metric[0].result[0].values != undefined
@@ -31,7 +32,7 @@ class Stream extends React.Component {
         : 30
 
     Array.apply(null, Array(length)).map((v, i) => {
-      data.push({
+      const slice = {
         'Queued Tasks':
           metric[0].result.length != 0 &&
           metric[0].result[0].values[i] != undefined
@@ -52,10 +53,13 @@ class Stream extends React.Component {
           metric[3].result[0].values[i] != undefined
             ? Math.round(Number(metric[3].result[0].values[i][1]))
             : 0,
-      })
+      }
+      data.push(slice)
+      sum += Object.values(slice).reduce((a, b) => a + b)
     })
 
-    this.setState({ length, data })
+    if (sum > 0) this.setState({ length, data })
+    else this.setState({ length: 0, data: [] })
   }
 
   render() {
