@@ -31,36 +31,40 @@ class Stream extends React.Component {
         ? metric[0].result[0].values.length
         : 30
 
-    Array.apply(null, Array(length)).map((v, i) => {
-      const slice = {
-        'Queued Tasks':
-          metric[0].result.length != 0 &&
-          metric[0].result[0].values[i] != undefined
-            ? Math.round(Number(metric[0].result[0].values[i][1]))
-            : 0,
-        'Running Tasks':
-          metric[1].result.length != 0 &&
-          metric[1].result[0].values[i] != undefined
-            ? Math.round(Number(metric[1].result[0].values[i][1]))
-            : 0,
-        'Successful Tasks':
-          metric[2].result.length != 0 &&
-          metric[2].result[0].values.reverse()[length + 1 - i] != undefined
-            ? Math.round(
-                Number(metric[2].result[0].values.reverse()[length - i][1])
-              )
-            : 0,
-        'Failed Tasks':
-          metric[3].result.length != 0 &&
-          metric[3].result[0].values.reverse()[length + 1 - i] != undefined
-            ? Math.round(
-                Number(metric[3].result[0].values.reverse()[length - i][1])
-              )
-            : 0,
-      }
-      data.push(slice)
-      sum += Object.values(slice).reduce((a, b) => a + b)
-    })
+    try {
+      Array.apply(null, Array(length)).map((v, i) => {
+        const slice = {
+          'Queued Tasks':
+            metric[0].result.length != 0 &&
+            metric[0].result[0].values[i] != undefined
+              ? Math.round(Number(metric[0].result[0].values[i][1]))
+              : 0,
+          'Running Tasks':
+            metric[1].result.length != 0 &&
+            metric[1].result[0].values[i] != undefined
+              ? Math.round(Number(metric[1].result[0].values[i][1]))
+              : 0,
+          'Successful Tasks':
+            metric[2].result.length != 0 &&
+            metric[2].result[0].values.reverse()[length - i] != undefined
+              ? Math.round(
+                  Number(metric[2].result[0].values.reverse()[length - i][1])
+                )
+              : 0,
+          'Failed Tasks':
+            metric[3].result.length != 0 &&
+            metric[3].result[0].values.reverse()[length - i] != undefined
+              ? Math.round(
+                  Number(metric[3].result[0].values.reverse()[length - i][1])
+                )
+              : 0,
+        }
+        data.push(slice)
+        sum += Object.values(slice).reduce((a, b) => a + b)
+      })
+    } catch (ignore) {
+      // Ignore this error. This can happen before data is completely ready in prometheus.
+    }
 
     if (sum > 0) this.setState({ length, data })
     else this.setState({ length: 0, data: [] })
