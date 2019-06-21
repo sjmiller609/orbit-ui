@@ -11,13 +11,25 @@ import s from './styles.scss'
 
 //Form that shows if customer has not yet input payment information
 class BillingForm extends React.Component {
+  state = {
+    stripeReady: false,
+  }
+
+  catchStripeReady = e => {
+    this.setState({
+      stripeReady: e.complete,
+    })
+  }
+
   render() {
     const { form } = this.props
+    const { stripeReady } = this.state
+
     return (
       <CardForm
         title="Billing"
         button={{
-          save: form.save,
+          save: form.save && stripeReady,
           text: 'Submit',
         }}>
         <TextField
@@ -45,7 +57,7 @@ class BillingForm extends React.Component {
           required
         />
         <div className={s.cardSection}>
-          <CardSection />
+          <CardSection stripeReady={this.catchStripeReady} />
         </div>
       </CardForm>
     )
