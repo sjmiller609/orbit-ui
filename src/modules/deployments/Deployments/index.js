@@ -25,7 +25,7 @@ class Deployments extends React.Component {
     if (!workspace) return <Module nada />
 
     const vars = {
-      workspaceId: workspace.workspaceId,
+      workspaceId: workspace.id,
     }
     //Check to see if billing is enabled and the current user has permissions to add payment information
     if (
