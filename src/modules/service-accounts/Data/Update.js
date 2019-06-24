@@ -24,8 +24,19 @@ const Update = Component => {
                 serviceAccountId,
                 payload,
               }
+              const query = {
+                name: api.ServiceAccounts,
+                type: 'serviceAccounts',
+                vars,
+              }
               mutate({
                 variables,
+                refetchQueries: [
+                  {
+                    query: query.name,
+                    variables: query.vars,
+                  },
+                ],
               })
             },
           }
