@@ -19,12 +19,26 @@ const Update = Component => {
           const newProps = {
             ...props,
             onSubmit: vars => {
+              const query = {
+                name: api.Workspaces,
+                type: 'workspaces',
+                vars: {
+                  workspaceId: vars.id,
+                  withUsers: true,
+                },
+              }
               // updateWorkspace takes vars inside Payload: JSON
               mutate({
                 variables: {
                   id: vars.id,
                   payload: vars,
                 },
+                refetchQueries: [
+                  {
+                    query: query.name,
+                    variables: query.vars,
+                  },
+                ],
               })
             },
           }
