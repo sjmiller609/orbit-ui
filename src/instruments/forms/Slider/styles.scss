@@ -38,5 +38,10 @@
       outline: none;
       touch-action: pan-x;
     }
+    .disabled {
+      background-image: none;
+      opacity: 0.6;
+      pointer-events: none;
+    }
   }
 }

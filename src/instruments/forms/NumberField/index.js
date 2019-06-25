@@ -96,13 +96,20 @@ class NumberField extends React.Component {
       slider,
       value,
       fieldId,
+      disabled,
     } = this.props
-
+    console.log(disabled)
     const { min, max, units, step } = this.state
     const width = max.toString().length * 2.2
 
     return (
-      <div id={fieldId} className={classnames(s.field, className)}>
+      <div
+        id={fieldId}
+        className={classnames(
+          s.field,
+          disabled ? s.disabled : null,
+          className
+        )}>
         {label}
         <Row justify="flex-start">
           <input
@@ -120,6 +127,7 @@ class NumberField extends React.Component {
             max={max}
             step={step}
             value={parseInt(value || min)}
+            disabled={disabled}
           />
           {units && <div className={s.units}>{units}</div>}
           {slider && (
@@ -130,6 +138,7 @@ class NumberField extends React.Component {
               value={parseInt(value || min)}
               className={s.slider}
               onChange={this.slider}
+              disabled={disabled}
             />
           )}
         </Row>
@@ -177,6 +186,7 @@ NumberField.propTypes = {
   units: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   convert: PropTypes.func,
   fieldId: PropTypes.string,
+  disabled: PropTypes.bool,
 }
 
 NumberField.defaultProps = {
