@@ -4,19 +4,21 @@ import { NumberField, P, B, Tag } from 'instruments'
 import s from './styles.scss'
 import { convertCpu, convertMem, resourceConvert } from './helpers'
 import RTag from './RTag'
+import GetWorkspace from '../../workspaces/GetWorkspace'
 
 const Resource = ({
   field,
   astroUnit,
   showAllUnits,
   convertValue,
+  workspace,
   ...props
 }) => {
+  console.log(workspace)
   const { cpu, airflowConns, actualConns, memory, pods, price } = astroUnit
   const au = convertValue
     ? convertValue(field.value || 0, false, { cpu, memory })
     : field.value || 0
-
   return (
     <React.Fragment>
       <NumberField
@@ -29,6 +31,7 @@ const Resource = ({
             ? (v, out) => convertValue(v, out, { cpu, memory })
             : null
         }
+        disabled={true}
         {...field}
         {...props}
       />
@@ -66,4 +69,4 @@ Resource.defaultProps = {
   convertValue: resourceConvert,
 }
 
-export default Resource
+export default GetWorkspace(Resource)
