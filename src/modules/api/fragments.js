@@ -53,8 +53,8 @@ export const workspace = gql`
       canUpdateBilling
       canUpdateIAM
       billingEnabled
+      paywallEnabled
     }
-    isSuspended
   }
 `
 
