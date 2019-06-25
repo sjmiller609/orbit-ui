@@ -22,11 +22,16 @@ class Configure extends React.Component {
   }
 
   renderConfig() {
-    const { form, deploymentConfig } = this.props
+    const { form, deploymentConfig, deployment } = this.props
     return (
       <React.Fragment>
         <FormSection id="executor">
-          <Executor form={form} deploymentConfig={deploymentConfig} create />
+          <Executor
+            form={form}
+            deploymentConfig={deploymentConfig}
+            deployment={deployment}
+            create
+          />
         </FormSection>
         <FormSection id="resources" title="Resources" text={info.resourcesNew}>
           <Usage
@@ -73,6 +78,7 @@ class Configure extends React.Component {
 Configure.propTypes = {
   form: PropTypes.object,
   deploymentConfig: PropTypes.object,
+  deployment: PropTypes.object,
 }
 
 export default DeploymentConfig(Form(Configure))

@@ -98,7 +98,6 @@ class NumberField extends React.Component {
       fieldId,
       disabled,
     } = this.props
-    console.log(disabled)
     const { min, max, units, step } = this.state
     const width = max.toString().length * 2.2
 

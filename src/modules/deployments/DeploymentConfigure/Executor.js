@@ -34,13 +34,14 @@ class Executor extends React.Component {
   }
 
   renderConfig(executor) {
-    const { form, deploymentConfig, create } = this.props
+    const { form, deploymentConfig, create, deployment } = this.props
     if (!create && executor === 'CeleryExecutor')
       return (
         <CeleryConfig
           form={form}
           deploymentConfig={deploymentConfig}
           className={s.executorConfig}
+          deployment={deployment}
         />
       )
   }
@@ -70,6 +71,7 @@ Executor.propTypes = {
   form: PropTypes.object,
   deploymentConfig: PropTypes.object,
   create: PropTypes.bool,
+  deployment: PropTypes.object,
 }
 
 export default Executor
