@@ -30,6 +30,7 @@ const CeleryConfig = ({
         min={1}
         max={limits.workers.replicas}
         info={info.workerCount}
+        disabled={true}
       />
       <NumberField
         label="Worker Termination Grace Period"
@@ -42,6 +43,7 @@ const CeleryConfig = ({
         step={5 * 60}
         convert={workerTerminationConvert}
         info={info.workerTermination}
+        disabled={true}
       />
     </FormSubSection>
   )
