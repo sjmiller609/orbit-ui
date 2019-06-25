@@ -10,7 +10,9 @@ import { workerTerminationUnits, workerTerminationConvert } from './helpers'
 const CeleryConfig = ({
   form,
   deploymentConfig: { defaults, limits, astroUnit },
+  deployment,
 }) => {
+  const disabled = deployment.workspace.stripeCustomerId == null ? true : false
   return (
     <FormSubSection title="Celery Executor Config">
       <Resource
@@ -21,6 +23,7 @@ const CeleryConfig = ({
         info={info.workerSize}
         required
         astroUnit={astroUnit}
+        deployment={deployment}
       />
       <NumberField
         label="Worker Count"
@@ -30,7 +33,7 @@ const CeleryConfig = ({
         min={1}
         max={limits.workers.replicas}
         info={info.workerCount}
-        disabled={true}
+        disabled={disabled}
       />
       <NumberField
         label="Worker Termination Grace Period"
@@ -43,7 +46,7 @@ const CeleryConfig = ({
         step={5 * 60}
         convert={workerTerminationConvert}
         info={info.workerTermination}
-        disabled={true}
+        disabled={disabled}
       />
     </FormSubSection>
   )
@@ -52,6 +55,7 @@ const CeleryConfig = ({
 CeleryConfig.propTypes = {
   form: PropTypes.object,
   deploymentConfig: PropTypes.object,
+  deployment: PropTypes.object,
 }
 
 export default CeleryConfig
