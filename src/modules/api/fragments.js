@@ -55,6 +55,7 @@ export const workspace = gql`
       billingEnabled
       paywallEnabled
     }
+    isSuspended
   }
 `
 

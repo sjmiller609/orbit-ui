@@ -24,7 +24,6 @@ class Deployments extends React.Component {
     const { workspace } = this.props
     const capabilities = workspace.workspaceCapabilities
     if (!workspace) return <Module nada />
-
     const vars = {
       workspaceId: workspace.id,
     }
