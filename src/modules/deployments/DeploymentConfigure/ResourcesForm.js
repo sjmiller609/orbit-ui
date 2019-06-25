@@ -43,7 +43,6 @@ class ResourcesForm extends React.Component {
   render() {
     const { form, deploymentConfig, deployment } = this.props
     const trial = deployment.workspace.stripeCustomerId == null ? true : false
-    console.log(trial)
     return (
       <CardForm
         title="Configure Components"
