@@ -12,7 +12,7 @@ import Usage from './Usage'
 
 class ExtraResourcesForm extends React.Component {
   render() {
-    const { form, deploymentConfig } = this.props
+    const { form, deploymentConfig, deployment } = this.props
     return (
       <Resource
         label="Extra Capacity"
@@ -24,6 +24,7 @@ class ExtraResourcesForm extends React.Component {
         info={info.astroUnit}
         convertValue={null}
         astroUnit={deploymentConfig.astroUnit}
+        deployment={deployment}
       />
     )
   }
@@ -32,6 +33,7 @@ class ExtraResourcesForm extends React.Component {
 ExtraResourcesForm.propTypes = {
   form: PropTypes.object,
   deploymentConfig: PropTypes.object,
+  deployment: PropTypes.object,
 }
 
 class ResourcesForm extends React.Component {
@@ -39,7 +41,8 @@ class ResourcesForm extends React.Component {
     this.props.loaded('resources')
   }
   render() {
-    const { form, deploymentConfig } = this.props
+    const { form, deploymentConfig, deployment } = this.props
+    console.log(deployment)
     return (
       <CardForm
         title="Configure Components"
@@ -49,7 +52,11 @@ class ResourcesForm extends React.Component {
         }}
         className={s.card}>
         <FormSection id="executor">
-          <Executor form={form} deploymentConfig={deploymentConfig} />
+          <Executor
+            form={form}
+            deploymentConfig={deploymentConfig}
+            deployment={deployment}
+          />
         </FormSection>
         <FormSection id="components">
           <Resource
@@ -62,6 +69,7 @@ class ResourcesForm extends React.Component {
             info={info.webserver}
             required
             astroUnit={deploymentConfig.astroUnit}
+            deployment={deployment}
           />
           <Resource
             label="Scheduler"
@@ -73,6 +81,7 @@ class ResourcesForm extends React.Component {
             info={info.scheduler}
             required
             astroUnit={deploymentConfig.astroUnit}
+            deployment={deployment}
           />
         </FormSection>
         <FormSection id="resources" title="Resources">
@@ -96,6 +105,7 @@ ResourcesForm.propTypes = {
   form: PropTypes.object,
   deploymentConfig: PropTypes.object,
   loaded: PropTypes.func,
+  deployment: PropTypes.object,
 }
 
 export default DeploymentConfig(Form(ResourcesForm))

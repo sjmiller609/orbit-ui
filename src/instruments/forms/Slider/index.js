@@ -8,7 +8,6 @@ import s from './styles.scss'
 class Slider extends React.Component {
   render() {
     const { className, disabled, ...props } = this.props
-    console.log(disabled)
     return (
       <RCSlider
         {...props}
