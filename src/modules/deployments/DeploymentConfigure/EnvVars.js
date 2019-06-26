@@ -24,8 +24,9 @@ EnvVar.propTypes = {
   name: PropTypes.string,
 }
 
-const EnvVars = ({ form }) => {
+const EnvVars = ({ form, deployment }) => {
   const env = form.field('env')
+  const trial = deployment.workspace.stripeCustomerId == null ? true : false
   return (
     <FormSection id="env" title="Environment Variables">
       <FieldSet
@@ -40,6 +41,10 @@ const EnvVars = ({ form }) => {
             options: vars,
             className: s.envKey,
             validate: value => validateEnvVar(value, env.value),
+            disabled: trial,
+          },
+          valueProps: {
+            disabled: trial,
           },
         }}
       />
@@ -49,6 +54,7 @@ const EnvVars = ({ form }) => {
 
 EnvVars.propTypes = {
   form: PropTypes.object,
+  deployment: PropTypes.object,
 }
 
 export default EnvVars

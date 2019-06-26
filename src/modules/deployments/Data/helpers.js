@@ -16,6 +16,12 @@ const errors = [
     name: 'permissions',
     error: 'Contact your Workspace Admin to upgrade your permissions.',
   },
+  {
+    key: 'trial',
+    name: 'label',
+    error:
+      'Your workspace is in trial mode. Enter a payment method to create multiple Airflow deployments.',
+  },
 ]
 
 export const handleError = error => formErrors({ error, errors })
