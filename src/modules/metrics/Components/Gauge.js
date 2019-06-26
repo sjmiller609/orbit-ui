@@ -107,7 +107,7 @@ class Gauge extends React.Component {
           />
         </div>
         <div className={s.gaugeLabel}>
-          <P>{value}%</P>
+          <P>{isNaN(value) ? 0 : value}%</P>
         </div>
       </div>
     )
