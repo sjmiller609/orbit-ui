@@ -81,6 +81,10 @@ export const deployment = gql`
     airflowVersion
     workspace {
       id: uuid
+      stripeCustomerId
+      workspaceCapabilities {
+        paywallEnabled
+      }
     }
     urls {
       type

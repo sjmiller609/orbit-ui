@@ -47,7 +47,7 @@ class Executor extends React.Component {
   }
 
   render() {
-    const { form } = this.props
+    const { form, disabled } = this.props
     const executor = form.field('config.executor')
     return (
       <React.Fragment>
@@ -60,6 +60,7 @@ class Executor extends React.Component {
           info={info.executor}
           required
           defaultValue="CeleryExecutor"
+          disabled={disabled}
         />
         {this.renderConfig(executor.value)}
       </React.Fragment>
@@ -72,6 +73,7 @@ Executor.propTypes = {
   deploymentConfig: PropTypes.object,
   create: PropTypes.bool,
   deployment: PropTypes.object,
+  disabled: PropTypes.bool,
 }
 
 export default Executor

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import s from './styles.scss'
-import { CardForm, Form, FormSection } from 'instruments'
+import { CardForm, Form, FormSection, H5, B } from 'instruments'
 import info from '../info'
 import DeploymentConfig from '../Data/Config'
 
@@ -42,7 +42,8 @@ class ResourcesForm extends React.Component {
   }
   render() {
     const { form, deploymentConfig, deployment } = this.props
-    console.log(deployment)
+    const trial = deployment.workspace.stripeCustomerId == null ? true : false
+    console.log(trial)
     return (
       <CardForm
         title="Configure Components"
@@ -51,11 +52,21 @@ class ResourcesForm extends React.Component {
           text: 'Update',
         }}
         className={s.card}>
+        {trial && (
+          <FormSection
+            id="notice"
+            title="Notice"
+            text="Configuring resources is not available during your free trial.
+            Input a payment method to your workspace to unlock this
+            feature."
+          />
+        )}
         <FormSection id="executor">
           <Executor
             form={form}
             deploymentConfig={deploymentConfig}
             deployment={deployment}
+            disabled={trial}
           />
         </FormSection>
         <FormSection id="components">
