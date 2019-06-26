@@ -1,4 +1,5 @@
-import { formErrors } from 'instruments'
+import React from 'react'
+import { formErrors, Link } from 'instruments'
 
 const errors = [
   {
@@ -19,8 +20,12 @@ const errors = [
   {
     key: 'trial',
     name: 'label',
-    error:
-      'Your workspace is in trial mode. Enter a payment method to create multiple Airflow deployments.',
+    error: (
+      <Link to="/billing">
+        Your Workspace is in trial mode. Enter your payment information to
+        unlock the ability to create multiple Airflow deployments.
+      </Link>
+    ),
   },
 ]
 
