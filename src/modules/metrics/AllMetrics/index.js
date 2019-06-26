@@ -54,7 +54,7 @@ class AllMetrics extends React.Component {
             <Since get={since.get} set={e => this.updateSince(e)} />
           </Box>
         </Row>
-        <Card>
+        <Card header="Deployment Status">
           <Row>
             <Box className={s.col}>
               <MetricContainer
@@ -77,6 +77,17 @@ class AllMetrics extends React.Component {
               />
             </Box>
           </Row>
+          <Row>
+            <Box className={s.col}>
+              <MetricContainer
+                loading={loading}
+                metric={
+                  metrics[findIndex(metrics, ['label', 'coreContainerStatus'])]
+                }
+                type="list"
+              />
+            </Box>
+          </Row>
         </Card>
         <Card header="Task Stream">
           <Row>
@@ -93,54 +104,40 @@ class AllMetrics extends React.Component {
               />
             </Box>
           </Row>
-        </Card>
-        <Card header="Quotas">
           <Row>
             <Box className={s.col}>
               <MetricContainer
                 loading={loading}
-                title="Max Pods"
-                metric={metrics[findIndex(metrics, ['label', 'maxPods'])]}
-                type="count"
-                label="pods"
-              />
-              <MetricContainer
-                loading={loading}
-                title="Running Pods"
-                metric={metrics[findIndex(metrics, ['label', 'runningPods'])]}
-                type="gauge"
+                metric={metrics[findIndex(metrics, ['label', 'taskStatus'])]}
+                type="taskList"
               />
             </Box>
+          </Row>
+        </Card>
+        <Card header="Database Connections">
+          <Row>
             <Box className={s.col}>
               <MetricContainer
                 loading={loading}
-                title="Max CPU"
-                metric={metrics[findIndex(metrics, ['label', 'cpuMax'])]}
-                type="count"
-                label="cores"
-              />
-              <MetricContainer
-                loading={loading}
-                title="Reserved CPU"
-                metric={metrics[findIndex(metrics, ['label', 'reservedCPU'])]}
-                type="gauge"
-              />
-            </Box>
-            <Box className={s.col}>
-              <MetricContainer
-                loading={loading}
-                title="Max Memory"
-                metric={metrics[findIndex(metrics, ['label', 'memoryMax'])]}
-                type="count"
-                label="GB"
-              />
-              <MetricContainer
-                loading={loading}
-                title="Reserved Memory"
+                title="Total Database Connections"
                 metric={
-                  metrics[findIndex(metrics, ['label', 'reservedMemory'])]
+                  metrics[
+                    findIndex(metrics, ['label', 'totalDatabaseConnections'])
+                  ]
                 }
-                type="gauge"
+                type="sparkline"
+                range
+              />
+            </Box>
+            <Box className={s.col}>
+              <MetricContainer
+                loading={loading}
+                title="Total Waiting Clients"
+                metric={
+                  metrics[findIndex(metrics, ['label', 'totalWaitingClients'])]
+                }
+                type="sparkline"
+                range
               />
             </Box>
           </Row>
@@ -222,30 +219,53 @@ class AllMetrics extends React.Component {
             </Box>
           </Row>
         </Card>
-        <Card header="Database Connections">
+        <Card header="Quotas">
           <Row>
             <Box className={s.col}>
               <MetricContainer
                 loading={loading}
-                title="Total Database Connections"
-                metric={
-                  metrics[
-                    findIndex(metrics, ['label', 'totalDatabaseConnections'])
-                  ]
-                }
-                type="sparkline"
-                range
+                title="Max Pods"
+                metric={metrics[findIndex(metrics, ['label', 'maxPods'])]}
+                type="count"
+                label="pods"
+              />
+              <MetricContainer
+                loading={loading}
+                title="Running Pods"
+                metric={metrics[findIndex(metrics, ['label', 'runningPods'])]}
+                type="gauge"
               />
             </Box>
             <Box className={s.col}>
               <MetricContainer
                 loading={loading}
-                title="Total Waiting Clients"
+                title="Max CPU"
+                metric={metrics[findIndex(metrics, ['label', 'cpuMax'])]}
+                type="count"
+                label="cores"
+              />
+              <MetricContainer
+                loading={loading}
+                title="Reserved CPU"
+                metric={metrics[findIndex(metrics, ['label', 'reservedCPU'])]}
+                type="gauge"
+              />
+            </Box>
+            <Box className={s.col}>
+              <MetricContainer
+                loading={loading}
+                title="Max Memory"
+                metric={metrics[findIndex(metrics, ['label', 'memoryMax'])]}
+                type="count"
+                label="GB"
+              />
+              <MetricContainer
+                loading={loading}
+                title="Reserved Memory"
                 metric={
-                  metrics[findIndex(metrics, ['label', 'totalWaitingClients'])]
+                  metrics[findIndex(metrics, ['label', 'reservedMemory'])]
                 }
-                type="sparkline"
-                range
+                type="gauge"
               />
             </Box>
           </Row>
@@ -296,30 +316,6 @@ class AllMetrics extends React.Component {
                 label="kB/s"
                 step={step}
                 range
-              />
-            </Box>
-          </Row>
-        </Card>
-        <Card header="Core Container Status">
-          <Row>
-            <Box className={s.col}>
-              <MetricContainer
-                loading={loading}
-                metric={
-                  metrics[findIndex(metrics, ['label', 'coreContainerStatus'])]
-                }
-                type="list"
-              />
-            </Box>
-          </Row>
-        </Card>
-        <Card header="Task Container Status">
-          <Row>
-            <Box className={s.col}>
-              <MetricContainer
-                loading={loading}
-                metric={metrics[findIndex(metrics, ['label', 'taskStatus'])]}
-                type="taskList"
               />
             </Box>
           </Row>

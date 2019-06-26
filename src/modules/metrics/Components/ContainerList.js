@@ -38,36 +38,39 @@ class ContainerList extends React.Component {
   render() {
     const { data } = this.state
 
-    return (
-      <div className={s.containerListContainer}>
-        <div className={s.containerListHeader}>
-          <div style={{ flex: '0 0 20%' }}>Container</div>
-          <div>Pod</div>
-          <div>Status</div>
-        </div>
-        <div className={s.containerListItems}>
-          {data.map((d, i) => (
-            <div
-              key={`${d.metric.container}${i}`}
-              className={s.containerListItem}>
-              <div style={{ flex: '0 0 20%' }}>
-                {d.metric.container
-                  .split(/-/g)
-                  .slice(3)
-                  .join('-')}
+    if (data.length > 0)
+      return (
+        <div className={s.containerListContainer}>
+          <div className={s.containerListHeader}>
+            <div style={{ flex: '0 0 20%' }}>Container</div>
+            <div>Pod</div>
+            <div style={{ textAlign: 'center' }}>Status</div>
+          </div>
+          <div className={s.containerListItems}>
+            {data.map((d, i) => (
+              <div
+                key={`${d.metric.container}${i}`}
+                className={s.containerListItem}>
+                <div style={{ flex: '0 0 20%' }}>
+                  {d.metric.container
+                    .split(/-/g)
+                    .slice(3)
+                    .join('-')}
+                </div>
+                <div>
+                  {d.metric.pod != undefined &&
+                    `${d.metric.pod.split(/-/g)[3]}-${
+                      d.metric.pod.split(/-/g)[4]
+                    }-${d.metric.pod.split(/-/g)[5]}`}{' '}
+                </div>
+                <div>{this.formatBool(d.value[1])}</div>
               </div>
-              <div>
-                {d.metric.pod != undefined &&
-                  `${d.metric.pod.split(/-/g)[3]}-${
-                    d.metric.pod.split(/-/g)[4]
-                  }-${d.metric.pod.split(/-/g)[5]}`}{' '}
-              </div>
-              <div>{this.formatBool(d.value[1])}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    )
+      )
+
+    return null
   }
 }
 
