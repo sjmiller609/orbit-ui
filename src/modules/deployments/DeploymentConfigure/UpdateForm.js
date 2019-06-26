@@ -31,12 +31,13 @@ class Configure extends React.Component {
   }
 
   renderConfig() {
-    const { form } = this.props
-    return <EnvVars form={form} />
+    const { form, deployment } = this.props
+    return <EnvVars form={form} deployment={deployment} />
   }
 
   render() {
     const { form, deployment } = this.props
+    const trial = deployment.workspace.stripeCustomerId == null ? true : false
     return (
       <CardForm
         title="Configure"
@@ -45,6 +46,13 @@ class Configure extends React.Component {
           text: 'Update',
         }}
         className={s.card}>
+        {trial && (
+          <FormSection
+            id="notice"
+            title="Notice"
+            text="Adding override env vars and changing your deployment is not available during your free trial. Input a payment method to your workspace to unlock this feature."
+          />
+        )}
         <FormSection id="info">
           <TextField
             type="text"
@@ -53,11 +61,13 @@ class Configure extends React.Component {
             required
             {...form.field('label')}
             focus
+            disabled={trial}
           />
           <TextArea
             placeholder="Description"
             label="Description"
             {...form.field('description')}
+            disabled={trial}
           />
           <Info deployment={deployment} />
         </FormSection>
