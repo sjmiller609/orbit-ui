@@ -82,9 +82,6 @@ export const deployment = gql`
     workspace {
       id: uuid
       stripeCustomerId
-      workspaceCapabilities {
-        paywallEnabled
-      }
     }
     urls {
       type
