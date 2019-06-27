@@ -2,13 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import s from './styles.scss'
-import { CardForm, Form, FormSection, H5, B } from 'instruments'
+import { CardForm, Form, FormSection } from 'instruments'
 import info from '../info'
 import DeploymentConfig from '../Data/Config'
 
 import Executor from './Executor'
 import Resource from './Resource'
 import Usage from './Usage'
+import { isTrialing } from 'helpers/trial'
 
 class ExtraResourcesForm extends React.Component {
   render() {
@@ -42,7 +43,7 @@ class ResourcesForm extends React.Component {
   }
   render() {
     const { form, deploymentConfig, deployment } = this.props
-    const trial = deployment.workspace.stripeCustomerId == null ? true : false
+    const disabled = isTrialing(deployment.workspace.stripeCustomerId)
     return (
       <CardForm
         title="Configure Components"
@@ -51,7 +52,7 @@ class ResourcesForm extends React.Component {
           text: 'Update',
         }}
         className={s.card}>
-        {trial && (
+        {disabled && (
           <FormSection
             id="notice"
             title="Notice"
@@ -65,7 +66,7 @@ class ResourcesForm extends React.Component {
             form={form}
             deploymentConfig={deploymentConfig}
             deployment={deployment}
-            disabled={trial}
+            disabled={disabled}
           />
         </FormSection>
         <FormSection id="components">

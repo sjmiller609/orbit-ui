@@ -9,6 +9,7 @@ import DeploymentConfig from '../Data/Config'
 import EnvVars from './EnvVars'
 import Info from './Info'
 import { gteSeven } from '../helpers'
+import { isTrialing } from 'helpers/trial'
 
 class Configure extends React.Component {
   mounted = true
@@ -37,7 +38,7 @@ class Configure extends React.Component {
 
   render() {
     const { form, deployment } = this.props
-    const trial = deployment.workspace.stripeCustomerId == null ? true : false
+    const disabled = isTrialing(deployment.workspace.stripeCustomerId)
     return (
       <CardForm
         title="Configure"
@@ -46,7 +47,7 @@ class Configure extends React.Component {
           text: 'Update',
         }}
         className={s.card}>
-        {trial && (
+        {disabled && (
           <FormSection
             id="notice"
             title="Notice"
@@ -61,13 +62,13 @@ class Configure extends React.Component {
             required
             {...form.field('label')}
             focus
-            disabled={trial}
+            disabled={disabled}
           />
           <TextArea
             placeholder="Description"
             label="Description"
             {...form.field('description')}
-            disabled={trial}
+            disabled={disabled}
           />
           <Info deployment={deployment} />
         </FormSection>

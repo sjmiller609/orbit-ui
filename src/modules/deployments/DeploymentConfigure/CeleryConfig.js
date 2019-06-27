@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { NumberField, FormSubSection } from 'instruments'
 import info from '../info'
+import { isTrialing } from 'helpers/trial'
 
 import Resource from './Resource'
 
@@ -12,7 +13,7 @@ const CeleryConfig = ({
   deploymentConfig: { defaults, limits, astroUnit },
   deployment,
 }) => {
-  const disabled = deployment.workspace.stripeCustomerId == null ? true : false
+  const disabled = isTrialing(deployment.workspace.stripeCustomerId)
   return (
     <FormSubSection title="Celery Executor Config">
       <Resource

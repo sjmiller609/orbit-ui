@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { NumberField, P, B, Tag } from 'instruments'
 import s from './styles.scss'
 import { convertCpu, convertMem, resourceConvert } from './helpers'
+import { isTrialing } from 'helpers/trial'
 import RTag from './RTag'
 
 const Resource = ({
@@ -17,7 +18,7 @@ const Resource = ({
   const au = convertValue
     ? convertValue(field.value || 0, false, { cpu, memory })
     : field.value || 0
-  const disabled = deployment.workspace.stripeCustomerId == null ? true : false
+  const disabled = isTrialing(deployment.workspace.stripeCustomerId)
   return (
     <React.Fragment>
       <NumberField

@@ -50,7 +50,6 @@ class Select extends React.Component {
       fieldId,
       disabled,
     } = this.props
-    //console.log(value)
     return (
       <div
         id={fieldId}
