@@ -19,6 +19,7 @@ const Update = Component => {
           const newProps = {
             ...props,
             onSubmit: vars => {
+              console.log(vars)
               const query = {
                 name: api.Workspaces,
                 type: 'workspaces',

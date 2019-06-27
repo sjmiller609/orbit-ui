@@ -49,6 +49,7 @@ export const workspace = gql`
     updatedAt
     deploymentCount
     stripeCustomerId
+    trialEndsAt
     workspaceCapabilities {
       canUpdateBilling
       canUpdateIAM

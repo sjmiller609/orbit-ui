@@ -4,10 +4,13 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
 import { charLimit } from '../../../helpers/format'
+import moment from 'moment'
 
 import { TableRow, Box, Row, P, H3, B, Tag, Icon } from 'instruments'
 
 const Item = ({ workspace, className }) => {
+  const end = workspace.trialEndsAt
+  const trialRemaining = Math.abs(moment().diff(end, 'days'))
   const columns = [
     <Box key="0" className={s.icon}>
       <Icon icon="stars" />
@@ -22,6 +25,7 @@ const Item = ({ workspace, className }) => {
       <P className={s.subTitle}>{charLimit(workspace.description, 75)}</P>
     </Box>,
     <React.Fragment key="3">
+      <Box className={s.trial}>{trialRemaining} days left in trial</Box>
       {workspace.deploymentCount > 0 && (
         <Box align="flex-end" className={s.deploymentCount}>
           <Tag>
