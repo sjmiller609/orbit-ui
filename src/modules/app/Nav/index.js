@@ -42,10 +42,9 @@ const Nav = ({ getData, workspaces, self, menu }) => {
   // of this component. We should fix this.
   // TODO: We should separate the workspace and deployments nav into two separate components.
   // This below line is necessary to prevent an error from being thrown on the workspaces list where workspace is undefined.
-  const capabilities =
-    menu.nav != 'workspaces' ? workspace.workspaceCapabilities : workspace
   const canSeeBilling = workspace
-    ? capabilities.canUpdateBilling && capabilities.billingEnabled
+    ? workspace.workspaceCapabilities.canUpdateBilling &&
+      workspace.workspaceCapabilities.billingEnabled
     : false
   subMenu = reject(
     subMenu,
