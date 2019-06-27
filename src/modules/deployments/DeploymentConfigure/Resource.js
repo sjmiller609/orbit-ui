@@ -18,7 +18,7 @@ const Resource = ({
   const au = convertValue
     ? convertValue(field.value || 0, false, { cpu, memory })
     : field.value || 0
-  const disabled = isTrialing(deployment.workspace.stripeCustomerId)
+  const disabled = isTrialing(deployment.workspace)
   return (
     <React.Fragment>
       <NumberField

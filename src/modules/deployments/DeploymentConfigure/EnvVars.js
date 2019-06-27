@@ -27,7 +27,7 @@ EnvVar.propTypes = {
 
 const EnvVars = ({ form, deployment }) => {
   const env = form.field('env')
-  const disabled = isTrialing(deployment.workspace.stripeCustomerId)
+  const disabled = isTrialing(deployment.workspace)
   return (
     <FormSection id="env" title="Environment Variables">
       <FieldSet

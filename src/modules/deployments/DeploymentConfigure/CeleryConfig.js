@@ -13,7 +13,7 @@ const CeleryConfig = ({
   deploymentConfig: { defaults, limits, astroUnit },
   deployment,
 }) => {
-  const disabled = isTrialing(deployment.workspace.stripeCustomerId)
+  const disabled = isTrialing(deployment.workspace)
   return (
     <FormSubSection title="Celery Executor Config">
       <Resource

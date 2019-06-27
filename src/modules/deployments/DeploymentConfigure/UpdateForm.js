@@ -38,7 +38,7 @@ class Configure extends React.Component {
 
   render() {
     const { form, deployment } = this.props
-    const disabled = isTrialing(deployment.workspace.stripeCustomerId)
+    const disabled = isTrialing(deployment.workspace)
     return (
       <CardForm
         title="Configure"
