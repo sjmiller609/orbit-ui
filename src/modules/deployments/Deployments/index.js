@@ -34,7 +34,7 @@ class Deployments extends React.Component {
       'Please ask your Workspace Admin to add a payment method to this workspace in order to continue using Astronomer.'
     const text = capabilities.canUpdateBilling ? msg1 : msg2
 
-    if (capabilities.paywallEnabled && capabilities.billingEnabled)
+    if (workspace.paywallEnabled && workspace.billingEnabled)
       return (
         <Module metaTitle="Deployments" menu={this.menu}>
           <Activation

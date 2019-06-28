@@ -44,7 +44,7 @@ const Nav = ({ getData, workspaces, self, menu }) => {
   // This below line is necessary to prevent an error from being thrown on the workspaces list where workspace is undefined.
   const canSeeBilling = workspace
     ? workspace.workspaceCapabilities.canUpdateBilling &&
-      workspace.workspaceCapabilities.billingEnabled
+      workspace.billingEnabled
     : false
   subMenu = reject(
     subMenu,

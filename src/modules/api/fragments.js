@@ -52,9 +52,10 @@ export const workspace = gql`
     workspaceCapabilities {
       canUpdateBilling
       canUpdateIAM
-      billingEnabled
-      paywallEnabled
     }
+    trialEndsAt
+    billingEnabled
+    paywallEnabled
   }
 `
 
