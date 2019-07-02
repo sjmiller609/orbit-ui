@@ -11,7 +11,12 @@ const errors = [
   {
     key: 'not found',
     name: 'email',
-    error: "Hmm, we can't find that email",
+    error: (
+      <Link to="/signup">
+        Hmm, we couldn't find that email. Click here to create a new account on
+        Astronomer.
+      </Link>
+    ),
   },
   {
     key: 'email already in use',
