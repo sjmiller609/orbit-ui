@@ -66,6 +66,7 @@ export { default as Snackbar } from './ui/Snackbar'
 export { default as Backdrop } from './ui/Backdrop'
 export { default as ScrollToTop } from './ui/ScrollToTop'
 export { default as Dialog } from './ui/Dialog'
+export { default as HelloBar } from './ui/HelloBar'
 
 export { default as Block1 } from './content/Block1'
 export { default as Console } from './content/Console'
