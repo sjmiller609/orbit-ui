@@ -52,8 +52,8 @@ const Nav = ({ getData, workspaces, self, menu }) => {
     ? Math.abs(moment().diff(workspace.trialEndsAt, 'days'))
     : null
   const msg =
-    trialRemaining > 0
-      ? `There are ${trialRemaining} days left in your trial.`
+    workspace.billingEnabled && trialRemaining > 0
+      ? `There are ${trialRemaining} days left in your trial. Click here to add a payment method and unlock all features.`
       : null
 
   subMenu = reject(
@@ -63,7 +63,7 @@ const Nav = ({ getData, workspaces, self, menu }) => {
 
   return (
     <div>
-      <HelloBar msg={msg} />
+      <HelloBar msg={msg} to="/billing" />
       <Header
         level1={level1}
         level2={menu.level2}

@@ -6,7 +6,7 @@ import classnames from 'classnames'
 
 import s from './styles.scss'
 
-import { Page, HelloBar } from 'instruments'
+import { Page } from 'instruments'
 
 // Wrapper for all modules
 //
@@ -32,18 +32,10 @@ class App extends React.Component {
   }
 
   render() {
-    const {
-      children,
-      nav,
-      metaTitle,
-      className,
-      fullHeight,
-      helloBar,
-    } = this.props
+    const { children, nav, metaTitle, className, fullHeight } = this.props
     const { loading } = this.state
     return (
       <Page className={classnames(s.module, className)} metaTitle={metaTitle}>
-        <HelloBar msg={helloBar} />
         {nav}
         {!loading && (
           <div
@@ -63,7 +55,6 @@ App.propTypes = {
   metaTitle: PropTypes.string,
   className: PropTypes.string,
   fullHeight: PropTypes.bool,
-  helloBar: PropTypes.element,
 }
 
 export default App
