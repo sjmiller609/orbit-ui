@@ -4,17 +4,22 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import s from './styles.scss'
-import { Row, Link } from 'instruments'
+import { Row, Button } from 'instruments'
 
 class HelloBar extends React.Component {
   render() {
-    const { msg, to } = this.props
+    const { msg, to, button } = this.props
     return (
-      <Link to={to}>
-        <Row className={classnames(s.notice, msg ? s.show : null)}>
-          <div className={s.message}>{msg}</div>
+      <Row className={classnames(s.notice, msg ? s.show : null)}>
+        <Row className={s.message}>
+          {msg}
+          {button && (
+            <Button className={s.button} to={to}>
+              {button}
+            </Button>
+          )}
         </Row>
-      </Link>
+      </Row>
     )
   }
 }
@@ -22,6 +27,7 @@ class HelloBar extends React.Component {
 HelloBar.propTypes = {
   msg: PropTypes.string,
   to: PropTypes.string,
+  button: PropTypes.string,
 }
 
 export default HelloBar
