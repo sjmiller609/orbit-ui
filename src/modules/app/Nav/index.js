@@ -51,10 +51,10 @@ const Nav = ({ getData, workspaces, self, menu }) => {
   const trialRemaining = workspace
     ? -moment().diff(workspace.trialEndsAt, 'days')
     : null
-
+  const verb = trialRemaining == 1 ? 'is' : 'are'
   const msg =
     workspace && workspace.billingEnabled && trialRemaining > 0
-      ? `There are ${trialRemaining} days left in your trial.`
+      ? `There ${verb} ${trialRemaining} days left in your trial.`
       : null
 
   subMenu = reject(

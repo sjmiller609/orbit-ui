@@ -13,11 +13,12 @@ class HelloBar extends React.Component {
       <Row className={classnames(s.notice, msg ? s.show : null)}>
         <Row className={s.message}>
           {msg}
-          {button && (
-            <Button className={s.button} to={to}>
-              {button}
-            </Button>
-          )}
+          {button &&
+            msg && (
+              <Button className={s.button} to={to}>
+                {button}
+              </Button>
+            )}
         </Row>
       </Row>
     )
