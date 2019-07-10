@@ -83,6 +83,7 @@ export const deployment = gql`
     workspace {
       id: uuid
       stripeCustomerId
+      billingEnabled
     }
     urls {
       type

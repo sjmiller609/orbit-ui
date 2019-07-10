@@ -52,15 +52,16 @@ class ResourcesForm extends React.Component {
           text: 'Update',
         }}
         className={s.card}>
-        {disabled && (
-          <FormSection
-            id="notice"
-            title="Notice"
-            text="Configuring resources is not available during your free trial.
+        {disabled &&
+          deployment.workspace.billingEnabled && (
+            <FormSection
+              id="notice"
+              title="Notice"
+              text="Configuring resources is not available during your free trial.
             Input a payment method to your workspace to unlock this
             feature."
-          />
-        )}
+            />
+          )}
         <FormSection id="executor">
           <Executor
             form={form}

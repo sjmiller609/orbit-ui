@@ -47,13 +47,14 @@ class Configure extends React.Component {
           text: 'Update',
         }}
         className={s.card}>
-        {disabled && (
-          <FormSection
-            id="notice"
-            title="Notice"
-            text="Adding override env vars and changing your deployment is not available during your free trial. Input a payment method to your workspace to unlock this feature."
-          />
-        )}
+        {disabled &&
+          deployment.workspace.billingEnabled && (
+            <FormSection
+              id="notice"
+              title="Notice"
+              text="Adding override env vars and changing your deployment is not available during your free trial. Input a payment method to your workspace to unlock this feature."
+            />
+          )}
         <FormSection id="info">
           <TextField
             type="text"
