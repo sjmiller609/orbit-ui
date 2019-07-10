@@ -153,12 +153,14 @@ class TextFieldSelect extends React.Component {
       onBlur,
       onChange,
       Option,
+      disabled,
     } = this.props
     const { menu, out, index, options } = this.state
     return (
       <div
         className={classnames(
           s.dropdown,
+          disabled ? s.disabled : null,
           menu ? s.open : null,
           out ? s.out : null,
           className
@@ -182,6 +184,7 @@ class TextFieldSelect extends React.Component {
           className={s.selector}
           onKeyDown={this.nav}
           autoComplete="off"
+          disabled={disabled}
         />
         {value && (
           <div className={s.clear} onClick={this.clear}>
@@ -228,6 +231,7 @@ TextFieldSelect.propTypes = {
   setRef: PropTypes.func,
   options: PropTypes.array,
   Option: PropTypes.func,
+  disabled: PropTypes.bool,
 }
 
 TextFieldSelect.defaultProps = {

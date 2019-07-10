@@ -7,8 +7,17 @@ import s from './styles.scss'
 
 class Slider extends React.Component {
   render() {
-    const { className, ...props } = this.props
-    return <RCSlider {...props} className={classnames(s.slider, className)} />
+    const { className, disabled, ...props } = this.props
+    return (
+      <RCSlider
+        {...props}
+        className={classnames(
+          s.slider,
+          disabled ? s.disabled : null,
+          className
+        )}
+      />
+    )
   }
 }
 
@@ -19,6 +28,7 @@ Slider.propTypes = {
   step: PropTypes.number,
   onChange: PropTypes.func,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
 }
 
 export default Slider

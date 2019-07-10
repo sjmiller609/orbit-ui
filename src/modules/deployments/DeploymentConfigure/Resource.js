@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { NumberField, P, B, Tag } from 'instruments'
 import s from './styles.scss'
 import { convertCpu, convertMem, resourceConvert } from './helpers'
+import { isTrialing } from 'helpers/trial'
 import RTag from './RTag'
 
 const Resource = ({
@@ -10,13 +11,14 @@ const Resource = ({
   astroUnit,
   showAllUnits,
   convertValue,
+  deployment,
   ...props
 }) => {
   const { cpu, airflowConns, actualConns, memory, pods, price } = astroUnit
   const au = convertValue
     ? convertValue(field.value || 0, false, { cpu, memory })
     : field.value || 0
-
+  const disabled = isTrialing(deployment.workspace)
   return (
     <React.Fragment>
       <NumberField
@@ -29,6 +31,7 @@ const Resource = ({
             ? (v, out) => convertValue(v, out, { cpu, memory })
             : null
         }
+        disabled={disabled}
         {...field}
         {...props}
       />
@@ -60,6 +63,7 @@ Resource.propTypes = {
   astroUnit: PropTypes.object,
   showAllUnits: PropTypes.bool,
   convertValue: PropTypes.func,
+  deployment: PropTypes.object,
 }
 
 Resource.defaultProps = {

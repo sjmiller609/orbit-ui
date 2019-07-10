@@ -9,10 +9,11 @@ import DeploymentConfig from '../Data/Config'
 import Executor from './Executor'
 import Resource from './Resource'
 import Usage from './Usage'
+import { isTrialing } from 'helpers/trial'
 
 class ExtraResourcesForm extends React.Component {
   render() {
-    const { form, deploymentConfig } = this.props
+    const { form, deploymentConfig, deployment } = this.props
     return (
       <Resource
         label="Extra Capacity"
@@ -24,6 +25,7 @@ class ExtraResourcesForm extends React.Component {
         info={info.astroUnit}
         convertValue={null}
         astroUnit={deploymentConfig.astroUnit}
+        deployment={deployment}
       />
     )
   }
@@ -32,6 +34,7 @@ class ExtraResourcesForm extends React.Component {
 ExtraResourcesForm.propTypes = {
   form: PropTypes.object,
   deploymentConfig: PropTypes.object,
+  deployment: PropTypes.object,
 }
 
 class ResourcesForm extends React.Component {
@@ -39,7 +42,8 @@ class ResourcesForm extends React.Component {
     this.props.loaded('resources')
   }
   render() {
-    const { form, deploymentConfig } = this.props
+    const { form, deploymentConfig, deployment } = this.props
+    const disabled = isTrialing(deployment.workspace)
     return (
       <CardForm
         title="Configure Components"
@@ -48,8 +52,22 @@ class ResourcesForm extends React.Component {
           text: 'Update',
         }}
         className={s.card}>
+        {disabled && (
+          <FormSection
+            id="notice"
+            title="Notice"
+            text="Configuring resources is not available during your free trial.
+            Input a payment method to your workspace to unlock this
+            feature."
+          />
+        )}
         <FormSection id="executor">
-          <Executor form={form} deploymentConfig={deploymentConfig} />
+          <Executor
+            form={form}
+            deploymentConfig={deploymentConfig}
+            deployment={deployment}
+            disabled={disabled}
+          />
         </FormSection>
         <FormSection id="components">
           <Resource
@@ -62,6 +80,7 @@ class ResourcesForm extends React.Component {
             info={info.webserver}
             required
             astroUnit={deploymentConfig.astroUnit}
+            deployment={deployment}
           />
           <Resource
             label="Scheduler"
@@ -73,6 +92,7 @@ class ResourcesForm extends React.Component {
             info={info.scheduler}
             required
             astroUnit={deploymentConfig.astroUnit}
+            deployment={deployment}
           />
         </FormSection>
         <FormSection id="resources" title="Resources">
@@ -96,6 +116,7 @@ ResourcesForm.propTypes = {
   form: PropTypes.object,
   deploymentConfig: PropTypes.object,
   loaded: PropTypes.func,
+  deployment: PropTypes.object,
 }
 
 export default DeploymentConfig(Form(ResourcesForm))

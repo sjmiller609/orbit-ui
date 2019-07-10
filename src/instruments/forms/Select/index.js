@@ -48,10 +48,16 @@ class Select extends React.Component {
       Component,
       options,
       fieldId,
+      disabled,
     } = this.props
-    //console.log(value)
     return (
-      <div id={fieldId} className={classnames(s.field, className)}>
+      <div
+        id={fieldId}
+        className={classnames(
+          s.field,
+          disabled ? s.disabled : null,
+          className
+        )}>
         {label}
         <input
           type="hidden"
@@ -62,6 +68,7 @@ class Select extends React.Component {
           onBlur={onBlur}
           value={value || ''}
           ref={setRef}
+          disabled={disabled}
         />
         <Row justify="space-between" align="flex-start" className={s.options}>
           {options.map(o => {
@@ -99,6 +106,7 @@ Select.propTypes = {
   options: PropTypes.array,
   Component: PropTypes.func,
   fieldId: PropTypes.string,
+  disabled: PropTypes.bool,
 }
 
 Select.defaultProps = {
