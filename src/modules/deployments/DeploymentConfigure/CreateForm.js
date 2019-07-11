@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { isTrialing } from 'helpers/trial'
 
 import s from './styles.scss'
 import { CardForm, Form, TextField, TextArea, FormSection } from 'instruments'
 
 import DeploymentConfig from '../Data/Config'
-
 import Executor from './Executor'
 import Info from './Info'
 import Usage from './Usage'
 import info from '../info'
 
-class Configure extends React.Component {
+class CreateForm extends React.Component {
   renderConfig = this.renderConfig.bind(this)
   state = {
     renderConfig: false,
@@ -22,15 +22,18 @@ class Configure extends React.Component {
   }
 
   renderConfig() {
-    const { form, deploymentConfig, deployment } = this.props
+    const { form, deploymentConfig, deployments } = this.props
+    const disabled = deployments[0]
+      ? isTrialing(deployments[0].workspace)
+      : null
     return (
       <React.Fragment>
         <FormSection id="executor">
           <Executor
             form={form}
             deploymentConfig={deploymentConfig}
-            deployment={deployment}
             create
+            disabled={disabled}
           />
         </FormSection>
         <FormSection id="resources" title="Resources" text={info.resourcesNew}>
@@ -44,7 +47,10 @@ class Configure extends React.Component {
   }
 
   render() {
-    const { form } = this.props
+    const { form, deployments } = this.props
+    const disabled = deployments[0]
+      ? isTrialing(deployments[0].workspace)
+      : null
     return (
       <CardForm
         title="New Deployment"
@@ -53,6 +59,14 @@ class Configure extends React.Component {
           text: 'Save',
         }}
         className={s.card}>
+        {disabled &&
+          deployments[0].workspace.billingEnabled && (
+            <FormSection
+              id="notice"
+              title="Notice"
+              text="You may only have one deployment during your trial. Please input a payment method to unlock this feature."
+            />
+          )}
         <FormSection id="info">
           <TextField
             type="text"
@@ -61,11 +75,13 @@ class Configure extends React.Component {
             required
             {...form.field('label')}
             focus
+            disabled={disabled}
           />
           <TextArea
             placeholder="Description"
             label="Description"
             {...form.field('description')}
+            disabled={disabled}
           />
           <Info type="airflow" version="1.9" />
         </FormSection>
@@ -75,10 +91,10 @@ class Configure extends React.Component {
   }
 }
 
-Configure.propTypes = {
+CreateForm.propTypes = {
   form: PropTypes.object,
   deploymentConfig: PropTypes.object,
-  deployment: PropTypes.object,
+  deployments: PropTypes.array,
 }
 
-export default DeploymentConfig(Form(Configure))
+export default DeploymentConfig(Form(CreateForm))
