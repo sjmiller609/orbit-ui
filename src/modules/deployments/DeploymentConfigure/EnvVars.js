@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import s from './styles.scss'
 import { FormSection, FieldSet, TextFieldSelect, KeyValue } from 'instruments'
 import info from '../info'
+import { isTrialing } from 'helpers/trial'
 
 import { validateEnvVar } from './helpers'
 
@@ -24,8 +25,9 @@ EnvVar.propTypes = {
   name: PropTypes.string,
 }
 
-const EnvVars = ({ form }) => {
+const EnvVars = ({ form, deployment }) => {
   const env = form.field('env')
+  const disabled = isTrialing(deployment.workspace)
   return (
     <FormSection id="env" title="Environment Variables">
       <FieldSet
@@ -40,6 +42,10 @@ const EnvVars = ({ form }) => {
             options: vars,
             className: s.envKey,
             validate: value => validateEnvVar(value, env.value),
+            disabled: disabled,
+          },
+          valueProps: {
+            disabled: disabled,
           },
         }}
       />
@@ -49,6 +55,7 @@ const EnvVars = ({ form }) => {
 
 EnvVars.propTypes = {
   form: PropTypes.object,
+  deployment: PropTypes.object,
 }
 
 export default EnvVars

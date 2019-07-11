@@ -42,6 +42,7 @@ class TextArea extends React.Component {
       onChange,
       setRef,
       fieldId,
+      disabled,
     } = this.props
 
     return (
@@ -49,7 +50,7 @@ class TextArea extends React.Component {
         id={fieldId}
         className={classnames(
           s.field,
-
+          disabled ? s.disabled : null,
           className
         )}>
         {label}
@@ -64,6 +65,7 @@ class TextArea extends React.Component {
           onBlur={onBlur}
           ref={setRef}
           value={value || ''}
+          disabled={disabled}
         />
         {error}
       </div>
@@ -87,6 +89,7 @@ TextArea.propTypes = {
   fieldId: PropTypes.string,
   updateErrors: PropTypes.func,
   setRef: PropTypes.func,
+  disabled: PropTypes.bool,
 }
 
 export default Field(TextArea)

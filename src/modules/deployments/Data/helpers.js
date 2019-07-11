@@ -1,4 +1,5 @@
-import { formErrors } from 'instruments'
+import React from 'react'
+import { formErrors, Link } from 'instruments'
 
 const errors = [
   {
@@ -15,6 +16,16 @@ const errors = [
     key: 'permissions',
     name: 'permissions',
     error: 'Contact your Workspace Admin to upgrade your permissions.',
+  },
+  {
+    key: 'trial',
+    name: 'label',
+    error: (
+      <Link to="/billing">
+        Your Workspace is in trial mode. Enter your payment information to
+        unlock the ability to create multiple Airflow deployments.
+      </Link>
+    ),
   },
 ]
 

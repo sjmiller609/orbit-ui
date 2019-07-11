@@ -9,6 +9,7 @@ import DeploymentConfig from '../Data/Config'
 import EnvVars from './EnvVars'
 import Info from './Info'
 import { gteSeven } from '../helpers'
+import { isTrialing } from 'helpers/trial'
 
 class Configure extends React.Component {
   mounted = true
@@ -31,12 +32,13 @@ class Configure extends React.Component {
   }
 
   renderConfig() {
-    const { form } = this.props
-    return <EnvVars form={form} />
+    const { form, deployment } = this.props
+    return <EnvVars form={form} deployment={deployment} />
   }
 
   render() {
     const { form, deployment } = this.props
+    const disabled = isTrialing(deployment.workspace)
     return (
       <CardForm
         title="Configure"
@@ -45,6 +47,14 @@ class Configure extends React.Component {
           text: 'Update',
         }}
         className={s.card}>
+        {disabled &&
+          deployment.workspace.billingEnabled && (
+            <FormSection
+              id="notice"
+              title="Notice"
+              text="Adding override env vars and changing your deployment is not available during your free trial. Input a payment method to your workspace to unlock this feature."
+            />
+          )}
         <FormSection id="info">
           <TextField
             type="text"
@@ -53,11 +63,13 @@ class Configure extends React.Component {
             required
             {...form.field('label')}
             focus
+            disabled={disabled}
           />
           <TextArea
             placeholder="Description"
             label="Description"
             {...form.field('description')}
+            disabled={disabled}
           />
           <Info deployment={deployment} />
         </FormSection>

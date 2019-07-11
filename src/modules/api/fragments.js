@@ -45,7 +45,6 @@ export const workspace = gql`
     id: uuid
     label
     description
-    active
     createdAt
     updatedAt
     deploymentCount
@@ -54,6 +53,9 @@ export const workspace = gql`
       canUpdateBilling
       canUpdateIAM
     }
+    trialEndsAt
+    billingEnabled
+    paywallEnabled
   }
 `
 
@@ -80,6 +82,8 @@ export const deployment = gql`
     airflowVersion
     workspace {
       id: uuid
+      stripeCustomerId
+      billingEnabled
     }
     urls {
       type

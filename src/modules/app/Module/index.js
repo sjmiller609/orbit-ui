@@ -12,7 +12,6 @@ const Module = ({ menu, metaTitle, nada, ...props }) => {
   if (nada) return <NoMatch />
   const title =
     metaTitle !== 'Astronomer' ? metaTitle + ' | Astronomer' : metaTitle
-
   return <App {...props} nav={<Nav menu={menu} />} metaTitle={title} />
 }
 
