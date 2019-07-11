@@ -15,7 +15,6 @@ const Verify = Component => {
         errorMsg="Your confirmation token is not valid"
         OnError={<Redirect to="/" replace />}
         onSuccess={data => {
-          console.log(data)
           if (!data) return
           if (data.token) {
             const { value } = data.token

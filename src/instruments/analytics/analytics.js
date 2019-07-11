@@ -1,7 +1,7 @@
 const dev = process.env.NODE_ENV !== 'production'
 
 const log = (call, params) => {
-  console.log(call.toUpperCase() + ': ' + JSON.stringify(params))
+  console.log(call.toUpperCase() + ': ' + JSON.stringify(params)) // eslint-disable-line no-console
 }
 
 const logger = {

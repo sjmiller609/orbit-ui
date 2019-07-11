@@ -17,7 +17,6 @@ const Create = ({ query, ...props }) => {
             query: query.name,
             variables: query.vars,
           })
-          console.log(data)
           if (!results) return
           cache.writeQuery({
             query: query.name,
@@ -27,7 +26,6 @@ const Create = ({ query, ...props }) => {
         } catch (error) {
           // don't report error when apollo tries to update cache query that hasn't been run yet (usually happens when someone navs directly to create page or refreshes and kills cached queries)
           if (~error.toString().indexOf("Can't find field")) return
-          console.log(error)
         }
       }}
       {...props}

@@ -8,12 +8,9 @@ class ErrorBoundary extends React.Component {
     this.state = { hasError: false }
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch() {
     // Display fallback UI
     this.setState({ hasError: true })
-
-    console.log(error)
-    console.log(info)
   }
 
   render() {

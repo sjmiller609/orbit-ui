@@ -29,7 +29,6 @@ const Mutation = ({
       errorPolicy="all"
       onError={err => {
         if (errorMsg) {
-          console.log(err)
           setUI.snackbar(
             typeof errorMsg === 'function' ? errorMsg(err.message) : errorMsg
           )
