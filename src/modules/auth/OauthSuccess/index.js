@@ -40,10 +40,10 @@ class OauthSuccess extends React.Component {
     })
     // snackbar
     if (this.success) setUI.snackbar(this.success)
-    
+
     // identify event
     Identify(params.extras.userId, { email: params.extras.email })
-    
+
     // track event
     if (this.track) Track(this.track)
   }

@@ -32,8 +32,6 @@ const Metrics = Load(() =>
 
 const isLogs = str => str && str.toLowerCase() === 'logs'
 
-
-
 const Deployment = ({ deployments, loggingEnabled, menu, title }) => {
   const deployment = deployments[0]
   // Error handled
