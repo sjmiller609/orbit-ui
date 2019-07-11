@@ -20,5 +20,5 @@ const compiler = webpack(config)
 const server = new webpackDevServer(compiler, options)
 
 server.listen(8080, 'localhost', () => {
-  console.log('Distribution server listening on port 8080')
+  console.log('Distribution server listening on port 8080') // eslint-disable-line no-console
 })

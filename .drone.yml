@@ -8,6 +8,14 @@ pipeline:
     when:
       event: push
 
+  lint:
+    image: astronomerinc/ap-orbit-ui:dev
+    commands:
+      - cd /srv/orbit-ui
+      - npm run lint
+    when:
+      event: push
+
   test:
     image: astronomerinc/ap-orbit-ui:dev
     commands:
