@@ -1,5 +1,6 @@
 'use strict'
 import React from 'react'
+import PropTypes from 'prop-types'
 import api from './api'
 
 import { Mutation, CardError } from 'instruments'
@@ -63,6 +64,9 @@ const AddCard = Component => {
         </Mutation>
       )
     }
+  }
+  AddCard.propTypes = {
+    stripe: PropTypes.object,
   }
 
   return AddCard

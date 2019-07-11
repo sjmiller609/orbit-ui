@@ -58,6 +58,8 @@ const Create = Component => {
   }
   Create.propTypes = {
     getData: PropTypes.object,
+    self: PropTypes.object,
+    workspaces: PropTypes.array,
   }
 
   return Self(GetData(Create, { workspaceId: true }))

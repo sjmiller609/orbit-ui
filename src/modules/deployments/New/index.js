@@ -46,6 +46,7 @@ class New extends React.Component {
 
 New.propTypes = {
   location: PropTypes.object,
+  workspaces: PropTypes.array,
 }
 
 export default New

@@ -1,5 +1,6 @@
 'use strict'
 import React from 'react'
+import PropTypes from 'prop-types'
 import api from './api'
 
 import { Delete as Mutate, CardError } from 'instruments'
@@ -52,6 +53,10 @@ const Delete = Component => {
         }}
       </Mutate>
     )
+  }
+  Delete.propTypes = {
+    self: PropTypes.object,
+    deployment: PropTypes.object,
   }
 
   return Self(Delete)
