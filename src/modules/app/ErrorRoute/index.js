@@ -6,7 +6,6 @@ import { getParams } from 'helpers/url'
 
 const ErrorRoute = ({ location }) => {
   const params = getParams(location.search)
-  console.log(params)
   return <ErrorPage>{params.error && <P>{params.error}</P>}</ErrorPage>
 }
 

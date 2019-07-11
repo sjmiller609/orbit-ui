@@ -31,6 +31,4 @@ const configs = merge(common, prod, {
   ],
 })
 
-console.log(configs.module.rules)
-
 export default configs

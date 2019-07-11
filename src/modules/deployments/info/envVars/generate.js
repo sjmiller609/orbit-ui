@@ -34,6 +34,6 @@ m2.forEach(m => {
   grouped[group][m] = ''
   named['AIRFLOW__' + group.toUpperCase() + '__' + m.toUpperCase()] = ''
 })
-// copy from console and paste into .json file
-//console.log(JSON.stringify(grouped))
-console.log(JSON.stringify(named))
+
+// Copy from console and paste into .json file
+console.log(JSON.stringify(named)) // eslint-disable-line no-console

@@ -12,8 +12,6 @@ import { WebSocketLink } from 'apollo-link-ws'
 import { ApolloProvider } from 'react-apollo'
 import { getMainDefinition } from 'apollo-utilities'
 import { render } from 'react-dom'
-import { StripeProvider, Elements } from 'react-stripe-elements'
-import BillingForm from './modules/workspaces/ConfigureBilling/BillingForm'
 
 import './styles/global/index.scss'
 
@@ -73,7 +71,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
       if (data) msg += `Data: ${JSON.stringify(data)}`
       if (locations) msg += `Location: ${JSON.stringify(locations)},`
       if (path) msg += `, Path: ${path}`
-      console.log(msg)
+      console.log(msg) // eslint-disable-line no-console
       if (name && ~name.indexOf('AuthError'))
         window.location.pathname = '/logout/silent'
     })
@@ -86,7 +84,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
         .indexOf('failed to fetch')
     )
       window.location.pathname = '/houston-down'
-    console.log(`[Network error]: ${networkError}`)
+    console.log(`[Network error]: ${networkError}`) // eslint-disable-line no-console
   }
 })
 
