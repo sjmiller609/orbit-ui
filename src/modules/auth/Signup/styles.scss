@@ -5,14 +5,8 @@
   margin-left: 0.5rem;
 
   li {
-    background-clip: text;
-    -webkit-background-clip: text;
-    background-size: 100%;
-    background-position: left;
-    color: transparent;
-    background-image: linear-gradient(65deg, $lightBlue, $purple 55%);
-
-    margin: 1.6rem 0;
+    color: $lightBlue;
+    margin: 1.2rem 0;
 
     &:before {
       content: '';
