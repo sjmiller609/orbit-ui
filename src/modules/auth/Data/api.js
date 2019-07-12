@@ -16,16 +16,13 @@ export default {
         extras: $extras
       ) {
         localEnabled
-        googleEnabled
-        googleOAuthUrl
-        githubEnabled
-        githubOAuthUrl
-        auth0Enabled
-        auth0OAuthUrl
-        oktaEnabled
-        oktaOAuthUrl
         publicSignup
         initialSignup
+        providers {
+          name
+          url
+          displayName
+        }
       }
     }
   `,

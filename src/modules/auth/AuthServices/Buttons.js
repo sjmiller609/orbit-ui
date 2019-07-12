@@ -7,38 +7,16 @@ import s from './styles.scss'
 const Buttons = ({ authConfig, login }) => {
   return (
     <React.Fragment>
-      {authConfig.googleEnabled && (
+      {authConfig.providers.map(provider => (
         <OauthButton
-          service="google"
+          key={provider.name}
+          service={provider.name}
+          displayName={provider.displayName}
           login={login}
-          to={authConfig.googleOAuthUrl}
+          to={provider.url}
           className={s.button}
         />
-      )}
-      {authConfig.githubEnabled && (
-        <OauthButton
-          service="github"
-          login={login}
-          to={authConfig.githubOAuthUrl}
-          className={s.button}
-        />
-      )}
-      {authConfig.auth0Enabled && (
-        <OauthButton
-          service="auth0"
-          login={login}
-          to={authConfig.auth0OAuthUrl}
-          className={s.button}
-        />
-      )}
-      {authConfig.oktaEnabled && (
-        <OauthButton
-          service="okta"
-          login={login}
-          to={authConfig.oktaOAuthUrl}
-          className={s.button}
-        />
-      )}
+      ))}
     </React.Fragment>
   )
 }
