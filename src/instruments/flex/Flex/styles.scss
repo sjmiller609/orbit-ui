@@ -1,23 +1,5 @@
 @import 'src/styles/mixins.scss';
 
-@mixin flex($flow) {
-  // width: inherit;
-  // height: inherit;
-  display: flex;
-  flex-flow: $flow;
-}
-
-@mixin justify($justify: center) {
-  justify-content: $justify;
-}
-
-@mixin align($align: center) {
-  align-items: $align;
-}
-
-@mixin wrap($wrap: nowrap) {
-  flex-wrap: $wrap;
-}
 
 .flex {
   @include wrap;

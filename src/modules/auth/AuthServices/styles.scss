@@ -13,27 +13,20 @@
 }
 
 .or {
-  margin: 2rem 0;
-  color: $lightBeige;
-  @include mini;
-  hr {
-    width: 100%;
-    height: 1px;
-    background: $lightGray;
-    border: 0;
-    margin: 0 3rem;
-  }
+  @include filmo;
 }
 
 .button {
   margin: 1rem auto;
-  display: block;
   width: 91%;
 }
 
-.emailButton {
-  width: 71%;
-  margin-top: 2rem;
+
+.card {
+  .emailButton {
+    background: $purple;
+    display: block;
+  }
 }
 
 .footer {

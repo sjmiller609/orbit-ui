@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 
 import Data from '../Data'
 import EmailPw from './EmailPw'
-import Buttons from './Buttons'
-import { CardForm, Row, Link, Mini, Redirect } from 'instruments'
+import { CardForm, Row, Link, Mini, Redirect, OauthButton } from 'instruments'
 import s from './styles.scss'
 
 class Auth extends React.Component {
@@ -58,36 +57,20 @@ class Auth extends React.Component {
                 vars={{ inviteToken: token }}
                 alert={false}
               />
-              {(authConfig.googleEnabled ||
-                authConfig.githubEnabled ||
-                authConfig.auth0Enabled ||
-                authConfig.oktaEnabled) && (
-                <Row className={s.or}>
-                  <hr />
-                  or
-                  <hr />
-                </Row>
-              )}
+              {authConfig.providers && <Row className={s.or}>or</Row>}
             </React.Fragment>
           )}
 
-        <Buttons authConfig={authConfig} login={login} />
-        {/* <div className={s.terms}>
-        {login ? (
-          <Mini>
-        <Link to="https://www.astronomer.io/terms">Terms</Link>
-        <Link to="https://www.astronomer.io/privacy">Privacy</Link>
-        <Link to="https://www.astronomer.io/security">Security</Link>
-          </Mini>
-        ) : (
-          <Mini>
-        By signing up and using Astronomer, you agree to our{' '}
-        <Link to="https://www.astronomer.io/terms">terms of service</Link>{' '}
-        and{' '}
-        <Link to="https://www.astronomer.io/privacy">privacy policy.</Link>
-          </Mini>
-        )}
-      </div> */}
+        {authConfig.providers.map(provider => (
+          <OauthButton
+            key={provider.name}
+            service={provider.name}
+            displayName={provider.displayName}
+            login={login}
+            to={provider.url}
+            className={s.button}
+          />
+        ))}
       </CardForm>
     )
   }
