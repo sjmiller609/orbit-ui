@@ -5,46 +5,38 @@ import { Link, Row, Box, Icon, LoadImg } from 'instruments'
 import s from './styles.scss'
 import classnames from 'classnames'
 
-const services = {
-  google: {
-    text: ' with Google',
-    img: LoadImg(() => import(`./img/google.svg`)),
-    className: 'google',
-  },
-  github: {
-    text: ' with Github',
-    img: LoadImg(() => import(`./img/github.svg`)),
-    className: 'github',
-  },
-  auth0: {
-    text: ' with Auth0',
-    img: LoadImg(() => import(`./img/auth0.svg`)),
-    className: 'auth0',
-  },
-  okta: {
-    text: ' with Okta',
-    img: LoadImg(() => import('./img/okta.png')),
-    className: 'okta',
-  },
+const images = {
+  google: LoadImg(() => import(`./img/google.svg`)),
+  github: LoadImg(() => import(`./img/github.svg`)),
+  auth0: LoadImg(() => import(`./img/auth0.svg`)),
+  okta: LoadImg(() => import('./img/okta.png')),
 }
 
-const OauthButton = ({ service, login, to, className, ...props }) => {
-  const oauth = services[service]
-  const Img = oauth.img
+const OauthButton = ({
+  service,
+  displayName,
+  login,
+  to,
+  className,
+  ...props
+}) => {
+  const Img = images[service]
   return (
     <Link
       {...props}
       to={to}
-      title={oauth.text}
+      title={' with ' + displayName}
       newTab={false}
-      className={classnames(s.button, s[oauth.className], className)}>
+      className={classnames(s.button, s[service], className)}>
       <Row full justify="flex-start">
-        <Box className={s.img}>
-          <Img />
-        </Box>
+        {Img && (
+          <Box className={s.img}>
+            <Img />
+          </Box>
+        )}
         <span className={s.text}>
-          {login ? 'Login' : 'Sign up'}
-          {oauth.text} <Icon className={s.arrow} icon="arrow_darkBg" />
+          {login ? 'Login' : 'Sign up'} with {displayName}
+          <Icon className={s.arrow} icon="arrow_darkBg" />
         </span>
       </Row>
     </Link>
@@ -53,6 +45,7 @@ const OauthButton = ({ service, login, to, className, ...props }) => {
 
 OauthButton.propTypes = {
   service: PropTypes.string,
+  displayName: PropTypes.string,
   login: PropTypes.bool,
   to: PropTypes.string,
   className: PropTypes.string,

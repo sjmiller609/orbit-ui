@@ -6,6 +6,7 @@
   white-space: nowrap;
   border-radius: 3px;
   width: 100%;
+  padding-left: 4em;
   // padding: 1.4em 1.8em 1.05em;
   height: 4em; //specifying for 100% children
 
@@ -19,7 +20,6 @@
   .text {
     height: 100%;
     padding: 1.4em 1.8em 1.05em;
-    border-left: 2px solid $white;
   }
 
   &.google {
@@ -39,6 +39,8 @@
 .img {
   height: 100%;
   width: 4em;
+  border-right: 2px solid $white;
+  margin-left: -4em;
 
   img {
     height: 52%;
