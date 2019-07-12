@@ -1,18 +1,19 @@
 @import 'src/styles/mixins.scss';
 
 .button {
-  display: inline-block;
+  flex: auto;
+  @include flex(row)
+  justify-content: center;
+  align-items: center;
+
   @include filmo;
   white-space: nowrap;
   border-radius: 3px;
-  width: 100%;
-  padding-left: 4em;
-  // padding: 1.4em 1.8em 1.05em;
   height: 4em; //specifying for 100% children
 
   @include shadow;
   overflow: hidden;
-  background-image: linear-gradient(to right, $green, $blue);
+  background-color: $darkOrange;
   &,
   &:visited {
     color: $white;
@@ -22,28 +23,35 @@
     padding: 1.4em 1.8em 1.05em;
   }
 
+  span {
+    line-height: 4em;
+    padding: 0 1em 0 3em;
+    background: left/auto 2.0em no-repeat url('./img/generic.svg');
+  }
+
   &.google {
-    background-image: linear-gradient(to right, $darkBlue, $lightBlue);
+    background: $lightBlue;
+    span {
+      background: left/auto 2.1em no-repeat url('./img/google.svg');
+    }
   }
   &.github {
-    background-image: linear-gradient(to right, $darkPurple, $lightPurple);
+    background: #53514e;
+    span {
+      background: left/auto 2.1em no-repeat url('./img/github.svg');
+    }
   }
   &.auth0 {
-    background-image: linear-gradient(to right, $red, $darkOrange);
+    background-color: $red;
+    span {
+      background: left/auto 2.1em no-repeat url('./img/auth0.svg');
+    }
   }
   &.okta {
-    background-image: linear-gradient(to right, rgb(0, 125, 193))
-  }
-}
-
-.img {
-  height: 100%;
-  width: 4em;
-  border-right: 2px solid $white;
-  margin-left: -4em;
-
-  img {
-    height: 52%;
+    background-color: rgb(0, 125, 193);
+    span {
+      background: left/auto 2.1em no-repeat url('./img/okta.png');
+    }
   }
 }
 
