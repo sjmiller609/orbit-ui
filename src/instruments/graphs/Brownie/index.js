@@ -29,7 +29,9 @@ const Brownie = ({ slices, part, total, title, convert, className }) => {
                 }}>
                 <label>
                   {m.name}
-                  <B>{convert(m.value)}</B>
+                  <B>
+                    {m.value}AU ({convert(m.value)})
+                  </B>
                 </label>
               </div>
             )

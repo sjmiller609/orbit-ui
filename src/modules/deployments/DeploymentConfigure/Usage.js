@@ -63,6 +63,7 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
       />
 
       <P className={s.resources}>
+        <RTag n={totalAU} l="AU" />
         <RTag n={convertCpu(cpu * totalAU, false)} l="CPU" />
         <RTag
           n={convertMem(memory * totalAU, false)}
