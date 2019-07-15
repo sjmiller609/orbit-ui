@@ -1,8 +1,7 @@
 # Env vars
 .env
 
- Logs
-/logs
+# Logs
 *.log*
 
 # Runtime data

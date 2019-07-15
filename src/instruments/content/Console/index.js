@@ -5,16 +5,27 @@ import classnames from 'classnames'
 import s from './styles.scss'
 
 class Console extends React.Component {
-  componentDidMount() {
-    this.elem.addEventListener('wheel', this.scrollHandler.bind(this))
+  state = {
+    pause: false,
   }
 
-  componentWillUnmount() {
-    this.elem.removeEventListener('wheel', this.scrollHandler.bind(this))
+  scrollToBottom = () => {
+    if (!this.state.pause) {
+      this.container.scrollTop = this.content.scrollHeight
+    }
   }
 
-  scrollHandler(e) {
-    this.props.onWheel && this.props.onWheel(e)
+  componentDidUpdate() {
+    this.scrollToBottom()
+  }
+
+  onWheel = e => {
+    const pause =
+      this.container.scrollTop !==
+      this.container.scrollHeight - this.container.clientHeight
+
+    this.setState({ pause })
+    return e
   }
 
   render() {
@@ -22,9 +33,18 @@ class Console extends React.Component {
 
     return (
       <div
-        ref={elem => (this.elem = elem)}
-        className={classnames(s.content, className)}>
-        {children}
+        className={classnames(s.container, className)}
+        ref={el => {
+          this.container = el
+        }}
+        onWheel={e => this.onWheel(e)}>
+        <div
+          className={s.content}
+          ref={el => {
+            this.content = el
+          }}>
+          {children}
+        </div>
       </div>
     )
   }
@@ -33,7 +53,6 @@ class Console extends React.Component {
 Console.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
   className: PropTypes.string,
-  onWheel: PropTypes.func,
 }
 
 export default Console

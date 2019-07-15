@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import { Query as Apollo } from 'react-apollo'
 import { Loading, CardError } from 'instruments'
 import { searchText } from 'helpers/compare'
-import { takeRight } from 'lodash'
 
 const Query = ({
   gql,
@@ -95,7 +94,7 @@ const Query = ({
                 const next = {
                   ...prev,
                 }
-                next[key] = [...takeRight(prev[key], 300), newItem]
+                next[key] = [...prev[key], newItem]
                 return next
               },
             })

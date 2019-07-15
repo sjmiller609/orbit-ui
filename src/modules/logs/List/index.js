@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import s from './styles.scss'
-import { Table, Console, LoadingDots, Mini, TextButton } from 'instruments'
+import { Table, Console, LoadingDots, Mini } from 'instruments'
 
 import Item from './Item'
 import Filters from './Filters'
@@ -10,11 +10,6 @@ import Data from '../Data'
 
 class List extends React.Component {
   subscribe = null
-  onWheel = this.onWheel.bind(this)
-  onClick = this.onClick.bind(this)
-  state = {
-    paused: false,
-  }
 
   componentWillMount() {
     if (this.props.subscribeToMore) {
@@ -28,36 +23,15 @@ class List extends React.Component {
     }
   }
 
-  onWheel(e) {
-    const scrollTop = e.currentTarget.scrollTop
-    if (scrollTop > 0) {
-      this.subscribe && this.subscribe()
-      setTimeout(() => this.setState({ paused: true }), 500)
-    }
-  }
-
-  onClick() {
-    this.props.since.set(5)
-    this.setState({ paused: false })
-  }
-
   render() {
     const { logs, search, since, component } = this.props
-    const { paused } = this.state
 
     return (
       <Table
         className={s.list}
         search={search}
         headerOptions={<Filters component={component} since={since} />}>
-        <Console onWheel={this.onWheel}>
-          {paused && (
-            <Mini onClick={this.onClick} className={s.paused}>
-              <TextButton className={s.unpause} onClick={this.onClick}>
-                Stream paused, click to resume
-              </TextButton>
-            </Mini>
-          )}
+        <Console>
           {logs &&
             logs.map((l, i) => <Item key={l.id || i} log={l} />).reverse()}
           {(!logs || !logs.length) && (
