@@ -47,7 +47,7 @@
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "jwt-decode": "2.2.0",
-    "lodash": "4.17.11",
+    "lodash": "4.17.13",
     "moment": "2.24.0",
     "nivo": "0.31.0",
     "prop-types": "15.6.2",
