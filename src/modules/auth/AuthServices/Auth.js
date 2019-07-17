@@ -3,36 +3,24 @@ import PropTypes from 'prop-types'
 
 import Data from '../Data'
 import EmailPw from './EmailPw'
-import { CardForm, Row, Link, Mini, Redirect, OauthButton } from 'instruments'
+import { CardForm, Row, Link, Mini, OauthButton } from 'instruments'
 import s from './styles.scss'
 
 class Auth extends React.Component {
   render() {
-    const { authConfig = {}, login: login2, cli, pathname, token } = this.props
+    const { authConfig = {}, login, cli, token } = this.props
     const signupEnabled =
       authConfig.initialSignup || authConfig.publicSignup || !!token
-    let login = login2 || !signupEnabled
+    const showFields = login || signupEnabled
     return (
       <CardForm
         title={login ? 'Login to Astronomer' : 'Sign Up'}
         smallForm
+        className={s.card}
         footer={
-          <Row className={s.footer}>
-            {!signupEnabled ? (
-              <Mini>
-                New to Astronomer? Please contact your system administrator to
-                request access.
-                {!~pathname.indexOf('/auth') && (
-                  <Redirect
-                    to={{
-                      ...location,
-                      pathname: '/auth' + (login2 ? '/login' : ''),
-                    }}
-                    replace
-                  />
-                )}
-              </Mini>
-            ) : (
+          signupEnabled ? (
+            <Row className={s.footer}>
+              {' '}
               <Mini>
                 Please review{' '}
                 <Link to="https://www.astronomer.io/terms">
@@ -44,12 +32,20 @@ class Auth extends React.Component {
                 </Link>{' '}
                 prior to signing up for Astronomer Cloud.
               </Mini>
-            )}
-          </Row>
-        }
-        className={s.card}>
+            </Row>
+          ) : null
+        }>
+        {!signupEnabled &&
+          !showFields && (
+            <Mini className={s.cardBody}>
+              It looks like public signups are disabled on your Astronomer
+              cluster. Please contact your system administrator to have them
+              create an account for you.
+            </Mini>
+          )}
         {authConfig.localEnabled &&
-          !cli && (
+          !cli &&
+          showFields && (
             <React.Fragment>
               <EmailPw
                 login={login}
@@ -60,17 +56,17 @@ class Auth extends React.Component {
               {authConfig.providers && <Row className={s.or}>or</Row>}
             </React.Fragment>
           )}
-
-        {authConfig.providers.map(provider => (
-          <OauthButton
-            key={provider.name}
-            service={provider.name}
-            displayName={provider.displayName}
-            login={login}
-            to={provider.url}
-            className={s.button}
-          />
-        ))}
+        {showFields &&
+          authConfig.providers.map(provider => (
+            <OauthButton
+              key={provider.name}
+              service={provider.name}
+              displayName={provider.displayName}
+              login={login}
+              to={provider.url}
+              className={s.button}
+            />
+          ))}
       </CardForm>
     )
   }
