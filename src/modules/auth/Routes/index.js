@@ -3,13 +3,13 @@ import { Load } from 'instruments'
 // will redirect if logged in
 export default [
   {
-    path: '/(|signup|auth)',
+    path: '/(|signup)',
     component: Load(() => import(/* webpackPrefetch: true */ '../Signup')),
     exact: true,
     title: 'Auth',
   },
   {
-    path: '/(login|auth/login)',
+    path: '/login',
     component: Load(() => import(/* webpackPrefetch: true */ '../Login')),
     exact: true,
   },
