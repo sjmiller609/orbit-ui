@@ -43,6 +43,28 @@
   width: 100%;
   flex: 1;
 
+  &.ghost {
+    display: flex;
+    justify-content: center;
+
+    & h5 {
+      display: inline-block;
+      color: $lightBeige;
+      border-radius: 50px;
+      background-color: $white;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      border: 1px dashed $shadow;
+      margin: 0;
+      line-height: 0;
+      font-size: 1rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
   .metricTitle {
     font-size: 1rem;
   }
@@ -65,219 +87,24 @@
   }
 }
 
-// Guage
-.gaugeContainer {
-  position: relative;
-  padding-bottom: 1rem;
-  height: 16vw;
+// Options
 
-  .gaugeElement {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    // use of important hack for
-    // responsive canvas in this context
-    canvas {
-      width: 24vw !important;
-      height: 17vw !important;
-    }
-  }
-
-  .guagePercent {
-    top: 1.2vw;
-
-    canvas {
-      width: 22vw !important;
-      height: 15.6vw !important;
-    }
-  }
-
-  .gaugeLabel {
-    position: absolute;
-    bottom: 2vw;
-    left: 4px;
-    width: 100%;
-
-    p {
-      font-size: 2.75vw;
-
-      &.noData {
-        font-size: 1rem;
-      }
-    }
-  }
-}
-
-// Sparkline
-.sparklineContainer {
-  position: relative;
-  height: 7vw;
-  bottom: -2vw;
-
-  .sparklineElement {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    // use of important hack for
-    // responsive canvas in this context
-    canvas {
-      width: 100% !important;
-      height: 4vw !important;
-    }
-  }
-
-  .sparklineLabel {
-    position: relative;
-    z-index: 10;
-    top: -2vw;
-
-    p {
-      font-size: 2.75vw;
-    }
-  }
-}
-
-// Complexline
-.complexlineContainer {
-  position: relative;
-  height: 20vw;
-
-  @media screen and (max-width: 1120px) {
-    height: 25vw;
-  }
-
-  @media screen and (max-width: 1024px) {
-    height: 30vw;
-  }
-
-  @media screen and (max-width: 768px) {
-    height: 45vw;
-  }
-
-  .complexlineElement {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 25vw;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-}
-
-// Container List
-.containerListContainer {
+.options {
   font-size: 1rem;
-  text-align: left;
 
-  .containerListHeader {
-    border-top: 5px solid $lightGray;
-  }
-
-  .containerListHeader,
-  .containerListItem {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid $lightGray;
-
-    div:nth-child(1),
-    div:nth-child(2) {
-      flex: 1;
-    }
-
-    div:nth-child(3) {
-      flex: 0 0 10%;
-    }
-  }
-
-  .containerListHeader {
-    font-weight: 800;
-  }
-
-  .healthLabel {
-    display: block;
-    text-align: center;
-    padding: 0.25rem;
-    color: $white;
-
-    &.healthy {
-      background-color: $green;
-    }
-
-    &.unhealthy {
-      background-color: $red;
-    }
+  .optionItem {
+    font-size: 1rem;
   }
 }
 
-// Tooltips
-.tooltipContainer {
-  text-align: left;
-  font-size: 1rem;
-  background: white;
-  padding: 0.5rem;
-  border-radius: 3px;
-  border: 1px solid $lightGray;
-  min-width: 200px;
-}
+.removeOption {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  z-index: 500;
 
-.tooltip {
-  display: flex;
-  padding: 0;
-  line-height: 1.5;
-  align-items: center;
-  justify-content: space-between;
-  white-space: nowrap;
-  width: 100%;
-
-  strong {
-    margin-right: 1%;
-  }
-}
-
-// Stream
-.streamContainer {
-  position: relative;
-  height: 15vw;
-
-  @media screen and (max-width: 1024px) {
-    height: 20vw;
-  }
-
-  @media screen and (max-width: 768px) {
-    height: 30vw;
-  }
-
-  .streamNoData {
-    position: absolute;
-    background-color: #fefcf9d6;
-    top: 0;
-    width: 100%;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-
-    p {
-      margin-bottom: 2rem;
-    }
-  }
-
-  .streamElement {
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    right: 0;
+  .optionItem {
+    font-size: 1rem;
   }
 }
 

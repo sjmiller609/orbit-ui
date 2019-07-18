@@ -23,6 +23,7 @@ $width: 19rem;
   height: auto;
   margin-top: 0.7rem;
   transition: opacity 200ms ease-in-out;
+
   &:before {
     content: '';
     display: block;
@@ -38,6 +39,7 @@ $width: 19rem;
     z-index: 2000;
   }
 }
+
 div.menu {
   position: relative;
   width: 100%;
@@ -48,6 +50,7 @@ div.menu {
   overflow-y: auto;
   margin: 0;
 }
+
 .out .menuWrapper {
   z-index: -1;
   height: 0;
@@ -68,6 +71,42 @@ div.menu {
   left: -0.5rem;
   &:before {
     left: 3rem;
+  }
+}
+
+.small .menuWrapper {
+  width: auto;
+  margin-top: 0.5rem;
+
+  &:before {
+    content: '';
+    display: block;
+    background: $white;
+    height: 0.5rem;
+    width: 0.5rem;
+    transform: translateX(-50%) rotate(45deg);
+    position: absolute;
+    border-radius: 2px;
+    border-left: 1px solid $shadow;
+    border-top: 1px solid $shadow;
+    top: -0.25rem;
+    z-index: 2000;
+
+    right: 0.5rem;
+  }
+
+  & main {
+    padding: 0.5rem;
+  }
+
+  & ul {
+    padding: 0;
+  }
+
+  & a {
+    margin: 0;
+    padding: 0 0.5rem;
+    white-space: nowrap;
   }
 }
 

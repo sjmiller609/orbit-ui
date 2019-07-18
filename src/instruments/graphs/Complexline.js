@@ -49,6 +49,8 @@ class Complexline extends React.Component {
     const data = []
     const emptyData = []
 
+    if (metric === undefined) return
+
     // Format the data OR generate placeholder for
     // data returned as 0 (so a graph will show)
     if (metric.length > 0) {

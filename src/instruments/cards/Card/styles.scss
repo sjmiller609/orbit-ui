@@ -3,6 +3,7 @@
 $footerHeaderHeight: 6.2rem;
 
 .card {
+  position: relative;
   min-height: 7rem;
   border-radius: $borderRadius;
   background-color: $white;

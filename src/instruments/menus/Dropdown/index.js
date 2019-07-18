@@ -35,7 +35,7 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    const { selector, disable, right, children, className } = this.props
+    const { selector, disable, right, children, className, small } = this.props
     const { menu, out } = this.state
 
     return (
@@ -45,6 +45,7 @@ class Dropdown extends React.Component {
           right ? s.right : s.left,
           menu ? s.open : null,
           out ? s.out : null,
+          small ? s.small : null,
           className
         )}>
         <Backdrop show={menu} close={this.blur} />
@@ -68,6 +69,7 @@ Dropdown.propTypes = {
   disable: PropTypes.bool,
   selector: PropTypes.element.isRequired,
   className: PropTypes.string,
+  small: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.element])
     .isRequired,
 }

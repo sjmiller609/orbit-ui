@@ -26,6 +26,8 @@ class Stream extends React.Component {
     const data = []
     let sum = 0
 
+    if (metric[0] === undefined) return
+
     const length =
       metric[0].result.length != 0 && metric[0].result[0].values != undefined
         ? metric[0].result[0].values.length

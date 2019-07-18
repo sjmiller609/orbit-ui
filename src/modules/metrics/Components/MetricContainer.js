@@ -1,20 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { H1, H4, LoadingDots } from 'instruments'
+import {
+  H1,
+  H4,
+  LoadingDots,
+  Complexline,
+  ContainerList,
+  Gauge,
+  Sparkline,
+  Stream,
+  TaskStatus,
+} from 'instruments'
 
 import s from './styles.scss'
 
-import Gauge from './Gauge'
-import Sparkline from './Sparkline'
-import Complexline from './Complexline'
-import ContainerList from './ContainerList'
-import TaskStatus from './TaskStatus'
-import Stream from './Stream'
-
 class MetricContainer extends React.Component {
   state = {
-    loading: true,
     data: [],
   }
 
@@ -29,12 +31,11 @@ class MetricContainer extends React.Component {
   }
 
   updateData = props => {
-    const { loading, metric, range, type } = props
+    const { metric, range, type } = props
 
     if (metric != undefined) {
       if (type === 'stream') {
         return this.setState({
-          loading,
           data: metric,
         })
       } else if (
@@ -44,19 +45,13 @@ class MetricContainer extends React.Component {
         metric.result[0] != undefined
       ) {
         return this.setState({
-          loading,
           data: metric.result[0][range ? 'values' : 'value'],
         })
       } else {
         return this.setState({
-          loading,
           data: metric.result,
         })
       }
-    } else {
-      return this.setState({
-        loading: true,
-      })
     }
   }
 
@@ -78,7 +73,7 @@ class MetricContainer extends React.Component {
 
     return (
       <H1 className={classnames(s.label)}>
-        {amount} {this.props.label}
+        {isNaN(amount) ? 0 : amount} {this.props.label}
       </H1>
     )
   }
@@ -99,7 +94,7 @@ class MetricContainer extends React.Component {
         component = <Gauge metric={data} />
         break
       case 'sparkline':
-        component = <Sparkline metric={data} label={metric.label} />
+        component = <Sparkline metric={data} label={metric && metric.label} />
         break
       case 'complexline':
         component = <Complexline metric={data} label={label} step={step} />
@@ -120,8 +115,7 @@ class MetricContainer extends React.Component {
   }
 
   render() {
-    const { title, type } = this.props
-    const { loading } = this.state
+    const { title, type, loading } = this.props
 
     return (
       <div className={s.container}>

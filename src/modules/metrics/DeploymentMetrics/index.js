@@ -4,10 +4,25 @@ import AllMetrics from '../AllMetrics'
 import OverviewMetrics from '../OverviewMetrics'
 import { withRouter } from 'react-router-dom'
 
+const groups = [
+  'DEPLOYMENT_STATUS',
+  'DEPLOYMENT_TASKS',
+  'DEPLOYMENT_DATABASE',
+  'DEPLOYMENT_SCHEDULER',
+  'DEPLOYMENT_QUOTAS',
+  'DEPLOYMENT_USAGE',
+]
+
 class DeploymentMetrics extends React.Component {
+  initStorage = () => localStorage.getItem('subscribedMetrics')
+
   state = {
     since: 30,
     step: 5,
+    types:
+      this.initStorage() != undefined
+        ? this.initStorage().split(',')
+        : [groups[0]],
   }
 
   setSince = since => {
@@ -53,6 +68,27 @@ class DeploymentMetrics extends React.Component {
     this.setState({ since, step })
   }
 
+  setTypes = type => {
+    const { types } = this.state
+
+    let exists = false
+    if (types.length > 0) {
+      exists = types.includes(type)
+    }
+
+    if (exists) {
+      localStorage.setItem('subscribedMetrics', types.filter(c => c !== type))
+      return this.setState({
+        types: types.filter(c => c !== type),
+      })
+    } else {
+      localStorage.setItem('subscribedMetrics', [...this.state.types, type])
+      return this.setState(prevState => ({
+        types: [...prevState.types, type],
+      }))
+    }
+  }
+
   render() {
     const { deployment, overview } = this.props
 
@@ -65,6 +101,11 @@ class DeploymentMetrics extends React.Component {
             get: () => this.state.since,
             getStep: () => this.state.step,
           }}
+          types={{
+            get: this.state.types,
+            set: this.setTypes,
+            all: groups,
+          }}
         />
       )
     }
@@ -76,6 +117,11 @@ class DeploymentMetrics extends React.Component {
           set: this.setSince,
           get: () => this.state.since,
           getStep: () => this.state.step,
+        }}
+        types={{
+          get: () => this.state.types,
+          set: this.setTypes,
+          all: groups,
         }}
       />
     )

@@ -11,6 +11,7 @@ const Data = Component => {
       deploymentUuid: props.deploymentUuid,
       step: props.since.getStep(),
       since: props.since.get(),
+      metricType: props.types.get(),
     }
 
     return (
@@ -18,6 +19,7 @@ const Data = Component => {
         gql={api.Metrics}
         vars={vars}
         sortNewest={false}
+        shouldResubscribe={true}
         fetchPolicy="cache-and-network">
         {({ data, loading, subscribeToMore }) => {
           const newProps = {
@@ -38,6 +40,7 @@ const Data = Component => {
     deploymentUuid: PropTypes.string,
     since: PropTypes.object,
     step: PropTypes.object,
+    types: PropTypes.object,
   }
 
   return Data
