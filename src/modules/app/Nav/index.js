@@ -46,17 +46,16 @@ const Nav = ({ getData, workspaces, self, menu }) => {
       workspace.billingEnabled
     : false
 
-  const trialRemaining = workspace
-    ? -moment().diff(workspace.trialEndsAt, 'days')
-    : null
+  const diff = workspace ? -moment().diff(workspace.trialEndsAt, 'days') : null
 
+  const trialRemaining = diff < 0 ? 0 : diff
   const days =
     trialRemaining == 1
       ? `is ${trialRemaining} day`
       : `are ${trialRemaining} days`
 
   const msg =
-    workspace && workspace.billingEnabled && trialRemaining >= 0
+    workspace && workspace.billingEnabled && workspace.stripeCustomerId == null
       ? `There ${days} left in your trial.`
       : null
 
