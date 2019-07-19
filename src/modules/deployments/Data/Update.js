@@ -36,13 +36,7 @@ const Update = Component => {
               // Filter out reiterated payload values (not to be used in "payload")
               const newPayload = diff.filter(d => {
                 for (let key in d) {
-                  if (
-                    key != 'id' &&
-                    key != 'config' &&
-                    key != 'env' &&
-                    key != 'properties'
-                  )
-                    return d
+                  if (key != 'id') return d
                 }
               })
 
