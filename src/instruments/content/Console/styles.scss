@@ -16,9 +16,10 @@
   height: auto;
   width: 100%;
   display: flex;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   flex-direction: column-reverse;
-  padding: 1rem;
+  padding: 0.2rem;
 
   p {
     @include mono;
