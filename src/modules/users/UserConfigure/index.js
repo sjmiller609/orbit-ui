@@ -10,17 +10,28 @@ import { find } from 'lodash'
 import Data from '../../workspaces/Data'
 
 class UserConfigure extends React.Component {
-  state = {
-    role: this.getRole(),
+  constructor(props) {
+    super(props)
+    this.state = {
+      role: this.getRole(props),
+    }
   }
 
-  getRole() {
-    if (this.isInvite(this.props.user)) {
-      return this.props.user.role
+  componentDidUpdate(prevProps) {
+    if (prevProps.user.role != this.props.user.role) {
+      this.updateRole(this.props)
+    }
+  }
+
+  updateRole = newProps => this.setState({ role: this.getRole(newProps) })
+
+  getRole = props => {
+    if (this.isInvite(props.user)) {
+      return props.user.role
     }
 
-    return find(this.props.user.roleBindings, {
-      workspace: { id: this.props.getData.workspaceId },
+    return find(props.user.roleBindings, {
+      workspace: { id: props.getData.workspaceId },
     }).role
   }
 
