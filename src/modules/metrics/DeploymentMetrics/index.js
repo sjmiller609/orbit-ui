@@ -61,7 +61,7 @@ class DeploymentMetrics extends React.Component {
         step = 6720
         break
       default:
-        step = 10
+        step = 5
         break
     }
 
