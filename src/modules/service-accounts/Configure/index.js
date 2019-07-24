@@ -58,6 +58,7 @@ class ConfigureServiceAccount extends React.Component {
     const { path, deploymentId, apiKey } = this.props
     const { serviceAccount } = this.state
     this.button.to = path
+
     return (
       <CardMenu menu={this.menu} menuList={{ button: this.button }}>
         <Key apiKey={apiKey || serviceAccount.apiKey} />
@@ -65,6 +66,7 @@ class ConfigureServiceAccount extends React.Component {
           serviceAccount={serviceAccount}
           data={serviceAccount}
           deploymentId={deploymentId}
+          role={serviceAccount.roleBinding.role}
           saveText="Update"
         />
         <Delete

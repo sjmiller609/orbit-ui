@@ -24,12 +24,14 @@ export default {
       $category: String
       $entityType: EntityType!
       $entityId: Uuid
+      $role: Role!
     ) {
       createServiceAccount(
         label: $label
         category: $category
         entityType: $entityType
         entityUuid: $entityId
+        role: $role
       ) {
         ...serviceAccount
       }

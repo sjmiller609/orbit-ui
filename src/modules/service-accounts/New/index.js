@@ -23,6 +23,7 @@ class New extends React.Component {
         <Configure
           title={this.title}
           deploymentId={deploymentId}
+          role="WORKSPACE_EDITOR"
           path={module.path}
         />
       </Module>
