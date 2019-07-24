@@ -12,19 +12,19 @@ class Configure extends React.Component {
     const { form, role, disabled } = this.props
     const options = [
       {
-        icon: 'astro_helmet',
+        icon: 'viewer',
         text: 'Viewer',
         value: 'WORKSPACE_VIEWER',
         disabled: disabled,
       },
       {
-        icon: 'satellite',
+        icon: 'editor',
         text: 'Editor',
         value: 'WORKSPACE_EDITOR',
         disabled: disabled,
       },
       {
-        icon: 'airflow_astro',
+        icon: 'admin',
         text: 'Admin',
         value: 'WORKSPACE_ADMIN',
         disabled: disabled,

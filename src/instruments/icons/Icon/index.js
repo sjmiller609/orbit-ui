@@ -25,6 +25,9 @@ const map = {
   webserver: LoadImg(() => import(`./img/webserver.svg`)),
   satellite: LoadImg(() => import(`./img/satellite.svg`)),
   worker: LoadImg(() => import(`./img/worker.svg`)),
+  admin: LoadImg(() => import(`./img/iconAdminA.svg`)),
+  editor: LoadImg(() => import(`./img/iconEditorA.svg`)),
+  viewer: LoadImg(() => import(`./img/iconViewerA.svg`)),
 }
 
 class Icon extends React.Component {
