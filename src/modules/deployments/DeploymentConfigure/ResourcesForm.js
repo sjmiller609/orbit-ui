@@ -14,11 +14,13 @@ import { isTrialing } from 'helpers/trial'
 class ExtraResourcesForm extends React.Component {
   render() {
     const { form, deploymentConfig, deployment } = this.props
+    const extraAu = deployment.properties.extra_au
+
     return (
       <Resource
         label="Extra Capacity"
         field={form.field('properties.extra_au')}
-        defaultValue={0}
+        defaultValue={extraAu != undefined ? extraAu : 0}
         min={0}
         max={deploymentConfig.maxExtraAu}
         step={10}
