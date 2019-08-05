@@ -10,8 +10,7 @@ import Module from '../../app/Module'
 const Configure = Load(() =>
   import(/* webpackPrefetch: true */ '../UserConfigure')
 )
-const User = ({ users, menu, title }) => {
-  const user = users[0]
+const User = ({ user, menu, title }) => {
   // Error handled
   if (!user) return <Module nada />
 
@@ -46,7 +45,7 @@ const User = ({ users, menu, title }) => {
 }
 
 User.propTypes = {
-  users: PropTypes.array,
+  user: PropTypes.object,
   menu: PropTypes.object,
   title: PropTypes.string,
   onSuccess: PropTypes.func,

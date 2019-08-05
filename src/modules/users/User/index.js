@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Module from './Module'
+import { GetData } from 'instruments'
 
 class User extends React.Component {
   menu = {
@@ -8,10 +9,10 @@ class User extends React.Component {
   }
 
   render() {
-    const { match, location } = this.props
-    const id = decodeURIComponent(match.params.id)
+    const { match, location, getData } = this.props
+    const username = decodeURIComponent(match.params.id)
     this.menu.level2 = {
-      text: id,
+      text: username,
       to: location.pathname,
     }
     this.menu.subMenu = [
@@ -22,7 +23,8 @@ class User extends React.Component {
     ]
 
     const vars = {
-      username: id,
+      workspaceId: getData.workspaceId,
+      username,
     }
     return <Module title="Configure Access" menu={this.menu} vars={vars} />
   }
@@ -31,6 +33,7 @@ class User extends React.Component {
 User.propTypes = {
   location: PropTypes.object,
   match: PropTypes.object,
+  getData: PropTypes.object,
 }
 
-export default User
+export default GetData(User, { workspaceId: true })

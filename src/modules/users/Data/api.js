@@ -2,17 +2,17 @@ import gql from 'graphql-tag'
 import { user, group, invite, workspace } from 'modules/api/fragments'
 
 export default {
-  Users: gql`
-    query users($userId: Uuid, $username: String, $email: String) {
-      users(userUuid: $userId, username: $username, email: $email) {
+  User: gql`
+    query workspaceUser($workspaceId: Uuid!, $username: String!) {
+      workspaceUser(workspaceUuid: $workspaceId, username: $username) {
         ...user
       }
     }
     ${user}
   `,
   Invites: gql`
-    query invites($workspaceId: Uuid, $email: String) {
-      invites(workspaceUuid: $workspaceId, email: $email) {
+    query workspaceInvites($workspaceId: Uuid!, $email: String) {
+      workspaceInvites(workspaceUuid: $workspaceId, email: $email) {
         ...invite
       }
     }

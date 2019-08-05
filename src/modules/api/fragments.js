@@ -106,24 +106,6 @@ export const invite = gql`
   }
 `
 
-export const workspaceUsers = gql`
-  fragment workspaceUsers on Workspace {
-    id: uuid
-    users {
-      ...user
-    }
-    groups {
-      ...group
-    }
-    invites {
-      ...invite
-    }
-  }
-  ${invite}
-  ${user}
-  ${group}
-`
-
 export const token = gql`
   fragment token on Token {
     value
