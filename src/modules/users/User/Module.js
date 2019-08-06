@@ -6,42 +6,41 @@ import { Load } from 'instruments'
 import Data from '../Data'
 import Module from '../../app/Module'
 
-// const Overview = Load(() => import(/* webpackPrefetch: true */ '../UserOverview'))
 const Configure = Load(() =>
   import(/* webpackPrefetch: true */ '../UserConfigure')
 )
-const User = ({ user, menu, title }) => {
-  // Error handled
-  if (!user) return <Module nada />
 
-  const menu2 = {
-    ...menu,
+class User extends React.Component {
+  render() {
+    const { user, menu, title } = this.props
+
+    if (!user) return <Module nada />
+
+    const menu2 = {
+      ...menu,
+    }
+    menu2.level2.text = user.fullName
+
+    const path = '/users/' + encodeURIComponent(user.username)
+
+    return (
+      <Module metaTitle={title + ' | ' + user.username} menu={menu}>
+        <Switch>
+          <Route
+            path={path + '/configure'}
+            exact
+            render={() => <Configure user={user} />}
+          />
+          <Route
+            path={path}
+            exact
+            render={() => <Redirect to={path + '/configure'} />}
+          />
+          <Redirect to="/404" />
+        </Switch>
+      </Module>
+    )
   }
-  menu2.level2.text = user.fullName
-
-  const path = '/users/' + encodeURIComponent(user.username)
-
-  return (
-    <Module metaTitle={title + ' | ' + user.username} menu={menu}>
-      <Switch>
-        <Route
-          path={path + '/configure'}
-          exact
-          render={() => <Configure user={user} />}
-        />
-        <Route
-          path={path}
-          exact
-          render={
-            () => <Redirect to={path + '/configure'} />
-            // return <Overview user={user} />
-          }
-        />
-
-        <Redirect to="/404" />
-      </Switch>
-    </Module>
-  )
 }
 
 User.propTypes = {
