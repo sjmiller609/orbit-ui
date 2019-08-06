@@ -1,8 +1,0 @@
-@import 'src/styles/mixins.scss';
-
-.h4 {
-  @include font($f300);
-  font-size: 2rem;
-  line-height: 1.25em;
-  @include textLink();
-}

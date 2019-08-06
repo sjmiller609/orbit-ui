@@ -1,0 +1,10 @@
+@import 'colors';
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.col {
+  flex: 1;
+}

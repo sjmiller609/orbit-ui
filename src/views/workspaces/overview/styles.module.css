@@ -1,0 +1,33 @@
+@import 'colors';
+
+.intro {
+  & h2 {
+    font-weight: 800;
+  }
+
+  & p {
+    margin-bottom: 2rem;
+  }
+
+  & a {
+    display: inline-block;
+    width: auto;
+  }
+
+  & svg {
+    display: block;
+    width: 14rem;
+    margin: 3rem auto;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.newButton {
+  width: 260px;
+}

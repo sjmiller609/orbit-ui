@@ -1,8 +1,0 @@
-@import 'src/styles/mixins.scss';
-
-.mini {
-  @include font($f400);
-  @include mini;
-
-  @include textLink();
-}

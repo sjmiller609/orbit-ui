@@ -1,7 +1,0 @@
-@import 'src/styles/mixins.scss';
-
-.h5 {
-  @include font($f300);
-  font-size: 1.7rem;
-  line-height: 1.25em;
-}

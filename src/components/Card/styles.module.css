@@ -1,0 +1,36 @@
+@import 'type';
+@import 'colors';
+
+.container {
+  background-color: var(--white-10);
+  box-shadow: 0.4rem 0.9rem 3.3rem 0.1rem rgba(40,34,23,.1);
+  border: 1px solid rgba(40,34,23,.1);
+  border-radius: 5px;
+}
+
+.header {
+  margin: 0 2rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--white-11);
+  text-align: center;
+
+  & h1,
+  & h2,
+  & h3 {
+    color: var(--gray-12);
+  }
+}
+
+.content {
+  padding: 2rem;
+}
+
+.footer {
+  text-align: center;
+  background-color: var(--white-11);
+  padding: 2rem 3rem;
+
+  & a {
+    color: var(--green-10);
+  }
+}

@@ -1,0 +1,60 @@
+:root {
+  /* Whites */
+  --white-09: #FFFFFF;
+  --white-10: #FEFCF9; /* primary */
+  --white-11: #F4F2EC;
+  --white-12: #EFECE7;
+  --white-13: #E8E0D8;
+
+  /* Grays */
+  --gray-06: #E2DFDD;
+  --gray-07: #C8C3BD;
+  --gray-08: #BDBAB5;
+  --gray-09: #8F8E88;
+  --gray-10: #777571; /* primary */
+  --gray-11: #6B6864;
+  --gray-12: #63615B;
+  --gray-13: #53514E;
+
+  /* Purples */
+  --purple-07: #4A4466;
+  --purple-08: #413C5A;
+  --purple-09: #342F54;
+  --purple-10: #302C43; /* primary */
+  --purple-11: #282632;
+  --purple-12: #24232A;
+
+  /* Blues */
+  --blue-08: #47DAE9;
+  --blue-09: #0CBEDB;
+  --blue-10: #09ACC6; /* primary */
+  --blue-11: #068EAC;
+  --blue-12: #0784AA;
+
+  /* Greens */
+  --green-07: #9FF774;
+  --green-08: #31EE71;
+  --green-09: #07D65B;
+  --green-10: #00B35D; /* primary */
+  --green-11: #02A562;
+  --green-12: #049A59;
+  --green-13: #0B8852;
+
+  /* Golds/Oranges */
+  --gold-08: #FFBE40;
+  --gold-09: #FFAE21;
+  --gold-10: #FFA11A; /* primary */
+  --gold-11: #F48E06;
+
+  /* Reds */
+  --red-08: #FF6B4A;
+  --red-09: #FF523A;
+  --red-10: #F4442C; /* primary */
+
+  /* Gradients */
+  --green-to-blue: linear-gradient(90deg, #00B35D, #09ACC6);
+  --red-to-gold: linear-gradient(90deg, #F4442C, #FFA11A);
+
+  /* Shadows */
+  --shadow: rgba(40, 34, 23, .1);
+}

@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'DrukTextWide';
+  font-weight: normal;
+  font-style: normal;
+  src: url('fonts/DrukTextWide-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DrukWide';
+  font-weight: normal;
+  font-style: normal;
+  src: url('fonts/DrukWide-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'GoodSans';
+  font-weight: normal;
+  font-style: normal;
+  src: url('fonts/GoodSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filmotype';
+  src:
+    url('fonts/filmotype.woff2') format('woff2'),
+    url('fonts/filmotype.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Sofia';
+  font-weight: 200;
+  src:
+    url('fonts/8d11b8a0-868c-4a53-8b26-9f0ccbd58247.woff2') format('woff2'),
+    url('fonts/9b976f15-23b7-45cd-ad4b-59c95b2889f9.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Sofia';
+  font-weight: 400;
+  src:
+    url('fonts/8b31e0d7-5f53-45c2-b318-064f0b532543.woff2') format('woff2'),
+    url('fonts/476fe015-ab32-40a2-8fed-0a5af9a3bba4.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Sofia';
+  font-weight: 400;
+  font-style: italic;
+  src:
+    url('fonts/87cd0dd6-3e8b-46f1-b677-ab7644ea015e.woff2') format('woff2'),
+    url('fonts/90682d0e-e5df-4a2e-a2ff-6899b8ae8e4b.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Sofia';
+  font-weight: 600;
+  src:
+    url('fonts/fe0b48dd-7bb4-4787-913d-eaf613373f35.woff2') format('woff2'),
+    url('fonts/d493595c-97d2-4edc-bc9a-c09ad13b4913.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Sofia';
+  src:
+    url('fonts/20755c49-19b5-4792-aaf3-27f6b048149a.woff2') format('woff2'),
+    url('fonts/7cdc9309-dc21-43e2-a348-c6e3853fe8a9.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Sofia';
+  font-weight: 800;
+  src:
+    url('fonts/80042803-0630-405f-b2d2-af97b4e50b46.woff2') format('woff2'),
+    url('fonts/ec41d681-0313-4b04-88c0-820aebb51f4e.woff') format('woff');
+}

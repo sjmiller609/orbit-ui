@@ -1,0 +1,49 @@
+@import 'type';
+@import 'colors';
+
+.container {
+  margin: 0 0 1rem;
+}
+
+.label {
+  display: block;
+  color: var(--gray-11);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0.8rem 1rem 1rem 1rem;
+  max-height: 52.9844px;
+  font-size: var(--type-md);
+  border: 2px solid transparent;
+  background-color: var(--white-12);
+  color: var(--purple-10);
+  box-shadow: none;
+  outline: none;
+  border-radius: 3px;
+
+  &:focus {
+    outline: none;
+    border-color: var(--blue-09);
+  }
+
+  &.error {
+    border-color: var(--gold-10);
+  }
+
+  &.disabled {
+    pointer-events: none;
+  }
+}
+
+.error {
+  color: var(--gold-10);
+}
+
+.errorText {
+  font-size: var(--type-sm);
+}

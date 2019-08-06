@@ -1,0 +1,46 @@
+@import 'type';
+@import 'colors';
+
+.button {
+  display: block;
+  width: 100%;
+  margin: 0;
+  letter-spacing: 2px;
+  -webkit-appearance: none;
+  padding: 1.3rem 2rem 1.2rem 2rem;
+  font-size: var(--type-sm);
+  line-height: 1;
+  border-width: 0;
+  font-family: var(--sans-secondary);
+  background-color: var(--gray-10);
+  color: var(--white-10);
+  border-radius: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: filter 100ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    filter: brightness(110%);
+    outline: none;
+  }
+
+  &.purple { background-color: var(--purple-10); }
+  &.blue { background-color: var(--blue-10); }
+  &.green { background-color: var(--green-10); }
+  &.gold { background-color: var(--gold-10); }
+  &.red { background-color: var(--red-10); }
+
+  &.blueToGreen { background-image: var(--green-to-blue); }
+  &.redToGold { background-image: var(--red-to-gold); }
+
+  &.google { background-color: #09acc6; }
+  &.okta { background-color: #007dc1; }
+  &.github { background-color: #53514e; }
+
+  &.disabled {
+    pointer-events: none;
+    background-color: var(--gray-08);
+  }
+}

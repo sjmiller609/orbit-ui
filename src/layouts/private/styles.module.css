@@ -1,0 +1,65 @@
+@import 'colors';
+@import 'type';
+
+.layout {
+  margin-bottom: 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 3rem 1rem;
+  background-color: var(--white-12);
+
+  & a {
+    display: block;
+  }
+}
+
+.logo {
+  text-align: left;
+  flex: 0 0 7%;
+
+  & a {
+    height: 2.7rem;
+  }
+
+
+  & svg {
+    width: 2.7rem;
+    height: 2.7rem;
+  }
+}
+
+.workspacesDropdown {
+  flex: 1;
+}
+
+.nav {
+  padding: 1rem 3rem 5rem 3rem;
+  background-color: var(--white-11);
+
+  & .navWrap {
+    padding-top: 1rem;
+    display: flex;
+  }
+
+  & a {
+    position: relative;
+    font-size: 1.3rem;
+    color: var(--gray-09);
+
+    & + a {
+      margin-left: 2.5rem;
+    }
+
+    &.active {
+      color: var(--blue-10);
+    }
+  }
+}
+
+.content {
+  margin-top: -4rem;
+  padding: 0 3rem;
+}

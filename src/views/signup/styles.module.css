@@ -1,0 +1,14 @@
+@import 'colors';
+
+.content {
+  padding: 0 0 2rem 0;
+}
+
+.contentList {
+  margin-top: 2rem;
+
+  & li {
+    color: var(--blue-10);
+    font-weight: 400;
+  }
+}

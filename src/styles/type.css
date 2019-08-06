@@ -1,0 +1,10 @@
+:root {
+  --sans-primary: 'Sofia', Helvetica, Arial, sans-serif;
+  --sans-secondary: 'Filmotype', Helvetica, Arial, sans-serif;
+  --sans-vanity: 'DrukTextWide', Helvetica, Arial, sans-serif;
+
+  --type-xl: 2.75rem;
+  --type-lg: 1.75rem;
+  --type-md: 1.3rem;
+  --type-sm: 0.85rem;
+}

@@ -1,0 +1,28 @@
+@import 'type';
+@import 'colors';
+
+.container {
+  position: relative;
+  width: 40%;
+
+  & div {
+    margin: 0;
+  }
+
+  & span {
+    position: absolute;
+    z-index: 10;
+    width: 20px;
+    height: 20px;
+    top: 0.7rem;
+    left: 1rem;
+
+    & path {
+      fill: var(--gray-10);
+    }
+  }
+
+  & input {
+    padding: 0.8rem 1rem 1rem 3rem;
+  }
+}

@@ -1,0 +1,82 @@
+@import 'type';
+@import 'colors';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 100ms ease-in-out;
+  padding: 0.75rem 0 0.75rem 0.5rem;
+  border-bottom: 2px solid var(--white-11);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &:hover {
+    background-color: var(--white-11);
+  }
+
+  & .icon {
+    flex: 0 0 10%;
+  }
+
+  & .label {
+    flex: 0 0 25%;
+  }
+
+  & .description {
+    flex: 0 0 45%;
+  }
+
+  & h3 {
+    font-weight: 600;
+    font-size: var(--type-md);
+  }
+
+  & svg {
+    position: relative;
+    margin-top: 5px;
+    width: 45px;
+    height: 45px;
+
+    &.arrow {
+      flex: 0 0 5%;
+      width: 20px;
+      height: 20px;
+      margin-top: 0;
+
+      & path {
+        stroke: var(--gray-08);
+      }
+    }
+  }
+
+  & .releaseName {
+    font-size: var(--type-sm);
+  }
+
+  & .count {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--white-10);
+    border: 1px solid var(--gray-07);
+    border-radius: 5px;
+    padding: 0 1rem;
+
+    & svg {
+      width: 20px;
+      height: 20px;
+      margin-top: 0;
+      transform: rotate(-35deg);
+    }
+
+    & p {
+      margin: 0.5rem 0 0.5rem 0.5rem;
+      font-size: var(--type-sm);
+      font-weight: 600;
+      color: var(--gold-10);
+    }
+  }
+}

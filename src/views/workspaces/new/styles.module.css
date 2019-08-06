@@ -1,0 +1,9 @@
+@import 'colors';
+
+.content {
+  margin: 0 0 2rem;
+
+  & h2 {
+    font-weight: 800;
+  }
+}

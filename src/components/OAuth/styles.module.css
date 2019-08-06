@@ -1,0 +1,17 @@
+@import 'type';
+@import 'colors';
+
+.container {
+  & p {
+    font-size: var(--type-sm);
+    font-family: var(--sans-secondary);
+    font-weight: 200;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+}
+
+.button + .button {
+  margin-top: 0.5rem;
+}

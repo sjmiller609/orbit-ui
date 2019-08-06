@@ -12,7 +12,7 @@ pipeline:
     image: astronomerinc/ap-orbit-ui:dev
     commands:
       - cd /srv/orbit-ui
-      - npm run lint
+      - yarn lint
     when:
       event: push
 
@@ -20,7 +20,7 @@ pipeline:
     image: astronomerinc/ap-orbit-ui:dev
     commands:
       - cd /srv/orbit-ui
-      - npm test
+      - yarn test
     when:
       event: push
 

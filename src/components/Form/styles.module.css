@@ -1,0 +1,11 @@
+@import 'type';
+@import 'colors';
+
+.error {
+  background-color: var(--red-10);
+  color: var(--white-10);
+  font-size: var(--type-sm);
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+}

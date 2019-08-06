@@ -1,0 +1,9 @@
+:root {
+  --min-xl: 75em;
+  --min-lg: 62em;
+  --min-md: 48em;
+  --min-sm: 36em;
+  --min-xs: 0em;
+
+  --radius: 5px;
+}
