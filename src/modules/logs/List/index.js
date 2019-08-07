@@ -36,7 +36,8 @@ class List extends React.Component {
             logs.map((l, i) => <Item key={l.id || i} log={l} />).reverse()}
           {(!logs || !logs.length) && (
             <Mini className={s.waiting}>
-              Waiting for logs<LoadingDots />
+              Waiting for logs
+              <LoadingDots />
             </Mini>
           )}
         </Console>

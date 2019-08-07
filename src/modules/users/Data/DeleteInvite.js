@@ -9,7 +9,7 @@ import { Delete as Mutate, GetData, CardError } from 'instruments'
 import { handleError, trimError } from './helpers'
 
 const DeleteInvite = Component => {
-  const DeleteInvite = ({ getData, ...props }) => {
+  const DeleteInvite = ({ getData, admin, ...props }) => {
     const query = {
       name: workspacesApi.Workspaces,
       type: 'workspaces',
@@ -18,10 +18,14 @@ const DeleteInvite = Component => {
         withUsers: true,
       },
     }
+
+    let redirect = '/users'
+    if (admin) redirect = '/admin/users'
+
     return (
       <Mutate
         gql={api.DeleteInvite}
-        redirect={'/users'}
+        redirect={redirect}
         success="Invitation canceled."
         track="Invite Deleted From Workspace"
         query={query}
@@ -53,6 +57,7 @@ const DeleteInvite = Component => {
   }
   DeleteInvite.propTypes = {
     getData: PropTypes.object,
+    admin: PropTypes.bool,
   }
 
   return GetData(DeleteInvite, { workspaceId: true })

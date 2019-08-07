@@ -34,7 +34,8 @@ const errors = [
     error: (
       <Link to="/resend">
         Your email is not yet verified. Please check your email for a
-        verification link.<br /> [Click to resend]
+        verification link.
+        <br /> [Click to resend]
       </Link>
     ),
   },

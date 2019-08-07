@@ -16,8 +16,7 @@ const Delete = ({ deployment, onSubmit }) => {
         text: (
           <span>
             Are you sure you want to deprovision deployment&nbsp;
-            <B>{deployment.label}</B>
-            ?
+            <B>{deployment.label}</B>?
           </span>
         ),
       }}

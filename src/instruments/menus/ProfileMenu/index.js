@@ -14,7 +14,7 @@ const ProfileMenu = ({ name, avatar, platform, className }) => {
       selector={<Avatar url={avatar} title={name} className={s.profile} />}>
       <MenuList label={name}>
         <Item to="/profile">Personal Settings</Item>
-        {platform && <Item to="/platform">Platform Settings</Item>}
+        {platform && <Item to="/admin">Admin Settings</Item>}
         <Item to="/logout">Logout</Item>
       </MenuList>
     </Dropdown>

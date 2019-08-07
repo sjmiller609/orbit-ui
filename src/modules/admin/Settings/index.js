@@ -7,16 +7,17 @@ import Module from '../../app/Module'
 
 class Settings extends React.Component {
   menu = {
-    nav: 'workspaces',
+    nav: 'admin',
   }
 
   render() {
-    //const { platform } = this.props
+    // const { platform } = this.props
     const data = {
       //  fullName: user.fullName || '',
     }
+
     return (
-      <Module metaTitle="Platform Settings" menu={this.menu}>
+      <Module metaTitle="Admin Settings" menu={this.menu}>
         <Platform data={data} />
       </Module>
     )

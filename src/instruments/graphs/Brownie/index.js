@@ -40,7 +40,7 @@ const Brownie = ({ slices, part, total, title, convert, className }) => {
             <div
               className={classnames(s.slice, s.remaining)}
               style={{
-                width: `${Math.floor((total - part) / total * 100)}%`,
+                width: `${Math.floor((total - part) / total) * 100}%`,
               }}>
               <label>
                 Remaining

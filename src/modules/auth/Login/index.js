@@ -11,7 +11,8 @@ const Login = () => {
         <B>Tip:</B> Learn&nbsp;
         <Link to="https://www.astronomer.io/guides">
           best practices for using Airflow
-        </Link>&nbsp;in Astronomer's Guides.
+        </Link>
+        &nbsp;in Astronomer's Guides.
       </H4>
     </Layout>
   )

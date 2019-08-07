@@ -18,6 +18,7 @@ const List = ({ workspaces, search }) => {
     )
     return rb ? rb.role : null
   }
+
   const button = {
     text: 'Invite',
     to: '/users/new',
@@ -31,6 +32,7 @@ const List = ({ workspaces, search }) => {
 }
 
 List.propTypes = {
+  superuser: PropTypes.bool,
   workspaces: PropTypes.array,
   search: PropTypes.object,
 }

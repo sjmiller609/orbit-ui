@@ -1,15 +1,14 @@
 const subMenus = {
+  admin: [
+    {
+      to: '/admin',
+      text: 'Manage Users',
+    },
+  ],
   workspaces: [
     {
       to: '/workspaces',
       text: 'Workspaces',
-    },
-    {
-      to: '/platform',
-      text: 'Platform Settings',
-      permissions: {
-        isAdmin: true,
-      },
     },
     {
       to: '/profile',

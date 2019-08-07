@@ -19,13 +19,24 @@ const Invite = Component => {
         withUsers: true,
       },
     }
+
+    const platformQuery = {
+      vars: {
+        withUsers: false,
+      },
+    }
+
     return (
       <Mutation
-        gql={api.InviteUser}
+        gql={props.admin ? api.InviteUserToPlatform : api.InviteUser}
         back
         success="Your invitation has been sent."
-        track="New User Invited to Workspace"
-        query={query}
+        track={
+          props.admin
+            ? 'New User Invited to Platform'
+            : 'New User Invited to Workspace'
+        }
+        query={props.admin ? platformQuery : query}
         errorMsg={trimError}
         voidError>
         {({ mutate, error }) => {
@@ -34,7 +45,7 @@ const Invite = Component => {
             onSubmit: vars => {
               mutate({
                 variables: {
-                  workspaceId: getData.workspaceId,
+                  workspaceId: props.admin ? null : getData.workspaceId,
                   ...vars,
                 },
               })
@@ -51,6 +62,7 @@ const Invite = Component => {
   }
   Invite.propTypes = {
     getData: PropTypes.object,
+    admin: PropTypes.bool,
   }
 
   return GetData(Invite, { workspaceId: true })

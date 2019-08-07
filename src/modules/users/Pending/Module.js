@@ -6,10 +6,17 @@ import { Load } from 'instruments'
 import Data from '../Data/Pending'
 import Module from '../../app/Module'
 
-const Configure = Load(() =>
+let Configure = Load(() =>
   import(/* webpackPrefetch: true */ '../UserConfigure')
 )
-const User = ({ users, menu, title }) => {
+
+if (self.admin) {
+  Configure = Load(() =>
+    import(/* webpackPrefetch: true */ '../../admin/Users/Configure')
+  )
+}
+
+const User = ({ users, menu, title, admin }) => {
   const user = users[0]
   // Error handled
   if (!user) return <Module nada />
@@ -17,10 +24,12 @@ const User = ({ users, menu, title }) => {
   const menu2 = {
     ...menu,
   }
-  const name = user.fullName || user.email
-  menu2.level2.text = name
 
-  const path = '/pending/' + encodeURIComponent(user.email)
+  const name = user.fullName || user.email
+  if (menu2.level2) menu2.level2.text = name
+
+  let path = admin ? '/admin/pending/' : '/pending/'
+  path += encodeURIComponent(user.email)
 
   return (
     <Module metaTitle={title + ' | ' + name} menu={menu}>
@@ -28,12 +37,12 @@ const User = ({ users, menu, title }) => {
         <Route
           path={path + '/configure'}
           exact
-          render={() => <Configure user={user} pending />}
+          render={() => <Configure user={user} admin pending />}
         />
         <Route
           path={path}
           exact
-          render={() => <Redirect to={path + '/configure'} />}
+          render={() => <Redirect to={path + '/configure'} admin />}
         />
         <Redirect to="/404" />
       </Switch>
@@ -45,6 +54,7 @@ User.propTypes = {
   users: PropTypes.array,
   menu: PropTypes.object,
   title: PropTypes.string,
+  admin: PropTypes.bool,
 }
 
 export default Data(User)

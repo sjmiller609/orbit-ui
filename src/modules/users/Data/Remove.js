@@ -10,7 +10,7 @@ import { Delete as Mutate, GetData, CardError } from 'instruments'
 import { handleError } from './helpers'
 
 const Remove = Component => {
-  const Remove = ({ getData, isSelf, ...props }) => {
+  const Remove = ({ getData, isSelf, admin, ...props }) => {
     const query = {
       name: workspacesApi.Workspaces,
       type: 'workspaces',
@@ -22,10 +22,14 @@ const Remove = Component => {
     // if removing self from workspace, is different redirect and refetch
     if (isSelf) query.vars = { withUsers: false }
 
+    let redirect = '/workspaces'
+    if (admin) redirect = '/admin/users'
+    if (isSelf) redirect = '/users'
+
     return (
       <Mutate
         gql={api.RemoveUser}
-        redirect={!isSelf ? '/users' : '/workspaces'}
+        redirect={redirect}
         success="User removed from workspace."
         track="User Removed From Workspace"
         query={query}>
@@ -60,6 +64,7 @@ const Remove = Component => {
   Remove.propTypes = {
     getData: PropTypes.object,
     isSelf: PropTypes.bool,
+    admin: PropTypes.bool,
   }
 
   return GetData(Remove, { workspaceId: true })

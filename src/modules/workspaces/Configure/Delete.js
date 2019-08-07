@@ -18,8 +18,7 @@ const Delete = ({ workspace, deployments, onSubmit }) => {
         text: (
           <span>
             Are you sure you want to delete&nbsp;
-            <B>{workspace.label}</B>
-            ?
+            <B>{workspace.label}</B>?
           </span>
         ),
       }}

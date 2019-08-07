@@ -16,7 +16,8 @@ const Upgrade = ({ deployment, deploymentConfig = {}, onSubmit }) => {
           more information on this upgrade{' '}
           <Link to="https://www.astronomer.io/docs/release-notes" newTab>
             click here
-          </Link>.
+          </Link>
+          .
         </span>
       }
       buttonText="Upgrade"
@@ -28,8 +29,7 @@ const Upgrade = ({ deployment, deploymentConfig = {}, onSubmit }) => {
             Upgrading may require some services to be rebooted, and could result
             in a very small amount of downtime. Your airflow image and data will
             remain untouched. Are you sure you want to upgrade deployment&nbsp;
-            <B>{deployment.label}</B>
-            ?
+            <B>{deployment.label}</B>?
           </span>
         ),
       }}

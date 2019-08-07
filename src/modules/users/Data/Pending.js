@@ -7,10 +7,17 @@ import { Query, GetData } from 'instruments'
 
 const Data = Component => {
   const Data = ({ vars, skip, search, getData, ...otherProps }) => {
-    const vars2 = {
+    let vars2 = {
       ...vars,
       workspaceId: getData.workspaceId,
     }
+
+    if (otherProps.admin) {
+      vars2 = {
+        ...vars,
+      }
+    }
+
     return (
       <Query gql={api.Invites} vars={vars2} skip={skip} search={search}>
         {({ data: { workspaceInvites } }) => {

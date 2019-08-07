@@ -7,8 +7,13 @@ import { TableRow, Box, P, Mini, H3, ShowDate, Avatar, Tag } from 'instruments'
 import { unConstantize } from 'helpers/format'
 import { getProfile } from '../Data/helpers'
 
-const Item = ({ user, pending, className, role }) => {
+const Item = ({ user, pending, className, role, to, admin }) => {
   const profile = getProfile(user)
+
+  if (!to) {
+    to = pending ? '/pending/' : '/users/'
+    to += encodeURIComponent(profile.username)
+  }
 
   const columns = [
     <Box key="0" className={s.icon}>
@@ -22,7 +27,7 @@ const Item = ({ user, pending, className, role }) => {
       </P>
     </Box>,
     <Box key="2" align="flex-start" className={s.role}>
-      {role && <P>{unConstantize(role).replace(/ /g, '\u00A0')}</P>}
+      {!admin && role && <P>{unConstantize(role).replace(/ /g, '\u00A0')}</P>}
     </Box>,
     <Box key="3" align="flex-start" className={s.log}>
       <P className={s.subTitle}>{pending ? 'Invited' : 'Joined'}</P>
@@ -31,9 +36,6 @@ const Item = ({ user, pending, className, role }) => {
       </Mini>
     </Box>,
   ]
-
-  let to = pending ? '/pending/' : '/users/'
-  to += encodeURIComponent(profile.username)
 
   return (
     <TableRow
@@ -49,6 +51,8 @@ Item.propTypes = {
   pending: PropTypes.bool,
   className: PropTypes.string,
   role: PropTypes.string,
+  to: PropTypes.string,
+  admin: PropTypes.bool,
 }
 
 export default Item

@@ -18,7 +18,7 @@ class UserConfigure extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.user.role != this.props.user.role) {
+    if (prevProps.user != this.props.user) {
       this.updateRole(this.props)
     }
   }
@@ -30,12 +30,15 @@ class UserConfigure extends React.Component {
       return props.user.role
     }
 
-    return find(props.user.roleBindings, {
-      workspace: { id: props.getData.workspaceId },
-    }).role
+    if (props.getData.workspaceId) {
+      return find(props.user.roleBindings, {
+        workspace: { id: props.getData.workspaceId },
+      }).role
+    }
   }
 
   isInvite(user) {
+    if (user === undefined) return false
     return user.__typename === 'Invite'
   }
 
@@ -63,13 +66,18 @@ class UserConfigure extends React.Component {
       workspace => workspace && workspace.id === workspaceId
     )
     const { role } = this.state
-    const isSelf = self.user.id === user.id
 
-    const userObject = this.isInvite(user)
-      ? this.mapInviteToUser(user, workspaceId)
-      : user
+    let isSelf = false
+    let userObject = []
+    if (user) {
+      isSelf = self.user.id === user.id
+      userObject = this.isInvite(user)
+        ? this.mapInviteToUser(user, workspaceId)
+        : user
+    }
 
-    const canUpdateIAM = workspace.workspaceCapabilities.canUpdateIAM
+    let canUpdateIAM = false
+    if (workspace) canUpdateIAM = workspace.workspaceCapabilities.canUpdateIAM
 
     // Disable the selector if the user is viewing their own permissions
     const disabled = isSelf
@@ -80,7 +88,7 @@ class UserConfigure extends React.Component {
           user={user}
           data={{
             workspaceId: workspaceId,
-            email: userObject.emails[0].address,
+            email: userObject.length > 0 ? userObject.emails[0].address : null,
             role: role,
           }}
           role={role}

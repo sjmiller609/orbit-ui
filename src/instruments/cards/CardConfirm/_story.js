@@ -17,7 +17,8 @@ storiesOf('Instruments|Cards.Confirm', module)
         is <B>v0.1</B>. For more information on this upgrade{' '}
         <Link onClick={action('clicked', 'More information clicked')}>
           click here
-        </Link>.
+        </Link>
+        .
       </span>
     </CardConfirm>
   ))

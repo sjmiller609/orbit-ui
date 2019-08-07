@@ -48,6 +48,7 @@ User.propTypes = {
   menu: PropTypes.object,
   title: PropTypes.string,
   onSuccess: PropTypes.func,
+  admin: PropTypes.bool,
 }
 
 export default Data(User)

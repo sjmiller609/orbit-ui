@@ -8,7 +8,7 @@ import Update from '../Data/Update'
 const Platform = ({ form }) => {
   return (
     <CardForm
-      title="Update Platform Settings"
+      title="Update Admin Settings"
       button={{
         save: form.save,
         text: 'Update',

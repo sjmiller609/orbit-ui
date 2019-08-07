@@ -6,11 +6,15 @@ import Module from '../../app/Module'
 import { GetData } from 'instruments'
 
 class Users extends React.Component {
-  menu = {
-    nav: 'workspace',
-  }
   // state for entire module
-  state = { search: '' }
+  state = {
+    search: '',
+    menu: {
+      nav: 'workspace',
+    },
+    superuser: false,
+  }
+
   // search obj constants
   search = {
     delay: false,
@@ -20,13 +24,15 @@ class Users extends React.Component {
   }
 
   render() {
-    const { search } = this.state
+    const { search, menu } = this.state
+
     const vars = {
       workspaceId: this.props.getData.workspaceId,
       withUsers: true,
     }
+
     return (
-      <Module metaTitle="Users" menu={this.menu}>
+      <Module metaTitle="Users" menu={menu}>
         <List
           search={{
             text: search,
@@ -38,6 +44,7 @@ class Users extends React.Component {
     )
   }
 }
+
 Users.propTypes = {
   getData: PropTypes.object,
 }
