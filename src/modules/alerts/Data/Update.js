@@ -6,9 +6,13 @@ import { handleError, trimError } from './helpers'
 
 const Update = Component => {
   const Update = props => {
+    const query = {
+      name: api.Deployments,
+      type: 'deployments',
+    }
     return (
       <Mutation
-        gql={api.UpdateDeployment}
+        gql={api.UpdateAlerts}
         success="Deployment alerts updated successfully."
         track="Deployment Alerts Updated"
         errorMsg={trimError}
@@ -21,15 +25,16 @@ const Update = Component => {
               const emails = properties.alert_emails
               const variables = {
                 id,
-                payload: {
-                  properties: {
-                    alert_emails: emails ? JSON.stringify(emails) : null,
-                  },
-                },
-                sync: false,
+                alertEmails: emails ? emails : null,
               }
               mutate({
                 variables,
+                refetchQueries: [
+                  {
+                    query: query.name,
+                    variables: vars.id, // need to get deploymentId for deployments query
+                  },
+                ],
               })
             },
           }

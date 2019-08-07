@@ -76,7 +76,7 @@ class Table extends React.Component {
     const { onChange, value } = this.props
     const v2 = Array.from(value)
     v2.splice(i, 1)
-    onChange(null, v2)
+    onChange(null, v2, true)
   }
 
   add(v) {
@@ -104,6 +104,7 @@ class Table extends React.Component {
     const { value, id, title, className, Empty, FieldType } = this.props
     let count = value ? value.length - 1 : 0
     if (count === 1 && !value[0]) count = 0
+
     return (
       <div id={id} className={classnames(s.fields, className)}>
         {count > 0 ? (

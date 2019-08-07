@@ -64,6 +64,13 @@ export default {
     }
     ${deployment}
   `,
+  UpdateAlerts: gql`
+    mutation deploymentAlertsUpdate($id: Uuid!, $alertEmails: [String!]) {
+      deploymentAlertsUpdate(deploymentUuid: $id, alertEmails: $alertEmails) {
+        id: uuid
+      }
+    }
+  `,
   DeleteDeployment: gql`
     mutation deleteDeployment($id: Uuid!) {
       deleteDeployment(deploymentUuid: $id) {

@@ -11,9 +11,30 @@ const convertEmails = emails => {
 }
 
 class Alerts extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      emails: convertEmails(props.deployment.properties.alert_emails),
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.deployment.properties.alert_emails !=
+      this.props.deployment.properties.alert_emails
+    ) {
+      this.updateEmails(this.props)
+    }
+  }
+
+  updateEmails = props =>
+    this.setState({
+      emails: convertEmails(props.deployment.properties.alert_emails),
+    })
+
   render() {
     const { deployment } = this.props
-    const emails = convertEmails(deployment.properties.alert_emails)
+    const { emails } = this.state
 
     return (
       <Emails

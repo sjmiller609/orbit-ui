@@ -67,7 +67,9 @@ const Form = FormComponent => {
       const { data } = this.state
       const set = {
         submitted: false,
+        save: updateDefaults,
       }
+
       if (typeof value !== 'object') {
         set.data = {
           ...data,
@@ -114,6 +116,7 @@ const Form = FormComponent => {
     checkSave(state) {
       const { saveOnLoad } = this.props
       const save = state.save
+
       // changes made
       const equal = saveOnLoad
         ? false

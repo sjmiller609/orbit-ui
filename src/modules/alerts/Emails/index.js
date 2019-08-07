@@ -7,34 +7,39 @@ import Update from '../Data/Update'
 import Item from './Item'
 import info from '../info'
 
-const Emails = ({ form, emails }) => {
-  const field = form.field('properties.alert_emails')
-  return (
-    <CardForm
-      title="Configure Alerts"
-      button={{
-        save: form.save,
-        text: 'Save',
-      }}
-      className={s.alerts}>
-      <TableField
-        {...field}
-        title="Email"
-        formField={form.field}
-        FieldType={TextField}
-        Row={Item}
-        data={emails}
-        fieldProps={{
-          label: 'Add Email',
-          type: 'email',
-          placeholder: 'name@yourcompany.com',
-          info: info.alert_emails,
-          focus: true,
+class Emails extends React.Component {
+  render() {
+    const { form, emails } = this.props
+    const field = form.field('properties.alert_emails')
+
+    return (
+      <CardForm
+        title="Configure Alerts"
+        button={{
+          save: form.save,
+          text: 'Save',
         }}
-        getRowProps={value => ({ email: value })}
-      />
-    </CardForm>
-  )
+        disable={false}
+        className={s.alerts}>
+        <TableField
+          {...field}
+          title="Email"
+          formField={form.field}
+          FieldType={TextField}
+          Row={Item}
+          data={emails}
+          fieldProps={{
+            label: 'Add Email',
+            type: 'email',
+            placeholder: 'name@yourcompany.com',
+            info: info.alert_emails,
+            focus: true,
+          }}
+          getRowProps={value => ({ email: value })}
+        />
+      </CardForm>
+    )
+  }
 }
 
 Emails.propTypes = {

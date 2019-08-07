@@ -16,8 +16,8 @@ const CardForm = ({
   className,
   smallForm,
   id,
+  disable,
 }) => {
-  // console.log(typeof button.save === 'boolean' && !button.save)
   return (
     <Card
       id={id}
@@ -35,7 +35,9 @@ const CardForm = ({
             )}
             <Button
               disabled={
-                (typeof button.save === 'boolean' && !button.save) || false
+                (disable &&
+                  (typeof button.save === 'boolean' && !button.save)) ||
+                false
               }
               submit
               arrow="arrow_darkBg"
@@ -66,6 +68,7 @@ CardForm.propTypes = {
   button2: PropTypes.object,
   className: PropTypes.string,
   smallForm: PropTypes.bool,
+  disable: PropTypes.bool,
 }
 
 export default CardForm
