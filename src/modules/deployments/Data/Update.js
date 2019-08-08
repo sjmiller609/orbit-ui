@@ -22,8 +22,6 @@ const Update = Component => {
               const { id, config, env } = vars
               let { ...payload } = vars
 
-              console.log(vars);
-
               const variables = {
                 id,
                 payload,
@@ -37,6 +35,7 @@ const Update = Component => {
               })
             },
           }
+
           // handle api errors
           const err = handleError(error)
           if (err) newProps.error = err

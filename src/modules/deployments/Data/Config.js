@@ -12,10 +12,15 @@ const Data = Component => {
       workspaceId: getData.workspaceId,
     }
     return (
-      <Query gql={api.DeploymentConfig} vars={vars} skip={skip}>
-        {({ data: { deploymentConfig } }) => {
+      <Query
+        gql={api.DeploymentConfig}
+        vars={vars}
+        skip={skip}
+        fetchPolicy="network-only">
+        {({ data: { deploymentConfig }, refetch }) => {
           const newProps = {
             ...otherProps,
+            refetch,
             deploymentConfig,
           }
           return <Component {...newProps} />

@@ -44,8 +44,12 @@ const Form = FormComponent => {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
+      // Refetch the parent data and update the payload as needed
+      if (this.props.refetch) this.props.refetch()
+
       if (!jsonEqual(this.state, nextState)) return true
       if (!jsonEqual(this.props, nextProps)) return true
+
       return false
     }
 
@@ -223,6 +227,7 @@ const Form = FormComponent => {
     children: PropTypes.element,
     saveOnLoad: PropTypes.bool, // if true, will enable saving preloaded data
     alert: PropTypes.bool, // if true, will enable saving preloaded data
+    refetch: PropTypes.func,
   }
 
   Form.defaultProps = {

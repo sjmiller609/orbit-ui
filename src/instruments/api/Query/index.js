@@ -25,7 +25,7 @@ const Query = ({
       variables={vars}
       skip={skip}
       errorPolicy="all">
-      {({ loading, error, data, subscribeToMore }) => {
+      {({ loading, error, data, subscribeToMore, refetch }) => {
         if (loading) return <Loading /> // return this instead of updating contextUI
         if (error) {
           if (OnError) return OnError
@@ -76,7 +76,8 @@ const Query = ({
             })
           })
         }
-        const newProps = { data: data3 || data2 }
+
+        const newProps = { data: data3 || data2, refetch }
 
         if (subscribe) {
           newProps.subscribeToMore = () => {
@@ -100,6 +101,7 @@ const Query = ({
             })
           }
         }
+
         return children(newProps) || null
       }}
     </Apollo>

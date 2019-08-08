@@ -14,9 +14,11 @@ import { isTrialing } from 'helpers/trial'
 class Configure extends React.Component {
   mounted = true
   renderConfig = this.renderConfig.bind(this)
+
   state = {
     renderConfig: false,
   }
+
   // delay rendering of config for lazy loading (ux performance)
   componentWillMount() {
     this.mounted = setTimeout(
@@ -24,9 +26,11 @@ class Configure extends React.Component {
       10
     )
   }
+
   componentDidMount() {
     this.props.loaded('configure')
   }
+
   componentWillUnmount() {
     clearTimeout(this.mounted)
   }
@@ -39,6 +43,7 @@ class Configure extends React.Component {
   render() {
     const { form, deployment } = this.props
     const disabled = isTrialing(deployment.workspace)
+
     return (
       <CardForm
         title="Configure"
@@ -86,6 +91,7 @@ Configure.propTypes = {
   deployment: PropTypes.object,
   deploymentConfig: PropTypes.object,
   loaded: PropTypes.func,
+  refetch: PropTypes.func,
 }
 
 export default DeploymentConfig(Form(Configure))
