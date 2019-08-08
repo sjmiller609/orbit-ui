@@ -18,7 +18,12 @@ const Update = Component => {
           const newProps = {
             ...props,
             onSubmit: vars => {
-              const { id, config, env, ...payload } = vars
+              const { id, config, env } = vars
+              let { ...payload } = vars
+
+              // Don't send the `images` field in the payload
+              if (payload.config && payload.config.images)
+                delete payload.config.images
 
               const variables = {
                 id,
