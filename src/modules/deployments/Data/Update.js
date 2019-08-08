@@ -1,7 +1,6 @@
 'use strict'
 import React from 'react'
 import api from './api'
-import { reduce, isEqual } from 'lodash'
 
 import { Mutation, CardError } from 'instruments'
 import { handleError, trimError } from './helpers'
