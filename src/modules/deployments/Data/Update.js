@@ -1,7 +1,6 @@
 'use strict'
 import React from 'react'
 import api from './api'
-import { reduce, isEqual } from 'lodash'
 
 import { Mutation, CardError } from 'instruments'
 import { handleError, trimError } from './helpers'
@@ -22,26 +21,9 @@ const Update = Component => {
               const { id, config, env } = vars
               let { ...payload } = vars
 
-              // Find and return diff between previous config and new config
-              const diff = reduce(
-                payload,
-                (result, value, key) => {
-                  return isEqual(value, props.deployment[key]) // eslint-disable-line
-                    ? result
-                    : result.concat({ [key]: value })
-                },
-                []
-              )
-
-              // Filter out reiterated payload values (not to be used in "payload")
-              const newPayload = diff.filter(d => {
-                for (let key in d) {
-                  if (key != 'id') return d
-                }
-              })
-
-              // Update the payload w/ only the values the user is changing
-              payload = newPayload[0]
+              // Don't send the `images` field in the payload
+              if (payload.config && payload.config.images)
+                delete payload.config.images
 
               const variables = {
                 id,
