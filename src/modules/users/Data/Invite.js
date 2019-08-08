@@ -28,7 +28,7 @@ const Invite = Component => {
 
     return (
       <Mutation
-        gql={props.admin ? api.InviteUserToPlatform : api.InviteUser}
+        gql={props.admin ? api.InviteUser : api.InviteWorkspaceUser}
         back
         success="Your invitation has been sent."
         track={

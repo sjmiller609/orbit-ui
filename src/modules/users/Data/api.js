@@ -18,8 +18,8 @@ export default {
     }
     ${invite}
   `,
-  InviteUser: gql`
-    mutation inviteUser($email: String!, $workspaceId: Uuid!) {
+  InviteWorkspaceUser: gql`
+    mutation workspaceAddUser($email: String!, $workspaceId: Uuid!) {
       workspaceAddUser(workspaceUuid: $workspaceId, email: $email) {
         ...workspace
         users {
@@ -37,6 +37,11 @@ export default {
     ${user}
     ${group}
     ${invite}
+  `,
+  InviteUser: gql`
+    mutation inviteUser($email: String!) {
+      inviteUser(email: $email)
+    }
   `,
   RemoveUser: gql`
     mutation removeUser($id: Uuid!, $workspaceId: Uuid!) {

@@ -43,6 +43,7 @@ Flex.propTypes = {
     PropTypes.array,
     PropTypes.element,
     PropTypes.string,
+    PropTypes.any,
   ]),
   className: PropTypes.string,
   passRef: PropTypes.func,
