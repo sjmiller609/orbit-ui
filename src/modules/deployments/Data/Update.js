@@ -12,8 +12,7 @@ const Update = Component => {
         success="Deployment updated successfully."
         track="Deployment Updated"
         voidError
-        errorMsg={trimError}
-        back>
+        errorMsg={trimError}>
         {({ mutate, error }) => {
           const newProps = {
             ...props,
