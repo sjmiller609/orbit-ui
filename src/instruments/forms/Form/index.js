@@ -210,7 +210,6 @@ const Form = FormComponent => {
       return (
         <form onSubmit={this.onSubmit} className={s.form}>
           <FormComponent {...newProps} />
-          {alert && <UnsavedChangesAlert alert={save} />}
         </form>
       )
     }
