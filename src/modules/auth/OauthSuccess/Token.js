@@ -11,6 +11,10 @@ class Token extends React.Component {
   copied = this.copied.bind(this)
   token = this.props.token || auth.get().token
 
+  componentDidMount() {
+    localStorage.setItem('token', JSON.stringify({ token: this.token }))
+  }
+
   copied() {
     copy(this.token)
     this.props.setUI.snackbar('Token copied to clipboard')
