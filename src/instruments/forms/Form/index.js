@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 import { jsonEqual } from 'helpers/compare'
 import { unpack, pack, packChild, removeChild } from './helpers'
-import UnsavedChangesAlert from '../UnsavedChangesAlert'
 import s from './styles.scss'
 
 const errorField = name => '__error_' + name
