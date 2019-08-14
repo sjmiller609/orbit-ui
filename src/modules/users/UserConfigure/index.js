@@ -88,7 +88,7 @@ class UserConfigure extends React.Component {
           user={user}
           data={{
             workspaceId: workspaceId,
-            email: userObject.length > 0 ? userObject.emails[0].address : null,
+            email: userObject.emails[0].address,
             role: role,
           }}
           role={role}
