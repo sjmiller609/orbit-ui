@@ -30,7 +30,7 @@ const Delete = ({
 
   if (
     workspace.users.length === 1 ||
-    users.length === 1 ||
+    (users != undefined && users.length === 1) ||
     canUpdateIam === false
   ) {
     noDelete = true
