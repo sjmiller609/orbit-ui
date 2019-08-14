@@ -11,23 +11,44 @@ class Configure extends React.Component {
   render() {
     const { form, title, saveText, deploymentId, role } = this.props
 
-    const options = [
-      {
-        icon: 'viewer',
-        text: 'Viewer',
-        value: 'WORKSPACE_VIEWER',
-      },
-      {
-        icon: 'editor',
-        text: 'Editor',
-        value: 'WORKSPACE_EDITOR',
-      },
-      {
-        icon: 'admin',
-        text: 'Admin',
-        value: 'WORKSPACE_ADMIN',
-      },
-    ]
+    const options = {
+      deployment: [
+        {
+          icon: 'viewer',
+          text: 'Viewer',
+          value: 'DEPLOYMENT_VIEWER',
+        },
+        {
+          icon: 'editor',
+          text: 'Editor',
+          value: 'DEPLOYMENT_EDITOR',
+        },
+        {
+          icon: 'admin',
+          text: 'Admin',
+          value: 'DEPLOYMENT_ADMIN',
+        },
+      ],
+      workspace: [
+        {
+          icon: 'viewer',
+          text: 'Viewer',
+          value: 'WORKSPACE_VIEWER',
+        },
+        {
+          icon: 'editor',
+          text: 'Editor',
+          value: 'WORKSPACE_EDITOR',
+        },
+        {
+          icon: 'admin',
+          text: 'Admin',
+          value: 'WORKSPACE_ADMIN',
+        },
+      ],
+    }
+
+    const kind = deploymentId ? 'deployment' : 'workspace'
 
     return (
       <CardForm
@@ -42,7 +63,7 @@ class Configure extends React.Component {
           label="Name"
           required
           focus
-          info={info.name[deploymentId ? 'deployment' : 'workspace']}
+          info={info.name[kind]}
           {...form.field('label')}
         />
         <TextField
@@ -55,7 +76,7 @@ class Configure extends React.Component {
           {...form.field('role')}
           className={s.selectors}
           Component={Selector}
-          options={options}
+          options={options[kind]}
           required
           defaultValue={role}
           info={info.role}
