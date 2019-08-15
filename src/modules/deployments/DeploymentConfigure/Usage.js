@@ -13,12 +13,6 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
   if (!executor || !deploymentConfig.executors) return null
   let slices = []
 
-  // Set default extra per executor config
-  const selectedExecutor = deploymentConfig.executors[executor]
-  if (selectedExecutor.name === 'KubernetesExecutor') {
-    extra = selectedExecutor.defaultExtraAu
-  }
-
   const au = deploymentConfig.executors[executor].components.reduce(
     (au1, name) => {
       let resources = {}
@@ -64,6 +58,7 @@ const Usage = ({ extra = 0, config, deploymentConfig, executor }) => {
         slices={slices}
         total={totalAU}
         part={au}
+        extra={extra}
         convert={v => convertAU(v, deploymentConfig.astroUnit)}
         className={s.formElement}
       />

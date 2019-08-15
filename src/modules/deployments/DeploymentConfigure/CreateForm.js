@@ -23,6 +23,10 @@ class CreateForm extends React.Component {
 
   renderConfig() {
     const { form, deploymentConfig, deployments } = this.props
+    const selectedExecutor =
+      form.field('config.executor').value || 'CeleryExecutor'
+    const defaultExtraAu =
+      deploymentConfig.executors[selectedExecutor].defaultExtraAu || 0
     const disabled = deployments[0]
       ? isTrialing(deployments[0].workspace)
       : null
@@ -38,6 +42,7 @@ class CreateForm extends React.Component {
         </FormSection>
         <FormSection id="resources" title="Resources" text={info.resourcesNew}>
           <Usage
+            extra={defaultExtraAu}
             deploymentConfig={deploymentConfig}
             executor={form.field('config.executor').value}
           />

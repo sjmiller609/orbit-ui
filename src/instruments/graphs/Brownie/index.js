@@ -6,7 +6,7 @@ import s from './styles.scss'
 import { Row, B, FormLabel } from 'instruments'
 import { colorScale } from 'helpers/colors'
 
-const Brownie = ({ slices, part, total, title, convert, className }) => {
+const Brownie = ({ slices, part, total, extra, title, convert, className }) => {
   const colors = colorScale(slices.length)
 
   return (
@@ -44,7 +44,9 @@ const Brownie = ({ slices, part, total, title, convert, className }) => {
               }}>
               <label>
                 Remaining
-                <B>{convert(total - part)}</B>
+                <B>
+                  {extra}AU ({convert(total - part)})
+                </B>
               </label>
             </div>
           )}
@@ -61,6 +63,7 @@ Brownie.propTypes = {
   convert: PropTypes.func,
   total: PropTypes.number,
   part: PropTypes.number,
+  extra: PropTypes.number,
 }
 
 Brownie.defaultProps = {
