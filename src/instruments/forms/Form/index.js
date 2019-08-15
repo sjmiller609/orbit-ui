@@ -141,8 +141,7 @@ const Form = FormComponent => {
     onSubmit(e) {
       e.preventDefault()
       const { saveOnLoad, onSubmit } = this.props
-      const { save, data } = this.state
-      if (!save) return
+      const { data } = this.state
       if (!saveOnLoad)
         this.setState({ save: false, submitted: true, scrolled: false })
 
