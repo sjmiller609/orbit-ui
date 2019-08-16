@@ -35,26 +35,20 @@ class ContainerList extends React.Component {
     )
   }
 
-  stripName = string =>
-    string
-      .split(/-/g)
-      .slice(3)
-      .join('-')
-
   render() {
     const { data } = this.state
 
     if (data.length > 0) {
       data.sort((a, b) => {
-        let textA = this.stripName(a.metric.container).toUpperCase()
-        let textB = this.stripName(b.metric.container).toUpperCase()
+        let textA = a.metric.container.toUpperCase()
+        let textB = b.metric.container.toUpperCase()
         return textA < textB ? -1 : textA > textB ? 1 : 0
       })
       return (
         <div className={s.containerListContainer}>
           <div className={s.containerListHeader}>
-            <div>Container</div>
-            <div style={{ flex: '0 0 45%' }}>Pod</div>
+            <div>Pod</div>
+            <div style={{ flex: '0 0 45%' }}>Container</div>
             <div style={{ textAlign: 'center', flex: '0 0 10%' }}>Status</div>
           </div>
           <div className={s.containerListItems}>
@@ -62,13 +56,8 @@ class ContainerList extends React.Component {
               <div
                 key={`${d.metric.container}${i}`}
                 className={s.containerListItem}>
-                <div>{this.stripName(d.metric.container)}</div>
-                <div style={{ flex: '0 0 45%' }}>
-                  {d.metric.pod != undefined &&
-                    `${d.metric.pod.split(/-/g)[3]}-${
-                      d.metric.pod.split(/-/g)[4]
-                    }-${d.metric.pod.split(/-/g)[5]}`}{' '}
-                </div>
+                <div style={{ flex: '0 0 45%' }}>{d.metric.pod}</div>
+                <div>{d.metric.container}</div>
                 <div style={{ textAlign: 'center', flex: '0 0 10%' }}>
                   {this.formatBool(d.value[1])}
                 </div>
