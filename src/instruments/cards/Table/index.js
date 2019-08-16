@@ -39,6 +39,7 @@ const Table = ({
   )
 
   // If empty
+  /* istanbul ignore next */
   if (Empty && (!search || !search.text) && (!children || !children.length)) {
     return (
       <Card className={classnames(s.table, s.empty, className)}>
@@ -48,8 +49,11 @@ const Table = ({
   }
 
   // If not empty
+  /* istanbul ignore next */
   let count = Array.isArray(children) ? children.length : 1
+  /* istanbul ignore next */
   if (!children) count = 0
+  /* istanbul ignore next */
   return (
     <Card
       className={classnames(s.table, count === 1 && s.one, className)}

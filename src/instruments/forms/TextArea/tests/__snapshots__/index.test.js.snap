@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextArea renders correctly 1`] = `
+<Field
+  className="textClassString"
+  disabled={false}
+  error={Symbol(react.fragment)}
+  fieldId="testTextArea"
+  id="1234"
+  label={Symbol(react.fragment)}
+  name="test"
+  onBlur={[Function]}
+  onChange={[Function]}
+  placeholder="Test"
+  required={true}
+  setRef={[Function]}
+  title="Test"
+  updateErrors={[Function]}
+  validate={[Function]}
+  value="test"
+>
+  <TextArea
+    className="field required textClassString"
+    disabled={false}
+    error={null}
+    fieldId="testTextArea"
+    id="1234"
+    label={
+      <FormLabel
+        id="1234"
+        info={undefined}
+      >
+        Symbol(react.fragment)
+      </FormLabel>
+    }
+    name="test"
+    onBlur={null}
+    onChange={[Function]}
+    placeholder="Test"
+    required={true}
+    setRef={[Function]}
+    setShowError={[Function]}
+    showError={false}
+    title="Test"
+    updateErrors={[Function]}
+    validate={[Function]}
+    value="test"
+  >
+    <div
+      className="field field required textClassString"
+      id="testTextArea"
+    >
+      <FormLabel
+        id="1234"
+      >
+        <label
+          className="label"
+          htmlFor="1234"
+        >
+          <Info />
+        </label>
+      </FormLabel>
+      <textarea
+        disabled={false}
+        id="1234"
+        name="test"
+        onBlur={null}
+        onChange={[Function]}
+        placeholder="Test"
+        required={true}
+        title="Test"
+        value="test"
+      />
+    </div>
+  </TextArea>
+</Field>
+`;

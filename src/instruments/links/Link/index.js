@@ -78,6 +78,7 @@ Link.propTypes = {
   activeClassName: PropTypes.string,
   arrow: PropTypes.string,
   backArrow: PropTypes.string,
+  target: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 }
 
 export default Link

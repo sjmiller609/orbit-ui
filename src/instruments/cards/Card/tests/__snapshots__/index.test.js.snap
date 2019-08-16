@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card card checks for footer 1`] = `
+<setContext
+  className="testCardClass"
+  header="Test"
+  id="123"
+>
+  <Card
+    className="testCardClass"
+    header="Test"
+    id="123"
+    setUI={
+      Object {
+        "dialog": null,
+      }
+    }
+  >
+    <Box
+      className="card testCardClass"
+      id="123"
+      justify="flex-start"
+    >
+      <Flex
+        className="card testCardClass"
+        flow="box"
+        id="123"
+        justify="flex-start"
+      >
+        <div
+          className="flex box flex-start card testCardClass"
+          id="123"
+        >
+          <header>
+            <Box
+              className="title"
+            >
+              <Flex
+                className="title"
+                flow="box"
+              >
+                <div
+                  className="flex box undefined title"
+                >
+                  <H5>
+                    <h5
+                      className="h5"
+                    >
+                      Test
+                    </h5>
+                  </H5>
+                </div>
+              </Flex>
+            </Box>
+          </header>
+          <main
+            className="full"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </main>
+        </div>
+      </Flex>
+    </Box>
+  </Card>
+</setContext>
+`;
+
+exports[`Card card checks for header 1`] = `
+<setContext
+  className="testCardClass"
+  footer={
+    <Link>
+      Test
+    </Link>
+  }
+  id="123"
+>
+  <Card
+    className="testCardClass"
+    footer={
+      <Link>
+        Test
+      </Link>
+    }
+    id="123"
+    setUI={
+      Object {
+        "dialog": null,
+      }
+    }
+  >
+    <Box
+      className="card testCardClass"
+      id="123"
+      justify="space-between"
+    >
+      <Flex
+        className="card testCardClass"
+        flow="box"
+        id="123"
+        justify="space-between"
+      >
+        <div
+          className="flex box space-between card testCardClass"
+          id="123"
+        >
+          <main
+            className="full"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </main>
+          <footer>
+            <Link>
+              <A
+                className="link"
+              >
+                <a
+                  className="link"
+                >
+                  Test
+                </a>
+              </A>
+            </Link>
+          </footer>
+        </div>
+      </Flex>
+    </Box>
+  </Card>
+</setContext>
+`;
+
+exports[`Card should render correctly 1`] = `
+<setContext
+  className="testCardClass"
+  footer={
+    <Link>
+      Test
+    </Link>
+  }
+  header="Test"
+  id="123"
+>
+  <Card
+    className="testCardClass"
+    footer={
+      <Link>
+        Test
+      </Link>
+    }
+    header="Test"
+    id="123"
+    setUI={
+      Object {
+        "dialog": null,
+      }
+    }
+  >
+    <Box
+      className="card testCardClass"
+      id="123"
+      justify="space-between"
+    >
+      <Flex
+        className="card testCardClass"
+        flow="box"
+        id="123"
+        justify="space-between"
+      >
+        <div
+          className="flex box space-between card testCardClass"
+          id="123"
+        >
+          <header>
+            <Box
+              className="title"
+            >
+              <Flex
+                className="title"
+                flow="box"
+              >
+                <div
+                  className="flex box undefined title"
+                >
+                  <H5>
+                    <h5
+                      className="h5"
+                    >
+                      Test
+                    </h5>
+                  </H5>
+                </div>
+              </Flex>
+            </Box>
+          </header>
+          <main
+            className="full"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </main>
+          <footer>
+            <Link>
+              <A
+                className="link"
+              >
+                <a
+                  className="link"
+                >
+                  Test
+                </a>
+              </A>
+            </Link>
+          </footer>
+        </div>
+      </Flex>
+    </Box>
+  </Card>
+</setContext>
+`;

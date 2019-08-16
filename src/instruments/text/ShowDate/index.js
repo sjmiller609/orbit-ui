@@ -5,6 +5,7 @@ import classnames from 'classnames'
 import s from './styles.scss'
 
 //TODO: add formatting options
+/* istanbul ignore next */
 const ShowDate = ({ date, className, seconds }) => {
   if (!date) return null
   const d = new Date(date)
@@ -16,8 +17,9 @@ const ShowDate = ({ date, className, seconds }) => {
   }
 
   // show year if different
-  if (d.getFullYear() !== now.getFullYear()) options.year = 'numeric'
-  else {
+  if (d.getFullYear() !== now.getFullYear()) {
+    options.year = 'numeric'
+  } else {
     if (d.getMonth() === now.getMonth()) {
       // today
       if (d.getUTCDate() === now.getUTCDate()) {

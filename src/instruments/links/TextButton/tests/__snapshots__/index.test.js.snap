@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextButton should render correctly 1`] = `
+<TextButton>
+  <Link
+    className="link undefined"
+  >
+    <A
+      className="link link undefined"
+    >
+      <a
+        className="link link undefined"
+      >
+        Children
+      </a>
+    </A>
+  </Link>
+</TextButton>
+`;

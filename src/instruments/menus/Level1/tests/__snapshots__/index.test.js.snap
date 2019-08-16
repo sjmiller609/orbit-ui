@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Level1 should render correctly 1`] = `
+<Dropdown
+  disable={false}
+  selector={
+    <H2
+      className="menu active testClassString"
+    >
+      <Row>
+        <span
+          className="text"
+        >
+          Workspace Label
+        </span>
+        <Icon
+          className="arrow"
+          icon="arrow"
+        />
+      </Row>
+    </H2>
+  }
+>
+  <MenuList>
+    <hr
+      className="addNew"
+    />
+    <Item
+      exact={true}
+      key="new"
+      to="/workspaces/new"
+    >
+      New Workspace
+    </Item>
+  </MenuList>
+</Dropdown>
+`;

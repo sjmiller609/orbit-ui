@@ -1,0 +1,690 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardMenu should handle scroll disabled 1`] = `
+<CardMenu
+  className="testClassString"
+  id="1234"
+  menu={Array []}
+  menuList={
+    Object {
+      "button": Object {
+        "backArrow": "arrow",
+        "style": "blue",
+        "text": "Back",
+        "to": "/",
+      },
+    }
+  }
+  title="Test"
+>
+  &lt;p&gt;This is a test&lt;/p&gt;
+</CardMenu>
+`;
+
+exports[`CardMenu should handle sticky 1`] = `
+<CardMenu
+  className="testClassString"
+  id="1234"
+  menu={
+    Array [
+      Object {
+        "id": "apiKey",
+        "text": "API Key",
+      },
+      Object {
+        "id": "configure",
+        "text": "Configure",
+      },
+      Object {
+        "id": "delete",
+        "newForm": true,
+        "text": "Delete",
+      },
+    ]
+  }
+  menuList={
+    Object {
+      "button": Object {
+        "backArrow": "arrow",
+        "style": "blue",
+        "text": "Back",
+        "to": "/",
+      },
+    }
+  }
+  title="Test"
+>
+  <Row
+    align="flex-start"
+    className="row testClassString"
+  >
+    <Flex
+      align="flex-start"
+      className="row testClassString"
+      flow="row"
+    >
+      <div
+        className="flex row undefined align-flex-start row testClassString"
+      >
+        <Menu
+          active="apiKey"
+          className="sticky"
+          id="1234"
+          menu={
+            Array [
+              Object {
+                "id": "apiKey",
+                "text": "API Key",
+              },
+              Object {
+                "id": "configure",
+                "text": "Configure",
+              },
+              Object {
+                "id": "delete",
+                "newForm": true,
+                "text": "Delete",
+              },
+            ]
+          }
+          menuList={
+            Object {
+              "button": Object {
+                "backArrow": "arrow",
+                "style": "blue",
+                "text": "Back",
+                "to": "/",
+              },
+            }
+          }
+          scrollTo={[Function]}
+          title="Test"
+        >
+          <Card
+            className="menu sticky"
+            id="1234"
+            title="Test"
+          >
+            <Box
+              className="card menu sticky"
+              id="1234"
+              justify="flex-start"
+            >
+              <Flex
+                className="card menu sticky"
+                flow="box"
+                id="1234"
+                justify="flex-start"
+              >
+                <div
+                  className="flex box flex-start card menu sticky"
+                  id="1234"
+                >
+                  <main
+                    className="full"
+                  >
+                    <MenuList
+                      button={
+                        Object {
+                          "backArrow": "arrow",
+                          "style": "blue",
+                          "text": "Back",
+                          "to": "/",
+                        }
+                      }
+                    >
+                      <ul
+                        className="list"
+                      >
+                        <Item
+                          active={true}
+                          exact={true}
+                          onClick={[Function]}
+                        >
+                          <Link
+                            activeClassName="active"
+                            className="item active"
+                            exact={true}
+                            onClick={[Function]}
+                            title="API Key"
+                          >
+                            <A
+                              activeClassName="active"
+                              className="link item active"
+                              exact={true}
+                              onClick={[Function]}
+                              title="API Key"
+                            >
+                              <a
+                                className="link item active"
+                                onClick={[Function]}
+                                title="API Key"
+                              >
+                                API Key
+                              </a>
+                            </A>
+                          </Link>
+                        </Item>
+                        <Item
+                          active={false}
+                          exact={true}
+                          onClick={[Function]}
+                        >
+                          <Link
+                            activeClassName="active"
+                            className="item"
+                            exact={true}
+                            onClick={[Function]}
+                            title="Configure"
+                          >
+                            <A
+                              activeClassName="active"
+                              className="link item"
+                              exact={true}
+                              onClick={[Function]}
+                              title="Configure"
+                            >
+                              <a
+                                className="link item"
+                                onClick={[Function]}
+                                title="Configure"
+                              >
+                                Configure
+                              </a>
+                            </A>
+                          </Link>
+                        </Item>
+                        <div
+                          className="border"
+                        />
+                        <Item
+                          active={false}
+                          exact={true}
+                          onClick={[Function]}
+                        >
+                          <Link
+                            activeClassName="active"
+                            className="item"
+                            exact={true}
+                            onClick={[Function]}
+                            title="Delete"
+                          >
+                            <A
+                              activeClassName="active"
+                              className="link item"
+                              exact={true}
+                              onClick={[Function]}
+                              title="Delete"
+                            >
+                              <a
+                                className="link item"
+                                onClick={[Function]}
+                                title="Delete"
+                              >
+                                Delete
+                              </a>
+                            </A>
+                          </Link>
+                        </Item>
+                        <TextButton
+                          backArrow="arrow"
+                          className="button"
+                          style="blue"
+                          text="Back"
+                          to="/"
+                        >
+                          <Link
+                            backArrow="arrow"
+                            className="link blue button"
+                            text="Back"
+                            to="/"
+                          >
+                            <Link
+                              className="link link blue button"
+                              replace={false}
+                              text="Back"
+                              to="/"
+                            >
+                              <a
+                                className="link link blue button"
+                                href="/"
+                                onClick={[Function]}
+                                text="Back"
+                              >
+                                <Icon
+                                  className="backArrow"
+                                  icon="arrow"
+                                >
+                                  <Imported
+                                    className="backArrow"
+                                  >
+                                    <ReactImportedComponent
+                                      className="backArrow"
+                                      loadable={
+                                        Object {
+                                          "done": true,
+                                          "importFunction": [Function],
+                                          "load": [Function],
+                                          "mark": Array [],
+                                          "ok": true,
+                                          "payload": Object {
+                                            "process": [Function],
+                                          },
+                                          "promise": Promise {},
+                                          "reset": [Function],
+                                        }
+                                      }
+                                      render={[Function]}
+                                    >
+                                      <UnconnectedReactImportedComponent
+                                        async={false}
+                                        className="backArrow"
+                                        exportPicker={[Function]}
+                                        loadable={
+                                          Object {
+                                            "done": true,
+                                            "importFunction": [Function],
+                                            "load": [Function],
+                                            "mark": Array [],
+                                            "ok": true,
+                                            "payload": Object {
+                                              "process": [Function],
+                                            },
+                                            "promise": Promise {},
+                                            "reset": [Function],
+                                          }
+                                        }
+                                        render={[Function]}
+                                        streamId={0}
+                                      >
+                                        <img
+                                          className="backArrow"
+                                          src={
+                                            Object {
+                                              "process": [Function],
+                                            }
+                                          }
+                                        />
+                                      </UnconnectedReactImportedComponent>
+                                    </ReactImportedComponent>
+                                  </Imported>
+                                </Icon>
+                                Back
+                              </a>
+                            </Link>
+                          </Link>
+                        </TextButton>
+                      </ul>
+                    </MenuList>
+                  </main>
+                </div>
+              </Flex>
+            </Box>
+          </Card>
+        </Menu>
+        <div
+          className="cards"
+        >
+          &lt;p&gt;This is a test&lt;/p&gt;
+        </div>
+      </div>
+    </Flex>
+  </Row>
+</CardMenu>
+`;
+
+exports[`CardMenu should render correctly 1`] = `
+<CardMenu
+  className="testClassString"
+  id="1234"
+  menu={
+    Array [
+      Object {
+        "id": "apiKey",
+        "text": "API Key",
+      },
+      Object {
+        "id": "configure",
+        "text": "Configure",
+      },
+      Object {
+        "id": "delete",
+        "newForm": true,
+        "text": "Delete",
+      },
+    ]
+  }
+  menuList={
+    Object {
+      "button": Object {
+        "backArrow": "arrow",
+        "style": "blue",
+        "text": "Back",
+        "to": "/",
+      },
+    }
+  }
+  title="Test"
+>
+  <Row
+    align="flex-start"
+    className="row testClassString"
+  >
+    <Flex
+      align="flex-start"
+      className="row testClassString"
+      flow="row"
+    >
+      <div
+        className="flex row undefined align-flex-start row testClassString"
+      >
+        <Menu
+          active="apiKey"
+          className=""
+          id="1234"
+          menu={
+            Array [
+              Object {
+                "id": "apiKey",
+                "text": "API Key",
+              },
+              Object {
+                "id": "configure",
+                "text": "Configure",
+              },
+              Object {
+                "id": "delete",
+                "newForm": true,
+                "text": "Delete",
+              },
+            ]
+          }
+          menuList={
+            Object {
+              "button": Object {
+                "backArrow": "arrow",
+                "style": "blue",
+                "text": "Back",
+                "to": "/",
+              },
+            }
+          }
+          scrollTo={[Function]}
+          title="Test"
+        >
+          <Card
+            className="menu"
+            id="1234"
+            title="Test"
+          >
+            <Box
+              className="card menu"
+              id="1234"
+              justify="flex-start"
+            >
+              <Flex
+                className="card menu"
+                flow="box"
+                id="1234"
+                justify="flex-start"
+              >
+                <div
+                  className="flex box flex-start card menu"
+                  id="1234"
+                >
+                  <main
+                    className="full"
+                  >
+                    <MenuList
+                      button={
+                        Object {
+                          "backArrow": "arrow",
+                          "style": "blue",
+                          "text": "Back",
+                          "to": "/",
+                        }
+                      }
+                    >
+                      <ul
+                        className="list"
+                      >
+                        <Item
+                          active={true}
+                          exact={true}
+                          onClick={[Function]}
+                        >
+                          <Link
+                            activeClassName="active"
+                            className="item active"
+                            exact={true}
+                            onClick={[Function]}
+                            title="API Key"
+                          >
+                            <A
+                              activeClassName="active"
+                              className="link item active"
+                              exact={true}
+                              onClick={[Function]}
+                              title="API Key"
+                            >
+                              <a
+                                className="link item active"
+                                onClick={[Function]}
+                                title="API Key"
+                              >
+                                API Key
+                              </a>
+                            </A>
+                          </Link>
+                        </Item>
+                        <Item
+                          active={false}
+                          exact={true}
+                          onClick={[Function]}
+                        >
+                          <Link
+                            activeClassName="active"
+                            className="item"
+                            exact={true}
+                            onClick={[Function]}
+                            title="Configure"
+                          >
+                            <A
+                              activeClassName="active"
+                              className="link item"
+                              exact={true}
+                              onClick={[Function]}
+                              title="Configure"
+                            >
+                              <a
+                                className="link item"
+                                onClick={[Function]}
+                                title="Configure"
+                              >
+                                Configure
+                              </a>
+                            </A>
+                          </Link>
+                        </Item>
+                        <div
+                          className="border"
+                        />
+                        <Item
+                          active={false}
+                          exact={true}
+                          onClick={[Function]}
+                        >
+                          <Link
+                            activeClassName="active"
+                            className="item"
+                            exact={true}
+                            onClick={[Function]}
+                            title="Delete"
+                          >
+                            <A
+                              activeClassName="active"
+                              className="link item"
+                              exact={true}
+                              onClick={[Function]}
+                              title="Delete"
+                            >
+                              <a
+                                className="link item"
+                                onClick={[Function]}
+                                title="Delete"
+                              >
+                                Delete
+                              </a>
+                            </A>
+                          </Link>
+                        </Item>
+                        <TextButton
+                          backArrow="arrow"
+                          className="button"
+                          style="blue"
+                          text="Back"
+                          to="/"
+                        >
+                          <Link
+                            backArrow="arrow"
+                            className="link blue button"
+                            text="Back"
+                            to="/"
+                          >
+                            <Link
+                              className="link link blue button"
+                              replace={false}
+                              text="Back"
+                              to="/"
+                            >
+                              <a
+                                className="link link blue button"
+                                href="/"
+                                onClick={[Function]}
+                                text="Back"
+                              >
+                                <Icon
+                                  className="backArrow"
+                                  icon="arrow"
+                                >
+                                  <Imported
+                                    className="backArrow"
+                                  >
+                                    <ReactImportedComponent
+                                      className="backArrow"
+                                      loadable={
+                                        Object {
+                                          "done": true,
+                                          "importFunction": [Function],
+                                          "load": [Function],
+                                          "mark": Array [],
+                                          "ok": true,
+                                          "payload": Object {
+                                            "process": [Function],
+                                          },
+                                          "promise": Promise {},
+                                          "reset": [Function],
+                                        }
+                                      }
+                                      render={[Function]}
+                                    >
+                                      <UnconnectedReactImportedComponent
+                                        async={false}
+                                        className="backArrow"
+                                        exportPicker={[Function]}
+                                        loadable={
+                                          Object {
+                                            "done": true,
+                                            "importFunction": [Function],
+                                            "load": [Function],
+                                            "mark": Array [],
+                                            "ok": true,
+                                            "payload": Object {
+                                              "process": [Function],
+                                            },
+                                            "promise": Promise {},
+                                            "reset": [Function],
+                                          }
+                                        }
+                                        render={[Function]}
+                                        streamId={0}
+                                      >
+                                        <img
+                                          className="backArrow"
+                                          src={
+                                            Object {
+                                              "process": [Function],
+                                            }
+                                          }
+                                        />
+                                      </UnconnectedReactImportedComponent>
+                                    </ReactImportedComponent>
+                                  </Imported>
+                                </Icon>
+                                Back
+                              </a>
+                            </Link>
+                          </Link>
+                        </TextButton>
+                      </ul>
+                    </MenuList>
+                  </main>
+                </div>
+              </Flex>
+            </Box>
+          </Card>
+        </Menu>
+        <div
+          className="cards"
+        >
+          &lt;p&gt;This is a test&lt;/p&gt;
+        </div>
+      </div>
+    </Flex>
+  </Row>
+</CardMenu>
+`;
+
+exports[`CardMenu should render correctly 2`] = `
+<Card
+  className="menu testClassString"
+  id="123"
+  title="Test"
+>
+  <MenuList
+    button={
+      Object {
+        "backArrow": "arrow",
+        "style": "blue",
+        "text": "Back",
+        "to": "/",
+      }
+    }
+  >
+    <Item
+      active={true}
+      exact={true}
+      onClick={[Function]}
+    >
+      API Key
+    </Item>
+    <Item
+      active={false}
+      exact={true}
+      onClick={[Function]}
+    >
+      Configure
+    </Item>
+    <div
+      className="border"
+    />
+    <Item
+      active={false}
+      exact={true}
+      onClick={[Function]}
+    >
+      Delete
+    </Item>
+  </MenuList>
+</Card>
+`;

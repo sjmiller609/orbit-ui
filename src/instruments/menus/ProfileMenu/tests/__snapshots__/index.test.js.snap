@@ -1,0 +1,509 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileMenu should render admin link 1`] = `
+<ProfileMenu
+  platform={true}
+>
+  <Dropdown
+    className="menu"
+    right={true}
+    selector={
+      <Avatar
+        className="profile"
+        title={undefined}
+        url={undefined}
+      />
+    }
+  >
+    <div
+      className="dropdown right out menu"
+    >
+      <Backdrop
+        close={[Function]}
+        show={false}
+      />
+      <Link
+        className="selector"
+        onClick={[Function]}
+      >
+        <A
+          className="link selector"
+          onClick={[Function]}
+        >
+          <a
+            className="link selector"
+            onClick={[Function]}
+          >
+            <Avatar
+              className="profile"
+            >
+              <Box
+                className="avatar profile"
+              >
+                <Flex
+                  className="avatar profile"
+                  flow="box"
+                >
+                  <div
+                    className="flex box undefined avatar profile"
+                  >
+                    <Icon
+                      icon="astro_helmet"
+                    >
+                      <Imported>
+                        <ReactImportedComponent
+                          loadable={
+                            Object {
+                              "done": true,
+                              "importFunction": [Function],
+                              "load": [Function],
+                              "mark": Array [],
+                              "ok": true,
+                              "payload": Object {
+                                "process": [Function],
+                              },
+                              "promise": Promise {},
+                              "reset": [Function],
+                            }
+                          }
+                          render={[Function]}
+                        >
+                          <UnconnectedReactImportedComponent
+                            async={false}
+                            exportPicker={[Function]}
+                            loadable={
+                              Object {
+                                "done": true,
+                                "importFunction": [Function],
+                                "load": [Function],
+                                "mark": Array [],
+                                "ok": true,
+                                "payload": Object {
+                                  "process": [Function],
+                                },
+                                "promise": Promise {},
+                                "reset": [Function],
+                              }
+                            }
+                            render={[Function]}
+                            streamId={0}
+                          >
+                            <img
+                              src={
+                                Object {
+                                  "process": [Function],
+                                }
+                              }
+                            />
+                          </UnconnectedReactImportedComponent>
+                        </ReactImportedComponent>
+                      </Imported>
+                    </Icon>
+                  </div>
+                </Flex>
+              </Box>
+            </Avatar>
+          </a>
+        </A>
+      </Link>
+      <div
+        className="menuWrapper"
+        onClick={[Function]}
+      >
+        <Card
+          className="menu"
+        >
+          <Box
+            className="card menu"
+            justify="flex-start"
+          >
+            <Flex
+              className="card menu"
+              flow="box"
+              justify="flex-start"
+            >
+              <div
+                className="flex box flex-start card menu"
+              >
+                <main
+                  className="full"
+                >
+                  <MenuList>
+                    <ul
+                      className="list"
+                    >
+                      <Item
+                        exact={true}
+                        to="/profile"
+                      >
+                        <Link
+                          activeClassName="active"
+                          className="item"
+                          exact={true}
+                          title="Personal Settings"
+                          to="/profile"
+                        >
+                          <NavLink
+                            activeClassName="active"
+                            aria-current="page"
+                            className="link item"
+                            exact={true}
+                            title="Personal Settings"
+                            to="/profile"
+                          >
+                            <Route
+                              exact={true}
+                              path="\\\\/profile"
+                            >
+                              <Link
+                                aria-current={null}
+                                className="link item"
+                                replace={false}
+                                title="Personal Settings"
+                                to="/profile"
+                              >
+                                <a
+                                  aria-current={null}
+                                  className="link item"
+                                  href="/profile"
+                                  onClick={[Function]}
+                                  title="Personal Settings"
+                                >
+                                  Personal Settings
+                                </a>
+                              </Link>
+                            </Route>
+                          </NavLink>
+                        </Link>
+                      </Item>
+                      <Item
+                        exact={true}
+                        to="/admin"
+                      >
+                        <Link
+                          activeClassName="active"
+                          className="item"
+                          exact={true}
+                          title="Admin Settings"
+                          to="/admin"
+                        >
+                          <NavLink
+                            activeClassName="active"
+                            aria-current="page"
+                            className="link item"
+                            exact={true}
+                            title="Admin Settings"
+                            to="/admin"
+                          >
+                            <Route
+                              exact={true}
+                              path="\\\\/admin"
+                            >
+                              <Link
+                                aria-current={null}
+                                className="link item"
+                                replace={false}
+                                title="Admin Settings"
+                                to="/admin"
+                              >
+                                <a
+                                  aria-current={null}
+                                  className="link item"
+                                  href="/admin"
+                                  onClick={[Function]}
+                                  title="Admin Settings"
+                                >
+                                  Admin Settings
+                                </a>
+                              </Link>
+                            </Route>
+                          </NavLink>
+                        </Link>
+                      </Item>
+                      <Item
+                        exact={true}
+                        to="/logout"
+                      >
+                        <Link
+                          activeClassName="active"
+                          className="item"
+                          exact={true}
+                          title="Logout"
+                          to="/logout"
+                        >
+                          <NavLink
+                            activeClassName="active"
+                            aria-current="page"
+                            className="link item"
+                            exact={true}
+                            title="Logout"
+                            to="/logout"
+                          >
+                            <Route
+                              exact={true}
+                              path="\\\\/logout"
+                            >
+                              <Link
+                                aria-current={null}
+                                className="link item"
+                                replace={false}
+                                title="Logout"
+                                to="/logout"
+                              >
+                                <a
+                                  aria-current={null}
+                                  className="link item"
+                                  href="/logout"
+                                  onClick={[Function]}
+                                  title="Logout"
+                                >
+                                  Logout
+                                </a>
+                              </Link>
+                            </Route>
+                          </NavLink>
+                        </Link>
+                      </Item>
+                    </ul>
+                  </MenuList>
+                </main>
+              </div>
+            </Flex>
+          </Box>
+        </Card>
+      </div>
+    </div>
+  </Dropdown>
+</ProfileMenu>
+`;
+
+exports[`ProfileMenu should render correctly 1`] = `
+<ProfileMenu>
+  <Dropdown
+    className="menu"
+    right={true}
+    selector={
+      <Avatar
+        className="profile"
+        title={undefined}
+        url={undefined}
+      />
+    }
+  >
+    <div
+      className="dropdown right out menu"
+    >
+      <Backdrop
+        close={[Function]}
+        show={false}
+      />
+      <Link
+        className="selector"
+        onClick={[Function]}
+      >
+        <A
+          className="link selector"
+          onClick={[Function]}
+        >
+          <a
+            className="link selector"
+            onClick={[Function]}
+          >
+            <Avatar
+              className="profile"
+            >
+              <Box
+                className="avatar profile"
+              >
+                <Flex
+                  className="avatar profile"
+                  flow="box"
+                >
+                  <div
+                    className="flex box undefined avatar profile"
+                  >
+                    <Icon
+                      icon="astro_helmet"
+                    >
+                      <Imported>
+                        <ReactImportedComponent
+                          loadable={
+                            Object {
+                              "done": true,
+                              "importFunction": [Function],
+                              "load": [Function],
+                              "mark": Array [],
+                              "ok": true,
+                              "payload": Object {
+                                "process": [Function],
+                              },
+                              "promise": Promise {},
+                              "reset": [Function],
+                            }
+                          }
+                          render={[Function]}
+                        >
+                          <UnconnectedReactImportedComponent
+                            async={false}
+                            exportPicker={[Function]}
+                            loadable={
+                              Object {
+                                "done": true,
+                                "importFunction": [Function],
+                                "load": [Function],
+                                "mark": Array [],
+                                "ok": true,
+                                "payload": Object {
+                                  "process": [Function],
+                                },
+                                "promise": Promise {},
+                                "reset": [Function],
+                              }
+                            }
+                            render={[Function]}
+                            streamId={0}
+                          >
+                            <img
+                              src={
+                                Object {
+                                  "process": [Function],
+                                }
+                              }
+                            />
+                          </UnconnectedReactImportedComponent>
+                        </ReactImportedComponent>
+                      </Imported>
+                    </Icon>
+                  </div>
+                </Flex>
+              </Box>
+            </Avatar>
+          </a>
+        </A>
+      </Link>
+      <div
+        className="menuWrapper"
+        onClick={[Function]}
+      >
+        <Card
+          className="menu"
+        >
+          <Box
+            className="card menu"
+            justify="flex-start"
+          >
+            <Flex
+              className="card menu"
+              flow="box"
+              justify="flex-start"
+            >
+              <div
+                className="flex box flex-start card menu"
+              >
+                <main
+                  className="full"
+                >
+                  <MenuList>
+                    <ul
+                      className="list"
+                    >
+                      <Item
+                        exact={true}
+                        to="/profile"
+                      >
+                        <Link
+                          activeClassName="active"
+                          className="item"
+                          exact={true}
+                          title="Personal Settings"
+                          to="/profile"
+                        >
+                          <NavLink
+                            activeClassName="active"
+                            aria-current="page"
+                            className="link item"
+                            exact={true}
+                            title="Personal Settings"
+                            to="/profile"
+                          >
+                            <Route
+                              exact={true}
+                              path="\\\\/profile"
+                            >
+                              <Link
+                                aria-current={null}
+                                className="link item"
+                                replace={false}
+                                title="Personal Settings"
+                                to="/profile"
+                              >
+                                <a
+                                  aria-current={null}
+                                  className="link item"
+                                  href="/profile"
+                                  onClick={[Function]}
+                                  title="Personal Settings"
+                                >
+                                  Personal Settings
+                                </a>
+                              </Link>
+                            </Route>
+                          </NavLink>
+                        </Link>
+                      </Item>
+                      <Item
+                        exact={true}
+                        to="/logout"
+                      >
+                        <Link
+                          activeClassName="active"
+                          className="item"
+                          exact={true}
+                          title="Logout"
+                          to="/logout"
+                        >
+                          <NavLink
+                            activeClassName="active"
+                            aria-current="page"
+                            className="link item"
+                            exact={true}
+                            title="Logout"
+                            to="/logout"
+                          >
+                            <Route
+                              exact={true}
+                              path="\\\\/logout"
+                            >
+                              <Link
+                                aria-current={null}
+                                className="link item"
+                                replace={false}
+                                title="Logout"
+                                to="/logout"
+                              >
+                                <a
+                                  aria-current={null}
+                                  className="link item"
+                                  href="/logout"
+                                  onClick={[Function]}
+                                  title="Logout"
+                                >
+                                  Logout
+                                </a>
+                              </Link>
+                            </Route>
+                          </NavLink>
+                        </Link>
+                      </Item>
+                    </ul>
+                  </MenuList>
+                </main>
+              </div>
+            </Flex>
+          </Box>
+        </Card>
+      </div>
+    </div>
+  </Dropdown>
+</ProfileMenu>
+`;

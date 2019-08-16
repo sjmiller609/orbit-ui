@@ -1,0 +1,619 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorPage should render correctly 1`] = `
+<ErrorPage
+  className="testClassString"
+  retry={[Function]}
+>
+  <Page
+    className="page testClassString"
+    metaTitle="Error | Astronomer"
+  >
+    <div
+      className="page page testClassString"
+    >
+      <Box
+        className="noMatch"
+        full={true}
+      >
+        <Flex
+          className="noMatch"
+          flow="box"
+          full={true}
+        >
+          <div
+            className="flex box undefined full noMatch"
+          >
+            <CardError
+              retry={[Function]}
+            >
+              <Card
+                className="card"
+              >
+                <Box
+                  className="card card"
+                  justify="flex-start"
+                >
+                  <Flex
+                    className="card card"
+                    flow="box"
+                    justify="flex-start"
+                  >
+                    <div
+                      className="flex box flex-start card card"
+                    >
+                      <main
+                        className="full"
+                      >
+                        <Block1
+                          left={
+                            <Imported
+                              className="img"
+                            />
+                          }
+                          title="DAG gone it! Something went wrong"
+                        >
+                          <Row
+                            className="content"
+                            wrap={true}
+                          >
+                            <Flex
+                              className="content"
+                              flow="row"
+                              wrap={true}
+                            >
+                              <div
+                                className="flex row undefined wrap content"
+                              >
+                                <Box
+                                  className="left"
+                                >
+                                  <Flex
+                                    className="left"
+                                    flow="box"
+                                  >
+                                    <div
+                                      className="flex box undefined left"
+                                    >
+                                      <Imported
+                                        className="img"
+                                      >
+                                        <ReactImportedComponent
+                                          className="img"
+                                          loadable={
+                                            Object {
+                                              "done": true,
+                                              "importFunction": [Function],
+                                              "load": [Function],
+                                              "mark": Array [],
+                                              "ok": true,
+                                              "payload": Object {
+                                                "process": [Function],
+                                              },
+                                              "promise": Promise {},
+                                              "reset": [Function],
+                                            }
+                                          }
+                                          render={[Function]}
+                                        >
+                                          <UnconnectedReactImportedComponent
+                                            async={false}
+                                            className="img"
+                                            exportPicker={[Function]}
+                                            loadable={
+                                              Object {
+                                                "done": true,
+                                                "importFunction": [Function],
+                                                "load": [Function],
+                                                "mark": Array [],
+                                                "ok": true,
+                                                "payload": Object {
+                                                  "process": [Function],
+                                                },
+                                                "promise": Promise {},
+                                                "reset": [Function],
+                                              }
+                                            }
+                                            render={[Function]}
+                                            streamId={0}
+                                          >
+                                            <img
+                                              className="img"
+                                              src={
+                                                Object {
+                                                  "process": [Function],
+                                                }
+                                              }
+                                            />
+                                          </UnconnectedReactImportedComponent>
+                                        </ReactImportedComponent>
+                                      </Imported>
+                                    </div>
+                                  </Flex>
+                                </Box>
+                                <Box
+                                  align="flex-start"
+                                  className="right"
+                                >
+                                  <Flex
+                                    align="flex-start"
+                                    className="right"
+                                    flow="box"
+                                  >
+                                    <div
+                                      className="flex box undefined align-flex-start right"
+                                    >
+                                      <H1>
+                                        <h1
+                                          className="h1"
+                                        >
+                                          DAG gone it! Something went wrong
+                                        </h1>
+                                      </H1>
+                                      1
+                                      2
+                                      3
+                                      <P>
+                                        <p
+                                          className="p"
+                                        >
+                                          <Link
+                                            onClick={[Function]}
+                                          >
+                                            <A
+                                              className="link"
+                                              onClick={[Function]}
+                                            >
+                                              <a
+                                                className="link"
+                                                onClick={[Function]}
+                                              >
+                                                Refresh
+                                              </a>
+                                            </A>
+                                          </Link>
+                                           to try again. Or if the problem persists, please 
+                                          <Link
+                                            to="https://www.astronomer.io/contact"
+                                          >
+                                            <A
+                                              className="link"
+                                              to="https://www.astronomer.io/contact"
+                                            >
+                                              <a
+                                                className="link"
+                                                href="https://www.astronomer.io/contact"
+                                                target="_blank"
+                                              >
+                                                contact support
+                                              </a>
+                                            </A>
+                                          </Link>
+                                          .
+                                        </p>
+                                      </P>
+                                    </div>
+                                  </Flex>
+                                </Box>
+                              </div>
+                            </Flex>
+                          </Row>
+                        </Block1>
+                      </main>
+                    </div>
+                  </Flex>
+                </Box>
+              </Card>
+            </CardError>
+            <Logo
+              className="logo"
+              noStars={true}
+            >
+              <Link
+                to="/"
+              >
+                <Link
+                  className="link"
+                  replace={false}
+                  to="/"
+                >
+                  <a
+                    className="link"
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    <Imported
+                      className="logo logo"
+                      title="Astronomer"
+                    >
+                      <ReactImportedComponent
+                        className="logo logo"
+                        loadable={
+                          Object {
+                            "done": true,
+                            "importFunction": [Function],
+                            "load": [Function],
+                            "mark": Array [],
+                            "ok": true,
+                            "payload": Object {
+                              "process": [Function],
+                            },
+                            "promise": Promise {},
+                            "reset": [Function],
+                          }
+                        }
+                        render={[Function]}
+                        title="Astronomer"
+                      >
+                        <UnconnectedReactImportedComponent
+                          async={false}
+                          className="logo logo"
+                          exportPicker={[Function]}
+                          loadable={
+                            Object {
+                              "done": true,
+                              "importFunction": [Function],
+                              "load": [Function],
+                              "mark": Array [],
+                              "ok": true,
+                              "payload": Object {
+                                "process": [Function],
+                              },
+                              "promise": Promise {},
+                              "reset": [Function],
+                            }
+                          }
+                          render={[Function]}
+                          streamId={0}
+                          title="Astronomer"
+                        >
+                          <img
+                            className="logo logo"
+                            src={
+                              Object {
+                                "process": [Function],
+                              }
+                            }
+                            title="Astronomer"
+                          />
+                        </UnconnectedReactImportedComponent>
+                      </ReactImportedComponent>
+                    </Imported>
+                  </a>
+                </Link>
+              </Link>
+            </Logo>
+          </div>
+        </Flex>
+      </Box>
+      <HelmetWrapper
+        defer={true}
+        encodeSpecialCharacters={true}
+      >
+        <SideEffect(NullComponent)
+          defer={true}
+          encodeSpecialCharacters={true}
+          title="Error | Astronomer"
+          titleAttributes={Object {}}
+        >
+          <NullComponent
+            defer={true}
+            encodeSpecialCharacters={true}
+            title="Error | Astronomer"
+            titleAttributes={Object {}}
+          />
+        </SideEffect(NullComponent)>
+      </HelmetWrapper>
+    </div>
+  </Page>
+</ErrorPage>
+`;
+
+exports[`ErrorPage should render different children 1`] = `
+<ErrorPage
+  className="testClassString"
+  retry={[Function]}
+>
+  <Page
+    className="page testClassString"
+    metaTitle="Error | Astronomer"
+  >
+    <div
+      className="page page testClassString"
+    >
+      <Box
+        className="noMatch"
+        full={true}
+      >
+        <Flex
+          className="noMatch"
+          flow="box"
+          full={true}
+        >
+          <div
+            className="flex box undefined full noMatch"
+          >
+            <CardError
+              retry={[Function]}
+            >
+              <Card
+                className="card"
+              >
+                <Box
+                  className="card card"
+                  justify="flex-start"
+                >
+                  <Flex
+                    className="card card"
+                    flow="box"
+                    justify="flex-start"
+                  >
+                    <div
+                      className="flex box flex-start card card"
+                    >
+                      <main
+                        className="full"
+                      >
+                        <Block1
+                          left={
+                            <Imported
+                              className="img"
+                            />
+                          }
+                          title="DAG gone it! Something went wrong"
+                        >
+                          <Row
+                            className="content"
+                            wrap={true}
+                          >
+                            <Flex
+                              className="content"
+                              flow="row"
+                              wrap={true}
+                            >
+                              <div
+                                className="flex row undefined wrap content"
+                              >
+                                <Box
+                                  className="left"
+                                >
+                                  <Flex
+                                    className="left"
+                                    flow="box"
+                                  >
+                                    <div
+                                      className="flex box undefined left"
+                                    >
+                                      <Imported
+                                        className="img"
+                                      >
+                                        <ReactImportedComponent
+                                          className="img"
+                                          loadable={
+                                            Object {
+                                              "done": true,
+                                              "importFunction": [Function],
+                                              "load": [Function],
+                                              "mark": Array [],
+                                              "ok": true,
+                                              "payload": Object {
+                                                "process": [Function],
+                                              },
+                                              "promise": Promise {},
+                                              "reset": [Function],
+                                            }
+                                          }
+                                          render={[Function]}
+                                        >
+                                          <UnconnectedReactImportedComponent
+                                            async={false}
+                                            className="img"
+                                            exportPicker={[Function]}
+                                            loadable={
+                                              Object {
+                                                "done": true,
+                                                "importFunction": [Function],
+                                                "load": [Function],
+                                                "mark": Array [],
+                                                "ok": true,
+                                                "payload": Object {
+                                                  "process": [Function],
+                                                },
+                                                "promise": Promise {},
+                                                "reset": [Function],
+                                              }
+                                            }
+                                            render={[Function]}
+                                            streamId={0}
+                                          >
+                                            <img
+                                              className="img"
+                                              src={
+                                                Object {
+                                                  "process": [Function],
+                                                }
+                                              }
+                                            />
+                                          </UnconnectedReactImportedComponent>
+                                        </ReactImportedComponent>
+                                      </Imported>
+                                    </div>
+                                  </Flex>
+                                </Box>
+                                <Box
+                                  align="flex-start"
+                                  className="right"
+                                >
+                                  <Flex
+                                    align="flex-start"
+                                    className="right"
+                                    flow="box"
+                                  >
+                                    <div
+                                      className="flex box undefined align-flex-start right"
+                                    >
+                                      <H1>
+                                        <h1
+                                          className="h1"
+                                        >
+                                          DAG gone it! Something went wrong
+                                        </h1>
+                                      </H1>
+                                      <p>
+                                        Child
+                                      </p>
+                                      <P>
+                                        <p
+                                          className="p"
+                                        >
+                                          <Link
+                                            onClick={[Function]}
+                                          >
+                                            <A
+                                              className="link"
+                                              onClick={[Function]}
+                                            >
+                                              <a
+                                                className="link"
+                                                onClick={[Function]}
+                                              >
+                                                Refresh
+                                              </a>
+                                            </A>
+                                          </Link>
+                                           to try again. Or if the problem persists, please 
+                                          <Link
+                                            to="https://www.astronomer.io/contact"
+                                          >
+                                            <A
+                                              className="link"
+                                              to="https://www.astronomer.io/contact"
+                                            >
+                                              <a
+                                                className="link"
+                                                href="https://www.astronomer.io/contact"
+                                                target="_blank"
+                                              >
+                                                contact support
+                                              </a>
+                                            </A>
+                                          </Link>
+                                          .
+                                        </p>
+                                      </P>
+                                    </div>
+                                  </Flex>
+                                </Box>
+                              </div>
+                            </Flex>
+                          </Row>
+                        </Block1>
+                      </main>
+                    </div>
+                  </Flex>
+                </Box>
+              </Card>
+            </CardError>
+            <Logo
+              className="logo"
+              noStars={true}
+            >
+              <Link
+                to="/"
+              >
+                <Link
+                  className="link"
+                  replace={false}
+                  to="/"
+                >
+                  <a
+                    className="link"
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    <Imported
+                      className="logo logo"
+                      title="Astronomer"
+                    >
+                      <ReactImportedComponent
+                        className="logo logo"
+                        loadable={
+                          Object {
+                            "done": true,
+                            "importFunction": [Function],
+                            "load": [Function],
+                            "mark": Array [],
+                            "ok": true,
+                            "payload": Object {
+                              "process": [Function],
+                            },
+                            "promise": Promise {},
+                            "reset": [Function],
+                          }
+                        }
+                        render={[Function]}
+                        title="Astronomer"
+                      >
+                        <UnconnectedReactImportedComponent
+                          async={false}
+                          className="logo logo"
+                          exportPicker={[Function]}
+                          loadable={
+                            Object {
+                              "done": true,
+                              "importFunction": [Function],
+                              "load": [Function],
+                              "mark": Array [],
+                              "ok": true,
+                              "payload": Object {
+                                "process": [Function],
+                              },
+                              "promise": Promise {},
+                              "reset": [Function],
+                            }
+                          }
+                          render={[Function]}
+                          streamId={0}
+                          title="Astronomer"
+                        >
+                          <img
+                            className="logo logo"
+                            src={
+                              Object {
+                                "process": [Function],
+                              }
+                            }
+                            title="Astronomer"
+                          />
+                        </UnconnectedReactImportedComponent>
+                      </ReactImportedComponent>
+                    </Imported>
+                  </a>
+                </Link>
+              </Link>
+            </Logo>
+          </div>
+        </Flex>
+      </Box>
+      <HelmetWrapper
+        defer={true}
+        encodeSpecialCharacters={true}
+      >
+        <SideEffect(NullComponent)
+          defer={true}
+          encodeSpecialCharacters={true}
+          title="Error | Astronomer"
+          titleAttributes={Object {}}
+        >
+          <NullComponent
+            defer={true}
+            encodeSpecialCharacters={true}
+            title="Error | Astronomer"
+            titleAttributes={Object {}}
+          />
+        </SideEffect(NullComponent)>
+      </HelmetWrapper>
+    </div>
+  </Page>
+</ErrorPage>
+`;

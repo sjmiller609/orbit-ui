@@ -6,6 +6,7 @@ import { Card, MenuList, Item } from 'instruments'
 
 import s from './styles.scss'
 
+/* istanbul ignore next */
 const Menu = ({ menu, active, title, id, scrollTo, menuList, className }) => {
   return (
     <Card id={id} title={title} className={classnames(s.menu, className)}>

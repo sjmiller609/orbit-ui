@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snackbar handles no msg 1`] = `
+<Row
+  className="snackbar"
+  onClick={[Function]}
+>
+  <div
+    className="message"
+  />
+</Row>
+`;
+
+exports[`Snackbar renders correctly 1`] = `
+<Row
+  className="snackbar show"
+  onClick={[Function]}
+>
+  <div
+    className="message"
+  >
+    Test message
+  </div>
+</Row>
+`;

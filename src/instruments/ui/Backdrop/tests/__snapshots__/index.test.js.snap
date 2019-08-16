@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Backdrop renders correctly 1`] = `
+<Backdrop
+  blur={false}
+  close={[Function]}
+  show={false}
+/>
+`;
+
+exports[`Backdrop should handle blur 1`] = `
+<Backdrop
+  blur={true}
+  close={[Function]}
+  show={true}
+>
+  <div
+    className="backdrop blur close"
+  >
+    <div
+      onClick={[Function]}
+    />
+  </div>
+</Backdrop>
+`;
+
+exports[`Backdrop should handle hide close 1`] = `
+<Backdrop
+  blur={false}
+  close={null}
+  show={true}
+>
+  <div
+    className="backdrop"
+  >
+    <div
+      onClick={null}
+    />
+  </div>
+</Backdrop>
+`;
+
+exports[`Backdrop should open when show is true 1`] = `
+<Backdrop
+  blur={false}
+  close={[Function]}
+  show={true}
+>
+  <div
+    className="backdrop close"
+  >
+    <div
+      onClick={[Function]}
+    />
+  </div>
+</Backdrop>
+`;

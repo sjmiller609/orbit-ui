@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox renders correctly 1`] = `
+<Field
+  className="testClassString"
+  error={
+    <p>
+      Error
+    </p>
+  }
+  fieldId="testDeployType"
+  id="1234"
+  label={
+    <label>
+      Test
+    </label>
+  }
+  name="testDeployType"
+  onBlur={[Function]}
+  onChange={[Function]}
+  required={true}
+  setRef={[Function]}
+  title="Test Checkbox"
+  type="radio"
+  updateErrors={[Function]}
+  validate={[Function]}
+  value="Kubernetes"
+>
+  <Checkbox
+    className="field required testClassString"
+    error={null}
+    fieldId="testDeployType"
+    id="1234"
+    label={
+      <FormLabel
+        id="1234"
+        info={undefined}
+      >
+        <label>
+          Test
+        </label>
+      </FormLabel>
+    }
+    name="testDeployType"
+    onBlur={null}
+    onChange={[Function]}
+    required={true}
+    setRef={[Function]}
+    setShowError={[Function]}
+    showError={false}
+    title="Test Checkbox"
+    type="radio"
+    updateErrors={[Function]}
+    validate={[Function]}
+    value="Kubernetes"
+  >
+    <Row
+      align="flex-start"
+      auto={true}
+      className="checkbox field required testClassString"
+      id="testDeployType"
+      justify="flex-start"
+    >
+      <Flex
+        align="flex-start"
+        auto={true}
+        className="checkbox field required testClassString"
+        flow="row"
+        id="testDeployType"
+        justify="flex-start"
+      >
+        <div
+          className="flex row flex-start align-flex-start auto checkbox field required testClassString"
+          id="testDeployType"
+        >
+          <input
+            checked={true}
+            className="input"
+            name="testDeployType"
+            onBlur={null}
+            onChange={[Function]}
+            required={true}
+            title="Test Checkbox"
+            type="checkbox"
+            value="Kubernetes"
+          />
+          <div
+            className="box on"
+            onClick={[Function]}
+          >
+            <div
+              className="check"
+            />
+          </div>
+          <FormLabel
+            id="1234"
+          >
+            <label
+              className="label"
+              htmlFor="1234"
+            >
+              <label>
+                Test
+              </label>
+              <Info />
+            </label>
+          </FormLabel>
+        </div>
+      </Flex>
+    </Row>
+  </Checkbox>
+</Field>
+`;

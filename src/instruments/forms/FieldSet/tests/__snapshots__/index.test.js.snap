@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FieldSet renders correctly 1`] = `
+<Field
+  FieldType={[Function]}
+  className="testClassString"
+  fieldProps={Object {}}
+  formField={[Function]}
+  id="1234"
+  label=""
+  name="test"
+  onChange={[Function]}
+  registerOnSubmit={[Function]}
+  required={true}
+  title="Test"
+  updateErrors={[Function]}
+  validate={[Function]}
+  value={Array []}
+>
+  <FieldSet
+    FieldType={[Function]}
+    className="field required testClassString"
+    error={null}
+    fieldProps={Object {}}
+    formField={[Function]}
+    id="1234"
+    label={null}
+    name="test"
+    onBlur={null}
+    onChange={[Function]}
+    registerOnSubmit={[Function]}
+    required={true}
+    setRef={[Function]}
+    setShowError={[Function]}
+    showError={false}
+    title="Test"
+    updateErrors={[Function]}
+    validate={[Function]}
+    value={Array []}
+  >
+    <div
+      className="fields field required testClassString"
+      id="1234"
+    >
+      <Box>
+        <Flex
+          flow="box"
+        >
+          <div
+            className="flex box undefined"
+          >
+            <Button
+              className="add"
+              onClick={[Function]}
+              style="outline"
+            >
+              <Link>
+                <A
+                  className="link"
+                >
+                  <a
+                    className="link"
+                  >
+                    <button
+                      className="button outline add"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      New Test
+                    </button>
+                  </a>
+                </A>
+              </Link>
+            </Button>
+          </div>
+        </Flex>
+      </Box>
+    </div>
+  </FieldSet>
+</Field>
+`;

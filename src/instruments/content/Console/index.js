@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
 
+/* istanbul ignore next */
 class Console extends React.Component {
   state = {
     pause: false,

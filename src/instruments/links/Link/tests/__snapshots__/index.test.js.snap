@@ -1,294 +1,165 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Link displays arrow icon when \`arrow\` is specified 1`] = `
-<Link
-  arrow="arrow"
+exports[`Link A should handle bool target 1`] = `
+<A
+  id="123"
+  onClick={[Function]}
+  target={false}
+  title="Test"
+  to="/"
 >
-  <A
-    className="link"
+  <a
+    href="/"
+    id="123"
+    onClick={[Function]}
+    target={null}
+    title="Test"
+  >
+    <p>
+      Children
+    </p>
+  </a>
+</A>
+`;
+
+exports[`Link should handle arrows 1`] = `
+<Link
+  arrow="back"
+  className="testClassName"
+  onClick={[Function]}
+  style="blue"
+  to="/"
+>
+  <Link
+    className="link blue testClassName"
+    onClick={[Function]}
+    replace={false}
+    to="/"
   >
     <a
-      className="link"
+      className="link blue testClassName"
+      href="/"
+      onClick={[Function]}
     >
-      text
+      <p>
+        Children
+      </p>
       <Icon
         className="arrow"
-        icon="arrow"
-      >
-        <Imported
-          className="arrow"
-        >
-          <ReactImportedComponent
-            className="arrow"
-            loadable={
-              Object {
-                "done": true,
-                "importFunction": [Function],
-                "load": [Function],
-                "mark": Array [],
-                "ok": true,
-                "payload": Object {
-                  "process": [Function],
-                },
-                "promise": Promise {},
-                "reset": [Function],
-              }
-            }
-            render={[Function]}
-          >
-            <UnconnectedReactImportedComponent
-              async={false}
-              className="arrow"
-              exportPicker={[Function]}
-              loadable={
-                Object {
-                  "done": true,
-                  "importFunction": [Function],
-                  "load": [Function],
-                  "mark": Array [],
-                  "ok": true,
-                  "payload": Object {
-                    "process": [Function],
-                  },
-                  "promise": Promise {},
-                  "reset": [Function],
-                }
-              }
-              render={[Function]}
-              streamId={0}
-            >
-              <img
-                className="arrow"
-                src={
-                  Object {
-                    "process": [Function],
-                  }
-                }
-              />
-            </UnconnectedReactImportedComponent>
-          </ReactImportedComponent>
-        </Imported>
-      </Icon>
-    </a>
-  </A>
-</Link>
-`;
-
-exports[`Link displays back arrow icon when \`backArrow\` is specified 1`] = `
-<Link
-  backArrow="arrow_darkBg"
->
-  <A
-    className="link"
-  >
-    <a
-      className="link"
-    >
-      <Icon
-        className="backArrow"
-        icon="arrow_darkBg"
-      >
-        <Imported
-          className="backArrow"
-        >
-          <ReactImportedComponent
-            className="backArrow"
-            loadable={
-              Object {
-                "done": true,
-                "importFunction": [Function],
-                "load": [Function],
-                "mark": Array [],
-                "ok": true,
-                "payload": Object {
-                  "process": [Function],
-                },
-                "promise": Promise {},
-                "reset": [Function],
-              }
-            }
-            render={[Function]}
-          >
-            <UnconnectedReactImportedComponent
-              async={false}
-              className="backArrow"
-              exportPicker={[Function]}
-              loadable={
-                Object {
-                  "done": true,
-                  "importFunction": [Function],
-                  "load": [Function],
-                  "mark": Array [],
-                  "ok": true,
-                  "payload": Object {
-                    "process": [Function],
-                  },
-                  "promise": Promise {},
-                  "reset": [Function],
-                }
-              }
-              render={[Function]}
-              streamId={0}
-            >
-              <img
-                className="backArrow"
-                src={
-                  Object {
-                    "process": [Function],
-                  }
-                }
-              />
-            </UnconnectedReactImportedComponent>
-          </ReactImportedComponent>
-        </Imported>
-      </Icon>
-      text
-    </a>
-  </A>
-</Link>
-`;
-
-exports[`Link is active route 1`] = `
-<Link
-  activeClassName="active"
-  to="/deployments"
->
-  <NavLink
-    activeClassName="active"
-    aria-current="page"
-    className="link"
-    to="/deployments"
-  >
-    <Route
-      path="\\\\/deployments"
-    >
-      <Link
-        aria-current={null}
-        className="link"
-        replace={false}
-        to="/deployments"
-      >
-        <a
-          aria-current={null}
-          className="link"
-          href="/deployments"
-          onClick={[Function]}
-        >
-          text
-        </a>
-      </Link>
-    </Route>
-  </NavLink>
-</Link>
-`;
-
-exports[`Link is external url - http 1`] = `
-<Link
-  to="https://www.astronomer.io"
->
-  <A
-    className="link"
-    to="https://www.astronomer.io"
-  >
-    <a
-      className="link"
-      href="https://www.astronomer.io"
-      target="_blank"
-    >
-      text
-    </a>
-  </A>
-</Link>
-`;
-
-exports[`Link is external url - naked 1`] = `
-<Link
-  to="astronomer.io"
->
-  <A
-    className="link"
-    to="astronomer.io"
-  >
-    <a
-      className="link"
-      href="astronomer.io"
-      target="_blank"
-    >
-      text
-    </a>
-  </A>
-</Link>
-`;
-
-exports[`Link is external url - www 1`] = `
-<Link
-  to="www.astronomer.io"
->
-  <A
-    className="link"
-    to="www.astronomer.io"
-  >
-    <a
-      className="link"
-      href="www.astronomer.io"
-      target="_blank"
-    >
-      text
-    </a>
-  </A>
-</Link>
-`;
-
-exports[`Link is internal route - no slash 1`] = `
-<Link
-  to="deployments"
->
-  <Link
-    className="link"
-    replace={false}
-    to="deployments"
-  >
-    <a
-      className="link"
-      href="deployments"
-      onClick={[Function]}
-    >
-      text
+        icon="back"
+      />
     </a>
   </Link>
 </Link>
 `;
 
-exports[`Link is internal route - with slash 1`] = `
+exports[`Link should handle paths 1`] = `
 <Link
-  to="/deployments"
+  className="testClassName"
+  onClick={[Function]}
+  style="blue"
+  to={
+    Object {
+      "pathname": "/",
+    }
+  }
 >
   <Link
-    className="link"
+    className="link blue testClassName"
+    onClick={[Function]}
     replace={false}
-    to="/deployments"
+    to={
+      Object {
+        "pathname": "/",
+      }
+    }
   >
     <a
-      className="link"
-      href="/deployments"
+      className="link blue testClassName"
+      href="/"
       onClick={[Function]}
     >
-      text
+      <p>
+        Children
+      </p>
     </a>
   </Link>
 </Link>
 `;
 
-exports[`Link renders correctly 1`] = `
-<Link>
-  <A
-    className="link"
+exports[`Link should handle target 1`] = `
+<Link
+  className="testClassName"
+  newTab={true}
+  onClick={[Function]}
+  style="blue"
+  to="/"
+>
+  <Link
+    className="link blue testClassName"
+    onClick={[Function]}
+    replace={false}
+    target="_blank"
+    to="/"
   >
     <a
-      className="link"
+      className="link blue testClassName"
+      href="/"
+      onClick={[Function]}
+      target="_blank"
     >
-      text
+      <p>
+        Children
+      </p>
     </a>
-  </A>
+  </Link>
 </Link>
+`;
+
+exports[`Link should render correctly 1`] = `
+<Link
+  className="testClassName"
+  onClick={[Function]}
+  style="blue"
+  to="/"
+>
+  <Link
+    className="link blue testClassName"
+    onClick={[Function]}
+    replace={false}
+    to="/"
+  >
+    <a
+      className="link blue testClassName"
+      href="/"
+      onClick={[Function]}
+    >
+      <p>
+        Children
+      </p>
+    </a>
+  </Link>
+</Link>
+`;
+
+exports[`Link should render correctly 2`] = `
+<A
+  id="123"
+  onClick={[Function]}
+  target="_blank"
+  title="Test"
+  to="/"
+>
+  <a
+    href="/"
+    id="123"
+    onClick={[Function]}
+    target="_blank"
+    title="Test"
+  >
+    <p>
+      Children
+    </p>
+  </a>
+</A>
 `;

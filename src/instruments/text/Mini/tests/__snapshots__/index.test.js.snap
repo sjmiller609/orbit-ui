@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mini should render correctly 1`] = `
+<Mini
+  className="testClassName"
+>
+  <p
+    className="mini testClassName"
+  >
+    Children
+  </p>
+</Mini>
+`;

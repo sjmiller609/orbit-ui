@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardLoading renders correctly 1`] = `
+<CardLoading
+  className="testClassString"
+>
+  <Card
+    className="card testClassString"
+  >
+    <Box
+      className="card card testClassString"
+      justify="flex-start"
+    >
+      <Flex
+        className="card card testClassString"
+        flow="box"
+        justify="flex-start"
+      >
+        <div
+          className="flex box flex-start card card testClassString"
+        >
+          <main
+            className="full"
+          >
+            <Box>
+              <Flex
+                flow="box"
+              >
+                <div
+                  className="flex box undefined"
+                >
+                  <Loading>
+                    <div
+                      className="loading"
+                    >
+                      <HelmetWrapper
+                        defer={true}
+                        encodeSpecialCharacters={true}
+                      >
+                        <SideEffect(NullComponent)
+                          defer={true}
+                          encodeSpecialCharacters={true}
+                          title="Loading..."
+                          titleAttributes={Object {}}
+                        >
+                          <NullComponent
+                            defer={true}
+                            encodeSpecialCharacters={true}
+                            title="Loading..."
+                            titleAttributes={Object {}}
+                          />
+                        </SideEffect(NullComponent)>
+                      </HelmetWrapper>
+                      <div />
+                    </div>
+                  </Loading>
+                  <LoadingDots>
+                    <span
+                      className="dots"
+                    />
+                  </LoadingDots>
+                </div>
+              </Flex>
+            </Box>
+          </main>
+        </div>
+      </Flex>
+    </Box>
+  </Card>
+</CardLoading>
+`;

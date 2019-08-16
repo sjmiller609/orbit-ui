@@ -1,0 +1,580 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icons logo defaults to / 1`] = `
+<Logo>
+  <Link
+    to="/"
+  >
+    <Link
+      className="link"
+      replace={false}
+      to="/"
+    >
+      <a
+        className="link"
+        href="/"
+        onClick={[Function]}
+      >
+        <Imported
+          className="logo stars"
+          title="Astronomer"
+        >
+          <ReactImportedComponent
+            className="logo stars"
+            loadable={
+              Object {
+                "done": true,
+                "importFunction": [Function],
+                "load": [Function],
+                "mark": Array [],
+                "ok": true,
+                "payload": Object {
+                  "process": [Function],
+                },
+                "promise": Promise {},
+                "reset": [Function],
+              }
+            }
+            render={[Function]}
+            title="Astronomer"
+          >
+            <UnconnectedReactImportedComponent
+              async={false}
+              className="logo stars"
+              exportPicker={[Function]}
+              loadable={
+                Object {
+                  "done": true,
+                  "importFunction": [Function],
+                  "load": [Function],
+                  "mark": Array [],
+                  "ok": true,
+                  "payload": Object {
+                    "process": [Function],
+                  },
+                  "promise": Promise {},
+                  "reset": [Function],
+                }
+              }
+              render={[Function]}
+              streamId={0}
+              title="Astronomer"
+            >
+              <img
+                className="logo stars"
+                src={
+                  Object {
+                    "process": [Function],
+                  }
+                }
+                title="Astronomer"
+              />
+            </UnconnectedReactImportedComponent>
+          </ReactImportedComponent>
+        </Imported>
+      </a>
+    </Link>
+  </Link>
+</Logo>
+`;
+
+exports[`Icons logo renders darkBg 1`] = `
+<Logo
+  className="textClassName"
+  darkBg={true}
+  to="/"
+>
+  <Link
+    to="/"
+  >
+    <Link
+      className="link"
+      replace={false}
+      to="/"
+    >
+      <a
+        className="link"
+        href="/"
+        onClick={[Function]}
+      >
+        <Imported
+          className="logo stars textClassName"
+          title="Astronomer"
+        >
+          <ReactImportedComponent
+            className="logo stars textClassName"
+            loadable={
+              Object {
+                "done": true,
+                "importFunction": [Function],
+                "load": [Function],
+                "mark": Array [],
+                "ok": true,
+                "payload": Object {
+                  "process": [Function],
+                },
+                "promise": Promise {},
+                "reset": [Function],
+              }
+            }
+            render={[Function]}
+            title="Astronomer"
+          >
+            <UnconnectedReactImportedComponent
+              async={false}
+              className="logo stars textClassName"
+              exportPicker={[Function]}
+              loadable={
+                Object {
+                  "done": true,
+                  "importFunction": [Function],
+                  "load": [Function],
+                  "mark": Array [],
+                  "ok": true,
+                  "payload": Object {
+                    "process": [Function],
+                  },
+                  "promise": Promise {},
+                  "reset": [Function],
+                }
+              }
+              render={[Function]}
+              streamId={0}
+              title="Astronomer"
+            >
+              <img
+                className="logo stars textClassName"
+                src={
+                  Object {
+                    "process": [Function],
+                  }
+                }
+                title="Astronomer"
+              />
+            </UnconnectedReactImportedComponent>
+          </ReactImportedComponent>
+        </Imported>
+      </a>
+    </Link>
+  </Link>
+</Logo>
+`;
+
+exports[`Icons logo renders full 1`] = `
+<Logo
+  className="textClassName"
+  full={true}
+  to="/"
+>
+  <Link
+    to="/"
+  >
+    <Link
+      className="link"
+      replace={false}
+      to="/"
+    >
+      <a
+        className="link"
+        href="/"
+        onClick={[Function]}
+      >
+        <Imported
+          className="logo full stars textClassName"
+          title="Astronomer"
+        >
+          <ReactImportedComponent
+            className="logo full stars textClassName"
+            loadable={
+              Object {
+                "done": true,
+                "importFunction": [Function],
+                "load": [Function],
+                "mark": Array [],
+                "ok": true,
+                "payload": Object {
+                  "process": [Function],
+                },
+                "promise": Promise {},
+                "reset": [Function],
+              }
+            }
+            render={[Function]}
+            title="Astronomer"
+          >
+            <UnconnectedReactImportedComponent
+              async={false}
+              className="logo full stars textClassName"
+              exportPicker={[Function]}
+              loadable={
+                Object {
+                  "done": true,
+                  "importFunction": [Function],
+                  "load": [Function],
+                  "mark": Array [],
+                  "ok": true,
+                  "payload": Object {
+                    "process": [Function],
+                  },
+                  "promise": Promise {},
+                  "reset": [Function],
+                }
+              }
+              render={[Function]}
+              streamId={0}
+              title="Astronomer"
+            >
+              <img
+                className="logo full stars textClassName"
+                src={
+                  Object {
+                    "process": [Function],
+                  }
+                }
+                title="Astronomer"
+              />
+            </UnconnectedReactImportedComponent>
+          </ReactImportedComponent>
+        </Imported>
+      </a>
+    </Link>
+  </Link>
+</Logo>
+`;
+
+exports[`Icons logo renders stars 1`] = `
+<Logo
+  className="textClassName"
+  stars={true}
+  to="/"
+>
+  <Link
+    to="/"
+  >
+    <Link
+      className="link"
+      replace={false}
+      to="/"
+    >
+      <a
+        className="link"
+        href="/"
+        onClick={[Function]}
+      >
+        <Imported
+          className="logo stars textClassName"
+          title="Astronomer"
+        >
+          <ReactImportedComponent
+            className="logo stars textClassName"
+            loadable={
+              Object {
+                "done": true,
+                "importFunction": [Function],
+                "load": [Function],
+                "mark": Array [],
+                "ok": true,
+                "payload": Object {
+                  "process": [Function],
+                },
+                "promise": Promise {},
+                "reset": [Function],
+              }
+            }
+            render={[Function]}
+            title="Astronomer"
+          >
+            <UnconnectedReactImportedComponent
+              async={false}
+              className="logo stars textClassName"
+              exportPicker={[Function]}
+              loadable={
+                Object {
+                  "done": true,
+                  "importFunction": [Function],
+                  "load": [Function],
+                  "mark": Array [],
+                  "ok": true,
+                  "payload": Object {
+                    "process": [Function],
+                  },
+                  "promise": Promise {},
+                  "reset": [Function],
+                }
+              }
+              render={[Function]}
+              streamId={0}
+              title="Astronomer"
+            >
+              <img
+                className="logo stars textClassName"
+                src={
+                  Object {
+                    "process": [Function],
+                  }
+                }
+                title="Astronomer"
+              />
+            </UnconnectedReactImportedComponent>
+          </ReactImportedComponent>
+        </Imported>
+      </a>
+    </Link>
+  </Link>
+</Logo>
+`;
+
+exports[`Icons logo returns null if no image 1`] = `<Logo />`;
+
+exports[`Icons should render correctly 1`] = `<Icon />`;
+
+exports[`Icons should render correctly 2`] = `
+<Logo
+  className="textClassName"
+  to="/"
+>
+  <Link
+    to="/"
+  >
+    <Link
+      className="link"
+      replace={false}
+      to="/"
+    >
+      <a
+        className="link"
+        href="/"
+        onClick={[Function]}
+      >
+        <Imported
+          className="logo stars textClassName"
+          title="Astronomer"
+        >
+          <ReactImportedComponent
+            className="logo stars textClassName"
+            loadable={
+              Object {
+                "done": true,
+                "importFunction": [Function],
+                "load": [Function],
+                "mark": Array [],
+                "ok": true,
+                "payload": Object {
+                  "process": [Function],
+                },
+                "promise": Promise {},
+                "reset": [Function],
+              }
+            }
+            render={[Function]}
+            title="Astronomer"
+          >
+            <UnconnectedReactImportedComponent
+              async={false}
+              className="logo stars textClassName"
+              exportPicker={[Function]}
+              loadable={
+                Object {
+                  "done": true,
+                  "importFunction": [Function],
+                  "load": [Function],
+                  "mark": Array [],
+                  "ok": true,
+                  "payload": Object {
+                    "process": [Function],
+                  },
+                  "promise": Promise {},
+                  "reset": [Function],
+                }
+              }
+              render={[Function]}
+              streamId={0}
+              title="Astronomer"
+            >
+              <img
+                className="logo stars textClassName"
+                src={
+                  Object {
+                    "process": [Function],
+                  }
+                }
+                title="Astronomer"
+              />
+            </UnconnectedReactImportedComponent>
+          </ReactImportedComponent>
+        </Imported>
+      </a>
+    </Link>
+  </Link>
+</Logo>
+`;
+
+exports[`Icons should render correctly 3`] = `
+<Avatar
+  className="testClassName"
+  title="Test"
+  url="/"
+>
+  <Box
+    className="avatar pic testClassName"
+  >
+    <Flex
+      className="avatar pic testClassName"
+      flow="box"
+    >
+      <div
+        className="flex box undefined avatar pic testClassName"
+      >
+        <img
+          src="/"
+          title="Test"
+        />
+      </div>
+    </Flex>
+  </Box>
+</Avatar>
+`;
+
+exports[`Icons should render correctly 4`] = `
+<Airflow
+  dagSize="10"
+>
+  <Box
+    className="airflow"
+  >
+    <Flex
+      className="airflow"
+      flow="box"
+    >
+      <div
+        className="flex box undefined airflow"
+      >
+        <Icon
+          className="border ring"
+          icon="airflow_ring"
+        >
+          <Imported
+            className="border ring"
+          >
+            <ReactImportedComponent
+              className="border ring"
+              loadable={
+                Object {
+                  "done": true,
+                  "importFunction": [Function],
+                  "load": [Function],
+                  "mark": Array [],
+                  "ok": true,
+                  "payload": Object {
+                    "process": [Function],
+                  },
+                  "promise": Promise {},
+                  "reset": [Function],
+                }
+              }
+              render={[Function]}
+            >
+              <UnconnectedReactImportedComponent
+                async={false}
+                className="border ring"
+                exportPicker={[Function]}
+                loadable={
+                  Object {
+                    "done": true,
+                    "importFunction": [Function],
+                    "load": [Function],
+                    "mark": Array [],
+                    "ok": true,
+                    "payload": Object {
+                      "process": [Function],
+                    },
+                    "promise": Promise {},
+                    "reset": [Function],
+                  }
+                }
+                render={[Function]}
+                streamId={0}
+              >
+                <img
+                  className="border ring"
+                  src={
+                    Object {
+                      "process": [Function],
+                    }
+                  }
+                />
+              </UnconnectedReactImportedComponent>
+            </ReactImportedComponent>
+          </Imported>
+        </Icon>
+        <Icon
+          className="dag 10"
+          icon="dag"
+        >
+          <Imported
+            className="dag 10"
+          >
+            <ReactImportedComponent
+              className="dag 10"
+              loadable={
+                Object {
+                  "done": true,
+                  "importFunction": [Function],
+                  "load": [Function],
+                  "mark": Array [],
+                  "ok": true,
+                  "payload": Object {
+                    "process": [Function],
+                  },
+                  "promise": Promise {},
+                  "reset": [Function],
+                }
+              }
+              render={[Function]}
+            >
+              <UnconnectedReactImportedComponent
+                async={false}
+                className="dag 10"
+                exportPicker={[Function]}
+                loadable={
+                  Object {
+                    "done": true,
+                    "importFunction": [Function],
+                    "load": [Function],
+                    "mark": Array [],
+                    "ok": true,
+                    "payload": Object {
+                      "process": [Function],
+                    },
+                    "promise": Promise {},
+                    "reset": [Function],
+                  }
+                }
+                render={[Function]}
+                streamId={0}
+              >
+                <img
+                  className="dag 10"
+                  src={
+                    Object {
+                      "process": [Function],
+                    }
+                  }
+                />
+              </UnconnectedReactImportedComponent>
+            </ReactImportedComponent>
+          </Imported>
+        </Icon>
+      </div>
+    </Flex>
+  </Box>
+</Airflow>
+`;
+
+exports[`Icons should render correctly 5`] = `
+<Triangle>
+  <span
+    className="triangle"
+  />
+</Triangle>
+`;

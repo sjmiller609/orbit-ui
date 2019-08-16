@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardError should have icon 1`] = `null`;
+
+exports[`CardError should render correctly 1`] = `
+<CardError
+  className="testClassString"
+  retry={[Function]}
+>
+  <Card
+    className="card testClassString"
+  >
+    <Box
+      className="card card testClassString"
+      justify="flex-start"
+    >
+      <Flex
+        className="card card testClassString"
+        flow="box"
+        justify="flex-start"
+      >
+        <div
+          className="flex box flex-start card card testClassString"
+        >
+          <main
+            className="full"
+          >
+            <Block1
+              left={
+                <Imported
+                  className="img"
+                />
+              }
+              title="DAG gone it! Something went wrong"
+            >
+              <Row
+                className="content"
+                wrap={true}
+              >
+                <Flex
+                  className="content"
+                  flow="row"
+                  wrap={true}
+                >
+                  <div
+                    className="flex row undefined wrap content"
+                  >
+                    <Box
+                      className="left"
+                    >
+                      <Flex
+                        className="left"
+                        flow="box"
+                      >
+                        <div
+                          className="flex box undefined left"
+                        >
+                          <Imported
+                            className="img"
+                          >
+                            <ReactImportedComponent
+                              className="img"
+                              loadable={
+                                Object {
+                                  "done": true,
+                                  "importFunction": [Function],
+                                  "load": [Function],
+                                  "mark": Array [],
+                                  "ok": true,
+                                  "payload": Object {
+                                    "process": [Function],
+                                  },
+                                  "promise": Promise {},
+                                  "reset": [Function],
+                                }
+                              }
+                              render={[Function]}
+                            >
+                              <UnconnectedReactImportedComponent
+                                async={false}
+                                className="img"
+                                exportPicker={[Function]}
+                                loadable={
+                                  Object {
+                                    "done": true,
+                                    "importFunction": [Function],
+                                    "load": [Function],
+                                    "mark": Array [],
+                                    "ok": true,
+                                    "payload": Object {
+                                      "process": [Function],
+                                    },
+                                    "promise": Promise {},
+                                    "reset": [Function],
+                                  }
+                                }
+                                render={[Function]}
+                                streamId={0}
+                              >
+                                <img
+                                  className="img"
+                                  src={
+                                    Object {
+                                      "process": [Function],
+                                    }
+                                  }
+                                />
+                              </UnconnectedReactImportedComponent>
+                            </ReactImportedComponent>
+                          </Imported>
+                        </div>
+                      </Flex>
+                    </Box>
+                    <Box
+                      align="flex-start"
+                      className="right"
+                    >
+                      <Flex
+                        align="flex-start"
+                        className="right"
+                        flow="box"
+                      >
+                        <div
+                          className="flex box undefined align-flex-start right"
+                        >
+                          <H1>
+                            <h1
+                              className="h1"
+                            >
+                              DAG gone it! Something went wrong
+                            </h1>
+                          </H1>
+                          &lt;p&gt;Test&lt;/p&gt;
+                          <P>
+                            <p
+                              className="p"
+                            >
+                              <Link
+                                onClick={[Function]}
+                              >
+                                <A
+                                  className="link"
+                                  onClick={[Function]}
+                                >
+                                  <a
+                                    className="link"
+                                    onClick={[Function]}
+                                  >
+                                    Refresh
+                                  </a>
+                                </A>
+                              </Link>
+                               to try again. Or if the problem persists, please 
+                              <Link
+                                to="https://www.astronomer.io/contact"
+                              >
+                                <A
+                                  className="link"
+                                  to="https://www.astronomer.io/contact"
+                                >
+                                  <a
+                                    className="link"
+                                    href="https://www.astronomer.io/contact"
+                                    target="_blank"
+                                  >
+                                    contact support
+                                  </a>
+                                </A>
+                              </Link>
+                              .
+                            </p>
+                          </P>
+                        </div>
+                      </Flex>
+                    </Box>
+                  </div>
+                </Flex>
+              </Row>
+            </Block1>
+          </main>
+        </div>
+      </Flex>
+    </Box>
+  </Card>
+</CardError>
+`;

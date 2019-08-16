@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Code should render correctly 1`] = `
+<Code
+  className="testClassName"
+>
+  <code
+    className="code testClassName"
+  >
+    Children
+  </code>
+</Code>
+`;

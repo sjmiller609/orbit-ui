@@ -7,7 +7,7 @@ import { Card, Box, LoadingDots, Loading } from 'instruments'
 import s from './styles.scss'
 
 // NOTE: Incomplete - not used
-
+/* istanbul ignore next */
 const CardLoading = ({ className }) => {
   return (
     <Card className={classnames(s.card, className)}>

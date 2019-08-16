@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Site should render correctly 1`] = `
+<Site>
+  <Page
+    className="module"
+    metaTitle="Astronomer"
+  >
+    <div
+      className="page module"
+    >
+      <div
+        className="content"
+      >
+        <p>
+          Children
+        </p>
+      </div>
+      <HelmetWrapper
+        defer={true}
+        encodeSpecialCharacters={true}
+      >
+        <SideEffect(NullComponent)
+          defer={true}
+          encodeSpecialCharacters={true}
+          title="Astronomer"
+          titleAttributes={Object {}}
+        >
+          <NullComponent
+            defer={true}
+            encodeSpecialCharacters={true}
+            title="Astronomer"
+            titleAttributes={Object {}}
+          />
+        </SideEffect(NullComponent)>
+      </HelmetWrapper>
+    </div>
+  </Page>
+</Site>
+`;

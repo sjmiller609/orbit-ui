@@ -1,0 +1,393 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Block1 handles no left 1`] = `
+<Block1
+  className="testClassString"
+  left={null}
+  right={
+    <Link>
+      Test
+    </Link>
+  }
+  text="This is a test"
+  title="Test"
+>
+  <Row
+    className="content testClassString"
+    wrap={true}
+  >
+    <Flex
+      className="content testClassString"
+      flow="row"
+      wrap={true}
+    >
+      <div
+        className="flex row undefined wrap content testClassString"
+      >
+        <Box
+          align="flex-start"
+          className="right"
+        >
+          <Flex
+            align="flex-start"
+            className="right"
+            flow="box"
+          >
+            <div
+              className="flex box undefined align-flex-start right"
+            >
+              <Link>
+                <A
+                  className="link"
+                >
+                  <a
+                    className="link"
+                  >
+                    Test
+                  </a>
+                </A>
+              </Link>
+            </div>
+          </Flex>
+        </Box>
+      </div>
+    </Flex>
+  </Row>
+</Block1>
+`;
+
+exports[`Block1 handles no right 1`] = `
+<Block1
+  className="testClassString"
+  left={
+    <Link>
+      Test
+    </Link>
+  }
+  right={null}
+  text="This is a test"
+  title="Test"
+>
+  <Row
+    className="content testClassString"
+    wrap={true}
+  >
+    <Flex
+      className="content testClassString"
+      flow="row"
+      wrap={true}
+    >
+      <div
+        className="flex row undefined wrap content testClassString"
+      >
+        <Box
+          className="left"
+        >
+          <Flex
+            className="left"
+            flow="box"
+          >
+            <div
+              className="flex box undefined left"
+            >
+              <Link>
+                <A
+                  className="link"
+                >
+                  <a
+                    className="link"
+                  >
+                    Test
+                  </a>
+                </A>
+              </Link>
+            </div>
+          </Flex>
+        </Box>
+        <Box
+          align="flex-start"
+          className="right"
+        >
+          <Flex
+            align="flex-start"
+            className="right"
+            flow="box"
+          >
+            <div
+              className="flex box undefined align-flex-start right"
+            >
+              <H1>
+                <h1
+                  className="h1"
+                >
+                  Test
+                </h1>
+              </H1>
+              <P>
+                <p
+                  className="p"
+                >
+                  This is a test
+                </p>
+              </P>
+              &lt;p&gt;This is a test&lt;/p&gt;
+            </div>
+          </Flex>
+        </Box>
+      </div>
+    </Flex>
+  </Row>
+</Block1>
+`;
+
+exports[`Block1 handles no text 1`] = `
+<Block1
+  className="testClassString"
+  left={
+    <Link>
+      Test
+    </Link>
+  }
+  right={
+    <Link>
+      Test
+    </Link>
+  }
+  text={null}
+  title="Test"
+>
+  <Row
+    className="content testClassString"
+    wrap={true}
+  >
+    <Flex
+      className="content testClassString"
+      flow="row"
+      wrap={true}
+    >
+      <div
+        className="flex row undefined wrap content testClassString"
+      >
+        <Box
+          className="left"
+        >
+          <Flex
+            className="left"
+            flow="box"
+          >
+            <div
+              className="flex box undefined left"
+            >
+              <Link>
+                <A
+                  className="link"
+                >
+                  <a
+                    className="link"
+                  >
+                    Test
+                  </a>
+                </A>
+              </Link>
+            </div>
+          </Flex>
+        </Box>
+        <Box
+          align="flex-start"
+          className="right"
+        >
+          <Flex
+            align="flex-start"
+            className="right"
+            flow="box"
+          >
+            <div
+              className="flex box undefined align-flex-start right"
+            >
+              <Link>
+                <A
+                  className="link"
+                >
+                  <a
+                    className="link"
+                  >
+                    Test
+                  </a>
+                </A>
+              </Link>
+            </div>
+          </Flex>
+        </Box>
+      </div>
+    </Flex>
+  </Row>
+</Block1>
+`;
+
+exports[`Block1 handles no title 1`] = `
+<Block1
+  className="testClassString"
+  left={
+    <Link>
+      Test
+    </Link>
+  }
+  right={
+    <Link>
+      Test
+    </Link>
+  }
+  text="This is a test"
+  title={null}
+>
+  <Row
+    className="content testClassString"
+    wrap={true}
+  >
+    <Flex
+      className="content testClassString"
+      flow="row"
+      wrap={true}
+    >
+      <div
+        className="flex row undefined wrap content testClassString"
+      >
+        <Box
+          className="left"
+        >
+          <Flex
+            className="left"
+            flow="box"
+          >
+            <div
+              className="flex box undefined left"
+            >
+              <Link>
+                <A
+                  className="link"
+                >
+                  <a
+                    className="link"
+                  >
+                    Test
+                  </a>
+                </A>
+              </Link>
+            </div>
+          </Flex>
+        </Box>
+        <Box
+          align="flex-start"
+          className="right"
+        >
+          <Flex
+            align="flex-start"
+            className="right"
+            flow="box"
+          >
+            <div
+              className="flex box undefined align-flex-start right"
+            >
+              <Link>
+                <A
+                  className="link"
+                >
+                  <a
+                    className="link"
+                  >
+                    Test
+                  </a>
+                </A>
+              </Link>
+            </div>
+          </Flex>
+        </Box>
+      </div>
+    </Flex>
+  </Row>
+</Block1>
+`;
+
+exports[`Block1 renders correctly 1`] = `
+<Block1
+  className="testClassString"
+  left={
+    <Link>
+      Test
+    </Link>
+  }
+  right={
+    <Link>
+      Test
+    </Link>
+  }
+  text="This is a test"
+  title="Test"
+>
+  <Row
+    className="content testClassString"
+    wrap={true}
+  >
+    <Flex
+      className="content testClassString"
+      flow="row"
+      wrap={true}
+    >
+      <div
+        className="flex row undefined wrap content testClassString"
+      >
+        <Box
+          className="left"
+        >
+          <Flex
+            className="left"
+            flow="box"
+          >
+            <div
+              className="flex box undefined left"
+            >
+              <Link>
+                <A
+                  className="link"
+                >
+                  <a
+                    className="link"
+                  >
+                    Test
+                  </a>
+                </A>
+              </Link>
+            </div>
+          </Flex>
+        </Box>
+        <Box
+          align="flex-start"
+          className="right"
+        >
+          <Flex
+            align="flex-start"
+            className="right"
+            flow="box"
+          >
+            <div
+              className="flex box undefined align-flex-start right"
+            >
+              <Link>
+                <A
+                  className="link"
+                >
+                  <a
+                    className="link"
+                  >
+                    Test
+                  </a>
+                </A>
+              </Link>
+            </div>
+          </Flex>
+        </Box>
+      </div>
+    </Flex>
+  </Row>
+</Block1>
+`;

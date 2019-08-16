@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardRow renders correctly 1`] = `
+<CardRow
+  className="testClassString"
+>
+  <Row
+    align="flex-start"
+    className="row 1 testClassString"
+    wrap={true}
+  >
+    <Flex
+      align="flex-start"
+      className="row 1 testClassString"
+      flow="row"
+      wrap={true}
+    >
+      <div
+        className="flex row undefined align-flex-start wrap row 1 testClassString"
+      >
+        &lt;p&gt;This is a test&lt;/p&gt;
+      </div>
+    </Flex>
+  </Row>
+</CardRow>
+`;
+
+exports[`CardRow renders different children correctly 1`] = `
+<CardRow
+  className="testClassString"
+>
+  <Row
+    align="flex-start"
+    className="row 1 testClassString"
+    wrap={true}
+  >
+    <Flex
+      align="flex-start"
+      className="row 1 testClassString"
+      flow="row"
+      wrap={true}
+    >
+      <div
+        className="flex row undefined align-flex-start wrap row 1 testClassString"
+      >
+        <p
+          key="1"
+        >
+          This is a test
+        </p>
+      </div>
+    </Flex>
+  </Row>
+</CardRow>
+`;

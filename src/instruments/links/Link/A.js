@@ -10,6 +10,7 @@ const A = ({ to, title, className, onClick, children, target, id }) => {
   }
   if (to) {
     aProps.href = to
+    /* istanbul ignore next */
     aProps.target = target !== false ? '_blank' : null
   }
   return <a {...aProps}>{children}</a>

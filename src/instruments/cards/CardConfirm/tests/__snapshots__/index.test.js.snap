@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardConfirm should render correctly 1`] = `
+<setContext
+  buttonText="Button text"
+  confirm={Object {}}
+  disabled={false}
+  onSubmit={[Function]}
+  setUI={
+    Object {
+      "dialog": null,
+    }
+  }
+  text="This is a test"
+>
+  <setContext
+    buttonText="Button text"
+    confirm={Object {}}
+    disabled={false}
+    onSubmit={[Function]}
+    setUI={Object {}}
+    text="This is a test"
+  >
+    <CardConfirm
+      buttonText="Button text"
+      confirm={Object {}}
+      disabled={false}
+      onSubmit={[Function]}
+      setUI={
+        Object {
+          "dialog": null,
+        }
+      }
+      text="This is a test"
+    >
+      <CardForm
+        button={
+          Object {
+            "onClick": [Function],
+            "save": true,
+            "style": "green",
+            "text": "Button text",
+          }
+        }
+        className="confirm"
+        id="confirm"
+      >
+        <Card
+          className="confirm"
+          footer={
+            <Row
+              className="footer"
+            >
+              <Button
+                arrow="arrow_darkBg"
+                disabled={false}
+                onClick={[Function]}
+                style="green"
+                submit={true}
+                to={undefined}
+              >
+                Button text
+              </Button>
+            </Row>
+          }
+          id="confirm"
+        >
+          <Box
+            className="card confirm"
+            id="confirm"
+            justify="space-between"
+          >
+            <Flex
+              className="card confirm"
+              flow="box"
+              id="confirm"
+              justify="space-between"
+            >
+              <div
+                className="flex box space-between card confirm"
+                id="confirm"
+              >
+                <main
+                  className="full"
+                >
+                  <div
+                    className="formContent"
+                  >
+                    <p>
+                      Child
+                    </p>
+                  </div>
+                </main>
+                <footer>
+                  <Row
+                    className="footer"
+                  >
+                    <Flex
+                      className="footer"
+                      flow="row"
+                    >
+                      <div
+                        className="flex row undefined footer"
+                      >
+                        <Button
+                          arrow="arrow_darkBg"
+                          disabled={false}
+                          onClick={[Function]}
+                          style="green"
+                          submit={true}
+                        >
+                          <Link>
+                            <A
+                              className="link"
+                            >
+                              <a
+                                className="link"
+                              >
+                                <button
+                                  className="button green"
+                                  disabled={false}
+                                  onClick={[Function]}
+                                  type="submit"
+                                >
+                                  Button text
+                                </button>
+                              </a>
+                            </A>
+                          </Link>
+                        </Button>
+                      </div>
+                    </Flex>
+                  </Row>
+                </footer>
+              </div>
+            </Flex>
+          </Box>
+        </Card>
+      </CardForm>
+    </CardConfirm>
+  </setContext>
+</setContext>
+`;
+
+exports[`CardConfirm should render correctly 2`] = `
+<CardForm
+  button={
+    Object {
+      "onClick": [Function],
+      "save": true,
+      "style": "green",
+      "text": "Button text",
+    }
+  }
+  className="confirm"
+  id="confirm"
+>
+  <Card
+    className="confirm"
+    footer={
+      <Row
+        className="footer"
+      >
+        <Button
+          arrow="arrow_darkBg"
+          disabled={false}
+          onClick={[Function]}
+          style="green"
+          submit={true}
+          to={undefined}
+        >
+          Button text
+        </Button>
+      </Row>
+    }
+    id="confirm"
+  >
+    <Box
+      className="card confirm"
+      id="confirm"
+      justify="space-between"
+    >
+      <Flex
+        className="card confirm"
+        flow="box"
+        id="confirm"
+        justify="space-between"
+      >
+        <div
+          className="flex box space-between card confirm"
+          id="confirm"
+        >
+          <main
+            className="full"
+          >
+            <div
+              className="formContent"
+            >
+              <p>
+                Child
+              </p>
+            </div>
+          </main>
+          <footer>
+            <Row
+              className="footer"
+            >
+              <Flex
+                className="footer"
+                flow="row"
+              >
+                <div
+                  className="flex row undefined footer"
+                >
+                  <Button
+                    arrow="arrow_darkBg"
+                    disabled={false}
+                    onClick={[Function]}
+                    style="green"
+                    submit={true}
+                  >
+                    <Link>
+                      <A
+                        className="link"
+                      >
+                        <a
+                          className="link"
+                        >
+                          <button
+                            className="button green"
+                            disabled={false}
+                            onClick={[Function]}
+                            type="submit"
+                          >
+                            Button text
+                          </button>
+                        </a>
+                      </A>
+                    </Link>
+                  </Button>
+                </div>
+              </Flex>
+            </Row>
+          </footer>
+        </div>
+      </Flex>
+    </Box>
+  </Card>
+</CardForm>
+`;

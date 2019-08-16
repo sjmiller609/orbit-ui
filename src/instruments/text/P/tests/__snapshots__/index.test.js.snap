@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`P should handle center 1`] = `
+<P
+  center={true}
+  className="testClassName"
+>
+  <p
+    className="p center testClassName"
+  >
+    Children
+  </p>
+</P>
+`;
+
+exports[`P should render correctly 1`] = `
+<P
+  className="testClassName"
+>
+  <p
+    className="p testClassName"
+  >
+    Children
+  </p>
+</P>
+`;

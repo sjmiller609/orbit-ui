@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading should render correctly 1`] = `
+<div
+  className="loading"
+>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Loading...
+    </title>
+  </HelmetWrapper>
+  <div />
+</div>
+`;

@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OauthButton should render correctly 1`] = `
+<OauthButton
+  className="testClassString"
+  displayName="Google"
+  login={false}
+  service="google"
+  to="/"
+>
+  <Row
+    className="testClassString"
+    full={true}
+  >
+    <Flex
+      className="testClassString"
+      flow="row"
+      full={true}
+    >
+      <div
+        className="flex row undefined full testClassString"
+      >
+        <Link
+          className="button google"
+          title="Sign up with Google"
+          to="/"
+        >
+          <Link
+            className="link button google"
+            replace={false}
+            title="Sign up with Google"
+            to="/"
+          >
+            <a
+              className="link button google"
+              href="/"
+              onClick={[Function]}
+              title="Sign up with Google"
+            >
+              <span>
+                Sign up
+                 with 
+                Google
+              </span>
+            </a>
+          </Link>
+        </Link>
+      </div>
+    </Flex>
+  </Row>
+</OauthButton>
+`;
+
+exports[`OauthButton should render login correctly 1`] = `
+<OauthButton
+  className="testClassString"
+  displayName="Google"
+  login={true}
+  service="google"
+  to="/"
+>
+  <Row
+    className="testClassString"
+    full={true}
+  >
+    <Flex
+      className="testClassString"
+      flow="row"
+      full={true}
+    >
+      <div
+        className="flex row undefined full testClassString"
+      >
+        <Link
+          className="button google"
+          title="Login with Google"
+          to="/"
+        >
+          <Link
+            className="link button google"
+            replace={false}
+            title="Login with Google"
+            to="/"
+          >
+            <a
+              className="link button google"
+              href="/"
+              onClick={[Function]}
+              title="Login with Google"
+            >
+              <span>
+                Login
+                 with 
+                Google
+              </span>
+            </a>
+          </Link>
+        </Link>
+      </div>
+    </Flex>
+  </Row>
+</OauthButton>
+`;

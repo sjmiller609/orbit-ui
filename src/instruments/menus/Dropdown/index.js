@@ -17,9 +17,12 @@ class Dropdown extends React.Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
+    /* istanbul ignore next */
     if (this.state.menu && !nextState.menu)
+      /* istanbul ignore next */
       this.timeout = setTimeout(() => this.setState({ out: true }), 250)
   }
+
   componentWillUnmount() {
     clearTimeout(this.timeout)
   }
@@ -30,6 +33,7 @@ class Dropdown extends React.Component {
 
   open() {
     const { menu } = this.state
+    /* istanbul ignore next */
     if (menu) return
     this.setState({ menu: true, out: false })
   }

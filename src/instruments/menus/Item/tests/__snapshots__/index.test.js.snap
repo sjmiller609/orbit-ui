@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Item should render correctly 1`] = `
+<Link
+  activeClassName="active"
+  className="item"
+  exact={true}
+  title=""
+/>
+`;

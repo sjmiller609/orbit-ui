@@ -1,0 +1,227 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SiteHeader should render correctly 1`] = `
+<SiteHeader>
+  <Row
+    className="header"
+    justify="space-between"
+  >
+    <Flex
+      className="header"
+      flow="row"
+      justify="space-between"
+    >
+      <div
+        className="flex row space-between header"
+      >
+        <Logo
+          className="logo"
+          darkBg={false}
+        >
+          <Link
+            to="/"
+          >
+            <Link
+              className="link"
+              replace={false}
+              to="/"
+            >
+              <a
+                className="link"
+                href="/"
+                onClick={[Function]}
+              >
+                <Imported
+                  className="logo stars logo"
+                  title="Astronomer"
+                >
+                  <ReactImportedComponent
+                    className="logo stars logo"
+                    loadable={
+                      Object {
+                        "done": true,
+                        "importFunction": [Function],
+                        "load": [Function],
+                        "mark": Array [],
+                        "ok": true,
+                        "payload": Object {
+                          "process": [Function],
+                        },
+                        "promise": Promise {},
+                        "reset": [Function],
+                      }
+                    }
+                    render={[Function]}
+                    title="Astronomer"
+                  >
+                    <UnconnectedReactImportedComponent
+                      async={false}
+                      className="logo stars logo"
+                      exportPicker={[Function]}
+                      loadable={
+                        Object {
+                          "done": true,
+                          "importFunction": [Function],
+                          "load": [Function],
+                          "mark": Array [],
+                          "ok": true,
+                          "payload": Object {
+                            "process": [Function],
+                          },
+                          "promise": Promise {},
+                          "reset": [Function],
+                        }
+                      }
+                      render={[Function]}
+                      streamId={0}
+                      title="Astronomer"
+                    >
+                      <img
+                        className="logo stars logo"
+                        src={
+                          Object {
+                            "process": [Function],
+                          }
+                        }
+                        title="Astronomer"
+                      />
+                    </UnconnectedReactImportedComponent>
+                  </ReactImportedComponent>
+                </Imported>
+              </a>
+            </Link>
+          </Link>
+        </Logo>
+        <Row>
+          <Flex
+            flow="row"
+          >
+            <div
+              className="flex row undefined"
+            >
+               
+              <p>
+                Children
+              </p>
+            </div>
+          </Flex>
+        </Row>
+      </div>
+    </Flex>
+  </Row>
+</SiteHeader>
+`;
+
+exports[`SiteHeader should render dark correctly 1`] = `
+<SiteHeader
+  dark={true}
+>
+  <Row
+    className="header"
+    justify="space-between"
+  >
+    <Flex
+      className="header"
+      flow="row"
+      justify="space-between"
+    >
+      <div
+        className="flex row space-between header"
+      >
+        <Logo
+          className="logo"
+          darkBg={true}
+        >
+          <Link
+            to="/"
+          >
+            <Link
+              className="link"
+              replace={false}
+              to="/"
+            >
+              <a
+                className="link"
+                href="/"
+                onClick={[Function]}
+              >
+                <Imported
+                  className="logo stars logo"
+                  title="Astronomer"
+                >
+                  <ReactImportedComponent
+                    className="logo stars logo"
+                    loadable={
+                      Object {
+                        "done": true,
+                        "importFunction": [Function],
+                        "load": [Function],
+                        "mark": Array [],
+                        "ok": true,
+                        "payload": Object {
+                          "process": [Function],
+                        },
+                        "promise": Promise {},
+                        "reset": [Function],
+                      }
+                    }
+                    render={[Function]}
+                    title="Astronomer"
+                  >
+                    <UnconnectedReactImportedComponent
+                      async={false}
+                      className="logo stars logo"
+                      exportPicker={[Function]}
+                      loadable={
+                        Object {
+                          "done": true,
+                          "importFunction": [Function],
+                          "load": [Function],
+                          "mark": Array [],
+                          "ok": true,
+                          "payload": Object {
+                            "process": [Function],
+                          },
+                          "promise": Promise {},
+                          "reset": [Function],
+                        }
+                      }
+                      render={[Function]}
+                      streamId={0}
+                      title="Astronomer"
+                    >
+                      <img
+                        className="logo stars logo"
+                        src={
+                          Object {
+                            "process": [Function],
+                          }
+                        }
+                        title="Astronomer"
+                      />
+                    </UnconnectedReactImportedComponent>
+                  </ReactImportedComponent>
+                </Imported>
+              </a>
+            </Link>
+          </Link>
+        </Logo>
+        <Row>
+          <Flex
+            flow="row"
+          >
+            <div
+              className="flex row undefined"
+            >
+               
+              <p>
+                Children
+              </p>
+            </div>
+          </Flex>
+        </Row>
+      </div>
+    </Flex>
+  </Row>
+</SiteHeader>
+`;

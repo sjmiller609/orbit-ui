@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Redirect as RouterRedirect } from 'react-router-dom'
 
+/* istanbul ignore next */
 class Redirect extends React.Component {
   to = this.props.to
 

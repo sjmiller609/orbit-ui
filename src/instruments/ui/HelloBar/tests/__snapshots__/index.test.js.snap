@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelloBar renders correctly 1`] = `
+<Row
+  className="notice show"
+>
+  <Row
+    className="message"
+  >
+    Test message
+    <Button
+      className="button"
+      to="/"
+    >
+      Click me
+    </Button>
+  </Row>
+</Row>
+`;
+
+exports[`HelloBar should handle no msg 1`] = `
+<Row
+  className="notice"
+>
+  <Row
+    className="message"
+  />
+</Row>
+`;

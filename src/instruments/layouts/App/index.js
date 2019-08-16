@@ -23,11 +23,11 @@ class App extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentWillMount() /* istanbul ignore next */ {
     setTimeout(this.handleLoading, 100)
   }
 
-  handleLoading = () => {
+  handleLoading = /* istanbul ignore next */ () => {
     this.setState({ loading: false })
   }
 

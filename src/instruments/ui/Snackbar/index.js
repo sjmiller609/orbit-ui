@@ -10,6 +10,7 @@ class Snackbar extends React.Component {
   timeout = null
   clear = this.clear.bind(this)
 
+  /* istanbul ignore next */
   componentWillReceiveProps({ msg }) {
     if (!this.props.msg && msg)
       this.timeout = setTimeout(() => this.clear(), 4000)
@@ -20,6 +21,7 @@ class Snackbar extends React.Component {
     }
   }
 
+  /* istanbul ignore next */
   clear() {
     this.props.setMsg(null)
     clearTimeout(this.timeout)

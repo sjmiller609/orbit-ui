@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField renders correctly 1`] = `
+<Field
+  className="testClassString"
+  disabled={false}
+  error={Symbol(react.fragment)}
+  fieldId="textTextField"
+  id="1234"
+  label={Symbol(react.fragment)}
+  name="test"
+  onBlur={[Function]}
+  onChange={[Function]}
+  placeholder="Test"
+  required={true}
+  setRef={[Function]}
+  title="Test"
+  type="text"
+  updateErrors={[Function]}
+  validate={[Function]}
+  value="test"
+>
+  <TextField
+    className="field required testClassString"
+    disabled={false}
+    error={null}
+    fieldId="textTextField"
+    id="1234"
+    label={
+      <FormLabel
+        id="1234"
+        info={undefined}
+      >
+        Symbol(react.fragment)
+      </FormLabel>
+    }
+    name="test"
+    onBlur={null}
+    onChange={[Function]}
+    placeholder="Test"
+    required={true}
+    setRef={[Function]}
+    setShowError={[Function]}
+    showError={false}
+    title="Test"
+    type="text"
+    updateErrors={[Function]}
+    validate={[Function]}
+    value="test"
+  >
+    <div
+      className="field required testClassString"
+      id="textTextField"
+    >
+      <FormLabel
+        id="1234"
+      >
+        <label
+          className="label"
+          htmlFor="1234"
+        >
+          <Info />
+        </label>
+      </FormLabel>
+      <input
+        disabled={false}
+        id="1234"
+        name="test"
+        onBlur={null}
+        onChange={[Function]}
+        placeholder="Test"
+        required={true}
+        title="Test"
+        type="text"
+        value="test"
+      />
+    </div>
+  </TextField>
+</Field>
+`;

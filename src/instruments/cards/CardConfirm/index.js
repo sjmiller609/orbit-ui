@@ -14,7 +14,7 @@ const CardConfirm = ({
   disabled,
   ...otherProps
 }) => {
-  const onClick = () =>
+  const onClick = /* istanbul ignore next */ () =>
     setUI.dialog({
       text: confirm.text,
       title: confirm.title || 'Confirm',

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`H5 should render correctly 1`] = `
+<H5
+  className="testClassName"
+  handleClick={[Function]}
+>
+  <h5
+    className="h5 testClassName"
+    onClick={[Function]}
+  >
+    Children
+  </h5>
+</H5>
+`;

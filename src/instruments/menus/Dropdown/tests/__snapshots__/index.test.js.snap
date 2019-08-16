@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown should render correctly 1`] = `
+<div
+  className="dropdown left out testClassName"
+>
+  <Backdrop
+    close={[Function]}
+    show={false}
+  />
+  <Link
+    className="selector"
+    onClick={[Function]}
+  >
+    <p>
+      Select
+    </p>
+  </Link>
+  <div
+    className="menuWrapper"
+    onClick={[Function]}
+  >
+    <Card
+      className="menu"
+    >
+      <p>
+        Children
+      </p>
+    </Card>
+  </div>
+</div>
+`;
+
+exports[`Dropdown should render disabled 1`] = `
+<Dropdown
+  className="testClassName"
+  disable={true}
+  right={false}
+  selector={
+    <p>
+      Select
+    </p>
+  }
+  small={false}
+>
+  <div
+    className="dropdown left out testClassName"
+  >
+    <Backdrop
+      close={[Function]}
+      show={false}
+    />
+    <p>
+      Select
+    </p>
+    <div
+      className="menuWrapper"
+      onClick={[Function]}
+    >
+      <Card
+        className="menu"
+      >
+        <Box
+          className="card menu"
+          justify="flex-start"
+        >
+          <Flex
+            className="card menu"
+            flow="box"
+            justify="flex-start"
+          >
+            <div
+              className="flex box flex-start card menu"
+            >
+              <main
+                className="full"
+              >
+                <p>
+                  Children
+                </p>
+              </main>
+            </div>
+          </Flex>
+        </Box>
+      </Card>
+    </div>
+  </div>
+</Dropdown>
+`;
+
+exports[`Dropdown should render right 1`] = `
+<Dropdown
+  className="testClassName"
+  disable={false}
+  right={true}
+  selector={
+    <p>
+      Select
+    </p>
+  }
+  small={false}
+>
+  <div
+    className="dropdown right out testClassName"
+  >
+    <Backdrop
+      close={[Function]}
+      show={false}
+    />
+    <Link
+      className="selector"
+      onClick={[Function]}
+    >
+      <A
+        className="link selector"
+        onClick={[Function]}
+      >
+        <a
+          className="link selector"
+          onClick={[Function]}
+        >
+          <p>
+            Select
+          </p>
+        </a>
+      </A>
+    </Link>
+    <div
+      className="menuWrapper"
+      onClick={[Function]}
+    >
+      <Card
+        className="menu"
+      >
+        <Box
+          className="card menu"
+          justify="flex-start"
+        >
+          <Flex
+            className="card menu"
+            flow="box"
+            justify="flex-start"
+          >
+            <div
+              className="flex box flex-start card menu"
+            >
+              <main
+                className="full"
+              >
+                <p>
+                  Children
+                </p>
+              </main>
+            </div>
+          </Flex>
+        </Box>
+      </Card>
+    </div>
+  </div>
+</Dropdown>
+`;
+
+exports[`Dropdown should render small 1`] = `
+<Dropdown
+  className="testClassName"
+  disable={false}
+  right={false}
+  selector={
+    <p>
+      Select
+    </p>
+  }
+  small={true}
+>
+  <div
+    className="dropdown left out small testClassName"
+  >
+    <Backdrop
+      close={[Function]}
+      show={false}
+    />
+    <Link
+      className="selector"
+      onClick={[Function]}
+    >
+      <A
+        className="link selector"
+        onClick={[Function]}
+      >
+        <a
+          className="link selector"
+          onClick={[Function]}
+        >
+          <p>
+            Select
+          </p>
+        </a>
+      </A>
+    </Link>
+    <div
+      className="menuWrapper"
+      onClick={[Function]}
+    >
+      <Card
+        className="menu"
+      >
+        <Box
+          className="card menu"
+          justify="flex-start"
+        >
+          <Flex
+            className="card menu"
+            flow="box"
+            justify="flex-start"
+          >
+            <div
+              className="flex box flex-start card menu"
+            >
+              <main
+                className="full"
+              >
+                <p>
+                  Children
+                </p>
+              </main>
+            </div>
+          </Flex>
+        </Box>
+      </Card>
+    </div>
+  </div>
+</Dropdown>
+`;

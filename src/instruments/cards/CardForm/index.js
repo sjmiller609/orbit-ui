@@ -36,6 +36,7 @@ const CardForm = ({
             <Button
               disabled={
                 (disable &&
+                  /* istanbul ignore next */
                   (typeof button.save === 'boolean' && !button.save)) ||
                 false
               }

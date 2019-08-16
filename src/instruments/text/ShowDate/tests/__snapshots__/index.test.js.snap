@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShowDate handles no date 1`] = `""`;
+
+exports[`ShowDate renders correctly 1`] = `
+<span
+  className="date testClassString"
+>
+  Mon, August 5
+</span>
+`;

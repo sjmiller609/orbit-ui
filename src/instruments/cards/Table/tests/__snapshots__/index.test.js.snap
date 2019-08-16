@@ -1,0 +1,390 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table should handle no button 1`] = `
+<Card
+  className="table one testClassString"
+  header={
+    <UNDEFINED>
+      <Link>
+        Test
+      </Link>
+      <Row
+        className="header"
+        justify="space-between"
+      >
+        <Search
+          className="search"
+          dark={false}
+          noDelay={true}
+          placeholder="Test search"
+          search={[Function]}
+          text="Test search"
+        />
+        <Link>
+          Test
+        </Link>
+      </Row>
+    </UNDEFINED>
+  }
+>
+  &lt;p&gt;This is a test&lt;/p&gt;
+</Card>
+`;
+
+exports[`Table should render correctly 1`] = `
+<Table
+  Empty={[Function]}
+  button={Object {}}
+  className="testClassString"
+  headerOptions={
+    <Link>
+      Test
+    </Link>
+  }
+  nav={
+    <Link>
+      Test
+    </Link>
+  }
+  search={
+    Object {
+      "call": [Function],
+      "delay": false,
+      "placeholder": "Test search",
+      "text": "Test search",
+    }
+  }
+>
+  <Card
+    className="table one testClassString"
+    header={
+      <UNDEFINED>
+        <Link>
+          Test
+        </Link>
+        <Row
+          className="header"
+          justify="space-between"
+        >
+          <Search
+            className="search"
+            dark={false}
+            noDelay={true}
+            placeholder="Test search"
+            search={[Function]}
+            text="Test search"
+          />
+          <Link>
+            Test
+          </Link>
+          <Button
+            to={undefined}
+          />
+        </Row>
+      </UNDEFINED>
+    }
+  >
+    <Box
+      className="card table one testClassString"
+      justify="flex-start"
+    >
+      <Flex
+        className="card table one testClassString"
+        flow="box"
+        justify="flex-start"
+      >
+        <div
+          className="flex box flex-start card table one testClassString"
+        >
+          <header>
+            <Link>
+              <A
+                className="link"
+              >
+                <a
+                  className="link"
+                >
+                  Test
+                </a>
+              </A>
+            </Link>
+            <Row
+              className="header"
+              justify="space-between"
+            >
+              <Flex
+                className="header"
+                flow="row"
+                justify="space-between"
+              >
+                <div
+                  className="flex row space-between header"
+                >
+                  <Search
+                    className="search"
+                    dark={false}
+                    noDelay={true}
+                    placeholder="Test search"
+                    search={[Function]}
+                    text="Test search"
+                  >
+                    <div
+                      className="field search search"
+                    >
+                      <input
+                        className="input"
+                        onChange={[Function]}
+                        placeholder="Test search"
+                        type="text"
+                        value="Test search"
+                      />
+                      <div
+                        className="clear"
+                        onClick={[Function]}
+                      >
+                        x
+                      </div>
+                    </div>
+                  </Search>
+                  <Link>
+                    <A
+                      className="link"
+                    >
+                      <a
+                        className="link"
+                      >
+                        Test
+                      </a>
+                    </A>
+                  </Link>
+                  <Button>
+                    <Link>
+                      <A
+                        className="link"
+                      >
+                        <a
+                          className="link"
+                        >
+                          <button
+                            className="button undefined"
+                            type="button"
+                          />
+                        </a>
+                      </A>
+                    </Link>
+                  </Button>
+                </div>
+              </Flex>
+            </Row>
+          </header>
+          <main
+            className="full"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </main>
+        </div>
+      </Flex>
+    </Box>
+  </Card>
+</Table>
+`;
+
+exports[`Table should render correctly 2`] = `
+<Link
+  className="tableRow testClassString"
+  to="/"
+>
+  <Row
+    justify="space-between"
+  >
+    <Row
+      className="fields"
+      full={true}
+      justify="flex-start"
+      wrap={false}
+    >
+      1
+      2
+      3
+    </Row>
+    <Box
+      auto={true}
+      className="arrowCol"
+    >
+      <Icon
+        className="arrow"
+        icon="arrow"
+        key="arrow"
+      />
+    </Box>
+    <Box
+      auto={true}
+    >
+      <Link
+        className="remove"
+        onClick={[Function]}
+      >
+        <Box>
+          ×
+        </Box>
+      </Link>
+    </Box>
+  </Row>
+</Link>
+`;
+
+exports[`Table should render correctly 3`] = `
+<NoResults>
+  <Box
+    className="noResults"
+  >
+    <Flex
+      className="noResults"
+      flow="box"
+    >
+      <div
+        className="flex box undefined noResults"
+      >
+        <Icon
+          icon="alien_ship"
+        >
+          <Imported>
+            <ReactImportedComponent
+              loadable={
+                Object {
+                  "done": true,
+                  "importFunction": [Function],
+                  "load": [Function],
+                  "mark": Array [],
+                  "ok": true,
+                  "payload": Object {
+                    "process": [Function],
+                  },
+                  "promise": Promise {},
+                  "reset": [Function],
+                }
+              }
+              render={[Function]}
+            >
+              <UnconnectedReactImportedComponent
+                async={false}
+                exportPicker={[Function]}
+                loadable={
+                  Object {
+                    "done": true,
+                    "importFunction": [Function],
+                    "load": [Function],
+                    "mark": Array [],
+                    "ok": true,
+                    "payload": Object {
+                      "process": [Function],
+                    },
+                    "promise": Promise {},
+                    "reset": [Function],
+                  }
+                }
+                render={[Function]}
+                streamId={0}
+              >
+                <img
+                  src={
+                    Object {
+                      "process": [Function],
+                    }
+                  }
+                />
+              </UnconnectedReactImportedComponent>
+            </ReactImportedComponent>
+          </Imported>
+        </Icon>
+        <H5>
+          <h5
+            className="h5"
+          >
+            Nothing found.
+          </h5>
+        </H5>
+      </div>
+    </Flex>
+  </Box>
+</NoResults>
+`;
+
+exports[`Table should render default to 1`] = `
+<div
+  className="tableRow testClassString"
+>
+  <Row
+    justify="space-between"
+  >
+    <Row
+      className="fields"
+      full={true}
+      justify="flex-start"
+      wrap={false}
+    >
+      1
+      2
+      3
+    </Row>
+    <Box
+      auto={true}
+    >
+      <Link
+        className="remove"
+        onClick={[Function]}
+      >
+        <Box>
+          ×
+        </Box>
+      </Link>
+    </Box>
+  </Row>
+</div>
+`;
+
+exports[`Table should render elements for rows 1`] = `
+<Link
+  className="tableRow testClassString"
+  to="/"
+>
+  <Row
+    justify="space-between"
+  >
+    <Row
+      className="fields"
+      full={true}
+      justify="flex-start"
+      wrap={false}
+    >
+      <p
+        key="1"
+      >
+        1
+      </p>
+    </Row>
+    <Box
+      auto={true}
+      className="arrowCol"
+    >
+      <Icon
+        className="arrow"
+        icon="arrow"
+        key="arrow"
+      />
+    </Box>
+    <Box
+      auto={true}
+    >
+      <Link
+        className="remove"
+        onClick={[Function]}
+      >
+        <Box>
+          ×
+        </Box>
+      </Link>
+    </Box>
+  </Row>
+</Link>
+`;

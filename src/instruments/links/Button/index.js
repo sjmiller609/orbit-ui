@@ -27,7 +27,9 @@ const Button = ({
           s[style],
           className
         )}
-        onClick={e => (disabled ? e.preventDefault() : e)}>
+        onClick={
+          /* istanbul ignore next */ e => (disabled ? e.preventDefault() : e)
+        }>
         {children}
       </Link>
     )

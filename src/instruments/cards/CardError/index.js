@@ -11,9 +11,11 @@ const Astronaut = LoadImg(() => import(`./astronaut.svg`))
 const CardError = ({ children, retry, className }) => {
   const onClick =
     retry ||
+    /* istanbul ignore next */
     (window.location.pathname === '/error'
       ? () => window.history.back()
       : () => window.location.reload())
+
   return (
     <Card className={classnames(s.card, className)}>
       <Block1

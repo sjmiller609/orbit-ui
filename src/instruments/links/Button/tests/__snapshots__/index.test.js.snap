@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render correctly 1`] = `
+<Button>
+  <Link>
+    <A
+      className="link"
+    >
+      <a
+        className="link"
+      >
+        <button
+          className="button undefined"
+          type="button"
+        >
+          <p>
+            Children
+          </p>
+        </button>
+      </a>
+    </A>
+  </Link>
+</Button>
+`;
+
+exports[`Button should render to correctly 1`] = `
+<Button
+  to="/"
+>
+  <Link
+    className="button undefined"
+    onClick={[Function]}
+    to="/"
+  >
+    <Link
+      className="link button undefined"
+      onClick={[Function]}
+      replace={false}
+      to="/"
+    >
+      <a
+        className="link button undefined"
+        href="/"
+        onClick={[Function]}
+      >
+        <p>
+          Children
+        </p>
+      </a>
+    </Link>
+  </Link>
+</Button>
+`;

@@ -26,17 +26,19 @@ const Level1 = ({ selected, list, addNew, active, className }) => {
         </H2>
       }>
       <MenuList>
-        {list.map(li => (
-          <Item
-            key={li.id}
-            to={{
-              pathname: '/workspaces/' + li.id,
-              state: { from: location.pathname },
-            }}
-            active={li.id === selected.id}>
-            {li.label}
-          </Item>
-        ))}
+        {list.map(
+          /* istanbul ignore next */ li => (
+            <Item
+              key={li.id}
+              to={{
+                pathname: '/workspaces/' + li.id,
+                state: { from: location.pathname },
+              }}
+              active={li.id === selected.id}>
+              {li.label}
+            </Item>
+          )
+        )}
         <hr className={s.addNew} />
         <Item key="new" to={addNew.to}>
           {addNew.text}

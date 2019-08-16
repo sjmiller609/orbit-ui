@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Flex renders correctly 1`] = `
+<Flex
+  align="center"
+  auto={false}
+  className="testClassString"
+  flow="row"
+  full={false}
+  id="1234"
+  justify="space-between"
+  onClick={[Function]}
+  passRef={[Function]}
+  wrap={false}
+>
+  <div
+    className="flex row space-between align-center testClassString"
+    id="1234"
+    onClick={[Function]}
+  >
+    &lt;p&gt;This is a test&lt;/p&gt;
+  </div>
+</Flex>
+`;
+
+exports[`Flex should render full 1`] = `
+<Flex
+  align="center"
+  auto={false}
+  className="testClassString"
+  flow="row"
+  full={true}
+  id="1234"
+  justify="space-between"
+  onClick={[Function]}
+  passRef={[Function]}
+  wrap={false}
+>
+  <div
+    className="flex row space-between align-center full testClassString"
+    id="1234"
+    onClick={[Function]}
+  >
+    &lt;p&gt;This is a test&lt;/p&gt;
+  </div>
+</Flex>
+`;
+
+exports[`Flex should render wrap 1`] = `
+<Flex
+  align="center"
+  auto={false}
+  className="testClassString"
+  flow="row"
+  full={false}
+  id="1234"
+  justify="space-between"
+  onClick={[Function]}
+  passRef={[Function]}
+  wrap={true}
+>
+  <div
+    className="flex row space-between align-center wrap testClassString"
+    id="1234"
+    onClick={[Function]}
+  >
+    &lt;p&gt;This is a test&lt;/p&gt;
+  </div>
+</Flex>
+`;
+
+exports[`Flex shoulnd render auto 1`] = `
+<Flex
+  align="center"
+  auto={true}
+  className="testClassString"
+  flow="row"
+  full={false}
+  id="1234"
+  justify="space-between"
+  onClick={[Function]}
+  passRef={[Function]}
+  wrap={false}
+>
+  <div
+    className="flex row space-between align-center auto testClassString"
+    id="1234"
+    onClick={[Function]}
+  >
+    &lt;p&gt;This is a test&lt;/p&gt;
+  </div>
+</Flex>
+`;
+
+exports[`Flex shoulnd render full, auto & wrap 1`] = `
+<Flex
+  align="center"
+  auto={true}
+  className="testClassString"
+  flow="row"
+  full={true}
+  id="1234"
+  justify="space-between"
+  onClick={[Function]}
+  passRef={[Function]}
+  wrap={true}
+>
+  <div
+    className="flex row space-between align-center wrap auto full testClassString"
+    id="1234"
+    onClick={[Function]}
+  >
+    &lt;p&gt;This is a test&lt;/p&gt;
+  </div>
+</Flex>
+`;

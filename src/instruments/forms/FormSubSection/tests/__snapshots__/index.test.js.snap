@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormSection renders correctly 1`] = `
+<FormSubSection
+  className="testClassString"
+  id="1234"
+  title="Test"
+>
+  <section
+    className="section testClassString"
+    id="1234"
+  >
+    <Mini
+      className="title"
+    >
+      <p
+        className="mini title"
+      >
+        Test
+      </p>
+    </Mini>
+    <div
+      className="wrapper"
+    >
+      &lt;p&gt;Test child&lt;/p&gt;
+    </div>
+  </section>
+</FormSubSection>
+`;

@@ -1,0 +1,793 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dialog renders correctly 1`] = `
+<Dialog
+  button={
+    Object {
+      "onClick": [Function],
+    }
+  }
+  close={[Function]}
+  text="Testing the dialog."
+  title="Test"
+>
+  <Box
+    className="dialog"
+    key="dialogTest"
+  >
+    <Flex
+      className="dialog"
+      flow="box"
+    >
+      <div
+        className="flex box undefined dialog"
+      >
+        <Backdrop
+          blur={true}
+          close={[Function]}
+          show={true}
+        >
+          <div
+            className="backdrop blur close"
+          >
+            <div
+              onClick={[Function]}
+            />
+          </div>
+        </Backdrop>
+        <CardForm
+          button={
+            Object {
+              "onClick": [Function],
+              "save": true,
+            }
+          }
+          button2={
+            Object {
+              "onClick": [Function],
+              "style": "beige",
+              "text": "Cancel",
+            }
+          }
+          className="card"
+          title="Test"
+        >
+          <Card
+            className="card"
+            footer={
+              <Row
+                className="footer"
+              >
+                <Button
+                  className="button2"
+                  onClick={[Function]}
+                  style="beige"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  arrow="arrow_darkBg"
+                  disabled={false}
+                  onClick={[Function]}
+                  style={undefined}
+                  submit={true}
+                  to={undefined}
+                >
+                  Save
+                </Button>
+              </Row>
+            }
+            header="Test"
+          >
+            <Box
+              className="card card"
+              justify="space-between"
+            >
+              <Flex
+                className="card card"
+                flow="box"
+                justify="space-between"
+              >
+                <div
+                  className="flex box space-between card card"
+                >
+                  <header>
+                    <Box
+                      className="title"
+                    >
+                      <Flex
+                        className="title"
+                        flow="box"
+                      >
+                        <div
+                          className="flex box undefined title"
+                        >
+                          <H5>
+                            <h5
+                              className="h5"
+                            >
+                              Test
+                            </h5>
+                          </H5>
+                        </div>
+                      </Flex>
+                    </Box>
+                  </header>
+                  <main
+                    className="full"
+                  >
+                    <div
+                      className="formContent"
+                    >
+                      <P>
+                        <p
+                          className="p"
+                        >
+                          Testing the dialog.
+                        </p>
+                      </P>
+                    </div>
+                  </main>
+                  <footer>
+                    <Row
+                      className="footer"
+                    >
+                      <Flex
+                        className="footer"
+                        flow="row"
+                      >
+                        <div
+                          className="flex row undefined footer"
+                        >
+                          <Button
+                            className="button2"
+                            onClick={[Function]}
+                            style="beige"
+                          >
+                            <Link>
+                              <A
+                                className="link"
+                              >
+                                <a
+                                  className="link"
+                                >
+                                  <button
+                                    className="button beige button2"
+                                    onClick={[Function]}
+                                    type="button"
+                                  >
+                                    Cancel
+                                  </button>
+                                </a>
+                              </A>
+                            </Link>
+                          </Button>
+                          <Button
+                            arrow="arrow_darkBg"
+                            disabled={false}
+                            onClick={[Function]}
+                            submit={true}
+                          >
+                            <Link>
+                              <A
+                                className="link"
+                              >
+                                <a
+                                  className="link"
+                                >
+                                  <button
+                                    className="button undefined"
+                                    disabled={false}
+                                    onClick={[Function]}
+                                    type="submit"
+                                  >
+                                    Save
+                                  </button>
+                                </a>
+                              </A>
+                            </Link>
+                          </Button>
+                        </div>
+                      </Flex>
+                    </Row>
+                  </footer>
+                </div>
+              </Flex>
+            </Box>
+          </Card>
+        </CardForm>
+      </div>
+    </Flex>
+  </Box>
+</Dialog>
+`;
+
+exports[`Dialog should handle default onClick 1`] = `
+<Dialog
+  close={[Function]}
+  text="Testing the dialog."
+  title="Test"
+>
+  <Box
+    className="dialog"
+    key="dialogTest"
+  >
+    <Flex
+      className="dialog"
+      flow="box"
+    >
+      <div
+        className="flex box undefined dialog"
+      >
+        <Backdrop
+          blur={true}
+          close={[Function]}
+          show={true}
+        >
+          <div
+            className="backdrop blur close"
+          >
+            <div
+              onClick={[Function]}
+            />
+          </div>
+        </Backdrop>
+        <CardForm
+          button={
+            Object {
+              "onClick": [Function],
+              "save": true,
+            }
+          }
+          button2={
+            Object {
+              "onClick": [Function],
+              "style": "beige",
+              "text": "Cancel",
+            }
+          }
+          className="card"
+          title="Test"
+        >
+          <Card
+            className="card"
+            footer={
+              <Row
+                className="footer"
+              >
+                <Button
+                  className="button2"
+                  onClick={[Function]}
+                  style="beige"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  arrow="arrow_darkBg"
+                  disabled={false}
+                  onClick={[Function]}
+                  style={undefined}
+                  submit={true}
+                  to={undefined}
+                >
+                  Save
+                </Button>
+              </Row>
+            }
+            header="Test"
+          >
+            <Box
+              className="card card"
+              justify="space-between"
+            >
+              <Flex
+                className="card card"
+                flow="box"
+                justify="space-between"
+              >
+                <div
+                  className="flex box space-between card card"
+                >
+                  <header>
+                    <Box
+                      className="title"
+                    >
+                      <Flex
+                        className="title"
+                        flow="box"
+                      >
+                        <div
+                          className="flex box undefined title"
+                        >
+                          <H5>
+                            <h5
+                              className="h5"
+                            >
+                              Test
+                            </h5>
+                          </H5>
+                        </div>
+                      </Flex>
+                    </Box>
+                  </header>
+                  <main
+                    className="full"
+                  >
+                    <div
+                      className="formContent"
+                    >
+                      <P>
+                        <p
+                          className="p"
+                        >
+                          Testing the dialog.
+                        </p>
+                      </P>
+                    </div>
+                  </main>
+                  <footer>
+                    <Row
+                      className="footer"
+                    >
+                      <Flex
+                        className="footer"
+                        flow="row"
+                      >
+                        <div
+                          className="flex row undefined footer"
+                        >
+                          <Button
+                            className="button2"
+                            onClick={[Function]}
+                            style="beige"
+                          >
+                            <Link>
+                              <A
+                                className="link"
+                              >
+                                <a
+                                  className="link"
+                                >
+                                  <button
+                                    className="button beige button2"
+                                    onClick={[Function]}
+                                    type="button"
+                                  >
+                                    Cancel
+                                  </button>
+                                </a>
+                              </A>
+                            </Link>
+                          </Button>
+                          <Button
+                            arrow="arrow_darkBg"
+                            disabled={false}
+                            onClick={[Function]}
+                            submit={true}
+                          >
+                            <Link>
+                              <A
+                                className="link"
+                              >
+                                <a
+                                  className="link"
+                                >
+                                  <button
+                                    className="button undefined"
+                                    disabled={false}
+                                    onClick={[Function]}
+                                    type="submit"
+                                  >
+                                    Save
+                                  </button>
+                                </a>
+                              </A>
+                            </Link>
+                          </Button>
+                        </div>
+                      </Flex>
+                    </Row>
+                  </footer>
+                </div>
+              </Flex>
+            </Box>
+          </Card>
+        </CardForm>
+      </div>
+    </Flex>
+  </Box>
+</Dialog>
+`;
+
+exports[`Dialog should handle no content 1`] = `
+<Dialog
+  button={
+    Object {
+      "onClick": [Function],
+    }
+  }
+  close={[Function]}
+  text={null}
+  title={null}
+/>
+`;
+
+exports[`Dialog should handle no text 1`] = `
+<Dialog
+  button={
+    Object {
+      "onClick": [Function],
+    }
+  }
+  close={[Function]}
+  text={null}
+  title="Test"
+>
+  <Box
+    className="dialog"
+    key="dialogTest"
+  >
+    <Flex
+      className="dialog"
+      flow="box"
+    >
+      <div
+        className="flex box undefined dialog"
+      >
+        <Backdrop
+          blur={true}
+          close={[Function]}
+          show={true}
+        >
+          <div
+            className="backdrop blur close"
+          >
+            <div
+              onClick={[Function]}
+            />
+          </div>
+        </Backdrop>
+        <CardForm
+          button={
+            Object {
+              "onClick": [Function],
+              "save": true,
+            }
+          }
+          button2={
+            Object {
+              "onClick": [Function],
+              "style": "beige",
+              "text": "Cancel",
+            }
+          }
+          className="card"
+          title="Test"
+        >
+          <Card
+            className="card"
+            footer={
+              <Row
+                className="footer"
+              >
+                <Button
+                  className="button2"
+                  onClick={[Function]}
+                  style="beige"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  arrow="arrow_darkBg"
+                  disabled={false}
+                  onClick={[Function]}
+                  style={undefined}
+                  submit={true}
+                  to={undefined}
+                >
+                  Save
+                </Button>
+              </Row>
+            }
+            header="Test"
+          >
+            <Box
+              className="card card"
+              justify="space-between"
+            >
+              <Flex
+                className="card card"
+                flow="box"
+                justify="space-between"
+              >
+                <div
+                  className="flex box space-between card card"
+                >
+                  <header>
+                    <Box
+                      className="title"
+                    >
+                      <Flex
+                        className="title"
+                        flow="box"
+                      >
+                        <div
+                          className="flex box undefined title"
+                        >
+                          <H5>
+                            <h5
+                              className="h5"
+                            >
+                              Test
+                            </h5>
+                          </H5>
+                        </div>
+                      </Flex>
+                    </Box>
+                  </header>
+                  <main
+                    className="full"
+                  >
+                    <div
+                      className="formContent"
+                    >
+                      <P>
+                        <p
+                          className="p"
+                        />
+                      </P>
+                    </div>
+                  </main>
+                  <footer>
+                    <Row
+                      className="footer"
+                    >
+                      <Flex
+                        className="footer"
+                        flow="row"
+                      >
+                        <div
+                          className="flex row undefined footer"
+                        >
+                          <Button
+                            className="button2"
+                            onClick={[Function]}
+                            style="beige"
+                          >
+                            <Link>
+                              <A
+                                className="link"
+                              >
+                                <a
+                                  className="link"
+                                >
+                                  <button
+                                    className="button beige button2"
+                                    onClick={[Function]}
+                                    type="button"
+                                  >
+                                    Cancel
+                                  </button>
+                                </a>
+                              </A>
+                            </Link>
+                          </Button>
+                          <Button
+                            arrow="arrow_darkBg"
+                            disabled={false}
+                            onClick={[Function]}
+                            submit={true}
+                          >
+                            <Link>
+                              <A
+                                className="link"
+                              >
+                                <a
+                                  className="link"
+                                >
+                                  <button
+                                    className="button undefined"
+                                    disabled={false}
+                                    onClick={[Function]}
+                                    type="submit"
+                                  >
+                                    Save
+                                  </button>
+                                </a>
+                              </A>
+                            </Link>
+                          </Button>
+                        </div>
+                      </Flex>
+                    </Row>
+                  </footer>
+                </div>
+              </Flex>
+            </Box>
+          </Card>
+        </CardForm>
+      </div>
+    </Flex>
+  </Box>
+</Dialog>
+`;
+
+exports[`Dialog should handle no title 1`] = `
+<Dialog
+  button={
+    Object {
+      "onClick": [Function],
+    }
+  }
+  close={[Function]}
+  text="Testing the dialog."
+  title={null}
+>
+  <Box
+    className="dialog"
+    key="dialognull"
+  >
+    <Flex
+      className="dialog"
+      flow="box"
+    >
+      <div
+        className="flex box undefined dialog"
+      >
+        <Backdrop
+          blur={true}
+          close={[Function]}
+          show={true}
+        >
+          <div
+            className="backdrop blur close"
+          >
+            <div
+              onClick={[Function]}
+            />
+          </div>
+        </Backdrop>
+        <CardForm
+          button={
+            Object {
+              "onClick": [Function],
+              "save": true,
+            }
+          }
+          button2={
+            Object {
+              "onClick": [Function],
+              "style": "beige",
+              "text": "Cancel",
+            }
+          }
+          className="card"
+          title={null}
+        >
+          <Card
+            className="card"
+            footer={
+              <Row
+                className="footer"
+              >
+                <Button
+                  className="button2"
+                  onClick={[Function]}
+                  style="beige"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  arrow="arrow_darkBg"
+                  disabled={false}
+                  onClick={[Function]}
+                  style={undefined}
+                  submit={true}
+                  to={undefined}
+                >
+                  Save
+                </Button>
+              </Row>
+            }
+            header={null}
+          >
+            <Box
+              className="card card"
+              justify="space-between"
+            >
+              <Flex
+                className="card card"
+                flow="box"
+                justify="space-between"
+              >
+                <div
+                  className="flex box space-between card card"
+                >
+                  <main
+                    className="full"
+                  >
+                    <div
+                      className="formContent"
+                    >
+                      <P>
+                        <p
+                          className="p"
+                        >
+                          Testing the dialog.
+                        </p>
+                      </P>
+                    </div>
+                  </main>
+                  <footer>
+                    <Row
+                      className="footer"
+                    >
+                      <Flex
+                        className="footer"
+                        flow="row"
+                      >
+                        <div
+                          className="flex row undefined footer"
+                        >
+                          <Button
+                            className="button2"
+                            onClick={[Function]}
+                            style="beige"
+                          >
+                            <Link>
+                              <A
+                                className="link"
+                              >
+                                <a
+                                  className="link"
+                                >
+                                  <button
+                                    className="button beige button2"
+                                    onClick={[Function]}
+                                    type="button"
+                                  >
+                                    Cancel
+                                  </button>
+                                </a>
+                              </A>
+                            </Link>
+                          </Button>
+                          <Button
+                            arrow="arrow_darkBg"
+                            disabled={false}
+                            onClick={[Function]}
+                            submit={true}
+                          >
+                            <Link>
+                              <A
+                                className="link"
+                              >
+                                <a
+                                  className="link"
+                                >
+                                  <button
+                                    className="button undefined"
+                                    disabled={false}
+                                    onClick={[Function]}
+                                    type="submit"
+                                  >
+                                    Save
+                                  </button>
+                                </a>
+                              </A>
+                            </Link>
+                          </Button>
+                        </div>
+                      </Flex>
+                    </Row>
+                  </footer>
+                </div>
+              </Flex>
+            </Box>
+          </Card>
+        </CardForm>
+      </div>
+    </Flex>
+  </Box>
+</Dialog>
+`;

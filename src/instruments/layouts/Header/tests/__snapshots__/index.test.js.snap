@@ -1,0 +1,684 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render correctly 1`] = `
+<Header
+  className="textClassString"
+  level1={
+    Object {
+      "addNew": Object {
+        "text": "New Workspace",
+        "to": "/workspaces/new",
+      },
+      "list": Array [],
+      "selected": Object {
+        "id": "123",
+        "text": "Workspace Label",
+        "to": "#",
+      },
+    }
+  }
+  level2={
+    Object {
+      "addNew": Object {
+        "text": "New Workspace",
+        "to": "/workspaces/new",
+      },
+      "list": Array [],
+      "selected": Object {
+        "id": "123",
+        "text": "Workspace Label",
+        "to": "#",
+      },
+    }
+  }
+  profile={
+    Object {
+      "platform": undefined,
+    }
+  }
+  subMenu={Array []}
+>
+  <div
+    className="header textClassString"
+  >
+    <Menu
+      className="menu"
+      level1={
+        Object {
+          "addNew": Object {
+            "text": "New Workspace",
+            "to": "/workspaces/new",
+          },
+          "list": Array [],
+          "selected": Object {
+            "id": "123",
+            "text": "Workspace Label",
+            "to": "#",
+          },
+        }
+      }
+      level2={
+        Object {
+          "addNew": Object {
+            "text": "New Workspace",
+            "to": "/workspaces/new",
+          },
+          "list": Array [],
+          "selected": Object {
+            "id": "123",
+            "text": "Workspace Label",
+            "to": "#",
+          },
+        }
+      }
+      profile={
+        Object {
+          "platform": undefined,
+        }
+      }
+    >
+      <Row
+        className="menu menu"
+        justify="flex-start"
+        wrap={true}
+      >
+        <Flex
+          className="menu menu"
+          flow="row"
+          justify="flex-start"
+          wrap={true}
+        >
+          <div
+            className="flex row flex-start wrap menu menu"
+          >
+            <Logo
+              to="/workspaces"
+            >
+              <Link
+                to="/workspaces"
+              >
+                <Link
+                  className="link"
+                  replace={false}
+                  to="/workspaces"
+                >
+                  <a
+                    className="link"
+                    href="/workspaces"
+                    onClick={[Function]}
+                  >
+                    <Imported
+                      className="logo stars"
+                      title="Astronomer"
+                    >
+                      <ReactImportedComponent
+                        className="logo stars"
+                        loadable={
+                          Object {
+                            "done": true,
+                            "importFunction": [Function],
+                            "load": [Function],
+                            "mark": Array [],
+                            "ok": true,
+                            "payload": Object {
+                              "process": [Function],
+                            },
+                            "promise": Promise {},
+                            "reset": [Function],
+                          }
+                        }
+                        render={[Function]}
+                        title="Astronomer"
+                      >
+                        <UnconnectedReactImportedComponent
+                          async={false}
+                          className="logo stars"
+                          exportPicker={[Function]}
+                          loadable={
+                            Object {
+                              "done": true,
+                              "importFunction": [Function],
+                              "load": [Function],
+                              "mark": Array [],
+                              "ok": true,
+                              "payload": Object {
+                                "process": [Function],
+                              },
+                              "promise": Promise {},
+                              "reset": [Function],
+                            }
+                          }
+                          render={[Function]}
+                          streamId={0}
+                          title="Astronomer"
+                        >
+                          <img
+                            className="logo stars"
+                            src={
+                              Object {
+                                "process": [Function],
+                              }
+                            }
+                            title="Astronomer"
+                          />
+                        </UnconnectedReactImportedComponent>
+                      </ReactImportedComponent>
+                    </Imported>
+                  </a>
+                </Link>
+              </Link>
+            </Logo>
+            <Level1
+              active={false}
+              addNew={
+                Object {
+                  "text": "New Workspace",
+                  "to": "/workspaces/new",
+                }
+              }
+              list={Array []}
+              selected={
+                Object {
+                  "id": "123",
+                  "text": "Workspace Label",
+                  "to": "#",
+                }
+              }
+            >
+              <Dropdown
+                disable={true}
+                selector={
+                  <H2
+                    className="menu"
+                  >
+                    <Row>
+                      <span
+                        className="text"
+                      >
+                        <Link
+                          to="#"
+                        >
+                          Workspace Label
+                        </Link>
+                      </span>
+                      <Icon
+                        className="arrow"
+                        icon="arrow"
+                      />
+                    </Row>
+                  </H2>
+                }
+              >
+                <div
+                  className="dropdown left out"
+                >
+                  <Backdrop
+                    close={[Function]}
+                    show={false}
+                  />
+                  <H2
+                    className="menu"
+                  >
+                    <h2
+                      className="h2 menu"
+                    >
+                      <Row>
+                        <Flex
+                          flow="row"
+                        >
+                          <div
+                            className="flex row undefined"
+                          >
+                            <span
+                              className="text"
+                            >
+                              <Link
+                                to="#"
+                              >
+                                <Link
+                                  className="link"
+                                  replace={false}
+                                  to="#"
+                                >
+                                  <a
+                                    className="link"
+                                    href="blank"
+                                    onClick={[Function]}
+                                  >
+                                    Workspace Label
+                                  </a>
+                                </Link>
+                              </Link>
+                            </span>
+                            <Icon
+                              className="arrow"
+                              icon="arrow"
+                            >
+                              <Imported
+                                className="arrow"
+                              >
+                                <ReactImportedComponent
+                                  className="arrow"
+                                  loadable={
+                                    Object {
+                                      "done": true,
+                                      "importFunction": [Function],
+                                      "load": [Function],
+                                      "mark": Array [],
+                                      "ok": true,
+                                      "payload": Object {
+                                        "process": [Function],
+                                      },
+                                      "promise": Promise {},
+                                      "reset": [Function],
+                                    }
+                                  }
+                                  render={[Function]}
+                                >
+                                  <UnconnectedReactImportedComponent
+                                    async={false}
+                                    className="arrow"
+                                    exportPicker={[Function]}
+                                    loadable={
+                                      Object {
+                                        "done": true,
+                                        "importFunction": [Function],
+                                        "load": [Function],
+                                        "mark": Array [],
+                                        "ok": true,
+                                        "payload": Object {
+                                          "process": [Function],
+                                        },
+                                        "promise": Promise {},
+                                        "reset": [Function],
+                                      }
+                                    }
+                                    render={[Function]}
+                                    streamId={0}
+                                  >
+                                    <img
+                                      className="arrow"
+                                      src={
+                                        Object {
+                                          "process": [Function],
+                                        }
+                                      }
+                                    />
+                                  </UnconnectedReactImportedComponent>
+                                </ReactImportedComponent>
+                              </Imported>
+                            </Icon>
+                          </div>
+                        </Flex>
+                      </Row>
+                    </h2>
+                  </H2>
+                  <div
+                    className="menuWrapper"
+                    onClick={[Function]}
+                  >
+                    <Card
+                      className="menu"
+                    >
+                      <Box
+                        className="card menu"
+                        justify="flex-start"
+                      >
+                        <Flex
+                          className="card menu"
+                          flow="box"
+                          justify="flex-start"
+                        >
+                          <div
+                            className="flex box flex-start card menu"
+                          >
+                            <main
+                              className="full"
+                            >
+                              <MenuList>
+                                <ul
+                                  className="list"
+                                >
+                                  <hr
+                                    className="addNew"
+                                  />
+                                  <Item
+                                    exact={true}
+                                    key="new"
+                                    to="/workspaces/new"
+                                  >
+                                    <Link
+                                      activeClassName="active"
+                                      className="item"
+                                      exact={true}
+                                      title="New Workspace"
+                                      to="/workspaces/new"
+                                    >
+                                      <NavLink
+                                        activeClassName="active"
+                                        aria-current="page"
+                                        className="link item"
+                                        exact={true}
+                                        title="New Workspace"
+                                        to="/workspaces/new"
+                                      >
+                                        <Route
+                                          exact={true}
+                                          path="\\\\/workspaces\\\\/new"
+                                        >
+                                          <Link
+                                            aria-current={null}
+                                            className="link item"
+                                            replace={false}
+                                            title="New Workspace"
+                                            to="/workspaces/new"
+                                          >
+                                            <a
+                                              aria-current={null}
+                                              className="link item"
+                                              href="/workspaces/new"
+                                              onClick={[Function]}
+                                              title="New Workspace"
+                                            >
+                                              New Workspace
+                                            </a>
+                                          </Link>
+                                        </Route>
+                                      </NavLink>
+                                    </Link>
+                                  </Item>
+                                </ul>
+                              </MenuList>
+                            </main>
+                          </div>
+                        </Flex>
+                      </Box>
+                    </Card>
+                  </div>
+                </div>
+              </Dropdown>
+            </Level1>
+            <H2
+              className="level2"
+            >
+              <h2
+                className="h2 level2"
+              >
+                <Link
+                  to="/"
+                >
+                  <Link
+                    className="link"
+                    replace={false}
+                    to="/"
+                  >
+                    <a
+                      className="link"
+                      href="/"
+                      onClick={[Function]}
+                    />
+                  </Link>
+                </Link>
+              </h2>
+            </H2>
+            <ProfileMenu
+              className="profile"
+            >
+              <Dropdown
+                className="menu profile"
+                right={true}
+                selector={
+                  <Avatar
+                    className="profile"
+                    title={undefined}
+                    url={undefined}
+                  />
+                }
+              >
+                <div
+                  className="dropdown right out menu profile"
+                >
+                  <Backdrop
+                    close={[Function]}
+                    show={false}
+                  />
+                  <Link
+                    className="selector"
+                    onClick={[Function]}
+                  >
+                    <A
+                      className="link selector"
+                      onClick={[Function]}
+                    >
+                      <a
+                        className="link selector"
+                        onClick={[Function]}
+                      >
+                        <Avatar
+                          className="profile"
+                        >
+                          <Box
+                            className="avatar profile"
+                          >
+                            <Flex
+                              className="avatar profile"
+                              flow="box"
+                            >
+                              <div
+                                className="flex box undefined avatar profile"
+                              >
+                                <Icon
+                                  icon="astro_helmet"
+                                >
+                                  <Imported>
+                                    <ReactImportedComponent
+                                      loadable={
+                                        Object {
+                                          "done": true,
+                                          "importFunction": [Function],
+                                          "load": [Function],
+                                          "mark": Array [],
+                                          "ok": true,
+                                          "payload": Object {
+                                            "process": [Function],
+                                          },
+                                          "promise": Promise {},
+                                          "reset": [Function],
+                                        }
+                                      }
+                                      render={[Function]}
+                                    >
+                                      <UnconnectedReactImportedComponent
+                                        async={false}
+                                        exportPicker={[Function]}
+                                        loadable={
+                                          Object {
+                                            "done": true,
+                                            "importFunction": [Function],
+                                            "load": [Function],
+                                            "mark": Array [],
+                                            "ok": true,
+                                            "payload": Object {
+                                              "process": [Function],
+                                            },
+                                            "promise": Promise {},
+                                            "reset": [Function],
+                                          }
+                                        }
+                                        render={[Function]}
+                                        streamId={0}
+                                      >
+                                        <img
+                                          src={
+                                            Object {
+                                              "process": [Function],
+                                            }
+                                          }
+                                        />
+                                      </UnconnectedReactImportedComponent>
+                                    </ReactImportedComponent>
+                                  </Imported>
+                                </Icon>
+                              </div>
+                            </Flex>
+                          </Box>
+                        </Avatar>
+                      </a>
+                    </A>
+                  </Link>
+                  <div
+                    className="menuWrapper"
+                    onClick={[Function]}
+                  >
+                    <Card
+                      className="menu"
+                    >
+                      <Box
+                        className="card menu"
+                        justify="flex-start"
+                      >
+                        <Flex
+                          className="card menu"
+                          flow="box"
+                          justify="flex-start"
+                        >
+                          <div
+                            className="flex box flex-start card menu"
+                          >
+                            <main
+                              className="full"
+                            >
+                              <MenuList>
+                                <ul
+                                  className="list"
+                                >
+                                  <Item
+                                    exact={true}
+                                    to="/profile"
+                                  >
+                                    <Link
+                                      activeClassName="active"
+                                      className="item"
+                                      exact={true}
+                                      title="Personal Settings"
+                                      to="/profile"
+                                    >
+                                      <NavLink
+                                        activeClassName="active"
+                                        aria-current="page"
+                                        className="link item"
+                                        exact={true}
+                                        title="Personal Settings"
+                                        to="/profile"
+                                      >
+                                        <Route
+                                          exact={true}
+                                          path="\\\\/profile"
+                                        >
+                                          <Link
+                                            aria-current={null}
+                                            className="link item"
+                                            replace={false}
+                                            title="Personal Settings"
+                                            to="/profile"
+                                          >
+                                            <a
+                                              aria-current={null}
+                                              className="link item"
+                                              href="/profile"
+                                              onClick={[Function]}
+                                              title="Personal Settings"
+                                            >
+                                              Personal Settings
+                                            </a>
+                                          </Link>
+                                        </Route>
+                                      </NavLink>
+                                    </Link>
+                                  </Item>
+                                  <Item
+                                    exact={true}
+                                    to="/logout"
+                                  >
+                                    <Link
+                                      activeClassName="active"
+                                      className="item"
+                                      exact={true}
+                                      title="Logout"
+                                      to="/logout"
+                                    >
+                                      <NavLink
+                                        activeClassName="active"
+                                        aria-current="page"
+                                        className="link item"
+                                        exact={true}
+                                        title="Logout"
+                                        to="/logout"
+                                      >
+                                        <Route
+                                          exact={true}
+                                          path="\\\\/logout"
+                                        >
+                                          <Link
+                                            aria-current={null}
+                                            className="link item"
+                                            replace={false}
+                                            title="Logout"
+                                            to="/logout"
+                                          >
+                                            <a
+                                              aria-current={null}
+                                              className="link item"
+                                              href="/logout"
+                                              onClick={[Function]}
+                                              title="Logout"
+                                            >
+                                              Logout
+                                            </a>
+                                          </Link>
+                                        </Route>
+                                      </NavLink>
+                                    </Link>
+                                  </Item>
+                                </ul>
+                              </MenuList>
+                            </main>
+                          </div>
+                        </Flex>
+                      </Box>
+                    </Card>
+                  </div>
+                </div>
+              </Dropdown>
+            </ProfileMenu>
+          </div>
+        </Flex>
+      </Row>
+    </Menu>
+    <div
+      className="hr"
+    />
+    <SubMenu
+      className="subMenu"
+      menu={Array []}
+    >
+      <Row
+        className="menu subMenu"
+        justify="flex-start"
+        wrap={true}
+      >
+        <Flex
+          className="menu subMenu"
+          flow="row"
+          justify="flex-start"
+          wrap={true}
+        >
+          <div
+            className="flex row flex-start wrap menu subMenu"
+          />
+        </Flex>
+      </Row>
+    </SubMenu>
+  </div>
+</Header>
+`;

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormLabel renders correctly 1`] = `
+<FormLabel
+  className="testClassString"
+  id="1234"
+  info="This is a form field"
+>
+  <label
+    className="label testClassString"
+    htmlFor="1234"
+  >
+    Test
+    <Info>
+      <div
+        className="wrapper"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <span
+          className="info"
+        >
+          <b>
+            i
+          </b>
+        </span>
+      </div>
+    </Info>
+  </label>
+</FormLabel>
+`;

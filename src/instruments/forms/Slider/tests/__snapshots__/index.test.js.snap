@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider renders correctly 1`] = `
+<Slider
+  className="testClassString"
+  disabled={false}
+  max={10}
+  min={1}
+  onChange={[Function]}
+  step={1}
+  value={5}
+>
+  <ComponentEnhancer(undefined)
+    activeDotStyle={Object {}}
+    className="slider testClassString"
+    disabled={false}
+    dotStyle={Object {}}
+    dots={false}
+    handle={[Function]}
+    handleStyle={
+      Array [
+        Object {},
+      ]
+    }
+    included={true}
+    marks={Object {}}
+    max={10}
+    min={1}
+    onAfterChange={[Function]}
+    onBeforeChange={[Function]}
+    onChange={[Function]}
+    prefixCls="rc-slider"
+    railStyle={Object {}}
+    step={1}
+    trackStyle={
+      Array [
+        Object {},
+      ]
+    }
+    value={5}
+    vertical={false}
+  >
+    <div
+      className="rc-slider slider testClassString"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onTouchStart={[Function]}
+    >
+      <div
+        className="rc-slider-rail"
+        style={Object {}}
+      />
+      <Track
+        className="rc-slider-track"
+        included={true}
+        length={44.44444444444444}
+        offset={0}
+        style={Object {}}
+        vertical={false}
+      >
+        <div
+          className="rc-slider-track"
+          style={
+            Object {
+              "left": "0%",
+              "width": "44.44444444444444%",
+            }
+          }
+        />
+      </Track>
+      <Steps
+        activeDotStyle={Object {}}
+        dotStyle={Object {}}
+        dots={false}
+        included={true}
+        lowerBound={1}
+        marks={Object {}}
+        max={10}
+        min={1}
+        prefixCls="rc-slider"
+        step={1}
+        upperBound={5}
+        vertical={false}
+      >
+        <div
+          className="rc-slider-step"
+        />
+      </Steps>
+      <Handle
+        className="rc-slider-handle"
+        disabled={false}
+        key="0"
+        max={10}
+        min={1}
+        offset={44.44444444444444}
+        style={Object {}}
+        value={5}
+        vertical={false}
+      >
+        <div
+          aria-disabled={false}
+          aria-valuemax={10}
+          aria-valuemin={1}
+          aria-valuenow={5}
+          className="rc-slider-handle"
+          role="slider"
+          style={
+            Object {
+              "left": "44.44444444444444%",
+            }
+          }
+          tabIndex={0}
+        />
+      </Handle>
+      <Marks
+        className="rc-slider-mark"
+        included={true}
+        lowerBound={1}
+        marks={Object {}}
+        max={10}
+        min={1}
+        upperBound={5}
+        vertical={false}
+      >
+        <div
+          className="rc-slider-mark"
+        />
+      </Marks>
+    </div>
+  </ComponentEnhancer(undefined)>
+</Slider>
+`;

@@ -13,6 +13,7 @@ const OauthButton = ({
   className,
   ...props
 }) => {
+  /* istanbul ignore next */
   const action = login ? 'Login' : 'Sign up'
   return (
     <Row full className={classnames(className)}>
@@ -20,7 +21,7 @@ const OauthButton = ({
         {...props}
         to={to}
         title={action + ' with ' + displayName}
-        newTab={false}
+        /* istanbul ignore next */
         className={classnames(s.button, s[service])}>
         <span>
           {login ? 'Login' : 'Sign up'} with {displayName}

@@ -19,10 +19,12 @@
     "build": "babel-node tools/build.js && npm run open:dist",
     "build-production": "babel-node tools/build-prod.js",
     "test": "jest",
+    "test:drone": "jest --verbose --coverage --bail",
+    "test:watch": "jest --updateSnapshot --watch --coverage",
+    "test:cache": "npm run test --clearCache",
     "test:CI": "babel-node tools/testCi.js",
-    "test:cover": "npm run test -- --coverage ",
+    "test:cover": "npm run test -- --coverage",
     "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
-    "test:watch": "jest --watch",
     "storybook": "NODE_PATH=src start-storybook",
     "open:cover": "npm run test:cover && open ./coverage/lcov-report/index.html",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
@@ -110,7 +112,7 @@
     "hard-source-webpack-plugin": "0.7.6",
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^20.0.4",
+    "jest": "24.8.0",
     "jest-cli": "^21.2.1",
     "jest-enzyme": "^4.0.1",
     "json-loader": "^0.5.4",
@@ -143,6 +145,39 @@
     "url": ""
   },
   "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/tools/",
+      "/src/helpers/",
+      "/src/modules/",
+      "/src/instruments/analytics/",
+      "/src/instruments/index",
+      "/src/instruments/api/",
+      "/src/instruments/context/",
+      "/src/instruments/forms/",
+      "/src/instruments/react/",
+      "/src/instruments/graphs/"
+    ],
+    "testPathIgnorePatterns": [
+      "/tools/",
+      "/src/helpers/",
+      "/src/modules/",
+      "/src/instruments/analytics/",
+      "/src/instruments/index",
+      "/src/instruments/api/",
+      "/src/instruments/context/",
+      "/src/instruments/forms/",
+      "/src/instruments/react/",
+      "/src/instruments/graphs/"
+    ],
     "moduleNameMapper": {
       "\\.(css|scss)$": "identity-obj-proxy",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js"

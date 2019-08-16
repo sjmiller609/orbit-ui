@@ -20,7 +20,7 @@ pipeline:
     image: astronomerinc/ap-orbit-ui:dev
     commands:
       - cd /srv/orbit-ui
-      - npm test
+      - npm run test:drone
     when:
       event: push
 

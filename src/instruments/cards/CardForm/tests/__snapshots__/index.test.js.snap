@@ -1,0 +1,637 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardForm should render correctly 1`] = `
+<CardForm
+  button={
+    Object {
+      "onClick": [Function],
+    }
+  }
+  button2={
+    Object {
+      "onClick": [Function],
+    }
+  }
+  className="testClassString"
+  disable={false}
+  footer={
+    <p>
+      Footer
+    </p>
+  }
+  id="123"
+  smallForm={false}
+  title="Test"
+>
+  <Card
+    className="testClassString"
+    footer={
+      <p>
+        Footer
+      </p>
+    }
+    header="Test"
+    id="123"
+  >
+    <Box
+      className="card testClassString"
+      id="123"
+      justify="space-between"
+    >
+      <Flex
+        className="card testClassString"
+        flow="box"
+        id="123"
+        justify="space-between"
+      >
+        <div
+          className="flex box space-between card testClassString"
+          id="123"
+        >
+          <header>
+            <Box
+              className="title"
+            >
+              <Flex
+                className="title"
+                flow="box"
+              >
+                <div
+                  className="flex box undefined title"
+                >
+                  <H5>
+                    <h5
+                      className="h5"
+                    >
+                      Test
+                    </h5>
+                  </H5>
+                </div>
+              </Flex>
+            </Box>
+          </header>
+          <main
+            className="full"
+          >
+            <div
+              className="formContent"
+            >
+              <div>
+                Child
+              </div>
+            </div>
+          </main>
+          <footer>
+            <p>
+              Footer
+            </p>
+          </footer>
+        </div>
+      </Flex>
+    </Box>
+  </Card>
+</CardForm>
+`;
+
+exports[`CardForm should render correctly 2`] = `
+<Box
+  className="card"
+  justify="flex-start"
+>
+  <main
+    className="full"
+  >
+    <div>
+      Child
+    </div>
+  </main>
+</Box>
+`;
+
+exports[`CardForm should should no buttons 1`] = `
+<CardForm
+  button={null}
+  button2={null}
+  className="testClassString"
+  disable={false}
+  footer={
+    <p>
+      Footer
+    </p>
+  }
+  id="123"
+  smallForm={false}
+  title="Test"
+>
+  <Card
+    className="testClassString"
+    footer={
+      <p>
+        Footer
+      </p>
+    }
+    header="Test"
+    id="123"
+  >
+    <Box
+      className="card testClassString"
+      id="123"
+      justify="space-between"
+    >
+      <Flex
+        className="card testClassString"
+        flow="box"
+        id="123"
+        justify="space-between"
+      >
+        <div
+          className="flex box space-between card testClassString"
+          id="123"
+        >
+          <header>
+            <Box
+              className="title"
+            >
+              <Flex
+                className="title"
+                flow="box"
+              >
+                <div
+                  className="flex box undefined title"
+                >
+                  <H5>
+                    <h5
+                      className="h5"
+                    >
+                      Test
+                    </h5>
+                  </H5>
+                </div>
+              </Flex>
+            </Box>
+          </header>
+          <main
+            className="full"
+          >
+            <div
+              className="formContent"
+            >
+              <div>
+                Child
+              </div>
+            </div>
+          </main>
+          <footer>
+            <p>
+              Footer
+            </p>
+          </footer>
+        </div>
+      </Flex>
+    </Box>
+  </Card>
+</CardForm>
+`;
+
+exports[`CardForm should should render disabled 1`] = `
+<CardForm
+  button={
+    Object {
+      "save": false,
+    }
+  }
+  button2={
+    Object {
+      "onClick": [Function],
+    }
+  }
+  className="testClassString"
+  disable={true}
+  footer={
+    <p>
+      Footer
+    </p>
+  }
+  id="123"
+  smallForm={false}
+  title="Test"
+>
+  <Card
+    className="testClassString"
+    footer={
+      <p>
+        Footer
+      </p>
+    }
+    header="Test"
+    id="123"
+  >
+    <Box
+      className="card testClassString"
+      id="123"
+      justify="space-between"
+    >
+      <Flex
+        className="card testClassString"
+        flow="box"
+        id="123"
+        justify="space-between"
+      >
+        <div
+          className="flex box space-between card testClassString"
+          id="123"
+        >
+          <header>
+            <Box
+              className="title"
+            >
+              <Flex
+                className="title"
+                flow="box"
+              >
+                <div
+                  className="flex box undefined title"
+                >
+                  <H5>
+                    <h5
+                      className="h5"
+                    >
+                      Test
+                    </h5>
+                  </H5>
+                </div>
+              </Flex>
+            </Box>
+          </header>
+          <main
+            className="full"
+          >
+            <div
+              className="formContent"
+            >
+              <div>
+                Child
+              </div>
+            </div>
+          </main>
+          <footer>
+            <p>
+              Footer
+            </p>
+          </footer>
+        </div>
+      </Flex>
+    </Box>
+  </Card>
+</CardForm>
+`;
+
+exports[`CardForm should should render disabled 2`] = `
+<CardForm
+  button={
+    Object {
+      "save": true,
+    }
+  }
+  button2={
+    Object {
+      "onClick": [Function],
+    }
+  }
+  className="testClassString"
+  disable={true}
+  footer={
+    <p>
+      Footer
+    </p>
+  }
+  id="123"
+  smallForm={false}
+  title="Test"
+>
+  <Card
+    className="testClassString"
+    footer={
+      <p>
+        Footer
+      </p>
+    }
+    header="Test"
+    id="123"
+  >
+    <Box
+      className="card testClassString"
+      id="123"
+      justify="space-between"
+    >
+      <Flex
+        className="card testClassString"
+        flow="box"
+        id="123"
+        justify="space-between"
+      >
+        <div
+          className="flex box space-between card testClassString"
+          id="123"
+        >
+          <header>
+            <Box
+              className="title"
+            >
+              <Flex
+                className="title"
+                flow="box"
+              >
+                <div
+                  className="flex box undefined title"
+                >
+                  <H5>
+                    <h5
+                      className="h5"
+                    >
+                      Test
+                    </h5>
+                  </H5>
+                </div>
+              </Flex>
+            </Box>
+          </header>
+          <main
+            className="full"
+          >
+            <div
+              className="formContent"
+            >
+              <div>
+                Child
+              </div>
+            </div>
+          </main>
+          <footer>
+            <p>
+              Footer
+            </p>
+          </footer>
+        </div>
+      </Flex>
+    </Box>
+  </Card>
+</CardForm>
+`;
+
+exports[`CardForm should should render small 1`] = `
+<CardForm
+  button={
+    Object {
+      "onClick": [Function],
+    }
+  }
+  button2={
+    Object {
+      "onClick": [Function],
+    }
+  }
+  className="testClassString"
+  disable={false}
+  footer={
+    <p>
+      Footer
+    </p>
+  }
+  id="123"
+  smallForm={true}
+  title="Test"
+>
+  <Card
+    className="testClassString"
+    footer={
+      <p>
+        Footer
+      </p>
+    }
+    header="Test"
+    id="123"
+  >
+    <Box
+      className="card testClassString"
+      id="123"
+      justify="space-between"
+    >
+      <Flex
+        className="card testClassString"
+        flow="box"
+        id="123"
+        justify="space-between"
+      >
+        <div
+          className="flex box space-between card testClassString"
+          id="123"
+        >
+          <header>
+            <Box
+              className="title"
+            >
+              <Flex
+                className="title"
+                flow="box"
+              >
+                <div
+                  className="flex box undefined title"
+                >
+                  <H5>
+                    <h5
+                      className="h5"
+                    >
+                      Test
+                    </h5>
+                  </H5>
+                </div>
+              </Flex>
+            </Box>
+          </header>
+          <main
+            className="full"
+          >
+            <div
+              className="formContent small"
+            >
+              <div>
+                Child
+              </div>
+            </div>
+          </main>
+          <footer>
+            <p>
+              Footer
+            </p>
+          </footer>
+        </div>
+      </Flex>
+    </Box>
+  </Card>
+</CardForm>
+`;
+
+exports[`CardForm should should render without footer 1`] = `
+<CardForm
+  button={
+    Object {
+      "onClick": [Function],
+    }
+  }
+  button2={
+    Object {
+      "onClick": [Function],
+    }
+  }
+  className="testClassString"
+  disable={false}
+  footer={null}
+  id="123"
+  smallForm={false}
+  title="Test"
+>
+  <Card
+    className="testClassString"
+    footer={
+      <Row
+        className="footer"
+      >
+        <Button
+          className="button2"
+          onClick={[Function]}
+          style={undefined}
+        >
+          Cancel
+        </Button>
+        <Button
+          arrow="arrow_darkBg"
+          disabled={false}
+          onClick={[Function]}
+          style={undefined}
+          submit={true}
+          to={undefined}
+        >
+          Save
+        </Button>
+      </Row>
+    }
+    header="Test"
+    id="123"
+  >
+    <Box
+      className="card testClassString"
+      id="123"
+      justify="space-between"
+    >
+      <Flex
+        className="card testClassString"
+        flow="box"
+        id="123"
+        justify="space-between"
+      >
+        <div
+          className="flex box space-between card testClassString"
+          id="123"
+        >
+          <header>
+            <Box
+              className="title"
+            >
+              <Flex
+                className="title"
+                flow="box"
+              >
+                <div
+                  className="flex box undefined title"
+                >
+                  <H5>
+                    <h5
+                      className="h5"
+                    >
+                      Test
+                    </h5>
+                  </H5>
+                </div>
+              </Flex>
+            </Box>
+          </header>
+          <main
+            className="full"
+          >
+            <div
+              className="formContent"
+            >
+              <div>
+                Child
+              </div>
+            </div>
+          </main>
+          <footer>
+            <Row
+              className="footer"
+            >
+              <Flex
+                className="footer"
+                flow="row"
+              >
+                <div
+                  className="flex row undefined footer"
+                >
+                  <Button
+                    className="button2"
+                    onClick={[Function]}
+                  >
+                    <Link>
+                      <A
+                        className="link"
+                      >
+                        <a
+                          className="link"
+                        >
+                          <button
+                            className="button undefined button2"
+                            onClick={[Function]}
+                            type="button"
+                          >
+                            Cancel
+                          </button>
+                        </a>
+                      </A>
+                    </Link>
+                  </Button>
+                  <Button
+                    arrow="arrow_darkBg"
+                    disabled={false}
+                    onClick={[Function]}
+                    submit={true}
+                  >
+                    <Link>
+                      <A
+                        className="link"
+                      >
+                        <a
+                          className="link"
+                        >
+                          <button
+                            className="button undefined"
+                            disabled={false}
+                            onClick={[Function]}
+                            type="submit"
+                          >
+                            Save
+                          </button>
+                        </a>
+                      </A>
+                    </Link>
+                  </Button>
+                </div>
+              </Flex>
+            </Row>
+          </footer>
+        </div>
+      </Flex>
+    </Box>
+  </Card>
+</CardForm>
+`;

@@ -1,0 +1,309 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Graphs complexline should format data correctly 1`] = `undefined`;
+
+exports[`Graphs complexline should format data correctly 2`] = `undefined`;
+
+exports[`Graphs complexline should format data correctly 3`] = `undefined`;
+
+exports[`Graphs complexline should format data correctly 4`] = `undefined`;
+
+exports[`Graphs complexline should format labels correctly 1`] = `"0.0"`;
+
+exports[`Graphs complexline should format labels correctly 2`] = `"0"`;
+
+exports[`Graphs complexline should format labels correctly 3`] = `"123"`;
+
+exports[`Graphs complexline should format labels correctly 4`] = `"123.00"`;
+
+exports[`Graphs should render correctly 1`] = `
+<div
+  className="chart testClassString"
+>
+  <FormLabel>
+    Test
+  </FormLabel>
+  <Row
+    justify="flex-start"
+  >
+    <Row
+      className="bar"
+    >
+      <div
+        className="slice"
+        key="0"
+        style={
+          Object {
+            "background": "linear-gradient(45deg, #00ac6b, #069dac 160%)",
+            "color": "#00ac6b",
+            "width": "NaN%",
+          }
+        }
+      >
+        <label>
+          <B>
+            AU (
+            )
+          </B>
+        </label>
+      </div>
+      <div
+        className="slice"
+        key="1"
+        style={
+          Object {
+            "background": "linear-gradient(45deg, #09acc6, #302c43 160%)",
+            "color": "#09acc6",
+            "width": "NaN%",
+          }
+        }
+      >
+        <label>
+          <B>
+            AU (
+            )
+          </B>
+        </label>
+      </div>
+      <div
+        className="slice"
+        key="2"
+        style={
+          Object {
+            "background": "linear-gradient(45deg, #ff9a09, #f4362c 160%)",
+            "color": "#ff9a09",
+            "width": "NaN%",
+          }
+        }
+      >
+        <label>
+          <B>
+            AU (
+            )
+          </B>
+        </label>
+      </div>
+      <div
+        className="slice remaining"
+        style={
+          Object {
+            "width": "75%",
+          }
+        }
+      >
+        <label>
+          Remaining
+          <B />
+        </label>
+      </div>
+    </Row>
+  </Row>
+</div>
+`;
+
+exports[`Graphs should render correctly 2`] = `
+<div
+  className="complexlineContainer"
+>
+  <div
+    className="complexlineElement"
+    style={
+      Object {
+        "height": 300,
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Graphs should render correctly 3`] = `""`;
+
+exports[`Graphs should render correctly 4`] = `
+<div
+  className="gaugeContainer"
+>
+  <div
+    className="gaugeElement"
+  >
+    <ResponsivePieCanvas
+      colors={[Function]}
+      data={
+        Array [
+          Object {
+            "color": "#f4362c",
+            "id": "danger",
+            "value": 25,
+          },
+          Object {
+            "color": "#ff9a09",
+            "id": "warn",
+            "value": 25,
+          },
+          Object {
+            "color": "#00ac6b",
+            "id": "ok",
+            "value": 50,
+          },
+        ]
+      }
+      enableRadialLabels={false}
+      enableSlicesLabels={false}
+      endAngle={-90}
+      height={200}
+      innerRadius={0.95}
+      isInteractive={false}
+      pixelRatio={2}
+      sortByValue={false}
+      startAngle={90}
+      width={300}
+    />
+  </div>
+  <div
+    className="gaugeElement guagePercent"
+  >
+    <ResponsivePieCanvas
+      colors={[Function]}
+      data={
+        Array [
+          Object {
+            "color": "#f2f1ee",
+            "id": "reserve",
+            "value": 100,
+          },
+          Object {
+            "color": "#00ac6b",
+            "id": "used",
+            "value": 0,
+          },
+        ]
+      }
+      enableRadialLabels={false}
+      enableSlicesLabels={false}
+      endAngle={-90}
+      height={200}
+      innerRadius={0.75}
+      isInteractive={false}
+      pixelRatio={2}
+      sortByValue={false}
+      startAngle={90}
+      width={300}
+    />
+  </div>
+  <div
+    className="gaugeLabel"
+  >
+    <P>
+      0
+      %
+    </P>
+  </div>
+</div>
+`;
+
+exports[`Graphs should render correctly 5`] = `
+<div
+  className="sparklineContainer"
+>
+  <div
+    className="sparklineLabel"
+  >
+    <P>
+      0
+    </P>
+  </div>
+  <div
+    className="sparklineElement"
+  >
+    <Sparklines
+      data={Array []}
+      height={50}
+      limit={50}
+      margin={0}
+      preserveAspectRatio="none"
+      width={400}
+    >
+      <SparklinesCurve
+        color="#09acc6"
+        style={Object {}}
+      />
+    </Sparklines>
+  </div>
+</div>
+`;
+
+exports[`Graphs should render correctly 6`] = `
+<div
+  className="streamContainer"
+>
+  <div
+    className="streamNoData"
+  >
+    <P>
+      No task data
+    </P>
+  </div>
+  <div
+    className="streamElement"
+    style={
+      Object {
+        "height": 200,
+      }
+    }
+  >
+    <ResponsiveStream
+      animate={false}
+      axisBottom={null}
+      colors={[Function]}
+      data={Array []}
+      enableGridX={false}
+      fillOpacity={0.85}
+      keys={
+        Array [
+          "Failed Tasks",
+          "Successful Tasks",
+          "Running Tasks",
+          "Queued Tasks",
+        ]
+      }
+      legends={
+        Array [
+          Object {
+            "anchor": "top-right",
+            "direction": "column",
+            "itemDirection": "left-to-right",
+            "itemHeight": 20,
+            "itemOpacity": 0.75,
+            "itemWidth": 50,
+            "itemsSpacing": 0,
+            "justify": false,
+            "symbolShape": "square",
+            "symbolSize": 5,
+            "translateX": 65,
+            "translateY": 0,
+          },
+        ]
+      }
+      margin={
+        Object {
+          "bottom": 30,
+          "left": 40,
+          "right": 150,
+          "top": 0,
+        }
+      }
+      offsetType="silhouette"
+    />
+  </div>
+</div>
+`;
+
+exports[`Graphs should render correctly 7`] = `""`;

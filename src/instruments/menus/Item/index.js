@@ -15,6 +15,7 @@ const Item = ({
   exact,
   ...props
 }) => {
+  /* istanbul ignore next */
   const t = title ? title : typeof children === 'string' ? children : ''
   return (
     <Link

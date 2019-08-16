@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Console renders correctly 1`] = `
+<Console
+  className="testClassString"
+>
+  <div
+    className="container testClassString"
+    onWheel={[Function]}
+  >
+    <div
+      className="content"
+    >
+      &lt;p&gt;This is a test&lt;/p&gt;
+    </div>
+  </div>
+</Console>
+`;
+
+exports[`Console should handle pause 1`] = `
+<Console
+  className="testClassString"
+>
+  <div
+    className="container testClassString"
+    onWheel={[Function]}
+  >
+    <div
+      className="content"
+    >
+      &lt;p&gt;This is a test&lt;/p&gt;
+    </div>
+  </div>
+</Console>
+`;

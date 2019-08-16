@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Redirect should render correctly 1`] = `
+<Redirect
+  to="https://google.com"
+/>
+`;
+
+exports[`Redirect should render if no to 1`] = `<Redirect />`;

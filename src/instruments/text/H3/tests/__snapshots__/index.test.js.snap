@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`H3 should render correctly 1`] = `
+<H3
+  className="testClassName"
+>
+  <h3
+    className="h3 testClassName"
+  >
+    Children
+  </h3>
+</H3>
+`;

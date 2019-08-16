@@ -7,6 +7,7 @@ import { Row } from 'instruments'
 import Menu from './Menu'
 import s from './styles.scss'
 
+/* istanbul ignore next */
 class CardMenu extends React.Component {
   pos = 0
   scroll = this.scroll.bind(this)
@@ -18,15 +19,15 @@ class CardMenu extends React.Component {
     sticky: null,
   }
 
-  componentDidMount() {
+  componentDidMount() /* istanbul ignore next */ {
     if (window.innerWidth <= 850) this.disable = true
     if (!this.disable) window.addEventListener('scroll', this.scroll)
   }
-  componentWillUnmount() {
+  componentWillUnmount() /* istanbul ignore next */ {
     if (!this.disable) window.removeEventListener('scroll', this.scroll)
   }
 
-  scroll() {
+  scroll() /* istanbul ignore next */ {
     if (this.disable) return
     const { menu } = this.props
     const scroll = window.scrollY
@@ -50,7 +51,7 @@ class CardMenu extends React.Component {
     if (Object.keys(set).length) this.setState(set)
   }
 
-  getFocus(id, mid, up) {
+  getFocus(id, mid, up) /* istanbul ignore next */ {
     const el = document.getElementById(id)
     if (!el) return
     const rect = el.getBoundingClientRect()
@@ -60,14 +61,16 @@ class CardMenu extends React.Component {
       return true
     }
   }
-  sticky() {
+
+  sticky() /* istanbul ignore next */ {
     const { id } = this.props
     const el = document.getElementById(id)
     if (!el) return
     const rect = el.getBoundingClientRect()
     if (rect.y <= 16) return true
   }
-  scrollTo(id) {
+
+  scrollTo(id) /* istanbul ignore next */ {
     const el = document.getElementById(id)
     el.scrollIntoView()
   }

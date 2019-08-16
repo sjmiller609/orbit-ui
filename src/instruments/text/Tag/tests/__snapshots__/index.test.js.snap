@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag should render correctly 1`] = `
+<Tag
+  className="testClassName"
+>
+  <span
+    className="tag testClassName"
+  >
+    Children
+  </span>
+</Tag>
+`;

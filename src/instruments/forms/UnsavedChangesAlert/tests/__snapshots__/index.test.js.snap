@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UnsavedChangesAlert renders correctly 1`] = `
+<UnsavedChangesAlert
+  alert={true}
+>
+  <Prompt
+    message={[Function]}
+    when={true}
+  />
+</UnsavedChangesAlert>
+`;

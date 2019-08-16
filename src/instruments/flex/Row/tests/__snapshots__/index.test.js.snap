@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Row renders correctly 1`] = `
+<Row>
+  <Flex
+    flow="row"
+  >
+    <div
+      className="flex row undefined"
+    />
+  </Flex>
+</Row>
+`;

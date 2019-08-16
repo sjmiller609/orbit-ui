@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search renders correctly 1`] = `
+<Search
+  className="testClassString"
+  dark={false}
+  noDelay={true}
+  placeholder="Search"
+  search={[Function]}
+  text="Test"
+>
+  <div
+    className="field search testClassString"
+  >
+    <input
+      className="input"
+      onChange={[Function]}
+      placeholder="Search"
+      type="text"
+      value="Test"
+    />
+    <div
+      className="clear"
+      onClick={[Function]}
+    >
+      x
+    </div>
+  </div>
+</Search>
+`;
