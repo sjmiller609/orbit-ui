@@ -42,8 +42,8 @@ class TaskStatus extends React.Component {
       return (
         <div className={s.containerListContainer}>
           <div className={s.containerListHeader}>
-            <div style={{ flex: '0 0 20%' }}>Container</div>
-            <div>Pod</div>
+            <div style={{ flex: '0 0 20%' }}>Pod</div>
+            <div>Container</div>
             <div style={{ textAlign: 'center' }}>Status</div>
           </div>
           <div className={s.containerListItems}>
@@ -51,10 +51,8 @@ class TaskStatus extends React.Component {
               <div
                 key={`${d.metric.container}${i}`}
                 className={s.containerListItem}>
-                <div style={{ flex: '0 0 20%' }}>{d.metric.container}</div>
-                <div>
-                  {d.metric.pod != undefined && d.metric.pod.split(/-/g)[0]}
-                </div>
+                <div style={{ flex: '0 0 20%' }}>{d.metric.pod}</div>
+                <div>{d.metric.container}</div>
                 <div>{this.formatBool(d.value[1])}</div>
               </div>
             ))}
