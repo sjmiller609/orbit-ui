@@ -1,6 +1,6 @@
 export const getQueryProps = (key, as) => ({ data }) => {
-  if (data.loading) return { loading: data.loading }
-  if (data.error) {
+  if (data && data.loading) return { loading: data.loading }
+  if (data && data.error) {
     return { loading: false, error: data.error }
   }
 

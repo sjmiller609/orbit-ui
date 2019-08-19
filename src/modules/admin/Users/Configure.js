@@ -14,6 +14,7 @@ class UserConfigure extends React.Component {
   static propTypes = {
     users: PropTypes.array,
     self: PropTypes.object,
+    loading: PropTypes.bool,
   }
 
   constructor(props) {
@@ -49,7 +50,7 @@ class UserConfigure extends React.Component {
     }
   }
 
-  isInvite = user => user.__typename === 'Invite'
+  isInvite = user => user && user.__typename === 'Invite'
 
   mapInviteToUser = user => ({
     roleBindings: [
@@ -61,7 +62,8 @@ class UserConfigure extends React.Component {
   })
 
   render() {
-    const { self, users } = this.props
+    const { self, users, loading } = this.props
+    if (loading) return null
     if (self === undefined || users === undefined) return null
 
     const menu = {
@@ -77,18 +79,18 @@ class UserConfigure extends React.Component {
         <React.Fragment>
           {!pending ? (
             <Delete
+              settings={{ admin: true }}
               users={users}
               user={{ ...user }}
               isSelf={isSelf}
               canUpdateIam={true}
-              admin={true}
             />
           ) : (
             <DeleteInvite
+              settings={{ admin: true }}
               user={{ ...user }}
               isSelf={isSelf}
               canUpdateIam={true}
-              admin={true}
             />
           )}
         </React.Fragment>

@@ -7,15 +7,15 @@ import { default as Mutate } from '../Data/Remove'
 import GetWorkspace from 'modules/workspaces/GetWorkspace'
 
 const Delete = ({
+  settings,
   users,
   user,
   onSubmit,
   workspace,
   isSelf,
   canUpdateIam,
-  admin,
 }) => {
-  const level = admin ? 'platform' : 'workspace'
+  const level = settings.admin ? 'platform' : 'workspace'
   let noDelete
 
   let who = isSelf
@@ -37,14 +37,14 @@ const Delete = ({
     text = `To remove yourself from this ${level}, you must first add another admin to the ${level}.`
   }
 
-  if (canUpdateIam === false && admin != true) {
+  if (canUpdateIam === false && settings.admin != true) {
     noDelete = true
     text = `You do not have the appropriate permissions to delete users from this ${level}.`
   }
 
   return (
     <CardDelete
-      title={`Remove from ${admin ? 'Platform' : 'Workspace'}`}
+      title={`Remove from ${settings.admin ? 'Platform' : 'Workspace'}`}
       text={text}
       disabled={noDelete}
       confirm={{
@@ -69,10 +69,10 @@ Delete.propTypes = {
   onSubmit: PropTypes.func,
   user: PropTypes.object,
   workspace: PropTypes.object,
-  users: PropTypes.object,
+  users: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   isSelf: PropTypes.bool,
   canUpdateIam: PropTypes.bool,
-  admin: PropTypes.bool,
+  settings: PropTypes.object,
 }
 
 export default GetWorkspace(Mutate(Delete), { withUsers: true })

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { compose, graphql, withApollo } from 'react-apollo'
 import gql from 'graphql-tag'
-import { getQueryProps } from '../../../helpers/apollo'
 
 import Module from '../../app/Module'
 import { Table } from 'instruments'
@@ -12,8 +11,8 @@ import Item from '../../users/List/Item'
 
 class Users extends Component {
   static propTypes = {
-    users: PropTypes.array,
-    invites: PropTypes.array,
+    getUsers: PropTypes.object,
+    getInvites: PropTypes.object,
     loading: PropTypes.bool,
   }
 
@@ -21,17 +20,21 @@ class Users extends Component {
     super(props)
 
     this.state = {
-      users: props.users,
-      invites: props.invites,
-      search: {
-        delay: false,
-        placeholder: 'Search Users',
-        call: search => this.setState({ search }),
-        fields: ['users'],
-      },
+      users: props.getUsers.users,
+      invites: props.getInvites.invites,
+      search: '',
       menu: {
         nav: 'admin',
       },
+    }
+  }
+
+  componentDidMount = async () => {
+    try {
+      await this.props.getUsers.refetch()
+      await this.props.getInvites.refetch()
+    } catch (err) {
+      console.log(err) // eslint-disable-line
     }
   }
 
@@ -43,12 +46,32 @@ class Users extends Component {
 
   setData = props =>
     this.setState({
-      users: props.users,
-      invites: props.invites,
+      users: props.getUsers.users,
+      invites: props.getInvites.invites,
     })
 
+  search = {
+    delay: false,
+    placeholder: 'Search Users',
+    call: search => this.handleSearch(search),
+    fields: ['users'],
+  }
+
+  handleSearch = async search => {
+    this.setState({ search })
+    try {
+      await this.props.getUsers.refetch({ username: search, email: search })
+      await this.props.getInvites.refetch({ email: search })
+      this.setState({ search })
+    } catch (err) {
+      console.log(err) // eslint-disable-line
+    }
+  }
+
   render() {
-    const { users, invites, search, menu } = this.state
+    const { search, menu } = this.state
+    const { users } = this.props.getUsers
+    const { invites } = this.props.getInvites
 
     const button = {
       text: 'Invite',
@@ -57,14 +80,19 @@ class Users extends Component {
 
     return (
       <Module metaTitle="Users" menu={menu}>
-        <Table search={search} button={button}>
+        <Table
+          search={{
+            text: search,
+            ...this.search,
+          }}
+          button={button}>
           {users != undefined &&
             users.map(t => (
               <Item
                 key={t.id}
                 user={t}
                 role={null}
-                to={`/admin/users/${encodeURIComponent(t.username)}`}
+                to={`/admin/users/${encodeURIComponent(t.username)}/configure`}
                 admin={true}
               />
             ))}
@@ -110,8 +138,8 @@ const users = gql`
 `
 
 const invites = gql`
-  query invites {
-    invites {
+  query invites($email: String) {
+    invites(email: $email) {
       id: uuid
       email
       role
@@ -124,10 +152,6 @@ const invites = gql`
 export default compose(
   withRouter,
   withApollo,
-  graphql(users, {
-    props: getQueryProps('users'),
-  }),
-  graphql(invites, {
-    props: getQueryProps('invites'),
-  })
+  graphql(users, { name: 'getUsers' }),
+  graphql(invites, { name: 'getInvites' })
 )(Users)
