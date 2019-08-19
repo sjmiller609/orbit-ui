@@ -21,6 +21,8 @@ const OauthButton = ({
         {...props}
         to={to}
         title={action + ' with ' + displayName}
+        target="_self"
+        newTab={false}
         /* istanbul ignore next */
         className={classnames(s.button, s[service])}>
         <span>

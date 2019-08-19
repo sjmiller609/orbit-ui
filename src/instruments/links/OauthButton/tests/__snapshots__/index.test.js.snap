@@ -22,12 +22,15 @@ exports[`OauthButton should render correctly 1`] = `
       >
         <Link
           className="button google"
+          newTab={false}
+          target="_self"
           title="Sign up with Google"
           to="/"
         >
           <Link
             className="link button google"
             replace={false}
+            target={false}
             title="Sign up with Google"
             to="/"
           >
@@ -35,6 +38,7 @@ exports[`OauthButton should render correctly 1`] = `
               className="link button google"
               href="/"
               onClick={[Function]}
+              target={false}
               title="Sign up with Google"
             >
               <span>
@@ -73,12 +77,15 @@ exports[`OauthButton should render login correctly 1`] = `
       >
         <Link
           className="button google"
+          newTab={false}
+          target="_self"
           title="Login with Google"
           to="/"
         >
           <Link
             className="link button google"
             replace={false}
+            target={false}
             title="Login with Google"
             to="/"
           >
@@ -86,6 +93,7 @@ exports[`OauthButton should render login correctly 1`] = `
               className="link button google"
               href="/"
               onClick={[Function]}
+              target={false}
               title="Login with Google"
             >
               <span>
