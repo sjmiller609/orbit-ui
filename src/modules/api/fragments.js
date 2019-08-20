@@ -28,18 +28,6 @@ export const user = gql`
   }
 `
 
-export const group = gql`
-  fragment group on Group {
-    id: uuid
-    label
-    description
-    custom
-    active
-    createdAt
-    updatedAt
-  }
-`
-
 export const workspace = gql`
   fragment workspace on Workspace {
     id: uuid

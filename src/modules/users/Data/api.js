@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { user, group, invite, workspace } from 'modules/api/fragments'
+import { user, invite, workspace } from 'modules/api/fragments'
 
 export default {
   User: gql`
@@ -25,9 +25,6 @@ export default {
         users {
           ...user
         }
-        groups {
-          ...group
-        }
         invites {
           ...invite
         }
@@ -35,7 +32,6 @@ export default {
     }
     ${workspace}
     ${user}
-    ${group}
     ${invite}
   `,
   InviteUser: gql`

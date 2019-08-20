@@ -51,9 +51,7 @@ const Nav = ({ getData, workspaces, self, menu }) => {
     ? workspace.workspaceCapabilities.canUpdateBilling &&
       workspace.billingEnabled
     : false
-
   const diff = workspace ? -moment().diff(workspace.trialEndsAt, 'days') : null
-
   const trialRemaining = diff < 0 ? 0 : diff
   const days =
     trialRemaining == 1
