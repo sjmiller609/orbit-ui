@@ -39,6 +39,7 @@ class Users extends React.Component {
             ...this.search,
           }}
           vars={vars}
+          workspaceId={this.props.getData.workspaceId}
         />
       </Module>
     )

@@ -8,9 +8,11 @@ import Data from 'modules/workspaces/Data'
 import Item from './Item'
 import Empty from './Empty'
 
-const List = ({ workspaces, search }) => {
-  const users = (workspaces && workspaces[0] && workspaces[0].users) || []
-  const invites = (workspaces && workspaces[0] && workspaces[0].invites) || []
+const List = ({ workspaces, workspaceId, search }) => {
+  // Get the current workspace being viewed
+  const workspace = workspaces.filter(w => w.id === workspaceId)[0]
+  const users = workspace.users
+  const invites = workspace.invites
 
   const roleForUser = uid => {
     const rb = workspaces[0].roleBindings.find(
@@ -23,6 +25,7 @@ const List = ({ workspaces, search }) => {
     text: 'Invite',
     to: '/users/new',
   }
+
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
       {users.map(t => <Item key={t.id} user={t} role={roleForUser(t.id)} />)}
@@ -34,6 +37,7 @@ const List = ({ workspaces, search }) => {
 List.propTypes = {
   superuser: PropTypes.bool,
   workspaces: PropTypes.array,
+  workspaceId: PropTypes.string,
   search: PropTypes.object,
 }
 
