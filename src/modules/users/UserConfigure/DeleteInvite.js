@@ -5,10 +5,9 @@ import { CardDelete, B } from 'instruments'
 
 import { default as Mutate } from '../Data/DeleteInvite'
 
-const DeleteInvite = ({ user, onSubmit, canUpdateIam, admin }) => {
-  const level = admin ? 'platform' : 'workspace'
+const DeleteInvite = ({ user, onSubmit, canUpdateIam }) => {
   const name = user.fullName || user.email || user[0].email
-  let text = `Warning! This cannot be undone. ${name} will be permanently removed from this ${level} and all access revoked.`
+  let text = `Warning! This cannot be undone. ${name} will be permanently removed and all access revoked.`
   let noDelete = !canUpdateIam
 
   return (

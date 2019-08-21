@@ -26,6 +26,7 @@ class User extends React.Component {
       workspaceId: getData.workspaceId,
       username,
     }
+
     return <Module title="Configure Access" menu={this.menu} vars={vars} />
   }
 }

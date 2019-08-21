@@ -78,16 +78,9 @@ class UserConfigure extends React.Component {
       <Module menu={menu}>
         <React.Fragment>
           {!pending ? (
-            <Delete
-              settings={{ admin: true }}
-              users={users}
-              user={{ ...user }}
-              isSelf={isSelf}
-              canUpdateIam={true}
-            />
+            <Delete user={{ ...user }} isSelf={isSelf} canUpdateIam={true} />
           ) : (
             <DeleteInvite
-              settings={{ admin: true }}
               user={{ ...user }}
               isSelf={isSelf}
               canUpdateIam={true}

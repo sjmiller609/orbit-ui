@@ -6,16 +6,9 @@ import { CardDelete, B } from 'instruments'
 import { default as Mutate } from '../Data/Remove'
 import GetWorkspace from 'modules/workspaces/GetWorkspace'
 
-const Delete = ({
-  settings,
-  users,
-  user,
-  onSubmit,
-  workspace,
-  isSelf,
-  canUpdateIam,
-}) => {
-  const level = settings.admin ? 'platform' : 'workspace'
+const Delete = ({ user, onSubmit, workspace, isSelf, canUpdateIam }) => {
+  const level = workspace ? 'Workspace' : 'Platform'
+
   let noDelete
 
   let who = isSelf
@@ -28,23 +21,19 @@ const Delete = ({
 
   let text = `Warning! This cannot be undone. ${who} will be permanently removed from this ${level} and all access revoked.`
 
-  if (
-    workspace.users.length === 1 ||
-    (users != undefined && users.length === 1) ||
-    canUpdateIam === false
-  ) {
+  if ((workspace && workspace.users.length === 1) || canUpdateIam === false) {
     noDelete = true
     text = `To remove yourself from this ${level}, you must first add another admin to the ${level}.`
   }
 
-  if (canUpdateIam === false && settings.admin != true) {
+  if (canUpdateIam === false) {
     noDelete = true
     text = `You do not have the appropriate permissions to delete users from this ${level}.`
   }
 
   return (
     <CardDelete
-      title={`Remove from ${settings.admin ? 'Platform' : 'Workspace'}`}
+      title={`Remove from ${level}`}
       text={text}
       disabled={noDelete}
       confirm={{
@@ -72,7 +61,6 @@ Delete.propTypes = {
   users: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   isSelf: PropTypes.bool,
   canUpdateIam: PropTypes.bool,
-  settings: PropTypes.object,
 }
 
 export default GetWorkspace(Mutate(Delete), { withUsers: true })
