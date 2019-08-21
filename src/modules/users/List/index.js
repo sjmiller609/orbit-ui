@@ -15,9 +15,7 @@ const List = ({ workspaces, workspaceId, search }) => {
   const invites = workspace.invites
 
   const roleForUser = uid => {
-    const rb = workspaces[0].roleBindings.find(
-      rb => rb.user && rb.user.id == uid
-    )
+    const rb = workspace.roleBindings.find(rb => rb.user && rb.user.id === uid)
     return rb ? rb.role : null
   }
 
