@@ -23,9 +23,6 @@ class Users extends Component {
       users: props.getUsers.users,
       invites: props.getInvites.invites,
       search: '',
-      menu: {
-        nav: 'admin',
-      },
     }
   }
 
@@ -69,17 +66,30 @@ class Users extends Component {
   }
 
   render() {
-    const { search, menu } = this.state
-    const { users } = this.props.getUsers
-    const { invites } = this.props.getInvites
+    const { search, users, invites } = this.state
 
     const button = {
       text: 'Invite',
       to: '/admin/users/new',
     }
 
+    const menu2 = {
+      nav: 'admin',
+      level1: {
+        selected: {
+          to: '/admin',
+          text: 'Admin',
+        },
+        list: [],
+        addNew: {},
+      },
+      level2: {
+        text: 'All Users',
+      },
+    }
+
     return (
-      <Module metaTitle="Users" menu={menu}>
+      <Module metaTitle="Users" menu={menu2}>
         <Table
           search={{
             text: search,

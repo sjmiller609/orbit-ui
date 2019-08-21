@@ -27,7 +27,7 @@ const Nav = ({ getData, workspaces, self, menu }) => {
     platform: isAdmin(),
   }
 
-  const level1 = {
+  let level1 = menu.level1 || {
     selected: {
       to: menu.home, //default?
       id: workspaceId,
@@ -51,7 +51,9 @@ const Nav = ({ getData, workspaces, self, menu }) => {
     ? workspace.workspaceCapabilities.canUpdateBilling &&
       workspace.billingEnabled
     : false
+
   const diff = workspace ? -moment().diff(workspace.trialEndsAt, 'days') : null
+
   const trialRemaining = diff < 0 ? 0 : diff
   const days =
     trialRemaining == 1

@@ -2,7 +2,7 @@ const subMenus = {
   admin: [
     {
       to: '/admin',
-      text: 'Manage Users',
+      text: 'Users',
     },
   ],
   workspaces: [
