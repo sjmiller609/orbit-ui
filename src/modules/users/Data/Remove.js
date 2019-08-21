@@ -7,7 +7,7 @@ import workspacesApi from 'modules/workspaces/Data/api'
 
 import { Delete as Mutate, GetData, CardError } from 'instruments'
 
-import { handleError } from './helpers'
+import { handleError, trimError } from './helpers'
 
 const Remove = Component => {
   const Remove = ({ getData, isSelf, ...props }) => {
@@ -38,7 +38,9 @@ const Remove = Component => {
         redirect={redirect}
         success={`User removed from ${level}.`}
         track={`User removed from ${level}.`}
-        query={query}>
+        query={query}
+        errorMsg={trimError}
+        voidError>
         {({ mutate, error }) => {
           const newProps = {
             ...props,
