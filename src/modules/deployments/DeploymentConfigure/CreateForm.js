@@ -63,7 +63,8 @@ class CreateForm extends React.Component {
           save: form.save,
           text: 'Save',
         }}
-        className={s.card}>
+        className={s.card}
+        disable={disabled}>
         {disabled &&
           deployments[0].workspace.billingEnabled && (
             <FormSection
