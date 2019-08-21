@@ -25,6 +25,7 @@ const Data = Component => {
             ...otherProps,
             search,
             workspaces,
+            workspaceId: vars2.workspaceId,
           }
           return <Component {...newProps} />
         }}
