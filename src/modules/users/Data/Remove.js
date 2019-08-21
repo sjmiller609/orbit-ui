@@ -23,15 +23,18 @@ const Remove = Component => {
     // if removing self from workspace, is different redirect and refetch
     if (isSelf) query.vars = { withUsers: false }
 
-    let redirect = '/workspaces'
-    if (!query.vars.workspaceId) redirect = '/admin/users'
-    if (isSelf) redirect = '/users'
+    const useSystem =
+      query.vars.workspaceId === undefined || !query.vars.workspaceId
 
-    const level = query.vars.workspaceId ? 'Workspace' : 'Platform'
+    let redirect = '/workspaces'
+    if (isSelf) redirect = '/users'
+    if (useSystem) redirect = '/admin/users'
+
+    const level = useSystem ? 'Workspace' : 'Platform'
 
     return (
       <Mutate
-        gql={api.RemoveUser}
+        gql={useSystem ? api.RemoveUser : api.WorkspaceRemoveUser}
         redirect={redirect}
         success={`User removed from ${level}.`}
         track={`User removed from ${level}.`}

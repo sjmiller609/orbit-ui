@@ -40,7 +40,14 @@ export default {
     }
   `,
   RemoveUser: gql`
-    mutation removeUser($id: Uuid!, $workspaceId: Uuid!) {
+    mutation removeUser($id: Uuid!) {
+      removeUser(userUuid: $id) {
+        id: uuid
+      }
+    }
+  `,
+  WorkspaceRemoveUser: gql`
+    mutation workspaceRemoveUser($id: Uuid!, $workspaceId: Uuid!) {
       workspaceRemoveUser(userUuid: $id, workspaceUuid: $workspaceId) {
         id: uuid
       }
