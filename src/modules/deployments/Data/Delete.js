@@ -29,7 +29,8 @@ const Delete = Component => {
           },
         }}
         query={query}
-        errorMsg={trimError}>
+        errorMsg={trimError}
+        voidError>
         {({ mutate, error }) => {
           const newProps = {
             ...props,
