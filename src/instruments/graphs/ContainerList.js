@@ -56,8 +56,8 @@ class ContainerList extends React.Component {
               <div
                 key={`${d.metric.container}${i}`}
                 className={s.containerListItem}>
-                <div style={{ flex: '0 0 45%' }}>{d.metric.pod}</div>
-                <div>{d.metric.container}</div>
+                <div>{d.metric.pod}</div>
+                <div style={{ flex: '0 0 45%' }}>{d.metric.container}</div>
                 <div style={{ textAlign: 'center', flex: '0 0 10%' }}>
                   {this.formatBool(d.value[1])}
                 </div>

@@ -42,18 +42,20 @@ class TaskStatus extends React.Component {
       return (
         <div className={s.containerListContainer}>
           <div className={s.containerListHeader}>
-            <div style={{ flex: '0 0 20%' }}>Pod</div>
-            <div>Container</div>
-            <div style={{ textAlign: 'center' }}>Status</div>
+            <div>Pod</div>
+            <div style={{ flex: '0 0 45%' }}>Container</div>
+            <div style={{ textAlign: 'center', flex: '0 0 10%' }}>Status</div>
           </div>
           <div className={s.containerListItems}>
             {data.map((d, i) => (
               <div
                 key={`${d.metric.container}${i}`}
                 className={s.containerListItem}>
-                <div style={{ flex: '0 0 20%' }}>{d.metric.pod}</div>
-                <div>{d.metric.container}</div>
-                <div>{this.formatBool(d.value[1])}</div>
+                <div>{d.metric.pod}</div>
+                <div style={{ flex: '0 0 45%' }}>{d.metric.container}</div>
+                <div style={{ textAlign: 'center', flex: '0 0 10%' }}>
+                  {this.formatBool(d.value[1])}
+                </div>
               </div>
             ))}
           </div>
