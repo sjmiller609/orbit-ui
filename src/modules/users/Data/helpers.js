@@ -3,8 +3,9 @@ import { formErrors } from 'instruments'
 const errors = [
   {
     key: 'permissions',
-    name: 'permissions',
-    error: 'You must be an admin to change these settings.',
+  },
+  {
+    key: 'system administrators',
   },
 ]
 
