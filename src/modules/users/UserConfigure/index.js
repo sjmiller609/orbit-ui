@@ -80,7 +80,7 @@ class UserConfigure extends React.Component {
     if (workspace) canUpdateIAM = workspace.workspaceCapabilities.canUpdateIAM
 
     // Disable the selector if the user is viewing their own permissions
-    const disabled = isSelf
+    const disabled = isSelf || !canUpdateIAM
 
     return (
       <React.Fragment>
