@@ -26,8 +26,8 @@ const Remove = Component => {
     const useSystem =
       query.vars.workspaceId === undefined || !query.vars.workspaceId
 
-    let redirect = '/workspaces'
-    if (isSelf) redirect = '/users'
+    let redirect = '/users'
+    if (isSelf) redirect = '/workspaces'
     if (useSystem) redirect = '/admin/users'
 
     const level = useSystem ? 'Workspace' : 'Platform'
