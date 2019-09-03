@@ -6,6 +6,6 @@ exports[`ShowDate renders correctly 1`] = `
 <span
   className="date testClassString"
 >
-  Mon, August 5
+  August 5
 </span>
 `;

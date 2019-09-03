@@ -21,6 +21,7 @@
     "test": "jest",
     "test:drone": "jest --verbose --coverage --bail",
     "test:watch": "jest --updateSnapshot --watch --coverage",
+    "test:update": "jest --updateSnapshot",
     "test:cache": "npm run test --clearCache",
     "test:CI": "babel-node tools/testCi.js",
     "test:cover": "npm run test -- --coverage",
