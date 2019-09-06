@@ -46,13 +46,17 @@ class Deployment extends React.Component {
     const vars = {
       releaseName: id,
     }
+
     const current = this.menu.subMenu.find(m => m.to === location.pathname)
 
     return (
       <Module
         title={(current && current.text) || null}
         menu={this.menu}
-        vars={vars}
+        vars={{
+          ...vars,
+          workspaceId: this.props.workspaceId,
+        }}
       />
     )
   }
@@ -61,6 +65,7 @@ class Deployment extends React.Component {
 Deployment.propTypes = {
   location: PropTypes.object,
   match: PropTypes.object,
+  workspaceId: PropTypes.string,
 }
 
 export default Deployment

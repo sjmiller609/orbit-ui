@@ -3,7 +3,7 @@ import { deployment, deploymentConfig } from 'modules/api/fragments'
 
 export default {
   Deployments: gql`
-    query deployments($workspaceId: Uuid, $releaseName: String) {
+    query deployments($workspaceId: Uuid!, $releaseName: String) {
       workspaceDeployments(
         workspaceUuid: $workspaceId
         releaseName: $releaseName
