@@ -15,11 +15,11 @@ const Data = Component => {
           },
         }) => (
           <Query gql={api.Deployments} vars={vars} skip={skip} search={search}>
-            {({ data: { deployments } }) => {
+            {({ data: { workspaceDeployments } }) => {
               const newProps = {
                 ...otherProps,
                 search,
-                deployments,
+                deployments: workspaceDeployments,
                 latestVersion,
                 loggingEnabled,
               }

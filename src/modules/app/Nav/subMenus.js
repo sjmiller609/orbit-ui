@@ -4,6 +4,10 @@ const subMenus = {
       to: '/admin',
       text: 'Users',
     },
+    {
+      to: '/admin/deployments',
+      text: 'Deployments',
+    },
   ],
   workspaces: [
     {

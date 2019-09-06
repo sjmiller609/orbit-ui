@@ -7,6 +7,11 @@ export default [
     exact: true,
   },
   {
+    path: '/admin/deployments',
+    component: Load(() => import(/* webpackPrefetch: true */ '../Deployments')),
+    exact: true,
+  },
+  {
     path: '/admin/users',
     component: Load(() => import(/* webpackPrefetch: true */ '../Users')),
     exact: true,
