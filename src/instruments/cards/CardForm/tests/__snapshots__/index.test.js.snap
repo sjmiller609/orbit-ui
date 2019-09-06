@@ -4,12 +4,12 @@ exports[`CardForm should render correctly 1`] = `
 <CardForm
   button={
     Object {
-      "onClick": [Function],
+      "onClick": [MockFunction],
     }
   }
   button2={
     Object {
-      "onClick": [Function],
+      "onClick": [MockFunction],
     }
   }
   className="testClassString"
@@ -202,7 +202,7 @@ exports[`CardForm should should render disabled 1`] = `
   }
   button2={
     Object {
-      "onClick": [Function],
+      "onClick": [MockFunction],
     }
   }
   className="testClassString"
@@ -295,7 +295,7 @@ exports[`CardForm should should render disabled 2`] = `
   }
   button2={
     Object {
-      "onClick": [Function],
+      "onClick": [MockFunction],
     }
   }
   className="testClassString"
@@ -383,12 +383,12 @@ exports[`CardForm should should render small 1`] = `
 <CardForm
   button={
     Object {
-      "onClick": [Function],
+      "onClick": [MockFunction],
     }
   }
   button2={
     Object {
-      "onClick": [Function],
+      "onClick": [MockFunction],
     }
   }
   className="testClassString"
@@ -476,12 +476,12 @@ exports[`CardForm should should render without footer 1`] = `
 <CardForm
   button={
     Object {
-      "onClick": [Function],
+      "onClick": [MockFunction],
     }
   }
   button2={
     Object {
-      "onClick": [Function],
+      "onClick": [MockFunction],
     }
   }
   className="testClassString"
@@ -499,18 +499,15 @@ exports[`CardForm should should render without footer 1`] = `
       >
         <Button
           className="button2"
-          onClick={[Function]}
-          style={undefined}
+          onClick={[MockFunction]}
         >
           Cancel
         </Button>
         <Button
           arrow="arrow_darkBg"
           disabled={false}
-          onClick={[Function]}
-          style={undefined}
+          onClick={[MockFunction]}
           submit={true}
-          to={undefined}
         >
           Save
         </Button>
@@ -580,7 +577,7 @@ exports[`CardForm should should render without footer 1`] = `
                 >
                   <Button
                     className="button2"
-                    onClick={[Function]}
+                    onClick={[MockFunction]}
                   >
                     <Link>
                       <A
@@ -591,7 +588,7 @@ exports[`CardForm should should render without footer 1`] = `
                         >
                           <button
                             className="button undefined button2"
-                            onClick={[Function]}
+                            onClick={[MockFunction]}
                             type="button"
                           >
                             Cancel
@@ -603,7 +600,7 @@ exports[`CardForm should should render without footer 1`] = `
                   <Button
                     arrow="arrow_darkBg"
                     disabled={false}
-                    onClick={[Function]}
+                    onClick={[MockFunction]}
                     submit={true}
                   >
                     <Link>
@@ -616,7 +613,7 @@ exports[`CardForm should should render without footer 1`] = `
                           <button
                             className="button undefined"
                             disabled={false}
-                            onClick={[Function]}
+                            onClick={[MockFunction]}
                             type="submit"
                           >
                             Save

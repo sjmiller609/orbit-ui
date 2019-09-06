@@ -16,7 +16,7 @@ exports[`Icons logo defaults to / 1`] = `
           "listen": [Function],
           "location": Object {
             "hash": "",
-            "pathname": "blank",
+            "pathname": "/",
             "search": "",
             "state": undefined,
           },
@@ -52,6 +52,9 @@ exports[`Icons logo defaults to / 1`] = `
                     "mark": Array [],
                     "ok": true,
                     "payload": Object {
+                      "default": Object {
+                        "process": [Function],
+                      },
                       "process": [Function],
                     },
                     "promise": Promise {},
@@ -73,6 +76,9 @@ exports[`Icons logo defaults to / 1`] = `
                       "mark": Array [],
                       "ok": true,
                       "payload": Object {
+                        "default": Object {
+                          "process": [Function],
+                        },
                         "process": [Function],
                       },
                       "promise": Promise {},
@@ -125,7 +131,7 @@ exports[`Icons logo renders darkBg 1`] = `
           "listen": [Function],
           "location": Object {
             "hash": "",
-            "pathname": "blank",
+            "pathname": "/",
             "search": "",
             "state": undefined,
           },
@@ -162,6 +168,9 @@ exports[`Icons logo renders darkBg 1`] = `
                     "mark": Array [],
                     "ok": true,
                     "payload": Object {
+                      "default": Object {
+                        "process": [Function],
+                      },
                       "process": [Function],
                     },
                     "promise": Promise {},
@@ -183,6 +192,9 @@ exports[`Icons logo renders darkBg 1`] = `
                       "mark": Array [],
                       "ok": true,
                       "payload": Object {
+                        "default": Object {
+                          "process": [Function],
+                        },
                         "process": [Function],
                       },
                       "promise": Promise {},
@@ -235,7 +247,7 @@ exports[`Icons logo renders full 1`] = `
           "listen": [Function],
           "location": Object {
             "hash": "",
-            "pathname": "blank",
+            "pathname": "/",
             "search": "",
             "state": undefined,
           },
@@ -272,7 +284,7 @@ exports[`Icons logo renders stars 1`] = `
           "listen": [Function],
           "location": Object {
             "hash": "",
-            "pathname": "blank",
+            "pathname": "/",
             "search": "",
             "state": undefined,
           },
@@ -310,6 +322,9 @@ exports[`Icons logo renders stars 1`] = `
                     "mark": Array [],
                     "ok": true,
                     "payload": Object {
+                      "default": Object {
+                        "process": [Function],
+                      },
                       "process": [Function],
                     },
                     "promise": Promise {},
@@ -331,6 +346,9 @@ exports[`Icons logo renders stars 1`] = `
                       "mark": Array [],
                       "ok": true,
                       "payload": Object {
+                        "default": Object {
+                          "process": [Function],
+                        },
                         "process": [Function],
                       },
                       "promise": Promise {},
@@ -361,8 +379,6 @@ exports[`Icons logo renders stars 1`] = `
 </withRouter(Logo)>
 `;
 
-exports[`Icons logo returns null if no image 1`] = `<Logo />`;
-
 exports[`Icons should render correctly 1`] = `<Icon />`;
 
 exports[`Icons should render correctly 2`] = `
@@ -385,7 +401,7 @@ exports[`Icons should render correctly 2`] = `
           "listen": [Function],
           "location": Object {
             "hash": "",
-            "pathname": "blank",
+            "pathname": "/",
             "search": "",
             "state": undefined,
           },
@@ -422,6 +438,9 @@ exports[`Icons should render correctly 2`] = `
                     "mark": Array [],
                     "ok": true,
                     "payload": Object {
+                      "default": Object {
+                        "process": [Function],
+                      },
                       "process": [Function],
                     },
                     "promise": Promise {},
@@ -443,6 +462,9 @@ exports[`Icons should render correctly 2`] = `
                       "mark": Array [],
                       "ok": true,
                       "payload": Object {
+                        "default": Object {
+                          "process": [Function],
+                        },
                         "process": [Function],
                       },
                       "promise": Promise {},
@@ -530,6 +552,9 @@ exports[`Icons should render correctly 4`] = `
                   "mark": Array [],
                   "ok": true,
                   "payload": Object {
+                    "default": Object {
+                      "process": [Function],
+                    },
                     "process": [Function],
                   },
                   "promise": Promise {},
@@ -550,6 +575,9 @@ exports[`Icons should render correctly 4`] = `
                     "mark": Array [],
                     "ok": true,
                     "payload": Object {
+                      "default": Object {
+                        "process": [Function],
+                      },
                       "process": [Function],
                     },
                     "promise": Promise {},
@@ -588,6 +616,9 @@ exports[`Icons should render correctly 4`] = `
                   "mark": Array [],
                   "ok": true,
                   "payload": Object {
+                    "default": Object {
+                      "process": [Function],
+                    },
                     "process": [Function],
                   },
                   "promise": Promise {},
@@ -608,6 +639,9 @@ exports[`Icons should render correctly 4`] = `
                     "mark": Array [],
                     "ok": true,
                     "payload": Object {
+                      "default": Object {
+                        "process": [Function],
+                      },
                       "process": [Function],
                     },
                     "promise": Promise {},

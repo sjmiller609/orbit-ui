@@ -9,14 +9,33 @@ exports[`Flex renders correctly 1`] = `
   full={false}
   id="1234"
   justify="space-between"
-  onClick={[Function]}
-  passRef={[Function]}
+  onClick={[MockFunction]}
+  passRef={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          <div
+            class="flex row space-between align-center testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   wrap={false}
 >
   <div
     className="flex row space-between align-center testClassString"
     id="1234"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     &lt;p&gt;This is a test&lt;/p&gt;
   </div>
@@ -32,14 +51,45 @@ exports[`Flex should render full 1`] = `
   full={true}
   id="1234"
   justify="space-between"
-  onClick={[Function]}
-  passRef={[Function]}
+  onClick={[MockFunction]}
+  passRef={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          <div
+            class="flex row space-between align-center testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+        Array [
+          <div
+            class="flex row space-between align-center full testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   wrap={false}
 >
   <div
     className="flex row space-between align-center full testClassString"
     id="1234"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     &lt;p&gt;This is a test&lt;/p&gt;
   </div>
@@ -55,14 +105,69 @@ exports[`Flex should render wrap 1`] = `
   full={false}
   id="1234"
   justify="space-between"
-  onClick={[Function]}
-  passRef={[Function]}
+  onClick={[MockFunction]}
+  passRef={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          <div
+            class="flex row space-between align-center testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+        Array [
+          <div
+            class="flex row space-between align-center full testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+        Array [
+          <div
+            class="flex row space-between align-center auto testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+        Array [
+          <div
+            class="flex row space-between align-center wrap testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   wrap={true}
 >
   <div
     className="flex row space-between align-center wrap testClassString"
     id="1234"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     &lt;p&gt;This is a test&lt;/p&gt;
   </div>
@@ -78,14 +183,57 @@ exports[`Flex shoulnd render auto 1`] = `
   full={false}
   id="1234"
   justify="space-between"
-  onClick={[Function]}
-  passRef={[Function]}
+  onClick={[MockFunction]}
+  passRef={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          <div
+            class="flex row space-between align-center testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+        Array [
+          <div
+            class="flex row space-between align-center full testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+        Array [
+          <div
+            class="flex row space-between align-center auto testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   wrap={false}
 >
   <div
     className="flex row space-between align-center auto testClassString"
     id="1234"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     &lt;p&gt;This is a test&lt;/p&gt;
   </div>
@@ -101,14 +249,81 @@ exports[`Flex shoulnd render full, auto & wrap 1`] = `
   full={true}
   id="1234"
   justify="space-between"
-  onClick={[Function]}
-  passRef={[Function]}
+  onClick={[MockFunction]}
+  passRef={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          <div
+            class="flex row space-between align-center testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+        Array [
+          <div
+            class="flex row space-between align-center full testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+        Array [
+          <div
+            class="flex row space-between align-center auto testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+        Array [
+          <div
+            class="flex row space-between align-center wrap testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+        Array [
+          <div
+            class="flex row space-between align-center wrap auto full testClassString"
+            id="1234"
+          >
+            &lt;p&gt;This is a test&lt;/p&gt;
+          </div>,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   wrap={true}
 >
   <div
     className="flex row space-between align-center wrap auto full testClassString"
     id="1234"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     &lt;p&gt;This is a test&lt;/p&gt;
   </div>

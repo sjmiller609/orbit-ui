@@ -5,7 +5,7 @@ exports[`CardError should have icon 1`] = `null`;
 exports[`CardError should render correctly 1`] = `
 <CardError
   className="testClassString"
-  retry={[Function]}
+  retry={[MockFunction]}
 >
   <Card
     className="card testClassString"
@@ -68,6 +68,9 @@ exports[`CardError should render correctly 1`] = `
                                   "mark": Array [],
                                   "ok": true,
                                   "payload": Object {
+                                    "default": Object {
+                                      "process": [Function],
+                                    },
                                     "process": [Function],
                                   },
                                   "promise": Promise {},
@@ -88,6 +91,9 @@ exports[`CardError should render correctly 1`] = `
                                     "mark": Array [],
                                     "ok": true,
                                     "payload": Object {
+                                      "default": Object {
+                                        "process": [Function],
+                                      },
                                       "process": [Function],
                                     },
                                     "promise": Promise {},
@@ -136,15 +142,15 @@ exports[`CardError should render correctly 1`] = `
                               className="p"
                             >
                               <Link
-                                onClick={[Function]}
+                                onClick={[MockFunction]}
                               >
                                 <A
                                   className="link"
-                                  onClick={[Function]}
+                                  onClick={[MockFunction]}
                                 >
                                   <a
                                     className="link"
-                                    onClick={[Function]}
+                                    onClick={[MockFunction]}
                                   >
                                     Refresh
                                   </a>

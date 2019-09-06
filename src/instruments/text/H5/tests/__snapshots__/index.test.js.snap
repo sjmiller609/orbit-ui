@@ -3,11 +3,11 @@
 exports[`H5 should render correctly 1`] = `
 <H5
   className="testClassName"
-  handleClick={[Function]}
+  handleClick={[MockFunction]}
 >
   <h5
     className="h5 testClassName"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Children
   </h5>

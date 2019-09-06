@@ -3,7 +3,7 @@
 exports[`ErrorPage should render correctly 1`] = `
 <ErrorPage
   className="testClassString"
-  retry={[Function]}
+  retry={[MockFunction]}
 >
   <Page
     className="page testClassString"
@@ -25,7 +25,7 @@ exports[`ErrorPage should render correctly 1`] = `
             className="flex box undefined full noMatch"
           >
             <CardError
-              retry={[Function]}
+              retry={[MockFunction]}
             >
               <Card
                 className="card"
@@ -88,6 +88,9 @@ exports[`ErrorPage should render correctly 1`] = `
                                               "mark": Array [],
                                               "ok": true,
                                               "payload": Object {
+                                                "default": Object {
+                                                  "process": [Function],
+                                                },
                                                 "process": [Function],
                                               },
                                               "promise": Promise {},
@@ -108,6 +111,9 @@ exports[`ErrorPage should render correctly 1`] = `
                                                 "mark": Array [],
                                                 "ok": true,
                                                 "payload": Object {
+                                                  "default": Object {
+                                                    "process": [Function],
+                                                  },
                                                   "process": [Function],
                                                 },
                                                 "promise": Promise {},
@@ -158,15 +164,15 @@ exports[`ErrorPage should render correctly 1`] = `
                                           className="p"
                                         >
                                           <Link
-                                            onClick={[Function]}
+                                            onClick={[MockFunction]}
                                           >
                                             <A
                                               className="link"
-                                              onClick={[Function]}
+                                              onClick={[MockFunction]}
                                             >
                                               <a
                                                 className="link"
-                                                onClick={[Function]}
+                                                onClick={[MockFunction]}
                                               >
                                                 Refresh
                                               </a>
@@ -205,84 +211,117 @@ exports[`ErrorPage should render correctly 1`] = `
                 </Box>
               </Card>
             </CardError>
-            <Logo
+            <withRouter(Logo)
               className="logo"
               noStars={true}
             >
-              <Link
-                to="/"
-              >
-                <Link
-                  className="link"
-                  replace={false}
-                  to="/"
+              <Route>
+                <Logo
+                  className="logo"
+                  history={
+                    Object {
+                      "action": "POP",
+                      "block": [Function],
+                      "createHref": [Function],
+                      "go": [Function],
+                      "goBack": [Function],
+                      "goForward": [Function],
+                      "length": 1,
+                      "listen": [Function],
+                      "location": Object {
+                        "hash": "",
+                        "pathname": "/",
+                        "search": "",
+                        "state": undefined,
+                      },
+                      "push": [Function],
+                      "replace": [Function],
+                    }
+                  }
+                  location={Object {}}
+                  match={Object {}}
+                  noStars={true}
                 >
-                  <a
-                    className="link"
-                    href="/"
+                  <Link
                     onClick={[Function]}
                   >
-                    <Imported
-                      className="logo stars logo"
-                      title="Astronomer"
+                    <A
+                      className="link"
+                      onClick={[Function]}
                     >
-                      <ReactImportedComponent
-                        className="logo stars logo"
-                        loadable={
-                          Object {
-                            "done": true,
-                            "importFunction": [Function],
-                            "load": [Function],
-                            "mark": Array [],
-                            "ok": true,
-                            "payload": Object {
-                              "process": [Function],
-                            },
-                            "promise": Promise {},
-                            "reset": [Function],
-                          }
-                        }
-                        render={[Function]}
-                        title="Astronomer"
+                      <a
+                        className="link"
+                        onClick={[Function]}
                       >
-                        <UnconnectedReactImportedComponent
-                          async={false}
+                        <Imported
                           className="logo stars logo"
-                          exportPicker={[Function]}
-                          loadable={
-                            Object {
-                              "done": true,
-                              "importFunction": [Function],
-                              "load": [Function],
-                              "mark": Array [],
-                              "ok": true,
-                              "payload": Object {
-                                "process": [Function],
-                              },
-                              "promise": Promise {},
-                              "reset": [Function],
-                            }
-                          }
-                          render={[Function]}
-                          streamId={0}
                           title="Astronomer"
                         >
-                          <img
+                          <ReactImportedComponent
                             className="logo stars logo"
-                            src={
+                            loadable={
                               Object {
-                                "process": [Function],
+                                "done": true,
+                                "importFunction": [Function],
+                                "load": [Function],
+                                "mark": Array [],
+                                "ok": true,
+                                "payload": Object {
+                                  "default": Object {
+                                    "process": [Function],
+                                  },
+                                  "process": [Function],
+                                },
+                                "promise": Promise {},
+                                "reset": [Function],
                               }
                             }
+                            render={[Function]}
                             title="Astronomer"
-                          />
-                        </UnconnectedReactImportedComponent>
-                      </ReactImportedComponent>
-                    </Imported>
-                  </a>
-                </Link>
-              </Link>
-            </Logo>
+                          >
+                            <UnconnectedReactImportedComponent
+                              async={false}
+                              className="logo stars logo"
+                              exportPicker={[Function]}
+                              loadable={
+                                Object {
+                                  "done": true,
+                                  "importFunction": [Function],
+                                  "load": [Function],
+                                  "mark": Array [],
+                                  "ok": true,
+                                  "payload": Object {
+                                    "default": Object {
+                                      "process": [Function],
+                                    },
+                                    "process": [Function],
+                                  },
+                                  "promise": Promise {},
+                                  "reset": [Function],
+                                }
+                              }
+                              render={[Function]}
+                              streamId={0}
+                              title="Astronomer"
+                            >
+                              <img
+                                className="logo stars logo"
+                                src={
+                                  Object {
+                                    "process": [Function],
+                                  }
+                                }
+                                title="Astronomer"
+                              />
+                            </UnconnectedReactImportedComponent>
+                          </ReactImportedComponent>
+                        </Imported>
+                      </a>
+                    </A>
+                  </Link>
+                </Logo>
+              </Route>
+            </withRouter(Logo)>
           </div>
         </Flex>
       </Box>
@@ -312,7 +351,7 @@ exports[`ErrorPage should render correctly 1`] = `
 exports[`ErrorPage should render different children 1`] = `
 <ErrorPage
   className="testClassString"
-  retry={[Function]}
+  retry={[MockFunction]}
 >
   <Page
     className="page testClassString"
@@ -334,7 +373,7 @@ exports[`ErrorPage should render different children 1`] = `
             className="flex box undefined full noMatch"
           >
             <CardError
-              retry={[Function]}
+              retry={[MockFunction]}
             >
               <Card
                 className="card"
@@ -397,6 +436,9 @@ exports[`ErrorPage should render different children 1`] = `
                                               "mark": Array [],
                                               "ok": true,
                                               "payload": Object {
+                                                "default": Object {
+                                                  "process": [Function],
+                                                },
                                                 "process": [Function],
                                               },
                                               "promise": Promise {},
@@ -417,6 +459,9 @@ exports[`ErrorPage should render different children 1`] = `
                                                 "mark": Array [],
                                                 "ok": true,
                                                 "payload": Object {
+                                                  "default": Object {
+                                                    "process": [Function],
+                                                  },
                                                   "process": [Function],
                                                 },
                                                 "promise": Promise {},
@@ -467,15 +512,15 @@ exports[`ErrorPage should render different children 1`] = `
                                           className="p"
                                         >
                                           <Link
-                                            onClick={[Function]}
+                                            onClick={[MockFunction]}
                                           >
                                             <A
                                               className="link"
-                                              onClick={[Function]}
+                                              onClick={[MockFunction]}
                                             >
                                               <a
                                                 className="link"
-                                                onClick={[Function]}
+                                                onClick={[MockFunction]}
                                               >
                                                 Refresh
                                               </a>
@@ -514,84 +559,117 @@ exports[`ErrorPage should render different children 1`] = `
                 </Box>
               </Card>
             </CardError>
-            <Logo
+            <withRouter(Logo)
               className="logo"
               noStars={true}
             >
-              <Link
-                to="/"
-              >
-                <Link
-                  className="link"
-                  replace={false}
-                  to="/"
+              <Route>
+                <Logo
+                  className="logo"
+                  history={
+                    Object {
+                      "action": "POP",
+                      "block": [Function],
+                      "createHref": [Function],
+                      "go": [Function],
+                      "goBack": [Function],
+                      "goForward": [Function],
+                      "length": 1,
+                      "listen": [Function],
+                      "location": Object {
+                        "hash": "",
+                        "pathname": "/",
+                        "search": "",
+                        "state": undefined,
+                      },
+                      "push": [Function],
+                      "replace": [Function],
+                    }
+                  }
+                  location={Object {}}
+                  match={Object {}}
+                  noStars={true}
                 >
-                  <a
-                    className="link"
-                    href="/"
+                  <Link
                     onClick={[Function]}
                   >
-                    <Imported
-                      className="logo stars logo"
-                      title="Astronomer"
+                    <A
+                      className="link"
+                      onClick={[Function]}
                     >
-                      <ReactImportedComponent
-                        className="logo stars logo"
-                        loadable={
-                          Object {
-                            "done": true,
-                            "importFunction": [Function],
-                            "load": [Function],
-                            "mark": Array [],
-                            "ok": true,
-                            "payload": Object {
-                              "process": [Function],
-                            },
-                            "promise": Promise {},
-                            "reset": [Function],
-                          }
-                        }
-                        render={[Function]}
-                        title="Astronomer"
+                      <a
+                        className="link"
+                        onClick={[Function]}
                       >
-                        <UnconnectedReactImportedComponent
-                          async={false}
+                        <Imported
                           className="logo stars logo"
-                          exportPicker={[Function]}
-                          loadable={
-                            Object {
-                              "done": true,
-                              "importFunction": [Function],
-                              "load": [Function],
-                              "mark": Array [],
-                              "ok": true,
-                              "payload": Object {
-                                "process": [Function],
-                              },
-                              "promise": Promise {},
-                              "reset": [Function],
-                            }
-                          }
-                          render={[Function]}
-                          streamId={0}
                           title="Astronomer"
                         >
-                          <img
+                          <ReactImportedComponent
                             className="logo stars logo"
-                            src={
+                            loadable={
                               Object {
-                                "process": [Function],
+                                "done": true,
+                                "importFunction": [Function],
+                                "load": [Function],
+                                "mark": Array [],
+                                "ok": true,
+                                "payload": Object {
+                                  "default": Object {
+                                    "process": [Function],
+                                  },
+                                  "process": [Function],
+                                },
+                                "promise": Promise {},
+                                "reset": [Function],
                               }
                             }
+                            render={[Function]}
                             title="Astronomer"
-                          />
-                        </UnconnectedReactImportedComponent>
-                      </ReactImportedComponent>
-                    </Imported>
-                  </a>
-                </Link>
-              </Link>
-            </Logo>
+                          >
+                            <UnconnectedReactImportedComponent
+                              async={false}
+                              className="logo stars logo"
+                              exportPicker={[Function]}
+                              loadable={
+                                Object {
+                                  "done": true,
+                                  "importFunction": [Function],
+                                  "load": [Function],
+                                  "mark": Array [],
+                                  "ok": true,
+                                  "payload": Object {
+                                    "default": Object {
+                                      "process": [Function],
+                                    },
+                                    "process": [Function],
+                                  },
+                                  "promise": Promise {},
+                                  "reset": [Function],
+                                }
+                              }
+                              render={[Function]}
+                              streamId={0}
+                              title="Astronomer"
+                            >
+                              <img
+                                className="logo stars logo"
+                                src={
+                                  Object {
+                                    "process": [Function],
+                                  }
+                                }
+                                title="Astronomer"
+                              />
+                            </UnconnectedReactImportedComponent>
+                          </ReactImportedComponent>
+                        </Imported>
+                      </a>
+                    </A>
+                  </Link>
+                </Logo>
+              </Route>
+            </withRouter(Logo)>
           </div>
         </Flex>
       </Box>

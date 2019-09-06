@@ -3,7 +3,7 @@
 exports[`Backdrop renders correctly 1`] = `
 <Backdrop
   blur={false}
-  close={[Function]}
+  close={[MockFunction]}
   show={false}
 />
 `;
@@ -11,14 +11,14 @@ exports[`Backdrop renders correctly 1`] = `
 exports[`Backdrop should handle blur 1`] = `
 <Backdrop
   blur={true}
-  close={[Function]}
+  close={[MockFunction]}
   show={true}
 >
   <div
     className="backdrop blur close"
   >
     <div
-      onClick={[Function]}
+      onClick={[MockFunction]}
     />
   </div>
 </Backdrop>
@@ -43,14 +43,14 @@ exports[`Backdrop should handle hide close 1`] = `
 exports[`Backdrop should open when show is true 1`] = `
 <Backdrop
   blur={false}
-  close={[Function]}
+  close={[MockFunction]}
   show={true}
 >
   <div
     className="backdrop close"
   >
     <div
-      onClick={[Function]}
+      onClick={[MockFunction]}
     />
   </div>
 </Backdrop>

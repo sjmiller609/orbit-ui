@@ -4,10 +4,10 @@ exports[`Dialog renders correctly 1`] = `
 <Dialog
   button={
     Object {
-      "onClick": [Function],
+      "onClick": [MockFunction],
     }
   }
-  close={[Function]}
+  close={[MockFunction]}
   text="Testing the dialog."
   title="Test"
 >
@@ -24,14 +24,14 @@ exports[`Dialog renders correctly 1`] = `
       >
         <Backdrop
           blur={true}
-          close={[Function]}
+          close={[MockFunction]}
           show={true}
         >
           <div
             className="backdrop blur close"
           >
             <div
-              onClick={[Function]}
+              onClick={[MockFunction]}
             />
           </div>
         </Backdrop>
@@ -44,7 +44,7 @@ exports[`Dialog renders correctly 1`] = `
           }
           button2={
             Object {
-              "onClick": [Function],
+              "onClick": [MockFunction],
               "style": "beige",
               "text": "Cancel",
             }
@@ -60,7 +60,7 @@ exports[`Dialog renders correctly 1`] = `
               >
                 <Button
                   className="button2"
-                  onClick={[Function]}
+                  onClick={[MockFunction]}
                   style="beige"
                 >
                   Cancel
@@ -69,9 +69,7 @@ exports[`Dialog renders correctly 1`] = `
                   arrow="arrow_darkBg"
                   disabled={false}
                   onClick={[Function]}
-                  style={undefined}
                   submit={true}
-                  to={undefined}
                 >
                   Save
                 </Button>
@@ -141,7 +139,7 @@ exports[`Dialog renders correctly 1`] = `
                         >
                           <Button
                             className="button2"
-                            onClick={[Function]}
+                            onClick={[MockFunction]}
                             style="beige"
                           >
                             <Link>
@@ -153,7 +151,7 @@ exports[`Dialog renders correctly 1`] = `
                                 >
                                   <button
                                     className="button beige button2"
-                                    onClick={[Function]}
+                                    onClick={[MockFunction]}
                                     type="button"
                                   >
                                     Cancel
@@ -204,7 +202,7 @@ exports[`Dialog renders correctly 1`] = `
 
 exports[`Dialog should handle default onClick 1`] = `
 <Dialog
-  close={[Function]}
+  close={[MockFunction]}
   text="Testing the dialog."
   title="Test"
 >
@@ -221,14 +219,14 @@ exports[`Dialog should handle default onClick 1`] = `
       >
         <Backdrop
           blur={true}
-          close={[Function]}
+          close={[MockFunction]}
           show={true}
         >
           <div
             className="backdrop blur close"
           >
             <div
-              onClick={[Function]}
+              onClick={[MockFunction]}
             />
           </div>
         </Backdrop>
@@ -241,7 +239,7 @@ exports[`Dialog should handle default onClick 1`] = `
           }
           button2={
             Object {
-              "onClick": [Function],
+              "onClick": [MockFunction],
               "style": "beige",
               "text": "Cancel",
             }
@@ -257,7 +255,7 @@ exports[`Dialog should handle default onClick 1`] = `
               >
                 <Button
                   className="button2"
-                  onClick={[Function]}
+                  onClick={[MockFunction]}
                   style="beige"
                 >
                   Cancel
@@ -266,9 +264,7 @@ exports[`Dialog should handle default onClick 1`] = `
                   arrow="arrow_darkBg"
                   disabled={false}
                   onClick={[Function]}
-                  style={undefined}
                   submit={true}
-                  to={undefined}
                 >
                   Save
                 </Button>
@@ -338,7 +334,7 @@ exports[`Dialog should handle default onClick 1`] = `
                         >
                           <Button
                             className="button2"
-                            onClick={[Function]}
+                            onClick={[MockFunction]}
                             style="beige"
                           >
                             <Link>
@@ -350,7 +346,7 @@ exports[`Dialog should handle default onClick 1`] = `
                                 >
                                   <button
                                     className="button beige button2"
-                                    onClick={[Function]}
+                                    onClick={[MockFunction]}
                                     type="button"
                                   >
                                     Cancel
@@ -403,10 +399,10 @@ exports[`Dialog should handle no content 1`] = `
 <Dialog
   button={
     Object {
-      "onClick": [Function],
+      "onClick": [MockFunction],
     }
   }
-  close={[Function]}
+  close={[MockFunction]}
   text={null}
   title={null}
 />
@@ -416,10 +412,10 @@ exports[`Dialog should handle no text 1`] = `
 <Dialog
   button={
     Object {
-      "onClick": [Function],
+      "onClick": [MockFunction],
     }
   }
-  close={[Function]}
+  close={[MockFunction]}
   text={null}
   title="Test"
 >
@@ -436,14 +432,14 @@ exports[`Dialog should handle no text 1`] = `
       >
         <Backdrop
           blur={true}
-          close={[Function]}
+          close={[MockFunction]}
           show={true}
         >
           <div
             className="backdrop blur close"
           >
             <div
-              onClick={[Function]}
+              onClick={[MockFunction]}
             />
           </div>
         </Backdrop>
@@ -456,7 +452,7 @@ exports[`Dialog should handle no text 1`] = `
           }
           button2={
             Object {
-              "onClick": [Function],
+              "onClick": [MockFunction],
               "style": "beige",
               "text": "Cancel",
             }
@@ -472,7 +468,7 @@ exports[`Dialog should handle no text 1`] = `
               >
                 <Button
                   className="button2"
-                  onClick={[Function]}
+                  onClick={[MockFunction]}
                   style="beige"
                 >
                   Cancel
@@ -481,9 +477,7 @@ exports[`Dialog should handle no text 1`] = `
                   arrow="arrow_darkBg"
                   disabled={false}
                   onClick={[Function]}
-                  style={undefined}
                   submit={true}
-                  to={undefined}
                 >
                   Save
                 </Button>
@@ -551,7 +545,7 @@ exports[`Dialog should handle no text 1`] = `
                         >
                           <Button
                             className="button2"
-                            onClick={[Function]}
+                            onClick={[MockFunction]}
                             style="beige"
                           >
                             <Link>
@@ -563,7 +557,7 @@ exports[`Dialog should handle no text 1`] = `
                                 >
                                   <button
                                     className="button beige button2"
-                                    onClick={[Function]}
+                                    onClick={[MockFunction]}
                                     type="button"
                                   >
                                     Cancel
@@ -616,10 +610,10 @@ exports[`Dialog should handle no title 1`] = `
 <Dialog
   button={
     Object {
-      "onClick": [Function],
+      "onClick": [MockFunction],
     }
   }
-  close={[Function]}
+  close={[MockFunction]}
   text="Testing the dialog."
   title={null}
 >
@@ -636,14 +630,14 @@ exports[`Dialog should handle no title 1`] = `
       >
         <Backdrop
           blur={true}
-          close={[Function]}
+          close={[MockFunction]}
           show={true}
         >
           <div
             className="backdrop blur close"
           >
             <div
-              onClick={[Function]}
+              onClick={[MockFunction]}
             />
           </div>
         </Backdrop>
@@ -656,7 +650,7 @@ exports[`Dialog should handle no title 1`] = `
           }
           button2={
             Object {
-              "onClick": [Function],
+              "onClick": [MockFunction],
               "style": "beige",
               "text": "Cancel",
             }
@@ -672,7 +666,7 @@ exports[`Dialog should handle no title 1`] = `
               >
                 <Button
                   className="button2"
-                  onClick={[Function]}
+                  onClick={[MockFunction]}
                   style="beige"
                 >
                   Cancel
@@ -681,9 +675,7 @@ exports[`Dialog should handle no title 1`] = `
                   arrow="arrow_darkBg"
                   disabled={false}
                   onClick={[Function]}
-                  style={undefined}
                   submit={true}
-                  to={undefined}
                 >
                   Save
                 </Button>
@@ -731,7 +723,7 @@ exports[`Dialog should handle no title 1`] = `
                         >
                           <Button
                             className="button2"
-                            onClick={[Function]}
+                            onClick={[MockFunction]}
                             style="beige"
                           >
                             <Link>
@@ -743,7 +735,7 @@ exports[`Dialog should handle no title 1`] = `
                                 >
                                   <button
                                     className="button beige button2"
-                                    onClick={[Function]}
+                                    onClick={[MockFunction]}
                                     type="button"
                                   >
                                     Cancel

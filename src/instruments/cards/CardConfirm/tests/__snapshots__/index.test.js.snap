@@ -5,7 +5,7 @@ exports[`CardConfirm should render correctly 1`] = `
   buttonText="Button text"
   confirm={Object {}}
   disabled={false}
-  onSubmit={[Function]}
+  onSubmit={[MockFunction]}
   setUI={
     Object {
       "dialog": null,
@@ -17,7 +17,7 @@ exports[`CardConfirm should render correctly 1`] = `
     buttonText="Button text"
     confirm={Object {}}
     disabled={false}
-    onSubmit={[Function]}
+    onSubmit={[MockFunction]}
     setUI={Object {}}
     text="This is a test"
   >
@@ -25,7 +25,7 @@ exports[`CardConfirm should render correctly 1`] = `
       buttonText="Button text"
       confirm={Object {}}
       disabled={false}
-      onSubmit={[Function]}
+      onSubmit={[MockFunction]}
       setUI={
         Object {
           "dialog": null,
@@ -57,7 +57,6 @@ exports[`CardConfirm should render correctly 1`] = `
                 onClick={[Function]}
                 style="green"
                 submit={true}
-                to={undefined}
               >
                 Button text
               </Button>
@@ -167,7 +166,6 @@ exports[`CardConfirm should render correctly 2`] = `
           onClick={[Function]}
           style="green"
           submit={true}
-          to={undefined}
         >
           Button text
         </Button>

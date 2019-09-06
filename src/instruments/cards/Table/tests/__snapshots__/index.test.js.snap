@@ -4,7 +4,7 @@ exports[`Table should handle no button 1`] = `
 <Card
   className="table one testClassString"
   header={
-    <UNDEFINED>
+    <React.Fragment>
       <Link>
         Test
       </Link>
@@ -17,14 +17,14 @@ exports[`Table should handle no button 1`] = `
           dark={false}
           noDelay={true}
           placeholder="Test search"
-          search={[Function]}
+          search={[MockFunction]}
           text="Test search"
         />
         <Link>
           Test
         </Link>
       </Row>
-    </UNDEFINED>
+    </React.Fragment>
   }
 >
   &lt;p&gt;This is a test&lt;/p&gt;
@@ -33,7 +33,7 @@ exports[`Table should handle no button 1`] = `
 
 exports[`Table should render correctly 1`] = `
 <Table
-  Empty={[Function]}
+  Empty={[MockFunction]}
   button={Object {}}
   className="testClassString"
   headerOptions={
@@ -48,7 +48,7 @@ exports[`Table should render correctly 1`] = `
   }
   search={
     Object {
-      "call": [Function],
+      "call": [MockFunction],
       "delay": false,
       "placeholder": "Test search",
       "text": "Test search",
@@ -58,7 +58,7 @@ exports[`Table should render correctly 1`] = `
   <Card
     className="table one testClassString"
     header={
-      <UNDEFINED>
+      <React.Fragment>
         <Link>
           Test
         </Link>
@@ -71,17 +71,15 @@ exports[`Table should render correctly 1`] = `
             dark={false}
             noDelay={true}
             placeholder="Test search"
-            search={[Function]}
+            search={[MockFunction]}
             text="Test search"
           />
           <Link>
             Test
           </Link>
-          <Button
-            to={undefined}
-          />
+          <Button />
         </Row>
-      </UNDEFINED>
+      </React.Fragment>
     }
   >
     <Box
@@ -125,7 +123,7 @@ exports[`Table should render correctly 1`] = `
                     dark={false}
                     noDelay={true}
                     placeholder="Test search"
-                    search={[Function]}
+                    search={[MockFunction]}
                     text="Test search"
                   >
                     <div
@@ -222,7 +220,7 @@ exports[`Table should render correctly 2`] = `
     >
       <Link
         className="remove"
-        onClick={[Function]}
+        onClick={[MockFunction]}
       >
         <Box>
           ×
@@ -258,6 +256,9 @@ exports[`Table should render correctly 3`] = `
                   "mark": Array [],
                   "ok": true,
                   "payload": Object {
+                    "default": Object {
+                      "process": [Function],
+                    },
                     "process": [Function],
                   },
                   "promise": Promise {},
@@ -277,6 +278,9 @@ exports[`Table should render correctly 3`] = `
                     "mark": Array [],
                     "ok": true,
                     "payload": Object {
+                      "default": Object {
+                        "process": [Function],
+                      },
                       "process": [Function],
                     },
                     "promise": Promise {},
@@ -332,7 +336,7 @@ exports[`Table should render default to 1`] = `
     >
       <Link
         className="remove"
-        onClick={[Function]}
+        onClick={[MockFunction]}
       >
         <Box>
           ×
@@ -378,7 +382,7 @@ exports[`Table should render elements for rows 1`] = `
     >
       <Link
         className="remove"
-        onClick={[Function]}
+        onClick={[MockFunction]}
       >
         <Box>
           ×

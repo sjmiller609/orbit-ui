@@ -6,7 +6,9 @@ React UI for Astronomer, a managed service to run Apache Airflow on Kubernetes.
 
 # Run Locally
 
-Orbit connects to Houston API. The steps to setup for local development:
+Orbit connects to Houston API. The steps to setup for local development.
+
+If you don't already have yarn installed follow the instructions on https://yarnpkg.com/en/docs/install (`brew install yarn` if you are on a mac.)
 
 ### Run Houston API
 
@@ -24,8 +26,8 @@ Note: Sometimes the docker image doesn't spin down, and thus, doesn't start up a
 ### Run Orbit
 
 * Download orbit https://github.com/astronomerio/orbit-ui
-* Run `npm install` in orbit repo
-* Run `npm run local` to start the app.
+* Run `yarn install --frozen-lockfile` in orbit repo
+* Run `yarn run local` to start the app.
 * Go to http://localhost:5000/ to access the app
 
 ### Run Storybook
@@ -33,8 +35,8 @@ Note: Sometimes the docker image doesn't spin down, and thus, doesn't start up a
 Follow the following steps to launch a hot-reloading instance of Storybook:
 
 * Download orbit https://github.com/astronomerio/orbit-ui
-* Run `npm install` in orbit repo
-* Run `npm run storybook` to launch storybook.
+* Run `yarn install` in orbit repo
+* Run `yarn run storybook` to launch storybook.
 * Go to the generated url to access storybook.
 
 # How it's built
@@ -97,8 +99,8 @@ While building a new component or updating an existing component, it is importan
 To run Storybook locally:
 
 ```
-npm install
-npm run storybook
+yarn install
+yarn run storybook
 ```
 
 > Note: Astronomer fonts aren't showing since they are applied at a global level and not tied directly into the component(s). Can be fixed.
