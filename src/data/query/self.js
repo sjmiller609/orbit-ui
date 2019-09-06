@@ -1,5 +1,5 @@
-import gql from 'graphql-tag'
-import { authUser } from '../fragments'
+import gql from 'graphql-tag';
+import { authUser } from '../fragments';
 
 export const getSelf = gql`
   query self {
@@ -8,4 +8,4 @@ export const getSelf = gql`
     }
   }
   ${authUser}
-`
+`;

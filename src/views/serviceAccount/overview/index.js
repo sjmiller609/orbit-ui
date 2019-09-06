@@ -1,14 +1,14 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 
 import PrivateLayout from 'layouts/private';
 import Container from 'components/Container';
 import Card from 'components/Card';
 
-import {serviceAccount} from 'utils/nav';
+import { serviceAccount } from 'utils/nav';
 
 class ServiceAccountOverview extends Component {
   render() {
-    const {authUser} = this.props;
+    const { authUser } = this.props;
 
     return (
       <PrivateLayout authUser={authUser} nav={serviceAccount}>
@@ -22,4 +22,4 @@ class ServiceAccountOverview extends Component {
   }
 }
 
-export default ServiceAccountOverview
+export default ServiceAccountOverview;

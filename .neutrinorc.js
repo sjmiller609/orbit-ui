@@ -2,6 +2,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   use: [
+    '@neutrinojs/airbnb',
     (neutrino) =>
       neutrino.use('@neutrinojs/react', {
         html: {

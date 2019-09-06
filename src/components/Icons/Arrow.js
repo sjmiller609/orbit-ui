@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgArrow = props => (
   <svg width={53.333} height={97.77} viewBox="0 0 50 91.659" {...props}>

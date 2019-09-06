@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 
 export const user = gql`
   fragment user on User {
@@ -25,7 +25,7 @@ export const user = gql`
       }
     }
   }
-`
+`;
 
 export const group = gql`
   fragment group on Group {
@@ -37,7 +37,7 @@ export const group = gql`
     createdAt
     updatedAt
   }
-`
+`;
 
 export const workspace = gql`
   fragment workspace on Workspace {
@@ -56,7 +56,7 @@ export const workspace = gql`
     billingEnabled
     paywallEnabled
   }
-`
+`;
 
 export const card = gql`
   fragment card on Card {
@@ -68,7 +68,7 @@ export const card = gql`
     billingEmail
     company
   }
-`
+`;
 
 export const deployment = gql`
   fragment deployment on Deployment {
@@ -94,7 +94,7 @@ export const deployment = gql`
     env
     properties
   }
-`
+`;
 export const invite = gql`
   fragment invite on Invite {
     id: uuid
@@ -103,7 +103,7 @@ export const invite = gql`
     createdAt
     updatedAt
   }
-`
+`;
 
 export const workspaceUsers = gql`
   fragment workspaceUsers on Workspace {
@@ -121,13 +121,13 @@ export const workspaceUsers = gql`
   ${invite}
   ${user}
   ${group}
-`
+`;
 
 export const token = gql`
   fragment token on Token {
     value
   }
-`
+`;
 
 export const authUser = gql`
   fragment authUser on AuthUser {
@@ -141,7 +141,7 @@ export const authUser = gql`
   }
   ${token}
   ${user}
-`
+`;
 
 export const deploymentConfig = gql`
   fragment deploymentConfig on DeploymentConfig {
@@ -161,7 +161,7 @@ export const deploymentConfig = gql`
     singleNamespace
     loggingEnabled
   }
-`
+`;
 
 export const entityRoleBinding = gql`
   fragment entityRoleBinding on RoleBinding {
@@ -173,7 +173,7 @@ export const entityRoleBinding = gql`
       id
     }
   }
-`
+`;
 
 export const serviceAccount = gql`
   fragment serviceAccount on ServiceAccount {
@@ -191,4 +191,4 @@ export const serviceAccount = gql`
       role
     }
   }
-`
+`;

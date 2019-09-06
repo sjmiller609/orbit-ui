@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgAStarsLightBg = props => (
   <svg viewBox="0 0 331 351" {...props}>

@@ -1,20 +1,20 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 
-import Form from 'components/Form'
-import TextInput from 'components/Form/TextInput'
-import Button from 'components/Button'
-import OAuth from 'components/OAuth'
+import Form from 'components/Form';
+import TextInput from 'components/Form/TextInput';
+import Button from 'components/Button';
+import OAuth from 'components/OAuth';
 
 class NewWorkspaceForm extends Component {
   state = {
     disabled: true,
     payload: {
       label: '',
-      description: ''
+      description: '',
     },
     valid: {
-      label: false
-    }
+      label: false,
+    },
   }
 
   handleChange = (e, isValid) => {
@@ -27,15 +27,15 @@ class NewWorkspaceForm extends Component {
         valid: {
           ...this.state.valid,
           [e.target.name]: isValid,
-        }
+        },
       },
-      () => this.handleDisabled()
-    )
+      () => this.handleDisabled(),
+    );
   }
 
   handleDisabled = () => {
     const { label } = this.state.valid;
-    this.setState({ disabled: label === false })
+    this.setState({ disabled: label === false });
   }
 
   render() {
@@ -43,7 +43,7 @@ class NewWorkspaceForm extends Component {
     const { disabled, payload } = this.state;
 
     return (
-      <Form handleSubmit={(e) => handleSubmit(payload, e)} error={error}>
+      <Form handleSubmit={e => handleSubmit(payload, e)} error={error}>
         <TextInput
           label="Workspace Name"
           name="label"
@@ -66,8 +66,8 @@ class NewWorkspaceForm extends Component {
           disabled={disabled}
         />
       </Form>
-    )
+    );
   }
 }
 
-export default NewWorkspaceForm
+export default NewWorkspaceForm;

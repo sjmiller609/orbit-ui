@@ -1,14 +1,14 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 
 import PrivateLayout from 'layouts/private';
 import Container from 'components/Container';
 import Card from 'components/Card';
 
-import {admin} from 'utils/nav';
+import { admin } from 'utils/nav';
 
 class AdminOverview extends Component {
   render() {
-    const {authUser} = this.props;
+    const { authUser } = this.props;
 
     return (
       <PrivateLayout authUser={authUser} nav={admin}>
@@ -22,4 +22,4 @@ class AdminOverview extends Component {
   }
 }
 
-export default AdminOverview
+export default AdminOverview;

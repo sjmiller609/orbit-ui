@@ -1,5 +1,5 @@
-import gql from 'graphql-tag'
-import { deployment } from '../fragments'
+import gql from 'graphql-tag';
+import { deployment } from '../fragments';
 
 export const deployments = gql`
   query deployments(

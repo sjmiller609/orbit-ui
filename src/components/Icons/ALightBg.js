@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgALightBg = props => (
   <svg viewBox="0 0 1920 1080" {...props}>

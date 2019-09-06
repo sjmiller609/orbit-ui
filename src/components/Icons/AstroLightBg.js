@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgAstroLightBg = props => (
   <svg
@@ -11,7 +11,7 @@ const SvgAstroLightBg = props => (
   >
     <style>
       {
-        ".Astro_lightBg_svg__st0{fill:#f4362c}.Astro_lightBg_svg__st1{fill:#ff9a09}.Astro_lightBg_svg__st2{fill:#302c43}.Astro_lightBg_svg__st3{fill:#7d766a}.Astro_lightBg_svg__st4{fill:#00ad6b}.Astro_lightBg_svg__st5{fill:#079dad}.Astro_lightBg_svg__st6{fill:#302c43;stroke:#302c43;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}.Astro_lightBg_svg__st8{display:inline;fill:#f4362c}.Astro_lightBg_svg__st10,.Astro_lightBg_svg__st12,.Astro_lightBg_svg__st9{display:inline;fill:#ff9a09}.Astro_lightBg_svg__st10,.Astro_lightBg_svg__st12{fill:#7d766a}.Astro_lightBg_svg__st12{fill:#079dad}.Astro_lightBg_svg__st14{fill:#f5f2ed}"
+        '.Astro_lightBg_svg__st0{fill:#f4362c}.Astro_lightBg_svg__st1{fill:#ff9a09}.Astro_lightBg_svg__st2{fill:#302c43}.Astro_lightBg_svg__st3{fill:#7d766a}.Astro_lightBg_svg__st4{fill:#00ad6b}.Astro_lightBg_svg__st5{fill:#079dad}.Astro_lightBg_svg__st6{fill:#302c43;stroke:#302c43;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}.Astro_lightBg_svg__st8{display:inline;fill:#f4362c}.Astro_lightBg_svg__st10,.Astro_lightBg_svg__st12,.Astro_lightBg_svg__st9{display:inline;fill:#ff9a09}.Astro_lightBg_svg__st10,.Astro_lightBg_svg__st12{fill:#7d766a}.Astro_lightBg_svg__st12{fill:#079dad}.Astro_lightBg_svg__st14{fill:#f5f2ed}'
       }
     </style>
     <circle

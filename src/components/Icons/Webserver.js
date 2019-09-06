@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgWebserver = props => (
   <svg width={301.72} height={300.367} viewBox="0 0 282.863 281.594" {...props}>

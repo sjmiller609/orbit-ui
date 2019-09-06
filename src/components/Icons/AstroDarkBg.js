@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 const SvgAstroDarkBg = props => (
   <svg id="Astro_darkBg_svg__Layer_1" viewBox="0 0 2048 1148.3" {...props}>
     <style>
       {
-        ".Astro_darkBg_svg__st0{fill:#f4362c}.Astro_darkBg_svg__st1{fill:#ff9a09}.Astro_darkBg_svg__st2{fill:#7d766a}.Astro_darkBg_svg__st3{fill:#00ad6b}.Astro_darkBg_svg__st4{fill:#079dad}.Astro_darkBg_svg__st7{display:inline;fill:#f4362c}.Astro_darkBg_svg__st11,.Astro_darkBg_svg__st8,.Astro_darkBg_svg__st9{display:inline;fill:#ff9a09}.Astro_darkBg_svg__st11,.Astro_darkBg_svg__st9{fill:#7d766a}.Astro_darkBg_svg__st11{fill:#079dad}"
+        '.Astro_darkBg_svg__st0{fill:#f4362c}.Astro_darkBg_svg__st1{fill:#ff9a09}.Astro_darkBg_svg__st2{fill:#7d766a}.Astro_darkBg_svg__st3{fill:#00ad6b}.Astro_darkBg_svg__st4{fill:#079dad}.Astro_darkBg_svg__st7{display:inline;fill:#f4362c}.Astro_darkBg_svg__st11,.Astro_darkBg_svg__st8,.Astro_darkBg_svg__st9{display:inline;fill:#ff9a09}.Astro_darkBg_svg__st11,.Astro_darkBg_svg__st9{fill:#7d766a}.Astro_darkBg_svg__st11{fill:#079dad}'
       }
     </style>
     <switch>

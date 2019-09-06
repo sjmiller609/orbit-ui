@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgCelery = props => (
   <svg width={137.136} height={137.136} id="celery_svg__svg3392" {...props}>
@@ -28,16 +28,16 @@ const SvgCelery = props => (
         id="celery_svg__path4174-4"
         d="M131.25 62.316c-.77 0-1.528.04-2.278.108H28.834c-14.182 0-25.599 11.184-25.599 25.077 0 13.892 11.417 25.076 25.6 25.076h100.151a25.34 25.34 0 002.264.107 6.229 6.229 0 100-12.456c-7.653 0-12.473-5.318-12.473-12.727 0-7.41 4.82-12.73 12.473-12.73a6.229 6.229 0 100-12.455z"
         style={{
-          lineHeight: "normal",
+          lineHeight: 'normal',
           textIndent: 0,
-          textAlign: "start",
-          textDecorationLine: "none",
-          textDecorationStyle: "solid",
-          textDecorationColor: "#000",
-          textTransform: "none",
-          blockProgression: "tb",
-          isolation: "auto",
-          mixBlendMode: "normal"
+          textAlign: 'start',
+          textDecorationLine: 'none',
+          textDecorationStyle: 'solid',
+          textDecorationColor: '#000',
+          textTransform: 'none',
+          blockProgression: 'tb',
+          isolation: 'auto',
+          mixBlendMode: 'normal',
         }}
         color="#000"
         fontWeight={400}
@@ -52,16 +52,16 @@ const SvgCelery = props => (
         id="celery_svg__rect3544-7"
         d="M131.25 62.316c-14.106 0-24.929 11.59-24.929 25.185 0 13.594 10.823 25.183 24.93 25.183a6.229 6.229 0 100-12.456c-7.654 0-12.474-5.318-12.474-12.727 0-7.41 4.82-12.73 12.473-12.73a6.229 6.229 0 100-12.455z"
         style={{
-          lineHeight: "normal",
+          lineHeight: 'normal',
           textIndent: 0,
-          textAlign: "start",
-          textDecorationLine: "none",
-          textDecorationStyle: "solid",
-          textDecorationColor: "#000",
-          textTransform: "none",
-          blockProgression: "tb",
-          isolation: "auto",
-          mixBlendMode: "normal"
+          textAlign: 'start',
+          textDecorationLine: 'none',
+          textDecorationStyle: 'solid',
+          textDecorationColor: '#000',
+          textTransform: 'none',
+          blockProgression: 'tb',
+          isolation: 'auto',
+          mixBlendMode: 'normal',
         }}
         color="#000"
         fontWeight={400}

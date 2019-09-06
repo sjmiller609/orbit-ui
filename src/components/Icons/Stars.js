@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 const SvgStars = props => (
   <svg viewBox="0 0 202 198" {...props}>
     <style>
       {
-        ".stars_svg__st0{display:none}.stars_svg__st1{display:inline}.stars_svg__st6{fill:#00ac6b}.stars_svg__st7{fill:#ff9a09}.stars_svg__st9{fill:#f4362c}"
+        '.stars_svg__st0{display:none}.stars_svg__st1{display:inline}.stars_svg__st6{fill:#00ac6b}.stars_svg__st7{fill:#ff9a09}.stars_svg__st9{fill:#f4362c}'
       }
     </style>
     <text
@@ -18,7 +18,7 @@ const SvgStars = props => (
       id="stars_svg__Layer_5"
       className="stars_svg__st0"
     >
-      {"PRO"}
+      {'PRO'}
     </text>
     <g id="stars_svg__Layer_6_copy" className="stars_svg__st0">
       <path

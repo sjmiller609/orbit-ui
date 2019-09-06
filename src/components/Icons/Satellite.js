@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgSatellite = props => (
   <svg width={378} height={250} {...props}>

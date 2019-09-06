@@ -1,5 +1,5 @@
-import gql from 'graphql-tag'
-import { authUser } from '../fragments'
+import gql from 'graphql-tag';
+import { authUser } from '../fragments';
 
 export const login = gql`
   mutation createToken($password: String!, $email: String, $duration: Int) {

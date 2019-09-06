@@ -1,26 +1,26 @@
-import React, {Component} from 'react'
-import {withRouter, Redirect} from 'react-router-dom';
-import {compose, graphql, withApollo} from 'react-apollo';
+import React, { Component } from 'react';
+import { withRouter, Redirect } from 'react-router-dom';
+import { compose, graphql, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 import { matchPath } from 'react-router';
 
-import {getQueryProps, getMutationProps} from 'utils/apollo';
-import {createWorkspace} from 'data/mutation/workspace';
+import { getQueryProps, getMutationProps } from 'utils/apollo';
+import { createWorkspace } from 'data/mutation/workspace';
 
 import PrivateLayout from 'layouts/private';
 import Container from 'components/Container';
 import Card from 'components/Card';
 import NewWorkspaceForm from 'components/Forms/NewWorkspace';
 
-import {workspaces} from 'utils/nav';
+import { workspaces } from 'utils/nav';
 import styles from './styles.module.css';
 
 class NewWorkspace extends Component {
   state = {
-    error: null
+    error: null,
   }
 
-  handleSubmit = async(payload, e) => {
+  handleSubmit = async (payload, e) => {
     try {
       const workspace = await this.props.createWorkspace(payload);
       const id = workspace.data.createWorkspace.id;
@@ -56,6 +56,6 @@ class NewWorkspace extends Component {
 export default compose(
   withRouter,
   graphql(createWorkspace, {
-    props: getMutationProps('createWorkspace')
-  })
+    props: getMutationProps('createWorkspace'),
+  }),
 )(NewWorkspace);

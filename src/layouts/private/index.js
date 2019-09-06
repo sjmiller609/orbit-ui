@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom'
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import Logo from 'components/Icons/AStarsLightBg';
 import styles from './styles.module.css';
 
 class PrivateLayout extends Component {
   render() {
-    const {authUser, nav, children} = this.props;
+    const { authUser, nav, children } = this.props;
 
     return (
       <div className={styles.layout}>
@@ -26,17 +26,16 @@ class PrivateLayout extends Component {
         <nav className={styles.nav}>
           <div className={styles.navWrap}>
             {nav.map((n, i) =>
-              <NavLink key={i} to={n.to} activeClassName={styles.active}>
+              (<NavLink key={i} to={n.to} activeClassName={styles.active}>
                 {n.name}
-              </NavLink>
-            )}
+               </NavLink>))}
           </div>
         </nav>
         <div className={styles.content}>
           {children}
         </div>
       </div>
-    )
+    );
   }
 }
 

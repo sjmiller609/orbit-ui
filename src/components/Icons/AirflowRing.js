@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgAirflowRing = props => (
   <svg id="airflow_ring_svg__svg2" width={170} height={170} {...props}>

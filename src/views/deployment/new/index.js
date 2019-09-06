@@ -1,15 +1,15 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 
 import PrivateLayout from 'layouts/private';
 import Container from 'components/Container';
 import Card from 'components/Card';
 
-import {workspace} from 'utils/nav';
+import { workspace } from 'utils/nav';
 
 class NewDeployment extends Component {
   render() {
-    const {authUser, match} = this.props;
-    const {workspaceId} = match.params;
+    const { authUser, match } = this.props;
+    const { workspaceId } = match.params;
 
     return (
       <PrivateLayout authUser={authUser} nav={workspace(workspaceId)}>
@@ -23,4 +23,4 @@ class NewDeployment extends Component {
   }
 }
 
-export default NewDeployment
+export default NewDeployment;

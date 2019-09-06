@@ -1,21 +1,21 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 
-import Form from 'components/Form'
-import TextInput from 'components/Form/TextInput'
-import Button from 'components/Button'
-import OAuth from 'components/OAuth'
+import Form from 'components/Form';
+import TextInput from 'components/Form/TextInput';
+import Button from 'components/Button';
+import OAuth from 'components/OAuth';
 
 class LoginForm extends Component {
   state = {
     disabled: true,
     payload: {
       email: '',
-      password: ''
+      password: '',
     },
     valid: {
       email: false,
-      password: false
-    }
+      password: false,
+    },
   }
 
   handleChange = (e, isValid) => {
@@ -28,17 +28,17 @@ class LoginForm extends Component {
         valid: {
           ...this.state.valid,
           [e.target.name]: isValid,
-        }
+        },
       },
-      () => this.handleDisabled()
-    )
+      () => this.handleDisabled(),
+    );
   }
 
   handleDisabled = () => {
     const { email, password } = this.state.valid;
     this.setState({
-      disabled: email === false || password === false
-    })
+      disabled: email === false || password === false,
+    });
   }
 
   render() {
@@ -46,7 +46,7 @@ class LoginForm extends Component {
     const { disabled, payload } = this.state;
 
     return (
-      <Form handleSubmit={(e) => handleSubmit(payload, e)} error={error}>
+      <Form handleSubmit={e => handleSubmit(payload, e)} error={error}>
         <TextInput
           label="Email"
           name="email"
@@ -75,8 +75,8 @@ class LoginForm extends Component {
           : <p>Error getting OAuth providers</p>
         }
       </Form>
-    )
+    );
   }
 }
 
-export default LoginForm
+export default LoginForm;

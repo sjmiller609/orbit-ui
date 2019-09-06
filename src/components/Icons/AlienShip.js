@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgAlienShip = props => (
   <svg viewBox="0 0 32.393 15.507" {...props}>

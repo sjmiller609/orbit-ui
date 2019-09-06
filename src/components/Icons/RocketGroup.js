@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgRocketGroup = props => (
   <svg width={275} height={857} viewBox="0 0 275 950" {...props}>

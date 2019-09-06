@@ -1,14 +1,14 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 
 import PrivateLayout from 'layouts/private';
 import Container from 'components/Container';
 import Card from 'components/Card';
 
-import {user} from 'utils/nav';
+import { user } from 'utils/nav';
 
 class UserOverview extends Component {
   render() {
-    const {authUser} = this.props;
+    const { authUser } = this.props;
 
     return (
       <PrivateLayout authUser={authUser} nav={user}>
@@ -22,4 +22,4 @@ class UserOverview extends Component {
   }
 }
 
-export default UserOverview
+export default UserOverview;

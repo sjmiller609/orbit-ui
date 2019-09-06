@@ -1,19 +1,19 @@
-import React, {Component} from 'react'
-import {withRouter, Link} from 'react-router-dom';
-import {compose, graphql, withApollo} from 'react-apollo';
+import React, { Component } from 'react';
+import { withRouter, Link } from 'react-router-dom';
+import { compose, graphql, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import auth from 'utils/token';
-import {getQueryProps, getMutationProps} from 'utils/apollo';
-import {authConfig} from 'data/query/auth';
-import {login} from 'data/mutation/auth';
+import { getQueryProps, getMutationProps } from 'utils/apollo';
+import { authConfig } from 'data/query/auth';
+import { login } from 'data/mutation/auth';
 
-import {AuthContext} from 'utils/context';
+import { AuthContext } from 'utils/context';
 
-import PublicLayout from 'layouts/public'
-import Container from 'components/Container'
-import Card from 'components/Card'
-import LoginForm from 'components/Forms/Login'
+import PublicLayout from 'layouts/public';
+import Container from 'components/Container';
+import Card from 'components/Card';
+import LoginForm from 'components/Forms/Login';
 
 import styles from './styles.module.css';
 
@@ -25,16 +25,15 @@ class Login extends Component {
 
     this.state = {
       loading: this.props.loading,
-      error: null
+      error: null,
     };
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.loading && !this.props.loading)
-      this.setState({ loading: false });
+    if (prevProps.loading && !this.props.loading) { this.setState({ loading: false }); }
   }
 
-  handleSubmit = async(payload) => {
+  handleSubmit = async (payload) => {
     const [{}, dispatch] = this.context;
     try {
       // If create & login is successful, update the app's
@@ -47,15 +46,14 @@ class Login extends Component {
         type: 'updateAuth',
         updateAuth: {
           token: login.data.createToken.token.value,
-          user: login.data.createToken.user
-        }
-      })
+          user: login.data.createToken.user,
+        },
+      });
 
       console.log('dispatched');
 
-      auth.set({token: login.data.createToken.token.value});
+      auth.set({ token: login.data.createToken.token.value });
       this.props.history.push('/workspaces');
-
     } catch (error) {
       this.setState({ error: JSON.stringify(error) });
     }
@@ -83,7 +81,7 @@ class Login extends Component {
               </p>
             }
           >
-          {!loading && (
+            {!loading && (
             <LoginForm
               handleSubmit={this.handleSubmit}
               error={error}
@@ -104,11 +102,11 @@ export default compose(
     options: ({ authConfig }) => ({
       variables: {
         redirect: '/oauth',
-        duration: 7 // set to max days
-      }
-    })
+        duration: 7, // set to max days
+      },
+    }),
   }),
   graphql(login, {
-    props: getMutationProps('login')
-  })
+    props: getMutationProps('login'),
+  }),
 )(Login);

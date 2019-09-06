@@ -1,7 +1,5 @@
 import gql from 'graphql-tag';
-import {
-  workspace
-} from '../fragments';
+import { workspace } from '../fragments';
 
 export const createWorkspace = gql`
   mutation createWorkspace($label: String!, $description: String) {
@@ -10,4 +8,4 @@ export const createWorkspace = gql`
     }
   }
   ${workspace}
-`
+`;

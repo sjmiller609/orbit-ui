@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgAStarsDarkBg = props => (
   <svg width={331} height={351} {...props}>

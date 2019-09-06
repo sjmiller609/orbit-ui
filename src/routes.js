@@ -1,9 +1,9 @@
-import React, {Component, Fragment} from 'react';
-import {Route, Switch} from 'react-router-dom';
-import {Helmet} from 'react-helmet';
+import React, { Component, Fragment } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import PrivateRoute from 'containers/PrivateRoute';
-import {AuthContext} from 'utils/context';
+import { AuthContext } from 'utils/context';
 
 // General views
 import Signup from 'views/signup';
@@ -58,7 +58,7 @@ class Routes extends Component {
     return (
       <Fragment>
         <Helmet>
-            <link rel="shortcut icon" href="/static/favicon.ico" />
+          <link rel="shortcut icon" href="/static/favicon.ico" />
         </Helmet>
         <Switch>
           // Root path

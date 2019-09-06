@@ -1,27 +1,25 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 
-import Form from 'components/Form'
-import TextInput from 'components/Form/TextInput'
+import Form from 'components/Form';
+import TextInput from 'components/Form/TextInput';
 import Search from 'components/Icons/Search';
 
-import styles from './styles.module.css'
+import styles from './styles.module.css';
 
 class SearchForm extends Component {
   state = {
     payload: {
       search: '',
-    }
+    },
   }
 
   handleChange = (e, isValid) => {
-    this.setState(
-      {
-        payload: {
-          ...this.state.payload,
-          [e.target.name]: e.target.value,
-        }
-      }
-    )
+    this.setState({
+      payload: {
+        ...this.state.payload,
+        [e.target.name]: e.target.value,
+      },
+    });
   }
 
   render() {
@@ -30,7 +28,7 @@ class SearchForm extends Component {
 
     return (
       <div className={styles.container}>
-        <Form handleSubmit={(e) => handleSubmit(payload, e)} error={error}>
+        <Form handleSubmit={e => handleSubmit(payload, e)} error={error}>
           <span>
             <Search />
           </span>
@@ -44,8 +42,8 @@ class SearchForm extends Component {
           />
         </Form>
       </div>
-    )
+    );
   }
 }
 
-export default SearchForm
+export default SearchForm;

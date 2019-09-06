@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgAirflowAstroNoStars = props => (
   <svg width={100} height={100} fill="none" {...props}>

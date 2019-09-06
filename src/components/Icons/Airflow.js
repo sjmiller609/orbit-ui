@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgAirflow = props => (
   <svg viewBox="0 0 356 350.3" {...props}>

@@ -1,5 +1,5 @@
-import storage from './storage'
-import decode from 'jwt-decode'
+import storage from './storage';
+import decode from 'jwt-decode';
 
 // A wrapper around storage.getItem('token') to stringify
 const auth = {
@@ -8,31 +8,31 @@ const auth = {
       'token',
       JSON.stringify({
         token,
-      })
-    )
+      }),
+    );
   },
   get: () => {
-    const t = storage.getItem('token')
-    if (!t) return {}
+    const t = storage.getItem('token');
+    if (!t) return {};
     try {
-      return JSON.parse(t)
+      return JSON.parse(t);
     } catch (error) {
-      storage.removeItem('token')
-      return {}
+      storage.removeItem('token');
+      return {};
     }
   },
   remove: () => storage.removeItem('token'),
-  isExpired: token => {
-    let exp = 0
+  isExpired: (token) => {
+    let exp = 0;
     try {
-      const jwt = decode(token)
-      exp = jwt.exp || 0
+      const jwt = decode(token);
+      exp = jwt.exp || 0;
     } catch (e) {
-      return true
+      return true;
     }
-    const now = Math.round(new Date().getTime() / 1000)
-    return exp <= now
+    const now = Math.round(new Date().getTime() / 1000);
+    return exp <= now;
   },
-}
+};
 
-export default auth
+export default auth;

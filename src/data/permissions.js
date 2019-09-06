@@ -1,4 +1,4 @@
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 
 export const permissions = gql`
   fragment permissions on Permissions {
@@ -92,4 +92,4 @@ export const permissions = gql`
     globalSystemSettingView
     globalSystemSettingUpdate
   }
-`
+`;

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SvgDag = props => (
   <svg width={137.128} height={101.484} viewBox="0 0 128.558 95.141" {...props}>

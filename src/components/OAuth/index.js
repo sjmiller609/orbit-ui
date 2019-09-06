@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
 
-import Button from 'components/Button'
+import Button from 'components/Button';
 
 import styles from './styles.module.css';
 
@@ -20,18 +20,18 @@ class OAuth extends Component {
               className={styles.button}
               key={provider.name}
               href={provider.url}
-              title={action + ' with ' + provider.displayName}
+              title={`${action} with ${provider.displayName}`}
               theme={provider.name}
             >
               {action} with {provider.displayName}
             </Button>
           ))}
         </div>
-      )
+      );
     }
 
     return null;
   }
 }
 
-export default OAuth
+export default OAuth;
