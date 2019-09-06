@@ -21,7 +21,7 @@ class ExtraResourcesForm extends React.Component {
         label="Extra Capacity"
         field={form.field('properties.extra_au')}
         defaultValue={extraAu != undefined ? extraAu : 0}
-        min={0}
+        min={extraAu != undefined ? extraAu : 0}
         max={deploymentConfig.maxExtraAu}
         step={10}
         info={info.astroUnit}
