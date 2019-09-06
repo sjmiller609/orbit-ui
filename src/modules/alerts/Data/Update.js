@@ -10,6 +10,7 @@ const Update = Component => {
       name: api.Deployments,
       type: 'deployments',
     }
+
     return (
       <Mutation
         gql={api.UpdateAlerts}
@@ -25,6 +26,7 @@ const Update = Component => {
               const emails = properties.alert_emails
               const variables = {
                 id,
+                workspaceId: props.worksaceId, // eslint-disable-line
                 alertEmails: emails ? emails : null,
               }
               mutate({
@@ -32,7 +34,7 @@ const Update = Component => {
                 refetchQueries: [
                   {
                     query: query.name,
-                    variables: vars.id, // need to get deploymentId for deployments query
+                    variables,
                   },
                 ],
               })

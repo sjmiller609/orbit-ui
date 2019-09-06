@@ -43,6 +43,7 @@ class Emails extends React.Component {
 }
 
 Emails.propTypes = {
+  workspaceId: PropTypes.string,
   emails: PropTypes.array,
   form: PropTypes.object,
 }

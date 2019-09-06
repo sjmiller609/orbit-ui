@@ -38,6 +38,7 @@ class Alerts extends React.Component {
 
     return (
       <Emails
+        worksaceId={deployment.workspace.id}
         data={{
           id: deployment.id,
           properties: {
