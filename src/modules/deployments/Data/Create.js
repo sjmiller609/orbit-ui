@@ -19,6 +19,7 @@ const Create = Component => {
     }
     const email = props.self.user.emails[0].address
     const workspace = props.workspaces[0]
+
     return (
       <Mutation
         gql={api.CreateDeployment}

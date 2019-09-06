@@ -28,6 +28,7 @@ class Deployments extends React.Component {
     const vars = {
       workspaceId: workspace.id,
     }
+
     const msg1 =
       'Please add a payment method to your workspace to continue using Astronomer.'
     const msg2 =
