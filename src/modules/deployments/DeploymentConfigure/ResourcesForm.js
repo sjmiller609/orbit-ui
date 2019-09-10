@@ -15,13 +15,17 @@ class ExtraResourcesForm extends React.Component {
   render() {
     const { form, deploymentConfig, deployment } = this.props
     const extraAu = deployment.properties.extra_au
+    const selectedExecutor =
+      form.field('config.executor').value || 'CeleryExecutor'
+    const defaultExtraAu =
+      deploymentConfig.executors[selectedExecutor].defaultExtraAu || 0
 
     return (
       <Resource
         label="Extra Capacity"
         field={form.field('properties.extra_au')}
         defaultValue={extraAu != undefined ? extraAu : 0}
-        min={extraAu != undefined ? extraAu : 0}
+        min={defaultExtraAu || 0}
         max={deploymentConfig.maxExtraAu}
         step={10}
         info={info.astroUnit}
