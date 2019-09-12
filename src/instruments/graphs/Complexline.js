@@ -93,7 +93,7 @@ class Complexline extends React.Component {
 
     return (
       <div className={s.complexlineContainer}>
-        <div className={s.complexlineElement} style={{ height: 300 }}>
+        <div className={s.complexlineElement} style={{ height: 350 }}>
           <ResponsiveLine
             data={data.length != 0 ? data : emptyData}
             margin={{ top: 20, right: 120, bottom: 80, left: 60 }}

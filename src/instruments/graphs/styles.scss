@@ -245,45 +245,26 @@
 }
 
 // Stream
-.streamContainer {
-  position: relative;
-  height: 15vw;
+.streamNoData {
+  position: absolute;
+  background-color: #fefcf9d6;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 
-  @media screen and (max-width: 1024px) {
-    height: 20vw;
-  }
-
-  @media screen and (max-width: 768px) {
-    height: 30vw;
-  }
-
-  .streamNoData {
-    position: absolute;
-    background-color: #fefcf9d6;
-    top: 0;
-    width: 100%;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-
-    p {
-      margin-bottom: 2rem;
-    }
-  }
-
-  .streamElement {
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    right: 0;
+  p {
+    margin-bottom: 2rem;
   }
 }
 
 // Filters
 .since .button {
   @include filmo;
+
   white-space: nowrap;
   box-shadow: inset 0 0 0 2px $lightBlue;
   color: $lightBlue;

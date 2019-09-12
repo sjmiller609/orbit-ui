@@ -33,7 +33,8 @@
   "author": "Astronomer",
   "license": "MIT",
   "dependencies": {
-    "@nivo/line": "0.59.0",
+    "@nivo/bar": "0.59.2",
+    "@nivo/line": "0.59.3",
     "@nivo/pie": "0.58.0",
     "@nivo/stream": "0.59.0",
     "apollo-cache-inmemory": "1.2.5",
