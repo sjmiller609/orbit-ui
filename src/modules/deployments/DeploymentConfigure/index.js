@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import UpdateForm from './UpdateForm'
-import ResourcesForm from './ResourcesForm'
 
 import Delete from './Delete'
 import Upgrade from './Upgrade'
@@ -11,7 +10,6 @@ import Update from '../Data/Update'
 import { lt, gteSeven } from '../helpers'
 
 const Configure = Update(UpdateForm)
-const ConfigureResources = Update(ResourcesForm)
 
 class DeploymentConfigure extends React.Component {
   mounted = true
@@ -33,14 +31,6 @@ class DeploymentConfigure extends React.Component {
   showUpgrade() {
     const { deployment, deploymentConfig } = this.props
     return lt(deployment.version, deploymentConfig.latestVersion)
-  }
-
-  // Determine when to show delete (lazy loading)
-  showDelete() {
-    const { deployment } = this.props
-    return gteSeven(deployment.version)
-      ? this.state.resources
-      : this.state.configure
   }
 
   // Dynamically create menu list
@@ -108,16 +98,7 @@ class DeploymentConfigure extends React.Component {
           configVars={configVars}
           loaded={this.loaded}
         />
-        {this.state.configure &&
-          gteSeven(deployment.version) && (
-            <ConfigureResources
-              deployment={deployment}
-              data={deployment}
-              configVars={configVars}
-              loaded={this.loaded}
-            />
-          )}
-        {this.showDelete() && <Delete deployment={deployment} />}
+        <Delete deployment={deployment} />
       </CardMenu>
     )
   }
