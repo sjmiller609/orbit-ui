@@ -41,9 +41,11 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.55em;
-  background-color: $white;
+  background-color: $white11;
   color: $purple;
+
   @include font($f400);
+
   font-size: 1.5rem;
 }
 

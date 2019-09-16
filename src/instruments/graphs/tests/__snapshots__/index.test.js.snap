@@ -34,8 +34,8 @@ exports[`Graphs should render correctly 1`] = `
         key="0"
         style={
           Object {
-            "background": "linear-gradient(45deg, #00ac6b, #069dac 160%)",
-            "color": "#00ac6b",
+            "background": "linear-gradient(45deg, #00B35D, #0CBEDB 160%)",
+            "color": "#00B35D",
             "width": "NaN%",
           }
         }
@@ -52,8 +52,8 @@ exports[`Graphs should render correctly 1`] = `
         key="1"
         style={
           Object {
-            "background": "linear-gradient(45deg, #09acc6, #302c43 160%)",
-            "color": "#09acc6",
+            "background": "linear-gradient(45deg, #0CBEDB, #302c43 160%)",
+            "color": "#0CBEDB",
             "width": "NaN%",
           }
         }
@@ -149,7 +149,7 @@ exports[`Graphs should render correctly 4`] = `
             "value": 25,
           },
           Object {
-            "color": "#00ac6b",
+            "color": "#00B35D",
             "id": "ok",
             "value": 50,
           },
@@ -175,12 +175,12 @@ exports[`Graphs should render correctly 4`] = `
       data={
         Array [
           Object {
-            "color": "#f2f1ee",
+            "color": "#F4F3F1",
             "id": "reserve",
             "value": 100,
           },
           Object {
-            "color": "#00ac6b",
+            "color": "#00B35D",
             "id": "used",
             "value": 0,
           },
@@ -232,7 +232,7 @@ exports[`Graphs should render correctly 5`] = `
       width={400}
     >
       <SparklinesCurve
-        color="#09acc6"
+        color="#0CBEDB"
         style={Object {}}
       />
     </Sparklines>

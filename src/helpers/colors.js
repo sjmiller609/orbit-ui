@@ -10,11 +10,11 @@ export const gradient = (l, a, z) => {
 
 export const colorScale = l => {
   const colors = [
-    { a: '#00ac6b', z: '#069dac' },
-    { a: '#09acc6', z: '#302c43' },
+    { a: '#00B35D', z: '#0CBEDB' },
+    { a: '#0CBEDB', z: '#302c43' },
     { a: '#ff9a09', z: '#f4362c' },
     { a: '#f4362c', z: '#ff9a09' },
-    { a: '#7c766a', z: '#342f54' },
+    { a: '#767574', z: '#342f54' },
   ]
   if (l <= colors.length) return colors.slice(0, l)
   const colors2 = []

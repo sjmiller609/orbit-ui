@@ -24,7 +24,7 @@ $width: 19rem;
   margin-top: 0.7rem;
   transition: opacity 200ms ease-in-out;
 
-  &:before {
+  &::before {
     content: '';
     display: block;
     background: $white;
@@ -49,6 +49,8 @@ div.menu {
   max-height: 70vh;
   overflow-y: auto;
   margin: 0;
+  background-color: $white !important;
+  border: 1px solid $shadow;
 }
 
 .out .menuWrapper {
@@ -63,13 +65,16 @@ div.menu {
 
 .right .menuWrapper {
   right: -0.5rem;
-  &:before {
+
+  &::before {
     right: 1.1rem;
   }
 }
+
 .left .menuWrapper {
   left: -0.5rem;
-  &:before {
+
+  &::before {
     left: 3rem;
   }
 }
@@ -78,7 +83,7 @@ div.menu {
   width: auto;
   margin-top: 0.5rem;
 
-  &:before {
+  &::before {
     content: '';
     display: block;
     background: $white;
@@ -91,7 +96,6 @@ div.menu {
     border-top: 1px solid $shadow;
     top: -0.25rem;
     z-index: 2000;
-
     right: 0.5rem;
   }
 
@@ -114,6 +118,7 @@ div.menu {
   .open {
     position: inherit;
   }
+
   .menuWrapper {
     top: 0;
     left: 0;
@@ -121,7 +126,8 @@ div.menu {
     width: 100%;
     padding: 1rem;
   }
-  div.menu:before {
+
+  div.menu::before {
     display: none;
   }
 }

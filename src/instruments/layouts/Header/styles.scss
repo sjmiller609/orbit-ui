@@ -2,29 +2,11 @@
 
 .header {
   padding: 0 1%;
-  min-height: 16rem;
-  background: $darkWhite;
+  min-height: 14rem;
   padding-bottom: 6rem;
 }
 
 .menu {
   margin: 0 1rem;
   padding: 1rem 0;
-}
-
-.subMenu {
-  margin: 0.3rem rem 0.2rem 3rem;
-}
-
-.hr {
-  background: linear-gradient(to right, $gray0 2rem, $gray 15%, $gray0);
-  height: 1px;
-  &:after {
-    margin-top: 1px;
-    position: absolute;
-    content: '';
-    background: linear-gradient(to right, $gray0, $lightGray 15%, $gray0);
-
-    height: 1px;
-  }
 }

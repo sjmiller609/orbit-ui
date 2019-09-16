@@ -22,8 +22,9 @@ class Logo extends React.Component {
 
   componentWillMount() {
     const { darkBg, noStars, full } = this.props
+
     let path = full ? 'Astro_' : 'A_'
-    path += noStars || full ? '' : 'stars_'
+    path += noStars ? '' : 'stars_'
     path += darkBg ? 'darkBg' : 'lightBg'
 
     this.setState({
@@ -41,7 +42,7 @@ class Logo extends React.Component {
           className={classnames(
             s.logo,
             full && s.full,
-            !noStars && s.stars,
+            noStars && s.stars,
             className
           )}
           title="Astronomer"

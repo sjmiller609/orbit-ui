@@ -8,8 +8,8 @@ $footerHeaderHeight: 6.2rem;
   border-radius: $borderRadius;
   background-color: $white;
   margin: 1rem;
-  @include shadow;
-  border: 1px solid $shadow;
+  border-radius: 3px;
+  overflow: hidden;
 
   header > div,
   main,
@@ -30,18 +30,21 @@ $footerHeaderHeight: 6.2rem;
 
   footer {
     width: 100%;
-    background: $lightGray;
-    > * {
-      min-height: $footerHeaderHeight;
-    }
+    margin-top: -2rem;
+    margin-bottom: 1rem;
   }
+
   h5 {
-    color: $lightBeige;
+    color: $purple;
+    font-weight: bold;
+    font-size: 1.5rem;
   }
+
   .title {
     h5 {
       white-space: nowrap;
     }
+
     height: $footerHeaderHeight;
     width: 94%;
     margin: auto;

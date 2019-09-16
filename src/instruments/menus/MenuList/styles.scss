@@ -10,6 +10,7 @@
   a {
     display: block;
     margin: 1.2rem 0;
+
     &::before {
       display: block;
       background: linear-gradient(to bottom, $green, $lightGreen);
@@ -22,6 +23,7 @@
       width: 2px;
       transform: scale(0);
     }
+
     &:hover {
       &::before {
         transform: scale(1);
@@ -40,10 +42,12 @@ a.button {
   margin-top: 1.2rem;
   color: $beige;
 }
+
 .border {
   &:first-child {
     display: none;
   }
+
   margin-top: 1.2rem;
   height: 2px;
   width: 100%;

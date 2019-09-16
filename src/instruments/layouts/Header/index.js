@@ -15,7 +15,6 @@ const Header = ({ level1, level2, subMenu, profile, className }) => {
         className={s.menu}
         profile={profile}
       />
-      <div className={s.hr} />
       <SubMenu menu={subMenu} className={s.subMenu} />
     </div>
   )

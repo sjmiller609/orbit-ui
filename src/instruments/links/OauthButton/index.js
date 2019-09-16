@@ -25,6 +25,7 @@ const OauthButton = ({
         newTab={false}
         /* istanbul ignore next */
         className={classnames(s.button, s[service])}>
+        <span className={s.icon} />
         <span>
           {login ? 'Login' : 'Sign up'} with {displayName}
         </span>

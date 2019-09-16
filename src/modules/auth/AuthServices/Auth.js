@@ -14,7 +14,7 @@ class Auth extends React.Component {
     const showFields = login || signupEnabled
     return (
       <CardForm
-        title={login ? 'Login to Astronomer' : 'Sign Up'}
+        title={login ? 'Log In to Astronomer' : 'Sign Up'}
         smallForm
         className={s.card}
         footer={

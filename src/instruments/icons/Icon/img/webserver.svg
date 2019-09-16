@@ -44,7 +44,7 @@
       <path
          transform="scale(-0.6,-0.6)"
          d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
-         style="fill:#13dd56;fill-opacity:1;fill-rule:evenodd;stroke:#13dd56;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         style="fill:#07D65B;fill-opacity:1;fill-rule:evenodd;stroke:#07D65B;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
          id="path4913"
          inkscape:connector-curvature="0" />
     </marker>
@@ -59,7 +59,7 @@
       <path
          id="path4338"
          d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
-         style="fill:#13dd56;fill-opacity:1;fill-rule:evenodd;stroke:#13dd56;stroke-width:1pt;stroke-opacity:1"
+         style="fill:#07D65B;fill-opacity:1;fill-rule:evenodd;stroke:#07D65B;stroke-width:1pt;stroke-opacity:1"
          transform="matrix(-0.4,0,0,-0.4,-4,0)"
          inkscape:connector-curvature="0" />
     </marker>
@@ -156,12 +156,12 @@
          rx="18.591"
          cy="520.93402"
          cx="355.82599"
-         style="fill:#fefcf9;stroke:none;stroke-width:5.96128464;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="fill:#FFFEFD;stroke:none;stroke-width:5.96128464;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
     <g
        id="g4488"
        transform="matrix(0,-1.7532644,1.7532644,0,-1260.0167,973.8675)"
-       style="fill:#069dac;fill-opacity:1">
+       style="fill:#0CBEDB;fill-opacity:1">
       <ellipse
          id="ellipse4494"
          transform="matrix(-0.00954004,0.99995449,-0.99974527,-0.02256989,0,0)"
@@ -169,7 +169,7 @@
          rx="21.429316"
          cy="-315.55069"
          cx="513.83179"
-         style="fill:#069dac;fill-opacity:1;stroke-width:3.81699991;stroke-dasharray:11.451, 11.451" />
+         style="fill:#0CBEDB;fill-opacity:1;stroke-width:3.81699991;stroke-dasharray:11.451, 11.451" />
     </g>
   </g>
 </svg>

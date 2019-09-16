@@ -47,28 +47,28 @@ class Stream extends React.Component {
     if (fail.result[0])
       metrics.push({
         id: 'Failed Tasks',
-        color: '#FF523A',
+        color: '#f4442c',
         data: this.transformData(fail),
       })
 
     if (success.result[0])
       metrics.push({
         id: 'Successful Tasks',
-        color: '#049a59',
+        color: '#00b35d',
         data: this.transformData(success),
       })
 
     if (running.result[0])
       metrics.push({
         id: 'Running Tasks',
-        color: '#07d65b',
+        color: '#02a562',
         data: this.transformData(running),
       })
 
     if (queued.result[0])
       metrics.push({
         id: 'Queued Tasks',
-        color: '#C8C3BD',
+        color: '#c4c2c1',
         data: this.transformData(queued),
       })
 

@@ -2,12 +2,16 @@
 
 .extras {
   margin: 0.5 0 2.5rem;
+
   @include mini;
+
   p:not(:last-child) {
     margin: 0;
   }
+
   .forgotPassword {
     display: inline;
+
     @include font($f300);
   }
 }
@@ -18,7 +22,7 @@
 
 .button {
   margin: 1rem auto;
-  width: 91%;
+  width: 100%;
 }
 
 

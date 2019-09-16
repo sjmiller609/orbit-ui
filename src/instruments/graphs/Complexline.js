@@ -99,6 +99,19 @@ class Complexline extends React.Component {
             margin={{ top: 20, right: 120, bottom: 80, left: 60 }}
             pixelRatio={2}
             curve="monotoneX"
+            colors={[
+              '#ff9a09',
+              '#0cbedb',
+              '#00b35d',
+              '#f4442c',
+              '#47DAE9',
+              '#FFBE40',
+              '#9FF774',
+              '#FF6B4A',
+              '#0784AA',
+              '#F48E06',
+              '#0B8852',
+            ]}
             lineWidth={1}
             enableArea={true}
             isInteractive={data.length != 0}

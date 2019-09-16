@@ -41,7 +41,7 @@ class Sparkline extends React.Component {
         </div>
         <div className={s.sparklineElement}>
           <Sparklines data={data} limit={50} width={400} height={50} margin={0}>
-            <SparklinesCurve color="#09acc6" />
+            <SparklinesCurve color="#0CBEDB" />
           </Sparklines>
         </div>
       </div>

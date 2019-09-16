@@ -3,14 +3,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { Row, Logo } from 'instruments'
+import { Row } from 'instruments'
 import s from './styles.scss'
 
-const SiteHeader = ({ className, dark, children }) => {
+const SiteHeader = ({ className, children }) => {
   return (
     <Row className={classnames(s.header, className)} justify="space-between">
-      <Logo darkBg={!!dark} className={s.logo} />
-      <Row> {children}</Row>
+      <Row>{children}</Row>
     </Row>
   )
 }

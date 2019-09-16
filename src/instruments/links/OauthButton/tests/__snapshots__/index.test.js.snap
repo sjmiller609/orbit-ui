@@ -41,6 +41,9 @@ exports[`OauthButton should render correctly 1`] = `
               target={false}
               title="Sign up with Google"
             >
+              <span
+                className="icon"
+              />
               <span>
                 Sign up
                  with 
@@ -96,6 +99,9 @@ exports[`OauthButton should render login correctly 1`] = `
               target={false}
               title="Login with Google"
             >
+              <span
+                className="icon"
+              />
               <span>
                 Login
                  with 

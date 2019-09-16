@@ -10,7 +10,7 @@ const levelLabels = [
   {
     id: 'danger',
     value: 25,
-    color: '#f4362c',
+    color: '#f4442c',
   },
   {
     id: 'warn',
@@ -20,7 +20,7 @@ const levelLabels = [
   {
     id: 'ok',
     value: 50,
-    color: '#00ac6b',
+    color: '#00b35d',
   },
 ]
 
@@ -48,7 +48,7 @@ class Gauge extends React.Component {
 
   formatColor = value => {
     if (value <= 50) {
-      return '#00ac6b'
+      return '#00B35D'
     }
 
     if (value > 50 && value <= 75) {
@@ -85,7 +85,7 @@ class Gauge extends React.Component {
               {
                 id: 'reserve',
                 value: 100 - value,
-                color: '#f2f1ee',
+                color: '#F4F3F1',
               },
               {
                 id: 'used',

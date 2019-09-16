@@ -223,11 +223,11 @@ exports[`ErrorPage should render correctly 1`] = `
                     onClick={[Function]}
                   >
                     <Imported
-                      className="logo logo"
+                      className="logo stars logo"
                       title="Astronomer"
                     >
                       <ReactImportedComponent
-                        className="logo logo"
+                        className="logo stars logo"
                         loadable={
                           Object {
                             "done": true,
@@ -247,7 +247,7 @@ exports[`ErrorPage should render correctly 1`] = `
                       >
                         <UnconnectedReactImportedComponent
                           async={false}
-                          className="logo logo"
+                          className="logo stars logo"
                           exportPicker={[Function]}
                           loadable={
                             Object {
@@ -268,7 +268,7 @@ exports[`ErrorPage should render correctly 1`] = `
                           title="Astronomer"
                         >
                           <img
-                            className="logo logo"
+                            className="logo stars logo"
                             src={
                               Object {
                                 "process": [Function],
@@ -532,11 +532,11 @@ exports[`ErrorPage should render different children 1`] = `
                     onClick={[Function]}
                   >
                     <Imported
-                      className="logo logo"
+                      className="logo stars logo"
                       title="Astronomer"
                     >
                       <ReactImportedComponent
-                        className="logo logo"
+                        className="logo stars logo"
                         loadable={
                           Object {
                             "done": true,
@@ -556,7 +556,7 @@ exports[`ErrorPage should render different children 1`] = `
                       >
                         <UnconnectedReactImportedComponent
                           async={false}
-                          className="logo logo"
+                          className="logo stars logo"
                           exportPicker={[Function]}
                           loadable={
                             Object {
@@ -577,7 +577,7 @@ exports[`ErrorPage should render different children 1`] = `
                           title="Astronomer"
                         >
                           <img
-                            className="logo logo"
+                            className="logo stars logo"
                             src={
                               Object {
                                 "process": [Function],

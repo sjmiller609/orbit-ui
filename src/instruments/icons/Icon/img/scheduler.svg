@@ -44,7 +44,7 @@
       <path
          transform="scale(-0.6,-0.6)"
          d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
-         style="fill:#13dd56;fill-opacity:1;fill-rule:evenodd;stroke:#13dd56;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         style="fill:#07D65B;fill-opacity:1;fill-rule:evenodd;stroke:#07D65B;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
          id="path4913"
          inkscape:connector-curvature="0" />
     </marker>
@@ -59,7 +59,7 @@
       <path
          id="path4338"
          d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
-         style="fill:#13dd56;fill-opacity:1;fill-rule:evenodd;stroke:#13dd56;stroke-width:1pt;stroke-opacity:1"
+         style="fill:#07D65B;fill-opacity:1;fill-rule:evenodd;stroke:#07D65B;stroke-width:1pt;stroke-opacity:1"
          transform="matrix(-0.4,0,0,-0.4,-4,0)"
          inkscape:connector-curvature="0" />
     </marker>
@@ -137,7 +137,7 @@
            d="m 315.275,477.307 c 2.807,-3.495 7.84,-4.87 12.281,-3.3 l 93.089,38.846 c 3.837,1.842 6.474,5.563 6.49,9.571 0.018,4.009 -2.384,7.768 -6.41,9.135 l -93.37,36.248 c -4.629,1.638 -9.674,0.34 -12.31,-3.381 -2.636,-3.721 -2.859,-8.53 0.148,-12.56 0.802,-0.809 1.2,-1.88 2.004,-2.688 5.608,-8.327 8.79,-18.239 8.744,-28.927 -0.046,-10.69 -3.115,-21.355 -9.402,-30.126 -0.404,-0.265 -0.609,-1.065 -1.013,-1.329 -1.418,-1.593 -2.033,-3.993 -2.244,-6.13 -0.006,-1.335 0.791,-3.48 1.993,-5.359 z"
            id="path5151" />
         <ellipse
-           style="fill:#fefcf9;stroke-width:3.81699991;stroke-dasharray:11.451, 11.451"
+           style="fill:#FFFEFD;stroke-width:3.81699991;stroke-dasharray:11.451, 11.451"
            cx="355.82599"
            cy="520.93402"
            rx="18.591"

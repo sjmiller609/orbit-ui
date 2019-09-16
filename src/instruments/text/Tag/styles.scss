@@ -3,13 +3,13 @@
 .tag {
   @include font($f400);
   @include mini;
-
   @include textLink();
+
   display: inline-block;
-  background: $lightGray;
+  background: $white11;
   color: $orange;
   border-radius: 3px;
-  border: 1px solid $shadow;
+  border: 1px solid $white12;
   padding: 0.2em 0.55em;
   line-height: 1.55em;
 }

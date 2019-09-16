@@ -1,13 +1,8 @@
 @import 'src/styles/mixins.scss';
 
-@media screen and (max-width: 1212px) {
-  .login > div {
-    &:first-child {
-      order: 2;
-      margin-top: 3rem;
-      h1 {
-        display: none;
-      }
-    }
-  }
+.logo {
+  width: 12rem;
+  height: 9rem;
+  margin-left: -2.3rem;
+  margin-bottom: -1rem;
 }

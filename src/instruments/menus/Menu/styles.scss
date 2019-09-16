@@ -2,12 +2,14 @@
 
 .menu {
   color: $lightPurple;
+
   .level2 {
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
     max-width: 40vw;
     text-overflow: ellipsis;
+
     @media screen and (max-width: 480px) {
       max-width: 30vw;
     }

@@ -1,18 +1,14 @@
 @import 'src/styles/mixins.scss';
 
-$size: 3.5rem;
+$size: 2.5rem;
 
 .avatar {
   height: $size;
   width: $size;
-
   border-radius: 100rem;
   overflow: hidden;
+
   img {
     height: 100%;
   }
-}
-
-.pic {
-  border: 1px solid $gray;
 }

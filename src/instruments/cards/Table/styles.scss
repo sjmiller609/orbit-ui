@@ -19,7 +19,7 @@
   padding: 1.5rem 0.5rem 1.5rem 1rem;
 
   &:nth-child(even) {
-    background-color: $lightGray;
+    background-color: $white11;
   }
 }
 
@@ -56,11 +56,13 @@
 
 .noResults {
   height: 15rem;
+
   img {
     height: 30%;
     margin-bottom: 1.5rem;
     animation: bounce 2s infinite ease-in-out;
   }
+
   color: $orange;
 }
 
@@ -68,6 +70,7 @@
   color: $red;
   font-size: 2rem;
   width: 2rem;
+
   &:hover {
     transform: scale(1.2);
   }
@@ -78,6 +81,7 @@
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(8%);
   }

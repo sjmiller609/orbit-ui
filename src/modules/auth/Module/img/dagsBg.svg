@@ -1,235 +1,235 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700">
     <defs>
         <marker id="av" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="au" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="an" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="am" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="ag" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="af" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="ab" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="aa" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="B" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="A" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="z" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="y" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="v" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="u" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="p" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="m" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="h" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#7c766a" fill-rule="evenodd" stroke="#7c766a" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#767574" fill-rule="evenodd" stroke="#767574" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="f" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#7c766a" fill-rule="evenodd" stroke="#7c766a" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#767574" fill-rule="evenodd" stroke="#767574" stroke-width=".4pt"/>
         </marker>
         <marker id="e" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#7c766a" fill-rule="evenodd" stroke="#7c766a" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#767574" fill-rule="evenodd" stroke="#767574" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="c" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#7c766a" fill-rule="evenodd" stroke="#7c766a" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#767574" fill-rule="evenodd" stroke="#767574" stroke-width=".4pt"/>
         </marker>
         <marker id="a" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#7c766a" fill-rule="evenodd" stroke="#7c766a" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#767574" fill-rule="evenodd" stroke="#767574" stroke-width=".4pt"/>
         </marker>
         <marker id="b" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#7c766a" fill-rule="evenodd" stroke="#7c766a" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#767574" fill-rule="evenodd" stroke="#767574" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="d" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#7c766a" fill-rule="evenodd" stroke="#7c766a" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#767574" fill-rule="evenodd" stroke="#767574" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="g" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#7c766a" fill-rule="evenodd" stroke="#7c766a" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#767574" fill-rule="evenodd" stroke="#767574" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="i" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#7c766a" fill-rule="evenodd" stroke="#7c766a" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#767574" fill-rule="evenodd" stroke="#767574" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="j" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#7c766a" fill-rule="evenodd" stroke="#7c766a" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#767574" fill-rule="evenodd" stroke="#767574" stroke-width=".4pt"/>
         </marker>
         <marker id="n" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="o" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="q" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="r" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="s" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="t" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="w" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="x" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="C" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="D" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="E" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="F" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="G" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="H" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="I" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="J" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="K" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="L" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="M" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="N" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="O" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="P" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="Q" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="R" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="S" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="T" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="U" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="V" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="W" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="X" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="Y" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="Z" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="k" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="l" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="ac" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="ad" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="ae" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="ah" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="ai" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="aj" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="ak" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="al" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="ao" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="ap" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="aq" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker id="ar" orient="auto" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="as" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
         <marker orient="auto" id="at" overflow="visible">
-            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#f2f1ee" fill-rule="evenodd" stroke="#f2f1ee" stroke-width=".4pt"/>
+            <path d="M1.96 0a2 2 0 1 1-4.001-.001A2 2 0 0 1 1.96 0z" fill="#F4F3F1" fill-rule="evenodd" stroke="#F4F3F1" stroke-width=".4pt"/>
         </marker>
     </defs>
-    <g stroke="#efece7" stroke-opacity=".803" stroke-width="126.14" fill="none" stroke-linecap="round">
+    <g stroke="#EEECEB" stroke-opacity=".803" stroke-width="126.14" fill="none" stroke-linecap="round">
         <path d="M9.23 353.471h29.078l37.55-17.403H227.21M187.155 476.084h66.626l106.252-40.89h35.524M186.801 478.127h25.025l78.071 50.397h19.843M9.267 357.427h29.077l70.697 33.043h25M149.067 141.513h-12.665l-25.047 20.524H91.392M186.853 477.248h-78.165M310.601 334.64l-81.267.054M315.758 339.564h81.882M520.962 337.174h72.981M767.388 334.406h-74.636M773.282 334.349h92.197M513.255 336.594h-24.193l-62.76 60.12h-94.895l-64.807-57.15h-30.194M514.402 243.695h-32.88l-137.858 91.054h-26.808M986.628 339.564h-44.532l-51.897 35.37H622.176l-69.674-35.37h-29.755M683.653 244.58h-29.27L552.06 334.695H519.88M986.368 335.877h-17.273l-70.865-88.47-24.34-.202M155.104 141.095h26.13l67.013 93.084h24.263M140.531 390.603h66.627l121.724 40.51h68.677M319.312 525.864h66.257l140.59-56.68h62.206M319.99 529.88h26.472l59.547 25.738h20.211M598.049 470.7h19.7l53.295 57.516h17.085M914.913 606.963H800.4" stroke-width="23.0003676"/>
         <path d="M778.064 337.128h23.451l48.52 97.027h15.338" stroke-width="23.0003676"/>
         <path d="M778.064 340.775h13.873l61.046 186.794h11.653M865.377 246.733H689.805M598.432 466.682h29.077l79.865-46.054h20.21M269.76 238.331h-21.506L128.165 287.59h-19.962M684.56 168.105H513.905l-14.009 15.135-.01 26.946-38.375 25.374h-176.37" stroke-width="23.0003676"/>
         <path d="M684.681 172.984h-22.497l-79.92 71.567h-55.625M522.746 402.05h78.048l135.087-62.205h36.882M693.879 528.564h55.125L895.03 601.71h17.085M691.01 169.541h17.29L747.643 34.34h12.107M693.305 241.806h32.76l84.286-116.783h19.474M869.758 242.174h28.34l31.239-60.79h19.474M951.296 176.103h-89.738M758.7 29.638h-48.03l-84.724 42.627h-56.8" stroke-width="23.0003676"/>
     </g>
-    <g stroke="#706a5f" stroke-opacity=".941" stroke-width="12.066" fill="none">
+    <g stroke="#6A6967" stroke-opacity=".941" stroke-width="12.066" fill="none">
         <path d="M9.23 353.471h29.078l37.55-17.403H227.21M187.155 474.084h66.626l106.252-38.89h35.524" stroke-width="2.20011444"/>
         <path d="M527.12 6065.73h137.245l428.168 265.425h108.824" marker-end="url(#a)" transform="matrix(.18234 0 0 .18234 90.688 -625.882)"/>
         <path d="M-446.536 5392.8h159.468l387.727 181.219h137.108" marker-end="url(#b)" transform="matrix(.18234 0 0 .18234 90.688 -625.882)"/>
@@ -264,151 +264,151 @@
     </g>
     <g transform="matrix(.22072 0 0 .22072 72.416 25.973)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 197.765 120.374)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 148.123 221.803)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 233.837 221.446)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 55.265 275.732)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 106.694 361.803)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 231.337 412.16)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 320.623 317.874)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 434.194 286.446)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 513.48 353.946)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 611.337 413.589)">
-        <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#0784aa"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#068EAC"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 833.837 488.946)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 788.123 412.16)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 787.408 318.946)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 789.194 220.017)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 693.123 221.267)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 607.408 218.767)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 905.98 222.16)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 787.051 129.66)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 870.623 62.874)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 607.765 128.589)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 607.051 55.017)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 680.623 -83.911)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 752.051 10.017)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 436.337 128.946)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 515.623 221.803)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 436.337 221.446)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 318.48 223.232)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
     <g transform="matrix(.22072 0 0 .22072 -64.735 240.017)">
         <path d="M315.275 477.307c2.807-3.495 7.84-4.87 12.281-3.3l93.089 38.846c3.837 1.842 6.474 5.563 6.49 9.571.018 4.009-2.384 7.768-6.41 9.135l-93.37 36.248c-4.629 1.638-9.674.34-12.31-3.381-2.636-3.721-2.859-8.53.148-12.56.802-.809 1.2-1.88 2.004-2.688 5.608-8.327 8.79-18.239 8.744-28.927-.046-10.69-3.115-21.355-9.402-30.126-.404-.265-.609-1.065-1.013-1.329-1.418-1.593-2.033-3.993-2.244-6.13-.006-1.335.791-3.48 1.993-5.359z" fill="#302c43"/>
-        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#fefcf9"/>
+        <ellipse cx="355.826" cy="520.934" rx="18.591" ry="19.048" fill="#FFFEFD"/>
         <ellipse cx="513.926" cy="-311.475" rx="26.987" ry="7.911" transform="matrix(-.00954 .99995 -.99975 -.02257 0 0)" fill="#ff9a09"/>
     </g>
-    <path d="M71.77 5.038v41.6L4.95 89.833v31.8" fill="none" stroke="#f2f1ee" stroke-width="2.2" marker-start="url(#k)" marker-end="url(#l)" transform="translate(497.362 -5174.324)"/>
-    <g stroke="#efece7" fill="none" stroke-width="2.2">
+    <path d="M71.77 5.038v41.6L4.95 89.833v31.8" fill="none" stroke="#F4F3F1" stroke-width="2.2" marker-start="url(#k)" marker-end="url(#l)" transform="translate(497.362 -5174.324)"/>
+    <g stroke="#EEECEB" fill="none" stroke-width="2.2">
         <path d="M-328.208 5272.067h26.13l77.014 100.227h144.28l22.85-16.428v-35" marker-start="url(#m)" marker-end="url(#m)" transform="translate(497.362 -5174.324)"/>
         <path d="M64.16 5318.94v-22.856l-24.572-12.37H-88.977l-22.852 16.428v43.571" marker-start="url(#n)" marker-end="url(#n)" transform="translate(497.362 -5174.324)"/>
         <path d="M122.664 5296.673h39.28l37.851-45" marker-start="url(#o)" marker-end="url(#o)" transform="translate(497.362 -5174.324)"/>
