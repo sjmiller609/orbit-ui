@@ -66,6 +66,7 @@ class TextArea extends React.Component {
           ref={setRef}
           value={value || ''}
           disabled={disabled}
+          maxLength={512}
         />
         {error}
       </div>
