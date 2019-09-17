@@ -9,6 +9,8 @@ const Item = ({ deployment, className }) => {
   const to = '/deployments/' + deployment.releaseName
   const config = to + '/configure'
 
+  const workspaceId = deployment.workspace.id
+
   const columns = [
     <Box key="0" align="flex-start" className={s.title}>
       <H3>{deployment.label}</H3>
@@ -31,7 +33,13 @@ const Item = ({ deployment, className }) => {
       <P>{deployment.version}</P>
     </Box>,
     <Box key="4" align="flex-start" className={s.upgrade}>
-      <Button to={config}>Config</Button>
+      <Button
+        to={{
+          pathname: config,
+          state: { workspaceId }, // pass workspaceId to deployment module
+        }}>
+        Config
+      </Button>
     </Box>,
   ]
 

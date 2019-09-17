@@ -8,7 +8,7 @@ class Deployment extends React.Component {
   }
 
   render() {
-    const { match, location } = this.props
+    const { match, location, workspaceId } = this.props
     const id = match.params.id
 
     this.menu.level2 = {
@@ -44,6 +44,7 @@ class Deployment extends React.Component {
     ]
 
     const vars = {
+      workspaceId: workspaceId || location.state.workspaceId,
       releaseName: id,
     }
 
@@ -55,7 +56,6 @@ class Deployment extends React.Component {
         menu={this.menu}
         vars={{
           ...vars,
-          workspaceId: this.props.workspaceId,
         }}
       />
     )
