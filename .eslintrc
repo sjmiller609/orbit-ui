@@ -71,5 +71,6 @@
     "react/jsx-wrap-multilines": 1
   },
   "globals": {
+    "cy": true
   }
 }

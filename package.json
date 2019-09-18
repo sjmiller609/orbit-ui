@@ -28,7 +28,9 @@
     "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "storybook": "NODE_PATH=src start-storybook",
     "open:cover": "npm run test:cover && open ./coverage/lcov-report/index.html",
-    "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
+    "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
+    "cypress": "cypress open",
+    "cypress:CI": "cypress run --record --key 86bac6f4-1bca-41b9-b716-356cf7c8fee6"
   },
   "author": "Astronomer",
   "license": "MIT",
@@ -47,9 +49,11 @@
     "babel-runtime": "^6.9.2",
     "classnames": "2.2.6",
     "copy-to-clipboard": "3.0.8",
+    "cypress": "3.4.1",
     "eventemitter3": "3.1.0",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
+    "http-server": "0.11.1",
     "jwt-decode": "2.2.0",
     "lodash": "4.17.13",
     "moment": "2.24.0",
@@ -157,6 +161,7 @@
     },
     "coveragePathIgnorePatterns": [
       "/node_modules/",
+      "/cypress/",
       "/tools/",
       "/src/helpers/",
       "/src/modules/",
@@ -169,6 +174,7 @@
       "/src/instruments/graphs/"
     ],
     "testPathIgnorePatterns": [
+      "/cypress/",
       "/tools/",
       "/src/helpers/",
       "/src/modules/",
@@ -189,7 +195,7 @@
       "./tools/enzymeTestAdapterSetup.js"
     ],
     "modulePathIgnorePatterns": [
-      "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
+      "<rootDir>[/\\\\](build|docs|node_modules|scripts|cypress)[/\\\\]"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"

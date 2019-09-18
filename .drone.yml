@@ -1,26 +1,96 @@
 pipeline:
+  lint:
+    image: node
+    commands:
+      - npm i eslint eslint-watch eslint-plugin-import
+      - npm run lint
+    when:
+      event:
+        - pull_request
+        - push
+
   build:
     image: astronomerio/ap-build:0.1.1
     commands:
+      - docker pull astronomerinc/ap-orbit-ui:dev
       - docker build -t astronomerinc/ap-orbit-ui:dev .
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     when:
       event: push
 
-  lint:
-    image: astronomerinc/ap-orbit-ui:dev
-    commands:
-      - cd /srv/orbit-ui
-      - npm run lint
+  postgres:
+    image: postgres:9.6.15
+    name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    detach: true
     when:
       event: push
 
-  test:
+  prisma:
+    image: prismagraphql/prisma:1.34.8
+    name: prisma
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        databases:
+          default:
+            connector: postgres
+            uri: "postgres://postgres:postgres@postgres:5432/postgres"
+            migrations: true
+            rawAccess: true
+    detach: true
+    when:
+      event: push
+
+  houston:
+    image: astronomerinc/ap-houston-api:dev
+    name: houston
+    environment:
+      WEBSERVER__PORT: "8871"
+      PRISMA__ENDPOINT: "http://prisma:4466/houston"
+      ORBIT__PORT: "8080"
+      DATABASE__CONNECTION: "postgres://postgres:postgres@postgres:5432/postgres"
+    detach: true
+    when:
+      event: push
+
+  wait-for-db:
+    image: astronomerio/ap-build:0.1.1
+    commands:
+      - while ! nc -w 1 -z postgres 5432; do sleep 1; done
+      - while ! nc -w 1 -z prisma 4466; do sleep 1; done
+      - while ! nc -w 1 -z houston 8871; do sleep 1; done
+    when:
+      event: push
+
+  start-orbit:
+    image: astronomerinc/ap-orbit-ui:dev
+    name: orbit
+    environment:
+      APP_API_LOC_HTTP: http://houston:8871/v1
+      APP_API_LOC_WSS: ws://houston:8871/ws
+      API_HTTP: http://houston:8871/v1
+      API_WS: ws://houston:8871/ws
+    when:
+      event: push
+    detach: true
+
+  wait-for-orbit:
+    image: astronomerio/ap-build:0.1.1
+    commands:
+      - while ! nc -w 1 -z orbit 8080; do sleep 1; done
+    when:
+      event: push
+
+  cypress:
     image: astronomerinc/ap-orbit-ui:dev
     commands:
       - cd /srv/orbit-ui
-      - npm run test:drone
+      - sed -i 's/localhost:5000/orbit:8080/g' cypress.json
+      - npm run cypress:CI
     when:
       event: push
 
@@ -48,9 +118,9 @@ pipeline:
       event: push
       branch: [ master ]
 
-  notify:
-    image: plugins/slack
-    secrets: [ slack_webhook ]
-    channel: platform
-    when:
-      status: [ failure ]
+  # notify:
+  #   image: plugins/slack
+  #   secrets: [ slack_webhook ]
+  #   channel: platform
+  #   when:
+  #     status: [ failure ]

@@ -1,0 +1,8 @@
+{
+  "projectId": "qoxbxc",
+  "baseUrl": "http://localhost:5000/",
+  "video": false,
+  "chromeWebSecurity": false,
+  "viewportHeight": 800,
+  "viewportWidth": 1260
+}
