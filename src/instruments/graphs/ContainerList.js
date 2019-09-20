@@ -52,17 +52,20 @@ class ContainerList extends React.Component {
             <div style={{ textAlign: 'center', flex: '0 0 10%' }}>Status</div>
           </div>
           <div className={s.containerListItems}>
-            {data.map((d, i) => (
-              <div
-                key={`${d.metric.container}${i}`}
-                className={s.containerListItem}>
-                <div>{d.metric.pod}</div>
-                <div style={{ flex: '0 0 45%' }}>{d.metric.container}</div>
-                <div style={{ textAlign: 'center', flex: '0 0 10%' }}>
-                  {this.formatBool(d.value[1])}
-                </div>
-              </div>
-            ))}
+            {data.map(
+              (d, i) =>
+                d.metric.container && (
+                  <div
+                    key={`${d.metric.container}${i}`}
+                    className={s.containerListItem}>
+                    <div>{d.metric.pod}</div>
+                    <div style={{ flex: '0 0 45%' }}>{d.metric.container}</div>
+                    <div style={{ textAlign: 'center', flex: '0 0 10%' }}>
+                      {this.formatBool(d.value[1])}
+                    </div>
+                  </div>
+                )
+            )}
           </div>
         </div>
       )
