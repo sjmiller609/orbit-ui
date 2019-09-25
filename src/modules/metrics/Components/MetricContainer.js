@@ -55,9 +55,12 @@ class MetricContainer extends React.Component {
     }
   }
 
-  renderHealth = () => {
+  renderHealth = metric => {
     const { data } = this.state
-    const isTrue = data[1] >= 0
+    const isTrue =
+      metric.label === 'deploymentStatus'
+        ? parseInt(data[1]) === 0
+        : parseInt(data[1]) > 0
     if (isTrue) return <H1 className={classnames(s.good, s.label)}>Healthy</H1>
     return <H1 className={classnames(s.bad, s.label)}>Unhealthy</H1>
   }
@@ -85,7 +88,7 @@ class MetricContainer extends React.Component {
     let component
     switch (type) {
       case 'health':
-        component = this.renderHealth()
+        component = this.renderHealth(metric)
         break
       case 'count':
         component = this.renderCount()

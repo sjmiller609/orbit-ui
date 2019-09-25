@@ -24,7 +24,7 @@ class DeploymentScheduler extends React.Component {
             <Box className={s.col}>
               <MetricContainer
                 loading={loading}
-                title="Schedular Heartbeat"
+                title="Scheduler Heartbeat"
                 metric={metrics[findIndex(metrics, ['label', 'heartbeat'])]}
                 type="sparkline"
                 range
