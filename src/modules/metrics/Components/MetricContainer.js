@@ -60,7 +60,7 @@ class MetricContainer extends React.Component {
     const isTrue =
       metric.label === 'deploymentStatus'
         ? parseInt(data[1]) === 0
-        : parseInt(data[1]) > 0
+        : parseFloat(data[1]) > 0
     if (isTrue) return <H1 className={classnames(s.good, s.label)}>Healthy</H1>
     return <H1 className={classnames(s.bad, s.label)}>Unhealthy</H1>
   }
