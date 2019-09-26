@@ -35,6 +35,7 @@ const Delete = ({ deployment, onSubmit }) => {
 Delete.propTypes = {
   onSubmit: PropTypes.func,
   deployment: PropTypes.object,
+  workspaceId: PropTypes.string,
 }
 
 export default Mutate(Delete)

@@ -160,6 +160,7 @@ Configure.propTypes = {
   deployment: PropTypes.object,
   deploymentConfig: PropTypes.object,
   loaded: PropTypes.func,
+  workspaceId: PropTypes.string,
 }
 
 export default DeploymentConfig(Form(Configure))

@@ -101,6 +101,7 @@ CreateForm.propTypes = {
   form: PropTypes.object,
   deploymentConfig: PropTypes.object,
   deployments: PropTypes.array,
+  workspaceId: PropTypes.string,
 }
 
 export default DeploymentConfig(Form(CreateForm))

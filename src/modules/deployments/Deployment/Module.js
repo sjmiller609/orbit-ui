@@ -11,6 +11,7 @@ import { reject } from 'lodash'
 const Configure = Load(() =>
   import(/* webpackPrefetch: true */ '../DeploymentConfigure')
 )
+
 const Overview = Load(() =>
   import(/* webpackPrefetch: true */ '../DeploymentOverview')
 )
@@ -22,6 +23,7 @@ const Alerts = Load(() =>
 )
 
 const DeploymentConfig = DeploymentConfigData(Configure)
+
 const Logs = Load(() =>
   import(/* webpackPrefetch: true */ 'modules/logs/DeploymentLogs')
 )
@@ -61,6 +63,7 @@ const Deployment = ({ deployments, loggingEnabled, menu, title }) => {
         path={path + '/service-accounts'}
         render={() => (
           <ServiceAccounts
+            workspaceId={deployment.workspace.id}
             deployment={deployment}
             module={{
               metaTitle,
@@ -74,29 +77,54 @@ const Deployment = ({ deployments, loggingEnabled, menu, title }) => {
         <Route
           path={path + '/configure'}
           exact
-          render={() => <DeploymentConfig deployment={deployment} />}
+          render={() => (
+            <DeploymentConfig
+              workspaceId={deployment.workspace.id}
+              deployment={deployment}
+            />
+          )}
         />
         <Route
           path={path}
           exact
-          render={() => <Overview deployment={deployment} />}
+          render={() => (
+            <Overview
+              workspaceId={deployment.workspace.id}
+              deployment={deployment}
+            />
+          )}
         />
         <Route
           path={path + '/metrics'}
           exact
-          render={() => <Metrics deployment={deployment} />}
+          render={() => (
+            <Metrics
+              workspaceId={deployment.workspace.id}
+              deployment={deployment}
+            />
+          )}
         />
         {loggingEnabled && (
           <Route
             path={path + '/logs'}
             exact
-            render={() => <Logs deployment={deployment} />}
+            render={() => (
+              <Logs
+                workspaceId={deployment.workspace.id}
+                deployment={deployment}
+              />
+            )}
           />
         )}
         <Route
           path={path + '/alerts'}
           exact
-          render={() => <Alerts deployment={deployment} />}
+          render={() => (
+            <Alerts
+              workspaceId={deployment.workspace.id}
+              deployment={deployment}
+            />
+          )}
         />
       </Module>
 

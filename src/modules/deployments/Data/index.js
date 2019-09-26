@@ -6,10 +6,17 @@ import api from './api'
 import { GetData, Query } from 'instruments'
 
 const Data = Component => {
-  const Data = ({ vars, getData, skip, search, ...otherProps }) => {
+  const Data = ({
+    vars,
+    getData,
+    workspaceId,
+    skip,
+    search,
+    ...otherProps
+  }) => {
     const extendedVars = {
       ...vars,
-      workspaceId: getData.workspaceId,
+      workspaceId: getData.workspaceId || vars.workspaceId || workspaceId,
     }
     return (
       <Query gql={api.DeploymentConfig}>
@@ -44,6 +51,7 @@ const Data = Component => {
     skip: PropTypes.bool,
     search: PropTypes.object,
     getData: PropTypes.object,
+    workspaceId: PropTypes.string,
   }
 
   return GetData(Data, { workspaceId: true })

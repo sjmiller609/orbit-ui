@@ -37,6 +37,7 @@ DeploymentOverview.propTypes = {
   deployment: PropTypes.object,
   location: PropTypes.object,
   history: PropTypes.object,
+  workspaceId: PropTypes.string,
 }
 
 export default withRouter(DeploymentOverview)

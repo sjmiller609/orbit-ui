@@ -44,7 +44,8 @@ class Deployment extends React.Component {
     ]
 
     const vars = {
-      workspaceId: workspaceId || location.state.workspaceId,
+      workspaceId:
+        workspaceId || (location.state && location.state.workspaceId),
       releaseName: id,
     }
 

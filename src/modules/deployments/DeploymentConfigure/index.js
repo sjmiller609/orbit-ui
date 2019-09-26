@@ -77,7 +77,7 @@ class DeploymentConfigure extends React.Component {
   }
 
   render() {
-    const { deployment, deploymentConfig } = this.props
+    const { deployment, deploymentConfig, workspaceId } = this.props
     const configVars = {
       version: deployment.version,
       type: deployment.type,
@@ -90,6 +90,7 @@ class DeploymentConfigure extends React.Component {
           <Upgrade
             deployment={deployment}
             deploymentConfig={deploymentConfig}
+            workspaceId={workspaceId}
           />
         )}
         <Configure
@@ -97,8 +98,9 @@ class DeploymentConfigure extends React.Component {
           data={deployment}
           configVars={configVars}
           loaded={this.loaded}
+          workspaceId={workspaceId}
         />
-        <Delete deployment={deployment} />
+        <Delete workspaceId={workspaceId} deployment={deployment} />
       </CardMenu>
     )
   }
@@ -107,6 +109,7 @@ class DeploymentConfigure extends React.Component {
 DeploymentConfigure.propTypes = {
   deployment: PropTypes.object,
   deploymentConfig: PropTypes.object,
+  workspaceId: PropTypes.string,
 }
 
 export default DeploymentConfigure

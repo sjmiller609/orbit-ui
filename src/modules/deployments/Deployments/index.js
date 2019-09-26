@@ -22,7 +22,7 @@ class Deployments extends React.Component {
   render() {
     const { search } = this.state
     const { workspace } = this.props
-    const capabilities = workspace.workspaceCapabilities
+    const capabilities = workspace && workspace.workspaceCapabilities
     if (!workspace) return <Module nada />
 
     const vars = {
