@@ -22,11 +22,11 @@ const Delete = ({ workspace, deployments, onSubmit }) => {
           </span>
         ),
       }}
-      disabled={!!nDeployments}
+      disabled={nDeployments > 0}
       onSubmit={() => {
         onSubmit({ id: workspace.id })
       }}>
-      {nDeployments ? (
+      {nDeployments > 0 ? (
         <React.Fragment>
           <P>
             Your workspace has {nDeployments} active deployment

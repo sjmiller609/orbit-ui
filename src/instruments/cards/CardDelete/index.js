@@ -35,7 +35,8 @@ const CardDelete = ({
         text: buttonText || 'Delete',
         save: !disabled,
         style: 'red',
-      }}>
+      }}
+      disable={disabled}>
       {children || <P>{text}</P>}
     </CardForm>
   )
