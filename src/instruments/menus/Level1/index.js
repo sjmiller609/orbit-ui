@@ -18,7 +18,13 @@ const Level1 = ({ selected, list, addNew, active, className }) => {
               {active ? (
                 selected.text
               ) : (
-                <Link to={selected.to}>{selected.text}</Link>
+                <Link
+                  to={{
+                    pathname: selected.to,
+                    state: { ...location.state },
+                  }}>
+                  {selected.text}
+                </Link>
               )}
             </span>
             <Icon icon="arrow" className={s.arrow} />
@@ -32,7 +38,10 @@ const Level1 = ({ selected, list, addNew, active, className }) => {
               key={li.id}
               to={{
                 pathname: '/workspaces/' + li.id,
-                state: { from: location.pathname },
+                state: {
+                  ...location.state,
+                  from: location.pathname,
+                },
               }}
               active={li.id === selected.id}>
               {li.label}

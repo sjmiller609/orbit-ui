@@ -11,45 +11,91 @@ class Deployment extends React.Component {
     const { match, location, workspaceId } = this.props
     const id = match.params.id
 
+    const workspaceUuid =
+      workspaceId || (location.state && location.state.workspaceId)
+
     this.menu.level2 = {
       text: id,
-      to: location.pathname,
+      to: {
+        pathname: location.pathname,
+        state: {
+          workspaceId: workspaceUuid,
+        },
+      },
     }
     this.menu.subMenu = [
       {
         text: 'Overview',
-        to: match.url,
+        to: {
+          pathname: match.url,
+          state: {
+            workspaceId: workspaceUuid,
+          },
+        },
       },
       {
         text: 'Configure',
-        to: match.url + '/configure',
+        to: {
+          pathname: match.url + '/configure',
+          state: {
+            workspaceId: workspaceUuid,
+          },
+        },
       },
       {
         text: 'Metrics',
-        to: match.url + '/metrics',
+        to: {
+          pathname: match.url + '/metrics',
+          state: {
+            workspaceId: workspaceUuid,
+          },
+        },
       },
       {
         text: 'Logs',
-        to: match.url + '/logs',
+        to: {
+          pathname: match.url + '/logs',
+          state: {
+            workspaceId: workspaceUuid,
+          },
+        },
       },
       {
         text: 'Alerts',
-        to: match.url + '/alerts',
+        to: {
+          pathname: match.url + '/alerts',
+          state: {
+            workspaceId: workspaceUuid,
+          },
+        },
       },
       {
         text: 'Service Accounts',
-        to: match.url + '/service-accounts',
+        to: {
+          pathname: match.url + '/service-accounts',
+          state: {
+            workspaceId: workspaceUuid,
+          },
+        },
         exact: false,
       },
     ]
 
+    const current = this.menu.subMenu.find(
+      m =>
+        m.to ===
+        {
+          pathname: location.pathname,
+          state: {
+            workspaceId: workspaceUuid,
+          },
+        }
+    )
+
     const vars = {
-      workspaceId:
-        workspaceId || (location.state && location.state.workspaceId),
+      workspaceId: workspaceUuid,
       releaseName: id,
     }
-
-    const current = this.menu.subMenu.find(m => m.to === location.pathname)
 
     return (
       <Module
