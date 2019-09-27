@@ -3,6 +3,6 @@
   "baseUrl": "http://localhost:5000/",
   "video": false,
   "chromeWebSecurity": false,
-  "viewportHeight": 800,
-  "viewportWidth": 1260
+  "viewportHeight": 2000,
+  "viewportWidth": 2400
 }

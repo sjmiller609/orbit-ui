@@ -23,3 +23,44 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.overwrite('log', (subject, message) => cy.task('log', message))
+
+Cypress.Commands.add('login', () => {
+  cy.visit('/login')
+  cy.get('#email').type(`test@astronomer.io`)
+  cy.get('#password').type('1234567{enter}')
+  cy.wait(2000)
+})
+
+Cypress.Commands.add('checkHouston', () => {
+  cy.wait(2000)
+  cy
+    .get('#root')
+    .contains(`The network's down...`)
+    .should('not.exist')
+})
+
+Cypress.Commands.add('checkErrors', () => {
+  cy.wait(2000)
+  cy
+    .get('#root')
+    .contains(`DAG gone it!`)
+    .should('not.exist')
+})
+
+Cypress.Commands.add('enterWorkspace', () => {
+  cy.visit('/workspaces')
+  cy
+    .get('a')
+    .contains('Cypress Test Workspace')
+    .first()
+    .click()
+})
+
+Cypress.Commands.add('enterDeployment', () => {
+  cy
+    .contains('Cypress Test Deployment')
+    .first()
+    .click()
+})

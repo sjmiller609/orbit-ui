@@ -18,12 +18,18 @@ RUN apt-get update && \
 
 WORKDIR /srv/orbit-ui
 
-COPY package.json package.json
+# Install app dependencies (cache's them)
+ADD package.json /tmp/package.json
+RUN cd /tmp && npm install
 
-RUN npm install
+# Move the dependency directory back to the app.
+RUN mv /tmp/node_modules .
 
-COPY . ./
+# Copy code in the docker image
+COPY . .
 
+# Expose the port 8080
 EXPOSE 8080
-RUN npm run build-production
-CMD cd dist && python3 -m http.server 8080 --bind 0.0.0.0
+
+# Build the app
+CMD ["npm", "run", "build-drone"]

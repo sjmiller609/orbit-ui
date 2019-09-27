@@ -57,7 +57,7 @@ class ProfileMenu extends Component {
           </Item>
           <Item to="/logout">Logout</Item>
         </MenuList>
-        <p className={s.version}>v{version}</p>
+        {version && <p className={s.version}>v{version}</p>}
       </Dropdown>
     )
   }

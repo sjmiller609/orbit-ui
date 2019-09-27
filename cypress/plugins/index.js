@@ -10,6 +10,26 @@
 
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
-module.exports = () => {
-  // Plugins
+module.exports = on => {
+  on('task', {
+    log(message) {
+      console.log(message) // eslint-disable-line
+      return null
+    },
+  })
+
+  on('window:before:load', win => {
+    cy.spy(win.console, 'log')
+  })
+
+  on('before:browser:launch', (browser = {}, args) => {
+    if (
+      browser.name === 'chrome' ||
+      browser.name === 'chromium' ||
+      browser.name === 'canary'
+    ) {
+      args.push('--auto-open-devtools-for-tabs')
+      return args
+    }
+  })
 }
