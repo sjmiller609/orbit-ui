@@ -1,10 +1,9 @@
 pipeline:
   # run linter first
   lint:
-    image: node
+    image: widerin/alpine-eslint
     commands:
-      - npm i eslint eslint-watch eslint-plugin-import
-      - npm run lint
+      - eslint .
     when:
       event:
         - pull_request
