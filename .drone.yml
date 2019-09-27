@@ -5,8 +5,8 @@ pipeline:
     commands:
       - cd /usr/lib/
       - npm i eslint-plugin-react@latest
-      - cd /srv/orbit-ui
-      - eslint webpack.* src tools
+      - cd .
+      - npm run lint
     when:
       event:
         - pull_request
