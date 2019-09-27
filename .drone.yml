@@ -5,7 +5,8 @@ pipeline:
     commands:
       - cd /usr/lib/
       - npm i eslint-plugin-react@latest
-      - eslint .
+      - cd .
+      - eslint 
     when:
       event:
         - pull_request
