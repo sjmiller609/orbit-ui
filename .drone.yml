@@ -3,6 +3,7 @@ pipeline:
   lint:
     image: widerin/alpine-eslint
     commands:
+      - npm i eslint-plugin-react@latest --save-dev
       - eslint .
     when:
       event:
