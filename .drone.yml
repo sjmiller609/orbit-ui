@@ -5,7 +5,7 @@ pipeline:
     commands:
       - cd /usr/lib/
       - npm i eslint-plugin-react@latest
-      - cd .
+      - cd /srv/orbit-ui
       - eslint webpack.* src tools
     when:
       event:
