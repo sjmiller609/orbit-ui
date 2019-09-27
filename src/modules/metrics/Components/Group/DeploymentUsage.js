@@ -38,7 +38,7 @@ class DeploymentQuotas extends React.Component {
                 title="Memory Usage"
                 metric={metrics[findIndex(metrics, ['label', 'memoryUsage'])]}
                 type="complexline"
-                label="GB"
+                label="%"
                 step={step}
                 range
               />
