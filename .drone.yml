@@ -6,7 +6,7 @@ pipeline:
       - cd /usr/lib/
       - npm i eslint-plugin-react@latest
       - cd .
-      - eslint 
+      - eslint webpack.* src tools
     when:
       event:
         - pull_request
