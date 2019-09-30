@@ -53,7 +53,9 @@ const Deployment = ({ deployments, loggingEnabled, menu, title }) => {
   // There's probably a cleaner way to do this.
   const viewingLogs = isLogs(title)
 
-  const path = '/deployments/' + deployment.releaseName
+  const path = `/workspaces/${deployment.workspace.id}/deployments/${
+    deployment.releaseName
+  }`
   let metaTitle = deployment.label
   if (title) metaTitle = title + ' | ' + metaTitle
   return (

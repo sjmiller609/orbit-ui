@@ -8,10 +8,10 @@ import Data from '../Data'
 import Item from './Item'
 import Empty from './Empty'
 
-const List = ({ deployments, search, latestVersion }) => {
+const List = ({ newWorkspaceTo, deployments, search, latestVersion }) => {
   const button = {
     text: 'New Deployment',
-    to: '/deployments/new',
+    to: newWorkspaceTo,
   }
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
@@ -26,6 +26,7 @@ const List = ({ deployments, search, latestVersion }) => {
 List.propTypes = {
   deployments: PropTypes.array,
   search: PropTypes.object,
+  newWorkspaceTo: PropTypes.string,
   latestVersion: PropTypes.string,
 }
 

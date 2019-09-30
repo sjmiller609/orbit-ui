@@ -21,12 +21,12 @@ class Deployments extends React.Component {
 
   render() {
     const { search } = this.state
-    const { workspace } = this.props
+    const { workspace, match } = this.props
     const capabilities = workspace && workspace.workspaceCapabilities
     if (!workspace) return <Module nada />
 
     const vars = {
-      workspaceId: workspace.id,
+      workspaceId: workspace ? workspace.id : match.params.workspaceId,
     }
 
     const msg1 =
@@ -42,7 +42,7 @@ class Deployments extends React.Component {
             title="Thanks for giving us a test drive!"
             text={text}
             canUpdateBilling={capabilities.canUpdateBilling}
-            canUpdateIAM={workspace.workspaceCapabilities.canUpdateBilling}
+            workspaceId={workspace.id}
           />
         </Module>
       )
@@ -54,6 +54,7 @@ class Deployments extends React.Component {
               text: search,
               ...this.search,
             }}
+            newWorkspaceTo={`/workspaces/${vars.workspaceId}/deployments/new`}
             vars={vars}
           />
         </Module>
@@ -64,6 +65,7 @@ class Deployments extends React.Component {
 Deployments.propTypes = {
   getData: PropTypes.object,
   workspace: PropTypes.object,
+  match: PropTypes.object,
 }
 
 export default GetWorkspace(Deployments)

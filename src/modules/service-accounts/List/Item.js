@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import s from './styles.scss'
+import { withRouter } from 'react-router-dom'
 import { TableRow, Box, P, Mini, H3, ShowDate, Icon } from 'instruments'
 import { unConstantize } from 'helpers/format'
 import { entityTypes } from '../Data/helpers'
@@ -45,7 +46,7 @@ const Item = ({ serviceAccount, path, className }) => {
     </Box>,
   ]
 
-  const to = path + '/' + serviceAccount.id
+  const to = `${path}/${serviceAccount.id}`
 
   return (
     <TableRow
@@ -60,6 +61,7 @@ Item.propTypes = {
   serviceAccount: PropTypes.object,
   className: PropTypes.string,
   path: PropTypes.string,
+  locationState: PropTypes.object,
 }
 
-export default Item
+export default withRouter(Item)

@@ -30,8 +30,9 @@ const Protected = ({ auth, workspaceId, component, ...props }) => {
         if (!workspaceId) return <Auth {...newProps} />
 
         newProps.vars = {
-          workspaceId,
+          workspaceId: workspaceId || props2.params.workspaceId,
         }
+
         return <Workspace {...newProps} />
       }}
     />

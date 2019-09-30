@@ -23,7 +23,9 @@ const Create = Component => {
     return (
       <Mutation
         gql={api.CreateDeployment}
-        redirect={data => '/deployments/' + data.releaseName + '?loading'}
+        redirect={data =>
+          `/workspaces/${workspace.id}/deployments/${data.releaseName}?loading`
+        }
         success="New deployment created successfully."
         track={{
           name: 'New Deployment Created',

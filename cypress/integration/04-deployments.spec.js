@@ -5,7 +5,8 @@ describe('Deployments', function() {
 
   it('can create deployment', function() {
     cy.enterWorkspace()
-    cy.visit('/deployments/new')
+    cy.contains('New Deployment').click()
+    cy.wait(2000)
     cy.checkErrors()
     cy.get('#label').type('Cypress Test Deployment')
     cy.get('#description').type(`This is a test deployment for Cypress`)

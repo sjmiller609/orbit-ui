@@ -12,7 +12,7 @@ export default [
     exact: true,
   },
   {
-    path: '/workspaces/:id',
+    path: '/workspaces/:workspaceId',
     component: Load(() =>
       import(/* webpackPrefetch: true */ '../SetWorkspace')
     ),
@@ -21,13 +21,17 @@ export default [
 
 export const workspace = [
   {
-    path: '/settings',
+    path: '/workspaces/:workspaceId/settings',
     component: Load(() => import(/* webpackPrefetch: true */ '../Settings')),
-    exact: true,
   },
   {
-    path: '/billing',
+    path: '/workspaces/:workspaceId/billing',
     component: Load(() => import(/* webpackPrefetch: true */ '../Billing')),
-    exact: true,
+  },
+  {
+    path: '/workspaces/:workspaceId/users',
+    component: Load(() =>
+      import(/* webpackPrefetch: true */ '../../users/Users')
+    ),
   },
 ]

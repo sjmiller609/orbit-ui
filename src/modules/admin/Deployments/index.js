@@ -53,6 +53,11 @@ class AdminDeployments extends Component {
     }
   }
 
+  handleLinkClick = path => {
+    localStorage.setItem('admin', true)
+    this.props.history.push(path)
+  }
+
   setData = props =>
     this.setState({
       deployments: props.getDeployments.deployments,
@@ -87,7 +92,13 @@ class AdminDeployments extends Component {
             ...this.search,
           }}>
           {deployments &&
-            deployments.map(d => <Item key={d.id} deployment={d} />)}
+            deployments.map(d => (
+              <Item
+                key={d.id}
+                deployment={d}
+                handleClick={e => this.handleLinkClick(e)}
+              />
+            ))}
         </Table>
       </Module>
     )

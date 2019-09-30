@@ -33,7 +33,10 @@ const Delete = ({ workspace, deployments, onSubmit }) => {
             {nDeployments > 1 ? 's' : ''}:{' '}
             {deployments.map((d, i) => (
               <React.Fragment key={d.id}>
-                <Link to={`/deployments/${d.releaseName}/configure`}>
+                <Link
+                  to={`/workspsaces/${d.workspace.id}/deployments/${
+                    d.releaseName
+                  }/configure`}>
                   {d.label}
                 </Link>
                 {i + 1 < deployments.length ? ', ' : ''}

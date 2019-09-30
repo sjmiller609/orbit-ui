@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
 
 import Form from '../Configure/Configure'
 import Module from '../../app/Module'
@@ -18,6 +19,7 @@ class New extends React.Component {
       ...menu,
       subMenu: null,
     }
+
     return (
       <Module metaTitle={metaTitle} menu={menu2}>
         <Configure
@@ -34,6 +36,8 @@ class New extends React.Component {
 New.propTypes = {
   deploymentId: PropTypes.string,
   module: PropTypes.object,
+  admin: PropTypes.bool,
+  location: PropTypes.object,
 }
 
-export default New
+export default withRouter(New)

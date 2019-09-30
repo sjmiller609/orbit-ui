@@ -5,11 +5,11 @@ import classnames from 'classnames'
 import s from './styles.scss'
 import { TableRow, Box, P, Mini, H3, ShowDate, Button } from 'instruments'
 
-const Item = ({ deployment, className }) => {
-  const to = '/deployments/' + deployment.releaseName
-  const config = to + '/configure'
-
+const Item = ({ deployment, className, handleClick }) => {
   const workspaceId = deployment.workspace.id
+  const to =
+    '/workspaces/' + workspaceId + '/deployments/' + deployment.releaseName
+  const config = to + '/configure'
 
   const columns = [
     <Box key="0" align="flex-start" className={s.title}>
@@ -33,11 +33,7 @@ const Item = ({ deployment, className }) => {
       <P>{deployment.version}</P>
     </Box>,
     <Box key="4" align="flex-start" className={s.upgrade}>
-      <Button
-        to={{
-          pathname: config,
-          state: { workspaceId }, // pass workspaceId to deployment module
-        }}>
+      <Button onClick={() => handleClick(config)} to={null}>
         Config
       </Button>
     </Box>,
@@ -52,6 +48,7 @@ Item.propTypes = {
   deployment: PropTypes.object,
   latestVersion: PropTypes.string,
   className: PropTypes.string,
+  handleClick: PropTypes.func,
 }
 
 export default Item

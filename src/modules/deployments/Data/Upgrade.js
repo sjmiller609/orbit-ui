@@ -1,5 +1,6 @@
 'use strict'
 import React from 'react'
+import PropTypes from 'prop-types'
 import api from './api'
 
 import { Upgrade as Mutate, CardError } from 'instruments'
@@ -15,7 +16,7 @@ const Upgrade = Component => {
     return (
       <Mutate
         gql={api.UpgradeDeployment}
-        redirect="/deployments"
+        redirect={`/workspaces/${props.deployment.workspace.id}/deployments`}
         success="Deployment upgraded successfully."
         track="Deployment Upgraded"
         query={query}
@@ -43,6 +44,10 @@ const Upgrade = Component => {
         }}
       </Mutate>
     )
+  }
+
+  Upgrade.propTypes = {
+    deployment: PropTypes.object,
   }
 
   return Upgrade

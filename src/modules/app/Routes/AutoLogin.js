@@ -16,7 +16,9 @@ const AutoLogin = ({ auth, workspaceId, component: Component, ...props }) => {
 
           const to = !cli
             ? {
-                pathname: workspaceId ? '/deployments' : '/workspaces',
+                pathname: workspaceId
+                  ? `/workspaces/${workspaceId}/deployments`
+                  : '/workspaces',
                 state: { from: props2.location.pathname },
               }
             : '/token'

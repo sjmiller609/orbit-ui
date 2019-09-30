@@ -17,7 +17,7 @@ describe('Workspaces', function() {
       .contains('Create Workspace')
       .click()
     cy.wait(2000)
-    cy.location('pathname').should('eq', '/deployments')
+    cy.location('pathname').should('contain', '/deployments')
   })
 
   it('loads deployments successfully', function() {

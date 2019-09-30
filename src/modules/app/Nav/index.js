@@ -40,7 +40,7 @@ const Nav = ({ getData, workspaces, self, menu }) => {
     },
   }
 
-  let subMenu = menu.subMenu || subMenus[menu.nav]
+  let subMenu = menu.subMenu || subMenus(workspaceId)[menu.nav]
 
   if (!isAdmin() && subMenu)
     subMenu = subMenu.filter(m => !m.permissions || !m.permissions.isAdmin)
@@ -72,7 +72,11 @@ const Nav = ({ getData, workspaces, self, menu }) => {
 
   return (
     <div>
-      <HelloBar msg={msg} to="/billing" button="Upgrade Now" />
+      <HelloBar
+        msg={msg}
+        to={`/workspaces/${workspaceId}/billing`}
+        button="Upgrade Now"
+      />
       <Header
         level1={level1}
         level2={menu.level2}

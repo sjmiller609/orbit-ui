@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Load } from 'instruments'
 
 const List = Load(() => import(/* webpackPrefetch: true */ '../List'))
@@ -14,7 +14,10 @@ class ServiceAccounts extends React.Component {
     nav: 'workspace',
   }
   // state for entire module
-  state = { search: '' }
+  state = {
+    search: '',
+    admin: false,
+  }
   // search obj constants
   search = {
     delay: false,
@@ -24,7 +27,7 @@ class ServiceAccounts extends React.Component {
 
   render() {
     const { search } = this.state
-    const { deployment, module } = this.props
+    const { deployment, module, location } = this.props
     const deploymentId = deployment && deployment.id
 
     const module2 = {
@@ -33,11 +36,17 @@ class ServiceAccounts extends React.Component {
         ...this.menu,
       },
       metaTitle: 'Astronomer',
-      path: '/service-accounts',
+      path: `/service-accounts`,
+      location,
       ...module,
     }
 
-    if (module2.menu.level2) module2.menu.level2.to = module2.path
+    if (module2.menu.level2) {
+      module2.menu.level2.to = {
+        pathname: module2.path,
+        state: { ...location.state },
+      }
+    }
 
     return (
       <Switch>
@@ -100,6 +109,8 @@ class ServiceAccounts extends React.Component {
 ServiceAccounts.propTypes = {
   deployment: PropTypes.object,
   module: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
 }
 
-export default ServiceAccounts
+export default withRouter(ServiceAccounts)

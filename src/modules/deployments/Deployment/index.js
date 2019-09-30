@@ -3,104 +3,79 @@ import PropTypes from 'prop-types'
 import Module from './Module'
 
 class Deployment extends React.Component {
-  menu = {
-    home: '/deployments',
-  }
-
   render() {
-    const { match, location, workspaceId } = this.props
-    const id = match.params.id
+    const { match, location } = this.props
+    const workspaceId = match.params.workspaceId
+    const deploymentId = match.params.id
 
-    const workspaceUuid =
-      workspaceId || (location.state && location.state.workspaceId)
+    const menu = {}
 
-    this.menu.level2 = {
-      text: id,
-      to: {
-        pathname: location.pathname,
-        state: {
-          workspaceId: workspaceUuid,
-        },
-      },
+    menu.home = `/workspaces/${workspaceId}/deployments`
+
+    menu.level2 = {
+      text: deploymentId,
+      to: location.pathname,
     }
-    this.menu.subMenu = [
+
+    menu.subMenu = [
       {
         text: 'Overview',
         to: {
           pathname: match.url,
-          state: {
-            workspaceId: workspaceUuid,
-          },
+          state: { ...location.state },
         },
       },
       {
         text: 'Configure',
         to: {
           pathname: match.url + '/configure',
-          state: {
-            workspaceId: workspaceUuid,
-          },
+          state: { ...location.state },
         },
       },
       {
         text: 'Metrics',
         to: {
           pathname: match.url + '/metrics',
-          state: {
-            workspaceId: workspaceUuid,
-          },
+          state: { ...location.state },
         },
       },
       {
         text: 'Logs',
         to: {
           pathname: match.url + '/logs',
-          state: {
-            workspaceId: workspaceUuid,
-          },
+          state: { ...location.state },
         },
       },
       {
         text: 'Alerts',
         to: {
           pathname: match.url + '/alerts',
-          state: {
-            workspaceId: workspaceUuid,
-          },
+          state: { ...location.state },
         },
       },
       {
         text: 'Service Accounts',
         to: {
           pathname: match.url + '/service-accounts',
-          state: {
-            workspaceId: workspaceUuid,
-          },
+          state: { ...location.state },
         },
-        exact: false,
+        exact: true,
       },
     ]
 
-    const current = this.menu.subMenu.find(
-      m =>
-        m.to ===
-        {
-          pathname: location.pathname,
-          state: {
-            workspaceId: workspaceUuid,
-          },
-        }
-    )
-
     const vars = {
-      workspaceId: workspaceUuid,
-      releaseName: id,
+      workspaceId,
+      releaseName: deploymentId,
     }
+
+    const current = menu.subMenu.find(
+      m => m.to === location && location.pathname
+    )
 
     return (
       <Module
         title={(current && current.text) || null}
-        menu={this.menu}
+        menu={menu}
         vars={{
           ...vars,
         }}

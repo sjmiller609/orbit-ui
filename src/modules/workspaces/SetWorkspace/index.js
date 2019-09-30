@@ -5,8 +5,8 @@ import { SetData } from 'instruments'
 
 const SetWorkspace = ({ location, match, setData }) => {
   const from = location.state && location.state.from
-  setData.workspaceId(match.params.id)
-  return <Redirect to={from || '/deployments'} replace />
+  setData.workspaceId(match.params.workspaceId)
+  return <Redirect to={from || `${match.url}/deployments`} replace />
 }
 
 SetWorkspace.propTypes = {

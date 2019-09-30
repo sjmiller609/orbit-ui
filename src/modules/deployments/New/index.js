@@ -26,11 +26,11 @@ const cardMenu = [
 
 class New extends React.Component {
   title = 'New Deployment'
-  menu = {
-    home: '/deployments',
-  }
+  menu = {}
 
   render() {
+    const pathname = this.props.location.pathname
+    this.menu.home = pathname.substr(0, pathname.lastIndexOf('/'))
     this.menu.level2 = {
       text: '',
       to: this.props.location.pathname,

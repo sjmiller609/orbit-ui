@@ -1,4 +1,4 @@
-const subMenus = {
+const subMenus = workspaceId => ({
   admin: [
     {
       to: '/admin',
@@ -21,24 +21,24 @@ const subMenus = {
   ],
   workspace: [
     {
-      to: '/deployments',
+      to: `/workspaces/${workspaceId}/deployments`,
       text: 'Deployments',
     },
     {
-      to: '/users',
+      to: `/workspaces/${workspaceId}/users`,
       text: 'Users',
     },
     {
-      to: '/service-accounts',
+      to: `/service-accounts`,
       text: 'Service Accounts',
-      exact: false,
+      exact: true,
     },
     {
-      to: '/settings',
+      to: `/workspaces/${workspaceId}/settings`,
       text: 'Workspace Settings',
     },
     {
-      to: '/billing',
+      to: `/workspaces/${workspaceId}/billing`,
       text: 'Billing',
     },
   ],
@@ -49,6 +49,6 @@ const subMenus = {
       back: true,
     },
   ],
-}
+})
 
 export default subMenus

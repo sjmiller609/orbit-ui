@@ -28,7 +28,9 @@ const Item = ({ deployment, latestVersion, className }) => {
     </Box>,
   ]
 
-  const to = '/deployments/' + deployment.releaseName
+  const to = `/workspaces/${deployment.workspace.id}/deployments/${
+    deployment.releaseName
+  }`
 
   return (
     <TableRow
