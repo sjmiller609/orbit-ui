@@ -47,6 +47,12 @@ const Create = Component => {
                   workspaceId: getData.workspaceId,
                   ...vars,
                 },
+                refetchQueries: [
+                  {
+                    query: query.name,
+                    variables: query.vars,
+                  },
+                ],
               })
             },
           }
