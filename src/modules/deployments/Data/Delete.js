@@ -18,10 +18,14 @@ const Delete = Component => {
     const email = props.self.user.emails[0].address
     const deployment = props.deployment.label
 
+    const redirect = localStorage.getItem('admin')
+      ? `/admin/deployments`
+      : `/workspaces/${props.workspaceId}`
+
     return (
       <Mutate
         gql={api.DeleteDeployment}
-        redirect={props.location.path}
+        redirect={redirect}
         success="Deployment deleted successfully."
         track={{
           name: 'Deployment Deleted',
