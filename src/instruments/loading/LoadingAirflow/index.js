@@ -8,7 +8,7 @@ class LoadingAirflow extends React.Component {
   render() {
     return (
       <div className={s.container}>
-        <span className={s.logo}>{<Icon icon="airflow_astro_noStars" />}</span>
+        <span className={s.logo}>{<Icon icon="airflow_astro" />}</span>
       </div>
     )
   }
