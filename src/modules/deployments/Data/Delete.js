@@ -1,6 +1,7 @@
 'use strict'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
 import api from './api'
 
 import { Delete as Mutate, CardError } from 'instruments'
@@ -16,10 +17,11 @@ const Delete = Component => {
     }
     const email = props.self.user.emails[0].address
     const deployment = props.deployment.label
+
     return (
       <Mutate
         gql={api.DeleteDeployment}
-        redirect={`/workspaces`}
+        redirect={props.location.path}
         success="Deployment deleted successfully."
         track={{
           name: 'Deployment Deleted',
@@ -60,7 +62,7 @@ const Delete = Component => {
     deployment: PropTypes.object,
   }
 
-  return Self(Delete)
+  return withRouter(Self(Delete))
 }
 
 export default Delete
