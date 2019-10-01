@@ -19,7 +19,7 @@ const Delete = Component => {
     return (
       <Mutate
         gql={api.DeleteDeployment}
-        redirect={`/workspaces/${props.deployment.workspace.id}/deployments`}
+        redirect={`/workspaces`}
         success="Deployment deleted successfully."
         track={{
           name: 'Deployment Deleted',
