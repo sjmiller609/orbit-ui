@@ -148,7 +148,7 @@ export const entityRoleBinding = gql`
 
 export const serviceAccount = gql`
   fragment serviceAccount on ServiceAccount {
-    id: uuid
+    id
     label
     apiKey
     entityType
