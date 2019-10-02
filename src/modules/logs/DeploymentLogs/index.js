@@ -20,6 +20,7 @@ class DeploymentLogs extends React.Component {
     placeholder: 'Search Logs',
     call: search => this.setState({ search }),
   }
+
   componentWillMount() {
     const date = new Date()
     date.setMinutes(date.getMinutes() - 5)

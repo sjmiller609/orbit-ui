@@ -8,12 +8,22 @@ import Item from './Item'
 import Filters from './Filters'
 import Data from '../Data'
 
-class List extends React.Component {
+class List extends React.PureComponent {
   subscribe = null
+
+  state = {
+    logs: [],
+  }
 
   componentWillMount() {
     if (this.props.subscribeToMore) {
       this.subscribe = this.props.subscribeToMore()
+    }
+  }
+
+  componentDidUpdate(nextProps) {
+    if (nextProps.logs !== this.props.logs) {
+      this.updateList(this.props.logs[0])
     }
   }
 
@@ -23,8 +33,18 @@ class List extends React.Component {
     }
   }
 
+  updateList = log => {
+    this.setState(prevState => ({
+      logs: [
+        <Item key={`${log.id}-${log.createdAt}`} log={log} />,
+        ...prevState.logs,
+      ],
+    }))
+  }
+
   render() {
-    const { logs, search, since, component } = this.props
+    const { search, since, component } = this.props
+    const { logs } = this.state
 
     return (
       <Table
@@ -32,9 +52,8 @@ class List extends React.Component {
         search={search}
         headerOptions={<Filters component={component} since={since} />}>
         <Console>
-          {logs &&
-            logs.map((l, i) => <Item key={l.id || i} log={l} />).reverse()}
-          {(!logs || !logs.length) && (
+          {logs.map(l => l)}
+          {!logs.length && (
             <Mini className={s.waiting}>
               Waiting for logs
               <LoadingDots />
@@ -47,7 +66,11 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-  logs: PropTypes.array,
+  logs: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+    PropTypes.string,
+  ]),
   search: PropTypes.object,
   component: PropTypes.object,
   since: PropTypes.object,

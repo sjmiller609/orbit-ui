@@ -6,7 +6,6 @@ exports[`Console renders correctly 1`] = `
 >
   <div
     className="container testClassString"
-    onWheel={[Function]}
   >
     <div
       className="content"
@@ -23,7 +22,6 @@ exports[`Console should handle pause 1`] = `
 >
   <div
     className="container testClassString"
-    onWheel={[Function]}
   >
     <div
       className="content"

@@ -20,12 +20,15 @@ div.list {
 .date {
   color: $lightBlue;
 }
+
 .file {
   color: $green;
 }
+
 .type {
   opacity: 0.5;
 }
+
 .error {
   color: $orange;
 }
@@ -39,14 +42,16 @@ div.list {
   > * {
     padding-right: 10px;
   }
+
   > :last-child {
-    padding-right: 0px;
+    padding-right: 0;
   }
 }
 
 .since .button,
 .component .button {
   @include filmo;
+
   white-space: nowrap;
   box-shadow: inset 0 0 0 2px $lightBlue;
   color: $lightBlue;
@@ -56,14 +61,17 @@ div.list {
 
 .button {
   flex-grow: 1;
+
   &:not(:first-child) {
     border-left: 2px solid $lightGray;
   }
+
   h5 {
     text-transform: capitalize;
     color: $gray;
     transition: color 250ms ease-in;
   }
+
   img {
     filter: grayscale(100%) contrast(0) brightness(1.6);
     transition: filter 250ms ease-in;
@@ -71,10 +79,12 @@ div.list {
     margin-right: 1rem;
   }
 }
+
 .active {
   img {
     filter: none;
   }
+
   h5 {
     text-transform: capitalize;
     color: $lightBeige;
@@ -83,9 +93,11 @@ div.list {
 
 // duplicated from Card instrument
 $footerHeaderHeight: 6.2rem;
+
 .tabs {
   h5 {
     white-space: nowrap;
   }
+
   min-height: $footerHeaderHeight;
 }
