@@ -18,7 +18,10 @@ const ServiceDashboard = ({ url, title, icon, text, loading }) => {
         to,
       }}>
       <Box className={classnames(s.icon, loading && s.loading)}>
-        <Icon icon={icon} className={icon === 'airflow_astro' && s.airflowIcon} />
+        <Icon
+          icon={icon}
+          className={icon === 'airflow_astro' && s.airflowIcon}
+        />
       </Box>
       <P>{text}</P>
     </CardForm>

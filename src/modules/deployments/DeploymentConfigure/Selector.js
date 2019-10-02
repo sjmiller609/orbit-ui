@@ -16,7 +16,10 @@ const Selector = ({ icon, value, text, disabled, className, selected }) => {
         className
       )}>
       <Box>
-        <Icon icon={icon} className={icon === 'airflow_astro' && s.airflowIcon} />
+        <Icon
+          icon={icon}
+          className={icon === 'airflow_astro' && s.airflowIcon}
+        />
       </Box>
       <Mini>{text || value}</Mini>
     </Box>
