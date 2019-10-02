@@ -20,18 +20,10 @@ const Data = Component => {
       vars,
       getData,
     })
-
-    const queryVars = {
-      deploymentId: variables.deploymentId,
-      entityType: variables.entityType,
-      entityUuid: variables.entityId,
-      serviceAccountUuid: variables.serviceAccountId,
-      workspaceId: variables.workspaceId,
-    }
     return (
       <Query
         gql={api.ServiceAccounts}
-        vars={queryVars}
+        vars={variables}
         skip={skip}
         fetchPolicy={fetchPolicy}
         sortBy="lastUsedAt"

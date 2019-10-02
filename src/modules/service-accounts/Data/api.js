@@ -4,14 +4,14 @@ import { serviceAccount } from 'modules/api/fragments'
 export default {
   ServiceAccounts: gql`
     query serviceAccounts(
-      $serviceAccountUuid: Uuid
+      $serviceAccountId: Uuid
       $entityType: EntityType!
-      $entityUuid: Uuid
+      $entityId: Uuid
     ) {
       serviceAccounts(
-        serviceAccountUuid: $serviceAccountUuid
+        serviceAccountUuid: $serviceAccountId
         entityType: $entityType
-        entityUuid: $entityUuid
+        entityUuid: $entityId
       ) {
         ...serviceAccount
       }
