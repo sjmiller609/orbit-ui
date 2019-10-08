@@ -8,7 +8,7 @@ exports[`LoadingAirflow should render correctly 1`] = `
     className="logo"
   >
     <Icon
-      icon="airflow_astro_noStars"
+      icon="airflow_astro"
     />
   </span>
 </div>
