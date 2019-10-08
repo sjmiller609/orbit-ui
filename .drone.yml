@@ -3,8 +3,8 @@ pipeline:
   lint:
     image: node
     commands:
-      - npm i eslint eslint-watch eslint-plugin-import
-      - npm run lint
+      - yarn add eslint babel-eslint eslint-watch eslint-plugin-import
+      - yarn run lint
     when:
       event:
         - pull_request
@@ -89,7 +89,7 @@ pipeline:
     name: orbit
     commands:
       - cd /srv/orbit-ui
-      - npm run open:drone
+      - yarn run open:drone
     when:
       event: push
     detach: true
@@ -101,7 +101,7 @@ pipeline:
       - sleep 80
       - cd /srv/orbit-ui
       - sed -i 's/localhost:5000/orbit:8080/g' cypress.json
-      - npm run cypress:CI
+      - yarn run cypress:CI
     when:
       event: push
 
