@@ -1,6 +1,7 @@
 @import 'src/styles/mixins.scss';
 
 .content {
-  padding: 0 5% 15rem;
+  padding: 0 5% 0;
+
   @include spacing;
 }

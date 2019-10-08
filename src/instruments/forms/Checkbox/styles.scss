@@ -1,12 +1,12 @@
 @import 'src/styles/mixins.scss';
 
 .checkbox {
-  font-size: 1em;
+  font-size: 0.85em;
   line-height: 1.4em;
+  margin: 1rem 0 1.5rem;
 
   .box {
     flex-shrink: 0;
-
     border-radius: 3px;
     border: 3px solid $beige;
     width: 1.4em;
@@ -37,9 +37,11 @@
 
     &.on {
       background-color: $beige;
+
       &:hover .check {
         transform: rotate(45deg) scale(0.9);
       }
+
       .check {
         transform: rotate(45deg) scale(1);
       }
@@ -58,11 +60,16 @@
     line-height: inherit;
     vertical-align: middle;
     margin-left: 0.7em;
+    font-size: 0.75em;
     color: $beige;
+
     @include font($f500);
+
     a {
       color: $green;
+
       @include font($f700);
+
       font-size: 1em;
     }
   }

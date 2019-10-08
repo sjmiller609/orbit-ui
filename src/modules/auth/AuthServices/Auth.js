@@ -3,38 +3,26 @@ import PropTypes from 'prop-types'
 
 import Data from '../Data'
 import EmailPw from './EmailPw'
-import { CardForm, Row, Link, Mini, OauthButton } from 'instruments'
+import { Link, CardForm, Row, Mini, OauthButton } from 'instruments'
 import s from './styles.scss'
 
 class Auth extends React.Component {
+  componentWillMount() {
+    // Allow the Oauth buttons on Login
+    if (this.props.login) this.setState({ accept: true })
+  }
+
   render() {
     const { authConfig = {}, login, cli, token } = this.props
     const signupEnabled =
       authConfig.initialSignup || authConfig.publicSignup || !!token
     const showFields = login || signupEnabled
+
     return (
       <CardForm
         title={login ? 'Log In to Astronomer' : 'Sign Up'}
         smallForm
-        className={s.card}
-        footer={
-          signupEnabled ? (
-            <Row className={s.footer}>
-              {' '}
-              <Mini>
-                Please review{' '}
-                <Link to="https://www.astronomer.io/terms">
-                  terms of service
-                </Link>{' '}
-                and{' '}
-                <Link to="https://www.astronomer.io/privacy">
-                  privacy policy
-                </Link>{' '}
-                prior to signing up for Astronomer Cloud.
-              </Mini>
-            </Row>
-          ) : null
-        }>
+        className={s.card}>
         {!signupEnabled &&
           !showFields && (
             <Mini className={s.cardBody}>
@@ -67,6 +55,11 @@ class Auth extends React.Component {
               className={s.button}
             />
           ))}
+        <div className={s.legal}>
+          By {login ? 'logging in' : 'signing up'} you agree our{' '}
+          <Link to="https://www.astronomer.io/terms">terms of service</Link> and{' '}
+          <Link to="https://www.astronomer.io/privacy">privacy policy</Link>.
+        </div>
       </CardForm>
     )
   }

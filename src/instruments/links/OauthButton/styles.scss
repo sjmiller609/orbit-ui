@@ -78,6 +78,11 @@
       background-image: url('./img/okta.png');
     }
   }
+
+  &.disabled {
+    opacity: 0.35;
+    pointer-events: none;
+  }
 }
 
 .arrow {

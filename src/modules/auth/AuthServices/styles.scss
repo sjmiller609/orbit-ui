@@ -1,5 +1,15 @@
 @import 'src/styles/mixins.scss';
 
+.legal {
+  color: $beige;
+  font-size: 0.85rem;
+  text-align: center;
+
+  a {
+    color: $green;
+  }
+}
+
 .extras {
   margin: 0.5 0 2.5rem;
 
@@ -25,7 +35,6 @@
   width: 100%;
 }
 
-
 .card {
   .emailButton {
     background: $purple;
@@ -41,8 +50,4 @@
   text-align: center;
   max-width: 34rem;
   margin: auto;
-
-  p {
-    color: $beige;
-  }
 }
