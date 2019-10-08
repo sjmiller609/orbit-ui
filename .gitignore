@@ -51,3 +51,6 @@ dist
 
 #Dependency directory for mock Subscription server
 mockSubscriptionServer/node_modules
+
+# don't mix package managers
+package-lock.json

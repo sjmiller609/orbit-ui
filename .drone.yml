@@ -3,7 +3,7 @@ pipeline:
   lint:
     image: node
     commands:
-      - yarn add eslint babel-eslint eslint-watch eslint-plugin-import
+      - yarn add eslint babel-eslint eslint-watch eslint-plugin-import --dev
       - yarn run lint
     when:
       event:
