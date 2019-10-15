@@ -49,6 +49,9 @@ class ProfileMenu extends Component {
               Global Metrics →
             </Item>
           )}
+          <Item to="https://support.astronomer.io/" target="_blank">
+            Support
+          </Item>
           <Item to="https://www.astronomer.io/docs/" target="_blank">
             Documentation
           </Item>
