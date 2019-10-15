@@ -2,37 +2,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import api from './api'
+import { isWorkspace } from 'helpers/compare'
 
 import { Query, GetData } from 'instruments'
-import { getVars } from './helpers'
 
 const Data = Component => {
-  const Data = ({
-    vars,
-    getData,
-    fetchPolicy,
-    skip,
-    search,
-    ...otherProps
-  }) => {
-    const variables = getVars({
-      deploymentId: otherProps.deploymentId,
-      vars,
-      getData,
-    })
+  const Data = ({ getData, fetchPolicy, skip, search, ...otherProps }) => {
+    const variables = {
+      deploymentUuid: otherProps.deploymentId,
+      workspaceUuid: (getData && getData.workspaceId) || undefined,
+    }
+
     return (
       <Query
-        gql={api.ServiceAccounts}
+        gql={
+          isWorkspace(variables)
+            ? api.WorkspaceServiceAccounts
+            : api.DeploymentServiceAccounts
+        }
         vars={variables}
         skip={skip}
         fetchPolicy={fetchPolicy}
         sortBy="lastUsedAt"
         search={search}>
-        {({ data: { serviceAccounts } }) => {
+        {({
+          data: { workspaceServiceAccounts, deploymentServiceAccounts },
+        }) => {
           const newProps = {
             ...otherProps,
             search,
-            serviceAccounts,
+            serviceAccounts:
+              workspaceServiceAccounts || deploymentServiceAccounts,
           }
           return <Component {...newProps} />
         }}

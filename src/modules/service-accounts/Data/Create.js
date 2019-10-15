@@ -3,21 +3,33 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import api from './api'
+import { isWorkspace } from 'helpers/compare'
 
 import { Create as Mutation, GetData, CardError } from 'instruments'
-import { getVars, handleError, trimError } from './helpers'
+import { handleError, trimError } from './helpers'
 
 const Create = Component => {
   const Create = ({ getData, path, ...props }) => {
-    const variables = getVars({ deploymentId: props.deploymentId, getData })
+    const variables = {
+      deploymentUuid: props.deploymentId,
+      workspaceUuid: (getData && getData.workspaceId) || undefined,
+    }
+
     const query = {
-      name: api.ServiceAccounts,
+      name: isWorkspace(variables)
+        ? api.WorkspaceServiceAccounts
+        : api.DeploymentServiceAccounts,
       type: 'serviceAccounts',
       vars: variables,
     }
+
     return (
       <Mutation
-        gql={api.CreateServiceAccount}
+        gql={
+          isWorkspace(variables)
+            ? api.CreateWorkspaceServiceAccount
+            : api.CreateDeploymentServiceAccount
+        }
         redirect={data => ({
           pathname: path + '/' + data.id,
           state: { apiKey: data.apiKey },

@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router'
+import { find } from 'lodash'
 
 import Data from '../Data'
 import Form from './Configure'
@@ -34,9 +36,11 @@ class ConfigureServiceAccount extends React.Component {
       newForm: true,
     },
   ]
+
   state = {
     serviceAccount: {},
   }
+
   componentWillMount() {
     this.set(this.props.serviceAccounts)
   }
@@ -47,11 +51,9 @@ class ConfigureServiceAccount extends React.Component {
   }
 
   set(serviceAccounts) {
-    const set = {
-      serviceAccount: (serviceAccounts && serviceAccounts[0]) || {},
-    }
-
-    this.setState(set)
+    const { match } = this.props // eslint-disable-line
+    const serviceAccount = find(serviceAccounts, ['id', match.params.id])
+    this.setState({ serviceAccount: serviceAccount || {} })
   }
 
   render() {
@@ -59,23 +61,27 @@ class ConfigureServiceAccount extends React.Component {
     const { serviceAccount } = this.state
     this.button.to = path
 
-    return (
-      <CardMenu menu={this.menu} menuList={{ button: this.button }}>
-        <Key apiKey={apiKey || serviceAccount.apiKey} />
-        <Configure
-          serviceAccount={serviceAccount}
-          data={serviceAccount}
-          deploymentId={deploymentId}
-          role={serviceAccount.roleBinding.role}
-          saveText="Update"
-        />
-        <Delete
-          serviceAccount={serviceAccount}
-          deploymentId={deploymentId}
-          path={path}
-        />
-      </CardMenu>
-    )
+    if (serviceAccount && serviceAccount.roleBinding) {
+      return (
+        <CardMenu menu={this.menu} menuList={{ button: this.button }}>
+          <Key apiKey={apiKey || serviceAccount.apiKey} />
+          <Configure
+            serviceAccount={serviceAccount}
+            data={serviceAccount}
+            deploymentId={deploymentId}
+            role={serviceAccount.roleBinding.role}
+            saveText="Update"
+          />
+          <Delete
+            serviceAccount={serviceAccount}
+            deploymentId={deploymentId}
+            path={path}
+          />
+        </CardMenu>
+      )
+    }
+
+    return null
   }
 }
 
@@ -86,4 +92,4 @@ ConfigureServiceAccount.propTypes = {
   apiKey: PropTypes.string,
 }
 
-export default Data(ConfigureServiceAccount)
+export default withRouter(Data(ConfigureServiceAccount))

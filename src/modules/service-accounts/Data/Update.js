@@ -1,16 +1,34 @@
 'use strict'
 import React from 'react'
 import api from './api'
+import { isWorkspace } from 'helpers/compare'
 
-import { Mutation, CardError } from 'instruments'
-
+import { Mutation, CardError, GetData } from 'instruments'
 import { handleError, trimError } from './helpers'
 
 const Update = Component => {
-  const Update = props => {
+  const Update = ({ getData, ...props }) => { // eslint-disable-line
+    const variables = {
+      serviceAccountUuid: props.serviceAccount.id, // eslint-disable-line
+      deploymentUuid: props.deploymentId, // eslint-disable-line
+      workspaceUuid: (getData && getData.workspaceId) || undefined,
+    }
+
+    const query = {
+      name: isWorkspace(variables)
+        ? api.WorkspaceServiceAccount
+        : api.DeploymentServiceAccount,
+      type: 'serviceAccounts',
+      vars: variables,
+    }
+
     return (
       <Mutation
-        gql={api.UpdateServiceAccount}
+        gql={
+          isWorkspace(variables)
+            ? api.UpdateWorkspaceServiceAccount
+            : api.UpdateDeploymentServiceAccount
+        }
         success="Service account updated."
         track="Service Account Updated"
         errorMsg={trimError}
@@ -19,18 +37,12 @@ const Update = Component => {
           const newProps = {
             ...props,
             onSubmit: vars => {
-              const { id: serviceAccountId, ...payload } = vars
-              const variables = {
-                serviceAccountId,
-                payload,
-              }
-              const query = {
-                name: api.ServiceAccounts,
-                type: 'serviceAccounts',
-                vars,
-              }
+              const { ...payload } = vars
               mutate({
-                variables,
+                variables: {
+                  ...variables,
+                  payload,
+                },
                 refetchQueries: [
                   {
                     query: query.name,
@@ -50,7 +62,7 @@ const Update = Component => {
     )
   }
 
-  return Update
+  return GetData(Update, { workspaceId: true })
 }
 
 export default Update

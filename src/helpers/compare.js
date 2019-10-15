@@ -33,3 +33,7 @@ export const searchText = (query, text) => {
 
   return arr.every(a => ~text.toLowerCase().indexOf(a.toLowerCase()))
 }
+
+export const isWorkspace = vars => {
+  return vars.workspaceUuid && !vars.deploymentUuid
+}

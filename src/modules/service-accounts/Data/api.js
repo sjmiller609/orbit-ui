@@ -2,35 +2,49 @@ import gql from 'graphql-tag'
 import { serviceAccount } from 'modules/api/fragments'
 
 export default {
-  ServiceAccounts: gql`
-    query serviceAccounts(
-      $serviceAccountId: Uuid
-      $entityType: EntityType!
-      $entityId: Uuid
-    ) {
-      serviceAccounts(
-        serviceAccountUuid: $serviceAccountId
-        entityType: $entityType
-        entityUuid: $entityId
-      ) {
+  DeploymentServiceAccounts: gql`
+    query deploymentServiceAccounts($deploymentUuid: Uuid!) {
+      deploymentServiceAccounts(deploymentUuid: $deploymentUuid) {
         ...serviceAccount
       }
     }
     ${serviceAccount}
   `,
-  CreateServiceAccount: gql`
-    mutation createServiceAccount(
-      $label: String!
+  WorkspaceServiceAccounts: gql`
+    query workspaceServiceAccounts($workspaceUuid: Uuid!) {
+      workspaceServiceAccounts(workspaceUuid: $workspaceUuid) {
+        ...serviceAccount
+      }
+    }
+    ${serviceAccount}
+  `,
+  DeploymentServiceAccount: gql`
+    query deploymentServiceAccount($serviceAccountUuid: Uuid!) {
+      deploymentServiceAccount(serviceAccountUuid: $serviceAccountUuid) {
+        ...serviceAccount
+      }
+    }
+    ${serviceAccount}
+  `,
+  WorkspaceServiceAccount: gql`
+    query workspaceServiceAccount($serviceAccountUuid: Uuid!) {
+      workspaceServiceAccount(serviceAccountUuid: $serviceAccountUuid) {
+        ...serviceAccount
+      }
+    }
+    ${serviceAccount}
+  `,
+  CreateDeploymentServiceAccount: gql`
+    mutation createDeploymentServiceAccount(
+      $deploymentUuid: Uuid!
       $category: String
-      $entityType: EntityType!
-      $entityId: Uuid
+      $label: String!
       $role: Role!
     ) {
-      createServiceAccount(
-        label: $label
+      createDeploymentServiceAccount(
+        deploymentUuid: $deploymentUuid
         category: $category
-        entityType: $entityType
-        entityUuid: $entityId
+        label: $label
         role: $role
       ) {
         ...serviceAccount
@@ -38,10 +52,33 @@ export default {
     }
     ${serviceAccount}
   `,
-  UpdateServiceAccount: gql`
-    mutation updateServiceAccount($serviceAccountId: Uuid!, $payload: JSON!) {
-      updateServiceAccount(
-        serviceAccountUuid: $serviceAccountId
+  CreateWorkspaceServiceAccount: gql`
+    mutation createWorkspaceServiceAccount(
+      $workspaceUuid: Uuid!
+      $category: String
+      $label: String!
+      $role: Role!
+    ) {
+      createWorkspaceServiceAccount(
+        workspaceUuid: $workspaceUuid
+        category: $category
+        label: $label
+        role: $role
+      ) {
+        ...serviceAccount
+      }
+    }
+    ${serviceAccount}
+  `,
+  UpdateDeploymentServiceAccount: gql`
+    mutation updateDeploymentServiceAccount(
+      $serviceAccountUuid: Uuid!
+      $deploymentUuid: Uuid!
+      $payload: JSON!
+    ) {
+      updateDeploymentServiceAccount(
+        serviceAccountUuid: $serviceAccountUuid
+        deploymentUuid: $deploymentUuid
         payload: $payload
       ) {
         ...serviceAccount
@@ -49,10 +86,45 @@ export default {
     }
     ${serviceAccount}
   `,
-  DeleteServiceAccount: gql`
-    mutation deleteServiceAccount($serviceAccountId: Uuid!) {
-      deleteServiceAccount(serviceAccountUuid: $serviceAccountId) {
-        id: uuid
+  UpdateWorkspaceServiceAccount: gql`
+    mutation updateWorkspaceServiceAccount(
+      $serviceAccountUuid: Uuid!
+      $workspaceUuid: Uuid!
+      $payload: JSON!
+    ) {
+      updateWorkspaceServiceAccount(
+        serviceAccountUuid: $serviceAccountUuid
+        workspaceUuid: $workspaceUuid
+        payload: $payload
+      ) {
+        ...serviceAccount
+      }
+    }
+    ${serviceAccount}
+  `,
+  DeleteDeploymentServiceAccount: gql`
+    mutation deleteDeploymentServiceAccount(
+      $serviceAccountUuid: Uuid!
+      $deploymentUuid: Uuid!
+    ) {
+      updateDeploymentServiceAccount(
+        serviceAccountUuid: $serviceAccountUuid
+        deploymentUuid: $deploymentUuid
+      ) {
+        id
+      }
+    }
+  `,
+  DeleteWorkspaceServiceAccount: gql`
+    mutation deleteWorkspaceServiceAccount(
+      $serviceAccountUuid: Uuid!
+      $workspaceUuid: Uuid!
+    ) {
+      deleteWorkspaceServiceAccount(
+        serviceAccountUuid: $serviceAccountUuid
+        workspaceUuid: $workspaceUuid
+      ) {
+        id
       }
     }
   `,

@@ -3,22 +3,34 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import api from './api'
+import { isWorkspace } from 'helpers/compare'
 
 import { Delete as Mutate, GetData, CardError } from 'instruments'
-import { getVars, handleError, trimError } from './helpers'
+import { handleError, trimError } from './helpers'
 
 const Delete = Component => {
   const Delete = ({ getData, path, ...props }) => {
-    const variables = getVars({ deploymentId: props.deploymentId, getData })
+    const variables = {
+      serviceAccountUuid: props.serviceAccount.id, // eslint-disable-line
+      deploymentUuid: props.deploymentId, // eslint-disable-line
+      workspaceUuid: (getData && getData.workspaceId) || undefined,
+    }
 
     const query = {
-      name: api.ServiceAccounts,
+      name: isWorkspace(variables)
+        ? api.WorkspaceServiceAccount
+        : api.DeploymentServiceAccount,
       type: 'serviceAccounts',
       vars: variables,
     }
+
     return (
       <Mutate
-        gql={api.DeleteServiceAccount}
+        gql={
+          isWorkspace(variables)
+            ? api.DeleteWorkspaceServiceAccount
+            : api.DeleteDeploymentServiceAccount
+        }
         redirect={path}
         success={
           'Service account deleted from this ' +
@@ -37,6 +49,7 @@ const Delete = Component => {
             onSubmit: vars => {
               mutate({
                 variables: {
+                  ...variables,
                   ...vars,
                 },
                 refetchQueries: [
