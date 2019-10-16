@@ -28,7 +28,7 @@ const Data = Component => {
         {({ data: { logs }, subscribeToMore }) => {
           const newProps = {
             ...props,
-            logs: [logs[logs.length - 1]] || [], // only get the latest
+            logs,
             subscribeToMore,
           }
           return <Component {...newProps} />

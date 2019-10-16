@@ -23,7 +23,7 @@ class List extends React.PureComponent {
 
   componentDidUpdate(nextProps) {
     if (nextProps.logs !== this.props.logs) {
-      this.updateList(this.props.logs[0])
+      this.updateList(this.props.logs)
     }
   }
 
@@ -33,10 +33,12 @@ class List extends React.PureComponent {
     }
   }
 
-  updateList = log => {
+  updateList = logs => {
     this.setState(prevState => ({
       logs: [
-        <Item key={`${log.id}-${log.createdAt}`} log={log} />,
+        ...logs
+          .slice(prevState.logs.length, logs.length)
+          .map(l => <Item key={`${l.id}-${l.createdAt}`} log={l} />),
         ...prevState.logs,
       ],
     }))

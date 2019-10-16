@@ -34,6 +34,7 @@ class DeploymentLogs extends React.Component {
       date.setMinutes(date.getMinutes() - start)
     } else if (start === 'today') date.setHours(0, 0, 0, 0)
     else if (start === 'all') date = null
+
     this.setState({ start: date, since: start })
   }
 
