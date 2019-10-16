@@ -107,7 +107,7 @@ export default {
       $serviceAccountUuid: Uuid!
       $deploymentUuid: Uuid!
     ) {
-      updateDeploymentServiceAccount(
+      deleteDeploymentServiceAccount(
         serviceAccountUuid: $serviceAccountUuid
         deploymentUuid: $deploymentUuid
       ) {
