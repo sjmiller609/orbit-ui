@@ -11,8 +11,8 @@ import Empty from './Empty'
 const List = ({ workspaces, workspaceId, search }) => {
   // Get the current workspace being viewed
   const workspace = workspaces.filter(w => w.id === workspaceId)[0]
-  const users = workspace.users
-  const invites = workspace.invites
+  const users = workspace && workspace.users
+  const invites = workspace && workspace.invites
 
   const roleForUser = uid => {
     const rb = workspace.roleBindings.find(rb => rb.user && rb.user.id === uid)
@@ -26,8 +26,10 @@ const List = ({ workspaces, workspaceId, search }) => {
 
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
-      {users.map(t => <Item key={t.id} user={t} role={roleForUser(t.id)} />)}
-      {invites.map(t => <Item key={t.id} user={t} pending role={t.role} />)}
+      {users !== undefined &&
+        users.map(t => <Item key={t.id} user={t} role={roleForUser(t.id)} />)}
+      {invites !== undefined &&
+        invites.map(t => <Item key={t.id} user={t} pending role={t.role} />)}
     </Table>
   )
 }
