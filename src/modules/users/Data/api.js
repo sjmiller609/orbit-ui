@@ -10,6 +10,14 @@ export default {
     }
     ${user}
   `,
+  Users: gql`
+    query workspaceUsers($workspaceId: Uuid!, $email: String) {
+      workspaceUsers(workspaceUuid: $workspaceId, email: $email) {
+        ...user
+      }
+    }
+    ${user}
+  `,
   Invites: gql`
     query workspaceInvites($workspaceId: Uuid!, $email: String) {
       workspaceInvites(workspaceUuid: $workspaceId, email: $email) {

@@ -4,29 +4,23 @@ import PropTypes from 'prop-types'
 import api from './api'
 
 import { Query } from 'instruments'
-import OnError from '../OnError'
 
 const Data = Component => {
   const Data = ({ vars, skip, search, ...otherProps }) => {
-    const vars2 = {
-      ...vars,
-      withUsers: (vars && vars.withUsers) || false,
-    }
-
     return (
       <Query
-        gql={api.Workspaces}
-        vars={vars2}
-        skip={skip}
-        search={search}
-        fetchPolicy="network-only"
-        OnError={<OnError />}>
-        {({ data: { workspaces } }) => {
+        gql={api.Invites}
+        vars={{
+          ...vars,
+          workspaceId: otherProps.workspaceId,
+          email: search.text,
+        }}
+        skip={skip}>
+        {({ data: { workspaceInvites } }) => {
           const newProps = {
             ...otherProps,
             search,
-            workspaces,
-            workspaceId: vars2.workspaceId,
+            invites: workspaceInvites,
           }
           return <Component {...newProps} />
         }}

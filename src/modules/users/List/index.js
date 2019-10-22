@@ -4,21 +4,22 @@ import PropTypes from 'prop-types'
 import s from './styles.scss'
 import { Table } from 'instruments'
 
-import Data from 'modules/workspaces/Data'
+import UsersData from '../Data/List'
+import InvitesData from '../Data/Invites'
 import Item from './Item'
 import Empty from './Empty'
 
-const List = ({ workspaces, workspaceId, search }) => {
-  // Get the current workspace being viewed
-  const workspace = workspaces.filter(w => w.id === workspaceId)[0]
-  const users = workspace && workspace.users
-  const invites = workspace && workspace.invites
+const InviteList = ({ invites }) =>
+  invites !== undefined &&
+  invites.map(t => <Item key={t.id} user={t} pending role={t.role} />)
+const Invites = InvitesData(InviteList)
 
-  const roleForUser = uid => {
-    const rb = workspace.roleBindings.find(rb => rb.user && rb.user.id === uid)
-    return rb ? rb.role : null
-  }
+const UserList = ({ users }) =>
+  users !== undefined &&
+  users.map(t => <Item key={t.id} user={t} role={t.role} />)
+const Users = UsersData(UserList)
 
+const List = ({ workspaceId, search }) => {
   const button = {
     text: 'Invite',
     to: '/users/new',
@@ -26,10 +27,8 @@ const List = ({ workspaces, workspaceId, search }) => {
 
   return (
     <Table className={s.list} search={search} button={button} Empty={Empty}>
-      {users !== undefined &&
-        users.map(t => <Item key={t.id} user={t} role={roleForUser(t.id)} />)}
-      {invites !== undefined &&
-        invites.map(t => <Item key={t.id} user={t} pending role={t.role} />)}
+      <Users workspaceId={workspaceId} search={search} />
+      <Invites workspaceId={workspaceId} search={search} />
     </Table>
   )
 }
@@ -41,4 +40,4 @@ List.propTypes = {
   search: PropTypes.object,
 }
 
-export default Data(List)
+export default List

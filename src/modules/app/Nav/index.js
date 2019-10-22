@@ -94,4 +94,4 @@ Nav.propTypes = {
   menu: PropTypes.object,
 }
 
-export default GetData(Self(Data(Nav)), { workspaceId: true })
+export default Data(Self(GetData(Nav)), { workspaceId: true })
