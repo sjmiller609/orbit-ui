@@ -88,7 +88,6 @@ class TextField extends React.Component {
           onBlur={onBlur}
           ref={setRef}
           disabled={disabled}
-          maxLength={512}
         />
         {error}
       </div>
