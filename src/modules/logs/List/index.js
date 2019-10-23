@@ -38,7 +38,8 @@ class List extends React.PureComponent {
       logs: [
         ...logs
           .slice(prevState.logs.length, logs.length)
-          .map(l => <Item key={`${l.id}-${l.createdAt}`} log={l} />).reverse(),
+          .map(l => <Item key={`${l.id}-${l.createdAt}`} log={l} />)
+          .reverse(),
         ...prevState.logs,
       ],
     }))
