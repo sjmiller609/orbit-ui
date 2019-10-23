@@ -54,7 +54,7 @@ class List extends React.PureComponent {
         search={search}
         headerOptions={<Filters component={component} since={since} />}>
         <Console>
-          {logs.map(l => l)}
+          {logs.slice(0, 800).map(l => l)}
           {!logs.length && (
             <Mini className={s.waiting}>
               Waiting for logs

@@ -22,7 +22,6 @@ const Since = ({ get, set, since }) => {
         <Item onClick={() => set(5)}>Past 5 minutes</Item>
         <Item onClick={() => set(60)}>Past hour</Item>
         <Item onClick={() => set('today')}>Today</Item>
-        <Item onClick={() => set('all')}>All time</Item>
       </MenuList>
     </Dropdown>
   )
