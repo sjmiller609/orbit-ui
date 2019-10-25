@@ -52,15 +52,14 @@ Cypress.Commands.add('checkErrors', () => {
 Cypress.Commands.add('enterWorkspace', () => {
   cy.visit('/workspaces')
   cy
-    .get('a')
+    .get('h3')
     .contains('Cypress Test Workspace')
-    .first()
-    .click()
+    .click({ force: true })
 })
 
 Cypress.Commands.add('enterDeployment', () => {
   cy
+    .get('h3')
     .contains('Cypress Test Deployment')
-    .first()
-    .click()
+    .click({ force: true })
 })

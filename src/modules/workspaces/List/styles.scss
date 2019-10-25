@@ -8,6 +8,7 @@ div.list {
 .title {
   width: 50%;
   min-width: 18rem;
+
   @media screen and (max-width: 50rem) {
     flex-basis: 1;
     flex-grow: 1;
@@ -18,6 +19,7 @@ div.list {
   width: 32%;
   min-width: 18rem;
   color: $beige;
+
   @media screen and (max-width: 55rem) {
     display: none;
   }
@@ -35,9 +37,11 @@ div.list {
   width: 7rem;
   margin-left: auto;
   color: $darkBeige;
+
   @media screen and (max-width: 50rem) {
     display: none;
   }
+
   img {
     height: 0.9em;
     margin-right: 0.4em;

@@ -27,19 +27,19 @@ describe('Workspaces', function() {
 
   it('loads users successfuly', function() {
     cy.enterWorkspace()
-    cy.visit('/users')
+    cy.contains('Users').click()
     cy.checkErrors()
   })
 
   it('loads service accounts successfuly', function() {
     cy.enterWorkspace()
-    cy.visit('/service-accounts')
+    cy.contains('Service Accounts').click()
     cy.checkErrors()
   })
 
   it('loads settings successfuly', function() {
     cy.enterWorkspace()
-    cy.visit('/settings')
+    cy.contains('Workspace Settings').click()
     cy.checkErrors()
   })
 })

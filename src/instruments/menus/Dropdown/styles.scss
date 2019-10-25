@@ -4,6 +4,7 @@ $width: 19rem;
 
 .dropdown {
   position: relative;
+  z-index: -1;
 }
 
 .open {
