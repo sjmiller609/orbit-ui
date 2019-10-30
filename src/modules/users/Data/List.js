@@ -14,6 +14,7 @@ const Data = Component => {
           ...vars,
           workspaceId: otherProps.workspaceId,
           email: search.text,
+          fullName: search.text,
         }}
         skip={skip}>
         {({ data: { workspaceUsers } }) => {

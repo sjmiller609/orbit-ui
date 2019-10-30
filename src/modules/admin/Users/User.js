@@ -11,13 +11,23 @@ class User extends React.Component {
       username: id,
     }
 
+    const menu = {
+      nav: 'admin',
+      level1: {
+        selected: {
+          to: '/admin',
+          text: 'Admin',
+        },
+        list: [],
+        addNew: {},
+      },
+      level2: {
+        text: id,
+      },
+    }
+
     return (
-      <Module
-        title="Configure Access"
-        menu={this.menu}
-        vars={vars}
-        admin={true}
-      />
+      <Module title="Configure Access" menu={menu} vars={vars} admin={true} />
     )
   }
 }

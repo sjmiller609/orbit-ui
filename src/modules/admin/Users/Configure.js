@@ -66,13 +66,24 @@ class UserConfigure extends React.Component {
     if (loading) return null
     if (self === undefined || users === undefined) return null
 
-    const menu = {
-      nav: 'admin',
-    }
-
     const user = this.getUser(this.props)
     const isSelf = self.user.id === user.id
     const pending = /pending/.test(location.href)
+
+    const menu = {
+      nav: 'admin',
+      level1: {
+        selected: {
+          to: '/admin',
+          text: 'Admin',
+        },
+        list: [],
+        addNew: {},
+      },
+      level2: {
+        text: pending ? user[0].email : user.fullName || user.username,
+      },
+    }
 
     return (
       <Module menu={menu}>

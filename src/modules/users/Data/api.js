@@ -11,8 +11,16 @@ export default {
     ${user}
   `,
   Users: gql`
-    query workspaceUsers($workspaceId: Uuid!, $email: String) {
-      workspaceUsers(workspaceUuid: $workspaceId, email: $email) {
+    query workspaceUsers(
+      $workspaceId: Uuid!
+      $email: String
+      $fullName: String
+    ) {
+      workspaceUsers(
+        workspaceUuid: $workspaceId
+        email: $email
+        fullName: $fullName
+      ) {
         ...user
       }
     }
