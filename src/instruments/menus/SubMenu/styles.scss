@@ -1,6 +1,8 @@
 @import 'src/styles/mixins.scss';
 
 .menu {
+  position: relative;
+  z-index: 100;
   padding: 0 1rem;
 
   a:not(:last-child) {
