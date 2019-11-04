@@ -52,6 +52,12 @@ const Create = Component => {
                   ...variables,
                   ...vars,
                 },
+                refetchQueries: [
+                  {
+                    query: query.name,
+                    variables,
+                  },
+                ],
               })
             },
           }
