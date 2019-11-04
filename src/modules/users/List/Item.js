@@ -7,7 +7,7 @@ import { TableRow, Box, P, Mini, H3, ShowDate, Avatar, Tag } from 'instruments'
 import { unConstantize } from 'helpers/format'
 import { getProfile } from '../Data/helpers'
 
-const Item = ({ user, pending, className, role, to, admin }) => {
+const Item = ({ user, pending, className, role, to }) => {
   const profile = getProfile(user)
 
   if (!to) {
@@ -27,7 +27,7 @@ const Item = ({ user, pending, className, role, to, admin }) => {
       </P>
     </Box>,
     <Box key="2" align="flex-start" className={s.role}>
-      {!admin && role && <P>{unConstantize(role).replace(/ /g, '\u00A0')}</P>}
+      <P>{role && unConstantize(role).replace(/ /g, '\u00A0')}</P>
     </Box>,
     <Box key="3" align="flex-start" className={s.log}>
       <P className={s.subTitle}>{pending ? 'Invited' : 'Joined'}</P>

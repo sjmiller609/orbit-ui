@@ -16,7 +16,7 @@ const Invites = InvitesData(InviteList)
 
 const UserList = ({ users }) =>
   users !== undefined &&
-  users.map(t => <Item key={t.id} user={t} role={t.role} />)
+  users.map(t => <Item key={t.id} user={t} role={t.roleBindings[0].role} />)
 const Users = UsersData(UserList)
 
 const List = ({ workspaceId, search }) => {
