@@ -42,7 +42,7 @@ class BillingForm extends React.Component {
         />
         <TextField
           name="Billing Email"
-          type="text"
+          type="email"
           placeholder="Billing Email Address"
           label="Billing Email"
           {...form.field('billingEmail')}

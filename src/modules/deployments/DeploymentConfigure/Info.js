@@ -27,6 +27,12 @@ const Info = ({ deployment }) => {
             <span>Astronomer </span>
             <B>v{deployment.version}</B>
           </Tag>
+          {deployment.deployInfo.current && (
+            <Tag>
+              <span>Image Version </span>
+              <B>v{deployment.deployInfo.current}</B>
+            </Tag>
+          )}
         </React.Fragment>
       )}
       {/* <Tag>

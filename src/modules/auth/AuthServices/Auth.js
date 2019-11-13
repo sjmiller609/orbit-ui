@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withRouter, Redirect } from 'react-router-dom'
 
 import Data from '../Data'
 import EmailPw from './EmailPw'
@@ -13,10 +14,14 @@ class Auth extends React.Component {
   }
 
   render() {
-    const { authConfig = {}, login, cli, token } = this.props
+    const { authConfig = {}, login, cli, token, location } = this.props
     const signupEnabled =
       authConfig.initialSignup || authConfig.publicSignup || !!token
     const showFields = login || signupEnabled
+
+    if (!signupEnabled && location.pathname === '/') {
+      return <Redirect to="/login" />
+    }
 
     return (
       <CardForm
@@ -73,4 +78,4 @@ Auth.propTypes = {
   token: PropTypes.string,
 }
 
-export default Data(Auth)
+export default withRouter(Data(Auth))

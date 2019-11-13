@@ -68,6 +68,9 @@ export const deployment = gql`
     releaseName
     version
     airflowVersion
+    deployInfo {
+      current
+    }
     workspace {
       id: uuid
       stripeCustomerId
