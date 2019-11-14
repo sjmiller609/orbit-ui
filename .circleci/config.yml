@@ -3,21 +3,26 @@ jobs:
   build:
     executor: docker-executor
     steps:
-      - docker-build
+      - docker-build:
+          image_name: ap-orbit-ui
+          dockerfile: Dockerfile.prod
   scan:
     executor: clair-scanner/default
     steps:
-      - clair-scan
+      - clair-scan:
+          image_name: ap-orbit-ui
   publish-dev:
     executor: docker-executor
     steps:
       - push:
           comma_separated_tags: "dev,edge,$CIRCLE_SHA1"
+          image_name: ap-orbit-ui
   publish-prod:
     executor: docker-executor
     steps:
       - push:
           comma_separated_tags: "master,latest"
+          image_name: ap-orbit-ui
 workflows:
   version: 2.1
   build-images:
