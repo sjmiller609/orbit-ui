@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import UpdateForm from './UpdateForm'
 
 import Delete from './Delete'
-import Upgrade from './Upgrade'
 import { CardMenu } from 'instruments'
 import Update from '../Data/Update'
 import { lt, gteSeven } from '../helpers'
@@ -77,7 +76,7 @@ class DeploymentConfigure extends React.Component {
   }
 
   render() {
-    const { deployment, deploymentConfig, workspaceId } = this.props
+    const { deployment, workspaceId } = this.props
     const configVars = {
       version: deployment.version,
       type: deployment.type,
@@ -86,13 +85,6 @@ class DeploymentConfigure extends React.Component {
 
     return (
       <CardMenu menu={this.menu()}>
-        {this.showUpgrade() && (
-          <Upgrade
-            deployment={deployment}
-            deploymentConfig={deploymentConfig}
-            workspaceId={workspaceId}
-          />
-        )}
         <Configure
           deployment={deployment}
           data={deployment}
