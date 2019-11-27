@@ -226,7 +226,7 @@ commands:
             # Delete the tag from the local repository, if it exists.
             # This is done so the release notes are generated
             # correctly in the event of an overwrite.
-            git tag -d << parameters.tag >> || true
+            git tag -d v<< parameters.tag >> || true
 
             # Generate release notes in Markdown format
             COMMITS=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %ai %h: %s" | awk '{$4=""; print $0}')
@@ -398,7 +398,7 @@ commands:
           command: |
             set -xe
             export GITHUB_REPOSITORY=<< parameters.git_org >>/${CIRCLE_PROJECT_REPONAME}
-            cd /tmp/<< parameters.repository >>
+            git remote add upstream https://github.com/<< parameters.git_org >>/<< parameters.repository >>.git
             # Install a tool that will let us open PRs from the command line
             sudo apt-get install -y hub
 
@@ -407,11 +407,20 @@ commands:
             # Set PR body
             cat /tmp/release_notes.md >> /tmp/pr_body.md
 
+            set +x
+            mkdir -p ~/.config
+            cat \<<EOT > ~/.config/hub
+            ---
+            github.com:
+            - protocol: https
+              user: sjmiller609
+              oauth_token: ${GITHUB_TOKEN}
+            EOT
+            set -x
+
+            export HUB_VERBOSE=1
             # Open pull request
-            # GITHUB_TOKEN should be a present environment variable
-            # -p : push before make PR
             hub pull-request \
               --push \
-              --file /tmp/pr_body.md \
-              --reviewer $CIRCLE_USERNAME \
-              --assign schnie
+              --file=/tmp/pr_body.md \
+              --reviewer=${CIRCLE_USERNAME}
