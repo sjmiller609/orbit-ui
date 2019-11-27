@@ -232,8 +232,6 @@ commands:
             COMMITS=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %ai %h: %s" | awk '{$4=""; print $0}')
             AUTHORS=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%aE" | awk '!a[$0]++')
             cat \<<EOT > /tmp/release_notes.md
-            v<< parameters.tag >>
-
             ## Changes:
 
             $COMMITS
@@ -404,11 +402,16 @@ commands:
             # Install a tool that will let us open PRs from the command line
             sudo apt-get install -y hub
 
+            # Set PR title
+            echo "Update $CIRCLE_PROJECT_REPONAME to v<< parameters.new_version >> https://github.com/<< parameters.git_org >>/${CIRCLE_PROJECT_REPONAME}/releases/tag/v<< parameters.new_version >>" > /tmp/pr_body.md
+            # Set PR body
+            cat /tmp/release_notes.md >> /tmp/pr_body.md
+
             # Open pull request
             # GITHUB_TOKEN should be a present environment variable
             # -p : push before make PR
             hub pull-request \
               --push \
-              --message "Update $CIRCLE_PROJECT_REPONAME to v<< parameters.new_version >> \n$(cat /tmp/release_notes.md)" \
+              --file /tmp/pr_body.md \
               --reviewer $CIRCLE_USERNAME \
               --assign schnie
