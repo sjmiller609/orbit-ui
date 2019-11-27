@@ -67,27 +67,27 @@ workflows:
   version: 2.1
   build-images:
     jobs:
-      # - build
-      # - scan:
-      #     requires:
-      #       - build
-      # - publish-dev:
-      #     requires:
-      #       - scan
-      # - publish-prod:
-      #     requires:
-      #       - scan
-      #     filters:
-      #       branches:
-      #         only: master
-      # # This step is just for a special case of
-      # # branch naming.
-      # - publish-release-branch:
-      #     requires:
-      #       - scan
-      #     filters:
-      #       branches:
-      #         only: '/release-.*/'
+      - build
+      - scan:
+          requires:
+            - build
+      - publish-dev:
+          requires:
+            - scan
+      - publish-prod:
+          requires:
+            - scan
+          filters:
+            branches:
+              only: master
+      # This step is just for a special case of
+      # branch naming.
+      - publish-release-branch:
+          requires:
+            - scan
+          filters:
+            branches:
+              only: '/release-.*/'
       # 'release-approval' requires that an in-app button be clicked
       # by an authorized member of the project to continue.
       # Then a versioned image will be published as one more than
@@ -97,9 +97,9 @@ workflows:
       # new version.
       - release-approval:
           type: approval
-          # requires:
-          #  - publish-prod
-          #  - publish-dev
+          requires:
+           - publish-prod
+           - publish-dev
           filters:
             branches:
               only: master
@@ -209,7 +209,7 @@ commands:
         default:  "0.13.0"
     steps:
       - run:
-          name: Tag the current branch, forcing if the same tag exists on a previous commit
+          name: Create a release on GitHub
           command: |
             set -xe
 
@@ -217,7 +217,7 @@ commands:
             WORK_DIR=$(pwd)
             cd /tmp
             wget https://github.com/tcnksm/ghr/releases/download/v<< parameters.ghr_version >>/ghr_v<< parameters.ghr_version >>_linux_amd64.tar.gz
-            tar -xvfz ./ghr_v<< parameters.ghr_version >>_linux_amd64.tar.gz
+            tar -xvf ./ghr_v<< parameters.ghr_version >>_linux_amd64.tar.gz
             mkdir -p /tmp/bin
             mv ghr_v<< parameters.ghr_version >>_linux_amd64/ghr /tmp/bin/
             export PATH=/tmp/bin:$PATH
@@ -226,12 +226,13 @@ commands:
             # Delete the tag from the local repository, if it exists.
             # This is done so the release notes are generated
             # correctly in the event of an overwrite.
-            git tag -d << parameters.tag >> || true
+            git tag -d v<< parameters.tag >> || true
 
             # Generate release notes in Markdown format
             COMMITS=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %ai %h: %s" | awk '{$4=""; print $0}')
             AUTHORS=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%aE" | awk '!a[$0]++')
-            cat \<<EOT > release_notes.md
+            cat \<<EOT > /tmp/release_notes.md
+
             ## Changes:
 
             $COMMITS
@@ -240,8 +241,10 @@ commands:
 
             $AUTHORS
             EOT
+
+
             echo "==================="
-            cat release_notes.md
+            cat /tmp/release_notes.md
             echo "==================="
 
             # Existing, matching release and tag will be overwritten, if present
@@ -249,7 +252,7 @@ commands:
               -t $GITHUB_TOKEN \
               -c $CIRCLE_SHA1 \
               -n v<< parameters.tag>> \
-              -b $(cat release_notes.md) \
+              -b "$(cat /tmp/release_notes.md)" \
               -delete \
               -replace \
               v<< parameters.tag>>
@@ -270,7 +273,7 @@ commands:
           name: Determine the next Helm chart version
           command: |
             set -e
-            pip install --user requests
+            pip install --user requests packaging
             cat > /tmp/next_helm_version.py \<<- EOM
             import sys
             import json
@@ -314,17 +317,15 @@ commands:
       - run:
           name: Clone repository
           command: |
-            set -xe
-            mkdir -p $HOME/.ssh || true
-            ssh-keyscan -t rsa github.com >> $HOME/.ssh/known_hosts
+            set -e
             cd /tmp
-            git clone git@github.com:<< parameters.git_org >>/<< parameters.repository >>.git
+            git clone https://sjmiller609:${GITHUB_TOKEN}@github.com/<< parameters.git_org >>/<< parameters.repository >>.git
       - run:
           name: Checkout a new branch
           command: |
             set -xe
             cd /tmp/<< parameters.repository >>
-            git checkout -b "automated-pr/${CIRCLE_PROJECT_REPONAME}-${CIRCLE_BUILD_NUM}"
+            git checkout -b "automated-pr-${CIRCLE_PROJECT_REPONAME}-<< parameters.new_version >>"
             git branch
       - run:
           name: Modify Helm chart
@@ -382,25 +383,40 @@ commands:
 
             # add and commit
             git add << parameters.file >>
-            git diff HEAD
             git status
 
             set +x
-            git config --global user.email "steven@astronomer.io"
+            git config --global user.email "sjmiller609@gmail.com"
             git config --global user.name "Circle CI"
-            git config --global user.token $GITHUB_TOKEN
             set -x
 
             git commit -m "Circle CI: Update image to ${value}" -- << parameters.file >>
+            git push origin "automated-pr-${CIRCLE_PROJECT_REPONAME}-<< parameters.new_version >>" --force
       - run:
-          name: Open PR to helm repo
+          name: Open PR to Helm chart repository
           command: |
             set -xe
             cd /tmp/<< parameters.repository >>
+
             # Install a tool that will let us open PRs from the command line
             sudo apt-get install -y hub
 
+            # Set PR title
+            echo "Update $CIRCLE_PROJECT_REPONAME to v<< parameters.new_version >>" > /tmp/pr_body.md
+            # Set PR body
+            cat /tmp/release_notes.md >> /tmp/pr_body.md
+
+            set +x
+            mkdir -p ~/.config
+            cat \<<EOT > ~/.config/hub
+            ---
+            github.com:
+            - protocol: https
+              user: sjmiller609
+              oauth_token: ${GITHUB_TOKEN}
+            EOT
+            set -x
+
             # Open pull request
-            # GITHUB_TOKEN should be a present environment variable
-            # -p : push before make PR
-            hub pull-request -p -m "Circle CI: Update image to ${value}"
+            hub pull-request \
+              --file=/tmp/pr_body.md
