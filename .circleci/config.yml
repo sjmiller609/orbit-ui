@@ -49,9 +49,9 @@ jobs:
       # is set to 0.10.1
       - get-next-helm-tag
       # Push a Docker image tagged as the next helm tag.
-      - push:
-          comma_separated_tags: "$NEXT_HELM_TAG"
-          image_name: ap-orbit-ui
+      # - push:
+      #     comma_separated_tags: "$NEXT_HELM_TAG"
+      #     image_name: ap-orbit-ui
       # Publish a GitHub release on this repository,
       # automatically generating a change log.
       - publish-github-release:
@@ -100,15 +100,15 @@ workflows:
           # requires:
           #  - publish-prod
           #  - publish-dev
-          filters:
-            branches:
-              only: master
+          # filters:
+          #   branches:
+          #     only: master
       - github-release:
           requires:
             - release-approval
-          filters:
-            branches:
-              only: master
+          # filters:
+          #   branches:
+          #     only: master
 orbs:
   clair-scanner: ovotech/clair-scanner@1.6.0
 executors:
@@ -209,7 +209,7 @@ commands:
         default:  "0.13.0"
     steps:
       - run:
-          name: Tag the current branch, forcing if the same tag exists on a previous commit
+          name: Create a release on GitHub
           command: |
             set -xe
 
@@ -217,7 +217,7 @@ commands:
             WORK_DIR=$(pwd)
             cd /tmp
             wget https://github.com/tcnksm/ghr/releases/download/v<< parameters.ghr_version >>/ghr_v<< parameters.ghr_version >>_linux_amd64.tar.gz
-            tar -xvfz ./ghr_v<< parameters.ghr_version >>_linux_amd64.tar.gz
+            tar -xvf ./ghr_v<< parameters.ghr_version >>_linux_amd64.tar.gz
             mkdir -p /tmp/bin
             mv ghr_v<< parameters.ghr_version >>_linux_amd64/ghr /tmp/bin/
             export PATH=/tmp/bin:$PATH
@@ -249,7 +249,7 @@ commands:
               -t $GITHUB_TOKEN \
               -c $CIRCLE_SHA1 \
               -n v<< parameters.tag>> \
-              -b $(cat release_notes.md) \
+              -b "$(cat release_notes.md)" \
               -delete \
               -replace \
               v<< parameters.tag>>
@@ -270,7 +270,7 @@ commands:
           name: Determine the next Helm chart version
           command: |
             set -e
-            pip install --user requests
+            pip install --user requests packaging
             cat > /tmp/next_helm_version.py \<<- EOM
             import sys
             import json
@@ -382,7 +382,6 @@ commands:
 
             # add and commit
             git add << parameters.file >>
-            git diff HEAD
             git status
 
             set +x
