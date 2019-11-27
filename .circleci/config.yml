@@ -231,7 +231,9 @@ commands:
             # Generate release notes in Markdown format
             COMMITS=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %ai %h: %s" | awk '{$4=""; print $0}')
             AUTHORS=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%aE" | awk '!a[$0]++')
-            cat \<<EOT > release_notes.md
+            cat \<<EOT > /tmp/release_notes.md
+            v<< parameters.tag >>
+
             ## Changes:
 
             $COMMITS
@@ -240,8 +242,10 @@ commands:
 
             $AUTHORS
             EOT
+
+
             echo "==================="
-            cat release_notes.md
+            cat /tmp/release_notes.md
             echo "==================="
 
             # Existing, matching release and tag will be overwritten, if present
@@ -249,7 +253,7 @@ commands:
               -t $GITHUB_TOKEN \
               -c $CIRCLE_SHA1 \
               -n v<< parameters.tag>> \
-              -b "$(cat release_notes.md)" \
+              -b "$(cat /tmp/release_notes.md)" \
               -delete \
               -replace \
               v<< parameters.tag>>
@@ -392,9 +396,10 @@ commands:
 
             git commit -m "Circle CI: Update image to ${value}" -- << parameters.file >>
       - run:
-          name: Open PR to helm repo
+          name: Open PR to Helm chart repository
           command: |
             set -xe
+            export GITHUB_REPOSITORY=<< parameters.git_org >>/${CIRCLE_PROJECT_REPONAME}
             cd /tmp/<< parameters.repository >>
             # Install a tool that will let us open PRs from the command line
             sudo apt-get install -y hub
@@ -402,4 +407,8 @@ commands:
             # Open pull request
             # GITHUB_TOKEN should be a present environment variable
             # -p : push before make PR
-            hub pull-request -p -m "Circle CI: Update image to ${value}"
+            hub pull-request \
+              --push \
+              --message "Update $CIRCLE_PROJECT_REPONAME to v<< parameters.new_version >> \n$(cat /tmp/release_notes.md)" \
+              --reviewer $CIRCLE_USERNAME \
+              --assign schnie
