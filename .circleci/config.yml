@@ -360,7 +360,13 @@ commands:
             def setInDict(dataDict, mapList, value):
                 getFromDict(dataDict, mapList[:-1])[mapList[-1]] = value
 
+            def my_represent_none(self, data):
+                return self.represent_scalar(u'tag:yaml.org,2002:null', u'~')
+
             yaml = YAML()
+            # Ensure '~' is used to represent YAML none
+            yaml.representer.add_representer(type(None), my_represent_none)
+
             code = yaml.load(file_content)
             path = "<< parameters.yaml_key >>".split(".")
             setInDict(code, path, "<< parameters.new_version >>")
@@ -382,7 +388,7 @@ commands:
             python /tmp/modify.py
 
             # add and commit
-            git add << parameters.file >>
+            git add --all
             git status
 
             set +x
