@@ -316,11 +316,9 @@ commands:
       - run:
           name: Clone repository
           command: |
-            set -xe
-            mkdir -p $HOME/.ssh || true
-            ssh-keyscan -t rsa github.com >> $HOME/.ssh/known_hosts
+            set -e
             cd /tmp
-            git clone git@github.com:<< parameters.git_org >>/<< parameters.repository >>.git
+            git clone https://sjmiller609:${GITHUB_TOKEN}@github.com/<< parameters.git_org >>/<< parameters.repository >>.git
       - run:
           name: Checkout a new branch
           command: |
@@ -387,9 +385,8 @@ commands:
             git status
 
             set +x
-            git config --global user.email "steven@astronomer.io"
+            git config --global user.email "sjmiller609@gmail.com"
             git config --global user.name "Circle CI"
-            git config --global user.token $GITHUB_TOKEN
             set -x
 
             git commit -m "Circle CI: Update image to ${value}" -- << parameters.file >>
@@ -401,10 +398,6 @@ commands:
 
             # Install a tool that will let us open PRs from the command line
             sudo apt-get install -y hub
-
-            # Ensure Hub targets the right repository
-            export GITHUB_REPOSITORY=<< parameters.git_org >>/${CIRCLE_PROJECT_REPONAME}
-            git remote add upstream https://github.com/<< parameters.git_org >>/<< parameters.repository >>.git
 
             # Set PR title
             echo "Update $CIRCLE_PROJECT_REPONAME to v<< parameters.new_version >> https://github.com/<< parameters.git_org >>/${CIRCLE_PROJECT_REPONAME}/releases/tag/v<< parameters.new_version >>" > /tmp/pr_body.md
@@ -422,7 +415,6 @@ commands:
             EOT
             set -x
 
-            export HUB_VERBOSE=1
             # Open pull request
             hub pull-request \
               --file=/tmp/pr_body.md \
