@@ -67,27 +67,27 @@ workflows:
   version: 2.1
   build-images:
     jobs:
-      - build
-      - scan:
-          requires:
-            - build
-      - publish-dev:
-          requires:
-            - scan
-      - publish-prod:
-          requires:
-            - scan
-          filters:
-            branches:
-              only: master
-      # This step is just for a special case of
-      # branch naming.
-      - publish-release-branch:
-          requires:
-            - scan
-          filters:
-            branches:
-              only: '/release-.*/'
+      # - build
+      # - scan:
+      #     requires:
+      #       - build
+      # - publish-dev:
+      #     requires:
+      #       - scan
+      # - publish-prod:
+      #     requires:
+      #       - scan
+      #     filters:
+      #       branches:
+      #         only: master
+      # # This step is just for a special case of
+      # # branch naming.
+      # - publish-release-branch:
+      #     requires:
+      #       - scan
+      #     filters:
+      #       branches:
+      #         only: '/release-.*/'
       # 'release-approval' requires that an in-app button be clicked
       # by an authorized member of the project to continue.
       # Then a versioned image will be published as one more than
@@ -97,9 +97,9 @@ workflows:
       # new version.
       - release-approval:
           type: approval
-          requires:
-           - publish-prod
-           - publish-dev
+          # requires:
+          #  - publish-prod
+          #  - publish-dev
           filters:
             branches:
               only: master
@@ -287,7 +287,7 @@ commands:
             print(f"Calculated new version as {new_version}", file=sys.stderr)
             sys.stdout.write(new_version)
             EOM
-            NEXT_HELM_TAG=$(python /tmp/next_helm_version)
+            NEXT_HELM_TAG=$(python /tmp/next_helm_version.py)
             # Make this environment variable available to following steps
             echo "export NEXT_HELM_TAG=${NEXT_HELM_TAG}" >> $BASH_ENV
   pr-to-helm-chart:
