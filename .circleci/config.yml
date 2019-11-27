@@ -326,7 +326,7 @@ commands:
           command: |
             set -xe
             cd /tmp/<< parameters.repository >>
-            git checkout -b "automated-pr/${CIRCLE_PROJECT_REPONAME}-${CIRCLE_BUILD_NUM}"
+            git checkout -b "automated-pr-${CIRCLE_PROJECT_REPONAME}-<< parameters.new_version >>"
             git branch
       - run:
           name: Modify Helm chart
@@ -393,14 +393,18 @@ commands:
             set -x
 
             git commit -m "Circle CI: Update image to ${value}" -- << parameters.file >>
+            git push origin "automated-pr-${CIRCLE_PROJECT_REPONAME}-<< parameters.new_version >>" --force
       - run:
           name: Open PR to Helm chart repository
           command: |
             set -xe
-            export GITHUB_REPOSITORY=<< parameters.git_org >>/${CIRCLE_PROJECT_REPONAME}
-            git remote add upstream https://github.com/<< parameters.git_org >>/<< parameters.repository >>.git
+
             # Install a tool that will let us open PRs from the command line
             sudo apt-get install -y hub
+
+            # Ensure Hub targets the right repository
+            export GITHUB_REPOSITORY=<< parameters.git_org >>/${CIRCLE_PROJECT_REPONAME}
+            git remote add upstream https://github.com/<< parameters.git_org >>/<< parameters.repository >>.git
 
             # Set PR title
             echo "Update $CIRCLE_PROJECT_REPONAME to v<< parameters.new_version >> https://github.com/<< parameters.git_org >>/${CIRCLE_PROJECT_REPONAME}/releases/tag/v<< parameters.new_version >>" > /tmp/pr_body.md
@@ -421,6 +425,5 @@ commands:
             export HUB_VERBOSE=1
             # Open pull request
             hub pull-request \
-              --push \
               --file=/tmp/pr_body.md \
               --reviewer=${CIRCLE_USERNAME}
