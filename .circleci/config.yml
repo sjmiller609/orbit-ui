@@ -23,6 +23,28 @@ jobs:
       - push:
           comma_separated_tags: "master,latest"
           image_name: ap-orbit-ui
+  publish-release:
+    executor: docker-executor
+    steps:
+      - push:
+          comma_separated_tags: "$CIRCLE_BRANCH"
+          image_name: ap-orbit-ui
+  publish-version:
+    executor: docker-executor
+    steps:
+      - alias-tag:
+          from_tag: "$CIRCLE_SHA1"
+          alias: "$CIRCLE_TAG"
+          image_name: ap-orbit-ui
+  pr-to-helm-chart:
+    executor: docker-executor
+    steps:
+      - pr-to-helm-chart:
+          repository: "helm.astronomer.io"
+          file: "charts/astronomer/values.yaml"
+          yaml_key: "images.orbit.tag"
+          new_version: "$CIRCLE_TAG"
+          reversion_chart_files: "Chart.yaml,charts/astronomer/Chart.yaml"
 workflows:
   version: 2.1
   build-images:
@@ -40,6 +62,28 @@ workflows:
           filters:
             branches:
               only: master
+      - publish-release:
+          requires:
+            - scan
+          filters:
+            branches:
+              only: '/release-.*/'
+  publish-version:
+    jobs:
+      - publish-version:
+          filters:
+            tags:
+              only: '/v[0-9].*/'
+            branches:
+              ignore: '/.*/'
+      - pr-to-helm-chart:
+          requires:
+            - publish-version
+          filters:
+            tags:
+              only: '/v[0-9].*/'
+            branches:
+              ignore: '/.*/'
 orbs:
   clair-scanner: ovotech/clair-scanner@1.6.0
 executors:
@@ -47,7 +91,7 @@ executors:
     environment:
       GIT_ORG: sjmiller609
     docker:
-      - image: circleci/buildpack-deps:stretch
+      - image: circleci/python:3
 commands:
   docker-build:
     description: "Build a Docker image"
@@ -63,7 +107,8 @@ commands:
         default: $CIRCLE_PROJECT_REPONAME
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Build the Docker image
           command: |
@@ -118,7 +163,159 @@ commands:
             for tag in $(echo "<< parameters.comma_separated_tags >>" | sed "s/,/ /g");
             do
               set -x
+              # If the tag looks starts with "v" then a digit, remove the "v"
+              pattern="^(v[0-9].*)"
+              if [[ $tag =~ $pattern ]]; then
+                tag="${tag:1}"
+              fi
               docker tag << parameters.image_name >> << parameters.organization >>/<< parameters.image_name >>:${tag}
               docker push << parameters.organization >>/<< parameters.image_name >>:${tag}
               set +x
             done
+  alias-tag:
+    description: "Add tags for an image on Dockerhub"
+    parameters:
+      from_tag:
+        type: string
+        default: "$CIRCLE_SHA1"
+      alias:
+        type: string
+        default: "0.0.0"
+      organization:
+        type: string
+        default: $GIT_ORG
+      image_name:
+        type: string
+        default: $CIRCLE_PROJECT_REPONAME
+    steps:
+      - setup_remote_docker
+      - run:
+          name: Login to DockerHub
+          command: echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+      - run:
+          name: Download Docker image from Dockerhub
+          command: |
+            docker pull << parameters.organization >>/<< parameters.image_name >>:<< parameters.from_tag >>
+      - run:
+          name: Tag image and push
+          command: |
+            set -xe
+            # If the tag looks starts with "v" then a digit, remove the "v"
+            tag="<< parameters.alias >>"
+            pattern="^(v[0-9].*)"
+            if [[ $tag =~ $pattern ]]; then
+              tag="${tag:1}"
+            fi
+            docker tag << parameters.organization >>/<< parameters.image_name >>:<< parameters.from_tag >> << parameters.organization >>/<< parameters.image_name >>:${tag}
+            docker push << parameters.organization >>/<< parameters.image_name >>:${tag}
+  pr-to-helm-chart:
+    description: "Make a PR to another repository, modifying one YAML file"
+    parameters:
+      repository:
+        type: string
+        default: "helm.astronomer.io"
+      file:
+        type: string
+        default: "charts/astronomer/values.yaml"
+      yaml_key:
+        type: string
+      new_version:
+        type: string
+        default: $CIRCLE_TAG
+      reversion_chart_files:
+        type: string
+        default: "Chart.yaml"
+    steps:
+      - run:
+          name: Clone repository
+          command: |
+            set -xe
+            mkdir -p $HOME/.ssh || true
+            ssh-keyscan -t rsa github.com >> $HOME/.ssh/known_hosts
+            cd /tmp
+            git clone git@github.com:${GIT_ORG}/<< parameters.repository >>.git
+      - run:
+          name: Checkout a new branch
+          command: |
+            set -xe
+            cd /tmp/<< parameters.repository >>
+            git checkout -b "automated-pr/${CIRCLE_PROJECT_REPONAME}-${CIRCLE_BUILD_NUM}"
+            git branch
+      - run:
+          name: Modify Helm chart
+          command: |
+            set -xe
+            cd /tmp/<< parameters.repository >>
+
+            # If the value starts with "v" then a digit, remove the "v"
+            #
+            value="<< parameters.new_version >>"
+            pattern="^(v[0-9].*)"
+            if [[ $value =~ $pattern ]]; then
+              value="${value:1}"
+            fi
+
+            # Set up a python script to find and replace in YAML,
+            # including preservation of comments, key order, and so forth
+            #
+            pip install --user ruamel.yaml
+            cat > /tmp/modify.py \<<- EOM
+            import sys
+            from ruamel.yaml import YAML
+            from functools import reduce
+            import operator
+
+            with open("<< parameters.file >>", "r") as f:
+                file_content = f.read()
+
+            def getFromDict(dataDict, mapList):
+                return reduce(operator.getitem, mapList, dataDict)
+
+            def setInDict(dataDict, mapList, value):
+                getFromDict(dataDict, mapList[:-1])[mapList[-1]] = value
+
+            yaml = YAML()
+            code = yaml.load(file_content)
+            path = "<< parameters.yaml_key >>".split(".")
+            setInDict(code, path, "<< parameters.new_version >>")
+
+            with open("<< parameters.file >>", "w") as f:
+              yaml.dump(code, f)
+
+            chart_files = "<< parameters.reversion_chart_files >>".split(",")
+            for file in chart_files:
+              with open(file, "r") as f:
+                file_content = f.read()
+              code = yaml.load(file_content)
+              code['version'] = "<< parameters.new_version >>"
+              with open(file, "w") as f:
+                yaml.dump(code, f)
+            EOM
+
+            # re-write the helm chart
+            python /tmp/modify.py
+
+            # add and commit
+            git add << parameters.file >>
+            git diff HEAD
+            git status
+
+            set +x
+            git config --global user.email "steven@astronomer.io"
+            git config --global user.name "Circle CI"
+            git config --global user.token $GITHUB_TOKEN
+            set -x
+
+            git commit -m "Circle CI: Update image to ${value}" -- << parameters.file >>
+      - run:
+          name: Open PR to helm repo
+          command: |
+            set -xe
+            cd /tmp/<< parameters.repository >>
+            # Install a tool that will let us open PRs from the command line
+            sudo apt-get install -y hub
+
+            # Open pull request
+            # GITHUB_TOKEN should be a present environment variable
+            # -p : push before make PR
+            hub pull-request -p -m "Circle CI: Update image to ${value}"
