@@ -232,6 +232,7 @@ commands:
             COMMITS=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %ai %h: %s" | awk '{$4=""; print $0}')
             AUTHORS=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%aE" | awk '!a[$0]++')
             cat \<<EOT > /tmp/release_notes.md
+
             ## Changes:
 
             $COMMITS
@@ -395,12 +396,13 @@ commands:
           name: Open PR to Helm chart repository
           command: |
             set -xe
+            cd /tmp/<< parameters.repository >>
 
             # Install a tool that will let us open PRs from the command line
             sudo apt-get install -y hub
 
             # Set PR title
-            echo "Update $CIRCLE_PROJECT_REPONAME to v<< parameters.new_version >> https://github.com/<< parameters.git_org >>/${CIRCLE_PROJECT_REPONAME}/releases/tag/v<< parameters.new_version >>" > /tmp/pr_body.md
+            echo "Update $CIRCLE_PROJECT_REPONAME to v<< parameters.new_version >>" > /tmp/pr_body.md
             # Set PR body
             cat /tmp/release_notes.md >> /tmp/pr_body.md
 
