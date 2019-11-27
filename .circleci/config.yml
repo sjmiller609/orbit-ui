@@ -15,7 +15,7 @@ jobs:
     executor: docker-executor
     steps:
       - push:
-          comma_separated_tags: "dev,edge,$CIRCLE_SHA1"
+          comma_separated_tags: "dev,$CIRCLE_SHA1"
           image_name: ap-orbit-ui
   publish-prod:
     executor: docker-executor
@@ -23,27 +23,45 @@ jobs:
       - push:
           comma_separated_tags: "master,latest"
           image_name: ap-orbit-ui
-  publish-release:
+  # This is a special case. Only when a branch matches
+  # release-* do we also publish the image with a tag
+  # matching the name of the branch.
+  publish-release-branch:
     executor: docker-executor
     steps:
       - push:
           comma_separated_tags: "$CIRCLE_BRANCH"
           image_name: ap-orbit-ui
-  publish-version:
+  # This step requires manual approval - see the workflow. The result
+  # is a PR to the Helm chart with the new image and Chart.yaml versions
+  # incremented in the umbrella and sub charts. If this process occurs
+  # more than once before a new Helm release, then the existing Docker
+  # tag and GitHub release for this repository are replaced to include
+  # the additional changes.
+  github-release:
     executor: docker-executor
     steps:
-      - alias-tag:
-          from_tag: "$CIRCLE_SHA1"
-          alias: "$CIRCLE_TAG"
+      - checkout
+      # Set $NEXT_HELM_TAG to the most recent Helm chart GitHub release base version
+      # ('base' meaning 0.10.0-alpha.1 is translated to 0.10.0) with the patch version
+      # incremented by one. Does not include "v" in front. For example, if the most
+      # recent release referres to tag "v0.10.0-alpha.1", then the environment variable
+      # is set to 0.10.1
+      - get-next-helm-tag
+      # Push a Docker image tagged as the next helm tag.
+      - push:
+          comma_separated_tags: "$NEXT_HELM_TAG"
           image_name: ap-orbit-ui
-  pr-to-helm-chart:
-    executor: docker-executor
-    steps:
+      # Publish a GitHub release on this repository,
+      # automatically generating a change log.
+      - publish-github-release:
+          tag: "$NEXT_HELM_TAG"
+      # Open a PR to the helm chart with this new version.
       - pr-to-helm-chart:
           repository: "helm.astronomer.io"
           file: "charts/astronomer/values.yaml"
           yaml_key: "images.orbit.tag"
-          new_version: "$CIRCLE_TAG"
+          new_version: "$NEXT_HELM_TAG"
           reversion_chart_files: "Chart.yaml,charts/astronomer/Chart.yaml"
 workflows:
   version: 2.1
@@ -62,34 +80,42 @@ workflows:
           filters:
             branches:
               only: master
-      - publish-release:
+      # This step is just for a special case of
+      # branch naming.
+      - publish-release-branch:
           requires:
             - scan
           filters:
             branches:
               only: '/release-.*/'
-  publish-version:
-    jobs:
-      - publish-version:
-          filters:
-            tags:
-              only: '/v[0-9].*/'
-            branches:
-              ignore: '/.*/'
-      - pr-to-helm-chart:
+      # 'release-approval' requires that an in-app button be clicked
+      # by an authorized member of the project to continue.
+      # Then a versioned image will be published as one more than
+      # current helm chart version, a Github release will be made
+      # with automatically generated release notes, and a PR
+      # will be opened to the Helm chart repository including the
+      # new version.
+      - release-approval:
+          type: approval
           requires:
-            - publish-version
+           - publish-prod
+           - publish-dev
           filters:
-            tags:
-              only: '/v[0-9].*/'
             branches:
-              ignore: '/.*/'
+              only: master
+      - github-release:
+          requires:
+            - release-approval
+          filters:
+            branches:
+              only: master
 orbs:
   clair-scanner: ovotech/clair-scanner@1.6.0
 executors:
   docker-executor:
     environment:
       GIT_ORG: sjmiller609
+      DOCKER_REPO: sjmiller609
     docker:
       - image: circleci/python:3
 commands:
@@ -140,9 +166,9 @@ commands:
       comma_separated_tags:
         type: string
         default: latest
-      organization:
+      docker_repository:
         type: string
-        default: $GIT_ORG
+        default: $DOCKER_REPO
       image_name:
         type: string
         default: $CIRCLE_PROJECT_REPONAME
@@ -168,46 +194,102 @@ commands:
               if [[ $tag =~ $pattern ]]; then
                 tag="${tag:1}"
               fi
-              docker tag << parameters.image_name >> << parameters.organization >>/<< parameters.image_name >>:${tag}
-              docker push << parameters.organization >>/<< parameters.image_name >>:${tag}
+              docker tag << parameters.image_name >> << parameters.docker_repository >>/<< parameters.image_name >>:${tag}
+              docker push << parameters.docker_repository >>/<< parameters.image_name >>:${tag}
               set +x
             done
-  alias-tag:
-    description: "Add tags for an image on Dockerhub"
+  publish-github-release:
+    description: "Create a release on GitHub"
     parameters:
-      from_tag:
+      tag:
         type: string
-        default: "$CIRCLE_SHA1"
-      alias:
+        default:  "$NEXT_HELM_TAG"
+      ghr_version:
         type: string
-        default: "0.0.0"
+        default:  "0.13.0"
+    steps:
+      - run:
+          name: Tag the current branch, forcing if the same tag exists on a previous commit
+          command: |
+            set -xe
+
+            # Install ghr, a CLI tool for doing GitHub releases
+            WORK_DIR=$(pwd)
+            cd /tmp
+            wget https://github.com/tcnksm/ghr/releases/download/v<< parameters.ghr_version >>/ghr_v<< parameters.ghr_version >>_linux_amd64.tar.gz
+            tar -xvfz ./ghr_v<< parameters.ghr_version >>_linux_amd64.tar.gz
+            mkdir -p /tmp/bin
+            mv ghr_v<< parameters.ghr_version >>_linux_amd64/ghr /tmp/bin/
+            export PATH=/tmp/bin:$PATH
+            cd $WORK_DIR
+
+            # Delete the tag from the local repository, if it exists.
+            # This is done so the release notes are generated
+            # correctly in the event of an overwrite.
+            git tag -d << parameters.tag >> || true
+
+            # Generate release notes in Markdown format
+            COMMITS=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %ai %h: %s" | awk '{$4=""; print $0}')
+            AUTHORS=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%aE" | awk '!a[$0]++')
+            cat \<<EOT > release_notes.md
+            ## Changes:
+
+            $COMMITS
+
+            ## Authors:
+
+            $AUTHORS
+            EOT
+            echo "==================="
+            cat release_notes.md
+            echo "==================="
+
+            # Existing, matching release and tag will be overwritten, if present
+            ghr \
+              -t $GITHUB_TOKEN \
+              -c $CIRCLE_SHA1 \
+              -n v<< parameters.tag>> \
+              -b $(cat release_notes.md) \
+              -delete \
+              -replace \
+              v<< parameters.tag>>
+  get-next-helm-tag:
+    description: "Set an environment variable to the current Helm chart version with the patch number incremented by one"
+    parameters:
       organization:
         type: string
         default: $GIT_ORG
+      repository:
+        type: string
+        default: helm.astronomer.io
       image_name:
         type: string
         default: $CIRCLE_PROJECT_REPONAME
     steps:
-      - setup_remote_docker
       - run:
-          name: Login to DockerHub
-          command: echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
-      - run:
-          name: Download Docker image from Dockerhub
+          name: Determine the next Helm chart version
           command: |
-            docker pull << parameters.organization >>/<< parameters.image_name >>:<< parameters.from_tag >>
-      - run:
-          name: Tag image and push
-          command: |
-            set -xe
-            # If the tag looks starts with "v" then a digit, remove the "v"
-            tag="<< parameters.alias >>"
-            pattern="^(v[0-9].*)"
-            if [[ $tag =~ $pattern ]]; then
-              tag="${tag:1}"
-            fi
-            docker tag << parameters.organization >>/<< parameters.image_name >>:<< parameters.from_tag >> << parameters.organization >>/<< parameters.image_name >>:${tag}
-            docker push << parameters.organization >>/<< parameters.image_name >>:${tag}
+            set -e
+            pip install --user requests
+            cat > /tmp/next_helm_version.py \<<- EOM
+            import sys
+            import json
+            import requests
+            from packaging.version import parse as semver
+            most_recent_tag= json.loads(requests.get("https://api.github.com/repos/<< parameters.organization >>/<< parameters.repository >>/releases").text)[0]['tag_name']
+            print(f"Most recent helm release tag: {most_recent_tag}", file=sys.stderr)
+            base_version = semver(most_recent_tag).base_version
+            print(f"Parsed base version as {base_version}", file=sys.stderr)
+            base_version = semver(base_version)
+            major, minor, patch = base_version.release
+            patch += 1
+            new_version = ".".join(str(i) for i in [major, minor, patch])
+            print(f"Calculated new version as {new_version}", file=sys.stderr)
+            sys.stdout.write(new_version)
+            EOM
+            NEXT_HELM_TAG=$(python /tmp/next_helm_version)
+            # Make this environment variable available to following steps
+            echo "export NEXT_HELM_TAG=${NEXT_HELM_TAG}" >> $BASH_ENV
   pr-to-helm-chart:
     description: "Make a PR to another repository, modifying one YAML file"
     parameters:
@@ -225,6 +307,9 @@ commands:
       reversion_chart_files:
         type: string
         default: "Chart.yaml"
+      git_org:
+        type: string
+        default: $GIT_ORG
     steps:
       - run:
           name: Clone repository
@@ -233,7 +318,7 @@ commands:
             mkdir -p $HOME/.ssh || true
             ssh-keyscan -t rsa github.com >> $HOME/.ssh/known_hosts
             cd /tmp
-            git clone git@github.com:${GIT_ORG}/<< parameters.repository >>.git
+            git clone git@github.com:<< parameters.git_org >>/<< parameters.repository >>.git
       - run:
           name: Checkout a new branch
           command: |
