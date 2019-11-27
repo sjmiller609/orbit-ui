@@ -49,9 +49,9 @@ jobs:
       # is set to 0.10.1
       - get-next-helm-tag
       # Push a Docker image tagged as the next helm tag.
-      # - push:
-      #     comma_separated_tags: "$NEXT_HELM_TAG"
-      #     image_name: ap-orbit-ui
+      - push:
+          comma_separated_tags: "$NEXT_HELM_TAG"
+          image_name: ap-orbit-ui
       # Publish a GitHub release on this repository,
       # automatically generating a change log.
       - publish-github-release:
@@ -67,27 +67,27 @@ workflows:
   version: 2.1
   build-images:
     jobs:
-      # - build
-      # - scan:
-      #     requires:
-      #       - build
-      # - publish-dev:
-      #     requires:
-      #       - scan
-      # - publish-prod:
-      #     requires:
-      #       - scan
-      #     filters:
-      #       branches:
-      #         only: master
-      # # This step is just for a special case of
-      # # branch naming.
-      # - publish-release-branch:
-      #     requires:
-      #       - scan
-      #     filters:
-      #       branches:
-      #         only: '/release-.*/'
+      - build
+      - scan:
+          requires:
+            - build
+      - publish-dev:
+          requires:
+            - scan
+      - publish-prod:
+          requires:
+            - scan
+          filters:
+            branches:
+              only: master
+      # This step is just for a special case of
+      # branch naming.
+      - publish-release-branch:
+          requires:
+            - scan
+          filters:
+            branches:
+              only: '/release-.*/'
       # 'release-approval' requires that an in-app button be clicked
       # by an authorized member of the project to continue.
       # Then a versioned image will be published as one more than
@@ -97,18 +97,18 @@ workflows:
       # new version.
       - release-approval:
           type: approval
-          # requires:
-          #  - publish-prod
-          #  - publish-dev
-          # filters:
-          #   branches:
-          #     only: master
+          requires:
+           - publish-prod
+           - publish-dev
+          filters:
+            branches:
+              only: master
       - github-release:
           requires:
             - release-approval
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
 orbs:
   clair-scanner: ovotech/clair-scanner@1.6.0
 executors:
@@ -417,5 +417,4 @@ commands:
 
             # Open pull request
             hub pull-request \
-              --file=/tmp/pr_body.md \
-              --reviewer=${CIRCLE_USERNAME}
+              --file=/tmp/pr_body.md
