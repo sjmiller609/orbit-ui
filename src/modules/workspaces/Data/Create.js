@@ -4,7 +4,7 @@ import api from './api'
 
 import { Create as Mutation, CardError } from 'instruments'
 
-import { handleError } from './helpers'
+import { handleError, trimError } from './helpers'
 
 const Create = Component => {
   const Create = props => {
@@ -21,7 +21,9 @@ const Create = Component => {
         redirect={data => '/workspaces/' + data.id}
         success="New workspace created successfully."
         track="New Workspace Created"
-        query={query}>
+        query={query}
+        errorMsg={trimError}
+        voidError>
         {({ mutate, error }) => {
           const newProps = {
             ...props,
