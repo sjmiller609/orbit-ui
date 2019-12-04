@@ -112,8 +112,8 @@ orbs:
 executors:
   docker-executor:
     environment:
-      GIT_ORG: sjmiller609
-      DOCKER_REPO: sjmiller609
+      GIT_ORG: astronomer
+      DOCKER_REPO: astronomerinc
     docker:
       - image: circleci/python:3
 commands:
@@ -351,10 +351,9 @@ commands:
       - run:
           name: Checkout a new branch, starting from the branch matching the name of this branch
           command: |
-            set -x
             cd /tmp/<< parameters.repository >>
             # Allow errors
-            set +e
+            set +xe
             git fetch origin "${CIRCLE_BRANCH}-rc"
             if [ $? -ne 0 ]; then
               echo "release candidate branch does not already exist, creating it"
@@ -368,6 +367,7 @@ commands:
                 echo "but don't publish a Github release for it. Then component changes merged into release branches named ${CIRCLE_BRANCH}"
                 echo "will publish image version << parameters.new_version >> and PR that image to the helm chart ${CIRCLE_BRANCH} from the helm chart branch ${CIRCLE_BRANCH}-rc"
                 echo "If multiple components are pushing to their respective ${CIRCLE_BRANCH} branches, all these image updates will end up in the same PR"
+                exit 1
               fi
               git checkout $CIRCLE_BRANCH
               git checkout -b "${CIRCLE_BRANCH}-rc"
@@ -474,4 +474,4 @@ commands:
 
             # Open pull request. This fails if there is already a PR open,
             # and that's fine because we just pushed a commit to that branch.
-            hub pull-request --file=/tmp/pr_body.md || true
+            hub pull-request --base $CIRCLE_BRANCH --file=/tmp/pr_body.md || true
