@@ -80,14 +80,6 @@ workflows:
           filters:
             branches:
               only: master
-      # This step is just for a special case of
-      # branch naming.
-      - publish-release-branch:
-          requires:
-            - scan
-          filters:
-            branches:
-              only: '/release-.*/'
       # 'release-approval' requires that an in-app button be clicked
       # by an authorized member of the project to continue.
       # Then a versioned image will be published as one more than
@@ -102,20 +94,26 @@ workflows:
            - publish-dev
           filters:
             branches:
-              only: master
-      - github-release:
+              only: '/release-.*/'
+      - publish-release-branch:
           requires:
             - release-approval
           filters:
             branches:
-              only: master
+              only: '/release-.*/'
+      - github-release:
+          requires:
+            - publish-release-branch
+          filters:
+            branches:
+              only: '/release-.*/'
 orbs:
   clair-scanner: ovotech/clair-scanner@1.6.0
 executors:
   docker-executor:
     environment:
-      GIT_ORG: astronomer
-      DOCKER_REPO: astronomerinc
+      GIT_ORG: sjmiller609
+      DOCKER_REPO: sjmiller609
     docker:
       - image: circleci/python:3
 commands:
@@ -212,7 +210,6 @@ commands:
           name: Create a release on GitHub
           command: |
             set -xe
-
             # Install ghr, a CLI tool for doing GitHub releases
             WORK_DIR=$(pwd)
             cd /tmp
@@ -242,7 +239,6 @@ commands:
             $AUTHORS
             EOT
 
-
             echo "==================="
             cat /tmp/release_notes.md
             echo "==================="
@@ -256,6 +252,7 @@ commands:
               -delete \
               -replace \
               v<< parameters.tag>>
+
   get-next-helm-tag:
     description: "Set an environment variable to the current Helm chart version with the patch number incremented by one"
     parameters:
@@ -265,28 +262,60 @@ commands:
       repository:
         type: string
         default: helm.astronomer.io
-      image_name:
-        type: string
-        default: $CIRCLE_PROJECT_REPONAME
     steps:
       - run:
           name: Determine the next Helm chart version
           command: |
             set -e
-            pip install --user requests packaging
+            pip install --user PyGithub packaging
             cat > /tmp/next_helm_version.py \<<- EOM
+            import os
+            import re
             import sys
             import json
-            import requests
+            from github import Github
             from packaging.version import parse as semver
-            most_recent_tag= json.loads(requests.get("https://api.github.com/repos/<< parameters.organization >>/<< parameters.repository >>/releases").text)[0]['tag_name']
-            print(f"Most recent helm release tag: {most_recent_tag}", file=sys.stderr)
-            base_version = semver(most_recent_tag).base_version
-            print(f"Parsed base version as {base_version}", file=sys.stderr)
-            base_version = semver(base_version)
-            major, minor, patch = base_version.release
-            patch += 1
-            new_version = ".".join(str(i) for i in [major, minor, patch])
+
+            branch = os.environ['CIRCLE_BRANCH']
+            github = Github()
+            repo = github.get_repo('<< parameters.organization >>/<< parameters.repository >>')
+
+            release_regex = re.compile("release-(\d*\.\d*)")
+            major_minor_version = release_regex.findall(branch)
+            most_recent_tag = None
+
+            if len(major_minor_version):
+                major_minor_version = major_minor_version[0]
+                print(f"We are on a release branch: {branch}, detected major.minor version {major_minor_version}", file=sys.stderr)
+                print(f"We will find the most recent patch version of {major_minor_version} and return it incremented by one", file=sys.stderr)
+                for release in repo.get_releases():
+                    version = semver(release.tag_name).release
+                    this_major_minor = f"{version[0]}.{version[1]}"
+                    if this_major_minor == major_minor_version:
+                        most_recent_tag = release.tag_name
+                        print(f"The most recent tag matching this release is {most_recent_tag}", file=sys.stderr)
+                        break
+            else:
+                print(f"We are not on a release branch, fetching the most recent helm tag and incrementing the patch version by one.", file=sys.stderr)
+                for release in repo.get_releases():
+                    most_recent_tag = release.tag_name
+                    break
+                print(f"Most recent helm release tag: {most_recent_tag}", file=sys.stderr)
+
+            if most_recent_tag:
+                base_version = semver(most_recent_tag).base_version
+                print(f"Parsed base version as {base_version}", file=sys.stderr)
+                base_version = semver(base_version)
+                major, minor, patch = base_version.release
+                patch += 1
+                new_version = ".".join(str(i) for i in [major, minor, patch])
+            else:
+                print("Did not detect a most recent version. Setting patch number to zero.", file=sys.stderr)
+                new_version = major_minor_version + ".0"
+
+            new_tag_regex = re.compile('\d*\.\d*\.\d*')
+            assert len(new_tag_regex.findall(new_version)), \
+                f"Error, did not produce a new tag in the form {new_tag_regex.pattern}"
             print(f"Calculated new version as {new_version}", file=sys.stderr)
             sys.stdout.write(new_version)
             EOM
@@ -321,12 +350,33 @@ commands:
             cd /tmp
             git clone https://sjmiller609:${GITHUB_TOKEN}@github.com/<< parameters.git_org >>/<< parameters.repository >>.git
       - run:
-          name: Checkout a new branch
+          name: Checkout a new branch, starting from the branch matching the name of this branch
           command: |
-            set -xe
+            set -x
             cd /tmp/<< parameters.repository >>
-            git checkout -b "automated-pr-${CIRCLE_PROJECT_REPONAME}-<< parameters.new_version >>"
-            git branch
+            # Allow errors
+            set +e
+            git fetch origin "${CIRCLE_BRANCH}-rc"
+            if [ $? -ne 0 ]; then
+              echo "release candidate branch does not already exist, creating it"
+              git fetch origin $CIRCLE_BRANCH
+              if [ $? -ne 0 ]; then
+                echo "============================"
+                echo "ERROR! Manual intervention required. Please read the below:"
+                echo ""
+                echo "The branch of this repository is ${CIRCLE_BRANCH}, but << parameters.git_org >>/<< parameters.repository >> does not have a branch of the same name."
+                echo "If you are preparing the 0-patch version of << parameters.git_org >>/<< parameters.repository >> (i.e. X.Y.0), you should create the branch named ${CIRCLE_BRANCH} on the helm chart,"
+                echo "but don't publish a Github release for it. Then component changes merged into release branches named ${CIRCLE_BRANCH}"
+                echo "will publish image version << parameters.new_version >> and PR that image to the helm chart ${CIRCLE_BRANCH} from the helm chart branch ${CIRCLE_BRANCH}-rc"
+                echo "If multiple components are pushing to their respective ${CIRCLE_BRANCH} branches, all these image updates will end up in the same PR"
+              fi
+              git checkout $CIRCLE_BRANCH
+              git checkout -b "${CIRCLE_BRANCH}-rc"
+            else
+              echo "release candidate branch exists, checking it out"
+              git checkout "${CIRCLE_BRANCH}-rc"
+            fi
+
       - run:
           name: Modify Helm chart
           command: |
@@ -397,8 +447,8 @@ commands:
             git config --global user.name "Circle CI"
             set -x
 
-            git commit -m "Circle CI: Update image to ${value}" -- << parameters.file >>
-            git push origin "automated-pr-${CIRCLE_PROJECT_REPONAME}-<< parameters.new_version >>" --force
+            git commit -m "Circle CI: Update ${CIRCLE_PROJECT_REPONAME} image to ${value}" -- << parameters.file >>
+            git push origin "${CIRCLE_BRANCH}-rc"
       - run:
           name: Open PR to Helm chart repository
           command: |
