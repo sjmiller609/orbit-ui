@@ -80,24 +80,9 @@ workflows:
           filters:
             branches:
               only: master
-      # 'release-approval' requires that an in-app button be clicked
-      # by an authorized member of the project to continue.
-      # Then a versioned image will be published as one more than
-      # current helm chart version, a Github release will be made
-      # with automatically generated release notes, and a PR
-      # will be opened to the Helm chart repository including the
-      # new version.
-      - release-approval:
-          type: approval
-          requires:
-           - publish-prod
-           - publish-dev
-          filters:
-            branches:
-              only: '/release-.*/'
       - publish-release-branch:
           requires:
-            - release-approval
+            - scan
           filters:
             branches:
               only: '/release-.*/'
