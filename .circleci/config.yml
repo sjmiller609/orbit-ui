@@ -252,7 +252,6 @@ commands:
               -delete \
               -replace \
               v<< parameters.tag>>
-
   get-next-helm-tag:
     description: "Set an environment variable to the current Helm chart version with the patch number incremented by one"
     parameters:
@@ -376,7 +375,6 @@ commands:
               echo "release candidate branch exists, checking it out"
               git checkout "${CIRCLE_BRANCH}-rc"
             fi
-
       - run:
           name: Modify Helm chart
           command: |
