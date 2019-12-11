@@ -49,7 +49,8 @@ class TaskStatus extends React.Component {
           <div className={s.containerListItems}>
             {data.map(
               (d, i) =>
-                d.metric.container && (
+                d.metric.container &&
+                d.metric.pod && (
                   <div
                     key={`${d.metric.container}${i}`}
                     className={s.containerListItem}>
