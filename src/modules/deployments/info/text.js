@@ -15,4 +15,8 @@ export default {
     'Manage the resource allocations for the webserver in Astronomer Units (AU).',
   scheduler:
     'Manage the resource allocations for the scheduler in Astronomer Units (AU).',
+  adminPaywall:
+    'Please add a payment method to your Workspace to continue using Astronomer. Your deployment will be deleted in 7 days if we do not hear from you.',
+  nonadminPaywall:
+    'Please ask your Workspace Admin to add a payment method to this Workspace in order to continue using Astronomer. Your deployment will be deleted in 7 days if we do not hear from you.',
 }

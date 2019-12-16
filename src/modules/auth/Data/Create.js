@@ -20,9 +20,8 @@ const Create = Component => {
         identify = data.user.emails[0]
         return data.token
           ? 'Success! Welcome to Astronomer'
-          : "Success! You've created an Astronomer acccount"
+          : "Success! You've created an Astronomer account"
       }
-      track = 'User Signed Up With Email/Password'
       redirect = data => {
         if (!data.token) {
           const email = data.user.emails[0]

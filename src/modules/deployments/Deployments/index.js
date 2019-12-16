@@ -5,6 +5,7 @@ import List from '../List'
 import Module from '../../app/Module'
 import Activation from './Active'
 import GetWorkspace from '../../workspaces/GetWorkspace'
+import info from '../info'
 
 class Deployments extends React.Component {
   menu = {
@@ -29,10 +30,8 @@ class Deployments extends React.Component {
       workspaceId: workspace ? workspace.id : match.params.workspaceId,
     }
 
-    const msg1 =
-      'Please add a payment method to your workspace to continue using Astronomer.'
-    const msg2 =
-      'Please ask your Workspace Admin to add a payment method to this workspace in order to continue using Astronomer.'
+    const msg1 = info.adminPaywall
+    const msg2 = info.nonadminPaywall
     const text = capabilities.canUpdateBilling ? msg1 : msg2
 
     if (workspace.paywallEnabled && workspace.billingEnabled)
