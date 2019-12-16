@@ -53,7 +53,6 @@
     "copy-to-clipboard": "3.0.8",
     "cypress": "3.4.1",
     "eventemitter3": "3.1.0",
-    "fsevents": "2.1.1",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "http-serve": "1.0.1",
