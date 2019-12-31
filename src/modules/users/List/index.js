@@ -8,15 +8,24 @@ import UsersData from '../Data/List'
 import InvitesData from '../Data/Invites'
 import Item from './Item'
 import Empty from './Empty'
+import { find } from 'lodash'
 
 const InviteList = ({ invites }) =>
   invites !== undefined &&
   invites.map(t => <Item key={t.id} user={t} pending role={t.role} />)
 const Invites = InvitesData(InviteList)
 
-const UserList = ({ users }) =>
+const UserList = ({ users, workspaceId }) =>
   users !== undefined &&
-  users.map(t => <Item key={t.id} user={t} role={t.roleBindings[0].role} />)
+  users.map(function(t) {
+    // Find this users rolebinding for this workspace.
+    const roleBinding = find(
+      t.roleBindings,
+      rb => rb.workspace && rb.workspace.id === workspaceId
+    )
+    return <Item key={t.id} user={t} role={roleBinding.role} />
+  })
+
 const Users = UsersData(UserList)
 
 const List = ({ workspaceId, search }) => {
