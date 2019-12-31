@@ -7,6 +7,7 @@ import s from './styles.scss'
 
 const ServiceDashboard = ({ url, title, icon, text, loading }) => {
   const to = !loading ? url : null
+  const iconClass = icon === 'airflow_astro' ? s.airflowIcon : ''
 
   return (
     <CardForm
@@ -18,10 +19,7 @@ const ServiceDashboard = ({ url, title, icon, text, loading }) => {
         to,
       }}>
       <Box className={classnames(s.icon, loading && s.loading)}>
-        <Icon
-          icon={icon}
-          className={icon === 'airflow_astro' && s.airflowIcon}
-        />
+        <Icon icon={icon} className={iconClass} />
       </Box>
       <P>{text}</P>
     </CardForm>
