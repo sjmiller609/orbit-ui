@@ -21,6 +21,10 @@ class List extends React.PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.updateList(this.props.logs)
+  }
+
   componentDidUpdate(nextProps) {
     if (nextProps.logs !== this.props.logs) {
       this.updateList(this.props.logs)
