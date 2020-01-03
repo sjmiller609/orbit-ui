@@ -43,9 +43,16 @@ workflows:
           filters:
             branches:
               only: master
-      - release:
+      - approve-release:
+          type: approval
           requires:
             - scan
+          filters:
+            branches:
+              only: '/release-.*/'
+      - release:
+          requires:
+            - approve-release
           filters:
             branches:
               only: '/release-.*/'
