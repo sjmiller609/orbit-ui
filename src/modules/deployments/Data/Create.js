@@ -17,21 +17,21 @@ const Create = Component => {
         workspaceId: getData.workspaceId,
       },
     }
+
     const email = props.self.user.emails[0].address
-    const workspace = props.workspaces[0]
 
     return (
       <Mutation
         gql={api.CreateDeployment}
         redirect={data =>
-          `/workspaces/${workspace.id}/deployments/${data.releaseName}?loading`
+          `/workspaces/${getData.workspaceId}/deployments/${data.releaseName}`
         }
         success="New deployment created successfully."
         track={{
           name: 'New Deployment Created',
           props: {
             email,
-            workspace,
+            workspace: getData.workspaceId,
           },
         }}
         errorMsg={trimError}
