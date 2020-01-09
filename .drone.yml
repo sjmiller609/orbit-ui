@@ -119,16 +119,16 @@ pipeline:
       branch: [ master ]
 
   # Trigger build of production images from master
-  trigger:
-    image: plugins/downstream
-    server: https://drone.astronomer.io
-    fork: true
-    secrets: [ downstream_token ]
-    repositories:
-      - astronomer/astronomer
-    when:
-      event: push
-      branch: [ master ]
+  # trigger:
+  #   image: plugins/downstream
+  #   server: https://drone.astronomer.io
+  #   fork: true
+  #   secrets: [ downstream_token ]
+  #   repositories:
+  #     - astronomer/astronomer
+  #   when:
+  #     event: push
+  #     branch: [ master ]
 
   # notify:
     image: plugins/slack
