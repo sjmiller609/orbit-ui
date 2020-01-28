@@ -9,8 +9,8 @@ const Overview = ({ deployment, loading }) => {
   let flower
   if (deployment.urls)
     deployment.urls.forEach(u => {
-      if (u.type === 'airflow') airflow = u.url
-      if (u.type === 'flower') flower = u.url
+      if (u.type === 'airflow') airflow = `${u.url}/deployments/airflow`
+      if (u.type === 'flower') flower = `${u.url}/deployments/flower`
     })
   return (
     <div>
